@@ -330,7 +330,9 @@ KEYGEN   = sshrsag sshdssg sshecdsag
 # X/GTK Unix app, [U] for command-line Unix app.
 
 putty    : [G] GUITERM NONSSH WINSSH W_BE_ALL WINMISC winx11 putty.res LIBS
+	 + screenshot testback
 puttytel : [G] GUITERM NONSSH W_BE_NOSSH WINMISC puttytel.res nogss LIBS
+	 + screenshot testback
 plink    : [C] winplink wincons console NONSSH WINSSH W_BE_ALL logging WINMISC
          + winx11 plink.res winnojmp sessprep noterm winnohlp winselcli
          + clicons wincliloop console LIBS
@@ -353,6 +355,7 @@ puttygen : [G] winpgen KEYGEN SSHPRIME sshdes ARITH sshmd5 version
          + sshpubk sshaes sshsh256 sshsh512 IMPORT winutils puttygen.res
          + tree234 notiming winhelp winnojmp CONF LIBS wintime sshecc sshprng
          + sshauxcrypt sshhmac winsecur winmiscs sshsha3 sshblake2 sshargon2
+	 + screenshot
 
 pterm    : [X] GTKTERM uxmisc misc ldisc settings uxpty uxsel BE_NONE uxstore
          + uxsignal CHARSET cmdline uxpterm version time xpmpterm xpmptcfg

@@ -32,11 +32,8 @@
 
 #include "putty.h"
 
-static char *null_init(const BackendVtable *, Seat *, Backend **, LogContext *,
-                       Conf *, const char *, int, char **, bool, bool);
 static char *loop_init(const BackendVtable *, Seat *, Backend **, LogContext *,
                        Conf *, const char *, int, char **, bool, bool);
-static void null_free(Backend *);
 static void loop_free(Backend *);
 static void null_reconfig(Backend *, Conf *);
 static size_t null_send(Backend *, const char *, size_t);
@@ -54,8 +51,8 @@ static void null_unthrottle(Backend *, size_t);
 static int null_cfg_info(Backend *);
 
 const BackendVtable null_backend = {
-    .init = null_init,
-    .free = null_free,
+    .init = loop_init,
+    .free = loop_free,
     .reconfig = null_reconfig,
     .send = null_send,
     .sendbuffer = null_sendbuffer,
@@ -102,17 +99,6 @@ struct loop_state {
     Backend backend;
 };
 
-static char *null_init(const BackendVtable *vt, Seat *seat,
-                       Backend **backend_handle, LogContext *logctx,
-                       Conf *conf, const char *host, int port,
-                       char **realhost, bool nodelay, bool keepalive) {
-    /* No local authentication phase in this protocol */
-    seat_set_trust_status(seat, false);
-
-    *backend_handle = NULL;
-    return NULL;
-}
-
 static char *loop_init(const BackendVtable *vt, Seat *seat,
                        Backend **backend_handle, LogContext *logctx,
                        Conf *conf, const char *host, int port,
@@ -123,13 +109,12 @@ static char *loop_init(const BackendVtable *vt, Seat *seat,
     seat_set_trust_status(seat, false);
 
     st->seat = seat;
+    st->backend.vt = vt;
     *backend_handle = &st->backend;
+
+    *realhost = dupstr(host);
+
     return NULL;
-}
-
-static void null_free(Backend *be)
-{
-
 }
 
 static void loop_free(Backend *be)

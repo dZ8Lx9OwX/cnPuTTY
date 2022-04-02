@@ -231,6 +231,11 @@ static int compose_state = 0;
 
 static UINT wm_mousewheel = WM_MOUSEWHEEL;
 
+extern bool sesslist_demo_mode;
+extern const char *dialog_box_demo_screenshot_filename;
+static strbuf *demo_terminal_data = NULL;
+static const char *terminal_demo_screenshot_filename;
+
 #define IS_HIGH_VARSEL(wch1, wch2) \
     ((wch1) == 0xDB40 && ((wch2) >= 0xDD00 && (wch2) <= 0xDDEF))
 #define IS_LOW_VARSEL(wch) \
@@ -369,7 +374,10 @@ static void start_backend(void)
      * Select protocol. This is farmed out into a table in a
      * separate file to enable an ssh-free variant.
      */
-    vt = backend_vt_from_proto(conf_get_int(conf, CONF_protocol));
+    if (demo_terminal_data)
+        vt = &null_backend;
+    else
+        vt = backend_vt_from_proto(conf_get_int(conf, CONF_protocol));
     if (!vt) {
         char *str = dupprintf("%s Internal Error", appname);
         MessageBox(NULL, "Unsupported protocol number found",
@@ -520,6 +528,7 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
     {
         char *p;
         bool special_launchable_argument = false;
+        bool demo_config_box = false;
 
         settings_set_default_protocol(be_default_protocol);
         /* Find the appropriate default port. */
@@ -646,6 +655,30 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
                 } else if (!strcmp(p, "-pgpfp")) {
                     pgp_fingerprints_msgbox(NULL);
                     exit(1);
+                } else if (!strcmp(p, "-demo-config-box")) {
+                    if (i+1 >= argc) {
+                        cmdline_error("%s expects an output filename", p);
+                    } else {
+                        demo_config_box = true;
+                        dialog_box_demo_screenshot_filename = argv[++i];
+                    }
+                } else if (!strcmp(p, "-demo-terminal")) {
+                    if (i+2 >= argc) {
+                        cmdline_error("%s expects input and output filenames",
+                                      p);
+                    } else {
+                        const char *infile = argv[++i];
+                        terminal_demo_screenshot_filename = argv[++i];
+                        FILE *fp = fopen(infile, "rb");
+                        if (!fp)
+                            cmdline_error("can't open input file '%s'", argv);
+                        demo_terminal_data = strbuf_new();
+                        char buf[4096];
+                        int retd;
+                        while ((retd = fread(buf, 1, sizeof(buf), fp)) > 0)
+                            put_data(demo_terminal_data, buf, retd);
+                        fclose(fp);
+                    }
                 } else if (*p != '-') {
                     cmdline_error("unexpected argument \"%s\"", p);
                 } else {
@@ -656,13 +689,26 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
 
         cmdline_run_saved(conf);
 
-        /*
-         * Bring up the config dialog if the command line hasn't
-         * (explicitly) specified a launchable configuration.
-         */
-        if (!(special_launchable_argument || cmdline_host_ok(conf))) {
-            if (!do_config(conf))
-                cleanup_exit(0);
+        if (demo_config_box) {
+            sesslist_demo_mode = true;
+            load_open_settings(NULL, conf);
+            conf_set_str(conf, CONF_host, "demo-server.example.com");
+            do_config(conf);
+            cleanup_exit(0);
+        } else if (demo_terminal_data) {
+            /* Ensure conf will cause an immediate session launch */
+            load_open_settings(NULL, conf);
+            conf_set_str(conf, CONF_host, "demo-server.example.com");
+            conf_set_int(conf, CONF_close_on_exit, FORCE_OFF);
+        } else {
+            /*
+             * Bring up the config dialog if the command line hasn't
+             * (explicitly) specified a launchable configuration.
+             */
+            if (!(special_launchable_argument || cmdline_host_ok(conf))) {
+                if (!do_config(conf))
+                    cleanup_exit(0);
+            }
         }
 
         prepare_session(conf);
@@ -884,6 +930,8 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
 
     term_set_focus(term, GetForegroundWindow() == wgs.term_hwnd);
     UpdateWindow(wgs.term_hwnd);
+
+    gui_terminal_ready(wgs.term_hwnd, &wgs.seat, backend);
 
     while (1) {
         HANDLE *handles;
@@ -5857,4 +5905,20 @@ static bool win_seat_get_window_pixel_size(Seat *seat, int *x, int *y)
     *x = r.right - r.left;
     *y = r.bottom - r.top;
     return true;
+}
+
+static void demo_terminal_screenshot(void *ctx, unsigned long now)
+{
+    HWND hwnd = (HWND)ctx;
+    save_screenshot(hwnd, terminal_demo_screenshot_filename);
+    cleanup_exit(0);
+}
+
+void gui_terminal_ready(HWND hwnd, Seat *seat, Backend *backend)
+{
+    if (demo_terminal_data) {
+        ptrlen data = ptrlen_from_strbuf(demo_terminal_data);
+        seat_stdout(seat, data.ptr, data.len);
+        schedule_timer(TICKSPERSEC, demo_terminal_screenshot, (void *)hwnd);
+    }
 }

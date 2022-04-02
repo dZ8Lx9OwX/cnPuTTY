@@ -701,4 +701,7 @@ void cli_main_loop(cliloop_pre_t pre, cliloop_post_t post, void *ctx);
 bool cliloop_null_pre(void *vctx, const HANDLE **, size_t *);
 bool cliloop_null_post(void *vctx, size_t);
 
+char *save_screenshot(HWND hwnd, const char *outfile);
+void gui_terminal_ready(HWND hwnd, Seat *seat, Backend *backend);
+
 #endif
