@@ -715,7 +715,7 @@ static PRINTF_LIKE(2, 3) void log_downstream(struct ssh_sharing_connstate *cs,
     buf = dupvprintf(logfmt, ap);
     va_end(ap);
     logeventf(cs->parent->cl->logctx,
-              "Connection sharing downstream #%u: %s", cs->id, buf);
+              "下游连接共享 #%u: %s", cs->id, buf);
     sfree(buf);
 }
 
@@ -728,7 +728,7 @@ static PRINTF_LIKE(2, 3) void log_general(struct ssh_sharing_state *sharestate,
     va_start(ap, logfmt);
     buf = dupvprintf(logfmt, ap);
     va_end(ap);
-    logeventf(sharestate->cl->logctx, "Connection sharing: %s", buf);
+    logeventf(sharestate->cl->logctx, "连接共享：%s", buf);
     sfree(buf);
 }
 
@@ -1351,7 +1351,7 @@ static void share_got_pkt_from_downstream(struct ssh_sharing_connstate *cs,
             hostpl = get_string(src);
             port = toint(get_uint32(src));
             if (get_err(src)) {
-                err = dupprintf("Truncated GLOBAL_REQUEST packet");
+                err = dupprintf("断开的 GLOBAL_REQUEST 数据包");
                 goto confused;
             }
             host = mkstr(hostpl);
@@ -1415,7 +1415,7 @@ static void share_got_pkt_from_downstream(struct ssh_sharing_connstate *cs,
             hostpl = get_string(src);
             port = toint(get_uint32(src));
             if (get_err(src)) {
-                err = dupprintf("Truncated GLOBAL_REQUEST packet");
+                err = dupprintf("断开的 GLOBAL_REQUEST 数据包");
                 goto confused;
             }
             host = mkstr(hostpl);
@@ -1484,7 +1484,7 @@ static void share_got_pkt_from_downstream(struct ssh_sharing_connstate *cs,
         get_uint32(src);               /* skip initial window size */
         maxpkt = get_uint32(src);
         if (get_err(src)) {
-            err = dupprintf("Truncated CHANNEL_OPEN packet");
+            err = dupprintf("断开的 CHANNEL_OPEN 数据包");
             goto confused;
         }
         share_add_channel(cs, old_id, new_id, 0, UNACKNOWLEDGED, maxpkt);
@@ -1495,7 +1495,7 @@ static void share_got_pkt_from_downstream(struct ssh_sharing_connstate *cs,
 
       case SSH2_MSG_CHANNEL_OPEN_CONFIRMATION:
         if (pktlen < 16) {
-            err = dupprintf("Truncated CHANNEL_OPEN_CONFIRMATION packet");
+            err = dupprintf("断开的 CHANNEL_OPEN_CONFIRMATION 数据包");
             goto confused;
         }
 
@@ -1505,7 +1505,7 @@ static void share_got_pkt_from_downstream(struct ssh_sharing_connstate *cs,
         get_uint32(src);               /* skip initial window size */
         maxpkt = get_uint32(src);
         if (get_err(src)) {
-            err = dupprintf("Truncated CHANNEL_OPEN_CONFIRMATION packet");
+            err = dupprintf("断开的 CHANNEL_OPEN_CONFIRMATION 数据包");
             goto confused;
         }
 
@@ -1517,7 +1517,7 @@ static void share_got_pkt_from_downstream(struct ssh_sharing_connstate *cs,
                    != NULL) {
             new_id = xc->upstream_id;
         } else {
-            err = dupprintf("CHANNEL_OPEN_CONFIRMATION packet cited unknown channel %u", (unsigned)server_id);
+            err = dupprintf("CHANNEL_OPEN_CONFIRMATION 数据包引用未知通道 %u", (unsigned)server_id);
             goto confused;
         }
 
@@ -1532,7 +1532,7 @@ static void share_got_pkt_from_downstream(struct ssh_sharing_connstate *cs,
         } else if (xc) {
             unsigned downstream_window = GET_32BIT_MSB_FIRST(pkt + 8);
             if (downstream_window < 256) {
-                err = dupprintf("Initial window size for x11 channel must be at least 256 (got %u)", downstream_window);
+                err = dupprintf("x11 通道的初始窗口大小必须至少为 256 (得到 %u)", downstream_window);
                 goto confused;
             }
             share_xchannel_confirmation(cs, xc, chan, downstream_window);
@@ -1544,7 +1544,7 @@ static void share_got_pkt_from_downstream(struct ssh_sharing_connstate *cs,
       case SSH2_MSG_CHANNEL_OPEN_FAILURE:
         server_id = get_uint32(src);
         if (get_err(src)) {
-            err = dupprintf("Truncated CHANNEL_OPEN_FAILURE packet");
+            err = dupprintf("断开的 CHANNEL_OPEN_FAILURE 数据包");
             goto confused;
         }
 
@@ -1557,7 +1557,7 @@ static void share_got_pkt_from_downstream(struct ssh_sharing_connstate *cs,
                    != NULL) {
             share_xchannel_failure(cs, xc);
         } else {
-            err = dupprintf("CHANNEL_OPEN_FAILURE packet cited unknown channel %u", (unsigned)server_id);
+            err = dupprintf("CHANNEL_OPEN_FAILURE 数据包引用未知通道 %u", (unsigned)server_id);
             goto confused;
         }
 
@@ -1615,8 +1615,8 @@ static void share_got_pkt_from_downstream(struct ssh_sharing_connstate *cs,
                         packet->s, packet->len, NULL);
                     strbuf_free(packet);
                 } else {
-                    char *buf = dupprintf("Agent forwarding request for "
-                                          "unrecognised channel %u", server_id);
+                    char *buf = dupprintf("代理转发请求"
+                                          "无法识别的通道 %u", server_id);
                     share_disconnect(cs, buf);
                     sfree(buf);
                     return;
@@ -1641,8 +1641,8 @@ static void share_got_pkt_from_downstream(struct ssh_sharing_connstate *cs,
 
                 chan = share_find_channel_by_server(cs, server_id);
                 if (!chan) {
-                    char *buf = dupprintf("X11 forwarding request for "
-                                          "unrecognised channel %u", server_id);
+                    char *buf = dupprintf("X11 转发请求"
+                                          "无法识别的通道 %u", server_id);
                     share_disconnect(cs, buf);
                     sfree(buf);
                     return;
@@ -1658,8 +1658,8 @@ static void share_got_pkt_from_downstream(struct ssh_sharing_connstate *cs,
                 auth_data = get_string(src);
                 screen = toint(get_uint32(src));
                 if (get_err(src)) {
-                    err = dupprintf("Truncated CHANNEL_REQUEST(\"x11-req\")"
-                                    " packet");
+                    err = dupprintf("断开的 CHANNEL_REQUEST(\"x11-req\")"
+                                    " 数据包");
                     goto confused;
                 }
 
@@ -1722,7 +1722,7 @@ static void share_got_pkt_from_downstream(struct ssh_sharing_connstate *cs,
         break;
 
       default:
-        err = dupprintf("Unexpected packet type %d\n", type);
+        err = dupprintf("意外的数据包类型 %d\n", type);
         goto confused;
 
         /*
@@ -1770,7 +1770,7 @@ static void share_receive(Plug *plug, int urgent, const char *data, size_t len)
         if (c == '\012')
             break;
         if (cs->recvlen >= sizeof(cs->recvbuf)) {
-            char *buf = dupprintf("Version string far too long\n");
+            char *buf = dupprintf("版本字符串太长\n");
             share_disconnect(cs, buf);
             sfree(buf);
             goto dead;
@@ -1785,7 +1785,7 @@ static void share_receive(Plug *plug, int urgent, const char *data, size_t len)
     if (cs->recvlen < sizeof(expected_verstring_prefix)-1 ||
         memcmp(cs->recvbuf, expected_verstring_prefix,
                sizeof(expected_verstring_prefix) - 1)) {
-        char *buf = dupprintf("Version string did not have expected prefix\n");
+        char *buf = dupprintf("版本字符串没有预期的前缀\n");
         share_disconnect(cs, buf);
         sfree(buf);
         goto dead;
@@ -1809,7 +1809,7 @@ static void share_receive(Plug *plug, int urgent, const char *data, size_t len)
         cs->curr_packetlen = toint(GET_32BIT_MSB_FIRST(cs->recvbuf) + 4);
         if (cs->curr_packetlen < 5 ||
             cs->curr_packetlen > sizeof(cs->recvbuf)) {
-            char *buf = dupprintf("Bad packet length %u\n",
+            char *buf = dupprintf("错误的数据包长度 %u\n",
                                   (unsigned)cs->curr_packetlen);
             share_disconnect(cs, buf);
             sfree(buf);
@@ -2120,16 +2120,16 @@ Socket *ssh_connection_sharing_init(
              * error message indicating a reason why connection sharing
              * couldn't be set up _at all_ */
             logeventf(logctx,
-                      "Could not set up connection sharing: %s", logtext);
+                      "无法设置连接共享：%s", logtext);
         } else {
             /* Failing that, ds_err and us_err indicate why we
              * couldn't be a downstream and an upstream respectively */
             if (ds_err)
-                logeventf(logctx, "Could not set up connection sharing"
-                          " as downstream: %s", ds_err);
+                logeventf(logctx, "无法将连接共享"
+                          "设置为下游：%s", ds_err);
             if (us_err)
-                logeventf(logctx, "Could not set up connection sharing"
-                          " as upstream: %s", us_err);
+                logeventf(logctx, "无法将连接共享"
+                          "设置为上游：%s", us_err);
         }
 
         assert(sock == NULL);
@@ -2146,7 +2146,7 @@ Socket *ssh_connection_sharing_init(
          */
 
         /* 'logtext' is a local endpoint address */
-        logeventf(logctx, "Using existing shared connection at %s", logtext);
+        logeventf(logctx, "使用现有的共享连接 %s", logtext);
 
         *state = NULL;
         sfree(sharestate);
@@ -2162,7 +2162,7 @@ Socket *ssh_connection_sharing_init(
          */
 
         /* 'logtext' is a local endpoint address */
-        logeventf(logctx, "Sharing this connection at %s", logtext);
+        logeventf(logctx, "在 %s 共享此连接", logtext);
 
         *state = sharestate;
         sharestate->listensock = sock;

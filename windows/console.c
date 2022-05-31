@@ -64,7 +64,7 @@ SeatPromptResult console_confirm_ssh_host_key(
 
     if (console_batch_mode) {
         fputs(console_abandoned_msg, stderr);
-        return SPR_SW_ABORT("Cannot confirm a host key in batch mode");
+        return SPR_SW_ABORT("无法在批处理模式下确认主机密钥");
     }
 
     fputs(intro, stderr);
@@ -84,12 +84,12 @@ SeatPromptResult console_confirm_ssh_host_key(
         SetConsoleMode(hin, savemode);
 
         if (line[0] == 'i' || line[0] == 'I') {
-            fprintf(stderr, "Full public key:\n%s\n", keydisp);
+            fprintf(stderr, "完整的公钥：\n%s\n", keydisp);
             if (fingerprints[SSH_FPTYPE_SHA256])
-                fprintf(stderr, "SHA256 key fingerprint:\n%s\n",
+                fprintf(stderr, "SHA256密钥指纹：\n%s\n",
                         fingerprints[SSH_FPTYPE_SHA256]);
             if (fingerprints[SSH_FPTYPE_MD5])
-                fprintf(stderr, "MD5 key fingerprint:\n%s\n",
+                fprintf(stderr, "MD5密钥指纹：\n%s\n",
                         fingerprints[SSH_FPTYPE_MD5]);
         } else {
             break;
@@ -122,8 +122,8 @@ SeatPromptResult console_confirm_weak_crypto_primitive(
 
     if (console_batch_mode) {
         fputs(console_abandoned_msg, stderr);
-        return SPR_SW_ABORT("Cannot confirm a weak crypto primitive "
-                            "in batch mode");
+        return SPR_SW_ABORT("无法在批处理模式下确认"
+                            "原始的弱加密");
     }
 
     fputs(console_continue_prompt, stderr);
@@ -157,8 +157,8 @@ SeatPromptResult console_confirm_weak_cached_hostkey(
 
     if (console_batch_mode) {
         fputs(console_abandoned_msg, stderr);
-        return SPR_SW_ABORT("Cannot confirm a weak cached host key "
-                            "in batch mode");
+        return SPR_SW_ABORT("无法在批处理模式下确认"
+                            "缓存的主机密钥");
     }
 
     fputs(console_continue_prompt, stderr);
@@ -236,17 +236,17 @@ int console_askappend(LogPolicy *lp, Filename *filename,
     DWORD savemode, i;
 
     static const char msgtemplate[] =
-        "The session log file \"%.*s\" already exists.\n"
-        "You can overwrite it with a new session log,\n"
-        "append your session log to the end of it,\n"
-        "or disable session logging for this session.\n"
-        "Enter \"y\" to wipe the file, \"n\" to append to it,\n"
-        "or just press Return to disable logging.\n"
-        "Wipe the log file? (y/n, Return cancels logging) ";
+        "会话日志文件\"%.*s\"已存在。\n"
+        "您可以用新的会话日志覆盖它，\n"
+        "或者将新的会话日志附加到它的末尾，\n"
+        "或者禁止此次会话的日志记录。\n"
+        "选择“是”擦除文件，“否”追加到末尾，\n"
+        "或者“取消”禁用此次日志记录。\n"
+        "擦除日志文件吗？(Y/N, Cancel取消日志)";
 
     static const char msgtemplate_batch[] =
-        "The session log file \"%.*s\" already exists.\n"
-        "Logging will not be enabled.\n";
+        "会话日志文件\"%。*s\"已经存在。\n"
+        "不会启动日志记录。\n";
 
     char line[32];
 
@@ -286,15 +286,13 @@ int console_askappend(LogPolicy *lp, Filename *filename,
 void old_keyfile_warning(void)
 {
     static const char message[] =
-        "You are loading an SSH-2 private key which has an\n"
-        "old version of the file format. This means your key\n"
-        "file is not fully tamperproof. Future versions of\n"
-        "PuTTY may stop supporting this private key format,\n"
-        "so we recommend you convert your key to the new\n"
-        "format.\n"
+        "您正在加载一个旧版本的SSH-2私钥文件。\n"
+        "这意味着当前密钥文件不是完全防篡改的。\n"
+        "未来版本的程序可能会停止支持这种私钥，\n"
+        "所有我们建议您将密钥转换为新的格式。\n"
         "\n"
-        "Once the key is loaded into PuTTYgen, you can perform\n"
-        "this conversion simply by saving it again.\n";
+        "将密钥加载到PuTTYgen中，只需要再次保\n"
+        "存即可完成转换。";
 
     fputs(message, stderr);
 }
@@ -367,11 +365,11 @@ SeatPromptResult console_get_userpass_input(prompts_t *p)
      */
     if (p->n_prompts) {
         if (console_batch_mode)
-            return SPR_SW_ABORT("Cannot answer interactive prompts "
-                                "in batch mode");
+            return SPR_SW_ABORT("在批处理模式下无法回答 "
+                                "交互式提示");
         hin = GetStdHandle(STD_INPUT_HANDLE);
         if (hin == INVALID_HANDLE_VALUE) {
-            fprintf(stderr, "Cannot get standard input handle\n");
+            fprintf(stderr, "无法获得标准输入句柄\n");
             cleanup_exit(1);
         }
     }
@@ -382,7 +380,7 @@ SeatPromptResult console_get_userpass_input(prompts_t *p)
     if ((p->name_reqd && p->name) || p->instruction || p->n_prompts) {
         hout = GetStdHandle(STD_OUTPUT_HANDLE);
         if (hout == INVALID_HANDLE_VALUE) {
-            fprintf(stderr, "Cannot get standard output handle\n");
+            fprintf(stderr, "无法获得标准输出句柄\n");
             cleanup_exit(1);
         }
     }
@@ -449,7 +447,7 @@ SeatPromptResult console_get_userpass_input(prompts_t *p)
                  * unexpected error and reported to the user. */
                 failed = true;
                 spr = make_spr_sw_abort_winerror(
-                    "Error reading from console", GetLastError());
+                    "从控制台读取出错", GetLastError());
                 break;
             } else if (ret == 0) {
                 /* Regard EOF on the terminal as a deliberate user-abort */

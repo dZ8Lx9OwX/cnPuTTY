@@ -905,7 +905,7 @@ SeatPromptResult verify_ssh_host_key(
             sfree(base64blob);
         }
 
-        return SPR_SW_ABORT("Host key not in manually configured list");
+        return SPR_SW_ABORT("主机密钥不在手动配置的列表中");
     }
 
     /*
@@ -938,7 +938,7 @@ bool ssh1_common_get_specials(
      * asked anyway.
      */
     if (!(ppl->remote_bugs & BUG_CHOKES_ON_SSH1_IGNORE)) {
-        add_special(ctx, "IGNORE message", SS_NOP, 0);
+        add_special(ctx, "IGNORE 信息", SS_NOP, 0);
         return true;
     }
 
@@ -955,14 +955,14 @@ bool ssh1_common_filter_queue(PacketProtocolLayer *ppl)
           case SSH1_MSG_DISCONNECT:
             msg = get_string(pktin);
             ssh_remote_error(ppl->ssh,
-                             "Remote side sent disconnect message:\n\"%.*s\"",
+                             "远端发送断开消息：\n\"%.*s\"",
                              PTRLEN_PRINTF(msg));
             /* don't try to pop the queue, because we've been freed! */
             return true;               /* indicate that we've been freed */
 
           case SSH1_MSG_DEBUG:
             msg = get_string(pktin);
-            ppl_logevent("Remote debug message: %.*s", PTRLEN_PRINTF(msg));
+            ppl_logevent("远程调试消息：%.*s", PTRLEN_PRINTF(msg));
             pq_pop(ppl->in_pq);
             break;
 
@@ -1003,7 +1003,7 @@ void ssh1_compute_session_id(
 void ssh_spr_close(Ssh *ssh, SeatPromptResult spr, const char *context)
 {
     if (spr.kind == SPRK_USER_ABORT) {
-        ssh_user_close(ssh, "User aborted at %s", context);
+        ssh_user_close(ssh, "用户中止于 %s", context);
     } else {
         assert(spr.kind == SPRK_SW_ABORT);
         char *err = spr_get_error_message(spr);
