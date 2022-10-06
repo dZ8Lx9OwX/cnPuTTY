@@ -82,6 +82,16 @@ BEGIN
     PUSHBUTTON "关闭(&C)", IDCANCEL, 134, 80, 40, 14
 END
 
+/* Accelerators used: clw */
+216 DIALOG DISCARDABLE 140, 40, 450, 300
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "cnPuTTYgen:证书信息"
+FONT 9, "宋体"
+CLASS "PuTTYgenCertInfo"
+BEGIN
+    DEFPUSHBUTTON "关闭(&C)", IDOK, 201, 130, 48, 14
+END
+
 #include "version.rc2"
 
 #ifndef NO_MANIFESTS

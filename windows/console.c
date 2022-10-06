@@ -34,44 +34,53 @@ void console_print_error_msg(const char *prefix, const char *msg)
 
 SeatPromptResult console_confirm_ssh_host_key(
     Seat *seat, const char *host, int port, const char *keytype,
-    char *keystr, const char *keydisp, char **fingerprints, bool mismatch,
+    char *keystr, SeatDialogText *text, HelpCtx helpctx,
     void (*callback)(void *ctx, SeatPromptResult result), void *ctx)
 {
     HANDLE hin;
     DWORD savemode, i;
-    char *common;
-    const char *intro, *prompt;
+    const char *prompt = NULL;
+
+    stdio_sink errsink[1];
+    stdio_sink_init(errsink, stderr);
 
     char line[32];
 
-    FingerprintType fptype_default =
-        ssh2_pick_default_fingerprint(fingerprints);
-
-    if (mismatch) {                    /* key was different */
-        common = hk_wrongmsg_common(host, port, keytype,
-                                    fingerprints[fptype_default]);
-        intro = hk_wrongmsg_interactive_intro;
-        prompt = hk_wrongmsg_interactive_prompt;
-    } else {                           /* key was absent */
-        common = hk_absentmsg_common(host, port, keytype,
-                                     fingerprints[fptype_default]);
-        intro = hk_absentmsg_interactive_intro;
-        prompt = hk_absentmsg_interactive_prompt;
+    for (SeatDialogTextItem *item = text->items,
+             *end = item+text->nitems; item < end; item++) {
+        switch (item->type) {
+          case SDT_PARA:
+            wordwrap(BinarySink_UPCAST(errsink),
+                     ptrlen_from_asciz(item->text), 60);
+            fputc('\n', stderr);
+            break;
+          case SDT_DISPLAY:
+            fprintf(stderr, "  %s\n", item->text);
+            break;
+          case SDT_SCARY_HEADING:
+            /* Can't change font size or weight in this context */
+            fprintf(stderr, "%s\n", item->text);
+            break;
+          case SDT_BATCH_ABORT:
+            if (console_batch_mode) {
+                fprintf(stderr, "%s\n", item->text);
+                fflush(stderr);
+                return SPR_SW_ABORT("Cannot confirm a host key in batch mode");
+            }
+            break;
+          case SDT_PROMPT:
+            prompt = item->text;
+            break;
+          default:
+            break;
+        }
     }
-
-    fputs(common, stderr);
-    sfree(common);
-
-    if (console_batch_mode) {
-        fputs(console_abandoned_msg, stderr);
-        return SPR_SW_ABORT("æ— æ³•åœ¨æ‰¹å¤„ç†æ¨¡å¼ä¸‹ç¡®è®¤ä¸»æœºå¯†é’¥");
-    }
-
-    fputs(intro, stderr);
-    fflush(stderr);
+    assert(prompt); /* something in the SeatDialogText should have set this */
 
     while (true) {
-        fputs(prompt, stderr);
+        fprintf(stderr,
+                "%s (y/n, Return cancels connection, i for more info) ",
+                prompt);
         fflush(stderr);
 
         line[0] = '\0';    /* fail safe if ReadFile returns no data */
@@ -84,13 +93,22 @@ SeatPromptResult console_confirm_ssh_host_key(
         SetConsoleMode(hin, savemode);
 
         if (line[0] == 'i' || line[0] == 'I') {
-            fprintf(stderr, "å®Œæ•´çš„å…¬é’¥ï¼š\n%s\n", keydisp);
-            if (fingerprints[SSH_FPTYPE_SHA256])
-                fprintf(stderr, "SHA256å¯†é’¥æŒ‡çº¹ï¼š\n%s\n",
-                        fingerprints[SSH_FPTYPE_SHA256]);
-            if (fingerprints[SSH_FPTYPE_MD5])
-                fprintf(stderr, "MD5å¯†é’¥æŒ‡çº¹ï¼š\n%s\n",
-                        fingerprints[SSH_FPTYPE_MD5]);
+            for (SeatDialogTextItem *item = text->items,
+                     *end = item+text->nitems; item < end; item++) {
+                switch (item->type) {
+                  case SDT_MORE_INFO_KEY:
+                    fprintf(stderr, "%s", item->text);
+                    break;
+                  case SDT_MORE_INFO_VALUE_SHORT:
+                    fprintf(stderr, ": %s\n", item->text);
+                    break;
+                  case SDT_MORE_INFO_VALUE_BLOB:
+                    fprintf(stderr, ":\n%s\n", item->text);
+                    break;
+                  default:
+                    break;
+                }
+            }
         } else {
             break;
         }
@@ -122,8 +140,8 @@ SeatPromptResult console_confirm_weak_crypto_primitive(
 
     if (console_batch_mode) {
         fputs(console_abandoned_msg, stderr);
-        return SPR_SW_ABORT("æ— æ³•åœ¨æ‰¹å¤„ç†æ¨¡å¼ä¸‹ç¡®è®¤"
-                            "åŸå§‹çš„å¼±åŠ å¯†");
+        return SPR_SW_ABORT("ÎŞ·¨ÔÚÅú´¦ÀíÄ£Ê½ÏÂÈ·ÈÏ"
+                            "Ô­Ê¼µÄÈõ¼ÓÃÜ");
     }
 
     fputs(console_continue_prompt, stderr);
@@ -157,8 +175,8 @@ SeatPromptResult console_confirm_weak_cached_hostkey(
 
     if (console_batch_mode) {
         fputs(console_abandoned_msg, stderr);
-        return SPR_SW_ABORT("æ— æ³•åœ¨æ‰¹å¤„ç†æ¨¡å¼ä¸‹ç¡®è®¤"
-                            "ç¼“å­˜çš„ä¸»æœºå¯†é’¥");
+        return SPR_SW_ABORT("ÎŞ·¨ÔÚÅú´¦ÀíÄ£Ê½ÏÂÈ·ÈÏ"
+                            "»º´æµÄÖ÷»úÃÜÔ¿");
     }
 
     fputs(console_continue_prompt, stderr);
@@ -236,17 +254,17 @@ int console_askappend(LogPolicy *lp, Filename *filename,
     DWORD savemode, i;
 
     static const char msgtemplate[] =
-        "ä¼šè¯æ—¥å¿—æ–‡ä»¶\"%.*s\"å·²å­˜åœ¨ã€‚\n"
-        "æ‚¨å¯ä»¥ç”¨æ–°çš„ä¼šè¯æ—¥å¿—è¦†ç›–å®ƒï¼Œ\n"
-        "æˆ–è€…å°†æ–°çš„ä¼šè¯æ—¥å¿—é™„åŠ åˆ°å®ƒçš„æœ«å°¾ï¼Œ\n"
-        "æˆ–è€…ç¦æ­¢æ­¤æ¬¡ä¼šè¯çš„æ—¥å¿—è®°å½•ã€‚\n"
-        "é€‰æ‹©â€œæ˜¯â€æ“¦é™¤æ–‡ä»¶ï¼Œâ€œå¦â€è¿½åŠ åˆ°æœ«å°¾ï¼Œ\n"
-        "æˆ–è€…â€œå–æ¶ˆâ€ç¦ç”¨æ­¤æ¬¡æ—¥å¿—è®°å½•ã€‚\n"
-        "æ“¦é™¤æ—¥å¿—æ–‡ä»¶å—ï¼Ÿ(Y/N, Cancelå–æ¶ˆæ—¥å¿—)";
+        "»á»°ÈÕÖ¾ÎÄ¼ş\"%.*s\"ÒÑ´æÔÚ¡£\n"
+        "Äú¿ÉÒÔÓÃĞÂµÄ»á»°ÈÕÖ¾¸²¸ÇËü£¬\n"
+        "»òÕß½«ĞÂµÄ»á»°ÈÕÖ¾¸½¼Óµ½ËüµÄÄ©Î²£¬\n"
+        "»òÕß½ûÖ¹´Ë´Î»á»°µÄÈÕÖ¾¼ÇÂ¼¡£\n"
+        "Ñ¡Ôñ¡°ÊÇ¡±²Á³ıÎÄ¼ş£¬¡°·ñ¡±×·¼Óµ½Ä©Î²£¬\n"
+        "»òÕß¡°È¡Ïû¡±½ûÓÃ´Ë´ÎÈÕÖ¾¼ÇÂ¼¡£\n"
+        "²Á³ıÈÕÖ¾ÎÄ¼şÂğ£¿(Y/N, CancelÈ¡ÏûÈÕÖ¾)";
 
     static const char msgtemplate_batch[] =
-        "ä¼šè¯æ—¥å¿—æ–‡ä»¶\"%ã€‚*s\"å·²ç»å­˜åœ¨ã€‚\n"
-        "ä¸ä¼šå¯åŠ¨æ—¥å¿—è®°å½•ã€‚\n";
+        "»á»°ÈÕÖ¾ÎÄ¼ş\"%¡£*s\"ÒÑ¾­´æÔÚ¡£\n"
+        "²»»áÆô¶¯ÈÕÖ¾¼ÇÂ¼¡£\n";
 
     char line[32];
 
@@ -286,13 +304,13 @@ int console_askappend(LogPolicy *lp, Filename *filename,
 void old_keyfile_warning(void)
 {
     static const char message[] =
-        "æ‚¨æ­£åœ¨åŠ è½½ä¸€ä¸ªæ—§ç‰ˆæœ¬çš„SSH-2ç§é’¥æ–‡ä»¶ã€‚\n"
-        "è¿™æ„å‘³ç€å½“å‰å¯†é’¥æ–‡ä»¶ä¸æ˜¯å®Œå…¨é˜²ç¯¡æ”¹çš„ã€‚\n"
-        "æœªæ¥ç‰ˆæœ¬çš„ç¨‹åºå¯èƒ½ä¼šåœæ­¢æ”¯æŒè¿™ç§ç§é’¥ï¼Œ\n"
-        "æ‰€æœ‰æˆ‘ä»¬å»ºè®®æ‚¨å°†å¯†é’¥è½¬æ¢ä¸ºæ–°çš„æ ¼å¼ã€‚\n"
+        "ÄúÕıÔÚ¼ÓÔØÒ»¸ö¾É°æ±¾µÄSSH-2Ë½Ô¿ÎÄ¼ş¡£\n"
+        "ÕâÒâÎ¶×Åµ±Ç°ÃÜÔ¿ÎÄ¼ş²»ÊÇÍêÈ«·À´Û¸ÄµÄ¡£\n"
+        "Î´À´°æ±¾µÄ³ÌĞò¿ÉÄÜ»áÍ£Ö¹Ö§³ÖÕâÖÖË½Ô¿£¬\n"
+        "ËùÓĞÎÒÃÇ½¨ÒéÄú½«ÃÜÔ¿×ª»»ÎªĞÂµÄ¸ñÊ½¡£\n"
         "\n"
-        "å°†å¯†é’¥åŠ è½½åˆ°PuTTYgenä¸­ï¼Œåªéœ€è¦å†æ¬¡ä¿\n"
-        "å­˜å³å¯å®Œæˆè½¬æ¢ã€‚";
+        "½«ÃÜÔ¿¼ÓÔØµ½PuTTYgenÖĞ£¬Ö»ĞèÒªÔÙ´Î±£\n"
+        "´æ¼´¿ÉÍê³É×ª»»¡£";
 
     fputs(message, stderr);
 }
@@ -365,11 +383,11 @@ SeatPromptResult console_get_userpass_input(prompts_t *p)
      */
     if (p->n_prompts) {
         if (console_batch_mode)
-            return SPR_SW_ABORT("åœ¨æ‰¹å¤„ç†æ¨¡å¼ä¸‹æ— æ³•å›ç­” "
-                                "äº¤äº’å¼æç¤º");
+            return SPR_SW_ABORT("ÔÚÅú´¦ÀíÄ£Ê½ÏÂÎŞ·¨»Ø´ğ "
+                                "½»»¥Ê½ÌáÊ¾");
         hin = GetStdHandle(STD_INPUT_HANDLE);
         if (hin == INVALID_HANDLE_VALUE) {
-            fprintf(stderr, "æ— æ³•è·å¾—æ ‡å‡†è¾“å…¥å¥æŸ„\n");
+            fprintf(stderr, "ÎŞ·¨»ñµÃ±ê×¼ÊäÈë¾ä±ú\n");
             cleanup_exit(1);
         }
     }
@@ -380,7 +398,7 @@ SeatPromptResult console_get_userpass_input(prompts_t *p)
     if ((p->name_reqd && p->name) || p->instruction || p->n_prompts) {
         hout = GetStdHandle(STD_OUTPUT_HANDLE);
         if (hout == INVALID_HANDLE_VALUE) {
-            fprintf(stderr, "æ— æ³•è·å¾—æ ‡å‡†è¾“å‡ºå¥æŸ„\n");
+            fprintf(stderr, "ÎŞ·¨»ñµÃ±ê×¼Êä³ö¾ä±ú\n");
             cleanup_exit(1);
         }
     }
@@ -447,7 +465,7 @@ SeatPromptResult console_get_userpass_input(prompts_t *p)
                  * unexpected error and reported to the user. */
                 failed = true;
                 spr = make_spr_sw_abort_winerror(
-                    "ä»æ§åˆ¶å°è¯»å–å‡ºé”™", GetLastError());
+                    "´Ó¿ØÖÆÌ¨¶ÁÈ¡³ö´í", GetLastError());
                 break;
             } else if (ret == 0) {
                 /* Regard EOF on the terminal as a deliberate user-abort */

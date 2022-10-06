@@ -35,7 +35,7 @@ static void proxy_negotiator_cleanup(ProxySocket *ps)
  * Call this when proxy negotiation is complete, so that this
  * socket can begin working normally.
  */
-void proxy_activate(ProxySocket *ps)
+static void proxy_activate(ProxySocket *ps)
 {
     size_t output_before, output_after;
 
@@ -178,7 +178,7 @@ static void sk_proxy_set_frozen (Socket *s, bool is_frozen)
     sk_set_frozen(ps->sub_socket, is_frozen);
 }
 
-static const char * sk_proxy_socket_error (Socket *s)
+static const char *sk_proxy_socket_error (Socket *s)
 {
     ProxySocket *ps = container_of(s, ProxySocket, sock);
     if (ps->error != NULL || ps->sub_socket == NULL) {
@@ -212,7 +212,7 @@ static void proxy_negotiate(ProxySocket *ps)
     proxy_negotiator_process_queue(ps->pn);
 
     if (ps->pn->error) {
-        char *err = dupprintf("ä»£ç†é”™è¯¯ï¼š%s", ps->pn->error);
+        char *err = dupprintf("´úÀí´íÎó£º%s", ps->pn->error);
         sfree(ps->pn->error);
         proxy_negotiator_cleanup(ps);
         plug_closing_error(ps->plug, err);
@@ -386,23 +386,23 @@ static bool proxy_for_destination(SockAddr *addr, const char *hostname,
 static char *dns_log_msg(const char *host, int addressfamily,
                          const char *reason)
 {
-    return dupprintf("æŸ¥æ‰¾ä¸»æœº \"%s\"%s æ¥è‡ª %s", host,
+    return dupprintf("²éÕÒÖ÷»ú \"%s\"%s À´×Ô %s", host,
                      (addressfamily == ADDRTYPE_IPV4 ? " (IPv4)" :
                       addressfamily == ADDRTYPE_IPV6 ? " (IPv6)" :
                       ""), reason);
 }
 
 SockAddr *name_lookup(const char *host, int port, char **canonicalname,
-                     Conf *conf, int addressfamily, LogContext *logctx,
-                     const char *reason)
+                      Conf *conf, int addressfamily, LogContext *logctx,
+                      const char *reason)
 {
     if (conf_get_int(conf, CONF_proxy_type) != PROXY_NONE &&
         do_proxy_dns(conf) &&
         proxy_for_destination(NULL, host, port, conf)) {
 
         if (logctx)
-            logeventf(logctx, "å°†ä¸»æœºæŸ¥æ‰¾ç•™ç»™ä»£ç† \"%s\""
-                      " (å¯¹äºŽ %s)", host, reason);
+            logeventf(logctx, "½«Ö÷»ú²éÕÒÁô¸ø´úÀí \"%s\""
+                      " (¶ÔÓÚ %s)", host, reason);
 
         *canonicalname = dupstr(host);
         return sk_nonamelookup(host);
@@ -438,7 +438,7 @@ static char *proxy_description(Interactor *itr)
 {
     ProxySocket *ps = container_of(itr, ProxySocket, interactor);
     assert(ps->pn);
-    return dupprintf("%s è¿žæŽ¥åˆ° %s ç«¯å£ %d", ps->pn->vt->type,
+    return dupprintf("%s Á¬½Óµ½ %s ¶Ë¿Ú %d", ps->pn->vt->type,
                      conf_get_str(ps->conf, CONF_proxy_host),
                      conf_get_int(ps->conf, CONF_proxy_port));
 }
@@ -506,7 +506,9 @@ Socket *new_connection(SockAddr *addr, const char *hostname,
         char *proxy_canonical_name;
         Socket *sret;
 
-        if (type == PROXY_SSH &&
+        if ((type == PROXY_SSH_TCPIP ||
+             type == PROXY_SSH_EXEC ||
+             type == PROXY_SSH_SUBSYSTEM) &&
             (sret = sshproxy_new_connection(addr, hostname, port, privport,
                                             oobinline, nodelay, keepalive,
                                             plug, conf, itr)) != NULL)
@@ -578,11 +580,11 @@ Socket *new_connection(SockAddr *addr, const char *hostname,
         bufchain_sink_init(ps->pn->output, &ps->output_from_negotiator);
 
         {
-            char *logmsg = dupprintf("å°†ä½¿ç”¨ %s ä»£ç†åœ¨ %s:%d è¿›è¡Œè¿žæŽ¥"
-                                      " to %s:%d", vt->type,
-                                      conf_get_str(conf, CONF_proxy_host),
-                                      conf_get_int(conf, CONF_proxy_port),
-                                      hostname, port);
+            char *logmsg = dupprintf("½«Ê¹ÓÃ %s ´úÀíÔÚ %s:%d ½øÐÐÁ¬½Ó"
+                                     " to %s:%d", vt->type,
+                                     conf_get_str(conf, CONF_proxy_host),
+                                     conf_get_int(conf, CONF_proxy_port),
+                                     hostname, port);
             plug_log(plug, PLUGLOG_PROXY_MSG, NULL, 0, logmsg, 0);
             sfree(logmsg);
         }

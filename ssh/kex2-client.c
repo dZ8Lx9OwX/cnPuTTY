@@ -50,7 +50,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
          * requesting a group.
          */
         if (dh_is_gex(s->kex_alg)) {
-            ppl_logevent("è¿›è¡ŒDiffie-Hellmanç»„äº¤æ¢");
+            ppl_logevent("½øĞĞDiffie-Hellman×é½»»»");
             s->ppl.bpp->pls->kctx = SSH2_PKTCTX_DHGEX;
             /*
              * Work out how big a DH group we will need to allow that
@@ -76,8 +76,8 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
 
             crMaybeWaitUntilV((pktin = ssh2_transport_pop(s)) != NULL);
             if (pktin->type != SSH2_MSG_KEX_DH_GEX_GROUP) {
-                ssh_proto_error(s->ppl.ssh, "ç­‰å¾… Diffie-Hellman group æ—¶ï¼Œ"
-                                "æ”¶åˆ°æ„å¤–çš„æ•°æ®åŒ…ï¼Œç±»å‹ %d (%s)",
+                ssh_proto_error(s->ppl.ssh, "µÈ´ı Diffie-Hellman group Ê±£¬"
+                                "ÊÕµ½ÒâÍâµÄÊı¾İ°ü£¬ÀàĞÍ %d (%s)",
                                 pktin->type,
                                 ssh2_pkt_type(s->ppl.bpp->pls->kctx,
                                               s->ppl.bpp->pls->actx,
@@ -89,7 +89,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
             s->g = get_mp_ssh2(pktin);
             if (get_err(pktin)) {
                 ssh_proto_error(s->ppl.ssh,
-                                "æ— æ³•è§£æ Diffie-Hellman group æ•°æ®åŒ…");
+                                "ÎŞ·¨½âÎö Diffie-Hellman group Êı¾İ°ü");
                 *aborted = true;
                 return;
             }
@@ -97,8 +97,8 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
             s->kex_init_value = SSH2_MSG_KEX_DH_GEX_INIT;
             s->kex_reply_value = SSH2_MSG_KEX_DH_GEX_REPLY;
 
-            ppl_logevent("è¿›è¡ŒDiffie-Hellmanå¯†é’¥äº¤æ¢ï¼Œä½¿ç”¨%d-bit"
-                         "æ¨¡æ•°å’Œ%så“ˆå¸Œï¼ŒåŒ…å«æœåŠ¡å™¨æä¾›çš„ç»„",
+            ppl_logevent("½øĞĞDiffie-HellmanÃÜÔ¿½»»»£¬Ê¹ÓÃ%d-bit"
+                         "Ä£ÊıºÍ%s¹şÏ££¬°üº¬·şÎñÆ÷Ìá¹©µÄ×é",
                          dh_modulus_bit_size(s->dh_ctx),
                          ssh_hash_alg(s->exhash)->text_name);
         } else {
@@ -107,8 +107,8 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
             s->kex_init_value = SSH2_MSG_KEXDH_INIT;
             s->kex_reply_value = SSH2_MSG_KEXDH_REPLY;
 
-            ppl_logevent("è¿›è¡ŒDiffie-Hellmanå¯†é’¥äº¤æ¢ï¼Œä½¿ç”¨%d-bit"
-                         "æ¨¡æ•°å’Œ%så“ˆå¸Œï¼ŒåŒ…å«æ ‡å‡†ç»„\"%s\"",
+            ppl_logevent("½øĞĞDiffie-HellmanÃÜÔ¿½»»»£¬Ê¹ÓÃ%d-bit"
+                         "Ä£ÊıºÍ%s¹şÏ££¬°üº¬±ê×¼×é\"%s\"",
                          dh_modulus_bit_size(s->dh_ctx),
                          ssh_hash_alg(s->exhash)->text_name,
                          s->kex_alg->groupname);
@@ -126,8 +126,8 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
         seat_set_busy_status(s->ppl.seat, BUSY_WAITING);
         crMaybeWaitUntilV((pktin = ssh2_transport_pop(s)) != NULL);
         if (pktin->type != s->kex_reply_value) {
-            ssh_proto_error(s->ppl.ssh, "ç­‰å¾… Diffie-Hellman å›å¤æ—¶ï¼Œ"
-                            "æ”¶åˆ°æ„å¤–çš„æ•°æ®åŒ…ï¼Œç±»å‹ %d (%s)",
+            ssh_proto_error(s->ppl.ssh, "µÈ´ı Diffie-Hellman »Ø¸´Ê±£¬"
+                            "ÊÕµ½ÒâÍâµÄÊı¾İ°ü£¬ÀàĞÍ %d (%s)",
                             pktin->type,
                             ssh2_pkt_type(s->ppl.bpp->pls->kctx,
                                           s->ppl.bpp->pls->actx,
@@ -142,7 +142,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
         s->sigdata = get_string(pktin);
         if (get_err(pktin)) {
             ssh_proto_error(s->ppl.ssh,
-                            "æ— æ³•è§£æ Diffie-Hellman å›å¤æ•°æ®åŒ…");
+                            "ÎŞ·¨½âÎö Diffie-Hellman »Ø¸´Êı¾İ°ü");
             *aborted = true;
             return;
         }
@@ -150,13 +150,15 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
         {
             const char *err = dh_validate_f(s->dh_ctx, s->f);
             if (err) {
-                ssh_proto_error(s->ppl.ssh, "Diffie-Hellman å›å¤"
-                                "éªŒè¯å¤±è´¥ï¼š%s", err);
+                ssh_proto_error(s->ppl.ssh, "Diffie-Hellman »Ø¸´"
+                                "ÑéÖ¤Ê§°Ü£º%s", err);
                 *aborted = true;
                 return;
             }
         }
-        s->K = dh_find_K(s->dh_ctx, s->f);
+        mp_int *K = dh_find_K(s->dh_ctx, s->f);
+        put_mp_ssh2(s->kex_shared_secret, K);
+        mp_free(K);
 
         /* We assume everything from now on will be quick, and it might
          * involve user interaction. */
@@ -183,23 +185,19 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
             mp_free(s->p); s->p = NULL;
         }
     } else if (s->kex_alg->main_type == KEXTYPE_ECDH) {
-
-        ppl_logevent("è¿›è¡ŒECDHå¯†é’¥äº¤æ¢ï¼ŒåŒ…å«%sæ›²çº¿å’Œ%så“ˆå¸Œ",
-                     ssh_ecdhkex_curve_textname(s->kex_alg),
+        char *desc = ecdh_keyalg_description(s->kex_alg);
+        ppl_logevent("Doing %s, using hash %s", desc,
                      ssh_hash_alg(s->exhash)->text_name);
+        sfree(desc);
+
         s->ppl.bpp->pls->kctx = SSH2_PKTCTX_ECDHKEX;
 
-        s->ecdh_key = ssh_ecdhkex_newkey(s->kex_alg);
-        if (!s->ecdh_key) {
-            ssh_sw_abort(s->ppl.ssh, "æ— æ³•ä¸º ECDH ç”Ÿæˆå¯†é’¥");
-            *aborted = true;
-            return;
-        }
+        s->ecdh_key = ecdh_key_new(s->kex_alg, false);
 
         pktout = ssh_bpp_new_pktout(s->ppl.bpp, SSH2_MSG_KEX_ECDH_INIT);
         {
             strbuf *pubpoint = strbuf_new();
-            ssh_ecdhkex_getpublic(s->ecdh_key, BinarySink_UPCAST(pubpoint));
+            ecdh_key_getpublic(s->ecdh_key, BinarySink_UPCAST(pubpoint));
             put_stringsb(pktout, pubpoint);
         }
 
@@ -207,8 +205,8 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
 
         crMaybeWaitUntilV((pktin = ssh2_transport_pop(s)) != NULL);
         if (pktin->type != SSH2_MSG_KEX_ECDH_REPLY) {
-            ssh_proto_error(s->ppl.ssh, "æœŸå¾… ECDH å›å¤æ—¶ï¼Œ"
-                            "æ”¶åˆ°æ„å¤–çš„æ•°æ®åŒ…ï¼Œç±»å‹ %d (%s)", pktin->type,
+            ssh_proto_error(s->ppl.ssh, "ÆÚ´ı ECDH »Ø¸´Ê±£¬"
+                            "ÊÕµ½ÒâÍâµÄÊı¾İ°ü£¬ÀàĞÍ %d (%s)", pktin->type,
                             ssh2_pkt_type(s->ppl.bpp->pls->kctx,
                                           s->ppl.bpp->pls->actx,
                                           pktin->type));
@@ -222,7 +220,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
 
         {
             strbuf *pubpoint = strbuf_new();
-            ssh_ecdhkex_getpublic(s->ecdh_key, BinarySink_UPCAST(pubpoint));
+            ecdh_key_getpublic(s->ecdh_key, BinarySink_UPCAST(pubpoint));
             put_string(s->exhash, pubpoint->u, pubpoint->len);
             strbuf_free(pubpoint);
         }
@@ -230,10 +228,11 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
         {
             ptrlen keydata = get_string(pktin);
             put_stringpl(s->exhash, keydata);
-            s->K = ssh_ecdhkex_getkey(s->ecdh_key, keydata);
-            if (!get_err(pktin) && !s->K) {
-                ssh_proto_error(s->ppl.ssh, "åœ¨ ECDH å›å¤ä¸­æ”¶åˆ°"
-                                "æ— æ•ˆçš„æ¤­åœ†æ›²çº¿ç‚¹");
+            bool ok = ecdh_key_getkey(s->ecdh_key, keydata,
+                                      BinarySink_UPCAST(s->kex_shared_secret));
+            if (!get_err(pktin) && !ok) {
+                ssh_proto_error(s->ppl.ssh, "ÔÚ ECDH »Ø¸´ÖĞÊÕµ½"
+                                "ÎŞĞ§µÄÍÖÔ²ÇúÏßµã");
                 *aborted = true;
                 return;
             }
@@ -241,15 +240,15 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
 
         s->sigdata = get_string(pktin);
         if (get_err(pktin)) {
-            ssh_proto_error(s->ppl.ssh, "æ— æ³•è§£æ ECDH å›å¤æ•°æ®åŒ…");
+            ssh_proto_error(s->ppl.ssh, "ÎŞ·¨½âÎö ECDH »Ø¸´Êı¾İ°ü");
             *aborted = true;
             return;
         }
 
-        ssh_ecdhkex_freekey(s->ecdh_key);
+        ecdh_key_free(s->ecdh_key);
         s->ecdh_key = NULL;
 #ifndef NO_GSSAPI
-    } else if (s->kex_alg->main_type == KEXTYPE_GSS) {
+    } else if (kex_is_gss(s->kex_alg)) {
         ptrlen data;
 
         s->ppl.bpp->pls->kctx = SSH2_PKTCTX_GSSKEX;
@@ -277,14 +276,25 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
         if (s->nbits > s->kex_alg->hash->hlen * 8)
             s->nbits = s->kex_alg->hash->hlen * 8;
 
-        if (dh_is_gex(s->kex_alg)) {
+        assert(!s->ecdh_key);
+        assert(!s->dh_ctx);
+
+        if (s->kex_alg->main_type == KEXTYPE_GSS_ECDH) {
+            s->ecdh_key = ecdh_key_new(s->kex_alg, false);
+
+            char *desc = ecdh_keyalg_description(s->kex_alg);
+            ppl_logevent("Doing GSSAPI (with Kerberos V5) %s with hash %s",
+                         desc, ssh_hash_alg(s->exhash)->text_name);
+            sfree(desc);
+        } else if (dh_is_gex(s->kex_alg)) {
             /*
              * Work out how big a DH group we will need to allow that
              * much data.
              */
             s->pbits = 512 << ((s->nbits - 1) / 64);
-            ppl_logevent("è¿›è¡ŒGSSAPI(åŒ…å«Kerberos V5)Diffie-Hellman"
-                         "ç»„äº¤æ¢ï¼ŒåŒ…å«æœ€å°‘ %d ä½", s->pbits);
+            ppl_logevent("½øĞĞGSSAPI(°üº¬Kerberos V5) Diffie-Hellman "
+                         "group exchange, °üº¬×îÉÙ %d Î»,ºÍ¹şÏ£ %s",
+                         s->pbits, ssh_hash_alg(s->exhash)->text_name);
             pktout = ssh_bpp_new_pktout(s->ppl.bpp, SSH2_MSG_KEXGSS_GROUPREQ);
             put_uint32(pktout, s->pbits); /* min */
             put_uint32(pktout, s->pbits); /* preferred */
@@ -294,8 +304,8 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
             crMaybeWaitUntilV(
                 (pktin = ssh2_transport_pop(s)) != NULL);
             if (pktin->type != SSH2_MSG_KEXGSS_GROUP) {
-                ssh_proto_error(s->ppl.ssh, "ç­‰å¾… Diffie-Hellman group æ—¶ï¼Œæ”¶åˆ°"
-                                "æ„å¤–çš„æ•°æ®åŒ…ï¼Œç±»å‹ %d (%s)",
+                ssh_proto_error(s->ppl.ssh, "µÈ´ı Diffie-Hellman group Ê±£¬ÊÕµ½"
+                                "ÒâÍâµÄÊı¾İ°ü£¬ÀàĞÍ %d (%s)",
                                 pktin->type,
                                 ssh2_pkt_type(s->ppl.bpp->pls->kctx,
                                               s->ppl.bpp->pls->actx,
@@ -307,22 +317,27 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
             s->g = get_mp_ssh2(pktin);
             if (get_err(pktin)) {
                 ssh_proto_error(s->ppl.ssh,
-                                "æ— æ³•è§£æ Diffie-Hellman group æ•°æ®åŒ…");
+                                "ÎŞ·¨½âÎö Diffie-Hellman group Êı¾İ°ü");
                 *aborted = true;
                 return;
             }
             s->dh_ctx = dh_setup_gex(s->p, s->g);
         } else {
             s->dh_ctx = dh_setup_group(s->kex_alg);
-            ppl_logevent("ä½¿ç”¨GSSAPI (åŒ…å«Kerberos V5)Diffie-Hellman"
-                         "æ ‡å‡†ç»„ \"%s\"", s->kex_alg->groupname);
+            ppl_logevent("Ê¹ÓÃGSSAPI (°üº¬Kerberos V5) Diffie-Hellman °üº¬"
+                         " standard group \"%s\" ºÍ¹şÏ£ %s",
+                         s->kex_alg->groupname,
+                         ssh_hash_alg(s->exhash)->text_name);
         }
 
-        ppl_logevent("è¿›è¡ŒGSSAPI(åŒ…å«Kerberos V5)Diffie-Hellmanå¯†é’¥"
-                     "äº¤æ¢ï¼ŒåŒ…å«%så“ˆå¸Œ", ssh_hash_alg(s->exhash)->text_name);
         /* Now generate e for Diffie-Hellman. */
         seat_set_busy_status(s->ppl.seat, BUSY_CPU);
-        s->e = dh_create_e(s->dh_ctx);
+        if (s->ecdh_key) {
+            s->ebuf = strbuf_new_nm();
+            ecdh_key_getpublic(s->ecdh_key, BinarySink_UPCAST(s->ebuf));
+        } else {
+            s->e = dh_create_e(s->dh_ctx);
+        }
 
         if (s->shgss->lib->gsslogmsg)
             ppl_logevent("%s", s->shgss->lib->gsslogmsg);
@@ -335,7 +350,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
             s->shgss->lib, &s->shgss->ctx, &s->gss_cred_expiry);
         if (s->gss_stat != SSH_GSS_OK) {
             ssh_sw_abort(s->ppl.ssh,
-                         "GSSAPI å¯†é’¥äº¤æ¢åˆå§‹åŒ–å¤±è´¥");
+                         "GSSAPI ÃÜÔ¿½»»»³õÊ¼»¯Ê§°Ü");
             *aborted = true;
             return;
         }
@@ -364,8 +379,8 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
                         &s->gss_buf) == SSH_GSS_OK) {
                     char *err = s->gss_buf.value;
                     ssh_sw_abort(s->ppl.ssh,
-                                 "GSSAPI å¯†é’¥äº¤æ¢æœªèƒ½åˆå§‹åŒ–"
-                                 "ä¸Šä¸‹æ–‡ä»¤ç‰Œï¼š%s", err);
+                                 "GSSAPI ÃÜÔ¿½»»»Î´ÄÜ³õÊ¼»¯"
+                                 "ÉÏÏÂÎÄÁîÅÆ£º%s", err);
                     sfree(err);
                     *aborted = true;
                     return;
@@ -379,17 +394,21 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
                 pktout = ssh_bpp_new_pktout(s->ppl.bpp,
                                             SSH2_MSG_KEXGSS_INIT);
                 if (s->gss_sndtok.length == 0) {
-                    ssh_sw_abort(s->ppl.ssh, "GSSAPI å¯†é’¥äº¤æ¢å¤±è´¥ï¼š"
-                                 "æ²¡æœ‰åˆå§‹åŒ–ä¸Šä¸‹æ–‡ä»¤ç‰Œ");
+                    ssh_sw_abort(s->ppl.ssh, "GSSAPI ÃÜÔ¿½»»»Ê§°Ü£º"
+                                 "Ã»ÓĞ³õÊ¼»¯ÉÏÏÂÎÄÁîÅÆ");
                     *aborted = true;
                     return;
                 }
                 put_string(pktout,
                            s->gss_sndtok.value, s->gss_sndtok.length);
-                put_mp_ssh2(pktout, s->e);
+                if (s->ecdh_key) {
+                    put_stringpl(pktout, ptrlen_from_strbuf(s->ebuf));
+                } else {
+                    put_mp_ssh2(pktout, s->e);
+                }
                 pq_push(s->ppl.out_pq, pktout);
                 s->shgss->lib->free_tok(s->shgss->lib, &s->gss_sndtok);
-                ppl_logevent("GSSAPI å¯†é’¥äº¤æ¢å·²åˆå§‹åŒ–");
+                ppl_logevent("GSSAPI ÃÜÔ¿½»»»ÒÑ³õÊ¼»¯");
             } else if (s->gss_sndtok.length != 0) {
                 pktout = ssh_bpp_new_pktout(
                     s->ppl.bpp, SSH2_MSG_KEXGSS_CONTINUE);
@@ -413,7 +432,11 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
                 continue;
               case SSH2_MSG_KEXGSS_COMPLETE:
                 s->complete_rcvd = true;
-                s->f = get_mp_ssh2(pktin);
+                if (s->ecdh_key) {
+                    s->fbuf = strbuf_dup_nm(get_string(pktin));
+                } else {
+                    s->f = get_mp_ssh2(pktin);
+                }
                 data = get_string(pktin);
                 s->mic.value = (char *)data.ptr;
                 s->mic.length = data.len;
@@ -451,8 +474,8 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
                 get_uint32(pktin); /* server's major status */
                 get_uint32(pktin); /* server's minor status */
                 data = get_string(pktin);
-                ppl_logevent("GSSAPI å¯†é’¥äº¤æ¢å¤±è´¥ï¼›"
-                             "æœåŠ¡å™¨æ¶ˆæ¯ï¼š%.*s", PTRLEN_PRINTF(data));
+                ppl_logevent("GSSAPI ÃÜÔ¿½»»»Ê§°Ü£»"
+                             "·şÎñÆ÷ÏûÏ¢£º%.*s", PTRLEN_PRINTF(data));
                 /* Language tag, but we have no use for it */
                 get_string(pktin);
                 /*
@@ -463,8 +486,8 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
                  */
                 goto wait_for_gss_token;
               default:
-                ssh_proto_error(s->ppl.ssh, "åœ¨ GSSAPR å¯†é’¥äº¤æ¢æœŸé—´"
-                                "æ”¶åˆ°æ„å¤–çš„æ•°æ®åŒ…ï¼Œç±»å‹ %d (%s)",
+                ssh_proto_error(s->ppl.ssh, "ÔÚ GSSAPR ÃÜÔ¿½»»»ÆÚ¼ä"
+                                "ÊÕµ½ÒâÍâµÄÊı¾İ°ü£¬ÀàĞÍ %d (%s)",
                                 pktin->type,
                                 ssh2_pkt_type(s->ppl.bpp->pls->kctx,
                                               s->ppl.bpp->pls->actx,
@@ -476,16 +499,27 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
                  s->gss_stat == SSH_GSS_S_CONTINUE_NEEDED ||
                  !s->complete_rcvd);
 
-        {
-            const char *err = dh_validate_f(s->dh_ctx, s->f);
-            if (err) {
-                ssh_proto_error(s->ppl.ssh, "GSSAPI å›å¤éªŒè¯"
-                                "å¤±è´¥ï¼š%s", err);
+        if (s->ecdh_key) {
+            bool ok = ecdh_key_getkey(s->ecdh_key, ptrlen_from_strbuf(s->fbuf),
+                                      BinarySink_UPCAST(s->kex_shared_secret));
+            if (!ok) {
+                ssh_proto_error(s->ppl.ssh, "Received invalid elliptic curve "
+                                "point in GSSAPI ECDH reply");
                 *aborted = true;
                 return;
             }
+        } else {
+            const char *err = dh_validate_f(s->dh_ctx, s->f);
+            if (err) {
+                ssh_proto_error(s->ppl.ssh, "GSSAPI »Ø¸´ÑéÖ¤"
+                                "Ê§°Ü£º%s", err);
+                *aborted = true;
+                return;
+            }
+            mp_int *K = dh_find_K(s->dh_ctx, s->f);
+            put_mp_ssh2(s->kex_shared_secret, K);
+            mp_free(K);
         }
-        s->K = dh_find_K(s->dh_ctx, s->f);
 
         /* We assume everything from now on will be quick, and it might
          * involve user interaction. */
@@ -493,36 +527,49 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
 
         if (!s->hkey)
             put_stringz(s->exhash, "");
-        if (dh_is_gex(s->kex_alg)) {
-            /* min,  preferred, max */
-            put_uint32(s->exhash, s->pbits);
-            put_uint32(s->exhash, s->pbits);
-            put_uint32(s->exhash, s->pbits * 2);
 
-            put_mp_ssh2(s->exhash, s->p);
-            put_mp_ssh2(s->exhash, s->g);
+        if (s->ecdh_key) {
+            put_stringpl(s->exhash, ptrlen_from_strbuf(s->ebuf));
+            put_stringpl(s->exhash, ptrlen_from_strbuf(s->fbuf));
+        } else {
+            if (dh_is_gex(s->kex_alg)) {
+                /* min, preferred, max */
+                put_uint32(s->exhash, s->pbits);
+                put_uint32(s->exhash, s->pbits);
+                put_uint32(s->exhash, s->pbits * 2);
+
+                put_mp_ssh2(s->exhash, s->p);
+                put_mp_ssh2(s->exhash, s->g);
+            }
+            put_mp_ssh2(s->exhash, s->e);
+            put_mp_ssh2(s->exhash, s->f);
         }
-        put_mp_ssh2(s->exhash, s->e);
-        put_mp_ssh2(s->exhash, s->f);
 
         /*
          * MIC verification is done below, after we compute the hash
          * used as the MIC input.
          */
 
-        dh_cleanup(s->dh_ctx);
-        s->dh_ctx = NULL;
-        mp_free(s->f); s->f = NULL;
-        if (dh_is_gex(s->kex_alg)) {
-            mp_free(s->g); s->g = NULL;
-            mp_free(s->p); s->p = NULL;
+        if (s->ecdh_key) {
+            ecdh_key_free(s->ecdh_key);
+            s->ecdh_key = NULL;
+            strbuf_free(s->ebuf); s->ebuf = NULL;
+            strbuf_free(s->fbuf); s->fbuf = NULL;
+        } else {
+            dh_cleanup(s->dh_ctx);
+            s->dh_ctx = NULL;
+            mp_free(s->f); s->f = NULL;
+            if (dh_is_gex(s->kex_alg)) {
+                mp_free(s->g); s->g = NULL;
+                mp_free(s->p); s->p = NULL;
+            }
         }
 #endif
     } else {
         ptrlen rsakeydata;
 
         assert(s->kex_alg->main_type == KEXTYPE_RSA);
-        ppl_logevent("è¿›è¡ŒRSAå¯†é’¥äº¤æ¢ï¼ŒåŒ…å«%så“ˆå¸Œ",
+        ppl_logevent("½øĞĞRSAÃÜÔ¿½»»»£¬°üº¬%s¹şÏ£",
                      ssh_hash_alg(s->exhash)->text_name);
         s->ppl.bpp->pls->kctx = SSH2_PKTCTX_RSAKEX;
         /*
@@ -531,8 +578,8 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
          */
         crMaybeWaitUntilV((pktin = ssh2_transport_pop(s)) != NULL);
         if (pktin->type != SSH2_MSG_KEXRSA_PUBKEY) {
-            ssh_proto_error(s->ppl.ssh, "ç­‰å¾… RSA å…¬é’¥æ—¶ï¼Œ"
-                            "æ”¶åˆ°æ„å¤–æ•°æ®åŒ…ï¼Œç±»å‹ï¼š%d (%s)",
+            ssh_proto_error(s->ppl.ssh, "µÈ´ı RSA ¹«Ô¿Ê±£¬"
+                            "ÊÕµ½ÒâÍâÊı¾İ°ü£¬ÀàĞÍ£º%d (%s)",
                             pktin->type,
                             ssh2_pkt_type(s->ppl.bpp->pls->kctx,
                                           s->ppl.bpp->pls->actx,
@@ -550,7 +597,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
         s->rsa_kex_key = ssh_rsakex_newkey(rsakeydata);
         if (!s->rsa_kex_key) {
             ssh_proto_error(s->ppl.ssh,
-                            "æ— æ³•è§£æ RSA å…¬é’¥æ•°æ®åŒ…");
+                            "ÎŞ·¨½âÎö RSA ¹«Ô¿Êı¾İ°ü");
             *aborted = true;
             return;
         }
@@ -570,9 +617,9 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
             const struct ssh_rsa_kex_extra *extra =
                 (const struct ssh_rsa_kex_extra *)s->kex_alg->extra;
             if (klen < extra->minklen) {
-                ssh_proto_error(s->ppl.ssh, "æœåŠ¡å™¨å‘é€ %d-bit RSA å¯†é’¥ï¼Œ"
-                                "å°äº %d å¯†é’¥äº¤æ¢çš„æœ€å°å¤§å° %s "
-                                "æœ€å°å¤§å° %s ", klen, extra->minklen,
+                ssh_proto_error(s->ppl.ssh, "·şÎñÆ÷·¢ËÍ %d-bit RSA ÃÜÔ¿£¬"
+                                "Ğ¡ÓÚ %d ÃÜÔ¿½»»»µÄ×îĞ¡´óĞ¡ %s "
+                                "×îĞ¡´óĞ¡ %s ", klen, extra->minklen,
                                 s->kex_alg->name);
                 *aborted = true;
                 return;
@@ -584,15 +631,21 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
             strbuf *buf, *outstr;
 
             mp_int *tmp = mp_random_bits(nbits - 1);
-            s->K = mp_power_2(nbits - 1);
-            mp_add_into(s->K, s->K, tmp);
+            mp_int *K = mp_power_2(nbits - 1);
+            mp_add_into(K, K, tmp);
             mp_free(tmp);
 
             /*
              * Encode this as an mpint.
              */
             buf = strbuf_new_nm();
-            put_mp_ssh2(buf, s->K);
+            put_mp_ssh2(buf, K);
+
+            /*
+             * Store a copy as the output shared secret from the kex.
+             */
+            put_mp_ssh2(s->kex_shared_secret, K);
+            mp_free(K);
 
             /*
              * Encrypt it with the given RSA key.
@@ -618,8 +671,8 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
 
         crMaybeWaitUntilV((pktin = ssh2_transport_pop(s)) != NULL);
         if (pktin->type != SSH2_MSG_KEXRSA_DONE) {
-            ssh_proto_error(s->ppl.ssh, "ç­‰å¾… RSA å¯†é’¥ç­¾åæ—¶ï¼Œ"
-                            "æ”¶åˆ°æ„å¤–çš„æ•°æ®åŒ…ï¼Œç±»å‹ï¼š%d (%s)",
+            ssh_proto_error(s->ppl.ssh, "µÈ´ı RSA ÃÜÔ¿Ç©ÃûÊ±£¬"
+                            "ÊÕµ½ÒâÍâµÄÊı¾İ°ü£¬ÀàĞÍ£º%d (%s)",
                             pktin->type,
                             ssh2_pkt_type(s->ppl.bpp->pls->kctx,
                                           s->ppl.bpp->pls->actx,
@@ -630,7 +683,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
 
         s->sigdata = get_string(pktin);
         if (get_err(pktin)) {
-            ssh_proto_error(s->ppl.ssh, "æ— æ³•è§£æ RSA å¯†é’¥ç­¾å");
+            ssh_proto_error(s->ppl.ssh, "ÎŞ·¨½âÎö RSA ÃÜÔ¿Ç©Ãû");
             *aborted = true;
             return;
         }
@@ -639,7 +692,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
     ssh2transport_finalise_exhash(s);
 
 #ifndef NO_GSSAPI
-    if (s->kex_alg->main_type == KEXTYPE_GSS) {
+    if (kex_is_gss(s->kex_alg)) {
         Ssh_gss_buf gss_buf;
         SSH_GSS_CLEAR_BUF(&s->gss_buf);
 
@@ -651,12 +704,12 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
             if (s->shgss->lib->display_status(
                     s->shgss->lib, s->shgss->ctx, &s->gss_buf) == SSH_GSS_OK) {
                 char *err = s->gss_buf.value;
-                ssh_sw_abort(s->ppl.ssh, "GSSAPI å¯†é’¥äº¤æ¢ MIC"
-                             "æ— æ•ˆï¼š%s", err);
+                ssh_sw_abort(s->ppl.ssh, "GSSAPI ÃÜÔ¿½»»» MIC"
+                             "ÎŞĞ§£º%s", err);
                 sfree(err);
             } else {
-                ssh_sw_abort(s->ppl.ssh, "GSSAPI å¯†é’¥äº¤æ¢ MIC"
-                             "æ— æ•ˆ");
+                ssh_sw_abort(s->ppl.ssh, "GSSAPI ÃÜÔ¿½»»» MIC"
+                             "ÎŞĞ§");
             }
             *aborted = true;
             return;
@@ -668,7 +721,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
          * If this the first KEX, save the GSS context for "gssapi-keyex"
          * authentication.
          *
-         * http://tools.ietf.org/html/rfc4462#section-4
+         * https://www.rfc-editor.org/rfc/rfc4462#section-4
          *
          * This method may be used only if the initial key exchange was
          * performed using a GSS-API-based key exchange method defined in
@@ -680,16 +733,16 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
         if (s->got_session_id) {
             s->shgss->lib->release_cred(s->shgss->lib, &s->shgss->ctx);
         }
-        ppl_logevent("GSSAPI å¯†é’¥äº¤æ¢å®Œæˆï¼");
+        ppl_logevent("GSSAPI ÃÜÔ¿½»»»Íê³É£¡");
     }
 #endif
 
     s->dh_ctx = NULL;
 
     /* In GSS keyex there's no hostkey signature to verify */
-    if (s->kex_alg->main_type != KEXTYPE_GSS) {
+    if (!kex_is_gss(s->kex_alg)) {
         if (!s->hkey) {
-            ssh_proto_error(s->ppl.ssh, "æœåŠ¡å™¨çš„ä¸»æœºå¯†é’¥æ— æ•ˆ");
+            ssh_proto_error(s->ppl.ssh, "·şÎñÆ÷µÄÖ÷»úÃÜÔ¿ÎŞĞ§");
             *aborted = true;
             return;
         }
@@ -698,31 +751,31 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
                 s->hkey, s->sigdata,
                 make_ptrlen(s->exchange_hash, s->kex_alg->hash->hlen))) {
 #ifndef FUZZING
-            ssh_proto_error(s->ppl.ssh, "æœåŠ¡å™¨ä¸»æœºå¯†é’¥çš„ç­¾å"
-                            "æ— æ•ˆ");
+            ssh_proto_error(s->ppl.ssh, "·şÎñÆ÷Ö÷»úÃÜÔ¿µÄÇ©Ãû"
+                            "ÎŞĞ§");
             *aborted = true;
             return;
 #endif
         }
     }
 
-    s->keystr = (s->hkey ? ssh_key_cache_str(s->hkey) : NULL);
+    s->keystr = s->hkey ? ssh_key_cache_str(s->hkey) : NULL;
 #ifndef NO_GSSAPI
     if (s->gss_kex_used) {
         /*
          * In a GSS-based session, check the host key (if any) against
          * the transient host key cache.
          */
-        if (s->kex_alg->main_type == KEXTYPE_GSS) {
+        if (kex_is_gss(s->kex_alg)) {
 
             /*
              * We've just done a GSS key exchange. If it gave us a
              * host key, store it.
              */
             if (s->hkey) {
-                char *fingerprint = ssh2_fingerprint(
+                char *fingerprint = ssh2_double_fingerprint(
                     s->hkey, SSH_FPTYPE_DEFAULT);
-                ppl_logevent("GSS kex æä¾›åå¤‡ä¸»æœºå¯†é’¥ï¼š");
+                ppl_logevent("GSS kex Ìá¹©ºó±¸Ö÷»úÃÜÔ¿£º");
                 ppl_logevent("%s", fingerprint);
                 sfree(fingerprint);
 
@@ -764,7 +817,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
                      * consequence.
                      */
                     if (!s->warned_about_no_gss_transient_hostkey) {
-                        ppl_logevent("æ²¡æœ‰å¯ç”¨çš„å¤‡ç”¨ä¸»æœºå¯†é’¥");
+                        ppl_logevent("Ã»ÓĞ¿ÉÓÃµÄ±¸ÓÃÖ÷»úÃÜÔ¿");
                         s->warned_about_no_gss_transient_hostkey = true;
                     }
                 }
@@ -778,21 +831,22 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
              * An exception is if this was the non-GSS key exchange we
              * triggered on purpose to populate the transient cache.
              */
-            assert(s->hkey);  /* only KEXTYPE_GSS lets this be null */
-            char *fingerprint = ssh2_fingerprint(s->hkey, SSH_FPTYPE_DEFAULT);
+            assert(s->hkey);  /* only KEXTYPE_GSS* lets this be null */
+            char *fingerprint = ssh2_double_fingerprint(
+                s->hkey, SSH_FPTYPE_DEFAULT);
 
             if (s->need_gss_transient_hostkey) {
-                ppl_logevent("GSS æ›´æ–°åæä¾›çš„å¤‡ç”¨ä¸»æœºå¯†é’¥ï¼š");
+                ppl_logevent("GSS ¸üĞÂºóÌá¹©µÄ±¸ÓÃÖ÷»úÃÜÔ¿£º");
                 ppl_logevent("%s", fingerprint);
                 ssh_transient_hostkey_cache_add(s->thc, s->hkey);
                 s->need_gss_transient_hostkey = false;
             } else if (!ssh_transient_hostkey_cache_verify(s->thc, s->hkey)) {
-                ppl_logevent("åˆå§‹GSS kexåçš„éGSSé‡æ–°ç”Ÿæˆå¯†é’¥ï¼Œ"
-                             "ä½¿ç”¨çš„ä¸»æœºå¯†é’¥ï¼š");
+                ppl_logevent("³õÊ¼GSS kexºóµÄ·ÇGSSÖØĞÂÉú³ÉÃÜÔ¿£¬"
+                             "Ê¹ÓÃµÄÖ÷»úÃÜÔ¿£º");
                 ppl_logevent("%s", fingerprint);
                 sfree(fingerprint);
-                ssh_sw_abort(s->ppl.ssh, "æœåŠ¡å™¨çš„ä¸»æœºå¯†é’¥ä¸ä»¥å‰çš„GSS å¯†é’¥ä¸­"
-                             "ä½¿ç”¨çš„ä»»ä½•å¯†é’¥éƒ½ä¸åŒ¹é…");
+                ssh_sw_abort(s->ppl.ssh, "·şÎñÆ÷µÄÖ÷»úÃÜÔ¿ÓëÒÔÇ°µÄGSS ÃÜÔ¿ÖĞ"
+                             "Ê¹ÓÃµÄÈÎºÎÃÜÔ¿¶¼²»Æ¥Åä");
                 *aborted = true;
                 return;
             }
@@ -831,58 +885,139 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
                     }
                 }
                 if (list) {
-                    ppl_logevent("æœåŠ¡å™¨ä¹Ÿæœ‰%sä¸»æœºå¯†é’¥ï¼Œä½†æˆ‘ä»¬"
-                                 "ä¸çŸ¥é“%s", list,
+                    ppl_logevent("·şÎñÆ÷Ò²ÓĞ%sÖ÷»úÃÜÔ¿£¬µ«ÎÒÃÇ"
+                                 "²»ÖªµÀ%s", list,
                                  nkeys > 1 ? "s" : "",
-                                 nkeys > 1 ? "å…¶ä¸­ä»»ä½•ä¸€ä¸ª" : "it");
+                                 nkeys > 1 ? "ÆäÖĞÈÎºÎÒ»¸ö" : "it");
                     sfree(list);
                 }
             }
 
-            /*
-             * Authenticate remote host: verify host key. (We've already
-             * checked the signature of the exchange hash.)
-             */
-            {
-                ssh2_userkey uk = { .key = s->hkey, .comment = NULL };
-                char *keydisp = ssh2_pubkey_openssh_str(&uk);
-                char **fingerprints = ssh2_all_fingerprints(s->hkey);
+            ssh2_userkey uk = { .key = s->hkey, .comment = NULL };
+            char **fingerprints = ssh2_all_fingerprints(s->hkey);
 
-                FingerprintType fptype_default =
-                    ssh2_pick_default_fingerprint(fingerprints);
-                ppl_logevent("ä¸»æœºå¯†é’¥æŒ‡çº¹ä¸ºï¼š");
-                ppl_logevent("%s", fingerprints[fptype_default]);
+            FingerprintType fptype_default =
+                ssh2_pick_default_fingerprint(fingerprints);
+            ppl_logevent("Host key fingerprint is:");
+            ppl_logevent("%s", fingerprints[fptype_default]);
+
+            /*
+             * Authenticate remote host: verify host key, either by
+             * certification or by the local host key cache.
+             *
+             * (We've already checked the signature of the exchange
+             * hash.)
+             */
+            if (ssh_key_alg(s->hkey)->is_certificate) {
+                char *base_fp = ssh2_fingerprint(
+                    s->hkey, ssh_fptype_to_cert(fptype_default));
+                ppl_logevent("Host key is a certificate. "
+                             "Hash including certificate:");
+                ppl_logevent("%s", base_fp);
+                sfree(base_fp);
+
+                strbuf *id_string = strbuf_new();
+                StripCtrlChars *id_string_scc = stripctrl_new(
+                    BinarySink_UPCAST(id_string), false, L'\0');
+                ssh_key_cert_id_string(
+                    s->hkey, BinarySink_UPCAST(id_string_scc));
+                stripctrl_free(id_string_scc);
+                ppl_logevent("Certificate ID string is \"%s\"", id_string->s);
+                strbuf_free(id_string);
+
+                strbuf *ca_pub = strbuf_new();
+                ssh_key_ca_public_blob(s->hkey, BinarySink_UPCAST(ca_pub));
+                host_ca hca_search = { .ca_public_key = ca_pub };
+                host_ca *hca_found = find234(s->host_cas, &hca_search, NULL);
+
+                char *ca_fp = ssh2_fingerprint_blob(ptrlen_from_strbuf(ca_pub),
+                                                    fptype_default);
+                ppl_logevent("Fingerprint of certification authority:");
+                ppl_logevent("%s", ca_fp);
+                sfree(ca_fp);
+
+                strbuf_free(ca_pub);
+
+                strbuf *error = strbuf_new();
+                bool cert_ok = false;
+
+                if (!hca_found) {
+                    put_fmt(error, "Certification authority is not trusted");
+                } else {
+                    ppl_logevent("Certification authority matches '%s'",
+                                 hca_found->name);
+                    cert_ok = ssh_key_check_cert(
+                        s->hkey,
+                        true, /* host certificate */
+                        ptrlen_from_asciz(s->savedhost),
+                        time(NULL),
+                        &hca_found->opts,
+                        BinarySink_UPCAST(error));
+                }
+                if (cert_ok) {
+                    strbuf_free(error);
+                    ssh2_free_all_fingerprints(fingerprints);
+                    ppl_logevent("Accepted certificate");
+                    goto host_key_ok;
+                } else {
+                    ppl_logevent("Rejected host key certificate: %s",
+                                 error->s);
+                    strbuf_free(error);
+                    /* now fall through into normal host key checking */
+                }
+            }
+
+            {
+                char *keydisp = ssh2_pubkey_openssh_str(&uk);
+
+                int ca_count = ssh_key_alg(s->hkey)->is_certificate ?
+                    count234(s->host_cas) : 0;
 
                 s->spr = verify_ssh_host_key(
                     ppl_get_iseat(&s->ppl), s->conf, s->savedhost, s->savedport,
                     s->hkey, ssh_key_cache_id(s->hkey), s->keystr, keydisp,
-                    fingerprints, ssh2_transport_dialog_callback, s);
+                    fingerprints, ca_count, ssh2_transport_dialog_callback, s);
 
                 ssh2_free_all_fingerprints(fingerprints);
                 sfree(keydisp);
-            }
 #ifdef FUZZING
-            s->spr = SPR_OK;
+                s->spr = SPR_OK;
 #endif
-            crMaybeWaitUntilV(s->spr.kind != SPRK_INCOMPLETE);
-            if (spr_is_abort(s->spr)) {
-                *aborted = true;
-                ssh_spr_close(s->ppl.ssh, s->spr, "ä¸»æœºå¯†é’¥éªŒè¯");
-                return;
+                crMaybeWaitUntilV(s->spr.kind != SPRK_INCOMPLETE);
+                if (spr_is_abort(s->spr)) {
+                    *aborted = true;
+                    ssh_spr_close(s->ppl.ssh, s->spr, "Ö÷»úÃÜÔ¿ÑéÖ¤");
+                    return;
+                }
+
+                if (ssh_key_alg(s->hkey)->is_certificate) {
+                    /*
+                     * Explain what's going on in the Event Log: if we
+                     * got here by way of a certified key whose
+                     * certificate we didn't like, then we should
+                     * explain why we chose to continue with the
+                     * connection anyway!
+                     */
+                    ppl_logevent("ÎŞÂÛÈÎºÎÊ±ºò£¬¶¼½ÓÊÜ¾­¹ıÈÏÖ¤µÄ"
+                                 "Ö÷»úÃÜÔ¿»º´æ");
+                }
             }
+
+          host_key_ok:
 
             /*
              * Save this host key, to check against the one presented in
              * subsequent rekeys.
              */
-            s->hostkey_str = s->keystr;
-            s->keystr = NULL;
+            strbuf_clear(s->hostkeyblob);
+            ssh_key_public_blob(s->hkey, BinarySink_UPCAST(s->hostkeyblob));
         } else if (s->cross_certifying) {
             assert(s->hkey);
             assert(ssh_key_alg(s->hkey) == s->cross_certifying);
 
-            char *fingerprint = ssh2_fingerprint(s->hkey, SSH_FPTYPE_DEFAULT);
-            ppl_logevent("ä¸ºè¯¥ä¸»æœºå­˜å‚¨é¢å¤–çš„ä¸»æœºå¯†é’¥ï¼š");
+            char *fingerprint = ssh2_double_fingerprint(
+                s->hkey, SSH_FPTYPE_DEFAULT);
+            ppl_logevent("Îª¸ÃÖ÷»ú´æ´¢¶îÍâµÄÖ÷»úÃÜÔ¿£º");
             ppl_logevent("%s", fingerprint);
             sfree(fingerprint);
 
@@ -892,8 +1027,8 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
              * Don't forget to store the new key as the one we'll be
              * re-checking in future normal rekeys.
              */
-            s->hostkey_str = s->keystr;
-            s->keystr = NULL;
+            strbuf_clear(s->hostkeyblob);
+            ssh_key_public_blob(s->hkey, BinarySink_UPCAST(s->hostkeyblob));
         } else {
             /*
              * In a rekey, we never present an interactive host key
@@ -901,11 +1036,15 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
              * enforce that the key we're seeing this time is identical to
              * the one we saw before.
              */
-            assert(s->keystr);         /* filled in by prior key exchange */
-            if (strcmp(s->hostkey_str, s->keystr)) {
+            strbuf *thisblob = strbuf_new();
+            ssh_key_public_blob(s->hkey, BinarySink_UPCAST(thisblob));
+            bool match = ptrlen_eq_ptrlen(ptrlen_from_strbuf(thisblob),
+                                          ptrlen_from_strbuf(s->hostkeyblob));
+            strbuf_free(thisblob);
+            if (!match) {
 #ifndef FUZZING
                 ssh_sw_abort(s->ppl.ssh,
-                             "é‡å¤å¯†é’¥äº¤æ¢ä¸­çš„ä¸»æœºå¯†é’¥ä¸åŒ");
+                             "ÖØ¸´ÃÜÔ¿½»»»ÖĞµÄÖ÷»úÃÜÔ¿²»Í¬");
                 *aborted = true;
                 return;
 #endif

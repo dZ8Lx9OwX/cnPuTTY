@@ -66,7 +66,7 @@ bool ssh1_handle_direction_specific_packet(
         if (s->finished_setup)
             goto unexpected_setup_packet;
 
-        ppl_logevent("å®¢æˆ·ç«¯è¯·æ±‚ä¸€ä¸ªshell");
+        ppl_logevent("¿Í»§¶ËÇëÇóÒ»¸öshell");
         chan_run_shell(s->mainchan_chan);
         s->finished_setup = true;
         return true;
@@ -76,7 +76,7 @@ bool ssh1_handle_direction_specific_packet(
             goto unexpected_setup_packet;
 
         cmd = get_string(pktin);
-        ppl_logevent("å®¢æˆ·ç«¯å‘é€å‘½ä»¤ '%.*s'", PTRLEN_PRINTF(cmd));
+        ppl_logevent("¿Í»§¶Ë·¢ËÍÃüÁî '%.*s'", PTRLEN_PRINTF(cmd));
         chan_run_command(s->mainchan_chan, cmd);
         s->finished_setup = true;
         return true;
@@ -113,15 +113,15 @@ bool ssh1_handle_direction_specific_packet(
             BinarySource_UPCAST(pktin), 1);
 
         if (get_err(pktin)) {
-          ppl_logevent("æ— æ³•è§£ç  pty è¯·æ±‚æ•°æ®åŒ…");
-          success = false;
+            ppl_logevent("ÎÞ·¨½âÂë pty ÇëÇóÊý¾Ý°ü");
+            success = false;
         } else if (!chan_allocate_pty(
                        s->mainchan_chan, termtype, width, height,
                        pixwidth, pixheight, modes)) {
-          ppl_logevent("æ— æ³•åˆ†é… pty");
-          success = false;
+            ppl_logevent("ÎÞ·¨·ÖÅä pty");
+            success = false;
         } else {
-          success = true;
+            success = true;
         }
 
         pktout = ssh_bpp_new_pktout(
@@ -138,7 +138,7 @@ bool ssh1_handle_direction_specific_packet(
         host = get_string(pktin);
         port = toint(get_uint32(pktin));
 
-        ppl_logevent("å®¢æˆ·ç«¯è¯·æ±‚ç«¯å£ %d è½¬å‘åˆ° %.*s:%d",
+        ppl_logevent("¿Í»§¶ËÇëÇó¶Ë¿Ú %d ×ª·¢µ½ %.*s:%d",
                      listenport, PTRLEN_PRINTF(host), port);
 
         host_str = mkstr(host);
@@ -200,7 +200,7 @@ bool ssh1_handle_direction_specific_packet(
 
         host_str = mkstr(host);
 
-        ppl_logevent("æ”¶åˆ°è¿žæŽ¥ç«¯å£çš„è¯·æ±‚ %s:%d",
+        ppl_logevent("ÊÕµ½Á¬½Ó¶Ë¿ÚµÄÇëÇó %s:%d",
                      host_str, port);
         c = snew(struct ssh1_channel);
         c->connlayer = s;
@@ -211,7 +211,7 @@ bool ssh1_handle_direction_specific_packet(
         sfree(host_str);
 
         if (err) {
-            ppl_logevent("ç«¯å£æ‰“å¼€å¤±è´¥ï¼š%s", err);
+            ppl_logevent("¶Ë¿Ú´ò¿ªÊ§°Ü£º%s", err);
             sfree(err);
             ssh1_channel_free(c);
             pktout = ssh_bpp_new_pktout(
@@ -227,18 +227,18 @@ bool ssh1_handle_direction_specific_packet(
             put_uint32(pktout, c->remoteid);
             put_uint32(pktout, c->localid);
             pq_push(s->ppl.out_pq, pktout);
-            ppl_logevent("è½¬å‘ç«¯å£æ‰“å¼€æˆåŠŸ");
+            ppl_logevent("×ª·¢¶Ë¿Ú´ò¿ª³É¹¦");
         }
 
         return true;
 
       case SSH1_CMSG_EXIT_CONFIRMATION:
         if (!s->sent_exit_status) {
-            ssh_proto_error(s->ppl.ssh, "æœªå‘é€ SSH1_SMSG_EXIT_STATUS çš„æƒ…å†µä¸‹"
-                            "æ”¶åˆ° SSH1_CMSG_EXIT_CONFIRMATION ");
+            ssh_proto_error(s->ppl.ssh, "Î´·¢ËÍ SSH1_SMSG_EXIT_STATUS µÄÇé¿öÏÂ"
+                            "ÊÕµ½ SSH1_CMSG_EXIT_CONFIRMATION ");
             return true;
         }
-        ppl_logevent("å®¢æˆ·å‘é€é€€å‡ºç¡®è®¤");
+        ppl_logevent("¿Í»§·¢ËÍÍË³öÈ·ÈÏ");
         return true;
 
       default:
@@ -246,8 +246,8 @@ bool ssh1_handle_direction_specific_packet(
     }
 
   unexpected_setup_packet:
-    ssh_proto_error(s->ppl.ssh, "åœ¨è®¾ç½®é˜¶æ®µåŽæ”¶åˆ°æ„å¤–çš„"
-                    "è®¾ç½®æ•°æ®åŒ…, ç±»åž‹ %d (%s)", pktin->type,
+    ssh_proto_error(s->ppl.ssh, "ÔÚÉèÖÃ½×¶ÎºóÊÕµ½ÒâÍâµÄ"
+                    "ÉèÖÃÊý¾Ý°ü, ÀàÐÍ %d (%s)", pktin->type,
                     ssh1_pkt_type(pktin->type));
     /* FIXME: ensure caller copes with us just having freed the whole layer */
     return true;
@@ -328,7 +328,7 @@ SshChannel *ssh1_serverside_x11_open(
     c->halfopen = true;
     c->chan = chan;
 
-    ppl_logevent("å°† X11 è¿žæŽ¥è½¬å‘ç»™å®¢æˆ·ç«¯");
+    ppl_logevent("½« X11 Á¬½Ó×ª·¢¸ø¿Í»§¶Ë");
 
     pktout = ssh_bpp_new_pktout(s->ppl.bpp, SSH1_SMSG_X11_OPEN);
     put_uint32(pktout, c->localid);
@@ -350,7 +350,7 @@ SshChannel *ssh1_serverside_agent_open(ConnectionLayer *cl, Channel *chan)
     c->halfopen = true;
     c->chan = chan;
 
-    ppl_logevent("å°†ä»£ç†è¿žæŽ¥è½¬å‘åˆ°å®¢æˆ·ç«¯");
+    ppl_logevent("½«´úÀíÁ¬½Ó×ª·¢µ½¿Í»§¶Ë");
 
     pktout = ssh_bpp_new_pktout(s->ppl.bpp, SSH1_SMSG_AGENT_OPEN);
     put_uint32(pktout, c->localid);

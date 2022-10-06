@@ -77,6 +77,7 @@ static const SeatVtable pscp_seat_vt = {
     .confirm_ssh_host_key = console_confirm_ssh_host_key,
     .confirm_weak_crypto_primitive = console_confirm_weak_crypto_primitive,
     .confirm_weak_cached_hostkey = console_confirm_weak_cached_hostkey,
+    .prompt_descriptions = console_prompt_descriptions,
     .is_utf8 = nullseat_is_never_utf8,
     .echoedit_update = nullseat_echoedit_update,
     .get_x_display = nullseat_get_x_display,
@@ -171,7 +172,7 @@ static bool pscp_eof(Seat *seat)
      */
     if ((using_sftp || uploading) && !sent_eof) {
         seat_connection_fatal(
-            pscp_seat, "ä»æœåŠ¡å™¨æ”¶åˆ°æ„å¤–çš„æ–‡ä»¶ç»“å°¾");
+            pscp_seat, "´Ó·şÎñÆ÷ÊÕµ½ÒâÍâµÄÎÄ¼ş½áÎ²");
     }
     return false;
 }
@@ -217,9 +218,9 @@ static void ssh_scp_init(void)
 
     if (verbose) {
         if (using_sftp)
-            tell_user(stderr, "ä½¿ç”¨ SFTP");
+            tell_user(stderr, "Ê¹ÓÃ SFTP");
         else
-            tell_user(stderr, "ä½¿ç”¨ SCP1");
+            tell_user(stderr, "Ê¹ÓÃ SCP1");
     }
 }
 
@@ -275,13 +276,13 @@ struct sftp_packet *sftp_wait_for_reply(struct sftp_request *req)
     pktin = sftp_recv();
     if (pktin == NULL) {
         seat_connection_fatal(
-            pscp_seat, "æœªæ”¶åˆ°æ¥è‡ªæœåŠ¡å™¨çš„SFTPå“åº”æ•°æ®åŒ…");
+            pscp_seat, "Î´ÊÕµ½À´×Ô·şÎñÆ÷µÄSFTPÏìÓ¦Êı¾İ°ü");
     }
     rreq = sftp_find_request(pktin);
     if (rreq != req) {
         seat_connection_fatal(
             pscp_seat,
-            "æ— æ³•è§£ææ¥è‡ªæœåŠ¡å™¨çš„SFTPå“åº”æ•°æ®åŒ…: %s",
+            "ÎŞ·¨½âÎöÀ´×Ô·şÎñÆ÷µÄSFTPÏìÓ¦Êı¾İ°ü: %s",
             fxp_error());
     }
     return pktin;
@@ -297,7 +298,7 @@ static void do_cmd(char *host, char *user, char *cmd)
     LogContext *logctx;
 
     if (host == NULL || host[0] == '\0')
-        bump("ç©ºä¸»æœºå");
+        bump("¿ÕÖ÷»úÃû");
 
     /*
      * Remove a colon suffix.
@@ -392,10 +393,10 @@ static void do_cmd(char *host, char *user, char *cmd)
     } else if (conf_get_str(conf, CONF_username)[0] == '\0') {
         user = get_username();
         if (!user)
-            bump("ç©ºç”¨æˆ·å");
+            bump("¿ÕÓÃ»§Ãû");
         else {
             if (verbose)
-                tell_user(stderr, "çŒœæµ‹ç”¨æˆ·å: %s", user);
+                tell_user(stderr, "²Â²âÓÃ»§Ãû: %s", user);
             conf_set_str(conf, CONF_username, user);
             sfree(user);
         }
@@ -477,10 +478,10 @@ static void do_cmd(char *host, char *user, char *cmd)
                        &realhost, 0,
                        conf_get_bool(conf, CONF_tcp_keepalives));
     if (err != NULL)
-        bump("sshåˆå§‹åŒ–: %s", err);
+        bump("ssh³õÊ¼»¯: %s", err);
     ssh_scp_init();
     if (verbose && realhost != NULL && errs == 0)
-        tell_user(stderr, "è¿æ¥åˆ° %s", realhost);
+        tell_user(stderr, "Á¬½Óµ½ %s", realhost);
     sfree(realhost);
 }
 
@@ -569,7 +570,7 @@ static int response(void)
     int p;
 
     if (!ssh_scp_recv(&resp, 1))
-        bump("è¿æ¥ä¸¢å¤±");
+        bump("Á¬½Ó¶ªÊ§");
 
     p = 0;
     switch (resp) {
@@ -582,7 +583,7 @@ static int response(void)
       case 2:                          /* fatal error */
         do {
             if (!ssh_scp_recv(&ch, 1))
-                bump("åè®®é”™è¯¯: è¿æ¥ä¸¢å¤±");
+                bump("Ğ­Òé´íÎó: Á¬½Ó¶ªÊ§");
             rbuf[p++] = ch;
         } while (p < sizeof(rbuf) && ch != '\n');
         rbuf[p - 1] = '\0';
@@ -615,7 +616,7 @@ size_t sftp_sendbuffer(void)
 void list_directory_from_sftp_warn_unsorted(void)
 {
     fprintf(stderr,
-            "ç›®å½•å¤ªå¤§ï¼Œæ— æ³•æ’åº; å†™å…¥æœªæ’åºçš„æ–‡ä»¶å\n");
+            "Ä¿Â¼Ì«´ó£¬ÎŞ·¨ÅÅĞò; Ğ´ÈëÎ´ÅÅĞòµÄÎÄ¼şÃû\n");
 }
 
 void list_directory_from_sftp_print(struct fxp_name *name)
@@ -632,20 +633,20 @@ void scp_sftp_listdir(const char *dirname)
     struct sftp_request *req;
 
     if (!fxp_init()) {
-        tell_user(stderr, "æ— æ³•åˆå§‹åŒ–SFTP: %s", fxp_error());
+        tell_user(stderr, "ÎŞ·¨³õÊ¼»¯SFTP: %s", fxp_error());
         errs++;
         return;
     }
 
-    printf("ç›®å½•æ¸…å• %s\n", dirname);
+    printf("Ä¿Â¼Çåµ¥ %s\n", dirname);
 
     req = fxp_opendir_send(dirname);
     pktin = sftp_wait_for_reply(req);
     dirh = fxp_opendir_recv(pktin, req);
 
     if (dirh == NULL) {
-                tell_user(stderr, "æ— æ³•æ‰“å¼€ %s: %s\n", dirname, fxp_error());
-                errs++;
+        tell_user(stderr, "ÎŞ·¨´ò¿ª %s: %s\n", dirname, fxp_error());
+        errs++;
     } else {
         struct list_directory_from_sftp_ctx *ctx =
             list_directory_from_sftp_new();
@@ -659,7 +660,7 @@ void scp_sftp_listdir(const char *dirname)
             if (names == NULL) {
                 if (fxp_error_type() == SSH_FX_EOF)
                     break;
-                printf("è¯»å–ç›®å½• %s: %s\n", dirname, fxp_error());
+                printf("¶ÁÈ¡Ä¿Â¼ %s: %s\n", dirname, fxp_error());
                 break;
             }
             if (names->nnames == 0) {
@@ -717,7 +718,7 @@ int scp_source_setup(const char *target, bool shouldbedir)
         bool ret;
 
         if (!fxp_init()) {
-            tell_user(stderr, "æ— æ³•åˆå§‹åŒ–SFTP: %s", fxp_error());
+            tell_user(stderr, "ÎŞ·¨³õÊ¼»¯SFTP: %s", fxp_error());
             errs++;
             return 1;
         }
@@ -732,7 +733,7 @@ int scp_source_setup(const char *target, bool shouldbedir)
             scp_sftp_targetisdir = (attrs.permissions & 0040000) != 0;
 
         if (shouldbedir && !scp_sftp_targetisdir) {
-            bump("pscp: è¿œç¨‹æ–‡ä»¶%s: ä¸æ˜¯ç›®å½•\n", target);
+            bump("pscp: Ô¶³ÌÎÄ¼ş%s: ²»ÊÇÄ¿Â¼\n", target);
         }
 
         scp_sftp_remotepath = dupstr(target);
@@ -794,7 +795,7 @@ int scp_send_filename(const char *name, uint64_t size, int permissions)
         scp_sftp_filehandle = fxp_open_recv(pktin, req);
 
         if (!scp_sftp_filehandle) {
-            tell_user(stderr, "pscp: æ— æ³•æ‰“å¼€ %s: %s",
+            tell_user(stderr, "pscp: ÎŞ·¨´ò¿ª %s: %s",
                       fullname, fxp_error());
             sfree(fullname);
             errs++;
@@ -841,7 +842,7 @@ int scp_send_filedata(char *data, int len)
             pktin = sftp_recv();
             ret = xfer_upload_gotpkt(scp_sftp_xfer, pktin);
             if (ret <= 0) {
-                tell_user(stderr, "å†™å…¥æ—¶å‡ºé”™: %s", fxp_error());
+                tell_user(stderr, "Ğ´ÈëÊ±³ö´í: %s", fxp_error());
                 if (ret == INT_MIN)        /* pktin not even freed */
                     sfree(pktin);
                 errs++;
@@ -884,7 +885,7 @@ int scp_send_finish(void)
             pktin = sftp_recv();
             int ret = xfer_upload_gotpkt(scp_sftp_xfer, pktin);
             if (ret <= 0) {
-                tell_user(stderr, "å†™å…¥æ—¶å‡ºé”™: %s", fxp_error());
+                tell_user(stderr, "Ğ´ÈëÊ±³ö´í: %s", fxp_error());
                 if (ret == INT_MIN)        /* pktin not even freed */
                     sfree(pktin);
                 errs++;
@@ -904,7 +905,7 @@ int scp_send_finish(void)
             pktin = sftp_wait_for_reply(req);
             bool ret = fxp_fsetstat_recv(pktin, req);
             if (!ret) {
-                tell_user(stderr, "æ— æ³•è®¾ç½®æ–‡ä»¶æ—¶é—´: %s", fxp_error());
+                tell_user(stderr, "ÎŞ·¨ÉèÖÃÎÄ¼şÊ±¼ä: %s", fxp_error());
                 errs++;
             }
         }
@@ -963,7 +964,7 @@ int scp_send_dirname(const char *name, int modes)
         if (!ret)
             err = fxp_error();
         else
-            err = "æœåŠ¡å™¨æŠ¥å‘Šæœªå‡ºç°é”™è¯¯";
+            err = "·şÎñÆ÷±¨¸æÎ´³öÏÖ´íÎó";
 
         req = fxp_stat_send(fullname);
         pktin = sftp_wait_for_reply(req);
@@ -971,7 +972,7 @@ int scp_send_dirname(const char *name, int modes)
 
         if (!ret || !(attrs.flags & SSH_FILEXFER_ATTR_PERMISSIONS) ||
             !(attrs.permissions & 0040000)) {
-            tell_user(stderr, "æ— æ³•åˆ›å»ºç›®å½• %s: %s",
+            tell_user(stderr, "ÎŞ·¨´´½¨Ä¿Â¼ %s: %s",
                       fullname, err);
             sfree(fullname);
             errs++;
@@ -1014,7 +1015,7 @@ int scp_sink_setup(const char *source, bool preserve, bool recursive)
         char *newsource;
 
         if (!fxp_init()) {
-            tell_user(stderr, "æ— æ³•åˆå§‹åŒ–SFTP: %s", fxp_error());
+            tell_user(stderr, "ÎŞ·¨³õÊ¼»¯SFTP: %s", fxp_error());
             errs++;
             return 1;
         }
@@ -1063,7 +1064,7 @@ int scp_sink_setup(const char *source, bool preserve, bool recursive)
              */
             dirpart = snewn(1+strlen(dupsource), char);
             if (!wc_unescape(dirpart, dupsource)) {
-                tell_user(stderr, "%s: ä¸æ”¯æŒå¤šçº§é€šé…ç¬¦",
+                tell_user(stderr, "%s: ²»Ö§³Ö¶à¼¶Í¨Åä·û",
                           source);
                 errs++;
                 sfree(dirpart);
@@ -1166,8 +1167,8 @@ int scp_get_sink_action(struct scp_sink_action *act)
                 if (head->wildcard) {
                     act->action = SCP_SINK_RETRY;
                     if (!head->matched_something) {
-                        tell_user(stderr, "pscp: æ— æ–‡ä»¶ä¸é€šé…ç¬¦ '%s' "
-                                  "åŒ¹é…", head->wildcard);
+                        tell_user(stderr, "pscp: ÎŞÎÄ¼şÓëÍ¨Åä·û '%s' "
+                                  "Æ¥Åä", head->wildcard);
                         errs++;
                     }
                     sfree(head->wildcard);
@@ -1195,8 +1196,8 @@ int scp_get_sink_action(struct scp_sink_action *act)
 
         if (!ret || !(attrs.flags & SSH_FILEXFER_ATTR_PERMISSIONS)) {
             with_stripctrl(san, fname)
-                tell_user(stderr, "æ— æ³•è¯†åˆ« %s: %s", san,
-                          ret ? "æœªæä¾›æ–‡ä»¶ç±»å‹" : fxp_error());
+                tell_user(stderr, "ÎŞ·¨Ê¶±ğ %s: %s", san,
+                          ret ? "Î´Ìá¹©ÎÄ¼şÀàĞÍ" : fxp_error());
             if (must_free_fname) sfree(fname);
             errs++;
             return 1;
@@ -1223,7 +1224,7 @@ int scp_get_sink_action(struct scp_sink_action *act)
              */
             if (!scp_sftp_recursive && !scp_sftp_wildcard) {
                 with_stripctrl(san, fname)
-                    tell_user(stderr, "pscp: %s:æ˜¯ä¸€ä¸ªç›®å½•", san);
+                    tell_user(stderr, "pscp: %s:ÊÇÒ»¸öÄ¿Â¼", san);
                 errs++;
                 if (must_free_fname) sfree(fname);
                 if (scp_sftp_dirstack_head) {
@@ -1253,7 +1254,7 @@ int scp_get_sink_action(struct scp_sink_action *act)
 
             if (!dirhandle) {
                 with_stripctrl(san, fname)
-                    tell_user(stderr, "pscp: æ— æ³•æ‰“å¼€ç›®å½• %s: %s",
+                    tell_user(stderr, "pscp: ÎŞ·¨´ò¿ªÄ¿Â¼ %s: %s",
                               san, fxp_error());
                 if (must_free_fname) sfree(fname);
                 errs++;
@@ -1272,7 +1273,7 @@ int scp_get_sink_action(struct scp_sink_action *act)
                     if (fxp_error_type() == SSH_FX_EOF)
                         break;
                     with_stripctrl(san, fname)
-                        tell_user(stderr, "pscp: è¯»å–ç›®å½• %s: %s",
+                        tell_user(stderr, "pscp: ¶ÁÈ¡Ä¿Â¼ %s: %s",
                                   san, fxp_error());
 
                     req = fxp_close_send(dirhandle);
@@ -1299,8 +1300,8 @@ int scp_get_sink_action(struct scp_sink_action *act)
                          */
                     } else if (!vet_filename(names->names[i].filename)) {
                         with_stripctrl(san, names->names[i].filename)
-                            tell_user(stderr, "å¿½ç•¥æœåŠ¡å™¨æä¾›çš„æ½œåœ¨å±é™© "
-                                              "æ–‡ä»¶å '%s'", san);
+                            tell_user(stderr, "ºöÂÔ·şÎñÆ÷Ìá¹©µÄÇ±ÔÚÎ£ÏÕ "
+                                              "ÎÄ¼şÃû '%s'", san);
                     } else
                         ournames[nnames++] = names->names[i];
                 }
@@ -1387,11 +1388,11 @@ int scp_get_sink_action(struct scp_sink_action *act)
             if (!ssh_scp_recv(&ch, 1))
                 return 1;
             if (ch == '\n')
-                bump("åè®®é”™è¯¯: æ„å¤–çš„æ¢è¡Œç¬¦");
+                bump("Ğ­Òé´íÎó: ÒâÍâµÄ»»ĞĞ·û");
             action = ch;
             while (1) {
                 if (!ssh_scp_recv(&ch, 1))
-                    bump("å¤±å»è¿æ¥");
+                    bump("Ê§È¥Á¬½Ó");
                 if (ch == '\n')
                     break;
                 put_byte(act->buf, ch);
@@ -1417,17 +1418,17 @@ int scp_get_sink_action(struct scp_sink_action *act)
                     strbuf_clear(act->buf);
                     continue;          /* go round again */
                 }
-                bump("åè®®é”™è¯¯: éæ³•æ—¶é—´æ ¼å¼");
+                bump("Ğ­Òé´íÎó: ·Ç·¨Ê±¼ä¸ñÊ½");
               case 'C':
               case 'D':
                 act->action = (action == 'C' ? SCP_SINK_FILE : SCP_SINK_DIR);
                 if (act->action == SCP_SINK_DIR && !recursive) {
-                    bump("å®‰å…¨è¿è§„: è¿œç¨‹ä¸»æœºè¯•å›¾åˆ›å»º "
-                         "éé€’å½’å¤åˆ¶ä¸­çš„å­ç›®å½•ï¼");
+                    bump("°²È«Î¥¹æ: Ô¶³ÌÖ÷»úÊÔÍ¼´´½¨ "
+                         "·Çµİ¹é¸´ÖÆÖĞµÄ×ÓÄ¿Â¼£¡");
                 }
                 break;
               default:
-                bump("åè®®é”™è¯¯: ç­‰å¾…çš„æ§åˆ¶è®°å½•");
+                bump("Ğ­Òé´íÎó: µÈ´ıµÄ¿ØÖÆ¼ÇÂ¼");
             }
             /*
              * We will go round this loop only once, unless we hit
@@ -1444,7 +1445,7 @@ int scp_get_sink_action(struct scp_sink_action *act)
             int i;
             if (sscanf(act->buf->s, "%lo %"SCNu64" %n", &act->permissions,
                        &act->size, &i) != 2)
-                bump("åè®®é”™è¯¯: éæ³•æ–‡ä»¶æè¿°æ ¼å¼");
+                bump("Ğ­Òé´íÎó: ·Ç·¨ÎÄ¼şÃèÊö¸ñÊ½");
             act->name = act->buf->s + i;
             return 0;
         }
@@ -1463,7 +1464,7 @@ int scp_accept_filexfer(void)
 
         if (!scp_sftp_filehandle) {
             with_stripctrl(san, scp_sftp_currentname)
-                tell_user(stderr, "pscp: æ— æ³•æ‰“å¼€ %s: %s",
+                tell_user(stderr, "pscp: ÎŞ·¨´ò¿ª %s: %s",
                           san, fxp_error());
             errs++;
             return 1;
@@ -1490,7 +1491,7 @@ int scp_recv_filedata(char *data, int len)
         pktin = sftp_recv();
         ret = xfer_download_gotpkt(scp_sftp_xfer, pktin);
         if (ret <= 0) {
-            tell_user(stderr, "pscp: è¯»å–æ—¶å‡ºé”™: %s", fxp_error());
+            tell_user(stderr, "pscp: ¶ÁÈ¡Ê±³ö´í: %s", fxp_error());
             if (ret == INT_MIN)        /* pktin not even freed */
                 sfree(pktin);
             errs++;
@@ -1499,7 +1500,7 @@ int scp_recv_filedata(char *data, int len)
 
         if (xfer_download_data(scp_sftp_xfer, &vbuf, &actuallen)) {
             if (actuallen <= 0) {
-                tell_user(stderr, "pscp: è¯»å–æ–‡ä»¶æ—¶ç»“æŸ");
+                tell_user(stderr, "pscp: ¶ÁÈ¡ÎÄ¼şÊ±½áÊø");
                 errs++;
                 sfree(vbuf);
                 return -1;
@@ -1543,7 +1544,7 @@ int scp_finish_filerecv(void)
             pktin = sftp_recv();
             ret = xfer_download_gotpkt(scp_sftp_xfer, pktin);
             if (ret <= 0) {
-                tell_user(stderr, "pscp: è¯»å–æ—¶å‡ºé”™: %s", fxp_error());
+                tell_user(stderr, "pscp: ¶ÁÈ¡Ê±³ö´í: %s", fxp_error());
                 if (ret == INT_MIN)        /* pktin not even freed */
                     sfree(pktin);
                 errs++;
@@ -1602,8 +1603,8 @@ static void source(const char *src)
     attr = file_type(src);
     if (attr == FILE_TYPE_NONEXISTENT ||
         attr == FILE_TYPE_WEIRD) {
-        run_err("%s: %s æ–‡ä»¶æˆ–ç›®å½•", src,
-                (attr == FILE_TYPE_WEIRD ? "ä¸æ˜¯ä¸€ä¸ª" : "æ²¡æœ‰è¿™æ ·çš„"));
+        run_err("%s: %s ÎÄ¼ş»òÄ¿Â¼", src,
+                (attr == FILE_TYPE_WEIRD ? "²»ÊÇÒ»¸ö" : "Ã»ÓĞÕâÑùµÄ"));
         return;
     }
 
@@ -1625,7 +1626,7 @@ static void source(const char *src)
             else
                 rsource(src);
         } else {
-            run_err("%s: ä¸æ˜¯å¸¸è§„æ–‡ä»¶", src);
+            run_err("%s: ²»ÊÇ³£¹æÎÄ¼ş", src);
         }
         return;
     }
@@ -1641,7 +1642,7 @@ static void source(const char *src)
 
     f = open_existing_file(src, &size, &mtime, &atime, &permissions);
     if (f == NULL) {
-        run_err("%s: ä¸èƒ½æ‰“å¼€æ–‡ä»¶", src);
+        run_err("%s: ²»ÄÜ´ò¿ªÎÄ¼ş", src);
         return;
     }
     if (preserve) {
@@ -1652,7 +1653,7 @@ static void source(const char *src)
     }
 
     if (verbose) {
-        tell_user(stderr, "å‘é€æ–‡ä»¶ %s, å¤§å°=%"PRIu64, last, size);
+        tell_user(stderr, "·¢ËÍÎÄ¼ş %s, ´óĞ¡=%"PRIu64, last, size);
     }
     if (scp_send_filename(last, size, permissions)) {
         close_rfile(f);
@@ -1671,10 +1672,10 @@ static void source(const char *src)
         if (i + k > size)
             k = size - i;
         if ((j = read_from_file(f, transbuf, k)) != k) {
-            bump("%s: è¯»å–é”™è¯¯", src);
+            bump("%s: ¶ÁÈ¡´íÎó", src);
         }
         if (scp_send_filedata(transbuf, k))
-            bump("%s: å‘ç”Ÿç½‘ç»œé”™è¯¯", src);
+            bump("%s: ·¢ÉúÍøÂç´íÎó", src);
 
         if (statistics) {
             stat_bytes += k;
@@ -1714,7 +1715,7 @@ static void rsource(const char *src)
     save_target = scp_save_remotepath();
 
     if (verbose)
-        tell_user(stderr, "è¿›å…¥ç›®å½•: %s", last);
+        tell_user(stderr, "½øÈëÄ¿Â¼: %s", last);
     if (scp_send_dirname(last, 0755))
         return;
 
@@ -1730,7 +1731,7 @@ static void rsource(const char *src)
         }
         close_directory(dir);
     } else {
-        tell_user(stderr, "æ‰“å¼€ç›®å½•æ—¶å‡ºé”™ %s: %s", src, opendir_err);
+        tell_user(stderr, "´ò¿ªÄ¿Â¼Ê±³ö´í %s: %s", src, opendir_err);
     }
 
     (void) scp_send_enddir();
@@ -1759,7 +1760,7 @@ static void sink(const char *targ, const char *src)
         targisdir = true;
 
     if (targetshouldbedirectory && !targisdir)
-        bump("%s: ä¸æ˜¯ç›®å½•", targ);
+        bump("%s: ²»ÊÇÄ¿Â¼", targ);
 
     scp_sink_init();
 
@@ -1814,10 +1815,10 @@ static void sink(const char *targ, const char *src)
             if (striptarget != act.name) {
                 with_stripctrl(sanname, act.name) {
                     with_stripctrl(santarg, striptarget) {
-                        tell_user(stderr, "è­¦å‘Š: è¿œç¨‹ä¸»æœºå‘é€äº†"
-                                  " å¤šä¸ªè·¯å¾„å '%s'", sanname);
-                        tell_user(stderr, "         é‡å‘½åæœ¬åœ°"
-                                  " æ–‡ä»¶ä¸º '%s'", santarg);
+                        tell_user(stderr, "¾¯¸æ: Ô¶³ÌÖ÷»ú·¢ËÍÁË"
+                                  " ¶à¸öÂ·¾¶Ãû '%s'", sanname);
+                        tell_user(stderr, "         ÖØÃüÃû±¾µØ"
+                                  " ÎÄ¼şÎª '%s'", santarg);
                     }
                 }
             }
@@ -1828,8 +1829,8 @@ static void sink(const char *targ, const char *src)
              * appears to interpret those like '..'.
              */
             if (is_dots(striptarget)) {
-                bump("å®‰å…¨è¿è§„: è¿œç¨‹ä¸»æœºè¯•å›¾å†™å…¥"
-                     "ä¸€ä¸ª'.' æˆ–è€… '..' è·¯å¾„ï¼");
+                bump("°²È«Î¥¹æ: Ô¶³ÌÖ÷»úÊÔÍ¼Ğ´Èë"
+                     "Ò»¸ö'.' »òÕß '..' Â·¾¶£¡");
             }
 
             if (src) {
@@ -1837,14 +1838,14 @@ static void sink(const char *targ, const char *src)
                 if (strcmp(striptarget, stripsrc) &&
                     !using_sftp && !scp_unsafe_mode) {
                     with_stripctrl(san, striptarget)
-                        tell_user(stderr, "è­¦å‘Š: è¿œç¨‹ä¸»æœºè¯•å›¾"
-                                  "å†™å…¥ä¸€ä¸ªåä¸º '%s' çš„æ–‡ä»¶", san);
-                    tell_user(stderr, "         æˆ‘ä»¬è¯·æ±‚çš„æ–‡ä»¶"
-                              "åä¸º '%s'.", stripsrc);
-                    tell_user(stderr, "         å¦‚æœè¿™æ˜¯ä¸€ä¸ªé€šé…ç¬¦, "
-                              "è¯·è€ƒè™‘å‡çº§åˆ°ä½¿ç”¨SSH-2");
-                    tell_user(stderr, "         '-unsafe'é€‰é¡¹. é‡å‘½å"
-                              " è¿™ä¸ªæ–‡ä»¶è¢«ç¦æ­¢.");
+                        tell_user(stderr, "¾¯¸æ: Ô¶³ÌÖ÷»úÊÔÍ¼"
+                                  "Ğ´ÈëÒ»¸öÃûÎª '%s' µÄÎÄ¼ş", san);
+                    tell_user(stderr, "         ÎÒÃÇÇëÇóµÄÎÄ¼ş"
+                              "ÃûÎª '%s'.", stripsrc);
+                    tell_user(stderr, "         Èç¹ûÕâÊÇÒ»¸öÍ¨Åä·û, "
+                              "Çë¿¼ÂÇÉı¼¶µ½Ê¹ÓÃSSH-2");
+                    tell_user(stderr, "         '-unsafe'Ñ¡Ïî. ÖØÃüÃû"
+                              " Õâ¸öÎÄ¼ş±»½ûÖ¹.");
                     /* Override the name the server provided with our own. */
                     striptarget = stripsrc;
                 }
@@ -1868,14 +1869,14 @@ static void sink(const char *targ, const char *src)
         if (act.action == SCP_SINK_DIR) {
             if (exists && attr != FILE_TYPE_DIRECTORY) {
                 with_stripctrl(san, destfname)
-                    run_err("%s: ä¸æ˜¯ç›®å½•", san);
+                    run_err("%s: ²»ÊÇÄ¿Â¼", san);
                 sfree(destfname);
                 continue;
             }
             if (!exists) {
                 if (!create_directory(destfname)) {
                     with_stripctrl(san, destfname)
-                        run_err("%s: æ— æ³•åˆ›å»ºç›®å½•", san);
+                        run_err("%s: ÎŞ·¨´´½¨Ä¿Â¼", san);
                     sfree(destfname);
                     continue;
                 }
@@ -1889,7 +1890,7 @@ static void sink(const char *targ, const char *src)
         f = open_new_file(destfname, act.permissions);
         if (f == NULL) {
             with_stripctrl(san, destfname)
-                run_err("%s: ä¸èƒ½åˆ›å»ºè¿™ä¸ªæ–‡ä»¶", san);
+                run_err("%s: ²»ÄÜ´´½¨Õâ¸öÎÄ¼ş", san);
             sfree(destfname);
             continue;
         }
@@ -1916,7 +1917,7 @@ static void sink(const char *targ, const char *src)
                 blksize = act.size - received;
             read = scp_recv_filedata(transbuf, (int)blksize);
             if (read <= 0)
-                bump("å¤±å»è¿æ¥");
+                bump("Ê§È¥Á¬½Ó");
             if (wrerror) {
                 received += read;
                 continue;
@@ -1927,7 +1928,7 @@ static void sink(const char *targ, const char *src)
                 if (statistics)
                     printf("\r%-25.25s | %50s\n",
                            stat_name,
-                           "å†™å…¥é”™è¯¯.. ç­‰å¾…æ–‡ä»¶ç»“æŸ");
+                           "Ğ´Èë´íÎó.. µÈ´ıÎÄ¼ş½áÊø");
                 received += read;
                 continue;
             }
@@ -1949,7 +1950,7 @@ static void sink(const char *targ, const char *src)
         close_wfile(f);
         if (wrerror) {
             with_stripctrl(san, destfname)
-                run_err("%s: å†™å…¥é”™è¯¯", san);
+                run_err("%s: Ğ´Èë´íÎó", san);
             sfree(destfname);
             continue;
         }
@@ -1979,7 +1980,7 @@ static void toremote(int argc, char *argv[])
     host = wtarg;
     wtarg = colon(wtarg);
     if (wtarg == NULL)
-        bump("toremote()ä¸­çš„wtarg == NULL");
+        bump("toremote()ÖĞµÄwtarg == NULL");
     *wtarg++ = '\0';
     /* Substitute "." for empty target */
     if (*wtarg == '\0')
@@ -2001,11 +2002,11 @@ static void toremote(int argc, char *argv[])
 
     if (argc == 2) {
         if (colon(argv[0]) != NULL)
-            bump("%s: ä¸æ”¯æŒè¿œç¨‹åˆ°è¿œç¨‹", argv[0]);
+            bump("%s: ²»Ö§³ÖÔ¶³Ìµ½Ô¶³Ì", argv[0]);
 
         wc_type = test_wildcard(argv[0], true);
         if (wc_type == WCTYPE_NONEXISTENT)
-            bump("%s: æ— æ­¤æ–‡ä»¶æˆ–è€…ç›®å½•\n", argv[0]);
+            bump("%s: ÎŞ´ËÎÄ¼ş»òÕßÄ¿Â¼\n", argv[0]);
         else if (wc_type == WCTYPE_WILDCARD)
             targetshouldbedirectory = true;
     }
@@ -2024,14 +2025,14 @@ static void toremote(int argc, char *argv[])
     for (i = 0; i < argc - 1; i++) {
         src = argv[i];
         if (colon(src) != NULL) {
-            tell_user(stderr, "%s: ä¸æ”¯æŒè¿œç¨‹åˆ°è¿œç¨‹\n", src);
+            tell_user(stderr, "%s: ²»Ö§³ÖÔ¶³Ìµ½Ô¶³Ì\n", src);
             errs++;
             continue;
         }
 
         wc_type = test_wildcard(src, true);
         if (wc_type == WCTYPE_NONEXISTENT) {
-            run_err("%s: æ— æ­¤æ–‡ä»¶æˆ–è€…ç›®å½•", src);
+            run_err("%s: ÎŞ´ËÎÄ¼ş»òÕßÄ¿Â¼", src);
             continue;
         } else if (wc_type == WCTYPE_FILENAME) {
             source(src);
@@ -2042,7 +2043,7 @@ static void toremote(int argc, char *argv[])
 
             wc = begin_wildcard_matching(src);
             if (wc == NULL) {
-                run_err("%s: æ— æ­¤æ–‡ä»¶æˆ–è€…ç›®å½•", src);
+                run_err("%s: ÎŞ´ËÎÄ¼ş»òÕßÄ¿Â¼", src);
                 continue;
             }
 
@@ -2068,7 +2069,7 @@ static void tolocal(int argc, char *argv[])
     uploading = false;
 
     if (argc != 2)
-        bump("ä¸æ”¯æŒå¤šä¸ªè¿œç¨‹æº");
+        bump("²»Ö§³Ö¶à¸öÔ¶³ÌÔ´");
 
     wsrc = argv[0];
     targ = argv[1];
@@ -2077,7 +2078,7 @@ static void tolocal(int argc, char *argv[])
     host = wsrc;
     wsrc = colon(wsrc);
     if (wsrc == NULL)
-        bump("ä¸æ”¯æŒæœ¬åœ°åˆ°æœ¬åœ°æ‹·è´");
+        bump("²»Ö§³Ö±¾µØµ½±¾µØ¿½±´");
     *wsrc++ = '\0';
     /* Substitute "." for empty filename */
     if (*wsrc == '\0')
@@ -2128,7 +2129,7 @@ static void get_dir_list(int argc, char *argv[])
     host = wsrc;
     wsrc = colon(wsrc);
     if (wsrc == NULL)
-        bump("ä¸æ”¯æŒæœ¬åœ°æ–‡ä»¶åˆ—è¡¨");
+        bump("²»Ö§³Ö±¾µØÎÄ¼şÁĞ±í");
     *wsrc++ = '\0';
     /* Substitute "." for empty filename */
     if (*wsrc == '\0')
@@ -2185,49 +2186,48 @@ static void get_dir_list(int argc, char *argv[])
  */
 static void usage(void)
 {
-    printf("PuTTYå®‰å…¨å¤åˆ¶å®¢æˆ·ç«¯\n");
+    printf("PuTTY°²È«¸´ÖÆ¿Í»§¶Ë\n");
     printf("%s\n", ver);
-    printf("ç”¨æ³•: pscp [é€‰é¡¹] [ç”¨æˆ·@]ä¸»æœº:æºæ–‡ä»¶ ç›®æ ‡\n");
-    printf
-          ("      pscp [é€‰é¡¹] æºæ–‡ä»¶ [æºæ–‡ä»¶...] [ç”¨æˆ·@]ä¸»æœº:ç›®æ ‡\n");
-    printf("      pscp [é€‰é¡¹] -ls [ç”¨æˆ·@]ä¸»æœº:è§„èŒƒæ–‡ä»¶\n");
-    printf("é€‰é¡¹\n");
-    printf("  -V             æ˜¾ç¤ºç‰ˆæœ¬ä¿¡æ¯\n");
-    printf("  -pgpfp         æ˜¾ç¤ºPGPå¯†é’¥æŒ‡çº¹\n");
-    printf("  -p             ä¿ç•™æ–‡ä»¶å±æ€§\n");
-    printf("  -q             ä¸æ˜¾ç¤ºç»Ÿè®¡ä¿¡æ¯\n");
-    printf("  -r             é€’å½’å¤åˆ¶ç›®å½•\n");
-    printf("  -v             æ˜¾ç¤ºè¯¦ç»†æ¶ˆæ¯\n");
-    printf("  -load ä¼šè¯å   ä»ä¿å­˜çš„ä¼šè¯ä¸­åŠ è½½è®¾ç½®\n");
-    printf("  -P ç«¯å£å·      è¿æ¥åˆ°æŒ‡å®šçš„ç«¯å£å·\n");
-    printf("  -l ç”¨æˆ·å      ç”¨æŒ‡å®šçš„ç”¨æˆ·åè¿æ¥\n");
-    printf("  -pwfile æ–‡ä»¶   ä»æŒ‡å®šæ–‡ä»¶è¯»å–ç™»é™†å¯†ç \n");
-    printf("  -1 -2          å¼ºåˆ¶ä½¿ç”¨ç‰¹å®šçš„SSHåè®®ç‰ˆæœ¬\n");
+    printf("ÓÃ·¨: pscp [Ñ¡Ïî] [ÓÃ»§@]Ö÷»ú:Ô´ÎÄ¼ş Ä¿±ê\n");
+    printf("       pscp [Ñ¡Ïî] Ô´ÎÄ¼ş [Ô´ÎÄ¼ş...] [ÓÃ»§@]Ö÷»ú:Ä¿±ê\n");
+    printf("       pscp [Ñ¡Ïî] -ls [ÓÃ»§@]Ö÷»ú:ÎÄ¼ş¹æ¸ñ\n");
+    printf("Ñ¡Ïî:\n");
+    printf("  -V        ÏÔÊ¾°æ±¾ĞÅÏ¢\n");
+    printf("  -pgpfp    ÏÔÊ¾PGPÃÜÔ¿Ö¸ÎÆ\n");
+    printf("  -p        ±£ÁôÎÄ¼şÊôĞÔ\n");
+    printf("  -q        ²»ÏÔÊ¾Í³¼ÆĞÅÏ¢\n");
+    printf("  -r        µİ¹é¸´ÖÆÄ¿Â¼\n");
+    printf("  -v        ÏÔÊ¾ÏêÏ¸ÏûÏ¢\n");
+    printf("  -load »á»°Ãû  ´Ó±£´æµÄ»á»°ÖĞ¼ÓÔØÉèÖÃ\n");
+    printf("  -P ¶Ë¿ÚºÅ   Á¬½Óµ½Ö¸¶¨µÄ¶Ë¿ÚºÅ\n");
+    printf("  -l ÓÃ»§Ãû   ÓÃÖ¸¶¨µÄÓÃ»§ÃûÁ¬½Ó\n");
+    printf("  -pwfile ÎÄ¼ş   ´ÓÖ¸¶¨ÎÄ¼ş¶ÁÈ¡µÇÂ½ÃÜÂë\n");
+    printf("  -1 -2     Ç¿ÖÆÊ¹ÓÃÌØ¶¨µÄSSHĞ­Òé°æ±¾\n");
     printf("  -ssh -ssh-connection\n");
-    printf("                 å¼ºåˆ¶ä½¿ç”¨ç‰¹å®šçš„SSHåè®®å˜ä½“\n");
-    printf("  -4 -6          å¼ºåˆ¶ä½¿ç”¨IPv4æˆ–è€…IPv6\n");
-    printf("  -C             å¯ç”¨å‹ç¼©\n");
-    printf("  -i å¯†é’¥        ç”¨äºç”¨æˆ·è®¤è¯çš„ç§é’¥æ–‡ä»¶\n");
-    printf("  -noagent       ç¦ç”¨Pageantèº«ä»½è®¤è¯ä»£ç†\n");
-    printf("  -agent         å¯ç”¨Pageantèº«ä»½è®¤è¯ä»£ç†\n");
+    printf("                 Ç¿ÖÆÊ¹ÓÃÌØ¶¨µÄSSHĞ­Òé±äÌå\n");
+    printf("  -4 -6          Ç¿ÖÆÊ¹ÓÃIPv4»òÕßIPv6\n");
+    printf("  -C             ÆôÓÃÑ¹Ëõ\n");
+    printf("  -i ÃÜÔ¿        ÓÃÓÚÓÃ»§ÈÏÖ¤µÄË½Ô¿ÎÄ¼ş\n");
+    printf("  -noagent       ½ûÓÃPageantÉí·İÈÏÖ¤´úÀí\n");
+    printf("  -agent         ÆôÓÃPageantÉí·İÈÏÖ¤´úÀí\n");
     printf("  -no-trivial-auth\n");
-    printf("                 ä»…è¿æ¥æ— å¯†ç æˆ–å¯†é’¥éªŒè¯ï¼Œåˆ™æ–­å¼€è¿æ¥\n");
-    printf("  -hostkey å¯†é’¥ID\n");
-    printf("                 æ‰‹åŠ¨æŒ‡å®šä¸»æœºå¯†é’¥(å¯é‡å¤)\n");
-    printf("  -batch         ç¦ç”¨æ‰€æœ‰äº¤äº’å¼æç¤º\n");
-    printf("  -no-sanitise-stderr  ä¸è¦ä»æ ‡å‡†è¾“å‡º/é”™è¯¯ä¸­å»é™¤"
-           " æ§åˆ¶å­—ç¬¦\n");
-    printf("  -proxycmd å‘½ä»¤\n");
-    printf("                 ä½¿ç”¨'å‘½ä»¤'ä½œä¸ºæœ¬åœ°ä»£ç†\n");
-    printf("  -unsafe        å…è®¸æœåŠ¡ç«¯é€šé…ç¬¦(å±é™©ï¼)\n");
-    printf("  -sftp          å¼ºåˆ¶ä½¿ç”¨SFTPåè®®\n");
-    printf("  -scp           å¼ºåˆ¶ä½¿ç”¨SCPåè®®\n");
+    printf("                 ½öÁ¬½ÓÎŞÃÜÂë»òÃÜÔ¿ÑéÖ¤£¬Ôò¶Ï¿ªÁ¬½Ó\n");
+    printf("  -hostkey ÃÜÔ¿ID\n");
+    printf("                 ÊÖ¶¯Ö¸¶¨Ö÷»úÃÜÔ¿(¿ÉÖØ¸´)\n");
+    printf("  -batch         ½ûÓÃËùÓĞ½»»¥Ê½ÌáÊ¾\n");
+    printf("  -no-sanitise-stderr  ²»Òª´Ó±ê×¼Êä³ö/´íÎóÖĞÈ¥³ı"
+           " ¿ØÖÆ×Ö·û\n");
+    printf("  -proxycmd ÃüÁî\n");
+    printf("                 Ê¹ÓÃ'ÃüÁî'×÷Îª±¾µØ´úÀí\n");
+    printf("  -unsafe        ÔÊĞí·şÎñ¶ËÍ¨Åä·û(Î£ÏÕ£¡)\n");
+    printf("  -sftp          Ç¿ÖÆÊ¹ÓÃSFTPĞ­Òé\n");
+    printf("  -scp           Ç¿ÖÆÊ¹ÓÃSCPĞ­Òé\n");
     printf("  -sshlog file\n");
     printf("  -sshrawlog file\n");
-    printf("                 å°†åè®®è¯¦ç»†ä¿¡æ¯è®°å½•åˆ°æ–‡ä»¶\n");
+    printf("                 ½«Ğ­ÒéÏêÏ¸ĞÅÏ¢¼ÇÂ¼µ½ÎÄ¼ş\n");
     printf("  -logoverwrite\n");
     printf("  -logappend\n");
-    printf("                 æ—¥å¿—æ–‡ä»¶å·²å­˜åœ¨æ—¶æ˜¯è¦†ç›–è¿˜æ˜¯è¿½åŠ åˆ°æ—¥å¿—\n");
+    printf("                 ÈÕÖ¾ÎÄ¼şÒÑ´æÔÚÊ±ÊÇ¸²¸Ç»¹ÊÇ×·¼Óµ½ÈÕÖ¾\n");
     cleanup_exit(1);
 }
 
@@ -2246,7 +2246,7 @@ void cmdline_error(const char *p, ...)
     va_start(ap, p);
     vfprintf(stderr, p, ap);
     va_end(ap);
-    fprintf(stderr, "\n      å°è¯•è¾“å…¥\"pscp\"æ¥å¯»æ±‚å¸®åŠ©\n");
+    fprintf(stderr, "\n      ³¢ÊÔÊäÈë\"pscp\"À´Ñ°Çó°ïÖú\n");
     exit(1);
 }
 
@@ -2279,7 +2279,7 @@ int psftp_main(int argc, char *argv[])
             break;
         ret = cmdline_process_param(argv[i], i+1<argc?argv[i+1]:NULL, 1, conf);
         if (ret == -2) {
-            cmdline_error("é€‰é¡¹ \"%s\" éœ€è¦ä¸€ä¸ªå‚æ•°", argv[i]);
+            cmdline_error("Ñ¡Ïî \"%s\" ĞèÒªÒ»¸ö²ÎÊı", argv[i]);
         } else if (ret == 2) {
             i++;               /* skip next argument */
         } else if (ret == 1) {
@@ -2320,7 +2320,7 @@ int psftp_main(int argc, char *argv[])
             i++;
             break;
         } else {
-            cmdline_error("æœªçŸ¥é€‰é¡¹ \"%s\"", argv[i]);
+            cmdline_error("Î´ÖªÑ¡Ïî \"%s\"", argv[i]);
         }
     }
     argc -= i;

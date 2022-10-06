@@ -174,17 +174,6 @@ bool export_ssh2(const Filename *filename, int type,
     return false;
 }
 
-/*
- * Strip trailing CRs and LFs at the end of a line of text.
- */
-void strip_crlf(char *str)
-{
-    char *p = str + strlen(str);
-
-    while (p > str && (p[-1] == '\r' || p[-1] == '\n'))
-        *--p = '\0';
-}
-
 /* ----------------------------------------------------------------------
  * Helper routines. (The base64 ones are defined in sshpubk.c.)
  */
@@ -328,7 +317,7 @@ struct openssh_pem_key {
     strbuf *keyblob;
 };
 
-void BinarySink_put_mp_ssh2_from_string(BinarySink *bs, ptrlen str)
+static void BinarySink_put_mp_ssh2_from_string(BinarySink *bs, ptrlen str)
 {
     const unsigned char *bytes = (const unsigned char *)str.ptr;
     size_t nbytes = str.len;
@@ -362,12 +351,12 @@ static struct openssh_pem_key *load_openssh_pem_key(BinarySource *src,
     ret->keyblob = strbuf_new_nm();
 
     if (!(line = bsgetline(src))) {
-        errmsg = "æ–‡ä»¶æ„å¤–ç»“æŸ";
+        errmsg = "ÎÄ¼şÒâÍâ½áÊø";
         goto error;
     }
     if (!strstartswith(line, "-----BEGIN ") ||
         !strendswith(line, "PRIVATE KEY-----")) {
-        errmsg = "æ–‡ä»¶ä¸æ˜¯ä»¥OpenSSHå¯†é’¥å¤´å¼€å¤´";
+        errmsg = "ÎÄ¼ş²»ÊÇÒÔOpenSSHÃÜÔ¿Í·¿ªÍ·";
         goto error;
     }
     /*
@@ -383,10 +372,10 @@ static struct openssh_pem_key *load_openssh_pem_key(BinarySource *src,
     } else if (!strcmp(line, "-----BEGIN EC PRIVATE KEY-----")) {
         ret->keytype = OP_ECDSA;
     } else if (!strcmp(line, "-----BEGIN OPENSSH PRIVATE KEY-----")) {
-        errmsg = "è¿™æ˜¯ä¸€ç§æ–°å‹çš„OpenSSHå¯†é’¥";
+        errmsg = "ÕâÊÇÒ»ÖÖĞÂĞÍµÄOpenSSHÃÜÔ¿";
         goto error;
     } else {
-        errmsg = "æ— æ³•è¯†åˆ«å¯†é’¥ç±»å‹";
+        errmsg = "ÎŞ·¨Ê¶±ğÃÜÔ¿ÀàĞÍ";
         goto error;
     }
     smemclr(line, strlen(line));
@@ -399,7 +388,7 @@ static struct openssh_pem_key *load_openssh_pem_key(BinarySource *src,
     headers_done = false;
     while (1) {
         if (!(line = bsgetline(src))) {
-            errmsg = "æ–‡ä»¶æ„å¤–ç»“æŸ";
+            errmsg = "ÎÄ¼şÒâÍâ½áÊø";
             goto error;
         }
         if (strstartswith(line, "-----END ") &&
@@ -410,14 +399,14 @@ static struct openssh_pem_key *load_openssh_pem_key(BinarySource *src,
         }
         if ((p = strchr(line, ':')) != NULL) {
             if (headers_done) {
-                errmsg = "åœ¨å…³é”®æ•°æ®æ­£æ–‡ä¸­æ‰¾åˆ°æ ‡é¢˜å¤´";
+                errmsg = "ÔÚ¹Ø¼üÊı¾İÕıÎÄÖĞÕÒµ½±êÌâÍ·";
                 goto error;
             }
             *p++ = '\0';
             while (*p && isspace((unsigned char)*p)) p++;
             if (!strcmp(line, "Proc-Type")) {
                 if (p[0] != '4' || p[1] != ',') {
-                    errmsg = "Proc-Typeä¸æ˜¯4(ä»…æ”¯æŒ4)";
+                    errmsg = "Proc-Type²»ÊÇ4(½öÖ§³Ö4)";
                     goto error;
                 }
                 p += 2;
@@ -433,21 +422,21 @@ static struct openssh_pem_key *load_openssh_pem_key(BinarySource *src,
                     ret->encryption = OP_E_AES;
                     ivlen = 16;
                 } else {
-                    errmsg = "ä¸æ”¯æŒçš„åŠ å¯†ç±»å‹";
+                    errmsg = "²»Ö§³ÖµÄ¼ÓÃÜÀàĞÍ";
                     goto error;
                 }
                 p = strchr(p, ',') + 1;/* always non-NULL, by above checks */
                 for (i = 0; i < ivlen; i++) {
                     unsigned j;
                     if (1 != sscanf(p, "%2x", &j)) {
-                        errmsg = "é¢„è®¡DEK-Infoä¸­æœ‰æ›´å¤šivæ•°æ®o";
+                        errmsg = "Ô¤¼ÆDEK-InfoÖĞÓĞ¸ü¶àivÊı¾İo";
                         goto error;
                     }
                     ret->iv[i] = j;
                     p += 2;
                 }
                 if (*p) {
-                    errmsg = "DEK-Infoä¸­çš„ivæ•°æ®å¤šäºé¢„æœŸ";
+                    errmsg = "DEK-InfoÖĞµÄivÊı¾İ¶àÓÚÔ¤ÆÚ";
                     goto error;
                 }
             }
@@ -466,7 +455,7 @@ static struct openssh_pem_key *load_openssh_pem_key(BinarySource *src,
                     len = base64_decode_atom(base64_bit, out);
 
                     if (len <= 0) {
-                        errmsg = "æ— æ•ˆçš„base64ç¼–ç ";
+                        errmsg = "ÎŞĞ§µÄbase64±àÂë";
                         goto error;
                     }
 
@@ -484,13 +473,13 @@ static struct openssh_pem_key *load_openssh_pem_key(BinarySource *src,
     }
 
     if (!ret->keyblob || ret->keyblob->len == 0) {
-        errmsg = "å¯†é’¥ä¸»ä½“ä¸å­˜åœ¨";
+        errmsg = "ÃÜÔ¿Ö÷Ìå²»´æÔÚ";
         goto error;
     }
 
     if (ret->encrypted && ret->keyblob->len % 8 != 0) {
-        errmsg = "åŠ å¯†çš„å¯†é’¥blobä¸æ˜¯å¯†ç å—å¤§å°çš„"
-            "å€æ•°";
+        errmsg = "¼ÓÃÜµÄÃÜÔ¿blob²»ÊÇÃÜÂë¿é´óĞ¡µÄ"
+            "±¶Êı";
         goto error;
     }
 
@@ -498,7 +487,7 @@ static struct openssh_pem_key *load_openssh_pem_key(BinarySource *src,
     if (errmsg_p) *errmsg_p = NULL;
     return ret;
 
-    error:
+  error:
     if (line) {
         smemclr(line, strlen(line));
         sfree(line);
@@ -627,7 +616,7 @@ static ssh2_userkey *openssh_pem_read(
          * decrypt, if the key was encrypted. */
         ber_item seq = get_ber(src);
         if (get_err(src) || seq.id != 16) {
-            errmsg = "ASN.1è§£ç å¤±è´¥";
+            errmsg = "ASN.1½âÂëÊ§°Ü";
             retval = key->encrypted ? SSH2_WRONG_PASSPHRASE : NULL;
             goto error;
         }
@@ -676,19 +665,19 @@ static ssh2_userkey *openssh_pem_read(
             oid.id != 6 ||
             pubkey.id != 3) {
 
-            errmsg = "ASN.1è§£ç å¤±è´¥";
+            errmsg = "ASN.1½âÂëÊ§°Ü";
             retval = key->encrypted ? SSH2_WRONG_PASSPHRASE : NULL;
             goto error;
         }
 
         alg = ec_alg_by_oid(oid.data.len, oid.data.ptr, &curve);
         if (!alg) {
-            errmsg = "ä¸æ”¯æŒçš„ECDSAæ›²çº¿ã€‚";
+            errmsg = "²»Ö§³ÖµÄECDSAÇúÏß¡£";
             retval = NULL;
             goto error;
         }
         if (pubkey.data.len != ((((curve->fieldBits + 7) / 8) * 2) + 2)) {
-            errmsg = "ASN.1è§£ç å¤±è´¥";
+            errmsg = "ASN.1½âÂëÊ§°Ü";
             retval = key->encrypted ? SSH2_WRONG_PASSPHRASE : NULL;
             goto error;
         }
@@ -711,7 +700,7 @@ static ssh2_userkey *openssh_pem_read(
 
         if (!retkey->key) {
             sfree(retkey);
-            errmsg = "æ— æ³•åˆ›å»ºå…³é”®çš„æ•°æ®ç»“æ„";
+            errmsg = "ÎŞ·¨´´½¨¹Ø¼üµÄÊı¾İ½á¹¹";
             goto error;
         }
 
@@ -725,7 +714,7 @@ static ssh2_userkey *openssh_pem_read(
             ber_item integer = get_ber(src);
 
             if (get_err(src) || integer.id != 2) {
-                errmsg = "ASN.1è§£ç å¤±è´¥";
+                errmsg = "ASN.1½âÂëÊ§°Ü";
                 retval = key->encrypted ? SSH2_WRONG_PASSPHRASE : NULL;
                 goto error;
             }
@@ -737,7 +726,7 @@ static ssh2_userkey *openssh_pem_read(
                  */
                 if (integer.data.len != 1 ||
                     ((const unsigned char *)integer.data.ptr)[0] != 0) {
-                    errmsg = "ç‰ˆæœ¬å·ä¸åŒ¹é…";
+                    errmsg = "°æ±¾ºÅ²»Æ¥Åä";
                     goto error;
                 }
             } else if (key->keytype == OP_RSA) {
@@ -782,13 +771,13 @@ static ssh2_userkey *openssh_pem_read(
 
         if (!retkey->key) {
             sfree(retkey);
-            errmsg = "æ— æ³•åˆ›å»ºå…³é”®çš„æ•°æ®ç»“æ„";
+            errmsg = "ÎŞ·¨´´½¨¹Ø¼üµÄÊı¾İ½á¹¹";
             goto error;
         }
 
     } else {
-        unreachable("load_openssh_pem_keyä¸­çš„å¯†é’¥ç±»å‹é”™è¯¯");
-        errmsg = "load_openssh_pem_keyä¸­çš„å¯†é’¥ç±»å‹é”™è¯¯";
+        unreachable("load_openssh_pem_keyÖĞµÄÃÜÔ¿ÀàĞÍ´íÎó");
+        errmsg = "load_openssh_pem_keyÖĞµÄÃÜÔ¿ÀàĞÍ´íÎó";
         goto error;
     }
 
@@ -801,7 +790,7 @@ static ssh2_userkey *openssh_pem_read(
     errmsg = NULL;                     /* no error */
     retval = retkey;
 
-    error:
+  error:
     strbuf_free(blob);
     strbuf_free(key->keyblob);
     smemclr(key, sizeof(*key));
@@ -811,7 +800,7 @@ static ssh2_userkey *openssh_pem_read(
 }
 
 static bool openssh_pem_write(
-    const Filename *filename, ssh2_userkey *key, const char *passphrase)
+    const Filename *filename, ssh2_userkey *ukey, const char *passphrase)
 {
     strbuf *pubblob, *privblob, *outblob;
     unsigned char *spareblob;
@@ -825,13 +814,17 @@ static bool openssh_pem_write(
     FILE *fp;
     BinarySource src[1];
 
+    /* OpenSSH's private key files never contain a certificate, so
+     * revert to the underlying base key if necessary */
+    ssh_key *key = ssh_key_base_key(ukey->key);
+
     /*
      * Fetch the key blobs.
      */
     pubblob = strbuf_new();
-    ssh_key_public_blob(key->key, BinarySink_UPCAST(pubblob));
+    ssh_key_public_blob(key, BinarySink_UPCAST(pubblob));
     privblob = strbuf_new_nm();
-    ssh_key_private_blob(key->key, BinarySink_UPCAST(privblob));
+    ssh_key_private_blob(key, BinarySink_UPCAST(privblob));
     spareblob = NULL;
 
     outblob = strbuf_new_nm();
@@ -840,8 +833,8 @@ static bool openssh_pem_write(
      * Encode the OpenSSH key blob, and also decide on the header
      * line.
      */
-    if (ssh_key_alg(key->key) == &ssh_rsa ||
-        ssh_key_alg(key->key) == &ssh_dsa) {
+    if (ssh_key_alg(key) == &ssh_rsa ||
+        ssh_key_alg(key) == &ssh_dsa) {
         strbuf *seq;
 
         /*
@@ -851,7 +844,7 @@ static bool openssh_pem_write(
          * bignums per key type and then construct the actual blob in
          * common code after that.
          */
-        if (ssh_key_alg(key->key) == &ssh_rsa) {
+        if (ssh_key_alg(key) == &ssh_rsa) {
             ptrlen n, e, d, p, q, iqmp, dmp1, dmq1;
             mp_int *bd, *bp, *bq, *bdmp1, *bdmq1;
 
@@ -947,11 +940,11 @@ static bool openssh_pem_write(
         put_ber_id_len(outblob, 16, seq->len, ASN1_CONSTRUCTED);
         put_data(outblob, seq->s, seq->len);
         strbuf_free(seq);
-    } else if (ssh_key_alg(key->key) == &ssh_ecdsa_nistp256 ||
-               ssh_key_alg(key->key) == &ssh_ecdsa_nistp384 ||
-               ssh_key_alg(key->key) == &ssh_ecdsa_nistp521) {
+    } else if (ssh_key_alg(key) == &ssh_ecdsa_nistp256 ||
+               ssh_key_alg(key) == &ssh_ecdsa_nistp384 ||
+               ssh_key_alg(key) == &ssh_ecdsa_nistp521) {
         const unsigned char *oid;
-        struct ecdsa_key *ec = container_of(key->key, struct ecdsa_key, sshk);
+        struct ecdsa_key *ec = container_of(key, struct ecdsa_key, sshk);
         int oidlen;
         int pointlen;
         strbuf *seq, *sub;
@@ -966,7 +959,7 @@ static bool openssh_pem_write(
          *   [1]
          *     BIT STRING (0x00 public key point)
          */
-        oid = ec_alg_oid(ssh_key_alg(key->key), &oidlen);
+        oid = ec_alg_oid(ssh_key_alg(key), &oidlen);
         pointlen = (ec->curve->fieldBits + 7) / 8 * 2;
 
         seq = strbuf_new_nm();
@@ -998,7 +991,7 @@ static bool openssh_pem_write(
 
         /* Append the BIT STRING to the sequence */
         put_ber_id_len(seq, 1, sub->len,
-                         ASN1_CLASS_CONTEXT_SPECIFIC | ASN1_CONSTRUCTED);
+                       ASN1_CLASS_CONTEXT_SPECIFIC | ASN1_CONSTRUCTED);
         put_data(seq, sub->s, sub->len);
         strbuf_free(sub);
 
@@ -1010,7 +1003,7 @@ static bool openssh_pem_write(
         header = "-----BEGIN EC PRIVATE KEY-----\n";
         footer = "-----END EC PRIVATE KEY-----\n";
     } else {
-        unreachable("openssh_pem_writeä¸­çš„å¯†é’¥ç®—æ³•é”™è¯¯");
+        unreachable("openssh_pem_writeÖĞµÄÃÜÔ¿Ëã·¨´íÎó");
     }
 
     /*
@@ -1075,12 +1068,12 @@ static bool openssh_pem_write(
             fprintf(fp, "%02X", iv[i]);
         fprintf(fp, "\n\n");
     }
-    base64_encode(fp, outblob->u, outblob->len, 64);
+    base64_encode_fp(fp, ptrlen_from_strbuf(outblob), 64);
     fputs(footer, fp);
     fclose(fp);
     ret = true;
 
-    error:
+  error:
     if (outblob)
         strbuf_free(outblob);
     if (spareblob) {
@@ -1140,11 +1133,11 @@ static struct openssh_new_key *load_openssh_new_key(BinarySource *filesrc,
     ret->keyblob = strbuf_new_nm();
 
     if (!(line = bsgetline(filesrc))) {
-        errmsg = "æ–‡ä»¶æ„å¤–ç»“æŸ";
+        errmsg = "ÎÄ¼şÒâÍâ½áÊø";
         goto error;
     }
     if (0 != strcmp(line, "-----BEGIN OPENSSH PRIVATE KEY-----")) {
-        errmsg = "æ–‡ä»¶ä¸æ˜¯ä»¥OpenSSHæ–°å¼å¯†é’¥å¤´å¼€å§‹";
+        errmsg = "ÎÄ¼ş²»ÊÇÒÔOpenSSHĞÂÊ½ÃÜÔ¿Í·¿ªÊ¼";
         goto error;
     }
     smemclr(line, strlen(line));
@@ -1153,7 +1146,7 @@ static struct openssh_new_key *load_openssh_new_key(BinarySource *filesrc,
 
     while (1) {
         if (!(line = bsgetline(filesrc))) {
-            errmsg = "æ–‡ä»¶æ„å¤–ç»“æŸ";
+            errmsg = "ÎÄ¼şÒâÍâ½áÊø";
             goto error;
         }
         if (0 == strcmp(line, "-----END OPENSSH PRIVATE KEY-----")) {
@@ -1174,7 +1167,7 @@ static struct openssh_new_key *load_openssh_new_key(BinarySource *filesrc,
                 len = base64_decode_atom(base64_bit, out);
 
                 if (len <= 0) {
-                    errmsg = "æ— æ•ˆçš„base64ç¼–ç ";
+                    errmsg = "ÎŞĞ§µÄbase64±àÂë";
                     goto error;
                 }
 
@@ -1191,14 +1184,14 @@ static struct openssh_new_key *load_openssh_new_key(BinarySource *filesrc,
     }
 
     if (ret->keyblob->len == 0) {
-        errmsg = "å¯†é’¥ä¸»ä½“ä¸å­˜åœ¨";
+        errmsg = "ÃÜÔ¿Ö÷Ìå²»´æÔÚ";
         goto error;
     }
 
     BinarySource_BARE_INIT_PL(src, ptrlen_from_strbuf(ret->keyblob));
 
     if (strcmp(get_asciz(src), "openssh-key-v1") != 0) {
-        errmsg = "æ–°å¼çš„OpenSSHç¼ºå°‘magicæ•°\n";
+        errmsg = "ĞÂÊ½µÄOpenSSHÈ±ÉÙmagicÊı\n";
         goto error;
     }
 
@@ -1211,8 +1204,8 @@ static struct openssh_new_key *load_openssh_new_key(BinarySource *filesrc,
     } else if (ptrlen_eq_string(str, "aes256-ctr")) {
         ret->cipher = ON_E_AES256CTR;
     } else {
-        errmsg = get_err(src) ? "æ‰¾ä¸åˆ°åŠ å¯†ç±»å‹" :
-            "æ— æ³•è¯†åˆ«çš„åŠ å¯†ç±»å‹\n";
+        errmsg = get_err(src) ? "ÕÒ²»µ½¼ÓÃÜÀàĞÍ" :
+            "ÎŞ·¨Ê¶±ğµÄ¼ÓÃÜÀàĞÍ\n";
         goto error;
     }
 
@@ -1223,8 +1216,8 @@ static struct openssh_new_key *load_openssh_new_key(BinarySource *filesrc,
     } else if (ptrlen_eq_string(str, "bcrypt")) {
         ret->kdf = ON_K_BCRYPT;
     } else {
-        errmsg = get_err(src) ? "æœªæ‰¾åˆ°kdfåç§°" :
-            "æ— æ³•è¯†åˆ«kdfåç§°\n";
+        errmsg = get_err(src) ? "Î´ÕÒµ½kdfÃû³Æ" :
+            "ÎŞ·¨Ê¶±ğkdfÃû³Æ\n";
         goto error;
     }
 
@@ -1233,7 +1226,7 @@ static struct openssh_new_key *load_openssh_new_key(BinarySource *filesrc,
     switch (ret->kdf) {
       case ON_K_NONE:
         if (str.len != 0) {
-            errmsg = "é¢„æœŸkdfä¸­'none'ä¸ºç©ºé€‰é¡¹å­—ç¬¦ä¸²";
+            errmsg = "Ô¤ÆÚkdfÖĞ'none'Îª¿ÕÑ¡Ïî×Ö·û´®";
             goto error;
         }
         break;
@@ -1245,8 +1238,8 @@ static struct openssh_new_key *load_openssh_new_key(BinarySource *filesrc,
         ret->kdfopts.bcrypt.rounds = get_uint32(opts);
 
         if (get_err(opts)) {
-          errmsg = "æ— æ³•è§£æbcrypté€‰é¡¹å­—ç¬¦ä¸²";
-          goto error;
+            errmsg = "ÎŞ·¨½âÎöbcryptÑ¡Ïî×Ö·û´®";
+            goto error;
         }
         break;
       }
@@ -1266,8 +1259,8 @@ static struct openssh_new_key *load_openssh_new_key(BinarySource *filesrc,
      */
     ret->nkeys = toint(get_uint32(src));
     if (ret->nkeys != 1) {
-        errmsg = get_err(src) ? "æœªæ‰¾åˆ°å¯†é’¥è®¡æ•°" :
-            "ä¸æ”¯æŒæ–°å‹OpenSSHå¯†é’¥æ–‡ä»¶ä¸­å­˜åœ¨å¤šä¸ªå¯†é’¥\n";
+        errmsg = get_err(src) ? "Î´ÕÒµ½ÃÜÔ¿¼ÆÊı" :
+            "²»Ö§³ÖĞÂĞÍOpenSSHÃÜÔ¿ÎÄ¼şÖĞ´æÔÚ¶à¸öÃÜÔ¿\n";
         goto error;
     }
     ret->key_wanted = 0;
@@ -1282,7 +1275,7 @@ static struct openssh_new_key *load_openssh_new_key(BinarySource *filesrc,
      */
     ret->private = get_string(src);
     if (get_err(src)) {
-        errmsg = "æ‰¾ä¸åˆ°ç§é’¥containerå­—ç¬¦ä¸²\n";
+        errmsg = "ÕÒ²»µ½Ë½Ô¿container×Ö·û´®\n";
         goto error;
     }
 
@@ -1294,7 +1287,7 @@ static struct openssh_new_key *load_openssh_new_key(BinarySource *filesrc,
     if (errmsg_p) *errmsg_p = NULL;
     return ret;
 
-    error:
+  error:
     if (line) {
         smemclr(line, strlen(line));
         sfree(line);
@@ -1355,7 +1348,7 @@ static ssh2_userkey *openssh_new_read(
             keysize = 48;              /* 32 byte key + 16 byte IV */
             break;
           default:
-            unreachable("é”™è¯¯çš„å¯†ç æšä¸¾å€¼");
+            unreachable("´íÎóµÄÃÜÂëÃ¶¾ÙÖµ");
         }
         assert(keysize <= sizeof(keybuf));
         switch (key->kdf) {
@@ -1369,7 +1362,7 @@ static ssh2_userkey *openssh_new_read(
                            keybuf, keysize);
             break;
           default:
-            unreachable("é”™è¯¯çš„kdfæšä¸¾å€¼");
+            unreachable("´íÎóµÄkdfÃ¶¾ÙÖµ");
         }
         switch (key->cipher) {
           case ON_E_NONE:
@@ -1377,8 +1370,8 @@ static ssh2_userkey *openssh_new_read(
           case ON_E_AES256CBC:
           case ON_E_AES256CTR:
             if (key->private.len % 16 != 0) {
-                errmsg = "ç§é’¥ä¸­containeré•¿åº¦ä¸æ˜¯"
-                    "AESå—å¤§å°çš„å€æ•°\n";
+                errmsg = "Ë½Ô¿ÖĞcontainer³¤¶È²»ÊÇ"
+                    "AES¿é´óĞ¡µÄ±¶Êı\n";
                 goto error;
             }
             {
@@ -1395,7 +1388,7 @@ static ssh2_userkey *openssh_new_read(
             }
             break;
           default:
-            unreachable("é”™è¯¯çš„åŠ å¯†æšä¸¾å€¼");
+            unreachable("´íÎóµÄ¼ÓÃÜÃ¶¾ÙÖµ");
         }
     }
 
@@ -1407,7 +1400,7 @@ static ssh2_userkey *openssh_new_read(
 
     checkint = get_uint32(src);
     if (get_uint32(src) != checkint || get_err(src)) {
-        errmsg = "è§£å¯†æ£€æµ‹å¤±è´¥";
+        errmsg = "½âÃÜ¼ì²âÊ§°Ü";
         goto error;
     }
 
@@ -1423,7 +1416,7 @@ static ssh2_userkey *openssh_new_read(
          */
         alg = find_pubkey_alg_len(get_string(src));
         if (!alg) {
-            errmsg = "ç§é’¥ç±»å‹æ— æ³•è¯†åˆ«\n";
+            errmsg = "Ë½Ô¿ÀàĞÍÎŞ·¨Ê¶±ğ\n";
             goto error;
         }
 
@@ -1434,11 +1427,11 @@ static ssh2_userkey *openssh_new_read(
          */
         retkey->key = ssh_key_new_priv_openssh(alg, src);
         if (get_err(src)) {
-            errmsg = "æ— æ³•è¯»å–æ•´ä¸ªç§é’¥";
+            errmsg = "ÎŞ·¨¶ÁÈ¡Õû¸öË½Ô¿";
             goto error;
         }
         if (!retkey->key) {
-            errmsg = "æ— æ³•åˆ›å»ºå…³é”®çš„æ•°æ®ç»“æ„";
+            errmsg = "ÎŞ·¨´´½¨¹Ø¼üµÄÊı¾İ½á¹¹";
             goto error;
         }
         if (key_index != key->key_wanted) {
@@ -1454,7 +1447,7 @@ static ssh2_userkey *openssh_new_read(
          */
         comment = get_string(src);
         if (get_err(src)) {
-            errmsg = "æ— æ³•è¯»å–å¯†é’¥æ³¨é‡Š";
+            errmsg = "ÎŞ·¨¶ÁÈ¡ÃÜÔ¿×¢ÊÍ";
             goto error;
         }
         if (key_index == key->key_wanted) {
@@ -1464,7 +1457,7 @@ static ssh2_userkey *openssh_new_read(
     }
 
     if (!retkey->key) {
-        errmsg = "å¯†é’¥ç´¢å¼•è¶…å‡ºèŒƒå›´";
+        errmsg = "ÃÜÔ¿Ë÷Òı³¬³ö·¶Î§";
         goto error;
     }
 
@@ -1475,7 +1468,7 @@ static ssh2_userkey *openssh_new_read(
         unsigned char expected_pad_byte = 1;
         while (get_avail(src) > 0)
             if (get_byte(src) != expected_pad_byte++) {
-                errmsg = "ç§é’¥æœ«å°¾çš„å­—ç¬¦ä¸²å¡«å……ä¸åŒ¹é…";
+                errmsg = "Ë½Ô¿Ä©Î²µÄ×Ö·û´®Ìî³ä²»Æ¥Åä";
                 goto error;
             }
     }
@@ -1484,7 +1477,7 @@ static ssh2_userkey *openssh_new_read(
     retval = retkey;
     retkey = NULL;                     /* prevent the free */
 
-    error:
+  error:
     if (retkey) {
         sfree(retkey->comment);
         if (retkey->key)
@@ -1499,7 +1492,7 @@ static ssh2_userkey *openssh_new_read(
 }
 
 static bool openssh_new_write(
-    const Filename *filename, ssh2_userkey *key, const char *passphrase)
+    const Filename *filename, ssh2_userkey *ukey, const char *passphrase)
 {
     strbuf *pubblob, *privblob, *cblob;
     int padvalue;
@@ -1509,13 +1502,17 @@ static bool openssh_new_write(
     const int bcrypt_rounds = 16;
     FILE *fp;
 
+    /* OpenSSH's private key files never contain a certificate, so
+     * revert to the underlying base key if necessary */
+    ssh_key *key = ssh_key_base_key(ukey->key);
+
     /*
      * Fetch the key blobs and find out the lengths of things.
      */
     pubblob = strbuf_new();
-    ssh_key_public_blob(key->key, BinarySink_UPCAST(pubblob));
+    ssh_key_public_blob(key, BinarySink_UPCAST(pubblob));
     privblob = strbuf_new_nm();
-    ssh_key_openssh_blob(key->key, BinarySink_UPCAST(privblob));
+    ssh_key_openssh_blob(key, BinarySink_UPCAST(privblob));
 
     /*
      * Construct the cleartext version of the blob.
@@ -1562,11 +1559,11 @@ static bool openssh_new_write(
 
         /* Private key. The main private blob goes inline, with no string
          * wrapper. */
-        put_stringz(cpblob, ssh_key_ssh_id(key->key));
+        put_stringz(cpblob, ssh_key_ssh_id(key));
         put_data(cpblob, privblob->s, privblob->len);
 
         /* Comment. */
-        put_stringz(cpblob, key->comment);
+        put_stringz(cpblob, ukey->comment);
 
         /* Pad out the encrypted section. */
         padvalue = 1;
@@ -1606,12 +1603,12 @@ static bool openssh_new_write(
     if (!fp)
         goto error;
     fputs("-----BEGIN OPENSSH PRIVATE KEY-----\n", fp);
-    base64_encode(fp, cblob->u, cblob->len, 64);
+    base64_encode_fp(fp, ptrlen_from_strbuf(cblob), 64);
     fputs("-----END OPENSSH PRIVATE KEY-----\n", fp);
     fclose(fp);
     ret = true;
 
-    error:
+  error:
     if (cblob)
         strbuf_free(cblob);
     if (privblob)
@@ -1633,11 +1630,12 @@ static bool openssh_auto_write(
      * assume that anything not in that fixed list is newer, and hence
      * will use the new format.
      */
-    if (ssh_key_alg(key->key) == &ssh_dsa ||
-        ssh_key_alg(key->key) == &ssh_rsa ||
-        ssh_key_alg(key->key) == &ssh_ecdsa_nistp256 ||
-        ssh_key_alg(key->key) == &ssh_ecdsa_nistp384 ||
-        ssh_key_alg(key->key) == &ssh_ecdsa_nistp521)
+    const ssh_keyalg *alg = ssh_key_alg(ssh_key_base_key(key->key));
+    if (alg == &ssh_dsa ||
+        alg == &ssh_rsa ||
+        alg == &ssh_ecdsa_nistp256 ||
+        alg == &ssh_ecdsa_nistp384 ||
+        alg == &ssh_ecdsa_nistp521)
         return openssh_pem_write(filename, key, passphrase);
     else
         return openssh_new_write(filename, key, passphrase);
@@ -1741,11 +1739,11 @@ static struct sshcom_key *load_sshcom_key(BinarySource *src,
     ret->keyblob = strbuf_new_nm();
 
     if (!(line = bsgetline(src))) {
-        errmsg = "æ–‡ä»¶æ„å¤–ç»“æŸ";
+        errmsg = "ÎÄ¼şÒâÍâ½áÊø";
         goto error;
     }
     if (0 != strcmp(line, "---- BEGIN SSH2 ENCRYPTED PRIVATE KEY ----")) {
-        errmsg = "æ–‡ä»¶ä¸æ˜¯ä»¥ssh.comå¯†é’¥å¤´å¼€å§‹";
+        errmsg = "ÎÄ¼ş²»ÊÇÒÔssh.comÃÜÔ¿Í·¿ªÊ¼";
         goto error;
     }
     smemclr(line, strlen(line));
@@ -1755,7 +1753,7 @@ static struct sshcom_key *load_sshcom_key(BinarySource *src,
     headers_done = false;
     while (1) {
         if (!(line = bsgetline(src))) {
-            errmsg = "æ–‡ä»¶æ„å¤–ç»“æŸ";
+            errmsg = "ÎÄ¼şÒâÍâ½áÊø";
             goto error;
         }
         if (!strcmp(line, "---- END SSH2 ENCRYPTED PRIVATE KEY ----")) {
@@ -1765,7 +1763,7 @@ static struct sshcom_key *load_sshcom_key(BinarySource *src,
         }
         if ((p = strchr(line, ':')) != NULL) {
             if (headers_done) {
-                errmsg = "åœ¨å…³é”®æ•°æ®æ­£æ–‡ä¸­æ‰¾åˆ°æ ‡é¢˜å¤´";
+                errmsg = "ÔÚ¹Ø¼üÊı¾İÕıÎÄÖĞÕÒµ½±êÌâÍ·";
                 goto error;
             }
             *p++ = '\0';
@@ -1784,7 +1782,7 @@ static struct sshcom_key *load_sshcom_key(BinarySource *src,
 
                 line2 = bsgetline(src);
                 if (!line2) {
-                    errmsg = "æ–‡ä»¶æ„å¤–ç»“æŸ";
+                    errmsg = "ÎÄ¼şÒâÍâ½áÊø";
                     goto error;
                 }
 
@@ -1822,7 +1820,7 @@ static struct sshcom_key *load_sshcom_key(BinarySource *src,
                     len = base64_decode_atom(base64_bit, out);
 
                     if (len <= 0) {
-                        errmsg = "æ— æ•ˆçš„base64ç¼–ç ";
+                        errmsg = "ÎŞĞ§µÄbase64±àÂë";
                         goto error;
                     }
 
@@ -1838,14 +1836,14 @@ static struct sshcom_key *load_sshcom_key(BinarySource *src,
     }
 
     if (ret->keyblob->len == 0) {
-        errmsg = "å¯†é’¥ä¸»ä½“ä¸å­˜åœ¨";
+        errmsg = "ÃÜÔ¿Ö÷Ìå²»´æÔÚ";
         goto error;
     }
 
     if (errmsg_p) *errmsg_p = NULL;
     return ret;
 
-    error:
+  error:
     if (line) {
         smemclr(line, strlen(line));
         sfree(line);
@@ -1883,7 +1881,7 @@ static bool sshcom_encrypted(BinarySource *filesrc, char **comment)
     if (!ptrlen_eq_string(str, "none"))
         answer = true;
 
-    done:
+  done:
     if (key) {
         *comment = dupstr(key->comment);
         strbuf_free(key->keyblob);
@@ -1895,7 +1893,7 @@ static bool sshcom_encrypted(BinarySource *filesrc, char **comment)
     return answer;
 }
 
-void BinarySink_put_mp_sshcom_from_string(BinarySink *bs, ptrlen str)
+static void BinarySink_put_mp_sshcom_from_string(BinarySink *bs, ptrlen str)
 {
     const unsigned char *bytes = (const unsigned char *)str.ptr;
     size_t nbytes = str.len;
@@ -1966,7 +1964,7 @@ static ssh2_userkey *sshcom_read(
     BinarySource_BARE_INIT_PL(src, ptrlen_from_strbuf(key->keyblob));
 
     if (get_uint32(src) != SSHCOM_MAGIC_NUMBER) {
-        errmsg = "å¯†é’¥ä¸ä»¥magicæ•°å¼€å¤´";
+        errmsg = "ÃÜÔ¿²»ÒÔmagicÊı¿ªÍ·";
         goto error;
     }
     get_uint32(src);                   /* skip length field */
@@ -1979,10 +1977,10 @@ static ssh2_userkey *sshcom_read(
         !memcmp(str.ptr, prefix_rsa, sizeof(prefix_rsa) - 1)) {
         type = RSA;
     } else if (str.len > sizeof(prefix_dsa) - 1 &&
-        !memcmp(str.ptr, prefix_dsa, sizeof(prefix_dsa) - 1)) {
+               !memcmp(str.ptr, prefix_dsa, sizeof(prefix_dsa) - 1)) {
         type = DSA;
     } else {
-        errmsg = "å¯†é’¥ç±»å‹æœªçŸ¥";
+        errmsg = "ÃÜÔ¿ÀàĞÍÎ´Öª";
         goto error;
     }
 
@@ -1995,7 +1993,7 @@ static ssh2_userkey *sshcom_read(
     else if (ptrlen_eq_string(str, "3des-cbc"))
         encrypted = true;
     else {
-        errmsg = "å¯†é’¥åŠ å¯†ç±»å‹æœªçŸ¥";
+        errmsg = "ÃÜÔ¿¼ÓÃÜÀàĞÍÎ´Öª";
         goto error;
     }
 
@@ -2004,7 +2002,7 @@ static ssh2_userkey *sshcom_read(
      */
     ciphertext = get_string(src);
     if (ciphertext.len == 0) {
-        errmsg = "æœªæ‰¾åˆ°å¯†é’¥çš„å…³é”®æ•°æ®";
+        errmsg = "Î´ÕÒµ½ÃÜÔ¿µÄ¹Ø¼üÊı¾İ";
         goto error;
     }
 
@@ -2023,8 +2021,8 @@ static ssh2_userkey *sshcom_read(
         unsigned char keybuf[32], iv[8];
 
         if (ciphertext.len % 8 != 0) {
-            errmsg = "å¯†é’¥åŠ å¯†éƒ¨åˆ†çš„å°ºå¯¸ä¸æ˜¯å¯†ç å—çš„"
-                "å€æ•°";
+            errmsg = "ÃÜÔ¿¼ÓÃÜ²¿·ÖµÄ³ß´ç²»ÊÇÃÜÂë¿éµÄ"
+                "±¶Êı";
             goto error;
         }
 
@@ -2057,7 +2055,7 @@ static ssh2_userkey *sshcom_read(
     BinarySource_BARE_INIT_PL(src, ciphertext);
     str = get_string(src);
     if (get_err(src)) {
-        errmsg = "å­—ç¬¦ä¸²åŒ…å«ä¸æ­£ç¡®çš„æ ¼å¼";
+        errmsg = "×Ö·û´®°üº¬²»ÕıÈ·µÄ¸ñÊ½";
         goto error;
     }
     BinarySource_BARE_INIT_PL(src, str);
@@ -2078,7 +2076,7 @@ static ssh2_userkey *sshcom_read(
         p = get_mp_sshcom_as_string(src);
         q = get_mp_sshcom_as_string(src);
         if (get_err(src)) {
-            errmsg = "å¯†é’¥æ•°æ®ä¸åŒ…å«6ä¸ªæ•´æ•°";
+            errmsg = "ÃÜÔ¿Êı¾İ²»°üº¬6¸öÕûÊı";
             goto error;
         }
 
@@ -2097,7 +2095,7 @@ static ssh2_userkey *sshcom_read(
         assert(type == DSA); /* the only other option from the if above */
 
         if (get_uint32(src) != 0) {
-            errmsg = "ä¸æ”¯æŒé¢„å®šä¹‰çš„DSAå‚æ•°";
+            errmsg = "²»Ö§³ÖÔ¤¶¨ÒåµÄDSA²ÎÊı";
             goto error;
         }
         p = get_mp_sshcom_as_string(src);
@@ -2106,7 +2104,7 @@ static ssh2_userkey *sshcom_read(
         y = get_mp_sshcom_as_string(src);
         x = get_mp_sshcom_as_string(src);
         if (get_err(src)) {
-            errmsg = "å¯†é’¥æ•°æ®ä¸åŒ…å«5ä¸ªæ•´æ•°";
+            errmsg = "ÃÜÔ¿Êı¾İ²»°üº¬5¸öÕûÊı";
             goto error;
         }
 
@@ -2126,7 +2124,7 @@ static ssh2_userkey *sshcom_read(
         make_ptrlen(blob->u + publen, blob->len - publen));
     if (!retkey->key) {
         sfree(retkey);
-        errmsg = "æ— æ³•åˆ›å»ºå¯†é’¥çš„å…³é”®æ•°æ®ç»“æ„";
+        errmsg = "ÎŞ·¨´´½¨ÃÜÔ¿µÄ¹Ø¼üÊı¾İ½á¹¹";
         goto error;
     }
     retkey->comment = dupstr(key->comment);
@@ -2134,7 +2132,7 @@ static ssh2_userkey *sshcom_read(
     errmsg = NULL; /* no error */
     ret = retkey;
 
-    error:
+  error:
     if (blob) {
         strbuf_free(blob);
     }
@@ -2308,12 +2306,12 @@ static bool sshcom_write(
         }
         fprintf(fp, "%s\"\n", c);
     }
-    base64_encode(fp, outblob->u, outblob->len, 70);
+    base64_encode_fp(fp, ptrlen_from_strbuf(outblob), 70);
     fputs("---- END SSH2 ENCRYPTED PRIVATE KEY ----\n", fp);
     fclose(fp);
     ret = true;
 
-    error:
+  error:
     if (outblob)
         strbuf_free(outblob);
     if (privblob)

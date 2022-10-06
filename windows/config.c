@@ -10,27 +10,27 @@
 #include "dialog.h"
 #include "storage.h"
 
-static void about_handler(union control *ctrl, dlgparam *dlg,
+static void about_handler(dlgcontrol *ctrl, dlgparam *dlg,
                           void *data, int event)
 {
-    HWND *hwndp = (HWND *)ctrl->generic.context.p;
+    HWND *hwndp = (HWND *)ctrl->context.p;
 
     if (event == EVENT_ACTION) {
         modal_about_box(*hwndp);
     }
 }
 
-static void help_handler(union control *ctrl, dlgparam *dlg,
+static void help_handler(dlgcontrol *ctrl, dlgparam *dlg,
                          void *data, int event)
 {
-    HWND *hwndp = (HWND *)ctrl->generic.context.p;
+    HWND *hwndp = (HWND *)ctrl->context.p;
 
     if (event == EVENT_ACTION) {
         show_help(*hwndp);
     }
 }
 
-static void variable_pitch_handler(union control *ctrl, dlgparam *dlg,
+static void variable_pitch_handler(dlgcontrol *ctrl, dlgparam *dlg,
                                    void *data, int event)
 {
     if (event == EVENT_REFRESH) {
@@ -46,7 +46,7 @@ void win_setup_config_box(struct controlbox *b, HWND *hwndp, bool has_help,
     const struct BackendVtable *backvt;
     bool resize_forbidden = false;
     struct controlset *s;
-    union control *c;
+    dlgcontrol *c;
     char *str;
 
     if (!midsession) {
@@ -54,13 +54,13 @@ void win_setup_config_box(struct controlbox *b, HWND *hwndp, bool has_help,
          * Add the About and Help buttons to the standard panel.
          */
         s = ctrl_getset(b, "", "", "");
-        c = ctrl_pushbutton(s, "å…³äº", 'a', HELPCTX(no_help),
+        c = ctrl_pushbutton(s, "¹ØÓÚ", 'a', HELPCTX(no_help),
                             about_handler, P(hwndp));
-        c->generic.column = 0;
+        c->column = 0;
         if (has_help) {
-            c = ctrl_pushbutton(s, "å¸®åŠ©", 'h', HELPCTX(no_help),
+            c = ctrl_pushbutton(s, "°ïÖú", 'h', HELPCTX(no_help),
                                 help_handler, P(hwndp));
-            c->generic.column = 1;
+            c->column = 1;
         }
     }
 
@@ -68,9 +68,9 @@ void win_setup_config_box(struct controlbox *b, HWND *hwndp, bool has_help,
      * Full-screen mode is a Windows peculiarity; hence
      * scrollbar_in_fullscreen is as well.
      */
-    s = ctrl_getset(b, "çª—å£", "scrollback",
-                    "çª—å£æ»šåŠ¨è®¾ç½®ï¼š");
-    ctrl_checkbox(s, "å…¨å±æ¨¡å¼ä¸‹æ˜¾ç¤ºæ»šåŠ¨æ¡", 'i',
+    s = ctrl_getset(b, "´°¿Ú", "scrollback",
+                    "´°¿Ú¹ö¶¯ÉèÖÃ£º");
+    ctrl_checkbox(s, "È«ÆÁÄ£Ê½ÏÂÏÔÊ¾¹ö¶¯Ìõ", 'i',
                   HELPCTX(window_scrollback),
                   conf_checkbox_handler,
                   I(CONF_scrollbar_in_fullscreen));
@@ -82,8 +82,8 @@ void win_setup_config_box(struct controlbox *b, HWND *hwndp, bool has_help,
         int i;
         for (i = 0; i < s->ncontrols; i++) {
             c = s->ctrls[i];
-            if (c->generic.type == CTRL_CHECKBOX &&
-                c->generic.context.i == CONF_scrollbar) {
+            if (c->type == CTRL_CHECKBOX &&
+                c->context.i == CONF_scrollbar) {
                 /*
                  * Control i is the scrollbar checkbox.
                  * Control s->ncontrols-1 is the scrollbar-in-FS one.
@@ -91,7 +91,7 @@ void win_setup_config_box(struct controlbox *b, HWND *hwndp, bool has_help,
                 if (i < s->ncontrols-2) {
                     c = s->ctrls[s->ncontrols-1];
                     memmove(s->ctrls+i+2, s->ctrls+i+1,
-                            (s->ncontrols-i-2)*sizeof(union control *));
+                            (s->ncontrols-i-2)*sizeof(dlgcontrol *));
                     s->ctrls[i+1] = c;
                 }
                 break;
@@ -103,12 +103,12 @@ void win_setup_config_box(struct controlbox *b, HWND *hwndp, bool has_help,
      * Windows has the AltGr key, which has various Windows-
      * specific options.
      */
-    s = ctrl_getset(b, "ç»ˆç«¯/é”®ç›˜", "features",
-                    "å¯ç”¨é¢å¤–çš„é”®ç›˜åŠŸèƒ½ï¼š");
-    ctrl_checkbox(s, "AltGrå……å½“Composeé”®", 't',
+    s = ctrl_getset(b, "ÖÕ¶Ë/¼üÅÌ", "features",
+                    "ÆôÓÃ¶îÍâµÄ¼üÅÌ¹¦ÄÜ£º");
+    ctrl_checkbox(s, "AltGr³äµ±Compose¼ü", 't',
                   HELPCTX(keyboard_compose),
                   conf_checkbox_handler, I(CONF_compose_key));
-    ctrl_checkbox(s, "Control-Altä¸AltGrä¸åŒ", 'd',
+    ctrl_checkbox(s, "Control-AltÓëAltGr²»Í¬", 'd',
                   HELPCTX(keyboard_ctrlalt),
                   conf_checkbox_handler, I(CONF_ctrlaltkeys));
 
@@ -129,21 +129,21 @@ void win_setup_config_box(struct controlbox *b, HWND *hwndp, bool has_help,
      * the interface, and template creation code is under no actual
      * obligation to use them.
      */
-    s = ctrl_getset(b, "ç»ˆç«¯/æç¤ºéŸ³", "style", "è‡ªå®šä¹‰è®¾ç½®");
+    s = ctrl_getset(b, "ÖÕ¶Ë/ÌáÊ¾Òô", "style", "×Ô¶¨ÒåÉèÖÃ");
     {
         int i;
         for (i = 0; i < s->ncontrols; i++) {
             c = s->ctrls[i];
-            if (c->generic.type == CTRL_RADIO &&
-                c->generic.context.i == CONF_beep) {
-                assert(c->generic.handler == conf_radiobutton_handler);
+            if (c->type == CTRL_RADIO &&
+                c->context.i == CONF_beep) {
+                assert(c->handler == conf_radiobutton_handler);
                 c->radio.nbuttons += 2;
                 c->radio.buttons =
                     sresize(c->radio.buttons, c->radio.nbuttons, char *);
                 c->radio.buttons[c->radio.nbuttons-1] =
-                    dupstr("æ’­æ”¾è‡ªå®šä¹‰æç¤ºéŸ³");
+                    dupstr("²¥·Å×Ô¶¨ÒåÌáÊ¾Òô");
                 c->radio.buttons[c->radio.nbuttons-2] =
-                    dupstr("PCèœ‚é¸£å™¨æç¤ºéŸ³");
+                    dupstr("PC·äÃùÆ÷ÌáÊ¾Òô");
                 c->radio.buttondata =
                     sresize(c->radio.buttondata, c->radio.nbuttons, intorptr);
                 c->radio.buttondata[c->radio.nbuttons-1] = I(BELL_WAVEFILE);
@@ -158,8 +158,8 @@ void win_setup_config_box(struct controlbox *b, HWND *hwndp, bool has_help,
             }
         }
     }
-    ctrl_filesel(s, "è‡ªå®šä¹‰æç¤ºéŸ³æ–‡ä»¶ï¼š", NO_SHORTCUT,
-                 FILTER_WAVE_FILES, false, "é€‰æ‹©å£°éŸ³æ–‡ä»¶",
+    ctrl_filesel(s, "×Ô¶¨ÒåÌáÊ¾ÒôÎÄ¼ş£º", NO_SHORTCUT,
+                 FILTER_WAVE_FILES, false, "Ñ¡ÔñÉùÒôÎÄ¼ş",
                  HELPCTX(bell_style),
                  conf_filesel_handler, I(CONF_bell_wavefile));
 
@@ -167,46 +167,46 @@ void win_setup_config_box(struct controlbox *b, HWND *hwndp, bool has_help,
      * While we've got this box open, taskbar flashing on a bell is
      * also Windows-specific.
      */
-    ctrl_radiobuttons(s, "ä»»åŠ¡æ /æ ‡é¢˜æ æç¤ºéŸ³æ ‡å¿—ï¼š", 'i', 3,
+    ctrl_radiobuttons(s, "ÈÎÎñÀ¸/±êÌâÀ¸ÌáÊ¾Òô±êÖ¾£º", 'i', 3,
                       HELPCTX(bell_taskbar),
                       conf_radiobutton_handler,
                       I(CONF_beep_ind),
-                      "å·²ç¦ç”¨", I(B_IND_DISABLED),
-                      "é—ªçƒ", I(B_IND_FLASH),
-                      "å¸¸è§„", I(B_IND_STEADY), NULL);
+                      "ÒÑ½ûÓÃ", I(B_IND_DISABLED),
+                      "ÉÁË¸", I(B_IND_FLASH),
+                      "³£¹æ", I(B_IND_STEADY));
 
     /*
      * The sunken-edge border is a Windows GUI feature.
      */
-    s = ctrl_getset(b, "çª—å£/å¤–è§‚", "border",
-                    "è°ƒæ•´çª—å£è¾¹æ¡†ï¼š");
-    ctrl_checkbox(s, "ä¸‹æ²‰è¾¹æ¡†è¾¹ç¼˜(ç¨åš)", 's',
+    s = ctrl_getset(b, "´°¿Ú/Íâ¹Û", "border",
+                    "µ÷Õû´°¿Ú±ß¿ò£º");
+    ctrl_checkbox(s, "ÏÂ³Á±ß¿ò±ßÔµ(ÉÔºñ)", 's',
                   HELPCTX(appearance_border),
                   conf_checkbox_handler, I(CONF_sunken_edge));
 
     /*
      * Configurable font quality settings for Windows.
      */
-    s = ctrl_getset(b, "çª—å£/å¤–è§‚", "font",
-                    "å­—ä½“è®¾ç½®ï¼š");
-    ctrl_checkbox(s, "å…è®¸é€‰æ‹©å¯å˜é—´è·å­—ä½“", NO_SHORTCUT,
+    s = ctrl_getset(b, "´°¿Ú/Íâ¹Û", "font",
+                    "×ÖÌåÉèÖÃ£º");
+    ctrl_checkbox(s, "ÔÊĞíÑ¡Ôñ¿É±ä¼ä¾à×ÖÌå", NO_SHORTCUT,
                   HELPCTX(appearance_font), variable_pitch_handler, I(0));
-    ctrl_radiobuttons(s, "å­—ä½“æ•ˆæœï¼š", 'q', 2,
+    ctrl_radiobuttons(s, "×ÖÌåĞ§¹û£º", 'q', 2,
                       HELPCTX(appearance_font),
                       conf_radiobutton_handler,
                       I(CONF_font_quality),
-                      "æŠ—é”¯é½¿", I(FQ_ANTIALIASED),
-                      "æ— æŠ—é”¯é½¿", I(FQ_NONANTIALIASED),
+                      "¿¹¾â³İ", I(FQ_ANTIALIASED),
+                      "ÎŞ¿¹¾â³İ", I(FQ_NONANTIALIASED),
                       "ClearType", I(FQ_CLEARTYPE),
-                      "é»˜è®¤", I(FQ_DEFAULT), NULL);
+                      "Ä¬ÈÏ", I(FQ_DEFAULT));
 
     /*
      * Cyrillic Lock is a horrid misfeature even on Windows, and
      * the least we can do is ensure it never makes it to any other
      * platform (at least unless someone fixes it!).
      */
-    s = ctrl_getset(b, "çª—å£/å­—ç¬¦è½¬æ¢", "tweaks", NULL);
-    ctrl_checkbox(s, "å¤§å†™é”å®šé”®ç”¨äºCyrillicåˆ‡æ¢", 's',
+    s = ctrl_getset(b, "´°¿Ú/×Ö·û×ª»»", "tweaks", NULL);
+    ctrl_checkbox(s, "´óĞ´Ëø¶¨¼üÓÃÓÚCyrillicÇĞ»»", 's',
                   HELPCTX(translation_cyrillic),
                   conf_checkbox_handler,
                   I(CONF_xlat_capslockcyr));
@@ -215,10 +215,10 @@ void win_setup_config_box(struct controlbox *b, HWND *hwndp, bool has_help,
      * On Windows we can use but not enumerate translation tables
      * from the operating system. Briefly document this.
      */
-    s = ctrl_getset(b, "çª—å£/å­—ç¬¦è½¬æ¢", "trans",
-                    "æ¥æ”¶æ•°æ®çš„å­—ç¬¦é›†è½¬æ¢");
-    ctrl_text(s, "(Windowsæ”¯æŒä½†æœªåˆ—å‡ºçš„å­—ç¬¦é›†,"
-              "æ¯”å¦‚å¾ˆå¤šç³»ç»Ÿä¸Šéƒ½æœ‰çš„CP866,å¯ä»¥æ‰‹åŠ¨è¾“å…¥)",
+    s = ctrl_getset(b, "´°¿Ú/×Ö·û×ª»»", "trans",
+                    "½ÓÊÕÊı¾İµÄ×Ö·û¼¯×ª»»");
+    ctrl_text(s, "(WindowsÖ§³Öµ«Î´ÁĞ³öµÄ×Ö·û¼¯,"
+              "±ÈÈçºÜ¶àÏµÍ³ÉÏ¶¼ÓĞµÄCP866,¿ÉÒÔÊÖ¶¯ÊäÈë)",
               HELPCTX(translation_codepage));
 
     /*
@@ -226,25 +226,25 @@ void win_setup_config_box(struct controlbox *b, HWND *hwndp, bool has_help,
      * additional options when working with line-drawing
      * characters.
      */
-    str = dupprintf("è°ƒæ•´%så¤„ç†å­—ç¬¦çš„æ–¹å¼ï¼š", appname);
-    s = ctrl_getset(b, "çª—å£/å­—ç¬¦è½¬æ¢", "linedraw", str);
+    str = dupprintf("µ÷Õû%s´¦Àí×Ö·ûµÄ·½Ê½£º", appname);
+    s = ctrl_getset(b, "´°¿Ú/×Ö·û×ª»»", "linedraw", str);
     sfree(str);
     {
         int i;
         for (i = 0; i < s->ncontrols; i++) {
             c = s->ctrls[i];
-            if (c->generic.type == CTRL_RADIO &&
-                c->generic.context.i == CONF_vtmode) {
-                assert(c->generic.handler == conf_radiobutton_handler);
+            if (c->type == CTRL_RADIO &&
+                c->context.i == CONF_vtmode) {
+                assert(c->handler == conf_radiobutton_handler);
                 c->radio.nbuttons += 3;
                 c->radio.buttons =
                     sresize(c->radio.buttons, c->radio.nbuttons, char *);
                 c->radio.buttons[c->radio.nbuttons-3] =
-                    dupstr("X Windows ç”»çº¿ç»˜åˆ¶");
+                    dupstr("X Windows »­Ïß»æÖÆ");
                 c->radio.buttons[c->radio.nbuttons-2] =
-                    dupstr("ANSI/OEM æ¨¡å¼ç”»çº¿");
+                    dupstr("ANSI/OEM Ä£Ê½»­Ïß");
                 c->radio.buttons[c->radio.nbuttons-1] =
-                    dupstr("ä»…OEMæ¨¡å¼ç¼–ç ç»˜åˆ¶");
+                    dupstr("½öOEMÄ£Ê½±àÂë»æÖÆ");
                 c->radio.buttondata =
                     sresize(c->radio.buttondata, c->radio.nbuttons, intorptr);
                 c->radio.buttondata[c->radio.nbuttons-3] = I(VT_XWINDOWS);
@@ -270,9 +270,9 @@ void win_setup_config_box(struct controlbox *b, HWND *hwndp, bool has_help,
     /*
      * RTF paste is Windows-specific.
      */
-    s = ctrl_getset(b, "çª—å£/é€‰æ‹©/å¤åˆ¶", "format",
-                    "å¤åˆ¶å­—ç¬¦çš„æ–¹å¼ï¼š");
-    ctrl_checkbox(s, "ä»¥RTFå’Œçº¯æ–‡æœ¬æ ¼å¼å¤åˆ¶", 'f',
+    s = ctrl_getset(b, "´°¿Ú/Ñ¡Ôñ/¸´ÖÆ", "format",
+                    "¸´ÖÆ×Ö·ûµÄ·½Ê½£º");
+    ctrl_checkbox(s, "ÒÔRTFºÍ´¿ÎÄ±¾¸ñÊ½¸´ÖÆ", 'f',
                   HELPCTX(copy_rtf),
                   conf_checkbox_handler, I(CONF_rtf_paste));
 
@@ -281,33 +281,33 @@ void win_setup_config_box(struct controlbox *b, HWND *hwndp, bool has_help,
      * mode in which the more critical Paste action is available on
      * the right button instead.
      */
-    s = ctrl_getset(b, "çª—å£/é€‰æ‹©", "mouse",
-                    "é¼ æ ‡çš„ä½¿ç”¨ï¼š");
-    ctrl_radiobuttons(s, "é¼ æ ‡æŒ‰é”®åŠ¨ä½œï¼š", 'm', 1,
+    s = ctrl_getset(b, "´°¿Ú/Ñ¡Ôñ", "mouse",
+                    "Êó±êµÄÊ¹ÓÃ£º");
+    ctrl_radiobuttons(s, "Êó±ê°´¼ü¶¯×÷£º", 'm', 1,
                       HELPCTX(selection_buttons),
                       conf_radiobutton_handler,
                       I(CONF_mouse_is_xterm),
-                      "Windows--ä¸­é”®æ‰©å±•,å³é”®èœå•", I(2),
-                      "Compromise--ä¸­é”®æ‰©å±•,å³é”®ç²˜è´´", I(0),
-                      "xterm--å³é”®æ‰©å±•,ä¸­é”®ç²˜è´´", I(1), NULL);
+                      "Windows--ÖĞ¼üÀ©Õ¹,ÓÒ¼ü²Ëµ¥", I(2),
+                      "Compromise--ÖĞ¼üÀ©Õ¹,ÓÒ¼üÕ³Ìù", I(0),
+                      "xterm--ÓÒ¼üÀ©Õ¹,ÖĞ¼üÕ³Ìù", I(1));
     /*
      * This really ought to go at the _top_ of its box, not the
      * bottom, so we'll just do some shuffling now we've set it
      * up...
      */
     c = s->ctrls[s->ncontrols-1];      /* this should be the new control */
-    memmove(s->ctrls+1, s->ctrls, (s->ncontrols-1)*sizeof(union control *));
+    memmove(s->ctrls+1, s->ctrls, (s->ncontrols-1)*sizeof(dlgcontrol *));
     s->ctrls[0] = c;
 
     /*
      * Logical palettes don't even make sense anywhere except Windows.
      */
-    s = ctrl_getset(b, "çª—å£/é¢œè‰²", "general",
-                    "é¢œè‰²ä½¿ç”¨çš„å¸¸è§„é€‰é¡¹");
-    ctrl_checkbox(s, "å°è¯•ä½¿ç”¨é€»è¾‘è°ƒè‰²æ¿", 'l',
+    s = ctrl_getset(b, "´°¿Ú/ÑÕÉ«", "general",
+                    "ÑÕÉ«Ê¹ÓÃµÄ³£¹æÑ¡Ïî");
+    ctrl_checkbox(s, "³¢ÊÔÊ¹ÓÃÂß¼­µ÷É«°å", 'l',
                   HELPCTX(colours_logpal),
                   conf_checkbox_handler, I(CONF_try_palette));
-    ctrl_checkbox(s, "ä½¿ç”¨ç³»ç»Ÿé¢œè‰²", 's',
+    ctrl_checkbox(s, "Ê¹ÓÃÏµÍ³ÑÕÉ«", 's',
                   HELPCTX(colours_system),
                   conf_checkbox_handler, I(CONF_system_colour));
 
@@ -320,15 +320,15 @@ void win_setup_config_box(struct controlbox *b, HWND *hwndp, bool has_help,
     if (backvt)
         resize_forbidden = (backvt->flags & BACKEND_RESIZE_FORBIDDEN);
     if (!midsession || !resize_forbidden) {
-        s = ctrl_getset(b, "çª—å£", "size", "è®¾ç½®çª—å£å¤§å°");
-        ctrl_radiobuttons(s, "è°ƒæ•´çª—å£å¤§å°æ—¶ï¼š", 'z', 1,
+        s = ctrl_getset(b, "´°¿Ú", "size", "ÉèÖÃ´°¿Ú´óĞ¡");
+        ctrl_radiobuttons(s, "µ÷Õû´°¿Ú´óĞ¡Ê±£º", 'z', 1,
                           HELPCTX(window_resize),
                           conf_radiobutton_handler,
                           I(CONF_resize_action),
-                          "æ›´æ”¹è¡Œåˆ—æ•°", I(RESIZE_TERM),
-                          "æ›´æ”¹å­—ä½“å¤§å°", I(RESIZE_FONT),
-                          "ä»…åœ¨æœ€å¤§åŒ–æ—¶æ›´æ”¹å­—ä½“å¤§å°", I(RESIZE_EITHER),
-                          "å®Œå…¨ç¦æ­¢è°ƒæ•´å¤§å°", I(RESIZE_DISABLED), NULL);
+                          "¸ü¸ÄĞĞÁĞÊı", I(RESIZE_TERM),
+                          "¸ü¸Ä×ÖÌå´óĞ¡", I(RESIZE_FONT),
+                          "½öÔÚ×î´ó»¯Ê±¸ü¸Ä×ÖÌå´óĞ¡", I(RESIZE_EITHER),
+                          "ÍêÈ«½ûÖ¹µ÷Õû´óĞ¡", I(RESIZE_DISABLED));
     }
 
     /*
@@ -336,58 +336,35 @@ void win_setup_config_box(struct controlbox *b, HWND *hwndp, bool has_help,
      * conventions which PuTTY can optionally disregard. Hence,
      * most of these options are Windows-specific.
      */
-    s = ctrl_getset(b, "çª—å£/è¡Œä¸º", "main", NULL);
-    ctrl_checkbox(s, "ALT-F4 å…³é—­çª—å£", '4',
+    s = ctrl_getset(b, "´°¿Ú/ĞĞÎª", "main", NULL);
+    ctrl_checkbox(s, "ALT-F4 ¹Ø±Õ´°¿Ú", '4',
                   HELPCTX(behaviour_altf4),
                   conf_checkbox_handler, I(CONF_alt_f4));
-    ctrl_checkbox(s, "ALT-Space æ˜¾ç¤ºç³»ç»Ÿèœå•", 'y',
+    ctrl_checkbox(s, "ALT-Space ÏÔÊ¾ÏµÍ³²Ëµ¥", 'y',
                   HELPCTX(behaviour_altspace),
                   conf_checkbox_handler, I(CONF_alt_space));
-    ctrl_checkbox(s, "ALT æ˜¾ç¤ºç³»ç»Ÿèœå•", 'l',
+    ctrl_checkbox(s, "ALT ÏÔÊ¾ÏµÍ³²Ëµ¥", 'l',
                   HELPCTX(behaviour_altonly),
                   conf_checkbox_handler, I(CONF_alt_only));
-    ctrl_checkbox(s, "çª—å£æ€»æ˜¯ä¿æŒåœ¨é¡¶éƒ¨", 'e',
+    ctrl_checkbox(s, "´°¿Ú×ÜÊÇ±£³ÖÔÚ¶¥²¿", 'e',
                   HELPCTX(behaviour_alwaysontop),
                   conf_checkbox_handler, I(CONF_alwaysontop));
-    ctrl_checkbox(s, "Alt-Enter å¼€å¯å…¨å±", 'f',
+    ctrl_checkbox(s, "Alt-Enter ¿ªÆôÈ«ÆÁ", 'f',
                   HELPCTX(behaviour_altenter),
                   conf_checkbox_handler,
                   I(CONF_fullscreenonaltenter));
 
     /*
-     * Windows supports a local-command proxy. This also means we
-     * must adjust the text on the `Telnet command' control.
+     * Windows supports a local-command proxy.
      */
     if (!midsession) {
         int i;
-        s = ctrl_getset(b, "è¿æ¥/ä»£ç†", "basics", NULL);
+        s = ctrl_getset(b, "Á¬½Ó/´úÀí", "basics", NULL);
         for (i = 0; i < s->ncontrols; i++) {
             c = s->ctrls[i];
-            if (c->generic.type == CTRL_RADIO &&
-                c->generic.context.i == CONF_proxy_type) {
-                assert(c->generic.handler == conf_radiobutton_handler);
-                c->radio.nbuttons++;
-                c->radio.buttons =
-                    sresize(c->radio.buttons, c->radio.nbuttons, char *);
-                c->radio.buttons[c->radio.nbuttons-1] =
-                    dupstr("æœ¬åœ°");
-                c->radio.buttondata =
-                    sresize(c->radio.buttondata, c->radio.nbuttons, intorptr);
-                c->radio.buttondata[c->radio.nbuttons-1] = I(PROXY_CMD);
-                if (c->radio.ncolumns < 4)
-                    c->radio.ncolumns = 4;
-                break;
-            }
-        }
-
-        for (i = 0; i < s->ncontrols; i++) {
-            c = s->ctrls[i];
-            if (c->generic.type == CTRL_EDITBOX &&
-                c->generic.context.i == CONF_proxy_telnet_command) {
-                assert(c->generic.handler == conf_editbox_handler);
-                sfree(c->generic.label);
-                c->generic.label = dupstr("Telnetå‘½ä»¤æˆ–è€…æœ¬åœ°"
-                                          "ä»£ç†å‘½ä»¤ï¼š");
+            if (c->type == CTRL_LISTBOX &&
+                c->handler == proxy_type_handler) {
+                c->context.i |= PROXY_UI_FLAG_LOCAL;
                 break;
             }
         }
@@ -398,9 +375,9 @@ void win_setup_config_box(struct controlbox *b, HWND *hwndp, bool has_help,
      * means to override it.
      */
     if (!midsession && backend_vt_from_proto(PROT_SSH)) {
-        s = ctrl_getset(b, "è¿æ¥/SSH/X11", "x11", "X11è½¬å‘");
-        ctrl_filesel(s, "ç”¨äºæœ¬åœ°æ˜¾ç¤ºçš„Xæˆæƒæ–‡ä»¶ï¼š", 't',
-                     NULL, false, "é€‰æ‹©æˆæƒæ–‡ä»¶",
+        s = ctrl_getset(b, "Á¬½Ó/SSH/X11", "x11", "X11×ª·¢");
+        ctrl_filesel(s, "ÓÃÓÚ±¾µØÏÔÊ¾µÄXÊÚÈ¨ÎÄ¼ş£º", 't',
+                     NULL, false, "Ñ¡ÔñÊÚÈ¨ÎÄ¼ş",
                      HELPCTX(ssh_tunnels_xauthority),
                      conf_filesel_handler, I(CONF_xauthfile));
     }
