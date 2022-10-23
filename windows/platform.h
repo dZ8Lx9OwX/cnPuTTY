@@ -249,7 +249,7 @@ const SeatDialogPromptDescriptions *win_seat_prompt_descriptions(Seat *seat);
  * which takes the data string in the system code page instead of
  * Unicode.
  */
-void write_aclip(int clipboard, char *, int, bool);
+void write_aclip(HWND hwnd, int clipboard, char *, int);
 
 #define WM_NETEVENT  (WM_APP + 5)
 
@@ -734,9 +734,13 @@ char *get_jumplist_registry_entries(void);
 #define CLIPUI_DEFAULT_INS CLIPUI_EXPLICIT
 
 /* In utils */
-HKEY open_regkey_fn(bool create, HKEY base, const char *path, ...);
-#define open_regkey(create, base, ...) \
-    open_regkey_fn(create, base, __VA_ARGS__, (const char *)NULL)
+HKEY open_regkey_fn(bool create, bool write, HKEY base, const char *path, ...);
+#define open_regkey_ro(base, ...) \
+    open_regkey_fn(false, false, base, __VA_ARGS__, (const char *)NULL)
+#define open_regkey_rw(base, ...) \
+    open_regkey_fn(false, true, base, __VA_ARGS__, (const char *)NULL)
+#define create_regkey(base, ...) \
+    open_regkey_fn(true, true, base, __VA_ARGS__, (const char *)NULL)
 void close_regkey(HKEY key);
 void del_regkey(HKEY key, const char *name);
 char *enum_regkey(HKEY key, int index);
@@ -792,5 +796,7 @@ bool aux_match_done(AuxMatchOpt *amo);
 
 char *save_screenshot(HWND hwnd, const char *outfile);
 void gui_terminal_ready(HWND hwnd, Seat *seat, Backend *backend);
+
+void setup_gui_timing(void);
 
 #endif /* PUTTY_WINDOWS_PLATFORM_H */

@@ -102,14 +102,14 @@ static SeatPromptResult ssh2_transport_confirm_weak_crypto_primitive(
     const void *alg);
 
 static const char *const kexlist_descr[NKEXLIST] = {
-    "ÃÜÔ¿½»»»Ëã·¨",
-    "Ö÷»úÃÜÔ¿Ëã·¨",
-    "client-to-server ¼ÓÃÜ",
-    "server-to-client ¼ÓÃÜ",
+    "å¯†é’¥äº¤æ¢ç®—æ³•",
+    "ä¸»æœºå¯†é’¥ç®—æ³•",
+    "client-to-server åŠ å¯†",
+    "server-to-client åŠ å¯†",
     "client-to-server MAC",
     "server-to-client MAC",
-    "client-to-server Ñ¹Ëõ·½·¨",
-    "server-to-client Ñ¹Ëõ·½·¨"
+    "client-to-server å‹ç¼©æ–¹æ³•",
+    "server-to-client å‹ç¼©æ–¹æ³•"
 };
 
 static int weak_algorithm_compare(void *av, void *bv);
@@ -340,21 +340,21 @@ bool ssh2_common_filter_queue(PacketProtocolLayer *ppl)
 {
     static const char *const ssh2_disconnect_reasons[] = {
         NULL,
-        "Ö÷»ú²»ÔÊĞíÁ¬½Ó",
-        "Ğ­Òé´íÎó",
-        "ÃÜÔ¿½»»»Ê§°Ü",
-        "Ö÷»úÈÏÖ¤Ê§°Ü",
-        "MAC´íÎó",
-        "Ñ¹Ëõ´íÎó",
-        "·şÎñ²»¿ÉÓÃ",
-        "²»Ö§³ÖĞ­Òé°æ±¾",
-        "Ö÷»úÃÜÔ¿²»¿ÉÑéÖ¤",
-        "Á¬½Ó¶ªÊ§",
-        "¾­¹ıÓ¦ÓÃ",
-        "Ì«¶àÁ¬½Ó",
-        "ÓÃ»§È¡ÏûÁËÉí·İÑéÖ¤",
-        "Ã»ÓĞ¸ü¶à¿ÉÓÃµÄÉí·İÑéÖ¤·½·¨",
-        "·Ç·¨ÓÃ»§Ãû",
+        "ä¸»æœºä¸å…è®¸è¿æ¥",
+        "åè®®é”™è¯¯",
+        "å¯†é’¥äº¤æ¢å¤±è´¥",
+        "ä¸»æœºè®¤è¯å¤±è´¥",
+        "MACé”™è¯¯",
+        "å‹ç¼©é”™è¯¯",
+        "æœåŠ¡ä¸å¯ç”¨",
+        "ä¸æ”¯æŒåè®®ç‰ˆæœ¬",
+        "ä¸»æœºå¯†é’¥ä¸å¯éªŒè¯",
+        "è¿æ¥ä¸¢å¤±",
+        "ç»è¿‡åº”ç”¨",
+        "å¤ªå¤šè¿æ¥",
+        "ç”¨æˆ·å–æ¶ˆäº†èº«ä»½éªŒè¯",
+        "æ²¡æœ‰æ›´å¤šå¯ç”¨çš„èº«ä»½éªŒè¯æ–¹æ³•",
+        "éæ³•ç”¨æˆ·å",
     };
 
     PktIn *pktin;
@@ -368,10 +368,10 @@ bool ssh2_common_filter_queue(PacketProtocolLayer *ppl)
             msg = get_string(pktin);
 
             ssh_remote_error(
-                ppl->ssh, "Ô¶¶Ë·¢ËÍ¶Ï¿ªÏûÏ¢\n"
-                "ÀàĞÍ %d (%s):\n\"%.*s\"", reason,
+                ppl->ssh, "è¿œç«¯å‘é€æ–­å¼€æ¶ˆæ¯\n"
+                "ç±»å‹ %d (%s):\n\"%.*s\"", reason,
                 ((reason > 0 && reason < lenof(ssh2_disconnect_reasons)) ?
-                 ssh2_disconnect_reasons[reason] : "Î´Öª"),
+                 ssh2_disconnect_reasons[reason] : "æœªçŸ¥"),
                 PTRLEN_PRINTF(msg));
             /* don't try to pop the queue, because we've been freed! */
             return true;               /* indicate that we've been freed */
@@ -380,7 +380,7 @@ bool ssh2_common_filter_queue(PacketProtocolLayer *ppl)
             /* XXX maybe we should actually take notice of the return value */
             get_bool(pktin);
             msg = get_string(pktin);
-            ppl_logevent("Ô¶³Ìµ÷ÊÔÏûÏ¢£º%.*s", PTRLEN_PRINTF(msg));
+            ppl_logevent("è¿œç¨‹è°ƒè¯•æ¶ˆæ¯ï¼š%.*s", PTRLEN_PRINTF(msg));
             pq_pop(ppl->in_pq);
             break;
 
@@ -472,8 +472,8 @@ static bool ssh2_transport_filter_queue(struct ssh2_transport_state *s)
              * packets coming from the server before we've seen
              * the first NEWKEYS. */
             if (!s->higher_layer_ok) {
-                ssh_proto_error(s->ppl.ssh, "ÊÕµ½³¬Ê±µÄ"
-                                "¸ß²ãÊı¾İ°ü£¬ÀàĞÍ %d (%s)", pktin->type,
+                ssh_proto_error(s->ppl.ssh, "æ”¶åˆ°è¶…æ—¶çš„"
+                                "é«˜å±‚æ•°æ®åŒ…ï¼Œç±»å‹ %d (%s)", pktin->type,
                                 ssh2_pkt_type(s->ppl.bpp->pls->kctx,
                                               s->ppl.bpp->pls->actx,
                                               pktin->type));
@@ -990,7 +990,7 @@ static bool ssh2_scan_kexinits(
             /* Report a better error than the spurious "Couldn't
              * agree" that we'd generate if we pressed on regardless
              * and treated the empty get_string() result as genuine */
-            ssh_proto_error(ssh, "KEX³õÊ¼»¯Êı¾İ°ü²»ÍêÕû");
+            ssh_proto_error(ssh, "KEXåˆå§‹åŒ–æ•°æ®åŒ…ä¸å®Œæ•´");
             return false;
         }
 
@@ -1039,8 +1039,8 @@ static bool ssh2_scan_kexinits(
              * produce a reasonably useful message instead of an
              * assertion failure.
              */
-            ssh_sw_abort(ssh, "Ñ¡ÔñµÄ %s \"%.*s\" ²»¶ÔÓ¦"
-                         "ÈÎºÎÖ§³ÖµÄËã·¨",
+            ssh_sw_abort(ssh, "é€‰æ‹©çš„ %s \"%.*s\" ä¸å¯¹åº”"
+                         "ä»»ä½•æ”¯æŒçš„ç®—æ³•",
                          kexlist_descr[i], PTRLEN_PRINTF(found));
             return false;
         }
@@ -1097,7 +1097,7 @@ static bool ssh2_scan_kexinits(
             /*
              * Otherwise, any match failure _is_ a fatal error.
              */
-            ssh_sw_abort(ssh, "ÎŞ·¨Í¬Òâ %s (¿ÉÓÃ: %.*s)",
+            ssh_sw_abort(ssh, "æ— æ³•åŒæ„ %s (å¯ç”¨: %.*s)",
                          kexlist_descr[i], PTRLEN_PRINTF(slists[i]));
             return false;
         }
@@ -1155,7 +1155,7 @@ static bool ssh2_scan_kexinits(
             break;
 
           default:
-            unreachable("scan_kexinitsÖĞµÄÁĞ±íË÷Òı´íÎó");
+            unreachable("scan_kexinitsä¸­çš„åˆ—è¡¨ç´¢å¼•é”™è¯¯");
         }
     }
 
@@ -1429,8 +1429,8 @@ static void ssh2_transport_process_queue(PacketProtocolLayer *ppl)
      */
     crMaybeWaitUntilV((pktin = ssh2_transport_pop(s)) != NULL);
     if (pktin->type != SSH2_MSG_KEXINIT) {
-        ssh_proto_error(s->ppl.ssh, "µÈ´ı KEX ³õÊ¼»¯Ê±£¬ÊÕµ½ÒâÍâ"
-                        "Êı¾İ°ü£¬ÀàĞÍ %d (%s)", pktin->type,
+        ssh_proto_error(s->ppl.ssh, "ç­‰å¾… KEX åˆå§‹åŒ–æ—¶ï¼Œæ”¶åˆ°æ„å¤–"
+                        "æ•°æ®åŒ…ï¼Œç±»å‹ %d (%s)", pktin->type,
                         ssh2_pkt_type(s->ppl.bpp->pls->kctx,
                                       s->ppl.bpp->pls->actx, pktin->type));
         return;
@@ -1499,7 +1499,7 @@ static void ssh2_transport_process_queue(PacketProtocolLayer *ppl)
             s, "key-exchange algorithm", s->kex_alg->name, s->kex_alg);
         crMaybeWaitUntilV(s->spr.kind != SPRK_INCOMPLETE);
         if (spr_is_abort(s->spr)) {
-            ssh_spr_close(s->ppl.ssh, s->spr, "ÃÜÔ¿¾¯¸æ");
+            ssh_spr_close(s->ppl.ssh, s->spr, "å¯†é’¥è­¦å‘Š");
             return;
         }
     }
@@ -1555,7 +1555,7 @@ static void ssh2_transport_process_queue(PacketProtocolLayer *ppl)
         }
         crMaybeWaitUntilV(s->spr.kind != SPRK_INCOMPLETE);
         if (spr_is_abort(s->spr)) {
-            ssh_spr_close(s->ppl.ssh, s->spr, "Ö÷»úÃÜÔ¿¾¯¸æ");
+            ssh_spr_close(s->ppl.ssh, s->spr, "ä¸»æœºå¯†é’¥è­¦å‘Š");
             return;
         }
     }
@@ -1566,7 +1566,7 @@ static void ssh2_transport_process_queue(PacketProtocolLayer *ppl)
             s->out.cipher);
         crMaybeWaitUntilV(s->spr.kind != SPRK_INCOMPLETE);
         if (spr_is_abort(s->spr)) {
-            ssh_spr_close(s->ppl.ssh, s->spr, "ÃÜÂë¾¯¸æ");
+            ssh_spr_close(s->ppl.ssh, s->spr, "å¯†ç è­¦å‘Š");
             return;
         }
     }
@@ -1577,7 +1577,7 @@ static void ssh2_transport_process_queue(PacketProtocolLayer *ppl)
             s->in.cipher);
         crMaybeWaitUntilV(s->spr.kind != SPRK_INCOMPLETE);
         if (spr_is_abort(s->spr)) {
-            ssh_spr_close(s->ppl.ssh, s->spr, "ÃÜÂë¾¯¸æ");
+            ssh_spr_close(s->ppl.ssh, s->spr, "å¯†ç è­¦å‘Š");
             return;
         }
     }
@@ -1720,8 +1720,8 @@ static void ssh2_transport_process_queue(PacketProtocolLayer *ppl)
      */
     crMaybeWaitUntilV((pktin = ssh2_transport_pop(s)) != NULL);
     if (pktin->type != SSH2_MSG_NEWKEYS) {
-        ssh_proto_error(s->ppl.ssh, "µÈ´ı SSH_MSG_NEWKEYS Êı¾İ°üÊ±"
-                        "ÊÕµ½ÒâÍâµÄÊı¾İ£¬ÀàĞÍ %d (%s)",
+        ssh_proto_error(s->ppl.ssh, "ç­‰å¾… SSH_MSG_NEWKEYS æ•°æ®åŒ…æ—¶"
+                        "æ”¶åˆ°æ„å¤–çš„æ•°æ®ï¼Œç±»å‹ %d (%s)",
                         pktin->type,
                         ssh2_pkt_type(s->ppl.bpp->pls->kctx,
                                       s->ppl.bpp->pls->actx,
@@ -1809,8 +1809,8 @@ static void ssh2_transport_process_queue(PacketProtocolLayer *ppl)
             pq_push(s->ppl.out_pq, pktout);
             crMaybeWaitUntilV((pktin = ssh2_transport_pop(s)) != NULL);
             if (pktin->type != SSH2_MSG_SERVICE_ACCEPT) {
-                ssh_sw_abort(s->ppl.ssh, "·şÎñÆ÷¾Ü½ÓÇëÇóÆôÓÃ "
-                             "'%s' Ğ­Òé", s->higher_layer->vt->name);
+                ssh_sw_abort(s->ppl.ssh, "æœåŠ¡å™¨æ‹’æ¥è¯·æ±‚å¯ç”¨ "
+                             "'%s' åè®®", s->higher_layer->vt->name);
                 return;
             }
         } else {
@@ -1819,8 +1819,8 @@ static void ssh2_transport_process_queue(PacketProtocolLayer *ppl)
             /* We're the server, so expect SERVICE_REQUEST. */
             crMaybeWaitUntilV((pktin = ssh2_transport_pop(s)) != NULL);
             if (pktin->type != SSH2_MSG_SERVICE_REQUEST) {
-                ssh_proto_error(s->ppl.ssh, "µÈ´ı SERVICE_REQUEST Êı¾İ°üÊ± "
-                                "ÊÕµ½ÒâÍâµÄÊı¾İ£¬ÀàĞÍ %d (%s)",
+                ssh_proto_error(s->ppl.ssh, "ç­‰å¾… SERVICE_REQUEST æ•°æ®åŒ…æ—¶ "
+                                "æ”¶åˆ°æ„å¤–çš„æ•°æ®ï¼Œç±»å‹ %d (%s)",
                                 pktin->type,
                                 ssh2_pkt_type(s->ppl.bpp->pls->kctx,
                                               s->ppl.bpp->pls->actx,
@@ -1829,8 +1829,8 @@ static void ssh2_transport_process_queue(PacketProtocolLayer *ppl)
             }
             service_name = get_string(pktin);
             if (!ptrlen_eq_string(service_name, s->higher_layer->vt->name)) {
-                ssh_proto_error(s->ppl.ssh, "¿Í»§¶ËÇëÇóµÄ·şÎñÊÇ "
-                                "'%.*s' µ±Ç°Ö§³ÖµÄÊÇ '%s'",
+                ssh_proto_error(s->ppl.ssh, "å®¢æˆ·ç«¯è¯·æ±‚çš„æœåŠ¡æ˜¯ "
+                                "'%.*s' å½“å‰æ”¯æŒçš„æ˜¯ '%s'",
                                 PTRLEN_PRINTF(service_name),
                                 s->higher_layer->vt->name);
                 return;
@@ -1859,16 +1859,16 @@ static void ssh2_transport_process_queue(PacketProtocolLayer *ppl)
          * higher layer (via filter_queue). */
         if ((pktin = ssh2_transport_pop(s)) != NULL) {
             if (pktin->type != SSH2_MSG_KEXINIT) {
-                ssh_proto_error(s->ppl.ssh, "ÔÚÃÜÔ¿½»»»ÆÚ¼ä"
-                                "ÒâÍâ½ÓÊÕµ½ÆäËü´«Êä²ãÊı¾İ°ü£¬"
-                                "ÀàĞÍ %d (%s)", pktin->type,
+                ssh_proto_error(s->ppl.ssh, "åœ¨å¯†é’¥äº¤æ¢æœŸé—´"
+                                "æ„å¤–æ¥æ”¶åˆ°å…¶å®ƒä¼ è¾“å±‚æ•°æ®åŒ…ï¼Œ"
+                                "ç±»å‹ %d (%s)", pktin->type,
                                 ssh2_pkt_type(s->ppl.bpp->pls->kctx,
                                               s->ppl.bpp->pls->actx,
                                               pktin->type));
                 return;
             }
             pq_push_front(s->ppl.in_pq, pktin);
-            ppl_logevent("Ô¶³Ì·¢ÆğµÄÃÜÔ¿ÖØĞÂ½»»»");
+            ppl_logevent("è¿œç¨‹å‘èµ·çš„å¯†é’¥é‡æ–°äº¤æ¢");
             s->rekey_class = RK_SERVER;
         }
 
@@ -1885,7 +1885,7 @@ static void ssh2_transport_process_queue(PacketProtocolLayer *ppl)
              * an attempt to populate the cache now.
              */
             if (s->need_gss_transient_hostkey) {
-                s->rekey_reason = "ÁÙÊ±Ìî³äÖ÷»úÃÜÔ¿»º´æ";
+                s->rekey_reason = "ä¸´æ—¶å¡«å……ä¸»æœºå¯†é’¥ç¼“å­˜";
                 s->rekey_class = RK_NORMAL;
             } else {
                 /* No need to rekey at this time. */
@@ -1897,10 +1897,10 @@ static void ssh2_transport_process_queue(PacketProtocolLayer *ppl)
             /* If we don't yet have any other reason to rekey, check
              * if we've hit our data limit in either direction. */
             if (s->stats->in.expired) {
-                s->rekey_reason = "½ÓÊÕµ½µÄÊı¾İ¹ı¶à";
+                s->rekey_reason = "æ¥æ”¶åˆ°çš„æ•°æ®è¿‡å¤š";
                 s->rekey_class = RK_NORMAL;
             } else if (s->stats->out.expired) {
-                s->rekey_reason = "·¢ËÍµÄÊı¾İ¹ı¶à";
+                s->rekey_reason = "å‘é€çš„æ•°æ®è¿‡å¤š";
                 s->rekey_class = RK_NORMAL;
             }
         }
@@ -1913,7 +1913,7 @@ static void ssh2_transport_process_queue(PacketProtocolLayer *ppl)
              * rekey, we process it anyway!)
              */
             if ((s->ppl.remote_bugs & BUG_SSH2_REKEY)) {
-                ppl_logevent("Ô¶³Ì´íÎó×èÖ¹ÃÜÔ¿ÖØĞÂ½»»»(%s)",
+                ppl_logevent("è¿œç¨‹é”™è¯¯é˜»æ­¢å¯†é’¥é‡æ–°äº¤æ¢(%s)",
                              s->rekey_reason);
                 /* Reset the counters, so that at least this message doesn't
                  * hit the event log _too_ often. */
@@ -1922,7 +1922,7 @@ static void ssh2_transport_process_queue(PacketProtocolLayer *ppl)
                 (void) ssh2_transport_timer_update(s, 0);
                 s->rekey_class = RK_NONE;
             } else {
-                ppl_logevent("Æô¶¯ÃÜÔ¿ÖØĞÂ½»»»(%s)",
+                ppl_logevent("å¯åŠ¨å¯†é’¥é‡æ–°äº¤æ¢(%s)",
                              s->rekey_reason);
             }
         }
@@ -1956,7 +1956,7 @@ static void ssh2_transport_timer(void *ctx, unsigned long now)
     /* Rekey if enough time has elapsed */
     ticks = mins * 60 * TICKSPERSEC;
     if (now - s->last_rekey > ticks - 30*TICKSPERSEC) {
-        s->rekey_reason = "³¬Ê±";
+        s->rekey_reason = "è¶…æ—¶";
         s->rekey_class = RK_NORMAL;
         queue_idempotent_callback(&s->ppl.ic_process_queue);
         return;
@@ -1972,7 +1972,7 @@ static void ssh2_transport_timer(void *ctx, unsigned long now)
         if ((s->gss_status & GSS_KEX_CAPABLE) != 0 &&
             (s->gss_status & GSS_CTXT_MAYFAIL) == 0 &&
             (s->gss_status & (GSS_CRED_UPDATED|GSS_CTXT_EXPIRES)) != 0) {
-            s->rekey_reason = "GSSÆ¾¾İÒÑ¸üĞÂ";
+            s->rekey_reason = "GSSå‡­æ®å·²æ›´æ–°";
             s->rekey_class = RK_GSS_UPDATE;
             queue_idempotent_callback(&s->ppl.ic_process_queue);
             return;
@@ -2099,11 +2099,11 @@ static void ssh2_transport_gss_update(struct ssh2_transport_state *s,
             s->shgss->lib, s->fullhostname, &s->shgss->srv_name);
         if (gss_stat != SSH_GSS_OK) {
             if (gss_stat == SSH_GSS_BAD_HOST_NAME)
-                ppl_logevent("GSSAPI µ¼ÈëÃû³ÆÊ§°Ü¡ª·şÎñÃû³Æ´íÎó£»"
-                             "²»»áÊ¹ÓÃGSSÃÜÔ¿½»»»");
+                ppl_logevent("GSSAPI å¯¼å…¥åç§°å¤±è´¥â€”æœåŠ¡åç§°é”™è¯¯ï¼›"
+                             "ä¸ä¼šä½¿ç”¨GSSå¯†é’¥äº¤æ¢");
             else
-                ppl_logevent("GSSAPI µ¼ÈëÃû³ÆÊ§°Ü£»"
-                             "²»»áÊ¹ÓÃGSSÃÜÔ¿½»»»");
+                ppl_logevent("GSSAPI å¯¼å…¥åç§°å¤±è´¥ï¼›"
+                             "ä¸ä¼šä½¿ç”¨GSSå¯†é’¥äº¤æ¢");
             return;
         }
     }
@@ -2145,7 +2145,7 @@ static void ssh2_transport_gss_update(struct ssh2_transport_state *s,
          * it shouldn't pop up all the time regardless.
          */
         if (definitely_rekeying)
-            ppl_logevent("Ã»ÓĞGSSAPI°²È«¿ÉÓÃµÄÉÏÏÂÎÄ");
+            ppl_logevent("æ²¡æœ‰GSSAPIå®‰å…¨å¯ç”¨çš„ä¸Šä¸‹æ–‡");
 
         return;
     }
@@ -2228,14 +2228,14 @@ static bool ssh2_transport_get_specials(
             need_separator = false;
         }
 
-        add_special(ctx, "ÖØ¸´ÃÜÔ¿½»»»", SS_REKEY, 0);
+        add_special(ctx, "é‡å¤å¯†é’¥äº¤æ¢", SS_REKEY, 0);
         toret = true;
 
         if (s->n_uncert_hostkeys) {
             int i;
 
             add_special(ctx, NULL, SS_SEP, 0);
-            add_special(ctx, "»º´æĞÂµÄÖ÷»úÃÜÔ¿ÀàĞÍ", SS_SUBMENU, 0);
+            add_special(ctx, "ç¼“å­˜æ–°çš„ä¸»æœºå¯†é’¥ç±»å‹", SS_SUBMENU, 0);
             for (i = 0; i < s->n_uncert_hostkeys; i++) {
                 const ssh_keyalg *alg =
                     ssh2_hostkey_algs[s->uncert_hostkeys[i]].alg;
@@ -2257,14 +2257,14 @@ static void ssh2_transport_special_cmd(PacketProtocolLayer *ppl,
 
     if (code == SS_REKEY) {
         if (!s->kex_in_progress) {
-            s->rekey_reason = "ÓÃ»§·¢ÆğÇëÇó";
+            s->rekey_reason = "ç”¨æˆ·å‘èµ·è¯·æ±‚";
             s->rekey_class = RK_NORMAL;
             queue_idempotent_callback(&s->ppl.ic_process_queue);
         }
     } else if (code == SS_XCERT) {
         if (!s->kex_in_progress) {
             s->cross_certifying = s->hostkey_alg = ssh2_hostkey_algs[arg].alg;
-            s->rekey_reason = "½»²æÑéÖ¤ĞÂÖ÷»úÃÜÔ¿";
+            s->rekey_reason = "äº¤å‰éªŒè¯æ–°ä¸»æœºå¯†é’¥";
             s->rekey_class = RK_NORMAL;
             queue_idempotent_callback(&s->ppl.ic_process_queue);
         }
@@ -2305,7 +2305,7 @@ static void ssh2_transport_reconfigure(PacketProtocolLayer *ppl, Conf *conf)
     rekey_time = sanitise_rekey_time(
         conf_get_int(conf, CONF_ssh_rekey_time), 60);
     if (ssh2_transport_timer_update(s, rekey_time))
-        rekey_reason = "Ëõ¶Ì³¬Ê±";
+        rekey_reason = "ç¼©çŸ­è¶…æ—¶";
 
     old_max_data_size = s->max_data_size;
     ssh2_transport_set_max_data_size(s);
@@ -2317,7 +2317,7 @@ static void ssh2_transport_reconfigure(PacketProtocolLayer *ppl, Conf *conf)
             dts_consume(&s->stats->out, diff);
             dts_consume(&s->stats->in, diff);
             if (s->stats->out.expired || s->stats->in.expired)
-                rekey_reason = "Êı¾İÏŞÖÆ½µµÍ";
+                rekey_reason = "æ•°æ®é™åˆ¶é™ä½";
         } else {
             unsigned long diff = s->max_data_size - old_max_data_size;
             if (s->stats->out.running)
@@ -2329,19 +2329,19 @@ static void ssh2_transport_reconfigure(PacketProtocolLayer *ppl, Conf *conf)
 
     if (conf_get_bool(s->conf, CONF_compression) !=
         conf_get_bool(conf, CONF_compression)) {
-        rekey_reason = "Ñ¹ËõÉèÖÃÒÑ¸ü¸Ä";
+        rekey_reason = "å‹ç¼©è®¾ç½®å·²æ›´æ”¹";
         rekey_mandatory = true;
     }
 
     for (i = 0; i < CIPHER_MAX; i++)
         if (conf_get_int_int(s->conf, CONF_ssh_cipherlist, i) !=
             conf_get_int_int(conf, CONF_ssh_cipherlist, i)) {
-            rekey_reason = "ÃÜÂëÉèÖÃÒÑ¸ü¸Ä";
+            rekey_reason = "å¯†ç è®¾ç½®å·²æ›´æ”¹";
             rekey_mandatory = true;
         }
     if (conf_get_bool(s->conf, CONF_ssh2_des_cbc) !=
         conf_get_bool(conf, CONF_ssh2_des_cbc)) {
-        rekey_reason = "ÃÜÂëÉèÖÃÒÑ¸ü¸Ä";
+        rekey_reason = "å¯†ç è®¾ç½®å·²æ›´æ”¹";
         rekey_mandatory = true;
     }
 

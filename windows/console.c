@@ -119,7 +119,7 @@ SeatPromptResult console_confirm_ssh_host_key(
     if (line[0] != '\0' && line[0] != '\r' && line[0] != '\n' &&
         line[0] != 'q' && line[0] != 'Q') {
         if (line[0] == 'y' || line[0] == 'Y')
-            store_host_key(host, port, keytype, keystr);
+            store_host_key(seat, host, port, keytype, keystr);
         return SPR_OK;
     } else {
         fputs(console_abandoned_msg, stderr);
@@ -140,8 +140,8 @@ SeatPromptResult console_confirm_weak_crypto_primitive(
 
     if (console_batch_mode) {
         fputs(console_abandoned_msg, stderr);
-        return SPR_SW_ABORT("ÎŞ·¨ÔÚÅú´¦ÀíÄ£Ê½ÏÂÈ·ÈÏ"
-                            "Ô­Ê¼µÄÈõ¼ÓÃÜ");
+        return SPR_SW_ABORT("æ— æ³•åœ¨æ‰¹å¤„ç†æ¨¡å¼ä¸‹ç¡®è®¤"
+                            "åŸå§‹çš„å¼±åŠ å¯†");
     }
 
     fputs(console_continue_prompt, stderr);
@@ -175,8 +175,8 @@ SeatPromptResult console_confirm_weak_cached_hostkey(
 
     if (console_batch_mode) {
         fputs(console_abandoned_msg, stderr);
-        return SPR_SW_ABORT("ÎŞ·¨ÔÚÅú´¦ÀíÄ£Ê½ÏÂÈ·ÈÏ"
-                            "»º´æµÄÖ÷»úÃÜÔ¿");
+        return SPR_SW_ABORT("æ— æ³•åœ¨æ‰¹å¤„ç†æ¨¡å¼ä¸‹ç¡®è®¤"
+                            "ç¼“å­˜çš„ä¸»æœºå¯†é’¥");
     }
 
     fputs(console_continue_prompt, stderr);
@@ -254,17 +254,17 @@ int console_askappend(LogPolicy *lp, Filename *filename,
     DWORD savemode, i;
 
     static const char msgtemplate[] =
-        "»á»°ÈÕÖ¾ÎÄ¼ş\"%.*s\"ÒÑ´æÔÚ¡£\n"
-        "Äú¿ÉÒÔÓÃĞÂµÄ»á»°ÈÕÖ¾¸²¸ÇËü£¬\n"
-        "»òÕß½«ĞÂµÄ»á»°ÈÕÖ¾¸½¼Óµ½ËüµÄÄ©Î²£¬\n"
-        "»òÕß½ûÖ¹´Ë´Î»á»°µÄÈÕÖ¾¼ÇÂ¼¡£\n"
-        "Ñ¡Ôñ¡°ÊÇ¡±²Á³ıÎÄ¼ş£¬¡°·ñ¡±×·¼Óµ½Ä©Î²£¬\n"
-        "»òÕß¡°È¡Ïû¡±½ûÓÃ´Ë´ÎÈÕÖ¾¼ÇÂ¼¡£\n"
-        "²Á³ıÈÕÖ¾ÎÄ¼şÂğ£¿(Y/N, CancelÈ¡ÏûÈÕÖ¾)";
+        "ä¼šè¯æ—¥å¿—æ–‡ä»¶\"%.*s\"å·²å­˜åœ¨ã€‚\n"
+        "æ‚¨å¯ä»¥ç”¨æ–°çš„ä¼šè¯æ—¥å¿—è¦†ç›–å®ƒï¼Œ\n"
+        "æˆ–è€…å°†æ–°çš„ä¼šè¯æ—¥å¿—é™„åŠ åˆ°å®ƒçš„æœ«å°¾ï¼Œ\n"
+        "æˆ–è€…ç¦æ­¢æ­¤æ¬¡ä¼šè¯çš„æ—¥å¿—è®°å½•ã€‚\n"
+        "é€‰æ‹©â€œæ˜¯â€æ“¦é™¤æ–‡ä»¶ï¼Œâ€œå¦â€è¿½åŠ åˆ°æœ«å°¾ï¼Œ\n"
+        "æˆ–è€…â€œå–æ¶ˆâ€ç¦ç”¨æ­¤æ¬¡æ—¥å¿—è®°å½•ã€‚\n"
+        "æ“¦é™¤æ—¥å¿—æ–‡ä»¶å—ï¼Ÿ(Y/N, Cancelå–æ¶ˆæ—¥å¿—)";
 
     static const char msgtemplate_batch[] =
-        "»á»°ÈÕÖ¾ÎÄ¼ş\"%¡£*s\"ÒÑ¾­´æÔÚ¡£\n"
-        "²»»áÆô¶¯ÈÕÖ¾¼ÇÂ¼¡£\n";
+        "ä¼šè¯æ—¥å¿—æ–‡ä»¶\"%ã€‚*s\"å·²ç»å­˜åœ¨ã€‚\n"
+        "ä¸ä¼šå¯åŠ¨æ—¥å¿—è®°å½•ã€‚\n";
 
     char line[32];
 
@@ -304,13 +304,13 @@ int console_askappend(LogPolicy *lp, Filename *filename,
 void old_keyfile_warning(void)
 {
     static const char message[] =
-        "ÄúÕıÔÚ¼ÓÔØÒ»¸ö¾É°æ±¾µÄSSH-2Ë½Ô¿ÎÄ¼ş¡£\n"
-        "ÕâÒâÎ¶×Åµ±Ç°ÃÜÔ¿ÎÄ¼ş²»ÊÇÍêÈ«·À´Û¸ÄµÄ¡£\n"
-        "Î´À´°æ±¾µÄ³ÌĞò¿ÉÄÜ»áÍ£Ö¹Ö§³ÖÕâÖÖË½Ô¿£¬\n"
-        "ËùÓĞÎÒÃÇ½¨ÒéÄú½«ÃÜÔ¿×ª»»ÎªĞÂµÄ¸ñÊ½¡£\n"
+        "æ‚¨æ­£åœ¨åŠ è½½ä¸€ä¸ªæ—§ç‰ˆæœ¬çš„SSH-2ç§é’¥æ–‡ä»¶ã€‚\n"
+        "è¿™æ„å‘³ç€å½“å‰å¯†é’¥æ–‡ä»¶ä¸æ˜¯å®Œå…¨é˜²ç¯¡æ”¹çš„ã€‚\n"
+        "æœªæ¥ç‰ˆæœ¬çš„ç¨‹åºå¯èƒ½ä¼šåœæ­¢æ”¯æŒè¿™ç§ç§é’¥ï¼Œ\n"
+        "æ‰€æœ‰æˆ‘ä»¬å»ºè®®æ‚¨å°†å¯†é’¥è½¬æ¢ä¸ºæ–°çš„æ ¼å¼ã€‚\n"
         "\n"
-        "½«ÃÜÔ¿¼ÓÔØµ½PuTTYgenÖĞ£¬Ö»ĞèÒªÔÙ´Î±£\n"
-        "´æ¼´¿ÉÍê³É×ª»»¡£";
+        "å°†å¯†é’¥åŠ è½½åˆ°PuTTYgenä¸­ï¼Œåªéœ€è¦å†æ¬¡ä¿\n"
+        "å­˜å³å¯å®Œæˆè½¬æ¢ã€‚";
 
     fputs(message, stderr);
 }
@@ -383,11 +383,11 @@ SeatPromptResult console_get_userpass_input(prompts_t *p)
      */
     if (p->n_prompts) {
         if (console_batch_mode)
-            return SPR_SW_ABORT("ÔÚÅú´¦ÀíÄ£Ê½ÏÂÎŞ·¨»Ø´ğ "
-                                "½»»¥Ê½ÌáÊ¾");
+            return SPR_SW_ABORT("åœ¨æ‰¹å¤„ç†æ¨¡å¼ä¸‹æ— æ³•å›ç­” "
+                                "äº¤äº’å¼æç¤º");
         hin = GetStdHandle(STD_INPUT_HANDLE);
         if (hin == INVALID_HANDLE_VALUE) {
-            fprintf(stderr, "ÎŞ·¨»ñµÃ±ê×¼ÊäÈë¾ä±ú\n");
+            fprintf(stderr, "æ— æ³•è·å¾—æ ‡å‡†è¾“å…¥å¥æŸ„\n");
             cleanup_exit(1);
         }
     }
@@ -398,7 +398,7 @@ SeatPromptResult console_get_userpass_input(prompts_t *p)
     if ((p->name_reqd && p->name) || p->instruction || p->n_prompts) {
         hout = GetStdHandle(STD_OUTPUT_HANDLE);
         if (hout == INVALID_HANDLE_VALUE) {
-            fprintf(stderr, "ÎŞ·¨»ñµÃ±ê×¼Êä³ö¾ä±ú\n");
+            fprintf(stderr, "æ— æ³•è·å¾—æ ‡å‡†è¾“å‡ºå¥æŸ„\n");
             cleanup_exit(1);
         }
     }
@@ -465,7 +465,7 @@ SeatPromptResult console_get_userpass_input(prompts_t *p)
                  * unexpected error and reported to the user. */
                 failed = true;
                 spr = make_spr_sw_abort_winerror(
-                    "´Ó¿ØÖÆÌ¨¶ÁÈ¡³ö´í", GetLastError());
+                    "ä»æ§åˆ¶å°è¯»å–å‡ºé”™", GetLastError());
                 break;
             } else if (ret == 0) {
                 /* Regard EOF on the terminal as a deliberate user-abort */

@@ -85,7 +85,7 @@ void modalfatalbox(const char *fmt, ...)
     va_start(ap, fmt);
     buf = dupvprintf(fmt, ap);
     va_end(ap);
-    MessageBox(traywindow, buf, "cnPageantÖÂÃü´íÎó",
+    MessageBox(traywindow, buf, "cnPageantè‡´å‘½é”™è¯¯",
                MB_SYSTEMMODAL | MB_ICONERROR | MB_OK);
     sfree(buf);
     exit(1);
@@ -136,7 +136,7 @@ static INT_PTR CALLBACK AboutProc(HWND hwnd, UINT msg,
         char *text = dupprintf(
             "cnPageant\r\n\r\n%s\r\n\r\n%s\r\n\r\n%s",
             ver, buildinfo_text,
-            "(C)" SHORT_COPYRIGHT_DETAILS " ±£ÁôËùÓĞÈ¨Àû¡£");
+            "(C)" SHORT_COPYRIGHT_DETAILS " ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚");
         sfree(buildinfo_text);
         SetDlgItemText(hwnd, IDC_ABOUT_TEXTBOX, text);
         MakeDlgItemBorderless(hwnd, IDC_ABOUT_TEXTBOX);
@@ -297,15 +297,15 @@ static INT_PTR CALLBACK PassphraseProc(HWND hwnd, UINT msg,
  */
 void old_keyfile_warning(void)
 {
-    static const char mbtitle[] = "PuTTYÃÜÔ¿ÎÄ¼ş¾¯¸æ";
+    static const char mbtitle[] = "PuTTYå¯†é’¥æ–‡ä»¶è­¦å‘Š";
     static const char message[] =
-        "ÄúÕıÔÚ¼ÓÔØÒ»¸ö¾É°æ±¾µÄSSH-2Ë½Ô¿ÎÄ¼ş¡£\n"
-        "ÕâÒâÎ¶×Åµ±Ç°ÃÜÔ¿ÎÄ¼ş²»ÊÇÍêÈ«·À´Û¸ÄµÄ¡£\n"
-        "Î´À´°æ±¾µÄ³ÌĞò¿ÉÄÜ»áÍ£Ö¹Ö§³ÖÕâÖÖË½Ô¿£¬\n"
-        "ËùÓĞÎÒÃÇ½¨ÒéÄú½«ÃÜÔ¿×ª»»ÎªĞÂµÄ¸ñÊ½¡£\n"
+        "æ‚¨æ­£åœ¨åŠ è½½ä¸€ä¸ªæ—§ç‰ˆæœ¬çš„SSH-2ç§é’¥æ–‡ä»¶ã€‚\n"
+        "è¿™æ„å‘³ç€å½“å‰å¯†é’¥æ–‡ä»¶ä¸æ˜¯å®Œå…¨é˜²ç¯¡æ”¹çš„ã€‚\n"
+        "æœªæ¥ç‰ˆæœ¬çš„ç¨‹åºå¯èƒ½ä¼šåœæ­¢æ”¯æŒè¿™ç§ç§é’¥ï¼Œ\n"
+        "æ‰€æœ‰æˆ‘ä»¬å»ºè®®æ‚¨å°†å¯†é’¥è½¬æ¢ä¸ºæ–°çš„æ ¼å¼ã€‚\n"
         "\n"
-        "½«ÃÜÔ¿¼ÓÔØµ½PuTTYgenÖĞ£¬Ö»ĞèÒªÔÙ´Î±£\n"
-        "´æ¼´¿ÉÍê³É×ª»»¡£";
+        "å°†å¯†é’¥åŠ è½½åˆ°PuTTYgenä¸­ï¼Œåªéœ€è¦å†æ¬¡ä¿\n"
+        "å­˜å³å¯å®Œæˆè½¬æ¢ã€‚";
 
     MessageBox(NULL, message, mbtitle, MB_OK);
 }
@@ -396,9 +396,9 @@ static void keylist_update_callback(
     if (ctx->hashwidth < sz.cx) ctx->hashwidth = sz.cx;
 
     if (ext_flags & LIST_EXTENDED_FLAG_HAS_NO_CLEARTEXT_KEY) {
-        put_fmt(disp->info, "(¼ÓÃÜµÄ)");
+        put_fmt(disp->info, "(åŠ å¯†çš„)");
     } else if (ext_flags & LIST_EXTENDED_FLAG_HAS_ENCRYPTED_KEY_FILE) {
-        put_fmt(disp->info, "(¿É¼ÓÃÜ)");
+        put_fmt(disp->info, "(å¯åŠ å¯†)");
 
         /* At least one key can be re-encrypted */
         ctx->enable_reencrypt_controls = true;
@@ -554,7 +554,7 @@ static void prompt_add_keyfile(bool encrypted)
     *filelist = '\0';
     of.nMaxFile = 8192;
     of.lpstrFileTitle = NULL;
-    of.lpstrTitle = "Ñ¡ÔñË½Ô¿ÎÄ¼ş";
+    of.lpstrTitle = "é€‰æ‹©ç§é’¥æ–‡ä»¶";
     of.Flags = OFN_ALLOWMULTISELECT | OFN_EXPLORER;
     if (request_file(keypath, &of, true, false)) {
         if(strlen(filelist) > of.nFileOffset) {
@@ -884,7 +884,7 @@ static BOOL AddTrayIcon(HWND hwnd)
     tnid.uFlags = NIF_MESSAGE | NIF_ICON | NIF_TIP;
     tnid.uCallbackMessage = WM_SYSTRAY;
     tnid.hIcon = hicon = LoadIcon(hinst, MAKEINTRESOURCE(201));
-    strcpy(tnid.szTip, "Pageant(PuTTYÉí·İÑéÖ¤´úÀí)");
+    strcpy(tnid.szTip, "Pageant(PuTTYèº«ä»½éªŒè¯ä»£ç†)");
 
     res = Shell_NotifyIcon(NIM_ADD, &tnid);
 
@@ -945,7 +945,7 @@ static void update_sessions(void)
         mii.fMask = MIIM_TYPE | MIIM_STATE;
         mii.fType = MFT_STRING;
         mii.fState = MFS_GRAYED;
-        mii.dwTypeData = _T("(ÔİÎŞ»á»°)");
+        mii.dwTypeData = _T("(æš‚æ— ä¼šè¯)");
         InsertMenuItem(session_menu, index_menu, true, &mii);
     }
 }
@@ -1116,7 +1116,7 @@ static char *answer_filemapping_message(const char *mapname)
 
     maphandle = OpenFileMapping(FILE_MAP_ALL_ACCESS, false, mapname);
     if (maphandle == NULL || maphandle == INVALID_HANDLE_VALUE) {
-        err = dupprintf("´ò¿ªÎÄ¼şÓ³Éä(\"%s\"): %s",
+        err = dupprintf("æ‰“å¼€æ–‡ä»¶æ˜ å°„(\"%s\"): %s",
                         mapname, win_strerror(GetLastError()));
         goto cleanup;
     }
@@ -1129,20 +1129,20 @@ static char *answer_filemapping_message(const char *mapname)
         DWORD retd;
 
         if ((expectedsid = get_user_sid()) == NULL) {
-            err = dupstr("ÎŞ·¨»ñÈ¡ÓÃ»§SID");
+            err = dupstr("æ— æ³•è·å–ç”¨æˆ·SID");
             goto cleanup;
         }
 
         if ((expectedsid_bc = get_default_sid()) == NULL) {
-            err = dupstr("ÎŞ·¨»ñÈ¡Ä¬ÈÏSID");
+            err = dupstr("æ— æ³•è·å–é»˜è®¤SID");
             goto cleanup;
         }
 
         if ((retd = p_GetSecurityInfo(
                  maphandle, SE_KERNEL_OBJECT, OWNER_SECURITY_INFORMATION,
                  &mapsid, NULL, NULL, NULL, &psd) != ERROR_SUCCESS)) {
-            err = dupprintf("ÎŞ·¨»ñÈ¡ÎÄ¼şÓ³ÉäµÄËùÓĞÕß: "
-                            "GetSecurityInfo·µ»Ø: %s",
+            err = dupprintf("æ— æ³•è·å–æ–‡ä»¶æ˜ å°„çš„æ‰€æœ‰è€…: "
+                            "GetSecurityInfoè¿”å›: %s",
                             win_strerror(retd));
             goto cleanup;
         }
@@ -1163,7 +1163,7 @@ static char *answer_filemapping_message(const char *mapname)
 
         if (!EqualSid(mapsid, expectedsid) &&
             !EqualSid(mapsid, expectedsid_bc)) {
-            err = dupstr("ÎÄ¼şÓ³ÉäµÄSID³öÏÖ´íÎó");
+            err = dupstr("æ–‡ä»¶æ˜ å°„çš„SIDå‡ºç°é”™è¯¯");
             goto cleanup;
         }
     } else {
@@ -1174,7 +1174,7 @@ static char *answer_filemapping_message(const char *mapname)
 
     mapaddr = MapViewOfFile(maphandle, FILE_MAP_WRITE, 0, 0, 0);
     if (!mapaddr) {
-        err = dupprintf("ÎŞ·¨»ñµÃÎÄ¼şÓ³ÉäÊÓÍ¼: %s",
+        err = dupprintf("æ— æ³•è·å¾—æ–‡ä»¶æ˜ å°„è§†å›¾: %s",
                         win_strerror(GetLastError()));
         goto cleanup;
     }
@@ -1187,14 +1187,14 @@ static char *answer_filemapping_message(const char *mapname)
         MEMORY_BASIC_INFORMATION mbi;
         size_t mbiSize = VirtualQuery(mapaddr, &mbi, sizeof(mbi));
         if (mbiSize == 0) {
-            err = dupprintf("ÎŞ·¨²éÑ¯ÎÄ¼şÓ³ÉäÊÓÍ¼: %s",
+            err = dupprintf("æ— æ³•æŸ¥è¯¢æ–‡ä»¶æ˜ å°„è§†å›¾: %s",
                             win_strerror(GetLastError()));
             goto cleanup;
         }
         if (mbiSize < (offsetof(MEMORY_BASIC_INFORMATION, RegionSize) +
                        sizeof(mbi.RegionSize))) {
-            err = dupstr("·µ»ØµÄÊı¾İÌ«ÉÙ£¬ÎŞ·¨»ñÈ¡"
-                         "ÇøÓò´óĞ¡");
+            err = dupstr("è¿”å›çš„æ•°æ®å¤ªå°‘ï¼Œæ— æ³•è·å–"
+                         "åŒºåŸŸå¤§å°");
             goto cleanup;
         }
 
@@ -1204,7 +1204,7 @@ static char *answer_filemapping_message(const char *mapname)
     debug("region size = %"SIZEu"\n", mapsize);
 #endif
     if (mapsize < 5) {
-        err = dupstr("Ó³ÉäĞ¡ÓÚ¿ÉÄÜµÄ×îĞ¡ÇëÇó");
+        err = dupstr("æ˜ å°„å°äºå¯èƒ½çš„æœ€å°è¯·æ±‚");
         goto cleanup;
     }
 
@@ -1263,7 +1263,7 @@ static LRESULT CALLBACK TrayWndProc(HWND hwnd, UINT message,
 
     switch (message) {
       case WM_CREATE:
-        msgTaskbarCreated = RegisterWindowMessage(_T("ÈÎÎñÀ¸ÒÑ´´½¨"));
+        msgTaskbarCreated = RegisterWindowMessage(_T("ä»»åŠ¡æ å·²åˆ›å»º"));
         break;
       default:
         if (message==msgTaskbarCreated) {
@@ -1311,8 +1311,8 @@ static LRESULT CALLBACK TrayWndProc(HWND hwnd, UINT message,
 
             if((INT_PTR)ShellExecute(hwnd, NULL, putty_path, cmdline,
                                      _T(""), SW_SHOW) <= 32) {
-                MessageBox(NULL, "ÎŞ·¨Ö´ĞĞPuTTY£¡£¡",
-                           "´íÎó", MB_OK | MB_ICONERROR);
+                MessageBox(NULL, "æ— æ³•æ‰§è¡ŒPuTTYï¼ï¼",
+                           "é”™è¯¯", MB_OK | MB_ICONERROR);
             }
             break;
           }
@@ -1386,7 +1386,7 @@ static LRESULT CALLBACK TrayWndProc(HWND hwnd, UINT message,
                 strcat(param, mii.dwTypeData);
                 if((INT_PTR)ShellExecute(hwnd, NULL, putty_path, param,
                                          _T(""), SW_SHOW) <= 32) {
-                    MessageBox(NULL, "ÎŞ·¨Ö´ĞĞPuTTY£¡£¡", "´íÎó",
+                    MessageBox(NULL, "æ— æ³•æ‰§è¡ŒPuTTYï¼ï¼", "é”™è¯¯",
                                MB_OK | MB_ICONERROR);
                 }
             }
@@ -1463,7 +1463,7 @@ void spawn_cmd(const char *cmdline, const char *args, int show)
     if (ShellExecute(NULL, _T("open"), cmdline,
                      args, NULL, show) <= (HINSTANCE) 32) {
         char *msg;
-        msg = dupprintf("ÔËĞĞÊ§°Ü\"%s\": %s", cmdline,
+        msg = dupprintf("è¿è¡Œå¤±è´¥\"%s\": %s", cmdline,
                         win_strerror(GetLastError()));
         MessageBox(NULL, msg, APPNAME, MB_OK | MB_ICONEXCLAMATION);
         sfree(msg);
@@ -1507,7 +1507,7 @@ static NORETURN void opt_error(const char *fmt, ...)
     char *msg = dupvprintf(fmt, ap);
     va_end(ap);
 
-    MessageBox(NULL, msg, "cnPageantÃüÁîĞĞ´íÎó", MB_ICONERROR | MB_OK);
+    MessageBox(NULL, msg, "cnPageantå‘½ä»¤è¡Œé”™è¯¯", MB_ICONERROR | MB_OK);
 
     exit(1);
 }
@@ -1557,9 +1557,9 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
          */
         if (!got_advapi()) {
             MessageBox(NULL,
-                       "ÎŞ·¨°²È«·ÃÎÊAPI£¬cnPageant»á\n"
-                       "½ûÖ¹ÔËĞĞ£¬ÒÔ·Àµ¼ÖÂ°²È«Â©¶´",
-                       "cnPageantÖÂÃü´íÎó", MB_ICONERROR | MB_OK);
+                       "æ— æ³•å®‰å…¨è®¿é—®APIï¼ŒcnPageantä¼š\n"
+                       "ç¦æ­¢è¿è¡Œï¼Œä»¥é˜²å¯¼è‡´å®‰å…¨æ¼æ´",
+                       "cnPageantè‡´å‘½é”™è¯¯", MB_ICONERROR | MB_OK);
             return 1;
         }
     }
@@ -1643,7 +1643,7 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
                 command = "";
             break;
         } else {
-            opt_error("ÎŞ·¨Ê¶±ğµÄÑ¡Ïî£º'%s'\n", amo.argv[amo.index]);
+            opt_error("æ— æ³•è¯†åˆ«çš„é€‰é¡¹ï¼š'%s'\n", amo.argv[amo.index]);
         }
     }
 
@@ -1661,7 +1661,7 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
         mutex = lock_interprocess_mutex(mutexname, &err);
         sfree(mutexname);
         if (!mutex) {
-            MessageBox(NULL, err, "cnPageant´íÎó", MB_ICONERROR | MB_OK);
+            MessageBox(NULL, err, "cnPageanté”™è¯¯", MB_ICONERROR | MB_OK);
             return 1;
         }
     }
@@ -1718,10 +1718,10 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
             char *pipename = agent_named_pipe_name();
             Socket *sock = new_named_pipe_listener(pipename, pl_plug);
             if (sk_socket_error(sock)) {
-                char *err = dupprintf("ÎŞ·¨ÔÚ %s ´ò¿ªÃüÃû¹ÜµÀ"
-                                      "ÓÃÓÚSSH´úÀí£º\n%s", pipename,
+                char *err = dupprintf("æ— æ³•åœ¨ %s æ‰“å¼€å‘½åç®¡é“"
+                                      "ç”¨äºSSHä»£ç†ï¼š\n%s", pipename,
                                       sk_socket_error(sock));
-                MessageBox(NULL, err, "cnPageant´íÎó", MB_ICONERROR | MB_OK);
+                MessageBox(NULL, err, "cnPageanté”™è¯¯", MB_ICONERROR | MB_OK);
                 return 1;
             }
             pageant_listener_got_socket(pl, sock);
@@ -1733,9 +1733,9 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
             if (openssh_config_file) {
                 FILE *fp = fopen(openssh_config_file, "w");
                 if (!fp) {
-                    char *err = dupprintf("ÎŞ·¨Ğ´ÈëOpenSSHÅäÖÃ"
-                                          "ÎÄ¼şµ½%s", openssh_config_file);
-                    MessageBox(NULL, err, "cnPageant´íÎó",
+                    char *err = dupprintf("æ— æ³•å†™å…¥OpenSSHé…ç½®"
+                                          "æ–‡ä»¶åˆ°%s", openssh_config_file);
+                    MessageBox(NULL, err, "cnPageanté”™è¯¯",
                                MB_ICONERROR | MB_OK);
                     return 1;
                 }
@@ -1845,7 +1845,7 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
      */
     if (already_running) {
         if (!command && !nclkeys) {
-            MessageBox(NULL, "PageantÒÑ¾­ÔÚÔËĞĞÖĞ", "cnPageant´íÎó",
+            MessageBox(NULL, "Pageantå·²ç»åœ¨è¿è¡Œä¸­", "cnPageanté”™è¯¯",
                        MB_ICONERROR | MB_OK);
         }
         return 0;
@@ -1858,27 +1858,27 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
     systray_menu = CreatePopupMenu();
     if (putty_path) {
         session_menu = CreateMenu();
-        AppendMenu(systray_menu, MF_ENABLED, IDM_PUTTY, "ĞÂ½¨»á»°(&N)");
+        AppendMenu(systray_menu, MF_ENABLED, IDM_PUTTY, "æ–°å»ºä¼šè¯(&N)");
         AppendMenu(systray_menu, MF_POPUP | MF_ENABLED,
-                   (UINT_PTR) session_menu, "±£´æ»á»°(&S)");
+                   (UINT_PTR) session_menu, "ä¿å­˜ä¼šè¯(&S)");
         AppendMenu(systray_menu, MF_SEPARATOR, 0, 0);
     }
     AppendMenu(systray_menu, MF_ENABLED, IDM_VIEWKEYS,
-               "²é¿´ÃÜÔ¿(&V)");
-    AppendMenu(systray_menu, MF_ENABLED, IDM_ADDKEY, "Ìí¼ÓÃÜÔ¿(&K)");
+               "æŸ¥çœ‹å¯†é’¥(&V)");
+    AppendMenu(systray_menu, MF_ENABLED, IDM_ADDKEY, "æ·»åŠ å¯†é’¥(&K)");
     AppendMenu(systray_menu, MF_ENABLED, IDM_ADDKEY_ENCRYPTED,
-               "Ìí¼Ó¼ÓÃÜÃÜÔ¿");
+               "æ·»åŠ åŠ å¯†å¯†é’¥");
     AppendMenu(systray_menu, MF_SEPARATOR, 0, 0);
     AppendMenu(systray_menu, MF_ENABLED, IDM_REMOVE_ALL,
-               "É¾³ıËùÓĞÃÜÔ¿");
+               "åˆ é™¤æ‰€æœ‰å¯†é’¥");
     AppendMenu(systray_menu, MF_ENABLED, IDM_REENCRYPT_ALL,
-               "ÖØĞÂ¼ÓÃÜËùÓĞÃÜÔ¿");
+               "é‡æ–°åŠ å¯†æ‰€æœ‰å¯†é’¥");
     AppendMenu(systray_menu, MF_SEPARATOR, 0, 0);
     if (has_help())
-        AppendMenu(systray_menu, MF_ENABLED, IDM_HELP, "°ïÖú(&H)");
-    AppendMenu(systray_menu, MF_ENABLED, IDM_ABOUT, "¹ØÓÚ(&A)");
+        AppendMenu(systray_menu, MF_ENABLED, IDM_HELP, "å¸®åŠ©(&H)");
+    AppendMenu(systray_menu, MF_ENABLED, IDM_ABOUT, "å…³äº(&A)");
     AppendMenu(systray_menu, MF_SEPARATOR, 0, 0);
-    AppendMenu(systray_menu, MF_ENABLED, IDM_CLOSE, "ÍË³ö(&X)");
+    AppendMenu(systray_menu, MF_ENABLED, IDM_CLOSE, "é€€å‡º(&X)");
     initial_menuitems_count = GetMenuItemCount(session_menu);
 
     /* Set the default menu item. */

@@ -594,9 +594,7 @@ void dlg_listbox_addwithid(dlgcontrol *ctrl, dlgparam *dp,
         cols = cols ? cols : 1;
         for (i = 0; i < cols; i++) {
             int collen = strcspn(text, "\t");
-            char *tmpstr = snewn(collen+1, char);
-            memcpy(tmpstr, text, collen);
-            tmpstr[collen] = '\0';
+            char *tmpstr = mkstr(make_ptrlen(text, collen));
             gtk_list_store_set(uc->listmodel, &iter, i+1, tmpstr, -1);
             sfree(tmpstr);
             text += collen;
@@ -3529,7 +3527,8 @@ static void confirm_ssh_host_key_result_callback(void *vctx, int result)
          * doesn't care whether we saved the host key or not).
          */
         if (result == 2) {
-            store_host_key(ctx->host, ctx->port, ctx->keytype, ctx->keystr);
+            store_host_key(ctx->seat, ctx->host, ctx->port,
+                           ctx->keytype, ctx->keystr);
             logical_result = SPR_OK;
         } else if (result == 1) {
             logical_result = SPR_OK;

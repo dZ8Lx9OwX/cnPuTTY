@@ -10,18 +10,18 @@
 #include "console.h"
 
 const char weakcrypto_msg_common_fmt[] =
-    "·şÎñÆ÷Ö§³ÖµÄµÚÒ»¸ö %s ÊÇ\n"
-    "%s£¬µÍÓÚÉèÖÃµÄ¾¯¸æ·§Öµ¡£\n";
+    "æœåŠ¡å™¨æ”¯æŒçš„ç¬¬ä¸€ä¸ª %s æ˜¯\n"
+    "%sï¼Œä½äºè®¾ç½®çš„è­¦å‘Šé˜€å€¼ã€‚\n";
 
 const char weakhk_msg_common_fmt[] =
-    "ÎÒÃÇÎª´Ë·şÎñÆ÷´æ´¢µÄµÚÒ»¸öÖ÷»úÃÜÔ¿ÀàËÆ\n"
-    "ÊÇ %s£¬µÍÓÚÅäÖÃµÄ¾¯¸æ·§Öµ¡£\n"
-    "·şÎñÆ÷»¹Ìá¹©ÒÔÏÂÀàĞÍµÄÖ÷»úÃÜÔ¿\n"
-    "³¬¹ı¹ı·§Öµ£¬ ÎÒÃÇ»¹Ã»ÓĞ´æ´¢:\n"
+    "æˆ‘ä»¬ä¸ºæ­¤æœåŠ¡å™¨å­˜å‚¨çš„ç¬¬ä¸€ä¸ªä¸»æœºå¯†é’¥ç±»ä¼¼\n"
+    "æ˜¯ %sï¼Œä½äºé…ç½®çš„è­¦å‘Šé˜€å€¼ã€‚\n"
+    "æœåŠ¡å™¨è¿˜æä¾›ä»¥ä¸‹ç±»å‹çš„ä¸»æœºå¯†é’¥\n"
+    "è¶…è¿‡è¿‡é˜€å€¼ï¼Œ æˆ‘ä»¬è¿˜æ²¡æœ‰å­˜å‚¨:\n"
     "%s\n";
 
-const char console_continue_prompt[] = "¼ÌĞøÁ¬½Ó£¿£¿(y/n) ";
-const char console_abandoned_msg[] = "ÒÑ·ÅÆúÁ¬½Ó¡£\n";
+const char console_continue_prompt[] = "ç»§ç»­è¿æ¥ï¼Ÿï¼Ÿ(y/n) ";
+const char console_abandoned_msg[] = "å·²æ”¾å¼ƒè¿æ¥ã€‚\n";
 
 const SeatDialogPromptDescriptions *console_prompt_descriptions(Seat *seat)
 {
@@ -60,7 +60,7 @@ void modalfatalbox(const char *fmt, ...)
 {
     va_list ap;
     va_start(ap, fmt);
-    console_print_error_msg_fmt_v("ÖÂÃü´íÎó", fmt, ap);
+    console_print_error_msg_fmt_v("è‡´å‘½é”™è¯¯", fmt, ap);
     va_end(ap);
     cleanup_exit(1);
 }
@@ -69,14 +69,19 @@ void nonfatal(const char *fmt, ...)
 {
     va_list ap;
     va_start(ap, fmt);
-    console_print_error_msg_fmt_v("´íÎó", fmt, ap);
+    console_print_error_msg_fmt_v("é”™è¯¯", fmt, ap);
     va_end(ap);
 }
 
 void console_connection_fatal(Seat *seat, const char *msg)
 {
-    console_print_error_msg("ÖÂÃü´íÎó", msg);
+    console_print_error_msg("è‡´å‘½é”™è¯¯", msg);
     cleanup_exit(1);
+}
+
+void console_nonfatal(Seat *seat, const char *msg)
+{
+    console_print_error_msg("ERROR", msg);
 }
 
 /*

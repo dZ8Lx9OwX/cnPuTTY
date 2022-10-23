@@ -41,7 +41,7 @@ void modalfatalbox(const char *fmt, ...)
     va_start(ap, fmt);
     stuff = dupvprintf(fmt, ap);
     va_end(ap);
-    MessageBox(NULL, stuff, "cnPuTTYgenÖÂÃü´íÎó£¡£¡£¡",
+    MessageBox(NULL, stuff, "cnPuTTYgenè‡´å‘½é”™è¯¯ï¼ï¼ï¼",
                MB_SYSTEMMODAL | MB_ICONERROR | MB_OK);
     sfree(stuff);
     exit(1);
@@ -58,7 +58,7 @@ void nonfatal(const char *fmt, ...)
     va_start(ap, fmt);
     stuff = dupvprintf(fmt, ap);
     va_end(ap);
-    MessageBox(NULL, stuff, "PuTTYgen´íÎó£¡£¡£¡",
+    MessageBox(NULL, stuff, "PuTTYgené”™è¯¯ï¼ï¼ï¼",
                MB_SYSTEMMODAL | MB_ICONERROR | MB_OK);
     sfree(stuff);
 }
@@ -462,11 +462,11 @@ static bool prompt_keyfile(HWND hwnd, char *dlgtitle,
     memset(&of, 0, sizeof(of));
     of.hwndOwner = hwnd;
     if (ppk) {
-        of.lpstrFilter = "PuTTYË½Ô¿ÎÄ¼ş(*.ppk)\0*.ppk\0"
-            "ËùÓĞÎÄ¼ş(*.*)\0*\0\0\0";
+        of.lpstrFilter = "PuTTYç§é’¥æ–‡ä»¶(*.ppk)\0*.ppk\0"
+            "æ‰€æœ‰æ–‡ä»¶(*.*)\0*\0\0\0";
         of.lpstrDefExt = ".ppk";
     } else {
-        of.lpstrFilter = "ËùÓĞÎÄ¼ş(*.*)\0*\0\0\0";
+        of.lpstrFilter = "æ‰€æœ‰æ–‡ä»¶(*.*)\0*\0\0\0";
     }
     of.lpstrCustomFilter = NULL;
     of.nFilterIndex = 1;
@@ -546,7 +546,7 @@ static INT_PTR CALLBACK AboutProc(HWND hwnd, UINT msg,
             char *text = dupprintf(
                 "cnPuTTYgen\r\n\r\n%s\r\n\r\n%s\r\n\r\n%s",
                 ver, buildinfo_text,
-                "(C)" SHORT_COPYRIGHT_DETAILS " ±£ÁôËùÓĞÈ¨Àû¡£");
+                "(C)" SHORT_COPYRIGHT_DETAILS " ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚");
             sfree(buildinfo_text);
             SetDlgItemText(hwnd, 1000, text);
             MakeDlgItemBorderless(hwnd, 1000);
@@ -1028,7 +1028,7 @@ static FingerprintType idc_to_fptype(int option)
       case IDC_FPTYPE_MD5:
         return SSH_FPTYPE_MD5;
       default:
-        unreachable("idc_to_fptypeÖĞµÄ¿Ø¼şID´íÎó");
+        unreachable("idc_to_fptypeä¸­çš„æ§ä»¶IDé”™è¯¯");
     }
 }
 static int fptype_to_idc(FingerprintType fptype)
@@ -1039,7 +1039,7 @@ static int fptype_to_idc(FingerprintType fptype)
       case SSH_FPTYPE_MD5:
         return IDC_FPTYPE_MD5;
       default:
-        unreachable("fptype_to_idcÖĞµÄfptype´íÎó");
+        unreachable("fptype_to_idcä¸­çš„fptypeé”™è¯¯");
     }
 }
 void ui_set_fptype(HWND hwnd, struct MainDlgState *state, int option)
@@ -1136,9 +1136,9 @@ void load_key_file(HWND hwnd, struct MainDlgState *state,
     if (type != SSH_KEYTYPE_SSH1 &&
         type != SSH_KEYTYPE_SSH2 &&
         !import_possible(type)) {
-        char *msg = dupprintf("ÎŞ·¨¼ÓÔØË½Ô¿(%s)",
+        char *msg = dupprintf("æ— æ³•åŠ è½½ç§é’¥(%s)",
                               key_type_to_str(type));
-        message_box(hwnd, msg, "PuTTYgen´íÎó£¡£¡£¡", MB_OK | MB_ICONERROR,
+        message_box(hwnd, msg, "PuTTYgené”™è¯¯ï¼ï¼ï¼", MB_OK | MB_ICONERROR,
                     HELPCTXID(errors_cantloadkey));
         sfree(msg);
         return;
@@ -1200,8 +1200,8 @@ void load_key_file(HWND hwnd, struct MainDlgState *state,
     if (comment)
         sfree(comment);
     if (ret == 0) {
-        char *msg = dupprintf("ÎŞ·¨¼ÓÔØË½Ô¿(%s)", errmsg);
-        message_box(hwnd, msg, "PuTTYgen´íÎó£¡£¡£¡", MB_OK | MB_ICONERROR,
+        char *msg = dupprintf("æ— æ³•åŠ è½½ç§é’¥(%s)", errmsg);
+        message_box(hwnd, msg, "PuTTYgené”™è¯¯ï¼ï¼ï¼", MB_OK | MB_ICONERROR,
                     HELPCTXID(errors_cantloadkey));
         sfree(msg);
     } else if (ret == 1) {
@@ -1219,13 +1219,13 @@ void load_key_file(HWND hwnd, struct MainDlgState *state,
          */
         if (realtype != type && !was_import_cmd) {
             char msg[512];
-            sprintf(msg, "³É¹¦µ¼ÈëÍâ²¿ÃÜÔ¿£º\n"
-                    "(%s)¡£\n"
-                    "½«´ËÃÜÔ¿ÓÃÓÚPuTTYÊ¹ÓÃ£¬ÄúĞèÒª\n"
-                    "Ê¹ÓÃ\"±£´æË½Ô¿\"´æ´¢ÎªPuTTYµÄ\n"
-                    "ÃÜÔ¿¸ñÊ½¡£",
+            sprintf(msg, "æˆåŠŸå¯¼å…¥å¤–éƒ¨å¯†é’¥ï¼š\n"
+                    "(%s)ã€‚\n"
+                    "å°†æ­¤å¯†é’¥ç”¨äºPuTTYä½¿ç”¨ï¼Œæ‚¨éœ€è¦\n"
+                    "ä½¿ç”¨\"ä¿å­˜ç§é’¥\"å­˜å‚¨ä¸ºPuTTYçš„\n"
+                    "å¯†é’¥æ ¼å¼ã€‚",
                     key_type_to_str(realtype));
-            MessageBox(NULL, msg, "PuTTYgen×¢Òâ£¡£¡£¡",
+            MessageBox(NULL, msg, "PuTTYgenæ³¨æ„ï¼ï¼ï¼",
                        MB_OK | MB_ICONINFORMATION);
         }
     }
@@ -1335,7 +1335,7 @@ void remove_certificate(HWND hwnd, struct MainDlgState *state)
 static void start_generating_key(HWND hwnd, struct MainDlgState *state)
 {
     static const char generating_msg[] =
-        "ÇëÉÔµÈ£¬ÕıÔÚÎªÄúÉú³ÉÃÜÔ¿...";
+        "è¯·ç¨ç­‰ï¼Œæ­£åœ¨ä¸ºæ‚¨ç”Ÿæˆå¯†é’¥...";
 
     struct rsa_key_thread_params *params;
     DWORD threadid;
@@ -1359,8 +1359,8 @@ static void start_generating_key(HWND hwnd, struct MainDlgState *state)
     HANDLE hThread = CreateThread(NULL, 0, generate_key_thread,
                                   params, 0, &threadid);
     if (!hThread) {
-        MessageBox(hwnd, "Ïß³Ì×ÊÔ´²»×ã£¡£¡£¡",
-                   "ÃÜÔ¿Éú³É³ö´í£¡£¡£¡",
+        MessageBox(hwnd, "çº¿ç¨‹èµ„æºä¸è¶³ï¼ï¼ï¼",
+                   "å¯†é’¥ç”Ÿæˆå‡ºé”™ï¼ï¼ï¼",
                    MB_OK | MB_ICONERROR);
         sfree(params);
     } else {
@@ -1501,7 +1501,7 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
 {
     const int DEMO_SCREENSHOT_TIMER_ID = 1230;
     static const char entropy_msg[] =
-        "ÇëÔÚ¿Õ°×ÇøÓòÒÆ¶¯Êó±êÀ´²úÒ»Ğ©Ëæ»úĞÔ...";
+        "è¯·åœ¨ç©ºç™½åŒºåŸŸç§»åŠ¨é¼ æ ‡æ¥äº§ä¸€äº›éšæœºæ€§...";
     struct MainDlgState *state;
 
     switch (msg) {
@@ -1530,66 +1530,66 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
             menu = CreateMenu();
 
             menu1 = CreateMenu();
-            AppendMenu(menu1, MF_ENABLED, IDC_LOAD, "¼ÓÔØË½Ô¿(&L)");
-            AppendMenu(menu1, MF_ENABLED, IDC_SAVEPUB, "±£´æ¹«Ô¿(&U)");
-            AppendMenu(menu1, MF_ENABLED, IDC_SAVE, "±£´æË½Ô¿(&S)");
+            AppendMenu(menu1, MF_ENABLED, IDC_LOAD, "åŠ è½½ç§é’¥(&L)");
+            AppendMenu(menu1, MF_ENABLED, IDC_SAVEPUB, "ä¿å­˜å…¬é’¥(&U)");
+            AppendMenu(menu1, MF_ENABLED, IDC_SAVE, "ä¿å­˜ç§é’¥(&S)");
             AppendMenu(menu1, MF_SEPARATOR, 0, 0);
-            AppendMenu(menu1, MF_ENABLED, IDC_QUIT, "ÍË³ö(&X)");
-            AppendMenu(menu, MF_POPUP | MF_ENABLED, (UINT_PTR) menu1, "ÎÄ¼ş(&F)");
+            AppendMenu(menu1, MF_ENABLED, IDC_QUIT, "é€€å‡º(&X)");
+            AppendMenu(menu, MF_POPUP | MF_ENABLED, (UINT_PTR) menu1, "æ–‡ä»¶(&F)");
             state->filemenu = menu1;
 
             menu1 = CreateMenu();
-            AppendMenu(menu1, MF_ENABLED, IDC_GENERATE, "Éú³ÉÃÜÔ¿¶Ô(&G)");
+            AppendMenu(menu1, MF_ENABLED, IDC_GENERATE, "ç”Ÿæˆå¯†é’¥å¯¹(&G)");
             AppendMenu(menu1, MF_SEPARATOR, 0, 0);
             AppendMenu(menu1, MF_ENABLED, IDC_ADDCERT,
-                       "½«Ö¤ÊéÌí¼Óµ½ÃÜÔ¿");
+                       "å°†è¯ä¹¦æ·»åŠ åˆ°å¯†é’¥");
             AppendMenu(menu1, MF_ENABLED, IDC_REMCERT,
-                       "´ÓÃÜÔ¿ÖĞÉ¾³ıÖ¤Êé");
+                       "ä»å¯†é’¥ä¸­åˆ é™¤è¯ä¹¦");
             AppendMenu(menu1, MF_SEPARATOR, 0, 0);
-            AppendMenu(menu1, MF_ENABLED, IDC_KEYSSH1, "SSH-1 RSA ÃÜÔ¿");
-            AppendMenu(menu1, MF_ENABLED, IDC_KEYSSH2RSA, "SSH-2 RSA ÃÜÔ¿");
-            AppendMenu(menu1, MF_ENABLED, IDC_KEYSSH2DSA, "SSH-2 DSA ÃÜÔ¿");
-            AppendMenu(menu1, MF_ENABLED, IDC_KEYSSH2ECDSA, "SSH-2 ECDSA ÃÜÔ¿");
-            AppendMenu(menu1, MF_ENABLED, IDC_KEYSSH2EDDSA, "SSH-2 EdDSA ÃÜÔ¿");
+            AppendMenu(menu1, MF_ENABLED, IDC_KEYSSH1, "SSH-1 RSA å¯†é’¥");
+            AppendMenu(menu1, MF_ENABLED, IDC_KEYSSH2RSA, "SSH-2 RSA å¯†é’¥");
+            AppendMenu(menu1, MF_ENABLED, IDC_KEYSSH2DSA, "SSH-2 DSA å¯†é’¥");
+            AppendMenu(menu1, MF_ENABLED, IDC_KEYSSH2ECDSA, "SSH-2 ECDSA å¯†é’¥");
+            AppendMenu(menu1, MF_ENABLED, IDC_KEYSSH2EDDSA, "SSH-2 EdDSA å¯†é’¥");
             AppendMenu(menu1, MF_SEPARATOR, 0, 0);
             AppendMenu(menu1, MF_ENABLED, IDC_PRIMEGEN_PROB,
-                       "Ê¹ÓÃ³£¹æ¸ÅÂÊµÄËØÊı(¿ìËÙ)");
+                       "ä½¿ç”¨å¸¸è§„æ¦‚ç‡çš„ç´ æ•°(å¿«é€Ÿ)");
             AppendMenu(menu1, MF_ENABLED, IDC_PRIMEGEN_MAURER_SIMPLE,
-                       "Ê¹ÓÃ¾­¹ıÑéÖ¤µÄËØÊı(½ÏÂı)");
+                       "ä½¿ç”¨ç»è¿‡éªŒè¯çš„ç´ æ•°(è¾ƒæ…¢)");
             AppendMenu(menu1, MF_ENABLED, IDC_PRIMEGEN_MAURER_COMPLEX,
-                       "Ê¹ÓÃ¾­¹ıÑéÖ¤ÇÒ¾ùÔÈ·Ö²¼µÄËØÊı(×îÂı)");
+                       "ä½¿ç”¨ç»è¿‡éªŒè¯ä¸”å‡åŒ€åˆ†å¸ƒçš„ç´ æ•°(æœ€æ…¢)");
             AppendMenu(menu1, MF_SEPARATOR, 0, 0);
             AppendMenu(menu1, MF_ENABLED, IDC_RSA_STRONG,
-                       "Ê¹ÓÃ\"Ç¿\"ËØÊı×÷ÎªRSAÃÜÔ¿ÒªËØ");
+                       "ä½¿ç”¨\"å¼º\"ç´ æ•°ä½œä¸ºRSAå¯†é’¥è¦ç´ ");
             AppendMenu(menu1, MF_SEPARATOR, 0, 0);
             AppendMenu(menu1, MF_ENABLED, IDC_PPK_PARAMS,
-                       "ÉèÖÃ±£´æÃÜÔ¿ÎÄ¼şµÄ²ÎÊı");
+                       "è®¾ç½®ä¿å­˜å¯†é’¥æ–‡ä»¶çš„å‚æ•°");
             AppendMenu(menu1, MF_SEPARATOR, 0, 0);
             AppendMenu(menu1, MF_ENABLED, IDC_FPTYPE_SHA256,
-                       "ÏÔÊ¾SHA256¸ñÊ½Ö¸ÎÆ");
+                       "æ˜¾ç¤ºSHA256æ ¼å¼æŒ‡çº¹");
             AppendMenu(menu1, MF_ENABLED, IDC_FPTYPE_MD5,
-                       "ÏÔÊ¾MD5¸ñÊ½Ö¸ÎÆ");
-            AppendMenu(menu, MF_POPUP | MF_ENABLED, (UINT_PTR) menu1, "ÃÜÔ¿(&K)");
+                       "æ˜¾ç¤ºMD5æ ¼å¼æŒ‡çº¹");
+            AppendMenu(menu, MF_POPUP | MF_ENABLED, (UINT_PTR) menu1, "å¯†é’¥(&K)");
             state->keymenu = menu1;
 
             menu1 = CreateMenu();
-            AppendMenu(menu1, MF_ENABLED, IDC_IMPORT, "µ¼ÈëÃÜÔ¿(&I)");
+            AppendMenu(menu1, MF_ENABLED, IDC_IMPORT, "å¯¼å…¥å¯†é’¥(&I)");
             AppendMenu(menu1, MF_SEPARATOR, 0, 0);
             AppendMenu(menu1, MF_ENABLED, IDC_EXPORT_OPENSSH_AUTO,
-                       "µ¼³öOpenSSHÃÜÔ¿(&O)");
+                       "å¯¼å‡ºOpenSSHå¯†é’¥(&O)");
             AppendMenu(menu1, MF_ENABLED, IDC_EXPORT_OPENSSH_NEW,
-                       "µ¼³öOpenSSHÃÜÔ¿(Ç¿ÖÆĞÂ¸ñÊ½)");
+                       "å¯¼å‡ºOpenSSHå¯†é’¥(å¼ºåˆ¶æ–°æ ¼å¼)");
             AppendMenu(menu1, MF_ENABLED, IDC_EXPORT_SSHCOM,
-                       "µ¼³össh.comÃÜÔ¿(&S)");
+                       "å¯¼å‡ºssh.comå¯†é’¥(&S)");
             AppendMenu(menu, MF_POPUP | MF_ENABLED, (UINT_PTR) menu1,
-                       "×ª»»(&V)");
+                       "è½¬æ¢(&V)");
             state->cvtmenu = menu1;
 
             menu1 = CreateMenu();
-            AppendMenu(menu1, MF_ENABLED, IDC_ABOUT, "¹ØÓÚ(&A)");
+            AppendMenu(menu1, MF_ENABLED, IDC_ABOUT, "å…³äº(&A)");
             if (has_help())
-                AppendMenu(menu1, MF_ENABLED, IDC_GIVEHELP, "°ïÖú(&H)");
-            AppendMenu(menu, MF_POPUP | MF_ENABLED, (UINT_PTR) menu1, "°ïÖú(&H)");
+                AppendMenu(menu1, MF_ENABLED, IDC_GIVEHELP, "å¸®åŠ©(&H)");
+            AppendMenu(menu, MF_POPUP | MF_ENABLED, (UINT_PTR) menu1, "å¸®åŠ©(&H)");
 
             SetMenu(hwnd, menu);
         }
@@ -1616,9 +1616,9 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
             /* Accelerators used: acglops1rbvde */
 
             ctlposinit(&cp, hwnd, 4, 4, 4);
-            beginbox(&cp, "ÃÜÔ¿£º", IDC_BOX_KEY);
+            beginbox(&cp, "å¯†é’¥ï¼š", IDC_BOX_KEY);
             cp2 = cp;
-            statictext(&cp2, "ÔİÊ±ÎŞÃÜÔ¿£¡£¡£¡", 1, IDC_NOKEY);
+            statictext(&cp2, "æš‚æ—¶æ— å¯†é’¥ï¼ï¼ï¼", 1, IDC_NOKEY);
             cp2 = cp;
             statictext(&cp2, "", 1, IDC_GENERATING);
             progressbar(&cp2, IDC_PROGRESS);
@@ -1635,31 +1635,31 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
             cp2.xoff = cp2.width = cp2.width / 3;
             button(&cp2, "Certificate info...", IDC_CERTMOREINFO, false);
             bigeditctrl(&cp,
-                        "ÓÃÓÚÕ³Ìùµ½authorized_keysÎÄ¼şµÄ¹«Ô¿£º",
+                        "ç”¨äºç²˜è´´åˆ°authorized_keysæ–‡ä»¶çš„å…¬é’¥ï¼š",
                         IDC_PKSTATIC, IDC_KEYDISPLAY, 5);
             SendDlgItemMessage(hwnd, IDC_KEYDISPLAY, EM_SETREADONLY, 1, 0);
-            staticedit(&cp, "ÃÜÔ¿Ö¸ÎÆ(&I)£º", IDC_FPSTATIC,
+            staticedit(&cp, "å¯†é’¥æŒ‡çº¹(&I)ï¼š", IDC_FPSTATIC,
                        IDC_FINGERPRINT, 82);
             SendDlgItemMessage(hwnd, IDC_FINGERPRINT, EM_SETREADONLY, 1,
                                0);
-            staticedit(&cp, "ÃÜÔ¿×¢ÊÍ(&C)£º", IDC_COMMENTSTATIC,
+            staticedit(&cp, "å¯†é’¥æ³¨é‡Š(&C)ï¼š", IDC_COMMENTSTATIC,
                        IDC_COMMENTEDIT, 82);
-            staticpassedit(&cp, "ÃÜÔ¿ÃÜÂë(&A)£º", IDC_PASSPHRASE1STATIC,
+            staticpassedit(&cp, "å¯†é’¥å¯†ç (&A)ï¼š", IDC_PASSPHRASE1STATIC,
                            IDC_PASSPHRASE1EDIT, 82);
-            staticpassedit(&cp, "È·ÈÏÃÜÂë(&O)£º",
+            staticpassedit(&cp, "ç¡®è®¤å¯†ç (&O)ï¼š",
                            IDC_PASSPHRASE2STATIC, IDC_PASSPHRASE2EDIT, 82);
             endbox(&cp);
-            beginbox(&cp, "²Ù×÷£º", IDC_BOX_ACTIONS);
-            staticbtn(&cp, "Éú³É¹«Ô¿/Ë½Ô¿¶Ô",
-                      IDC_GENSTATIC, "Éú³É(&G)", IDC_GENERATE);
-            staticbtn(&cp, "¼ÓÔØÏÖÓĞË½Ô¿ÎÄ¼ş",
-                      IDC_LOADSTATIC, "¼ÓÔØ(&L)", IDC_LOAD);
-            static2btn(&cp, "±£´æÉú³ÉµÄÃÜÔ¿", IDC_SAVESTATIC,
-                       "±£´æ¹«Ô¿(&U)", IDC_SAVEPUB,
-                       "±£´æË½Ô¿(&S)", IDC_SAVE);
+            beginbox(&cp, "æ“ä½œï¼š", IDC_BOX_ACTIONS);
+            staticbtn(&cp, "ç”Ÿæˆå…¬é’¥/ç§é’¥å¯¹",
+                      IDC_GENSTATIC, "ç”Ÿæˆ(&G)", IDC_GENERATE);
+            staticbtn(&cp, "åŠ è½½ç°æœ‰ç§é’¥æ–‡ä»¶",
+                      IDC_LOADSTATIC, "åŠ è½½(&L)", IDC_LOAD);
+            static2btn(&cp, "ä¿å­˜ç”Ÿæˆçš„å¯†é’¥", IDC_SAVESTATIC,
+                       "ä¿å­˜å…¬é’¥(&U)", IDC_SAVEPUB,
+                       "ä¿å­˜ç§é’¥(&S)", IDC_SAVE);
             endbox(&cp);
-            beginbox(&cp, "ÃÜÔ¿²ÎÊı£º", IDC_BOX_PARAMS);
-            radioline(&cp, "Éú³ÉÃÜÔ¿µÄÀàĞÍ£º", IDC_TYPESTATIC, 5,
+            beginbox(&cp, "å¯†é’¥å‚æ•°ï¼š", IDC_BOX_PARAMS);
+            radioline(&cp, "ç”Ÿæˆå¯†é’¥çš„ç±»å‹ï¼š", IDC_TYPESTATIC, 5,
                       "&RSA", IDC_KEYSSH2RSA,
                       "&DSA", IDC_KEYSSH2DSA,
                       "&ECDSA", IDC_KEYSSH2ECDSA,
@@ -1667,11 +1667,11 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                       "SSH-&1(RSA)", IDC_KEYSSH1,
                       NULL);
             cp2 = cp;
-            staticedit(&cp2, "Éú³ÉÃÜÔ¿µÄÎ»Êı£º",
+            staticedit(&cp2, "ç”Ÿæˆå¯†é’¥çš„ä½æ•°ï¼š",
                        IDC_BITSSTATIC, IDC_BITS, 20);
             ymax = cp2.ypos;
             cp2 = cp;
-            staticddl(&cp2, "ÓÃÓÚÉú³É´ËÃÜÔ¿µÄÇúÏß£º",
+            staticddl(&cp2, "ç”¨äºç”Ÿæˆæ­¤å¯†é’¥çš„æ›²çº¿ï¼š",
                       IDC_ECCURVESTATIC, IDC_ECCURVE, 30);
             SendDlgItemMessage(hwnd, IDC_ECCURVE, CB_RESETCONTENT, 0, 0);
             {
@@ -1688,7 +1688,7 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
             }
             ymax = ymax > cp2.ypos ? ymax : cp2.ypos;
             cp2 = cp;
-            staticddl(&cp2, "ÓÃÓÚÉú³É´ËÃÜÔ¿µÄÇúÏß£º",
+            staticddl(&cp2, "ç”¨äºç”Ÿæˆæ­¤å¯†é’¥çš„æ›²çº¿ï¼š",
                       IDC_EDCURVESTATIC, IDC_EDCURVE, 30);
             SendDlgItemMessage(hwnd, IDC_EDCURVE, CB_RESETCONTENT, 0, 0);
             {
@@ -1699,7 +1699,7 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                 for (i = 0; i < n_ec_ed_curve_lengths; i++) {
                     bits = ec_ed_curve_lengths[i];
                     ec_ed_alg_and_curve_by_bits(bits, &curve, &alg);
-                    char *desc = dupprintf("%s (%d Î»)",
+                    char *desc = dupprintf("%s (%d ä½)",
                                            curve->textname, bits);
                     SendDlgItemMessage(hwnd, IDC_EDCURVE, CB_ADDSTRING, 0,
                                        (LPARAM)desc);
@@ -1708,7 +1708,7 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
             }
             ymax = ymax > cp2.ypos ? ymax : cp2.ypos;
             cp2 = cp;
-            statictext(&cp2, "(ÎŞĞèÎª´ËÃÜÔ¿ÀàĞÍÅäÖÃÈÎºÎÄÚÈİ)",
+            statictext(&cp2, "(æ— éœ€ä¸ºæ­¤å¯†é’¥ç±»å‹é…ç½®ä»»ä½•å†…å®¹)",
                        1, IDC_NOTHINGSTATIC);
             ymax = ymax > cp2.ypos ? ymax : cp2.ypos;
             cp.ypos = ymax;
@@ -1924,10 +1924,10 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                 if ((state->keytype == RSA || state->keytype == DSA) &&
                     state->key_bits < 256) {
                     char *message = dupprintf(
-                        "PuTTYgen²»»áÉú³É³¤¶ÈĞ¡ÓÚ256Î»µÄÃÜÔ¿¡£\n"
-                        "ÃÜÔ¿³¤¶ÈÖØÖÃÎªÄ¬ÈÏÖµ:%d¡£ÊÇ·ñ¼ÌĞø£¿£¿",
+                        "PuTTYgenä¸ä¼šç”Ÿæˆé•¿åº¦å°äº256ä½çš„å¯†é’¥ã€‚\n"
+                        "å¯†é’¥é•¿åº¦é‡ç½®ä¸ºé»˜è®¤å€¼:%dã€‚æ˜¯å¦ç»§ç»­ï¼Ÿï¼Ÿ",
                         DEFAULT_KEY_BITS);
-                    int ret = MessageBox(hwnd, message, "PuTTYgen¾¯¸æ£¡£¡£¡",
+                    int ret = MessageBox(hwnd, message, "PuTTYgenè­¦å‘Šï¼ï¼ï¼",
                                          MB_ICONWARNING | MB_OKCANCEL);
                     sfree(message);
                     if (ret != IDOK)
@@ -1937,8 +1937,8 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                 } else if ((state->keytype == RSA || state->keytype == DSA) &&
                            state->key_bits < DEFAULT_KEY_BITS) {
                     char *message = dupprintf(
-                        "²»ÍÆ¼ö¶ÌÓÚ%dÎ»µÄÃÜÔ¿¡£"
-                        "ÕæµÄÒªÉú³É´ËÃÜÔ¿Âğ£¿£¿£¿", DEFAULT_KEY_BITS);
+                        "ä¸æ¨èçŸ­äº%dä½çš„å¯†é’¥ã€‚"
+                        "çœŸçš„è¦ç”Ÿæˆæ­¤å¯†é’¥å—ï¼Ÿï¼Ÿï¼Ÿ", DEFAULT_KEY_BITS);
                     int ret = MessageBox(hwnd, message, "PuTTYgen Warning",
                                          MB_ICONWARNING | MB_OKCANCEL);
                     sfree(message);
@@ -1951,7 +1951,7 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                 else if (state->keytype == ECDSA || state->keytype == EDDSA)
                     raw_entropy_required = (state->curve_bits / 2) * 2;
                 else
-                    unreachable("ÏÖÔÚÎÒÃÇ±ØĞë³õÊ¼»¯ÃÜÔ¿ÀàĞÍ£¡£¡£¡");
+                    unreachable("ç°åœ¨æˆ‘ä»¬å¿…é¡»åˆå§‹åŒ–å¯†é’¥ç±»å‹ï¼ï¼ï¼");
 
                 /* Bound the entropy collection above by the amount of
                  * data we can actually fit into the PRNG. Any more
@@ -2039,11 +2039,11 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                 if (type != realtype &&
                     import_target_type(type) != realtype) {
                     char msg[256];
-                    sprintf(msg, "ÎŞ·¨ÎªSSH-%dÖĞµ¼³öSSH-%d"
-                            "ÃÜÔ¿¸ñÊ½", (state->ssh2 ? 2 : 1),
+                    sprintf(msg, "æ— æ³•ä¸ºSSH-%dä¸­å¯¼å‡ºSSH-%d"
+                            "å¯†é’¥æ ¼å¼", (state->ssh2 ? 2 : 1),
                             (state->ssh2 ? 1 : 2));
                     MessageBox(hwnd, msg,
-                               "PuTTYgen´íÎó£¡£¡£¡", MB_OK | MB_ICONERROR);
+                               "PuTTYgené”™è¯¯ï¼ï¼ï¼", MB_OK | MB_ICONERROR);
                     break;
                 }
 
@@ -2051,8 +2051,8 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                 passphrase2 = GetDlgItemText_alloc(hwnd, IDC_PASSPHRASE2EDIT);
                 if (strcmp(passphrase, passphrase2)) {
                     MessageBox(hwnd,
-                               "ÊäÈëµÄÁ½¸öÃÜÂë²»Æ¥Åä¡£",
-                               "PuTTYgen´íÎó£¡£¡£¡", MB_OK | MB_ICONERROR);
+                               "è¾“å…¥çš„ä¸¤ä¸ªå¯†ç ä¸åŒ¹é…ã€‚",
+                               "PuTTYgené”™è¯¯ï¼ï¼ï¼", MB_OK | MB_ICONERROR);
                     burnstr(passphrase);
                     burnstr(passphrase2);
                     break;
@@ -2061,25 +2061,25 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                 if (!*passphrase) {
                     int ret;
                     ret = MessageBox(hwnd,
-                                     "ÄúÈ·¶¨Òª±£´æ´ËÃÜÔ¿\n"
-                                     "Ã»ÓĞÃÜÂëÀ´±£»¤Ëü£¿",
-                                     "PuTTYgen¾¯¸æ£¡£¡£¡",
+                                     "æ‚¨ç¡®å®šè¦ä¿å­˜æ­¤å¯†é’¥\n"
+                                     "æ²¡æœ‰å¯†ç æ¥ä¿æŠ¤å®ƒï¼Ÿ",
+                                     "PuTTYgenè­¦å‘Šï¼ï¼ï¼",
                                      MB_YESNO | MB_ICONWARNING);
                     if (ret != IDYES) {
                         burnstr(passphrase);
                         break;
                     }
                 }
-                if (prompt_keyfile(hwnd, "½«Ë½Ô¿Áí´æÎª:",
+                if (prompt_keyfile(hwnd, "å°†ç§é’¥å¦å­˜ä¸º:",
                                    filename, true, (type == realtype))) {
                     int ret;
                     FILE *fp = fopen(filename, "r");
                     if (fp) {
                         char *buffer;
                         fclose(fp);
-                        buffer = dupprintf("¸²¸ÇÏÖÓĞÎÄ¼ş\n%s?",
+                        buffer = dupprintf("è¦†ç›–ç°æœ‰æ–‡ä»¶\n%s?",
                                            filename);
-                        ret = MessageBox(hwnd, buffer, "PuTTYgen¾¯¸æ£¡£¡£¡",
+                        ret = MessageBox(hwnd, buffer, "PuTTYgenè­¦å‘Šï¼ï¼ï¼",
                                          MB_YESNO | MB_ICONWARNING);
                         sfree(buffer);
                         if (ret != IDYES) {
@@ -2109,8 +2109,8 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                         filename_free(fn);
                     }
                     if (ret <= 0) {
-                        MessageBox(hwnd, "ÎŞ·¨±£´æÃÜÔ¿ÎÄ¼ş£¡£¡£¡",
-                                   "PuTTYgen´íÎó£¡£¡£¡", MB_OK | MB_ICONERROR);
+                        MessageBox(hwnd, "æ— æ³•ä¿å­˜å¯†é’¥æ–‡ä»¶ï¼ï¼ï¼",
+                                   "PuTTYgené”™è¯¯ï¼ï¼ï¼", MB_OK | MB_ICONERROR);
                     }
                 }
                 burnstr(passphrase);
@@ -2123,16 +2123,16 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                 (struct MainDlgState *) GetWindowLongPtr(hwnd, GWLP_USERDATA);
             if (state->key_exists) {
                 char filename[FILENAME_MAX];
-                if (prompt_keyfile(hwnd, "½«¹«Ô¿Áí´æÎª:",
+                if (prompt_keyfile(hwnd, "å°†å…¬é’¥å¦å­˜ä¸º:",
                                    filename, true, false)) {
                     int ret;
                     FILE *fp = fopen(filename, "r");
                     if (fp) {
                         char *buffer;
                         fclose(fp);
-                        buffer = dupprintf("¸²¸ÇÏÖÓĞÎÄ¼ş\n%s£¿£¿",
+                        buffer = dupprintf("è¦†ç›–ç°æœ‰æ–‡ä»¶\n%sï¼Ÿï¼Ÿ",
                                            filename);
-                        ret = MessageBox(hwnd, buffer, "PuTTYgen¾¯¸æ£¡£¡£¡",
+                        ret = MessageBox(hwnd, buffer, "PuTTYgenè­¦å‘Šï¼ï¼ï¼",
                                          MB_YESNO | MB_ICONWARNING);
                         sfree(buffer);
                         if (ret != IDYES)
@@ -2140,8 +2140,8 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                     }
                     fp = fopen(filename, "w");
                     if (!fp) {
-                        MessageBox(hwnd, "ÎŞ·¨´ò¿ªÃÜÔ¿ÎÄ¼ş£¡£¡£¡",
-                                   "PuTTYgen´íÎó£¡£¡£¡", MB_OK | MB_ICONERROR);
+                        MessageBox(hwnd, "æ— æ³•æ‰“å¼€å¯†é’¥æ–‡ä»¶ï¼ï¼ï¼",
+                                   "PuTTYgené”™è¯¯ï¼ï¼ï¼", MB_OK | MB_ICONERROR);
                     } else {
                         if (state->ssh2) {
                             strbuf *blob = strbuf_new();
@@ -2155,8 +2155,8 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                             ssh1_write_pubkey(fp, &state->key);
                         }
                         if (fclose(fp) < 0) {
-                            MessageBox(hwnd, "PuTTYgen´íÎó£¡£¡£¡",
-                                       "PuTTYgen´íÎó£¡£¡£¡", MB_OK | MB_ICONERROR);
+                            MessageBox(hwnd, "PuTTYgené”™è¯¯ï¼ï¼ï¼",
+                                       "PuTTYgené”™è¯¯ï¼ï¼ï¼", MB_OK | MB_ICONERROR);
                         }
                     }
                 }
@@ -2170,7 +2170,7 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                 (struct MainDlgState *) GetWindowLongPtr(hwnd, GWLP_USERDATA);
             if (!state->generation_thread_exists) {
                 char filename[FILENAME_MAX];
-                if (prompt_keyfile(hwnd, "¼ÓÔØË½Ô¿:", filename, false,
+                if (prompt_keyfile(hwnd, "åŠ è½½ç§é’¥:", filename, false,
                                    LOWORD(wParam) == IDC_LOAD)) {
                     Filename *fn = filename_from_str(filename);
                     load_key_file(hwnd, state, fn, LOWORD(wParam) != IDC_LOAD);
@@ -2385,7 +2385,7 @@ static NORETURN void opt_error(const char *fmt, ...)
     char *msg = dupvprintf(fmt, ap);
     va_end(ap);
 
-    MessageBox(NULL, msg, "PuTTYgenÃüÁîĞĞ´íÎó", MB_ICONERROR | MB_OK);
+    MessageBox(NULL, msg, "PuTTYgenå‘½ä»¤è¡Œé”™è¯¯", MB_ICONERROR | MB_OK);
 
     exit(1);
 }
@@ -2437,7 +2437,7 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
                 cmdline_keyfile = val;
                 continue;
             } else {
-                opt_error("ÒâÍâµÄ²»È·¶¨ÎÊÌâ£º'%s'\n", val);
+                opt_error("æ„å¤–çš„ä¸ç¡®å®šé—®é¢˜ï¼š'%s'\n", val);
             }
         } else if (match_opt("-pgpfp")) {
             pgp_fingerprints_msgbox(NULL);
@@ -2463,7 +2463,7 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
                 params->keybutton = IDC_KEYSSH2EDDSA;
                 argbits = 448;
             } else {
-                opt_error("Î´ÖªµÄÃÜÔ¿ÀàĞÍ£º'%s'\n", val);
+                opt_error("æœªçŸ¥çš„å¯†é’¥ç±»å‹ï¼š'%s'\n", val);
             }
         } else if (match_optval("-b")) {
             argbits = atoi(val);
@@ -2473,7 +2473,7 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
             else if (!strcmp(val, "sha256"))
                 params->fptype = SSH_FPTYPE_SHA256;
             else
-                opt_error("Î´ÖªµÄÖ¸ÎÆÀàĞÍ£º'%s'\n", val);
+                opt_error("æœªçŸ¥çš„æŒ‡çº¹ç±»å‹ï¼š'%s'\n", val);
         } else if (match_optval("-primes")) {
             if (!strcmp(val, "probable") ||
                 !strcmp(val, "probabilistic")) {
@@ -2490,7 +2490,7 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
                        !strcmp(val, "maurer-complex")) {
                 params->primepolicybutton = IDC_PRIMEGEN_MAURER_COMPLEX;
             } else {
-                opt_error("ÎŞ·¨Ê¶±ğµÄËØÊıÉú³ÉÄ£Ê½£º'%s'\n", val);
+                opt_error("æ— æ³•è¯†åˆ«çš„ç´ æ•°ç”Ÿæˆæ¨¡å¼ï¼š'%s'\n", val);
             }
         } else if (match_opt("-strong-rsa")) {
             params->rsa_strong = true;
@@ -2503,7 +2503,7 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
 
                 char *optvalue = strchr(val, '=');
                 if (!optvalue)
-                    opt_error("PPK²ÎÊı '%s' ĞèÒªÒ»¸öÖµ\n", val);
+                    opt_error("PPKå‚æ•° '%s' éœ€è¦ä¸€ä¸ªå€¼\n", val);
                 *optvalue++ = '\0';
 
                 /* Non-numeric options */
@@ -2518,7 +2518,7 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
                                !strcmp(optvalue, "argon2d")) {
                         save_params.argon2_flavour = Argon2d;
                     } else {
-                        opt_error("ÎŞ·¨Ê¶±ğµÄkdf '%s'\n", optvalue);
+                        opt_error("æ— æ³•è¯†åˆ«çš„kdf '%s'\n", optvalue);
                     }
                     continue;
                 }
@@ -2526,8 +2526,8 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
                 char *end;
                 unsigned long n = strtoul(optvalue, &end, 0);
                 if (!*optvalue || *end)
-                    opt_error("PPK²ÎÊı '%s' µÄÖµ '%s'£ºÓ¦¸ÃÊÇ"
-                              "Êı×Ö\n", optvalue, val);
+                    opt_error("PPKå‚æ•° '%s' çš„å€¼ '%s'ï¼šåº”è¯¥æ˜¯"
+                              "æ•°å­—\n", optvalue, val);
 
                 if (!strcmp(val, "version")) {
                     save_params.fmt_version = n;
@@ -2544,7 +2544,7 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
                            !strcmp(val, "parallel")) {
                     save_params.argon2_parallelism = n;
                 } else {
-                    opt_error("ÎŞ·¨Ê¶±ğµÄPPK²ÎÊı£º'%s'\n", val);
+                    opt_error("æ— æ³•è¯†åˆ«çš„PPKå‚æ•°ï¼š'%s'\n", val);
                 }
             }
         } else if (match_optval("-demo-screenshot")) {
@@ -2564,7 +2564,7 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
             params->keybutton = IDC_KEYSSH2EDDSA;
             argbits = 255;
         } else {
-            opt_error("ÎŞ·¨Ê¶±ğµÄÑ¡Ïî£º'%s'\n", amo.argv[amo.index]);
+            opt_error("æ— æ³•è¯†åˆ«çš„é€‰é¡¹ï¼š'%s'\n", amo.argv[amo.index]);
         }
     }
 
@@ -2585,7 +2585,7 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
                     break;
                 }
             if (!found)
-                opt_error("²»Ö§³ÖµÄECDSAÎ»³¤£º%d", argbits);
+                opt_error("ä¸æ”¯æŒçš„ECDSAä½é•¿ï¼š%d", argbits);
             break;
           }
           case IDC_KEYSSH2EDDSA: {
@@ -2597,7 +2597,7 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
                     break;
                 }
             if (!found)
-                opt_error("²»Ö§³ÖµÄEDDSAÎ»³¤£º%d", argbits);
+                opt_error("ä¸æ”¯æŒçš„EDDSAä½é•¿ï¼š%d", argbits);
             break;
           }
         }

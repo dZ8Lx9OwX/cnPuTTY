@@ -268,7 +268,7 @@ void sk_init(void)
         winsock_module = load_system32_dll("wsock32.dll");
     }
     if (!winsock_module)
-        modalfatalbox("ÎÞ·¨¼ÓÔØÈÎºÎWinSock¿â");
+        modalfatalbox("æ— æ³•åŠ è½½ä»»ä½•WinSockåº“");
 
 #ifndef NO_IPV6
     /* Check if we have getaddrinfo in Winsock */
@@ -339,7 +339,7 @@ void sk_init(void)
     if (!sk_startup(2,2) &&
         !sk_startup(2,0) &&
         !sk_startup(1,1)) {
-        modalfatalbox("ÎÞ·¨³õÊ¼»¯WinSock");
+        modalfatalbox("æ— æ³•åˆå§‹åŒ–WinSock");
     }
 
     sktree = newtree234(cmpfortree);
@@ -376,76 +376,76 @@ const char *winsock_error_string(int error)
      */
     switch (error) {
       case WSAEACCES:
-        return "ÍøÂç´íÎó: ÎÞ·ÃÎÊÈ¨ÏÞ";
+        return "ç½‘ç»œé”™è¯¯: æ— è®¿é—®æƒé™";
       case WSAEADDRINUSE:
-        return "ÍøÂç´íÎó: µØÖ·ÒÑ±»Ê¹ÓÃ";
+        return "ç½‘ç»œé”™è¯¯: åœ°å€å·²è¢«ä½¿ç”¨";
       case WSAEADDRNOTAVAIL:
-        return "ÍøÂç´íÎó: ÎÞ·¨·ÖÅäÇëÇóµÄµØÖ·";
+        return "ç½‘ç»œé”™è¯¯: æ— æ³•åˆ†é…è¯·æ±‚çš„åœ°å€";
       case WSAEAFNOSUPPORT:
         return
-            "ÍøÂç´íÎó: Ð­Òé×å²»Ö§³ÖµÄµØÖ·×å";
+            "ç½‘ç»œé”™è¯¯: åè®®æ—ä¸æ”¯æŒçš„åœ°å€æ—";
       case WSAEALREADY:
-        return "ÍøÂç´íÎó: ²Ù×÷ÒÑÔÚ½øÐÐÖÐ";
+        return "ç½‘ç»œé”™è¯¯: æ“ä½œå·²åœ¨è¿›è¡Œä¸­";
       case WSAECONNABORTED:
-        return "ÍøÂç´íÎó: Èí¼þµ¼ÖÂÁ¬½ÓÖÐÖ¹";
+        return "ç½‘ç»œé”™è¯¯: è½¯ä»¶å¯¼è‡´è¿žæŽ¥ä¸­æ­¢";
       case WSAECONNREFUSED:
-        return "ÍøÂç´íÎó: ¾Ü¾øÁ¬½Ó";
+        return "ç½‘ç»œé”™è¯¯: æ‹’ç»è¿žæŽ¥";
       case WSAECONNRESET:
-        return "ÍøÂç´íÎó: ¶Ô·½ÖØÖÃÁ¬½Ó";
+        return "ç½‘ç»œé”™è¯¯: å¯¹æ–¹é‡ç½®è¿žæŽ¥";
       case WSAEDESTADDRREQ:
-        return "ÍøÂç´íÎó: ÐèÒªÄ¿±êµØÖ·";
+        return "ç½‘ç»œé”™è¯¯: éœ€è¦ç›®æ ‡åœ°å€";
       case WSAEFAULT:
-        return "ÍøÂç´íÎó: ´íÎóµØÖ·";
+        return "ç½‘ç»œé”™è¯¯: é”™è¯¯åœ°å€";
       case WSAEHOSTDOWN:
-        return "ÍøÂç´íÎó: Ö÷»úÒÑ¹Ø±Õ";
+        return "ç½‘ç»œé”™è¯¯: ä¸»æœºå·²å…³é—­";
       case WSAEHOSTUNREACH:
-        return "ÍøÂç´íÎó: Ã»ÓÐµ½Ö÷»úµÄÂ·ÓÉ";
+        return "ç½‘ç»œé”™è¯¯: æ²¡æœ‰åˆ°ä¸»æœºçš„è·¯ç”±";
       case WSAEINPROGRESS:
-        return "ÍøÂç´íÎó: ²Ù×÷ÕýÔÚ½øÐÐÖÐ";
+        return "ç½‘ç»œé”™è¯¯: æ“ä½œæ­£åœ¨è¿›è¡Œä¸­";
       case WSAEINTR:
-        return "ÍøÂç´íÎó: ÖÐ¶Ïº¯Êýµ÷ÓÃ";
+        return "ç½‘ç»œé”™è¯¯: ä¸­æ–­å‡½æ•°è°ƒç”¨";
       case WSAEINVAL:
-        return "ÍøÂç´íÎó: Ä¿±êÎÞÐ§";
+        return "ç½‘ç»œé”™è¯¯: ç›®æ ‡æ— æ•ˆ";
       case WSAEISCONN:
-        return "ÍøÂç´íÎó: Ì×½Ó×ÖÒÑÁ¬½Ó";
+        return "ç½‘ç»œé”™è¯¯: å¥—æŽ¥å­—å·²è¿žæŽ¥";
       case WSAEMFILE:
-        return "ÍøÂç´íÎó: ´ò¿ªµÄÎÄ¼þ¹ý¶à";
+        return "ç½‘ç»œé”™è¯¯: æ‰“å¼€çš„æ–‡ä»¶è¿‡å¤š";
       case WSAEMSGSIZE:
-        return "ÍøÂç´íÎó: ÐÅÏ¢Ì«³¤";
+        return "ç½‘ç»œé”™è¯¯: ä¿¡æ¯å¤ªé•¿";
       case WSAENETDOWN:
-        return "ÍøÂç´íÎó: ÍøÂçÒÑ¹Ø±Õ";
+        return "ç½‘ç»œé”™è¯¯: ç½‘ç»œå·²å…³é—­";
       case WSAENETRESET:
-        return "ÍøÂç´íÎó: ÖØÖÃÊ±ÍøÂç¶Ï¿ªÁ¬½Ó";
+        return "ç½‘ç»œé”™è¯¯: é‡ç½®æ—¶ç½‘ç»œæ–­å¼€è¿žæŽ¥";
       case WSAENETUNREACH:
-        return "ÍøÂç´íÎó: ÍøÂç²»¿É´ï";
+        return "ç½‘ç»œé”™è¯¯: ç½‘ç»œä¸å¯è¾¾";
       case WSAENOBUFS:
-        return "ÍøÂç´íÎó: Ã»ÓÐ¿ÉÓÃµÄ»º³å¿Õ¼ä";
+        return "ç½‘ç»œé”™è¯¯: æ²¡æœ‰å¯ç”¨çš„ç¼“å†²ç©ºé—´";
       case WSAENOPROTOOPT:
-        return "ÍøÂç´íÎó: ´íÎóµÄÐ­ÒéÑ¡Ïî";
+        return "ç½‘ç»œé”™è¯¯: é”™è¯¯çš„åè®®é€‰é¡¹";
       case WSAENOTCONN:
-        return "ÍøÂç´íÎó: Ì×½Ó×ÖÎ´Á¬½Ó";
+        return "ç½‘ç»œé”™è¯¯: å¥—æŽ¥å­—æœªè¿žæŽ¥";
       case WSAENOTSOCK:
-        return "ÍøÂç´íÎó: ·ÇÌ×½Ó×ÖÉÏµÄÌ×½Ó×Ö²Ù×÷";
+        return "ç½‘ç»œé”™è¯¯: éžå¥—æŽ¥å­—ä¸Šçš„å¥—æŽ¥å­—æ“ä½œ";
       case WSAEOPNOTSUPP:
-        return "ÍøÂç´íÎó: ²»Ö§³Ö²Ù×÷";
+        return "ç½‘ç»œé”™è¯¯: ä¸æ”¯æŒæ“ä½œ";
       case WSAEPFNOSUPPORT:
-        return "ÍøÂç´íÎó: ²»Ö§³ÖµÄÐ­Òé×å";
+        return "ç½‘ç»œé”™è¯¯: ä¸æ”¯æŒçš„åè®®æ—";
       case WSAEPROCLIM:
-        return "ÍøÂç´íÎó: ½ø³ÌÌ«¶à";
+        return "ç½‘ç»œé”™è¯¯: è¿›ç¨‹å¤ªå¤š";
       case WSAEPROTONOSUPPORT:
-        return "ÍøÂç´íÎó: ²»Ö§³ÖµÄÐ­Òé";
+        return "ç½‘ç»œé”™è¯¯: ä¸æ”¯æŒçš„åè®®";
       case WSAEPROTOTYPE:
-        return "ÍøÂç´íÎó: Ì×½Ó×ÖµÄÐ­ÒéÀàÐÍ´íÎó";
+        return "ç½‘ç»œé”™è¯¯: å¥—æŽ¥å­—çš„åè®®ç±»åž‹é”™è¯¯";
       case WSAESHUTDOWN:
-        return "ÍøÂç´íÎó: Ì×½Ó×Ö¹Ø±ÕºóÎÞ·¨·¢ËÍ";
+        return "ç½‘ç»œé”™è¯¯: å¥—æŽ¥å­—å…³é—­åŽæ— æ³•å‘é€";
       case WSAESOCKTNOSUPPORT:
-        return "ÍøÂç´íÎó: ²»Ö§³ÖµÄÌ×½Ó×ÖÀàÐÍ";
+        return "ç½‘ç»œé”™è¯¯: ä¸æ”¯æŒçš„å¥—æŽ¥å­—ç±»åž‹";
       case WSAETIMEDOUT:
-        return "ÍøÂç´íÎó: Á¬½Ó³¬Ê±";
+        return "ç½‘ç»œé”™è¯¯: è¿žæŽ¥è¶…æ—¶";
       case WSAEWOULDBLOCK:
-        return "ÍøÂç´íÎó: ×ÊÔ´ÔÝÊ±²»¿ÉÓÃ";
+        return "ç½‘ç»œé”™è¯¯: èµ„æºæš‚æ—¶ä¸å¯ç”¨";
       case WSAEDISCON:
-        return "ÍøÂç´íÎó: Õý³£¹Ø»úÕýÔÚ½øÐÐÖÐ";
+        return "ç½‘ç»œé”™è¯¯: æ­£å¸¸å…³æœºæ­£åœ¨è¿›è¡Œä¸­";
     }
 
     /*
@@ -547,18 +547,18 @@ SockAddr *sk_namelookup(const char *host, char **canonicalname,
 
 static SockAddr *sk_special_addr(SuperFamily superfamily, const char *name)
 {
-    SockAddr *ret = snew(SockAddr);
-    ret->error = NULL;
-    ret->superfamily = superfamily;
+    SockAddr *addr = snew(SockAddr);
+    addr->error = NULL;
+    addr->superfamily = superfamily;
 #ifndef NO_IPV6
-    ret->ais = NULL;
+    addr->ais = NULL;
 #endif
-    ret->addresses = NULL;
-    ret->naddresses = 0;
-    ret->refcount = 1;
-    strncpy(ret->hostname, name, lenof(ret->hostname));
-    ret->hostname[lenof(ret->hostname)-1] = '\0';
-    return ret;
+    addr->addresses = NULL;
+    addr->naddresses = 0;
+    addr->refcount = 1;
+    strncpy(addr->hostname, name, lenof(addr->hostname));
+    addr->hostname[lenof(addr->hostname)-1] = '\0';
+    return addr;
 }
 
 SockAddr *sk_nonamelookup(const char *host)
@@ -614,7 +614,7 @@ void sk_getaddr(SockAddr *addr, char *buf, int buflen)
         if (err) {
             strncpy(buf, addr->hostname, buflen);
             if (!buf[0])
-                strncpy(buf, "<Î´Öª>", buflen);
+                strncpy(buf, "<æœªçŸ¥>", buflen);
             buf[buflen-1] = '\0';
         }
     } else
@@ -776,7 +776,7 @@ void sk_addrcopy(SockAddr *addr, char *buf)
             memcpy(buf, &((struct sockaddr_in6 *)step.ai->ai_addr)->sin6_addr,
                    sizeof(struct in6_addr));
         else
-            unreachable("sk_addrcopyÖÐµÄµØÖ·´íÎó");
+            unreachable("sk_addrcopyä¸­çš„åœ°å€é”™è¯¯");
     } else
 #endif
     if (family == AF_INET) {
@@ -838,47 +838,47 @@ static Socket *sk_net_accept(accept_ctx_t ctx, Plug *plug)
 {
     DWORD err;
     const char *errstr;
-    NetSocket *ret;
+    NetSocket *s;
 
     /*
      * Create NetSocket structure.
      */
-    ret = snew(NetSocket);
-    ret->sock.vt = &NetSocket_sockvt;
-    ret->error = NULL;
-    ret->plug = plug;
-    bufchain_init(&ret->output_data);
-    ret->writable = true;              /* to start with */
-    ret->sending_oob = 0;
-    ret->outgoingeof = EOF_NO;
-    ret->frozen = true;
-    ret->frozen_readable = false;
-    ret->localhost_only = false;    /* unused, but best init anyway */
-    ret->pending_error = 0;
-    ret->parent = ret->child = NULL;
-    ret->addr = NULL;
+    s = snew(NetSocket);
+    s->sock.vt = &NetSocket_sockvt;
+    s->error = NULL;
+    s->plug = plug;
+    bufchain_init(&s->output_data);
+    s->writable = true;              /* to start with */
+    s->sending_oob = 0;
+    s->outgoingeof = EOF_NO;
+    s->frozen = true;
+    s->frozen_readable = false;
+    s->localhost_only = false;    /* unused, but best init anyway */
+    s->pending_error = 0;
+    s->parent = s->child = NULL;
+    s->addr = NULL;
 
-    ret->s = (SOCKET)ctx.p;
+    s->s = (SOCKET)ctx.p;
 
-    if (ret->s == INVALID_SOCKET) {
+    if (s->s == INVALID_SOCKET) {
         err = p_WSAGetLastError();
-        ret->error = winsock_error_string(err);
-        return &ret->sock;
+        s->error = winsock_error_string(err);
+        return &s->sock;
     }
 
-    ret->oobinline = false;
+    s->oobinline = false;
 
     /* Set up a select mechanism. This could be an AsyncSelect on a
      * window, or an EventSelect on an event object. */
-    errstr = do_select(ret->s, true);
+    errstr = do_select(s->s, true);
     if (errstr) {
-        ret->error = errstr;
-        return &ret->sock;
+        s->error = errstr;
+        return &s->sock;
     }
 
-    add234(sktree, ret);
+    add234(sktree, s);
 
-    return &ret->sock;
+    return &s->sock;
 }
 
 static DWORD try_connect(NetSocket *sock)
@@ -1087,48 +1087,48 @@ static DWORD try_connect(NetSocket *sock)
 Socket *sk_new(SockAddr *addr, int port, bool privport, bool oobinline,
                bool nodelay, bool keepalive, Plug *plug)
 {
-    NetSocket *ret;
+    NetSocket *s;
     DWORD err;
 
     /*
      * Create NetSocket structure.
      */
-    ret = snew(NetSocket);
-    ret->sock.vt = &NetSocket_sockvt;
-    ret->error = NULL;
-    ret->plug = plug;
-    bufchain_init(&ret->output_data);
-    ret->connected = false;            /* to start with */
-    ret->writable = false;             /* to start with */
-    ret->sending_oob = 0;
-    ret->outgoingeof = EOF_NO;
-    ret->frozen = false;
-    ret->frozen_readable = false;
-    ret->localhost_only = false;    /* unused, but best init anyway */
-    ret->pending_error = 0;
-    ret->parent = ret->child = NULL;
-    ret->oobinline = oobinline;
-    ret->nodelay = nodelay;
-    ret->keepalive = keepalive;
-    ret->privport = privport;
-    ret->port = port;
-    ret->addr = addr;
-    START_STEP(ret->addr, ret->step);
-    ret->s = INVALID_SOCKET;
+    s = snew(NetSocket);
+    s->sock.vt = &NetSocket_sockvt;
+    s->error = NULL;
+    s->plug = plug;
+    bufchain_init(&s->output_data);
+    s->connected = false;            /* to start with */
+    s->writable = false;             /* to start with */
+    s->sending_oob = 0;
+    s->outgoingeof = EOF_NO;
+    s->frozen = false;
+    s->frozen_readable = false;
+    s->localhost_only = false;    /* unused, but best init anyway */
+    s->pending_error = 0;
+    s->parent = s->child = NULL;
+    s->oobinline = oobinline;
+    s->nodelay = nodelay;
+    s->keepalive = keepalive;
+    s->privport = privport;
+    s->port = port;
+    s->addr = addr;
+    START_STEP(s->addr, s->step);
+    s->s = INVALID_SOCKET;
 
     err = 0;
     do {
-        err = try_connect(ret);
-    } while (err && sk_nextaddr(ret->addr, &ret->step));
+        err = try_connect(s);
+    } while (err && sk_nextaddr(s->addr, &s->step));
 
-    return &ret->sock;
+    return &s->sock;
 }
 
 static Socket *sk_newlistener_internal(
     const char *srcaddr, int port, Plug *plug,
     bool local_host_only, int orig_address_family)
 {
-    SOCKET s;
+    SOCKET sk;
     SOCKADDR_IN a;
 #ifndef NO_IPV6
     SOCKADDR_IN6 a6;
@@ -1141,7 +1141,7 @@ static Socket *sk_newlistener_internal(
 
     DWORD err;
     const char *errstr;
-    NetSocket *ret;
+    NetSocket *s;
     int retcode;
 
     int address_family = orig_address_family;
@@ -1149,20 +1149,20 @@ static Socket *sk_newlistener_internal(
     /*
      * Create NetSocket structure.
      */
-    ret = snew(NetSocket);
-    ret->sock.vt = &NetSocket_sockvt;
-    ret->error = NULL;
-    ret->plug = plug;
-    bufchain_init(&ret->output_data);
-    ret->writable = false;             /* to start with */
-    ret->sending_oob = 0;
-    ret->outgoingeof = EOF_NO;
-    ret->frozen = false;
-    ret->frozen_readable = false;
-    ret->localhost_only = local_host_only;
-    ret->pending_error = 0;
-    ret->parent = ret->child = NULL;
-    ret->addr = NULL;
+    s = snew(NetSocket);
+    s->sock.vt = &NetSocket_sockvt;
+    s->error = NULL;
+    s->plug = plug;
+    bufchain_init(&s->output_data);
+    s->writable = false;             /* to start with */
+    s->sending_oob = 0;
+    s->outgoingeof = EOF_NO;
+    s->frozen = false;
+    s->frozen_readable = false;
+    s->localhost_only = local_host_only;
+    s->pending_error = 0;
+    s->parent = s->child = NULL;
+    s->addr = NULL;
 
     /*
      * Our default, if passed the `don't care' value
@@ -1176,25 +1176,25 @@ static Socket *sk_newlistener_internal(
     /*
      * Open socket.
      */
-    s = p_socket(address_family, SOCK_STREAM, 0);
-    ret->s = s;
+    sk = p_socket(address_family, SOCK_STREAM, 0);
+    s->s = sk;
 
-    if (s == INVALID_SOCKET) {
+    if (sk == INVALID_SOCKET) {
         err = p_WSAGetLastError();
-        ret->error = winsock_error_string(err);
-        return &ret->sock;
+        s->error = winsock_error_string(err);
+        return &s->sock;
     }
 
-    SetHandleInformation((HANDLE)s, HANDLE_FLAG_INHERIT, 0);
+    SetHandleInformation((HANDLE)sk, HANDLE_FLAG_INHERIT, 0);
 
-    ret->oobinline = false;
+    s->oobinline = false;
 
 #if HAVE_AFUNIX_H
     if (address_family != AF_UNIX)
 #endif
     {
         BOOL on = true;
-        p_setsockopt(s, SOL_SOCKET, SO_EXCLUSIVEADDRUSE,
+        p_setsockopt(sk, SOL_SOCKET, SO_EXCLUSIVEADDRUSE,
                      (const char *)&on, sizeof(on));
     }
 
@@ -1244,7 +1244,7 @@ static Socket *sk_newlistener_internal(
             a.sin_addr.s_addr = p_inet_addr(srcaddr);
             if (a.sin_addr.s_addr != INADDR_NONE) {
                 /* Override localhost_only with specified listen addr. */
-                ret->localhost_only = ipv4_is_loopback(a.sin_addr);
+                s->localhost_only = ipv4_is_loopback(a.sin_addr);
                 got_addr = true;
             }
         }
@@ -1277,7 +1277,7 @@ static Socket *sk_newlistener_internal(
         unreachable("bad address family in sk_newlistener_internal");
     }
 
-    retcode = p_bind(s, bindaddr, bindsize);
+    retcode = p_bind(sk, bindaddr, bindsize);
     if (retcode != SOCKET_ERROR) {
         err = 0;
     } else {
@@ -1285,28 +1285,28 @@ static Socket *sk_newlistener_internal(
     }
 
     if (err) {
-        p_closesocket(s);
-        ret->error = winsock_error_string(err);
-        return &ret->sock;
+        p_closesocket(sk);
+        s->error = winsock_error_string(err);
+        return &s->sock;
     }
 
 
-    if (p_listen(s, SOMAXCONN) == SOCKET_ERROR) {
-        p_closesocket(s);
-        ret->error = winsock_error_string(p_WSAGetLastError());
-        return &ret->sock;
+    if (p_listen(sk, SOMAXCONN) == SOCKET_ERROR) {
+        p_closesocket(sk);
+        s->error = winsock_error_string(p_WSAGetLastError());
+        return &s->sock;
     }
 
     /* Set up a select mechanism. This could be an AsyncSelect on a
      * window, or an EventSelect on an event object. */
-    errstr = do_select(s, true);
+    errstr = do_select(sk, true);
     if (errstr) {
-        p_closesocket(s);
-        ret->error = errstr;
-        return &ret->sock;
+        p_closesocket(sk);
+        s->error = errstr;
+        return &s->sock;
     }
 
-    add234(sktree, ret);
+    add234(sktree, s);
 
 #ifndef NO_IPV6
     /*
@@ -1320,8 +1320,8 @@ static Socket *sk_newlistener_internal(
         if (other) {
             NetSocket *ns = container_of(other, NetSocket, sock);
             if (!ns->error) {
-                ns->parent = ret;
-                ret->child = ns;
+                ns->parent = s;
+                s->child = ns;
             } else {
                 sfree(ns);
             }
@@ -1329,7 +1329,7 @@ static Socket *sk_newlistener_internal(
     }
 #endif
 
-    return &ret->sock;
+    return &s->sock;
 }
 
 Socket *sk_newlistener(const char *srcaddr, int port, Plug *plug,
@@ -1871,9 +1871,9 @@ char *get_hostname(void)
 
 SockAddr *platform_get_x11_unix_address(const char *display, int displaynum)
 {
-    SockAddr *ret = snew(SockAddr);
-    memset(ret, 0, sizeof(SockAddr));
-    ret->error = "´ËÆ½Ì¨²»Ö§³Ö X11 µÄ unix Ì×½Ó×Ö";
-    ret->refcount = 1;
-    return ret;
+    SockAddr *addr = snew(SockAddr);
+    memset(addr, 0, sizeof(SockAddr));
+    addr->error = "æ­¤å¹³å°ä¸æ”¯æŒ X11 çš„ unix å¥—æŽ¥å­—";
+    addr->refcount = 1;
+    return addr;
 }

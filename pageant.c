@@ -24,7 +24,7 @@
  */
 void random_read(void *buf, size_t size)
 {
-    modalfatalbox("ÄÚ²¿´íÎó£º³¢ÊÔÔÚPageantÖĞÊ¹ÓÃËæ»úÊı");
+    modalfatalbox("å†…éƒ¨é”™è¯¯ï¼šå°è¯•åœ¨Pageantä¸­ä½¿ç”¨éšæœºæ•°");
 }
 
 static bool pageant_local = false;
@@ -222,8 +222,8 @@ static void pk_priv_free(PageantPrivateKey *priv)
         strbuf_free(priv->encrypted_key_file);
     if (priv->encrypted_key_comment)
         sfree(priv->encrypted_key_comment);
-    fail_requests_for_key(priv, "ÑéÖ¤Ê±ÃÜÔ¿ÒÑ´ÓPageantÖĞÉ¾³ı£¬"
-                          "ÇëÇó´ı´¦Àí");
+    fail_requests_for_key(priv, "éªŒè¯æ—¶å¯†é’¥å·²ä»Pageantä¸­åˆ é™¤ï¼Œ"
+                          "è¯·æ±‚å¾…å¤„ç†");
     sfree(priv);
 }
 
@@ -689,8 +689,8 @@ static void signop_coroutine(PageantAsyncOp *pao)
         if (!request_passphrase(so->pao.info->pc, so->priv)) {
             response = strbuf_new();
             failure(so->pao.info->pc, so->pao.reqid, response,
-                    so->failure_type, "ÌáÊ¾ÊäÈëÃÜÂë£¬"
-                    "ÎŞ·¨°´Ğè½âÃÜ");
+                    so->failure_type, "æç¤ºè¾“å…¥å¯†ç ï¼Œ"
+                    "æ— æ³•æŒ‰éœ€è§£å¯†");
             goto respond;
         }
 
@@ -707,7 +707,7 @@ static void signop_coroutine(PageantAsyncOp *pao)
          */
         response = strbuf_new();
         failure(so->pao.info->pc, so->pao.reqid, response, so->failure_type,
-                "²»Ö§³ÖµÄ±êÖ¾Î»£º0x%08"PRIx32,
+                "ä¸æ”¯æŒçš„æ ‡å¿—ä½ï¼š0x%08"PRIx32,
                 so->flags & ~supported_flags);
         goto respond;
     }
@@ -716,7 +716,7 @@ static void signop_coroutine(PageantAsyncOp *pao)
     if (invalid) {
         response = strbuf_new();
         failure(so->pao.info->pc, so->pao.reqid, response, so->failure_type,
-                "ÃÜÔ¿ÎŞĞ§: %s", invalid);
+                "å¯†é’¥æ— æ•ˆ: %s", invalid);
         sfree(invalid);
         goto respond;
     }
@@ -798,7 +798,7 @@ void pageant_passphrase_request_success(PageantClientDialogId *dlgid,
         strbuf_free(ppsb);
 
         if (!skey) {
-            fail_requests_for_key(priv, "ÎŞ·¨½âÃÜÃÜÔ¿");
+            fail_requests_for_key(priv, "æ— æ³•è§£å¯†å¯†é’¥");
             return;
         } else if (skey == SSH2_WRONG_PASSPHRASE) {
             /*
@@ -820,8 +820,8 @@ void pageant_passphrase_request_success(PageantClientDialogId *dlgid,
 
             priv->decryption_prompt_active = false;
             if (!request_passphrase(so->pao.info->pc, so->priv)) {
-                fail_requests_for_key(priv, "ÎŞ·¨¼ÌĞø´´½¨"
-                                      "ÃÜÂëÌáÊ¾");
+                fail_requests_for_key(priv, "æ— æ³•ç»§ç»­åˆ›å»º"
+                                      "å¯†ç æç¤º");
             }
             return;
         } else {
@@ -845,7 +845,7 @@ void pageant_passphrase_request_refused(PageantClientDialogId *dlgid)
     gui_request_in_progress = false;
     priv->decryption_prompt_active = false;
 
-    fail_requests_for_key(priv, "ÓÃ»§¾Ü¾øÌá¹©ÃÜÂë");
+    fail_requests_for_key(priv, "ç”¨æˆ·æ‹’ç»æä¾›å¯†ç ");
 
     unblock_pending_gui_requests();
 }
@@ -936,7 +936,7 @@ static PageantAsyncOp *pageant_make_op(
 
     type = get_byte(msg);
     if (get_err(msg)) {
-        fail("ĞÅÏ¢²»°üº¬ÀàĞÍ´úÂë");
+        fail("ä¿¡æ¯ä¸åŒ…å«ç±»å‹ä»£ç ");
         goto responded;
     }
 
@@ -1016,11 +1016,11 @@ static PageantAsyncOp *pageant_make_op(
         response_type = get_uint32(msg);
 
         if (get_err(msg)) {
-            fail("ÎŞ·¨½âÂëÇëÇó");
+            fail("æ— æ³•è§£ç è¯·æ±‚");
             goto challenge1_cleanup;
         }
         if (response_type != 1) {
-            fail("²»Ö§³Ö1ÒÔÍâµÄÏìÓ¦ÀàĞÍ");
+            fail("ä¸æ”¯æŒ1ä»¥å¤–çš„å“åº”ç±»å‹");
             goto challenge1_cleanup;
         }
 
@@ -1033,7 +1033,7 @@ static PageantAsyncOp *pageant_make_op(
         }
 
         if ((pub = findpubkey1(&reqkey)) == NULL) {
-            fail("Î´ÕÒµ½ÃÜÔ¿");
+            fail("æœªæ‰¾åˆ°å¯†é’¥");
             goto challenge1_cleanup;
         }
         priv = pub_to_priv(pub);
@@ -1075,7 +1075,7 @@ static PageantAsyncOp *pageant_make_op(
         sigdata = get_string(msg);
 
         if (get_err(msg)) {
-            fail("ÎŞ·¨½âÂëÇëÇó");
+            fail("æ— æ³•è§£ç è¯·æ±‚");
             goto responded;
         }
 
@@ -1099,7 +1099,7 @@ static PageantAsyncOp *pageant_make_op(
             sfree(fingerprint);
         }
         if ((pub = findpubkey2(keyblob)) == NULL) {
-            fail("Î´ÕÒµ½ÃÜÔ¿");
+            fail("æœªæ‰¾åˆ°å¯†é’¥");
             goto responded;
         }
 
@@ -1140,12 +1140,12 @@ static PageantAsyncOp *pageant_make_op(
         key->comment = mkstr(get_string(msg));
 
         if (get_err(msg)) {
-            fail("ÎŞ·¨½âÂëÇëÇó");
+            fail("æ— æ³•è§£ç è¯·æ±‚");
             goto add1_cleanup;
         }
 
         if (!rsa_verify(key)) {
-            fail("ÃÜÔ¿ÎŞĞ§");
+            fail("å¯†é’¥æ— æ•ˆ");
             goto add1_cleanup;
         }
 
@@ -1162,7 +1162,7 @@ static PageantAsyncOp *pageant_make_op(
             pageant_client_log(pc, reqid, "reply: SSH_AGENT_SUCCESS");
             key = NULL;            /* don't free it in cleanup */
         } else {
-            fail("ÃÜÔ¿ÒÑ¾­´æÔÚ");
+            fail("å¯†é’¥å·²ç»å­˜åœ¨");
         }
 
       add1_cleanup:
@@ -1190,21 +1190,21 @@ static PageantAsyncOp *pageant_make_op(
         key->comment = NULL;
         alg = find_pubkey_alg_len(algpl);
         if (!alg) {
-            fail("Î´ÖªËã·¨");
+            fail("æœªçŸ¥ç®—æ³•");
             goto add2_cleanup;
         }
 
         key->key = ssh_key_new_priv_openssh(alg, msg);
 
         if (!key->key) {
-            fail("ÃÜÔ¿ÉèÖÃÊ§°Ü");
+            fail("å¯†é’¥è®¾ç½®å¤±è´¥");
             goto add2_cleanup;
         }
 
         key->comment = mkstr(get_string(msg));
 
         if (get_err(msg)) {
-            fail("ÎŞ·¨½âÂëÇëÇó");
+            fail("æ— æ³•è§£ç è¯·æ±‚");
             goto add2_cleanup;
         }
 
@@ -1223,7 +1223,7 @@ static PageantAsyncOp *pageant_make_op(
 
             key = NULL;            /* don't clean it up */
         } else {
-            fail("ÃÜÔ¿ÒÑ¾­´æÔÚ");
+            fail("å¯†é’¥å·²ç»å­˜åœ¨");
         }
 
       add2_cleanup:
@@ -1252,7 +1252,7 @@ static PageantAsyncOp *pageant_make_op(
         get_rsa_ssh1_pub(msg, &reqkey, RSA_SSH1_EXPONENT_FIRST);
 
         if (get_err(msg)) {
-            fail("ÎŞ·¨½âÂëÇëÇó");
+            fail("æ— æ³•è§£ç è¯·æ±‚");
             freersakey(&reqkey);
             goto responded;
         }
@@ -1278,7 +1278,7 @@ static PageantAsyncOp *pageant_make_op(
 
             pageant_client_log(pc, reqid, "reply: SSH_AGENT_SUCCESS");
         } else {
-            fail("Î´ÕÒµ½ÃÜÔ¿");
+            fail("æœªæ‰¾åˆ°å¯†é’¥");
         }
         break;
       }
@@ -1296,7 +1296,7 @@ static PageantAsyncOp *pageant_make_op(
         blob = get_string(msg);
 
         if (get_err(msg)) {
-            fail("ÎŞ·¨½âÂëÇëÇó");
+            fail("æ— æ³•è§£ç è¯·æ±‚");
             goto responded;
         }
 
@@ -1309,7 +1309,7 @@ static PageantAsyncOp *pageant_make_op(
 
         pub = findpubkey2(blob);
         if (!pub) {
-            fail("Î´ÕÒµ½ÃÜÔ¿");
+            fail("æœªæ‰¾åˆ°å¯†é’¥");
             goto responded;
         }
 
@@ -1380,7 +1380,7 @@ static PageantAsyncOp *pageant_make_op(
 
         switch (exttype) {
           case EXT_UNKNOWN:
-            fail("ÎŞ·¨Ê¶±ğµÄÀ©Õ¹Ãû'%.*s'",
+            fail("æ— æ³•è¯†åˆ«çš„æ‰©å±•å'%.*s'",
                  PTRLEN_PRINTF(extname));
             break;
 
@@ -1396,7 +1396,7 @@ static PageantAsyncOp *pageant_make_op(
             ptrlen keyfile = get_string(msg);
 
             if (get_err(msg)) {
-                fail("ÎŞ·¨½âÂëÇëÇó");
+                fail("æ— æ³•è§£ç è¯·æ±‚");
                 goto responded;
             }
 
@@ -1411,7 +1411,7 @@ static PageantAsyncOp *pageant_make_op(
             BinarySource_BARE_INIT_PL(src, keyfile);
             if (!ppk_loadpub_s(src, NULL, BinarySink_UPCAST(full_pub),
                                &comment, &error)) {
-                fail("ÎŞ·¨ÌáÈ¡¹«Ô¿µÄblob: %s", error);
+                fail("æ— æ³•æå–å…¬é’¥çš„blob: %s", error);
                 goto add_ppk_cleanup;
             }
 
@@ -1432,7 +1432,7 @@ static PageantAsyncOp *pageant_make_op(
                 BinarySource_BARE_INIT_PL(src, keyfile);
                 ssh2_userkey *skey = ppk_load_s(src, NULL, &error);
                 if (!skey) {
-                    fail("ÎŞ·¨½âÂëË½Ô¿: %s", error);
+                    fail("æ— æ³•è§£ç ç§é’¥: %s", error);
                 } else if (pageant_add_ssh2_key(skey)) {
                     keylist_update();
                     put_byte(sb, SSH_AGENT_SUCCESS);
@@ -1440,7 +1440,7 @@ static PageantAsyncOp *pageant_make_op(
                     pageant_client_log(pc, reqid, "reply: SSH_AGENT_SUCCESS"
                                        " (loaded unencrypted PPK)");
                 } else {
-                    fail("ÃÜÔ¿ÒÑ¾­´æÔÚ");
+                    fail("å¯†é’¥å·²ç»å­˜åœ¨");
                     if (skey->key)
                         ssh_key_free(skey->key);
                     if (skey->comment)
@@ -1480,7 +1480,7 @@ static PageantAsyncOp *pageant_make_op(
             ptrlen blob = get_string(msg);
 
             if (get_err(msg)) {
-                fail("ÎŞ·¨½âÂëÇëÇó");
+                fail("æ— æ³•è§£ç è¯·æ±‚");
                 goto responded;
             }
 
@@ -1494,7 +1494,7 @@ static PageantAsyncOp *pageant_make_op(
 
             PageantPublicKey *pub = findpubkey2(blob);
             if (!pub) {
-                fail("Î´ÕÒµ½ÃÜÔ¿");
+                fail("æœªæ‰¾åˆ°å¯†é’¥");
                 goto responded;
             }
 
@@ -1502,7 +1502,7 @@ static PageantAsyncOp *pageant_make_op(
                                "found with comment: %s", pub->comment);
 
             if (!reencrypt_key(pub)) {
-                fail("ÎŞ·¨ÖØĞÂ¼ÓÃÜ´ËÃÜÔ¿");
+                fail("æ— æ³•é‡æ–°åŠ å¯†æ­¤å¯†é’¥");
                 goto responded;
             }
 
@@ -1538,7 +1538,7 @@ static PageantAsyncOp *pageant_make_op(
             }
 
             if (nsuccesses == 0 && nfailures > 0) {
-                fail("Ã»ÓĞÃÜÔ¿¿ÉÒÔÖØĞÂ¼ÓÃÜ");
+                fail("æ²¡æœ‰å¯†é’¥å¯ä»¥é‡æ–°åŠ å¯†");
             } else {
                 keylist_update();
                 put_byte(sb, SSH_AGENT_SUCCESS);
@@ -1586,7 +1586,7 @@ static PageantAsyncOp *pageant_make_op(
       default:
         pageant_client_log(pc, reqid, "request: unknown message type %d",
                            type);
-        fail("ÎŞ·¨Ê¶±ğµÄĞÅÏ¢");
+        fail("æ— æ³•è¯†åˆ«çš„ä¿¡æ¯");
         break;
     }
 
@@ -2203,13 +2203,13 @@ int pageant_add_keyfile(Filename *filename, const char *passphrase,
 
     type = key_type(filename);
     if (type != SSH_KEYTYPE_SSH1 && type != SSH_KEYTYPE_SSH2) {
-        *retstr = dupprintf("ÎŞ·¨¼ÓÔØ´ËÃÜÔ¿ (%s)",
+        *retstr = dupprintf("æ— æ³•åŠ è½½æ­¤å¯†é’¥ (%s)",
                             key_type_to_str(type));
         return PAGEANT_ACTION_FAILURE;
     }
 
     if (add_encrypted && type == SSH_KEYTYPE_SSH1) {
-        *retstr = dupprintf("ÎŞ·¨ÒÔ¼ÓÃÜĞÎÊ½Ìí¼ÓSSH-1ÃÜÔ¿");
+        *retstr = dupprintf("æ— æ³•ä»¥åŠ å¯†å½¢å¼æ·»åŠ SSH-1å¯†é’¥");
         return PAGEANT_ACTION_FAILURE;
     }
 
@@ -2224,7 +2224,7 @@ int pageant_add_keyfile(Filename *filename, const char *passphrase,
         if (type == SSH_KEYTYPE_SSH1) {
             if (!rsa1_loadpub_f(filename, BinarySink_UPCAST(blob),
                                 NULL, &error)) {
-                *retstr = dupprintf("ÎŞ·¨¼ÓÔØË½Ô¿ (%s)", error);
+                *retstr = dupprintf("æ— æ³•åŠ è½½ç§é’¥ (%s)", error);
                 strbuf_free(blob);
                 return PAGEANT_ACTION_FAILURE;
             }
@@ -2232,7 +2232,7 @@ int pageant_add_keyfile(Filename *filename, const char *passphrase,
         } else {
             if (!ppk_loadpub_f(filename, NULL, BinarySink_UPCAST(blob),
                                NULL, &error)) {
-                *retstr = dupprintf("ÎŞ·¨¼ÓÔØË½Ô¿ (%s)", error);
+                *retstr = dupprintf("æ— æ³•åŠ è½½ç§é’¥ (%s)", error);
                 strbuf_free(blob);
                 return PAGEANT_ACTION_FAILURE;
             }
@@ -2241,7 +2241,7 @@ int pageant_add_keyfile(Filename *filename, const char *passphrase,
 
         if (kl) {
             if (kl->broken) {
-                *retstr = dupstr("´Ó´úÀíÊÕµ½Ëğ»µµÄÃÜÔ¿ÁĞ±í");
+                *retstr = dupstr("ä»ä»£ç†æ”¶åˆ°æŸåçš„å¯†é’¥åˆ—è¡¨");
                 keylist_free(kl);
                 strbuf_free(blob);
                 return PAGEANT_ACTION_FAILURE;
@@ -2316,11 +2316,11 @@ int pageant_add_keyfile(Filename *filename, const char *passphrase,
             if (reply == SSH_AGENT_FAILURE) {
                 /* The agent didn't understand the protocol extension
                  * at all. */
-                *retstr = dupstr("´úÀí²»Ö§³ÖÌí¼Ó"
-                                 "¼ÓÃÜÃÜÔ¿");
+                *retstr = dupstr("ä»£ç†ä¸æ”¯æŒæ·»åŠ "
+                                 "åŠ å¯†å¯†é’¥");
             } else {
-                *retstr = dupstr("ÒÑ¾­ÔËĞĞµÄ´úÀí"
-                                 "¾Ü¾øÌí¼ÓÃÜÔ¿¡£");
+                *retstr = dupstr("å·²ç»è¿è¡Œçš„ä»£ç†"
+                                 "æ‹’ç»æ·»åŠ å¯†é’¥ã€‚");
             }
             return PAGEANT_ACTION_FAILURE;
         }
@@ -2435,8 +2435,8 @@ int pageant_add_keyfile(Filename *filename, const char *passphrase,
         sfree(rkey);
 
         if (reply != SSH_AGENT_SUCCESS) {
-            *retstr = dupstr("ÒÑ¾­ÔËĞĞµÄ´úÀí"
-                             "¾Ü¾øÌí¼ÓÃÜÔ¿¡£");
+            *retstr = dupstr("å·²ç»è¿è¡Œçš„ä»£ç†"
+                             "æ‹’ç»æ·»åŠ å¯†é’¥ã€‚");
             return PAGEANT_ACTION_FAILURE;
         }
     } else {
@@ -2453,8 +2453,8 @@ int pageant_add_keyfile(Filename *filename, const char *passphrase,
         sfree(skey);
 
         if (reply != SSH_AGENT_SUCCESS) {
-            *retstr = dupstr("ÒÑ¾­ÔËĞĞµÄ´úÀí"
-                             "¾Ü¾øÌí¼ÓÃÜÔ¿¡£");
+            *retstr = dupstr("å·²ç»è¿è¡Œçš„ä»£ç†"
+                             "æ‹’ç»æ·»åŠ å¯†é’¥ã€‚");
             return PAGEANT_ACTION_FAILURE;
         }
     }
@@ -2470,13 +2470,13 @@ int pageant_enum_keys(pageant_key_enum_fn_t callback, void *callback_ctx,
 
     kl1 = pageant_get_keylist(1);
     if (kl1 && kl1->broken) {
-        *retstr = dupstr("´Ó´úÀíÊÕµ½Ëğ»µµÄSSH-1ÃÜÔ¿ÁĞ±í");
+        *retstr = dupstr("ä»ä»£ç†æ”¶åˆ°æŸåçš„SSH-1å¯†é’¥åˆ—è¡¨");
         goto out;
     }
 
     kl2 = pageant_get_keylist(2);
     if (kl2 && kl2->broken) {
-        *retstr = dupstr("´Ó´úÀíÊÕµ½Ëğ»µµÄSSH-2ÃÜÔ¿ÁĞ±í");
+        *retstr = dupstr("ä»ä»£ç†æ”¶åˆ°æŸåçš„SSH-2å¯†é’¥åˆ—è¡¨");
         goto out;
     }
 
@@ -2495,7 +2495,7 @@ int pageant_enum_keys(pageant_key_enum_fn_t callback, void *callback_ctx,
                 get_rsa_ssh1_pub(src, &rkey, RSA_SSH1_EXPONENT_FIRST);
                 if (get_err(src)) {
                     *retstr = dupstr(
-                        "´Ó´úÀíÊÕµ½ÎŞĞ§µÄSSH-1ÃÜÔ¿");
+                        "ä»ä»£ç†æ”¶åˆ°æ— æ•ˆçš„SSH-1å¯†é’¥");
                     goto out;
                 }
             }
@@ -2555,7 +2555,7 @@ int pageant_delete_key(struct pageant_pubkey *key, char **retstr)
     pageant_client_op_free(pco);
 
     if (reply != SSH_AGENT_SUCCESS) {
-        *retstr = dupstr("´úÀíÎ´ÄÜÉ¾³ıÃÜÔ¿");
+        *retstr = dupstr("ä»£ç†æœªèƒ½åˆ é™¤å¯†é’¥");
         return PAGEANT_ACTION_FAILURE;
     } else {
         *retstr = NULL;
@@ -2573,7 +2573,7 @@ int pageant_delete_all_keys(char **retstr)
     reply = pageant_client_op_query(pco);
     pageant_client_op_free(pco);
     if (reply != SSH_AGENT_SUCCESS) {
-        *retstr = dupstr("´úÀíÎŞ·¨É¾³ıSSH-2ÃÜÔ¿");
+        *retstr = dupstr("ä»£ç†æ— æ³•åˆ é™¤SSH-2å¯†é’¥");
         return PAGEANT_ACTION_FAILURE;
     }
 
@@ -2582,7 +2582,7 @@ int pageant_delete_all_keys(char **retstr)
     reply = pageant_client_op_query(pco);
     pageant_client_op_free(pco);
     if (reply != SSH_AGENT_SUCCESS) {
-        *retstr = dupstr("´úÀíÎŞ·¨É¾³ıSSH-1ÃÜÔ¿");
+        *retstr = dupstr("ä»£ç†æ— æ³•åˆ é™¤SSH-1å¯†é’¥");
         return PAGEANT_ACTION_FAILURE;
     }
 
@@ -2595,7 +2595,7 @@ int pageant_reencrypt_key(struct pageant_pubkey *key, char **retstr)
     PageantClientOp *pco = pageant_client_op_new();
 
     if (key->ssh_version == 1) {
-        *retstr = dupstr("ÎŞ·¨ÖØĞÂ¼ÓÃÜSSH-1ÃÜÔ¿");
+        *retstr = dupstr("æ— æ³•é‡æ–°åŠ å¯†SSH-1å¯†é’¥");
         pageant_client_op_free(pco);
         return PAGEANT_ACTION_FAILURE;
     } else {
@@ -2610,9 +2610,9 @@ int pageant_reencrypt_key(struct pageant_pubkey *key, char **retstr)
     if (reply != SSH_AGENT_SUCCESS) {
         if (reply == SSH_AGENT_FAILURE) {
             /* The agent didn't understand the protocol extension at all. */
-            *retstr = dupstr("´úÀí²»Ö§³Ö¼ÓÃÜÃÜÔ¿");
+            *retstr = dupstr("ä»£ç†ä¸æ”¯æŒåŠ å¯†å¯†é’¥");
         } else {
-            *retstr = dupstr("´úÀíÎŞ·¨ÖØĞÂ¼ÓÃÜÃÜÔ¿");
+            *retstr = dupstr("ä»£ç†æ— æ³•é‡æ–°åŠ å¯†å¯†é’¥");
         }
         return PAGEANT_ACTION_FAILURE;
     } else {
@@ -2632,17 +2632,17 @@ int pageant_reencrypt_all_keys(char **retstr)
     if (reply != SSH_AGENT_SUCCESS) {
         if (reply == SSH_AGENT_FAILURE) {
             /* The agent didn't understand the protocol extension at all. */
-            *retstr = dupstr("´úÀí²¿Ö§³Ö¼ÓÃÜÃÜÔ¿");
+            *retstr = dupstr("ä»£ç†éƒ¨æ”¯æŒåŠ å¯†å¯†é’¥");
         } else {
-            *retstr = dupstr("´úÀíÎ´ÄÜÖØĞÂ¼ÓÃÜÈÎºÎÃÜÔ¿");
+            *retstr = dupstr("ä»£ç†æœªèƒ½é‡æ–°åŠ å¯†ä»»ä½•å¯†é’¥");
         }
         return PAGEANT_ACTION_FAILURE;
     } else if (failures == 1) {
         /* special case for English grammar */
-        *retstr = dupstr("1¸öÃÜÔ¿Î´¼ÓÃÜ");
+        *retstr = dupstr("1ä¸ªå¯†é’¥æœªåŠ å¯†");
         return PAGEANT_ACTION_WARNING;
     } else if (failures > 0) {
-        *retstr = dupprintf("%"PRIu32" ÃÜÔ¿±£³ÖÎ´¼ÓÃÜ", failures);
+        *retstr = dupprintf("%"PRIu32" å¯†é’¥ä¿æŒæœªåŠ å¯†", failures);
         return PAGEANT_ACTION_WARNING;
     } else {
         *retstr = NULL;
@@ -2667,20 +2667,20 @@ int pageant_sign(struct pageant_pubkey *key, ptrlen message, strbuf *out,
         pageant_client_op_free(pco);
         return PAGEANT_ACTION_OK;
     } else {
-        *retstr = dupstr("´úÀí´´½¨Ç©ÃûÊ§°Ü");
+        *retstr = dupstr("ä»£ç†åˆ›å»ºç­¾åå¤±è´¥");
         pageant_client_op_free(pco);
         return PAGEANT_ACTION_FAILURE;
     }
 }
 
-struct pageant_pubkey *pageant_pubkey_copy(struct pageant_pubkey *key)
+struct pageant_pubkey *pageant_pubkey_copy(struct pageant_pubkey *orig)
 {
-    struct pageant_pubkey *ret = snew(struct pageant_pubkey);
-    ret->blob = strbuf_new();
-    put_data(ret->blob, key->blob->s, key->blob->len);
-    ret->comment = key->comment ? dupstr(key->comment) : NULL;
-    ret->ssh_version = key->ssh_version;
-    return ret;
+    struct pageant_pubkey *copy = snew(struct pageant_pubkey);
+    copy->blob = strbuf_new();
+    put_data(copy->blob, orig->blob->s, orig->blob->len);
+    copy->comment = orig->comment ? dupstr(orig->comment) : NULL;
+    copy->ssh_version = orig->ssh_version;
+    return copy;
 }
 
 void pageant_pubkey_free(struct pageant_pubkey *key)

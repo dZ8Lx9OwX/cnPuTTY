@@ -108,13 +108,13 @@ static inline bool lf_load_keyfile_helper(LoadFileStatus status,
       case LF_OK:
         return true;
       case LF_TOO_BIG:
-        error = "ÎÄ¼şÌ«´ó¶ø²»ÄÜ³ÉÎªÃÜÔ¿ÎÄ¼ş";
+        error = "æ–‡ä»¶å¤ªå¤§è€Œä¸èƒ½æˆä¸ºå¯†é’¥æ–‡ä»¶";
         break;
       case LF_ERROR:
         error = strerror(errno);
         break;
       default:
-        unreachable("lf_load_keyfile_helperÖĞ´æÔÚ´íÎó×´Ì¬Öµ");
+        unreachable("lf_load_keyfile_helperä¸­å­˜åœ¨é”™è¯¯çŠ¶æ€å€¼");
     }
     if (errptr)
         *errptr = error;
@@ -156,12 +156,12 @@ static int rsa1_load_s_internal(BinarySource *src, RSAKey *key, bool pub_only,
     int ret = 0;
     ptrlen comment;
 
-    *error = "²»ÊÇSSH-1 RSAÎÄ¼ş";
+    *error = "ä¸æ˜¯SSH-1 RSAæ–‡ä»¶";
 
     if (!expect_signature(src, rsa1_signature))
         goto end;
 
-    *error = "ÎÄ¼ş¸ñÊ½´íÎó";
+    *error = "æ–‡ä»¶æ ¼å¼é”™è¯¯";
 
     /* One byte giving encryption type, and one reserved uint32. */
     ciphertype = get_byte(src);
@@ -219,7 +219,7 @@ static int rsa1_load_s_internal(BinarySource *src, RSAKey *key, bool pub_only,
         int b0b = get_byte(src);
         int b1b = get_byte(src);
         if (b0a != b0b || b1a != b1b) {
-            *error = "ÃÜÂë´íÎó";
+            *error = "å¯†ç é”™è¯¯";
             ret = -1;
             goto end;
         }
@@ -236,7 +236,7 @@ static int rsa1_load_s_internal(BinarySource *src, RSAKey *key, bool pub_only,
     key->p = get_mp_ssh1(src);
 
     if (!rsa_verify(key)) {
-        *error = "RSAÑéÖ¤Ê§°Ü";
+        *error = "RSAéªŒè¯å¤±è´¥";
         freersakey(key);
         ret = 0;
     } else {
@@ -355,7 +355,7 @@ int rsa1_loadpub_s(BinarySource *src, BinarySink *bs,
             mp_free(key.exponent);
             mp_free(key.modulus);
             sfree(line);
-            error = "SSH-1¹«Ô¿ÎÄ¼şÖĞµÄÃÜÔ¿Î»Êı²»Æ¥Åä";
+            error = "SSH-1å…¬é’¥æ–‡ä»¶ä¸­çš„å¯†é’¥ä½æ•°ä¸åŒ¹é…";
             goto end;
         }
         if (commentptr)
@@ -367,7 +367,7 @@ int rsa1_loadpub_s(BinarySource *src, BinarySink *bs,
 
       not_public_either:
         sfree(line);
-        error = "²»ÊÇSSH-1 RSAÎÄ¼ş";
+        error = "ä¸æ˜¯SSH-1 RSAæ–‡ä»¶";
     }
 
   end:
@@ -516,24 +516,18 @@ static char *read_body(BinarySource *src)
 
 static bool read_blob(BinarySource *src, int nlines, BinarySink *bs)
 {
-    unsigned char *blob;
     char *line;
     int linelen;
     int i, j, k;
 
     /* We expect at most 64 base64 characters, ie 48 real bytes, per line. */
-    assert(nlines < MAX_KEY_BLOB_LINES);
-    blob = snewn(48 * nlines, unsigned char);
 
     for (i = 0; i < nlines; i++) {
         line = read_body(src);
-        if (!line) {
-            sfree(blob);
+        if (!line)
             return false;
-        }
         linelen = strlen(line);
         if (linelen % 4 != 0 || linelen > 64) {
-            sfree(blob);
             sfree(line);
             return false;
         }
@@ -542,14 +536,12 @@ static bool read_blob(BinarySource *src, int nlines, BinarySink *bs)
             k = base64_decode_atom(line + j, decoded);
             if (!k) {
                 sfree(line);
-                sfree(blob);
                 return false;
             }
             put_data(bs, decoded, k);
         }
         sfree(line);
     }
-    sfree(blob);
     return true;
 }
 
@@ -676,7 +668,7 @@ static void ssh2_ppk_derive_keys(
       }
 
       default:
-        unreachable("ssh2_ppk_derive_keysÖĞ´æÔÚ°æ±¾¸ñÊ½´íÎó");
+        unreachable("ssh2_ppk_derive_keysä¸­å­˜åœ¨ç‰ˆæœ¬æ ¼å¼é”™è¯¯");
     }
 
     BinarySource src[1];
@@ -713,7 +705,7 @@ ssh2_userkey *ppk_load_s(BinarySource *src, const char *passphrase,
 {
     char header[40], *b, *encryption, *comment, *mac;
     const ssh_keyalg *alg;
-    ssh2_userkey *ret;
+    ssh2_userkey *ukey;
     strbuf *public_blob, *private_blob, *cipher_mac_keys_blob;
     strbuf *passphrase_salt = strbuf_new();
     ptrlen cipherkey, cipheriv, mackey;
@@ -724,13 +716,13 @@ ssh2_userkey *ppk_load_s(BinarySource *src, const char *passphrase,
     const char *error = NULL;
     ppk_save_parameters params;
 
-    ret = NULL;                        /* return NULL for most errors */
+    ukey = NULL;                        /* return NULL for most errors */
     encryption = comment = mac = NULL;
     public_blob = private_blob = cipher_mac_keys_blob = NULL;
 
     /* Read the first header line which contains the key type. */
     if (!read_header(src, header)) {
-        error = "ÔÚÃÜÔ¿ÎÄ¼şÖĞÕÒ²»µ½±êÌâĞĞ";
+        error = "åœ¨å¯†é’¥æ–‡ä»¶ä¸­æ‰¾ä¸åˆ°æ ‡é¢˜è¡Œ";
         goto error;
     }
     if (0 == strcmp(header, "PuTTY-User-Key-File-3")) {
@@ -744,13 +736,13 @@ ssh2_userkey *ppk_load_s(BinarySource *src, const char *passphrase,
     } else if (0 == strncmp(header, "PuTTY-User-Key-File-", 20)) {
         /* this is a key file FROM THE FUTURE; refuse it, but with a
          * more specific error message than the generic one below */
-        error = "PuTTYÃÜÔ¿¸ñÊ½Ì«ĞÂ";
+        error = "PuTTYå¯†é’¥æ ¼å¼å¤ªæ–°";
         goto error;
     } else {
-        error = "²»ÊÇPuTTY SSH-2Ë½Ô¿ÎÄ¼ş";
+        error = "ä¸æ˜¯PuTTY SSH-2ç§é’¥æ–‡ä»¶";
         goto error;
     }
-    error = "ÎÄ¼ş¸ñÊ½´íÎó";
+    error = "æ–‡ä»¶æ ¼å¼é”™è¯¯";
     if ((b = read_body(src)) == NULL)
         goto error;
     /* Select key algorithm structure. */
@@ -959,11 +951,11 @@ ssh2_userkey *ppk_load_s(BinarySource *src, const char *passphrase,
             /* An incorrect MAC is an unconditional Error if the key is
              * unencrypted. Otherwise, it means Wrong Passphrase. */
             if (ciphertype->keylen != 0) {
-                error = "ÃÜÂë´íÎó";
-                ret = SSH2_WRONG_PASSPHRASE;
+                error = "å¯†ç é”™è¯¯";
+                ukey = SSH2_WRONG_PASSPHRASE;
             } else {
-                error = "MAC(ÏûÏ¢ÑéÖ¤Âë)Ğ£ÑéÊ§°Ü";
-                ret = NULL;
+                error = "MAC(æ¶ˆæ¯éªŒè¯ç )æ ¡éªŒå¤±è´¥";
+                ukey = NULL;
             }
             goto error;
         }
@@ -972,16 +964,16 @@ ssh2_userkey *ppk_load_s(BinarySource *src, const char *passphrase,
     /*
      * Create and return the key.
      */
-    ret = snew(ssh2_userkey);
-    ret->comment = comment;
+    ukey = snew(ssh2_userkey);
+    ukey->comment = comment;
     comment = NULL;
-    ret->key = ssh_key_new_priv(
+    ukey->key = ssh_key_new_priv(
         alg, ptrlen_from_strbuf(public_blob),
         ptrlen_from_strbuf(private_blob));
-    if (!ret->key) {
-        sfree(ret);
-        ret = NULL;
-        error = "´´½¨ÃÜÔ¿Ê§°Ü";
+    if (!ukey->key) {
+        sfree(ukey);
+        ukey = NULL;
+        error = "åˆ›å»ºå¯†é’¥å¤±è´¥";
         goto error;
     }
     error = NULL;
@@ -1005,7 +997,7 @@ ssh2_userkey *ppk_load_s(BinarySource *src, const char *passphrase,
     strbuf_free(passphrase_salt);
     if (errorstr)
         *errorstr = error;
-    return ret;
+    return ukey;
 }
 
 ssh2_userkey *ppk_load_f(const Filename *filename, const char *passphrase,
@@ -1018,7 +1010,7 @@ ssh2_userkey *ppk_load_f(const Filename *filename, const char *passphrase,
         lf_free(lf);
     } else {
         toret = NULL;
-        *errorstr = "ÎŞ·¨´ò¿ªÎÄ¼ş";
+        *errorstr = "æ— æ³•æ‰“å¼€æ–‡ä»¶";
     }
     return toret;
 }
@@ -1038,7 +1030,7 @@ static bool rfc4716_loadpub(BinarySource *src, char **algorithm,
 
     line = mkstr(get_chomped_line(src));
     if (!line || 0 != strcmp(line, "---- BEGIN SSH2 PUBLIC KEY ----")) {
-        error = "SSH-2¹«Ô¿ÎÄ¼şÖĞ´æÔÚÎŞĞ§¿ªÊ¼ĞĞ";
+        error = "SSH-2å…¬é’¥æ–‡ä»¶ä¸­å­˜åœ¨æ— æ•ˆå¼€å§‹è¡Œ";
         goto error;
     }
     sfree(line); line = NULL;
@@ -1046,7 +1038,7 @@ static bool rfc4716_loadpub(BinarySource *src, char **algorithm,
     while (1) {
         line = mkstr(get_chomped_line(src));
         if (!line) {
-            error = "²»ÍêÕûµÄSSH-2¹«Ô¿ÎÄ¼ş";
+            error = "ä¸å®Œæ•´çš„SSH-2å…¬é’¥æ–‡ä»¶";
             goto error;
         }
         colon = strstr(line, ": ");
@@ -1080,7 +1072,7 @@ static bool rfc4716_loadpub(BinarySource *src, char **algorithm,
                    !strncmp(line, "x-", 2)) {
             /* Headers we recognise and ignore. Do nothing. */
         } else {
-            error = "SSH-2¹«Ô¿ÎÄ¼şÖĞÎŞ·¨Ê¶±ğ±êÌâÍ·";
+            error = "SSH-2å…¬é’¥æ–‡ä»¶ä¸­æ— æ³•è¯†åˆ«æ ‡é¢˜å¤´";
             goto error;
         }
 
@@ -1111,7 +1103,7 @@ static bool rfc4716_loadpub(BinarySource *src, char **algorithm,
      * Finally, check the END line makes sense.
      */
     if (!line || 0 != strcmp(line, "---- END SSH2 PUBLIC KEY ----")) {
-        error = "SSH-2¹«Ô¿ÎÄ¼şÖĞ´æÔÚÎŞĞ§½áÊøĞĞ";
+        error = "SSH-2å…¬é’¥æ–‡ä»¶ä¸­å­˜åœ¨æ— æ•ˆç»“æŸè¡Œ";
         goto error;
     }
     sfree(line); line = NULL;
@@ -1122,12 +1114,12 @@ static bool rfc4716_loadpub(BinarySource *src, char **algorithm,
      * start of the public blob.
      */
     if (pubblob->len < 4) {
-        error = "SSH-2¹«Ô¿ÎÄ¼şÖĞÃ»ÓĞ×ã¹»µÄÊı¾İ";
+        error = "SSH-2å…¬é’¥æ–‡ä»¶ä¸­æ²¡æœ‰è¶³å¤Ÿçš„æ•°æ®";
         goto error;
     }
     alglen = toint(GET_32BIT_MSB_FIRST(pubblob->u));
     if (alglen < 0 || alglen > pubblob->len-4) {
-        error = "SSH-2¹«Ô¿ÎÄ¼şÖĞµÄËã·¨Ç°×ºÎŞĞ§";
+        error = "SSH-2å…¬é’¥æ–‡ä»¶ä¸­çš„ç®—æ³•å‰ç¼€æ— æ•ˆ";
         goto error;
     }
     if (algorithm)
@@ -1165,7 +1157,7 @@ static bool openssh_loadpub(BinarySource *src, char **algorithm,
 
     base64 = strchr(line, ' ');
     if (!base64) {
-        error = "OpenSSH¹«Ô¿ÎÄ¼şÖĞÃ»ÓĞÃÜÔ¿blob";
+        error = "OpenSSHå…¬é’¥æ–‡ä»¶ä¸­æ²¡æœ‰å¯†é’¥blob";
         goto error;
     }
     *base64++ = '\0';
@@ -1186,7 +1178,7 @@ static bool openssh_loadpub(BinarySource *src, char **algorithm,
         base64 += 4;
     }
     if (*base64) {
-        error = "OpenSSH¹«Ô¿ÎÄ¼şÖĞbase64Êı¾İµÄ³¤¶ÈÎŞĞ§";
+        error = "OpenSSHå…¬é’¥æ–‡ä»¶ä¸­base64æ•°æ®çš„é•¿åº¦æ— æ•ˆ";
         goto error;
     }
 
@@ -1199,7 +1191,7 @@ static bool openssh_loadpub(BinarySource *src, char **algorithm,
     if (pubbloblen < alglen + 4 ||
         GET_32BIT_MSB_FIRST(pubblob) != alglen ||
         0 != memcmp(pubblob + 4, line, alglen)) {
-        error = "OpenSSH¹«Ô¿ÎÄ¼şÖĞµÄÃÜÔ¿Ëã·¨²»Æ¥Åä";
+        error = "OpenSSHå…¬é’¥æ–‡ä»¶ä¸­çš„å¯†é’¥ç®—æ³•ä¸åŒ¹é…";
         goto error;
     }
 
@@ -1245,7 +1237,7 @@ bool ppk_loadpub_s(BinarySource *src, char **algorithm, BinarySink *bs,
         bool ret = openssh_loadpub(src, algorithm, bs, commentptr, errorstr);
         return ret;
     } else if (type != SSH_KEYTYPE_SSH2) {
-        error = "²»ÊÇPuTTY SSH-2Ë½Ô¿ÎÄ¼ş";
+        error = "ä¸æ˜¯PuTTY SSH-2ç§é’¥æ–‡ä»¶";
         goto error;
     }
 
@@ -1255,12 +1247,12 @@ bool ppk_loadpub_s(BinarySource *src, char **algorithm, BinarySink *bs,
             0 != strcmp(header, "PuTTY-User-Key-File-2") &&
             0 != strcmp(header, "PuTTY-User-Key-File-1"))) {
         if (0 == strncmp(header, "PuTTY-User-Key-File-", 20))
-            error = "PuTTYÃÜÔ¿ÎÄ¼şÌ«ĞÂ";
+            error = "PuTTYå¯†é’¥æ–‡ä»¶å¤ªæ–°";
         else
-            error = "²»ÊÇPuTTY SSH-2Ë½Ô¿ÎÄ¼ş";
+            error = "ä¸æ˜¯PuTTY SSH-2ç§é’¥æ–‡ä»¶";
         goto error;
     }
-    error = "ÎÄ¼ş¸ñÊ½´íÎó";
+    error = "æ–‡ä»¶æ ¼å¼é”™è¯¯";
     if ((b = read_body(src)) == NULL)
         goto error;
     /* Select key algorithm structure. */
@@ -1715,7 +1707,7 @@ void ssh2_write_pubkey(FILE *fp, const char *comment,
         fprintf(fp, "%s\n", buffer);
         sfree(buffer);
     } else {
-        unreachable("ssh2_write_pubkeyÖĞµÄÃÜÔ¿ÀàĞÍ´íÎó");
+        unreachable("ssh2_write_pubkeyä¸­çš„å¯†é’¥ç±»å‹é”™è¯¯");
     }
 }
 
@@ -1941,25 +1933,25 @@ const char *key_type_to_str(int type)
 {
     switch (type) {
       case SSH_KEYTYPE_UNOPENABLE:
-        return "ÎŞ·¨´ò¿ªÎÄ¼ş";
+        return "æ— æ³•æ‰“å¼€æ–‡ä»¶";
       case SSH_KEYTYPE_UNKNOWN:
-        return "²»¿ÉÊ¶±ğµÄÃÜÔ¿ÎÄ¼ş¸ñÊ½";
+        return "ä¸å¯è¯†åˆ«çš„å¯†é’¥æ–‡ä»¶æ ¼å¼";
       case SSH_KEYTYPE_SSH1_PUBLIC:
-        return "SSH-1 ¹«Ô¿";
+        return "SSH-1 å…¬é’¥";
       case SSH_KEYTYPE_SSH2_PUBLIC_RFC4716:
-        return "SSH-2 ¹«Ô¿(RFC 4716 ¸ñÊ½)";
+        return "SSH-2 å…¬é’¥(RFC 4716 æ ¼å¼)";
       case SSH_KEYTYPE_SSH2_PUBLIC_OPENSSH:
-        return "SSH-2 ¹«Ô¿(OpenSSH ¸ñÊ½)";
+        return "SSH-2 å…¬é’¥(OpenSSH æ ¼å¼)";
       case SSH_KEYTYPE_SSH1:
-        return "SSH-1 Ë½Ô¿";
+        return "SSH-1 ç§é’¥";
       case SSH_KEYTYPE_SSH2:
-        return "PuTTY SSH-2 Ë½Ô¿";
+        return "PuTTY SSH-2 ç§é’¥";
       case SSH_KEYTYPE_OPENSSH_PEM:
-        return "OpenSSH SSH-2 Ë½Ô¿(¾ÉPEM¸ñÊ½)";
+        return "OpenSSH SSH-2 ç§é’¥(æ—§PEMæ ¼å¼)";
       case SSH_KEYTYPE_OPENSSH_NEW:
-        return "OpenSSH SSH-2 Ë½Ô¿(ĞÂ¸ñÊ½)";
+        return "OpenSSH SSH-2 ç§é’¥(æ–°æ ¼å¼)";
       case SSH_KEYTYPE_SSHCOM:
-        return "ssh.com SSH-2 Ë½Ô¿";
+        return "ssh.com SSH-2 ç§é’¥";
 
         /*
          * This function is called with a key type derived from
@@ -1968,8 +1960,8 @@ const char *key_type_to_str(int type)
          * ERROR as a code we don't even understand.
          */
       case SSH_KEYTYPE_OPENSSH_AUTO:
-        unreachable("OPENSSH_AUTOÓÀÔ¶ÎŞ·¨´ïµ½key_type_to_str");
+        unreachable("OPENSSH_AUTOæ°¸è¿œæ— æ³•è¾¾åˆ°key_type_to_str");
       default:
-        unreachable("key_type_to_strÖĞµÄÃÜÔ¿ÀàĞÍ´íÎó");
+        unreachable("key_type_to_strä¸­çš„å¯†é’¥ç±»å‹é”™è¯¯");
     }
 }

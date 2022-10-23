@@ -393,13 +393,11 @@ char *staticwrap(struct ctlpos *cp, HWND hwnd, const char *text, int *lines)
     INT *pwidths, nfit;
     SIZE size;
     const char *p;
-    char *ret, *q;
     RECT r;
     HFONT oldfont, newfont;
 
-    ret = snewn(1+strlen(text), char);
+    strbuf *sb = strbuf_new();
     p = text;
-    q = ret;
     pwidths = snewn(1+strlen(text), INT);
 
     /*
@@ -432,7 +430,7 @@ char *staticwrap(struct ctlpos *cp, HWND hwnd, const char *text, int *lines)
              * Either way, we stop wrapping, copy the remainder of
              * the input string unchanged to the output, and leave.
              */
-            strcpy(q, p);
+            put_datapl(sb, ptrlen_from_asciz(p));
             break;
         }
 
@@ -449,9 +447,8 @@ char *staticwrap(struct ctlpos *cp, HWND hwnd, const char *text, int *lines)
             }
         }
 
-        strncpy(q, p, nfit);
-        q[nfit] = '\n';
-        q += nfit+1;
+        put_data(sb, p, nfit);
+        put_byte(sb, '\n');
 
         p += nfit;
         while (*p && isspace((unsigned char)*p))
@@ -467,7 +464,7 @@ char *staticwrap(struct ctlpos *cp, HWND hwnd, const char *text, int *lines)
 
     sfree(pwidths);
 
-    return ret;
+    return strbuf_to_str(sb);
 }
 
 /*
@@ -952,7 +949,7 @@ void prefslist(struct prefslist *hdl, struct ctlpos *cp, int lines,
             doctl(cp, r, "BUTTON",
                   BS_NOTIFY | WS_CHILD | WS_VISIBLE |
                   WS_TABSTOP | BS_PUSHBUTTON,
-                  0, "ÉÏÒÆ", upbid);
+                  0, "ä¸Šç§»", upbid);
 
             r.left = left; r.right = wid;
             r.top = cp->ypos + buttonpos + PUSHBTNHEIGHT + GAPBETWEEN;
@@ -960,7 +957,7 @@ void prefslist(struct prefslist *hdl, struct ctlpos *cp, int lines,
             doctl(cp, r, "BUTTON",
                   BS_NOTIFY | WS_CHILD | WS_VISIBLE |
                   WS_TABSTOP | BS_PUSHBUTTON,
-                  0, "ÏÂÒÆ", dnbid);
+                  0, "ä¸‹ç§»", dnbid);
 
             break;
 
@@ -1181,30 +1178,24 @@ void progressbar(struct ctlpos *cp, int id)
  */
 static char *shortcut_escape(const char *text, char shortcut)
 {
-    char *ret;
-    char const *p;
-    char *q;
-
     if (!text)
         return NULL;                   /* sfree won't choke on this */
 
-    ret = snewn(2*strlen(text)+1, char);   /* size potentially doubles! */
+    strbuf *sb = strbuf_new();
     shortcut = tolower((unsigned char)shortcut);
 
-    p = text;
-    q = ret;
+    const char *p = text;
     while (*p) {
         if (shortcut != NO_SHORTCUT &&
             tolower((unsigned char)*p) == shortcut) {
-            *q++ = '&';
+            put_byte(sb, '&');
             shortcut = NO_SHORTCUT;    /* stop it happening twice */
         } else if (*p == '&') {
-            *q++ = '&';
+            put_byte(sb, '&');
         }
-        *q++ = *p++;
+        put_byte(sb, *p++);
     }
-    *q = '\0';
-    return ret;
+    return strbuf_to_str(sb);
 }
 
 void winctrl_add_shortcuts(struct dlgparam *dp, struct winctrl *c)
@@ -1679,7 +1670,7 @@ void winctrl_layout(struct dlgparam *dp, struct winctrls *wc,
             num_ids = 3;
             if (!ctrl->fileselect.just_button) {
                 editbutton(&pos, escaped, base_id, base_id+1,
-                           "ä¯ÀÀ...", base_id+2);
+                           "æµè§ˆ...", base_id+2);
             } else {
                 button(&pos, escaped, base_id+2, false);
             }
@@ -1691,12 +1682,12 @@ void winctrl_layout(struct dlgparam *dp, struct winctrls *wc,
                                       ctrl->fontselect.shortcut);
             shortcuts[nshortcuts++] = ctrl->fontselect.shortcut;
             statictext(&pos, escaped, 1, base_id);
-            staticbtn(&pos, "", base_id+1, "ÐÞ¸Ä...", base_id+2);
+            staticbtn(&pos, "", base_id+1, "ä¿®æ”¹...", base_id+2);
             data = fontspec_new("", false, 0, 0);
             sfree(escaped);
             break;
           default:
-            unreachable("winctrl_layoutÖÐµÄ¿Ø¼þÀàÐÍ´íÎó");
+            unreachable("winctrl_layoutä¸­çš„æŽ§ä»¶ç±»åž‹é”™è¯¯");
         }
 
         /* Translate the original align_id_relative of -1 into n-1 */
@@ -2005,7 +1996,7 @@ bool winctrl_handle_command(struct dlgparam *dp, UINT msg,
             if (ctrl->fileselect.filter)
                 of.lpstrFilter = ctrl->fileselect.filter;
             else
-                of.lpstrFilter = "ËùÓÐÎÄ¼þ(*.*)\0*\0\0\0";
+                of.lpstrFilter = "æ‰€æœ‰æ–‡ä»¶(*.*)\0*\0\0\0";
             of.lpstrCustomFilter = NULL;
             of.nFilterIndex = 1;
             of.lpstrFile = filename;
@@ -2189,7 +2180,7 @@ int dlg_radiobutton_get(dlgcontrol *ctrl, dlgparam *dp)
     for (i = 0; i < c->ctrl->radio.nbuttons; i++)
         if (IsDlgButtonChecked(dp->hwnd, c->base_id + 1 + i))
             return i;
-    unreachable("Ã»ÓÐÑ¡ÖÐµ¥Ñ¡°´Å¥");
+    unreachable("æ²¡æœ‰é€‰ä¸­å•é€‰æŒ‰é’®");
 }
 
 void dlg_checkbox_set(dlgcontrol *ctrl, dlgparam *dp, bool checked)
@@ -2389,7 +2380,7 @@ void dlg_label_change(dlgcontrol *ctrl, dlgparam *dp, char const *text)
         id = c->base_id;
         break;
       default:
-        unreachable("label_changeÖÐµÄ¿Ø¼þÀàÐÍ´íÎó");
+        unreachable("label_changeä¸­çš„æŽ§ä»¶ç±»åž‹é”™è¯¯");
     }
     if (escaped) {
         SetDlgItemText(dp->hwnd, id, escaped);
@@ -2434,11 +2425,11 @@ void dlg_fontsel_set(dlgcontrol *ctrl, dlgparam *dp, FontSpec *fs)
 
     boldstr = (fs->isbold ? "bold, " : "");
     if (fs->height == 0)
-        buf = dupprintf("×ÖÌå: %s, %Ä¬ÈÏ¸ß¶È", fs->name, boldstr);
+        buf = dupprintf("å­—ä½“: %s, %é»˜è®¤é«˜åº¦", fs->name, boldstr);
     else
-        buf = dupprintf("×ÖÌå: %s, %s%d %s", fs->name, boldstr,
+        buf = dupprintf("å­—ä½“: %s, %s%d %s", fs->name, boldstr,
                         (fs->height < 0 ? -fs->height : fs->height),
-                        (fs->height < 0 ? "ÏñËØ" : "µã"));
+                        (fs->height < 0 ? "åƒç´ " : "ç‚¹"));
     SetDlgItemText(dp->hwnd, c->base_id+1, buf);
     sfree(buf);
 

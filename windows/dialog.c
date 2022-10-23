@@ -219,7 +219,7 @@ static char *events_initial[LOGEVENT_INITIAL_MAX];
 static char *events_circular[LOGEVENT_CIRCULAR_MAX];
 static int ninitial = 0, ncircular = 0, circular_first = 0;
 
-#define PRINTER_DISABLED_STRING "ÎŞÊä³ö(½ûÖ¹´òÓ¡)"
+#define PRINTER_DISABLED_STRING "æ— è¾“å‡º(ç¦æ­¢æ‰“å°)"
 
 void force_normal(HWND hwnd)
 {
@@ -258,7 +258,7 @@ static INT_PTR CALLBACK LogProc(HWND hwnd, UINT msg,
 
     switch (msg) {
       case WM_INITDIALOG: {
-        char *str = dupprintf("cn%s ÈÕÖ¾ÊÂ¼ş", appname);
+        char *str = dupprintf("cn%s æ—¥å¿—äº‹ä»¶", appname);
         SetWindowText(hwnd, str);
         sfree(str);
 
@@ -300,35 +300,21 @@ static INT_PTR CALLBACK LogProc(HWND hwnd, UINT msg,
                                                    LB_GETSELITEMS,
                                                    selcount,
                                                    (LPARAM) selitems);
-                    int i;
-                    int size;
-                    char *clipdata;
-                    static unsigned char sel_nl[] = SEL_NL;
+                    static const unsigned char sel_nl[] = SEL_NL;
 
                     if (count == 0) {  /* can't copy zero stuff */
                         MessageBeep(0);
                         break;
                     }
 
-                    size = 0;
-                    for (i = 0; i < count; i++)
-                        size +=
-                            strlen(getevent(selitems[i])) + sizeof(sel_nl);
-
-                    clipdata = snewn(size, char);
-                    if (clipdata) {
-                        char *p = clipdata;
-                        for (i = 0; i < count; i++) {
-                            char *q = getevent(selitems[i]);
-                            int qlen = strlen(q);
-                            memcpy(p, q, qlen);
-                            p += qlen;
-                            memcpy(p, sel_nl, sizeof(sel_nl));
-                            p += sizeof(sel_nl);
-                        }
-                        write_aclip(CLIP_SYSTEM, clipdata, size, true);
-                        sfree(clipdata);
+                    strbuf *sb = strbuf_new();
+                    for (int i = 0; i < count; i++) {
+                        char *q = getevent(selitems[i]);
+                        put_datapl(sb, ptrlen_from_asciz(q));
+                        put_data(sb, sel_nl, sizeof(sel_nl));
                     }
+                    write_aclip(hwnd, CLIP_SYSTEM, sb->s, sb->len);
+                    strbuf_free(sb);
                     sfree(selitems);
 
                     for (i = 0; i < (ninitial + ncircular); i++)
@@ -353,7 +339,7 @@ static INT_PTR CALLBACK LicenceProc(HWND hwnd, UINT msg,
 {
     switch (msg) {
       case WM_INITDIALOG: {
-        char *str = dupprintf("cn%s Ğí¿ÉÖ¤", appname);
+        char *str = dupprintf("cn%s è®¸å¯è¯", appname);
         SetWindowText(hwnd, str);
         sfree(str);
         SetDlgItemText(hwnd, IDA_TEXT, LICENCE_TEXT("\r\n\r\n"));
@@ -381,14 +367,14 @@ static INT_PTR CALLBACK AboutProc(HWND hwnd, UINT msg,
 
     switch (msg) {
       case WM_INITDIALOG: {
-        str = dupprintf("¹ØÓÚcn%s", appname);
+        str = dupprintf("å…³äºcn%s", appname);
         SetWindowText(hwnd, str);
         sfree(str);
         char *buildinfo_text = buildinfo("\r\n");
         char *text = dupprintf(
             "cn%s\r\n\r\n%s\r\n\r\n%s\r\n\r\n%s",
             appname, ver, buildinfo_text,
-            "(C)" SHORT_COPYRIGHT_DETAILS " ±£ÁôËùÓĞÈ¨Àû¡£");
+            "(C)" SHORT_COPYRIGHT_DETAILS " ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚");
         sfree(buildinfo_text);
         SetDlgItemText(hwnd, IDA_TEXT, text);
         MakeDlgItemBorderless(hwnd, IDA_TEXT);
@@ -518,7 +504,7 @@ static INT_PTR GenericMainDlgProc(HWND hwnd, UINT msg, WPARAM wParam,
             r.top = 3;
             r.bottom = r.top + 10;
             MapDialogRect(hwnd, &r);
-            tvstatic = CreateWindowEx(0, "STATIC", "·ÖÀà£º",
+            tvstatic = CreateWindowEx(0, "STATIC", "åˆ†ç±»ï¼š",
                                       WS_CHILD | WS_VISIBLE,
                                       r.left, r.top,
                                       r.right - r.left, r.bottom - r.top,
@@ -732,7 +718,7 @@ bool do_config(Conf *conf)
     setup_config_box(pds->ctrlbox, false, 0, 0);
     win_setup_config_box(pds->ctrlbox, &pds->dp->hwnd, has_help(), false, 0);
 
-    pds->dp->wintitle = dupprintf("cn%s ÅäÖÃ", appname);
+    pds->dp->wintitle = dupprintf("cn%s é…ç½®", appname);
     pds->dp->data = conf;
 
     dlg_auto_set_fixed_pitch_flag(pds->dp);
@@ -761,7 +747,7 @@ bool do_reconfig(HWND hwnd, Conf *conf, int protcfginfo)
     win_setup_config_box(pds->ctrlbox, &pds->dp->hwnd, has_help(),
                          true, protocol);
 
-    pds->dp->wintitle = dupprintf("cn%s ÖØĞÂÅäÖÃ", appname);
+    pds->dp->wintitle = dupprintf("cn%s é‡æ–°é…ç½®", appname);
     pds->dp->data = conf;
 
     dlg_auto_set_fixed_pitch_flag(pds->dp);
@@ -1155,7 +1141,7 @@ SeatPromptResult win_seat_confirm_ssh_host_key(
         wgs->term_hwnd, HostKeyDialogProc, ctx);
     assert(mbret==IDC_HK_ACCEPT || mbret==IDC_HK_ONCE || mbret==IDCANCEL);
     if (mbret == IDC_HK_ACCEPT) {
-        store_host_key(host, port, keytype, keystr);
+        store_host_key(seat, host, port, keytype, keystr);
         return SPR_OK;
     } else if (mbret == IDC_HK_ONCE) {
         return SPR_OK;
@@ -1172,11 +1158,11 @@ SeatPromptResult win_seat_confirm_weak_crypto_primitive(
     Seat *seat, const char *algtype, const char *algname,
     void (*callback)(void *ctx, SeatPromptResult result), void *ctx)
 {
-    static const char mbtitle[] = "cn%s °²È«¾¯±¨";
+    static const char mbtitle[] = "cn%s å®‰å…¨è­¦æŠ¥";
     static const char msg[] =
-        "µ±Ç°·şÎñÆ÷Ö§³ÖµÄ%s\n"
-        "Îª%s£¬µÍÓÚÅäÖÃµÄ¾¯¸æ·§Öµ¡£\n"
-        "ÄúÏë¼ÌĞøÕâ¸öÁ¬½ÓÂğ£¿£¿£¿\n";
+        "å½“å‰æœåŠ¡å™¨æ”¯æŒçš„%s\n"
+        "ä¸º%sï¼Œä½äºé…ç½®çš„è­¦å‘Šé˜€å€¼ã€‚\n"
+        "æ‚¨æƒ³ç»§ç»­è¿™ä¸ªè¿æ¥å—ï¼Ÿï¼Ÿï¼Ÿ\n";
     char *message, *title;
     int mbret;
 
@@ -1197,14 +1183,14 @@ SeatPromptResult win_seat_confirm_weak_cached_hostkey(
     Seat *seat, const char *algname, const char *betteralgs,
     void (*callback)(void *ctx, SeatPromptResult result), void *ctx)
 {
-    static const char mbtitle[] = "cn%s °²È«¾¯±¨";
+    static const char mbtitle[] = "cn%s å®‰å…¨è­¦æŠ¥";
     static const char msg[] =
-        "ÎÒÃÇÎª´Ë·şÎñÆ÷´æ´¢µÄµÚÒ»¸öÖ÷»úÃÜÔ¿ÀàĞÍ\n"
-        "ÊÇ%s£¬µÍÓÚÅäÖÃµÄ¾¯¸æ·§Öµ¡£\n"
-        "·şÎñÆ÷»¹Ìá¹©Ò»ÏÂÀàĞÍµÄÖ÷»úÃÜÔ¿\n"
-        "³¬¹ı·§Öµ£¬ÎÒÃÇÃ»ÓĞ´æ´¢£º\n"
+        "æˆ‘ä»¬ä¸ºæ­¤æœåŠ¡å™¨å­˜å‚¨çš„ç¬¬ä¸€ä¸ªä¸»æœºå¯†é’¥ç±»å‹\n"
+        "æ˜¯%sï¼Œä½äºé…ç½®çš„è­¦å‘Šé˜€å€¼ã€‚\n"
+        "æœåŠ¡å™¨è¿˜æä¾›ä¸€ä¸‹ç±»å‹çš„ä¸»æœºå¯†é’¥\n"
+        "è¶…è¿‡é˜€å€¼ï¼Œæˆ‘ä»¬æ²¡æœ‰å­˜å‚¨ï¼š\n"
         "%s\n"
-        "ÄúÏë¼ÌĞøÕâ¸öÁ¬½ÓÂğ£¿£¿£¿\n";
+        "æ‚¨æƒ³ç»§ç»­è¿™ä¸ªè¿æ¥å—ï¼Ÿï¼Ÿï¼Ÿ\n";
     char *message, *title;
     int mbret;
 
@@ -1230,18 +1216,18 @@ static int win_gui_askappend(LogPolicy *lp, Filename *filename,
                              void *ctx)
 {
     static const char msgtemplate[] =
-        "»á»°ÈÕÖ¾ÎÄ¼ş\"%.*s\"ÒÑ´æÔÚ¡£\n"
-        "Äú¿ÉÒÔÓÃĞÂµÄ»á»°ÈÕÖ¾¸²¸ÇËü£¬\n"
-        "»òÕß½«ĞÂµÄ»á»°ÈÕÖ¾¸½¼Óµ½ËüµÄÄ©Î²£¬\n"
-        "»òÕß½ûÖ¹´Ë´Î»á»°µÄÈÕÖ¾¼ÇÂ¼¡£\n"
-        "Ñ¡Ôñ¡°ÊÇ¡±²Á³ıÎÄ¼ş£¬¡°·ñ¡±×·¼Óµ½Ä©Î²£¬\n"
-        "»òÕß¡°È¡Ïû¡±½ûÓÃ´Ë´ÎÈÕÖ¾¼ÇÂ¼¡£";
+        "ä¼šè¯æ—¥å¿—æ–‡ä»¶\"%.*s\"å·²å­˜åœ¨ã€‚\n"
+        "æ‚¨å¯ä»¥ç”¨æ–°çš„ä¼šè¯æ—¥å¿—è¦†ç›–å®ƒï¼Œ\n"
+        "æˆ–è€…å°†æ–°çš„ä¼šè¯æ—¥å¿—é™„åŠ åˆ°å®ƒçš„æœ«å°¾ï¼Œ\n"
+        "æˆ–è€…ç¦æ­¢æ­¤æ¬¡ä¼šè¯çš„æ—¥å¿—è®°å½•ã€‚\n"
+        "é€‰æ‹©â€œæ˜¯â€æ“¦é™¤æ–‡ä»¶ï¼Œâ€œå¦â€è¿½åŠ åˆ°æœ«å°¾ï¼Œ\n"
+        "æˆ–è€…â€œå–æ¶ˆâ€ç¦ç”¨æ­¤æ¬¡æ—¥å¿—è®°å½•ã€‚";
     char *message;
     char *mbtitle;
     int mbret;
 
     message = dupprintf(msgtemplate, FILENAME_MAX, filename->path);
-    mbtitle = dupprintf("cn%s Ğ´ÈëÈÕÖ¾ÎÄ¼ş", appname);
+    mbtitle = dupprintf("cn%s å†™å…¥æ—¥å¿—æ–‡ä»¶", appname);
 
     mbret = MessageBox(NULL, message, mbtitle,
                        MB_ICONQUESTION | MB_YESNOCANCEL | MB_DEFBUTTON3);
@@ -1278,15 +1264,15 @@ const LogPolicyVtable win_gui_logpolicy_vt = {
  */
 void old_keyfile_warning(void)
 {
-    static const char mbtitle[] = "cn%s ÃÜÔ¿ÎÄ¼ş¾¯¸æ";
+    static const char mbtitle[] = "cn%s å¯†é’¥æ–‡ä»¶è­¦å‘Š";
     static const char message[] =
-        "ÄúÕıÔÚ¼ÓÔØÒ»¸ö¾É°æ±¾µÄSSH-2Ë½Ô¿ÎÄ¼ş¡£\n"
-        "ÕâÒâÎ¶×Åµ±Ç°ÃÜÔ¿ÎÄ¼ş²»ÊÇÍêÈ«·À´Û¸ÄµÄ¡£\n"
-        "Î´À´°æ±¾µÄ³ÌĞò¿ÉÄÜ»áÍ£Ö¹Ö§³ÖÕâÖÖË½Ô¿£¬\n"
-        "ËùÓĞÎÒÃÇ½¨ÒéÄú½«ÃÜÔ¿×ª»»ÎªĞÂµÄ¸ñÊ½¡£\n"
+        "æ‚¨æ­£åœ¨åŠ è½½ä¸€ä¸ªæ—§ç‰ˆæœ¬çš„SSH-2ç§é’¥æ–‡ä»¶ã€‚\n"
+        "è¿™æ„å‘³ç€å½“å‰å¯†é’¥æ–‡ä»¶ä¸æ˜¯å®Œå…¨é˜²ç¯¡æ”¹çš„ã€‚\n"
+        "æœªæ¥ç‰ˆæœ¬çš„ç¨‹åºå¯èƒ½ä¼šåœæ­¢æ”¯æŒè¿™ç§ç§é’¥ï¼Œ\n"
+        "æ‰€æœ‰æˆ‘ä»¬å»ºè®®æ‚¨å°†å¯†é’¥è½¬æ¢ä¸ºæ–°çš„æ ¼å¼ã€‚\n"
         "\n"
-        "½«ÃÜÔ¿¼ÓÔØµ½PuTTYgenÖĞ£¬Ö»ĞèÒªÔÙ´Î±£\n"
-        "´æ¼´¿ÉÍê³É×ª»»¡£";
+        "å°†å¯†é’¥åŠ è½½åˆ°PuTTYgenä¸­ï¼Œåªéœ€è¦å†æ¬¡ä¿\n"
+        "å­˜å³å¯å®Œæˆè½¬æ¢ã€‚";
 
     char *msg, *title;
     msg = dupprintf(message, appname);
