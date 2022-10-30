@@ -2423,11 +2423,11 @@ void dlg_fontsel_set(dlgcontrol *ctrl, dlgparam *dp, FontSpec *fs)
     fontspec_free((FontSpec *)c->data);
     c->data = fontspec_copy(fs);
 
-    boldstr = (fs->isbold ? "bold, " : "");
+    boldstr = (fs->isbold ? "粗体, " : "");
     if (fs->height == 0)
-        buf = dupprintf("字体: %s, %默认高度", fs->name, boldstr);
+        buf = dupprintf("字体：%s, %默认高度", fs->name, boldstr);
     else
-        buf = dupprintf("字体: %s, %s%d %s", fs->name, boldstr,
+        buf = dupprintf("字体：%s, %s%d %s", fs->name, boldstr,
                         (fs->height < 0 ? -fs->height : fs->height),
                         (fs->height < 0 ? "像素" : "点"));
     SetDlgItemText(dp->hwnd, c->base_id+1, buf);

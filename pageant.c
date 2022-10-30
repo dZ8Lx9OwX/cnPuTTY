@@ -2224,7 +2224,7 @@ int pageant_add_keyfile(Filename *filename, const char *passphrase,
         if (type == SSH_KEYTYPE_SSH1) {
             if (!rsa1_loadpub_f(filename, BinarySink_UPCAST(blob),
                                 NULL, &error)) {
-                *retstr = dupprintf("无法加载私钥 (%s)", error);
+                *retstr = dupprintf("无法加载密钥 (%s)", error);
                 strbuf_free(blob);
                 return PAGEANT_ACTION_FAILURE;
             }
@@ -2232,7 +2232,7 @@ int pageant_add_keyfile(Filename *filename, const char *passphrase,
         } else {
             if (!ppk_loadpub_f(filename, NULL, BinarySink_UPCAST(blob),
                                NULL, &error)) {
-                *retstr = dupprintf("无法加载私钥 (%s)", error);
+                *retstr = dupprintf("无法加载密钥 (%s)", error);
                 strbuf_free(blob);
                 return PAGEANT_ACTION_FAILURE;
             }

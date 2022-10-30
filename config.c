@@ -487,7 +487,7 @@ static void cipherlist_handler(dlgcontrol *ctrl, dlgparam *dlg,
 
         static const struct { const char *s; int c; } ciphers[] = {
             { "ChaCha20 (仅限SSH-2)",   CIPHER_CHACHA20 },
-            { "AES-GCM (SSH-2 only)",   CIPHER_AESGCM },
+            { "AES-GCM  (仅限SSH-2)",   CIPHER_AESGCM },
             { "3DES",                   CIPHER_3DES },
             { "Blowfish",               CIPHER_BLOWFISH },
             { "DES",                    CIPHER_DES },
@@ -560,16 +560,16 @@ static void kexlist_handler(dlgcontrol *ctrl, dlgparam *dlg,
         int i;
 
         static const struct { const char *s; int k; } kexes[] = {
-            { "Diffie-Hellman group 1 (1024-bit)",  KEX_DHGROUP1 },
-            { "Diffie-Hellman group 14 (2048-bit)", KEX_DHGROUP14 },
-            { "Diffie-Hellman group 15 (3072-bit)", KEX_DHGROUP15 },
-            { "Diffie-Hellman group 16 (4096-bit)", KEX_DHGROUP16 },
-            { "Diffie-Hellman group 17 (6144-bit)", KEX_DHGROUP17 },
-            { "Diffie-Hellman group 18 (8192-bit)", KEX_DHGROUP18 },
+            { "Diffie-Hellman group 1  (1024位)",  KEX_DHGROUP1 },
+            { "Diffie-Hellman group 14 (2048位)", KEX_DHGROUP14 },
+            { "Diffie-Hellman group 15 (3072位)", KEX_DHGROUP15 },
+            { "Diffie-Hellman group 16 (4096位)", KEX_DHGROUP16 },
+            { "Diffie-Hellman group 17 (6144位)", KEX_DHGROUP17 },
+            { "Diffie-Hellman group 18 (8192位)", KEX_DHGROUP18 },
             { "Diffie-Hellman group exchange",      KEX_DHGEX },
             { "RSA-based key exchange",             KEX_RSA },
             { "ECDH key exchange",                  KEX_ECDH },
-            { "NTRU Prime / Curve25519 hybrid kex", KEX_NTRU_HYBRID },
+            { "NTRU Prime/Curve25519 hybrid kex", KEX_NTRU_HYBRID },
             { "-- 以下为警告选项 --",              KEX_WARN }
         };
 
@@ -1734,19 +1734,19 @@ void proxy_type_handler(dlgcontrol *ctrl, dlgparam *dlg,
             current_index++;                                    \
         } while (0)
 
-        ADD(PROXY_NONE, "None");
+        ADD(PROXY_NONE, "无代理");
         ADD(PROXY_SOCKS5, "SOCKS 5");
         ADD(PROXY_SOCKS4, "SOCKS 4");
-        ADD(PROXY_HTTP, "HTTP CONNECT");
+        ADD(PROXY_HTTP, "HTTP连接");
         if (ssh_proxy_supported) {
-            ADD(PROXY_SSH_TCPIP, "SSH to proxy and use port forwarding");
-            ADD(PROXY_SSH_EXEC, "SSH to proxy and execute a command");
-            ADD(PROXY_SSH_SUBSYSTEM, "SSH to proxy and invoke a subsystem");
+            ADD(PROXY_SSH_TCPIP, "SSH代理 + 端口转发");
+            ADD(PROXY_SSH_EXEC, "SSH代理 + 执行命令");
+            ADD(PROXY_SSH_SUBSYSTEM, "SSH代理 + 调用子系统");
         }
         if (ctrl->context.i & PROXY_UI_FLAG_LOCAL) {
-            ADD(PROXY_CMD, "Local (run a subprogram to connect)");
+            ADD(PROXY_CMD, "本地 (运行子程序进行连接)");
         }
-        ADD(PROXY_TELNET, "'Telnet' (send an ad-hoc command)");
+        ADD(PROXY_TELNET, "Telnet (临时发送命令)");
 
 #undef ADD
 
@@ -2017,7 +2017,7 @@ void setup_config_box(struct controlbox *b, bool midsession,
     ctrl_checkbox(s, "开启自动换行模式", 'w',
                   HELPCTX(terminal_autowrap),
                   conf_checkbox_handler, I(CONF_wrap_mode));
-    ctrl_checkbox(s, "开启DEC原点模式", 'd',
+    ctrl_checkbox(s, "开启DEC原始模式", 'd',
                   HELPCTX(terminal_decom),
                   conf_checkbox_handler, I(CONF_dec_om));
     ctrl_checkbox(s, "每个LF字符后面增加CR字符", 'r',
@@ -2051,7 +2051,7 @@ void setup_config_box(struct controlbox *b, bool midsession,
                       "强制关", I(FORCE_OFF));
 
     s = ctrl_getset(b, "终端", "printing", "远程打印：");
-    ctrl_combobox(s, "发送ANSI码输出到打印机：", 'p', 100,
+    ctrl_combobox(s, "发送ANSI码输出到打印机", 'p', 100,
                   HELPCTX(terminal_printing),
                   printerbox_handler, P(NULL), P(NULL));
 
@@ -2092,7 +2092,7 @@ void setup_config_box(struct controlbox *b, bool midsession,
                       "xterm位图风格", I(SHARROW_BITMAP));
 
     s = ctrl_getset(b, "终端/键盘", "appkeypad",
-                    "应用程序控制设置：");
+                    "控制应用程序设置：");
     ctrl_radiobuttons(s, "方向键的初始状态", 'r', 3,
                       HELPCTX(keyboard_appcursor),
                       conf_radiobutton_bool_handler,
@@ -2118,7 +2118,7 @@ void setup_config_box(struct controlbox *b, bool midsession,
                       "可视提示音(窗口闪烁)", I(BELL_VISUAL));
 
     s = ctrl_getset(b, "终端/提示音", "overload",
-                    "提示音重复设置：");
+                    "控制提示音重复设置：");
     ctrl_checkbox(s, "过度提醒时暂时禁用提示音", 'd',
                   HELPCTX(bell_overload),
                   conf_checkbox_handler, I(CONF_bellovl));
@@ -2129,13 +2129,13 @@ void setup_config_box(struct controlbox *b, bool midsession,
     static const struct conf_editbox_handler_type conf_editbox_tickspersec = {
         .type = EDIT_FIXEDPOINT, .denominator = TICKSPERSEC};
 
-    ctrl_editbox(s, "统计提示音过度的时间间隔(s)", 't', 20,
+    ctrl_editbox(s, "统计提示音过度的间隔秒数", 't', 20,
                  HELPCTX(bell_overload),
                  conf_editbox_handler, I(CONF_bellovl_t),
                  CP(&conf_editbox_tickspersec));
     ctrl_text(s, "提示音禁用一段时间后可以重新启用",
               HELPCTX(bell_overload));
-    ctrl_editbox(s, "需要静默的时间是多少秒：", 's', 20,
+    ctrl_editbox(s, "需要静默的时间是多少秒", 's', 20,
                  HELPCTX(bell_overload),
                  conf_editbox_handler, I(CONF_bellovl_s),
                  CP(&conf_editbox_tickspersec));
@@ -2147,10 +2147,10 @@ void setup_config_box(struct controlbox *b, bool midsession,
                   "启/禁用高级终端功能");
 
     s = ctrl_getset(b, "终端/高级设置", "main", NULL);
-    ctrl_checkbox(s, "禁用方向键应用模式", 'u',
+    ctrl_checkbox(s, "禁用应用程序方向键模式", 'u',
                   HELPCTX(features_application),
                   conf_checkbox_handler, I(CONF_no_applic_c));
-    ctrl_checkbox(s, "禁用数字小键盘应用模式", 'k',
+    ctrl_checkbox(s, "禁用应用程序数字小键盘模式", 'k',
                   HELPCTX(features_application),
                   conf_checkbox_handler, I(CONF_no_applic_k));
     ctrl_checkbox(s, "禁用xterm风格的鼠标接管", 'x',
@@ -2167,7 +2167,7 @@ void setup_config_box(struct controlbox *b, bool midsession,
                   HELPCTX(features_retitle),
                   conf_checkbox_handler,
                   I(CONF_no_remote_wintitle));
-    ctrl_radiobuttons(s, "对远程查询标题的回应(涉及安全)：", 'q', 3,
+    ctrl_radiobuttons(s, "对远程标题查询的回应(涉及安全)：", 'q', 3,
                       HELPCTX(features_qtitle),
                       conf_radiobutton_handler,
                       I(CONF_remote_qtitle_action),
@@ -2178,7 +2178,7 @@ void setup_config_box(struct controlbox *b, bool midsession,
                   HELPCTX(features_clearscroll),
                   conf_checkbox_handler,
                   I(CONF_no_remote_clearscroll));
-    ctrl_checkbox(s, "禁用在服务器发送^?时，强制退格删除",'b',
+    ctrl_checkbox(s, "禁用在服务器发送^?时,强制退格删除",'b',
                   HELPCTX(features_dbackspace),
                   conf_checkbox_handler, I(CONF_no_dbackspace));
     ctrl_checkbox(s, "禁用远程控制设置字符集",
@@ -2309,15 +2309,15 @@ void setup_config_box(struct controlbox *b, bool midsession,
                   codepage_handler, P(NULL), P(NULL));
 
     s = ctrl_getset(b, "窗口/字符转换", "tweaks", NULL);
-    ctrl_checkbox(s, "将不确定的字符处理为CJK字符", 'w',
+    ctrl_checkbox(s, "将模棱两可的字符视为CJK宽字符", 'w',
                   HELPCTX(translation_cjk_ambig_wide),
                   conf_checkbox_handler, I(CONF_cjk_ambig_wide));
 
-    str = dupprintf("调整cn%s的字符画线处理方式：", appname);
+    str = dupprintf("调整cn%s画线字符的处理方式：", appname);
     s = ctrl_getset(b, "窗口/字符转换", "linedraw", str);
     sfree(str);
     ctrl_radiobuttons(
-        s, "字符画线处理", NO_SHORTCUT,1,
+        s, "画线字符处理", NO_SHORTCUT,1,
         HELPCTX(translation_linedraw),
         conf_radiobutton_handler, I(CONF_vtmode),
         "使用Unicode画线代码点绘制",'u',I(VT_UNICODE),
@@ -2427,8 +2427,8 @@ void setup_config_box(struct controlbox *b, bool midsession,
     str = dupprintf("自定义cn%s颜色显示：", appname);
     s = ctrl_getset(b, "窗口/颜色", "adjust", str);
     sfree(str);
-    ctrl_text(s, "从下表选择要改变颜色的表项，设置RGB"
-                 "值，然后点“修改”使其生效。",
+    ctrl_text(s, "请从下表中选择想要改变颜色的表项,设置RGB"
+                 "值,然后点\"修改\"使其生效",
               HELPCTX(colours_config));
     ctrl_columns(s, 2, 67, 33);
     cd = (struct colour_data *)ctrl_alloc(b, sizeof(struct colour_data));
@@ -2462,18 +2462,18 @@ void setup_config_box(struct controlbox *b, bool midsession,
 
         s = ctrl_getset(b, "连接", "keepalive",
                         "发送空数据包保持会话连接：");
-        ctrl_editbox(s, "空数据包发送间隔秒数(0表示关闭)", 'k', 20,
+        ctrl_editbox(s, "Keepalives的间隔秒数(0表示关闭)", 'k', 20,
                      HELPCTX(connection_keepalive),
                      conf_editbox_handler, I(CONF_ping_interval), ED_INT);
 
         if (!midsession) {
             s = ctrl_getset(b, "连接", "tcp",
                             "底层TCP连接选项：");
-            ctrl_checkbox(s, "禁止Nagle算法(TCP_NODELAY参数)",
+            ctrl_checkbox(s, "禁用 Nagle 算法(TCP_NODELAY选项)",
                           'n', HELPCTX(connection_nodelay),
                           conf_checkbox_handler,
                           I(CONF_tcp_nodelay));
-            ctrl_checkbox(s, "允许TCP保持会话连接(SO_KEEPALIVE参数)",
+            ctrl_checkbox(s, "启用TCP Keepalives(SO_KEEPALIVE选项)",
                           'p', HELPCTX(connection_tcpkeepalive),
                           conf_checkbox_handler,
                           I(CONF_tcp_keepalives));
@@ -2491,8 +2491,8 @@ void setup_config_box(struct controlbox *b, bool midsession,
 
             {
                 const char *label = backend_vt_from_proto(PROT_SSH) ?
-                    "远程主机的注册名(用于SSH密钥查找)：" :
-                    "远程主机的注册名：";
+                    "远程主机的注册名(用于SSH密钥查找)" :
+                    "远程主机的注册名";
                 s = ctrl_getset(b, "连接", "identity",
                                 "远程主机：");
                 ctrl_editbox(s, label, 'm', 100,
@@ -2531,7 +2531,7 @@ void setup_config_box(struct controlbox *b, bool midsession,
 
             s = ctrl_getset(b, "连接/数据", "term",
                             "终端的详细资料：");
-            ctrl_editbox(s, "终端字符串类型", 't', 50,
+            ctrl_editbox(s, "终端类型字符串", 't', 50,
                          HELPCTX(connection_termtype),
                          conf_editbox_handler, I(CONF_termtype), ED_STR);
             ctrl_editbox(s, "终端速度", 's', 50,
@@ -2595,7 +2595,7 @@ void setup_config_box(struct controlbox *b, bool midsession,
                          ED_INT);
         c->column = 1;
         ctrl_columns(s, 1, 100);
-        ctrl_editbox(s, "排除的主机/IP (逗号分隔,*通配符)", 'e', 100,
+        ctrl_editbox(s, "排除主机/IP (逗号分隔,*通配符)", 'e', 100,
                      HELPCTX(proxy_exclude),
                      conf_editbox_handler,
                      I(CONF_proxy_exclude_list), ED_STR);
@@ -2693,7 +2693,7 @@ void setup_config_box(struct controlbox *b, bool midsession,
         if (!midsession) {
             s = ctrl_getset(b, "连接/SSH", "sharing", "在PuTTY工具间共享SSH连接：");
 
-            ctrl_checkbox(s, "尽可能共享SSH连接", 's',
+            ctrl_checkbox(s, "如果可能,共享SSH连接", 's',
                           HELPCTX(ssh_share),
                           conf_checkbox_handler,
                           I(CONF_ssh_connection_sharing));
@@ -2728,10 +2728,10 @@ void setup_config_box(struct controlbox *b, bool midsession,
          * downstream, or haven't decided yet.)
          */
         if (protcfginfo != 1 && protcfginfo != -1) {
-            ctrl_settitle(b, "连接/SSH/密钥",
+            ctrl_settitle(b, "连接/SSH/密钥交换",
                           "SSH 密钥交换设置");
 
-            s = ctrl_getset(b, "连接/SSH/密钥", "main",
+            s = ctrl_getset(b, "连接/SSH/密钥交换", "main",
                             "密钥交换算法设置：");
             c = ctrl_draglist(s, "算法策略选择", 's',
                               HELPCTX(ssh_kexlist),
@@ -2744,7 +2744,7 @@ void setup_config_box(struct controlbox *b, bool midsession,
                           I(CONF_try_gssapi_kex));
 #endif
 
-            s = ctrl_getset(b, "连接/SSH/密钥", "repeat",
+            s = ctrl_getset(b, "连接/SSH/密钥交换", "repeat",
                             "密钥重复交换选项：");
 
             ctrl_editbox(s, "密钥有效性分钟时长(0=无限制)", 't', 20,
@@ -2794,10 +2794,10 @@ void setup_config_box(struct controlbox *b, bool midsession,
          */
         if (!midsession) {
             s = ctrl_getset(b, "连接/SSH/主机密钥", "hostkeys",
-                            "为连接手动配置主机密钥：");
+                            "为此连接手动配置主机密钥：");
 
             ctrl_columns(s, 2, 75, 25);
-            c = ctrl_text(s, "要接受的主机密钥或指纹：",
+            c = ctrl_text(s, "要接受的主机密钥或指纹",
                           HELPCTX(ssh_kex_manual_hostkeys));
             c->column = 0;
             /* You want to select from the list, _then_ hit Remove. So
@@ -2836,8 +2836,8 @@ void setup_config_box(struct controlbox *b, bool midsession,
          * case.
          */
         s = ctrl_getset(b, "连接/SSH/主机密钥", "ca",
-                        "配置受信任的证书颁发机构");
-        c = ctrl_pushbutton(s, "配置主机CA", NO_SHORTCUT,
+                        "配置受信任的证书颁发机构：");
+        c = ctrl_pushbutton(s, "配置主机CAs", NO_SHORTCUT,
                             HELPCTX(ssh_kex_cert),
                             host_ca_button_handler, I(0));
 
@@ -2870,15 +2870,15 @@ void setup_config_box(struct controlbox *b, bool midsession,
                           "SSH 身份认证设置");
 
             s = ctrl_getset(b, "连接/SSH/认证", "main", NULL);
-            ctrl_checkbox(s, "显示预设认证标志(SSH-2 only)",
+            ctrl_checkbox(s, "显示预设认证标志(仅SSH-2)",
                           'd', HELPCTX(ssh_auth_banner),
                           conf_checkbox_handler,
                           I(CONF_ssh_show_banner));
-            ctrl_checkbox(s, "完全绕过身份验证(SSH-2 only)", 'b',
+            ctrl_checkbox(s, "完全绕过身份验证(仅SSH-2)", 'b',
                           HELPCTX(ssh_auth_bypass),
                           conf_checkbox_handler,
                           I(CONF_ssh_no_userauth));
-            ctrl_checkbox(s, "仅连接无密码或密钥验证，则断开连接",
+            ctrl_checkbox(s, "仅连接无密码或密钥验证,则断开连接",
                           'n', HELPCTX(ssh_no_trivial_userauth),
                           conf_checkbox_handler,
                           I(CONF_ssh_no_trivial_userauth));
@@ -2889,17 +2889,17 @@ void setup_config_box(struct controlbox *b, bool midsession,
                           HELPCTX(ssh_auth_pageant),
                           conf_checkbox_handler,
                           I(CONF_tryagent));
-            ctrl_checkbox(s, "尝试TIS或CryptoCard身份验证(SSH-1)", 'm',
+            ctrl_checkbox(s, "尝试TIS或CryptoCard认证(SSH-1)", 'm',
                           HELPCTX(ssh_auth_tis),
                           conf_checkbox_handler,
                           I(CONF_try_tis_auth));
-            ctrl_checkbox(s, "尝试\"键盘交互式\"身份验证(SSH-2)",
+            ctrl_checkbox(s, "尝试\"键盘交互式\"认证(SSH-2)",
                           'i', HELPCTX(ssh_auth_ki),
                           conf_checkbox_handler,
                           I(CONF_try_ki_auth));
 
             s = ctrl_getset(b, "连接/SSH/认证", "aux",
-                            "其他与身份验证相关的选项");
+                            "其他与身份验证相关的选项：");
             ctrl_checkbox(s, "允许代理转发", 'f',
                           HELPCTX(ssh_auth_agentfwd),
                           conf_checkbox_handler, I(CONF_agentfwd));
@@ -2908,22 +2908,22 @@ void setup_config_box(struct controlbox *b, bool midsession,
                           conf_checkbox_handler,
                           I(CONF_change_username));
 
-            ctrl_settitle(b, "连接/SSH/认证/证书",
-                          "用于进行身份验证的证书");
+            ctrl_settitle(b, "连接/SSH/认证/凭证",
+                          "用于进行身份验证的凭证");
 
-            s = ctrl_getset(b, "连接/SSH/认证/证书", "publickey",
-                            "公钥身份验证");
-            ctrl_filesel(s, "用于身份验证的私钥文件：", 'k',
+            s = ctrl_getset(b, "连接/SSH/认证/凭证", "publickey",
+                            "公钥身份验证：");
+            ctrl_filesel(s, "用于身份验证的私钥文件", 'k',
                          FILTER_KEY_FILES, false, "选择私钥文件",
                          HELPCTX(ssh_auth_privkey),
                          conf_filesel_handler, I(CONF_keyfile));
-            ctrl_filesel(s, "要与私钥一起使用的证书：", 'e',
+            ctrl_filesel(s, "要与私钥一起使用的证书", 'e',
                          NULL, false, "选择证书文件",
                          HELPCTX(ssh_auth_cert),
                          conf_filesel_handler, I(CONF_detached_cert));
 
-            s = ctrl_getset(b, "连接/SSH/认证/证书", "plugin",
-                            "提供身份验证响应的插件");
+            s = ctrl_getset(b, "连接/SSH/认证/凭证", "plugin",
+                            "提供身份验证响应的插件：");
             ctrl_editbox(s, "要运行的插件命令", NO_SHORTCUT, 100,
                          HELPCTX(ssh_auth_plugin),
                          conf_editbox_handler, I(CONF_auth_plugin), ED_STR);
@@ -2936,7 +2936,7 @@ void setup_config_box(struct controlbox *b, bool midsession,
                           "GSSAPI 身份认证设置");
             s = ctrl_getset(b, "连接/SSH/认证/GSSAPI", "gssapi", NULL);
 
-            ctrl_checkbox(s, "尝试GSSAPI身份认证(仅SSH-2)",
+            ctrl_checkbox(s, "尝试GSSAPI身份验证(仅SSH-2)",
                           't', HELPCTX(ssh_gssapi),
                           conf_checkbox_handler,
                           I(CONF_try_gssapi_auth));
@@ -3014,7 +3014,7 @@ void setup_config_box(struct controlbox *b, bool midsession,
             td->listbox->listbox.percentages[0] = 40;
             td->listbox->listbox.percentages[1] = 60;
             ctrl_columns(s, 2, 75, 25);
-            c = ctrl_text(s, "对于选定的模式，发送：", HELPCTX(ssh_ttymodes));
+            c = ctrl_text(s, "对于选定的模式,发送：", HELPCTX(ssh_ttymodes));
             c->column = 0;
             td->setbutton = ctrl_pushbutton(s, "设置", 's',
                                             HELPCTX(ssh_ttymodes),
@@ -3069,7 +3069,7 @@ void setup_config_box(struct controlbox *b, bool midsession,
                       "SSH 端口转发设置");
 
         s = ctrl_getset(b, "连接/SSH/隧道", "portfwd",
-                        "转发端口：");
+                        "端口转发：");
         ctrl_checkbox(s, "本地端口接受来自其他主机的连接",'t',
                       HELPCTX(ssh_tunnels_portfwd_localhost),
                       conf_checkbox_handler,
@@ -3144,7 +3144,7 @@ void setup_config_box(struct controlbox *b, bool midsession,
             ctrl_droplist(s, "阻塞SSH-2的忽略消息", '2', 20,
                           HELPCTX(ssh_bugs_ignore2),
                           sshbug_handler, I(CONF_sshbug_ignore2));
-            ctrl_droplist(s, "错误的处理SSH-2密钥重新交换", 'k', 20,
+            ctrl_droplist(s, "错误的处理SSH-2密钥重复交换", 'k', 20,
                           HELPCTX(ssh_bugs_rekey2),
                           sshbug_handler, I(CONF_sshbug_rekey2));
             ctrl_droplist(s, "PuTTY的SSH-2'winadj'请求阻塞", 'j',
@@ -3163,7 +3163,7 @@ void setup_config_box(struct controlbox *b, bool midsession,
                           HELPCTX(ssh_bugs_dropstart),
                           sshbug_handler_manual_only,
                           I(CONF_sshbug_dropstart));
-            ctrl_droplist(s, "Chokes on PuTTY's full KEXINIT", 'p', 20,
+            ctrl_droplist(s, "阻塞PuTTY上的所有KEXINIT", 'p', 20,
                           HELPCTX(ssh_bugs_filter_kexinit),
                           sshbug_handler_manual_only,
                           I(CONF_sshbug_filter_kexinit));
@@ -3258,7 +3258,7 @@ void setup_config_box(struct controlbox *b, bool midsession,
                         "Telnet协议调整：");
 
         if (!midsession) {
-            ctrl_radiobuttons(s, "OLD_ENVIRON参数歧义处理",
+            ctrl_radiobuttons(s, "处理OLD_ENVIRON参数歧义",
                               NO_SHORTCUT, 2,
                               HELPCTX(telnet_oldenviron),
                               conf_radiobutton_bool_handler,
@@ -3275,7 +3275,7 @@ void setup_config_box(struct controlbox *b, bool midsession,
                       HELPCTX(telnet_specialkeys),
                       conf_checkbox_handler,
                       I(CONF_telnet_keyboard));
-        ctrl_checkbox(s, "返回键发送Telnet新行代码而不是 ^M",
+        ctrl_checkbox(s, "Return回车键发送Telnet新行代码而不是^M",
                       'm', HELPCTX(telnet_newline),
                       conf_checkbox_handler,
                       I(CONF_telnet_newline));
@@ -3318,7 +3318,7 @@ void setup_config_box(struct controlbox *b, bool midsession,
                           "ITS", I(SUPDUP_CHARSET_ITS),
                           "WAITS", I(SUPDUP_CHARSET_WAITS));
 
-        ctrl_checkbox(s, "**更多**处理", 'm',
+        ctrl_checkbox(s, "**MORE** 处理", 'm',
                       HELPCTX(supdup_more),
                       conf_checkbox_handler,
                       I(CONF_supdup_more));

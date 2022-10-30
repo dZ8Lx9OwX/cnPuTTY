@@ -609,8 +609,8 @@ static void ssh_detect_bugs(struct ssh_verstring_state *s)
 
     if (conf_get_int(s->conf, CONF_sshbug_filter_kexinit) == FORCE_ON) {
         s->remote_bugs |= BUG_REQUIRES_FILTERED_KEXINIT;
-        bpp_logevent("We believe remote version requires us to "
-                     "filter our KEXINIT");
+        bpp_logevent("我们相信远程版本要求我们"
+                     "过滤我们的KEXINIT。");
     }
 }
 

@@ -286,7 +286,7 @@ void write_aclip(HWND hwnd, int clipboard, char *, int);
 #define FILTER_KEY_FILES ("PuTTY私钥文件(*.ppk)\0*.ppk\0" \
                               "所有文件(*.*)\0*\0\0\0")
 #define FILTER_WAVE_FILES ("声音文件(*.wav)\0*.WAV\0" \
-                               "所谓文件(*.*)\0*\0\0\0")
+                               "所有文件(*.*)\0*\0\0\0")
 #define FILTER_DYNLIB_FILES ("动态库文件(*.dll)\0*.dll\0" \
                                  "所有文件(*.*)\0*\0\0\0")
 

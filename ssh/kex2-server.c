@@ -192,7 +192,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
         }
     } else if (s->kex_alg->main_type == KEXTYPE_ECDH) {
         char *desc = ecdh_keyalg_description(s->kex_alg);
-        ppl_logevent("Doing %s, using hash %s", desc,
+        ppl_logevent("执行 %s, 使用哈希 %s", desc,
                      ssh_hash_alg(s->exhash)->text_name);
         sfree(desc);
 

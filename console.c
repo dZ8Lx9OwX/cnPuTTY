@@ -14,7 +14,7 @@ const char weakcrypto_msg_common_fmt[] =
     "%s，低于设置的警告阀值。\n";
 
 const char weakhk_msg_common_fmt[] =
-    "我们为此服务器存储的第一个主机密钥类似\n"
+    "我们为此服务器存储的第一个主机密钥类型\n"
     "是 %s，低于配置的警告阀值。\n"
     "服务器还提供以下类型的主机密钥\n"
     "超过过阀值， 我们还没有存储:\n"
@@ -26,10 +26,10 @@ const char console_abandoned_msg[] = "已放弃连接。\n";
 const SeatDialogPromptDescriptions *console_prompt_descriptions(Seat *seat)
 {
     static const SeatDialogPromptDescriptions descs = {
-        .hk_accept_action = "enter \"y\"",
-        .hk_connect_once_action = "enter \"n\"",
-        .hk_cancel_action = "press Return",
-        .hk_cancel_action_Participle = "Pressing Return",
+        .hk_accept_action = "输入 \"y\" 并回车",
+        .hk_connect_once_action = "输入 \"n\"并回车",
+        .hk_cancel_action = "确认回车",
+        .hk_cancel_action_Participle = "确认回车",
     };
     return &descs;
 }

@@ -58,7 +58,7 @@ void nonfatal(const char *fmt, ...)
     va_start(ap, fmt);
     stuff = dupvprintf(fmt, ap);
     va_end(ap);
-    MessageBox(NULL, stuff, "PuTTYgen错误！！！",
+    MessageBox(NULL, stuff, "cnPuTTYgen错误！！！",
                MB_SYSTEMMODAL | MB_ICONERROR | MB_OK);
     sfree(stuff);
 }
@@ -732,7 +732,7 @@ static void setupbigedit1(HWND hwnd, RSAKey *key)
     ShowWindow(GetDlgItem(hwnd, IDC_KEYDISPLAY), SW_SHOW);
 
     SetDlgItemText(hwnd, IDC_PKSTATIC,
-                   "&Public key for pasting into authorized_keys file:");
+                   "用于粘贴到 authorized_keys 文件中的公钥：");
 
     char *buffer = ssh1_pubkey_str(key);
     SetDlgItemText(hwnd, IDC_KEYDISPLAY, buffer);
@@ -748,15 +748,15 @@ static void setupbigedit2(HWND hwnd, ssh2_userkey *key)
         ShowWindow(GetDlgItem(hwnd, IDC_KEYDISPLAY), SW_HIDE);
 
         SetDlgItemText(hwnd, IDC_CERTSTATIC,
-                       "This public key contains an OpenSSH certificate.");
+                       "此密钥包含一个OpenSSH证书...");
     } else {
         ShowWindow(GetDlgItem(hwnd, IDC_CERTSTATIC), SW_HIDE);
         ShowWindow(GetDlgItem(hwnd, IDC_CERTMOREINFO), SW_HIDE);
         ShowWindow(GetDlgItem(hwnd, IDC_PKSTATIC), SW_SHOW);
         ShowWindow(GetDlgItem(hwnd, IDC_KEYDISPLAY), SW_SHOW);
 
-        SetDlgItemText(hwnd, IDC_PKSTATIC, "&Public key for pasting into "
-                       "OpenSSH authorized_keys file:");
+        SetDlgItemText(hwnd, IDC_PKSTATIC, "用于粘贴到 OpenSSH authorized_keys"
+                       " 文件中的公钥：");
 
         char *buffer = ssh2_pubkey_openssh_str(key);
         SetDlgItemText(hwnd, IDC_KEYDISPLAY, buffer);
@@ -769,17 +769,15 @@ static void setupbigedit2(HWND hwnd, ssh2_userkey *key)
  */
 void old_keyfile_warning(void)
 {
-    static const char mbtitle[] = "PuTTY Key File Warning";
+    static const char mbtitle[] = "cnPuTTY密钥文件警告";
     static const char message[] =
-        "You are loading an SSH-2 private key which has an\n"
-        "old version of the file format. This means your key\n"
-        "file is not fully tamperproof. Future versions of\n"
-        "PuTTY may stop supporting this private key format,\n"
-        "so we recommend you convert your key to the new\n"
-        "format.\n"
+        "您正在加载一个旧版本的SSH-2私钥文件。\n"
+        "这意味着当前密钥文件不是完全防篡改的。\n"
+        "未来版本的程序可能会停止支持这种私钥，\n"
+        "所以我们建议您将密钥转换为新的格式。\n"
         "\n"
-        "Once the key is loaded into PuTTYgen, you can perform\n"
-        "this conversion simply by saving it again.";
+        "将密钥加载到PuTTYgen中，只需要再次保\n"
+        "存即可完成转换。";
 
     MessageBox(NULL, message, mbtitle, MB_OK);
 }
@@ -1136,9 +1134,9 @@ void load_key_file(HWND hwnd, struct MainDlgState *state,
     if (type != SSH_KEYTYPE_SSH1 &&
         type != SSH_KEYTYPE_SSH2 &&
         !import_possible(type)) {
-        char *msg = dupprintf("无法加载私钥(%s)",
+        char *msg = dupprintf("无法加载密钥 (%s)",
                               key_type_to_str(type));
-        message_box(hwnd, msg, "PuTTYgen错误！！！", MB_OK | MB_ICONERROR,
+        message_box(hwnd, msg, "cnPuTTYgen错误！！！", MB_OK | MB_ICONERROR,
                     HELPCTXID(errors_cantloadkey));
         sfree(msg);
         return;
@@ -1200,8 +1198,8 @@ void load_key_file(HWND hwnd, struct MainDlgState *state,
     if (comment)
         sfree(comment);
     if (ret == 0) {
-        char *msg = dupprintf("无法加载私钥(%s)", errmsg);
-        message_box(hwnd, msg, "PuTTYgen错误！！！", MB_OK | MB_ICONERROR,
+        char *msg = dupprintf("无法加载密钥 (%s)", errmsg);
+        message_box(hwnd, msg, "cnPuTTYgen错误！！！", MB_OK | MB_ICONERROR,
                     HELPCTXID(errors_cantloadkey));
         sfree(msg);
     } else if (ret == 1) {
@@ -1225,7 +1223,7 @@ void load_key_file(HWND hwnd, struct MainDlgState *state,
                     "使用\"保存私钥\"存储为PuTTY的\n"
                     "密钥格式。",
                     key_type_to_str(realtype));
-            MessageBox(NULL, msg, "PuTTYgen注意！！！",
+            MessageBox(NULL, msg, "cnPuTTYgen注意！！！",
                        MB_OK | MB_ICONINFORMATION);
         }
     }
@@ -1238,9 +1236,9 @@ void add_certificate(HWND hwnd, struct MainDlgState *state,
     int type = key_type(filename);
     if (type != SSH_KEYTYPE_SSH2_PUBLIC_RFC4716 &&
         type != SSH_KEYTYPE_SSH2_PUBLIC_OPENSSH) {
-        char *msg = dupprintf("Couldn't load certificate (%s)",
+        char *msg = dupprintf("无法加载证书 (%s)",
                               key_type_to_str(type));
-        message_box(hwnd, msg, "PuTTYgen Error", MB_OK | MB_ICONERROR,
+        message_box(hwnd, msg, "cnPuTTYgen错误！！！", MB_OK | MB_ICONERROR,
                     HELPCTXID(errors_cantloadkey));
         sfree(msg);
         return;
@@ -1252,8 +1250,8 @@ void add_certificate(HWND hwnd, struct MainDlgState *state,
     strbuf *pub = strbuf_new();
     if (!ppk_loadpub_f(filename, &algname, BinarySink_UPCAST(pub), &comment,
                        &error)) {
-        char *msg = dupprintf("Couldn't load certificate (%s)", error);
-        message_box(hwnd, msg, "PuTTYgen Error", MB_OK | MB_ICONERROR,
+        char *msg = dupprintf("无法加载证书 (%s)", error);
+        message_box(hwnd, msg, "cnPuTTYgen错误！！！", MB_OK | MB_ICONERROR,
                     HELPCTXID(errors_cantloadkey));
         sfree(msg);
         strbuf_free(pub);
@@ -1264,9 +1262,9 @@ void add_certificate(HWND hwnd, struct MainDlgState *state,
 
     const ssh_keyalg *alg = find_pubkey_alg(algname);
     if (!alg) {
-        char *msg = dupprintf("Couldn't load certificate (unsupported "
-                              "algorithm name '%s')", algname);
-        message_box(hwnd, msg, "PuTTYgen Error", MB_OK | MB_ICONERROR,
+        char *msg = dupprintf("无法加载证书(不支持的"
+                              "算法名称 '%s')", algname);
+        message_box(hwnd, msg, "cnPuTTYgen错误！！！", MB_OK | MB_ICONERROR,
                     HELPCTXID(errors_cantloadkey));
         sfree(msg);
         sfree(algname);
@@ -1293,8 +1291,8 @@ void add_certificate(HWND hwnd, struct MainDlgState *state,
     strbuf_free(new_basepub);
 
     if (!match) {
-        char *msg = dupprintf("Certificate is for a different public key");
-        message_box(hwnd, msg, "PuTTYgen Error", MB_OK | MB_ICONERROR,
+        char *msg = dupprintf("证书中的公钥是不相同的");
+        message_box(hwnd, msg, "cnPuTTYgen错误！！！", MB_OK | MB_ICONERROR,
                     HELPCTXID(errors_cantloadkey));
         sfree(msg);
         strbuf_free(pub);
@@ -1309,8 +1307,8 @@ void add_certificate(HWND hwnd, struct MainDlgState *state,
     strbuf_free(priv);
 
     if (!newkey) {
-        char *msg = dupprintf("Couldn't combine certificate with key");
-        message_box(hwnd, msg, "PuTTYgen Error", MB_OK | MB_ICONERROR,
+        char *msg = dupprintf("无法将证书与密钥组合在一起");
+        message_box(hwnd, msg, "cnPuTTYgen错误！！！", MB_OK | MB_ICONERROR,
                     HELPCTXID(errors_cantloadkey));
         sfree(msg);
         return;
@@ -1633,9 +1631,9 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
             }
             MakeDlgItemBorderless(hwnd, IDC_CERTSTATIC);
             cp2.xoff = cp2.width = cp2.width / 3;
-            button(&cp2, "Certificate info...", IDC_CERTMOREINFO, false);
+            button(&cp2, "证书信息...", IDC_CERTMOREINFO, false);
             bigeditctrl(&cp,
-                        "用于粘贴到authorized_keys文件的公钥：",
+                        "用于粘贴到 authorized_keys 文件的公钥：",
                         IDC_PKSTATIC, IDC_KEYDISPLAY, 5);
             SendDlgItemMessage(hwnd, IDC_KEYDISPLAY, EM_SETREADONLY, 1, 0);
             staticedit(&cp, "密钥指纹(&I)：", IDC_FPSTATIC,
@@ -1927,7 +1925,7 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                         "PuTTYgen不会生成长度小于256位的密钥。\n"
                         "密钥长度重置为默认值:%d。是否继续？？",
                         DEFAULT_KEY_BITS);
-                    int ret = MessageBox(hwnd, message, "PuTTYgen警告！！！",
+                    int ret = MessageBox(hwnd, message, "cnPuTTYgen警告！！！",
                                          MB_ICONWARNING | MB_OKCANCEL);
                     sfree(message);
                     if (ret != IDOK)
@@ -1939,7 +1937,7 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                     char *message = dupprintf(
                         "不推荐短于%d位的密钥。"
                         "真的要生成此密钥吗？？？", DEFAULT_KEY_BITS);
-                    int ret = MessageBox(hwnd, message, "PuTTYgen Warning",
+                    int ret = MessageBox(hwnd, message, "cnPuTTYgen警告！！！",
                                          MB_ICONWARNING | MB_OKCANCEL);
                     sfree(message);
                     if (ret != IDOK)
@@ -2043,7 +2041,7 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                             "密钥格式", (state->ssh2 ? 2 : 1),
                             (state->ssh2 ? 1 : 2));
                     MessageBox(hwnd, msg,
-                               "PuTTYgen错误！！！", MB_OK | MB_ICONERROR);
+                               "cnPuTTYgen错误！！！", MB_OK | MB_ICONERROR);
                     break;
                 }
 
@@ -2052,7 +2050,7 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                 if (strcmp(passphrase, passphrase2)) {
                     MessageBox(hwnd,
                                "输入的两个密码不匹配。",
-                               "PuTTYgen错误！！！", MB_OK | MB_ICONERROR);
+                               "cnPuTTYgen错误！！！", MB_OK | MB_ICONERROR);
                     burnstr(passphrase);
                     burnstr(passphrase2);
                     break;
@@ -2063,7 +2061,7 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                     ret = MessageBox(hwnd,
                                      "您确定要保存此密钥\n"
                                      "没有密码来保护它？",
-                                     "PuTTYgen警告！！！",
+                                     "cnPuTTYgen警告！！！",
                                      MB_YESNO | MB_ICONWARNING);
                     if (ret != IDYES) {
                         burnstr(passphrase);
@@ -2079,7 +2077,7 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                         fclose(fp);
                         buffer = dupprintf("覆盖现有文件\n%s?",
                                            filename);
-                        ret = MessageBox(hwnd, buffer, "PuTTYgen警告！！！",
+                        ret = MessageBox(hwnd, buffer, "cnPuTTYgen警告！！！",
                                          MB_YESNO | MB_ICONWARNING);
                         sfree(buffer);
                         if (ret != IDYES) {
@@ -2110,7 +2108,7 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                     }
                     if (ret <= 0) {
                         MessageBox(hwnd, "无法保存密钥文件！！！",
-                                   "PuTTYgen错误！！！", MB_OK | MB_ICONERROR);
+                                   "cnPuTTYgen错误！！！", MB_OK | MB_ICONERROR);
                     }
                 }
                 burnstr(passphrase);
@@ -2132,7 +2130,7 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                         fclose(fp);
                         buffer = dupprintf("覆盖现有文件\n%s？？",
                                            filename);
-                        ret = MessageBox(hwnd, buffer, "PuTTYgen警告！！！",
+                        ret = MessageBox(hwnd, buffer, "cnPuTTYgen警告！！！",
                                          MB_YESNO | MB_ICONWARNING);
                         sfree(buffer);
                         if (ret != IDYES)
@@ -2141,7 +2139,7 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                     fp = fopen(filename, "w");
                     if (!fp) {
                         MessageBox(hwnd, "无法打开密钥文件！！！",
-                                   "PuTTYgen错误！！！", MB_OK | MB_ICONERROR);
+                                   "cnPuTTYgen错误！！！", MB_OK | MB_ICONERROR);
                     } else {
                         if (state->ssh2) {
                             strbuf *blob = strbuf_new();
@@ -2155,8 +2153,8 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                             ssh1_write_pubkey(fp, &state->key);
                         }
                         if (fclose(fp) < 0) {
-                            MessageBox(hwnd, "PuTTYgen错误！！！",
-                                       "PuTTYgen错误！！！", MB_OK | MB_ICONERROR);
+                            MessageBox(hwnd, "无法保存密钥文件。",
+                                       "cnPuTTYgen错误！！！", MB_OK | MB_ICONERROR);
                         }
                     }
                 }
@@ -2185,7 +2183,7 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwnd, UINT msg,
                 (struct MainDlgState *) GetWindowLongPtr(hwnd, GWLP_USERDATA);
             if (state->key_exists && !state->generation_thread_exists) {
                 char filename[FILENAME_MAX];
-                if (prompt_keyfile(hwnd, "Load certificate:", filename, false,
+                if (prompt_keyfile(hwnd, "加载证书：", filename, false,
                                    false)) {
                     Filename *fn = filename_from_str(filename);
                     add_certificate(hwnd, state, fn);
@@ -2385,7 +2383,7 @@ static NORETURN void opt_error(const char *fmt, ...)
     char *msg = dupvprintf(fmt, ap);
     va_end(ap);
 
-    MessageBox(NULL, msg, "PuTTYgen命令行错误", MB_ICONERROR | MB_OK);
+    MessageBox(NULL, msg, "cnPuTTYgen命令行错误", MB_ICONERROR | MB_OK);
 
     exit(1);
 }

@@ -2183,8 +2183,8 @@ static void usage(void)
     printf("PuTTY安全复制客户端\n");
     printf("%s\n", ver);
     printf("用法: pscp [选项] [用户@]主机:源文件 目标\n");
-    printf("       pscp [选项] 源文件 [源文件...] [用户@]主机:目标\n");
-    printf("       pscp [选项] -ls [用户@]主机:文件规格\n");
+    printf("      pscp [选项] 源文件 [源文件...] [用户@]主机:目标\n");
+    printf("      pscp [选项] -ls [用户@]主机:文件规格\n");
     printf("选项:\n");
     printf("  -V        显示版本信息\n");
     printf("  -pgpfp    显示PGP密钥指纹\n");

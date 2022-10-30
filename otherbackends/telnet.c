@@ -400,7 +400,7 @@ static void process_subneg(Telnet *telnet)
             telnet->bufsize = sk_write(telnet->s, sb->s, sb->len);
             strbuf_shrink_to(sb, tt_end);
             logevent(telnet->logctx, "服务器 子协商: SB TTYPE SEND");
-            logeventf(telnet->logctx, "客户端 子协商: SB SB TTYPE IS %s",
+            logeventf(telnet->logctx, "客户端 子协商: SB TTYPE IS %s",
                       sb->s + tt_start);
             strbuf_free(sb);
         } else

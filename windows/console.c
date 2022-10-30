@@ -65,7 +65,7 @@ SeatPromptResult console_confirm_ssh_host_key(
             if (console_batch_mode) {
                 fprintf(stderr, "%s\n", item->text);
                 fflush(stderr);
-                return SPR_SW_ABORT("Cannot confirm a host key in batch mode");
+                return SPR_SW_ABORT("无法在批处理模式下确认主机密钥");
             }
             break;
           case SDT_PROMPT:

@@ -191,7 +191,7 @@ void win_setup_config_box(struct controlbox *b, HWND *hwndp, bool has_help,
                     "字体设置：");
     ctrl_checkbox(s, "允许选择可变间距字体", NO_SHORTCUT,
                   HELPCTX(appearance_font), variable_pitch_handler, I(0));
-    ctrl_radiobuttons(s, "字体效果：", 'q', 2,
+    ctrl_radiobuttons(s, "字体效果", 'q', 2,
                       HELPCTX(appearance_font),
                       conf_radiobutton_handler,
                       I(CONF_font_quality),
@@ -283,7 +283,7 @@ void win_setup_config_box(struct controlbox *b, HWND *hwndp, bool has_help,
      */
     s = ctrl_getset(b, "窗口/选择", "mouse",
                     "鼠标的使用：");
-    ctrl_radiobuttons(s, "鼠标按键动作：", 'm', 1,
+    ctrl_radiobuttons(s, "鼠标按键动作", 'm', 1,
                       HELPCTX(selection_buttons),
                       conf_radiobutton_handler,
                       I(CONF_mouse_is_xterm),

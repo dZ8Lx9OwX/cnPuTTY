@@ -50,7 +50,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
          * requesting a group.
          */
         if (dh_is_gex(s->kex_alg)) {
-            ppl_logevent("进行Diffie-Hellman组交换");
+            ppl_logevent("执行Diffie-Hellman组交换");
             s->ppl.bpp->pls->kctx = SSH2_PKTCTX_DHGEX;
             /*
              * Work out how big a DH group we will need to allow that
@@ -186,7 +186,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
         }
     } else if (s->kex_alg->main_type == KEXTYPE_ECDH) {
         char *desc = ecdh_keyalg_description(s->kex_alg);
-        ppl_logevent("Doing %s, using hash %s", desc,
+        ppl_logevent("执行 %s, 使用哈希 %s", desc,
                      ssh_hash_alg(s->exhash)->text_name);
         sfree(desc);
 
@@ -283,7 +283,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
             s->ecdh_key = ecdh_key_new(s->kex_alg, false);
 
             char *desc = ecdh_keyalg_description(s->kex_alg);
-            ppl_logevent("Doing GSSAPI (with Kerberos V5) %s with hash %s",
+            ppl_logevent("执行GSSAPI(包含 Kerberos V5) %s 带有哈希 %s",
                          desc, ssh_hash_alg(s->exhash)->text_name);
             sfree(desc);
         } else if (dh_is_gex(s->kex_alg)) {
@@ -292,7 +292,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
              * much data.
              */
             s->pbits = 512 << ((s->nbits - 1) / 64);
-            ppl_logevent("进行GSSAPI(包含Kerberos V5) Diffie-Hellman "
+            ppl_logevent("执行GSSAPI(包含Kerberos V5) Diffie-Hellman "
                          "group exchange, 包含最少 %d 位,和哈希 %s",
                          s->pbits, ssh_hash_alg(s->exhash)->text_name);
             pktout = ssh_bpp_new_pktout(s->ppl.bpp, SSH2_MSG_KEXGSS_GROUPREQ);
@@ -324,7 +324,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
             s->dh_ctx = dh_setup_gex(s->p, s->g);
         } else {
             s->dh_ctx = dh_setup_group(s->kex_alg);
-            ppl_logevent("使用GSSAPI (包含Kerberos V5) Diffie-Hellman 包含"
+            ppl_logevent("执行GSSAPI(包含Kerberos V5) Diffie-Hellman 包含"
                          " standard group \"%s\" 和哈希 %s",
                          s->kex_alg->groupname,
                          ssh_hash_alg(s->exhash)->text_name);
@@ -898,7 +898,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
 
             FingerprintType fptype_default =
                 ssh2_pick_default_fingerprint(fingerprints);
-            ppl_logevent("Host key fingerprint is:");
+            ppl_logevent("主机密钥指纹是：");
             ppl_logevent("%s", fingerprints[fptype_default]);
 
             /*
@@ -911,8 +911,8 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
             if (ssh_key_alg(s->hkey)->is_certificate) {
                 char *base_fp = ssh2_fingerprint(
                     s->hkey, ssh_fptype_to_cert(fptype_default));
-                ppl_logevent("Host key is a certificate. "
-                             "Hash including certificate:");
+                ppl_logevent("主机密钥是一个证书。"
+                             "Hash包含证书:");
                 ppl_logevent("%s", base_fp);
                 sfree(base_fp);
 
@@ -922,7 +922,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
                 ssh_key_cert_id_string(
                     s->hkey, BinarySink_UPCAST(id_string_scc));
                 stripctrl_free(id_string_scc);
-                ppl_logevent("Certificate ID string is \"%s\"", id_string->s);
+                ppl_logevent("证书ID字符串为：\"%s\"", id_string->s);
                 strbuf_free(id_string);
 
                 strbuf *ca_pub = strbuf_new();
@@ -932,7 +932,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
 
                 char *ca_fp = ssh2_fingerprint_blob(ptrlen_from_strbuf(ca_pub),
                                                     fptype_default);
-                ppl_logevent("Fingerprint of certification authority:");
+                ppl_logevent("证书颁发机构的指纹：");
                 ppl_logevent("%s", ca_fp);
                 sfree(ca_fp);
 
@@ -942,9 +942,9 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
                 bool cert_ok = false;
 
                 if (!hca_found) {
-                    put_fmt(error, "Certification authority is not trusted");
+                    put_fmt(error, "证书颁发机构不受信任");
                 } else {
-                    ppl_logevent("Certification authority matches '%s'",
+                    ppl_logevent("证书颁发机构匹配 '%s'",
                                  hca_found->name);
                     cert_ok = ssh_key_check_cert(
                         s->hkey,
@@ -957,10 +957,10 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
                 if (cert_ok) {
                     strbuf_free(error);
                     ssh2_free_all_fingerprints(fingerprints);
-                    ppl_logevent("Accepted certificate");
+                    ppl_logevent("接受的证书");
                     goto host_key_ok;
                 } else {
-                    ppl_logevent("Rejected host key certificate: %s",
+                    ppl_logevent("被拒绝的主机密钥证书：%s",
                                  error->s);
                     strbuf_free(error);
                     /* now fall through into normal host key checking */

@@ -1237,7 +1237,7 @@ bool ppk_loadpub_s(BinarySource *src, char **algorithm, BinarySink *bs,
         bool ret = openssh_loadpub(src, algorithm, bs, commentptr, errorstr);
         return ret;
     } else if (type != SSH_KEYTYPE_SSH2) {
-        error = "不是PuTTY SSH-2私钥文件";
+        error = "不是公钥或PuTTY SSH-2私钥";
         goto error;
     }
 
@@ -1249,7 +1249,7 @@ bool ppk_loadpub_s(BinarySource *src, char **algorithm, BinarySink *bs,
         if (0 == strncmp(header, "PuTTY-User-Key-File-", 20))
             error = "PuTTY密钥文件太新";
         else
-            error = "不是PuTTY SSH-2私钥文件";
+            error = "不是公钥或PuTTY SSH-2私钥";
         goto error;
     }
     error = "文件格式错误";

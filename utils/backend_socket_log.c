@@ -28,7 +28,7 @@ void backend_socket_log(Seat *seat, LogContext *logctx,
         if (addr)
             sk_getaddr(addr, addrbuf, lenof(addrbuf));
         else /* fallback if address unavailable */
-            sprintf(addrbuf, "remote host");
+            sprintf(addrbuf, "远程主机");
         msg = dupprintf("连接到 %s", addrbuf);
         break;
       case PLUGLOG_PROXY_MSG: {

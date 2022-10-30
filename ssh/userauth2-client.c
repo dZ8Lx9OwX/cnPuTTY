@@ -502,7 +502,7 @@ static void ssh2_userauth_process_queue(PacketProtocolLayer *ppl)
         char *algname = NULL;
         char *comment = NULL;
 
-        ppl_logevent("Reading certificate file \"%s\"",
+        ppl_logevent("正在读取证书文件 \"%s\"",
                      filename_to_str(s->detached_cert_file));
         int keytype = key_type(s->detached_cert_file);
         if (!(keytype == SSH_KEYTYPE_SSH2_PUBLIC_RFC4716 ||
@@ -543,7 +543,7 @@ static void ssh2_userauth_process_queue(PacketProtocolLayer *ppl)
 
       cert_load_done:
         if (cert_error) {
-            ppl_logevent("Unable to use this certificate file (%s)",
+            ppl_logevent("无法使用此证书文件 (%s)",
                          cert_error);
             ppl_printf(
                 "Unable to use certificate file \"%s\" (%s)\r\n",
@@ -654,7 +654,7 @@ static void ssh2_userauth_process_queue(PacketProtocolLayer *ppl)
         s->authplugin_plug.vt = &authplugin_plugvt;
         s->authplugin = platform_start_subprocess(
             s->authplugin_cmd, &s->authplugin_plug, "plugin");
-        ppl_logevent("Started authentication plugin: %s", s->authplugin_cmd);
+        ppl_logevent("已启动身份验证插件：%s", s->authplugin_cmd);
     }
 
     if (s->authplugin) {
@@ -686,7 +686,7 @@ static void ssh2_userauth_process_queue(PacketProtocolLayer *ppl)
             if (username.len) {
                 sfree(s->default_username);
                 s->default_username = mkstr(username);
-                ppl_logevent("Authentication plugin set username '%s'",
+                ppl_logevent("身份验证插件设置用户名 '%s'",
                              s->default_username);
             }
             break;
@@ -1587,20 +1587,20 @@ static void ssh2_userauth_process_queue(PacketProtocolLayer *ppl)
                             seat_set_trust_status(s->ppl.seat, false);
                             ppl_printf("%.*s\r\n", PTRLEN_PRINTF(message));
                             seat_set_trust_status(s->ppl.seat, true);
-                            ppl_logevent("Authentication plugin declined to "
-                                         "help with keyboard-interactive: "
+                            ppl_logevent("身份验证插件拒绝"
+                                         "帮助键盘交互："
                                          "%.*s", PTRLEN_PRINTF(message));
                         } else {
-                            ppl_logevent("Authentication plugin declined to "
-                                         "help with keyboard-interactive");
+                            ppl_logevent("身份验证插件拒绝"
+                                         "帮助键盘交互");
                         }
                         s->authplugin_ki_active = false;
                         break;
                       }
                       case PLUGIN_PROTOCOL_ACCEPT:
                         s->authplugin_ki_active = true;
-                        ppl_logevent("Authentication plugin agreed to help "
-                                     "with keyboard-interactive");
+                        ppl_logevent("身份验证插件同意"
+                                     "帮助键盘交互");
                         break;
                       default:
                         authplugin_bad_packet(
@@ -2356,7 +2356,7 @@ static void ssh2_userauth_add_alg_and_publickey(
          * SHA-512 name rsa-sha2-512-cert-v01@... .)
          */
         if (verbose) {
-            ppl_logevent("Sending public key with certificate from \"%s\"",
+            ppl_logevent("正在从带有证书的公钥发送 \"%s\"",
                          filename_to_str(s->detached_cert_file));
         }
         put_stringz(pkt, ssh_keyalg_related_alg(certalg, pkalg)->ssh_id);
@@ -2370,8 +2370,8 @@ static void ssh2_userauth_add_alg_and_publickey(
          * avoid verbosely logging once for the offer and once for the
          * real auth attempt.) */
 	if (verbose) {
-            ppl_logevent("Not substituting certificate \"%s\" for public "
-                         "key: %s", filename_to_str(s->detached_cert_file),
+            ppl_logevent("不替代证书 \"%s\" 对于"
+                         "公钥：%s", filename_to_str(s->detached_cert_file),
                          fail_reason->s);
             if (s->publickey_blob) {
                 /* If the user provided a specific key file to use (i.e.

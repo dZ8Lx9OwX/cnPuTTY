@@ -120,7 +120,7 @@ void gui_term_process_cmdline(Conf *conf, char *cmdline)
                     fclose(fp);
                 }
             } else if (*p != '-') {
-                cmdline_error("意外争议 \"%s\"", p);
+                cmdline_error("意外的参数 \"%s\"", p);
             } else {
                 cmdline_error("未知选项 \"%s\"", p);
             }

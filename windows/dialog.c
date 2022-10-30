@@ -78,7 +78,7 @@ static PortableDialogStuff *pds_new(size_t nctrltrees)
         dp_add_tree(pds->dp, &pds->ctrltrees[i]);
     }
 
-    pds->dp->errtitle = dupprintf("%s Error", appname);
+    pds->dp->errtitle = dupprintf("cn%s 错误", appname);
 
     pds->initialised = false;
 
@@ -1117,10 +1117,10 @@ static INT_PTR HostKeyDialogProc(HWND hwnd, UINT msg,
 const SeatDialogPromptDescriptions *win_seat_prompt_descriptions(Seat *seat)
 {
     static const SeatDialogPromptDescriptions descs = {
-        .hk_accept_action = "press \"Accept\"",
-        .hk_connect_once_action = "press \"Connect Once\"",
-        .hk_cancel_action = "press \"Cancel\"",
-        .hk_cancel_action_Participle = "Pressing \"Cancel\"",
+        .hk_accept_action = "选择 \"接受\"",
+        .hk_connect_once_action = "选择 \"连接一次\"",
+        .hk_cancel_action = "选择 \"取消\"",
+        .hk_cancel_action_Participle = "选择 \"取消\"",
     };
     return &descs;
 }
@@ -1269,7 +1269,7 @@ void old_keyfile_warning(void)
         "您正在加载一个旧版本的SSH-2私钥文件。\n"
         "这意味着当前密钥文件不是完全防篡改的。\n"
         "未来版本的程序可能会停止支持这种私钥，\n"
-        "所有我们建议您将密钥转换为新的格式。\n"
+        "所以我们建议您将密钥转换为新的格式。\n"
         "\n"
         "将密钥加载到PuTTYgen中，只需要再次保\n"
         "存即可完成转换。";

@@ -136,14 +136,14 @@ static void ca_refresh_pubkey_info(struct ca_state *st, dlgparam *dp)
         goto out;
     }
     if (alg->is_certificate) {
-        text = dupprintf("CA密钥可能不是证书(类型是：'%.*s')",
+        text = dupprintf("CA密钥不能是证书(类型是：'%.*s')",
                          PTRLEN_PRINTF(alg_name));
         goto out;
     }
 
     key = ssh_key_new_pub(alg, ptrlen_from_strbuf(blob));
     if (!key) {
-        text = dupprintf("无效密钥数据：'%.*s'", PTRLEN_PRINTF(alg_name));
+        text = dupprintf("无效 '%.*s' 密钥数据", PTRLEN_PRINTF(alg_name));
         goto out;
     }
 
@@ -174,7 +174,7 @@ static void ca_load_selected_record(struct ca_state *st, dlgparam *dp)
     }
     host_ca *hca = host_ca_load(name);
     if (!hca) {
-        char *msg = dupprintf("无法加载主机CA记录：'%s'", name);
+        char *msg = dupprintf("无法加载主机CA记录 '%s'", name);
         dlg_error_msg(dp, msg);
         sfree(msg);
         return;
@@ -251,8 +251,8 @@ static void ca_save_handler(dlgcontrol *ctrl, dlgparam *dp,
     struct ca_state *st = (struct ca_state *)ctrl->context.p;
     if (event == EVENT_ACTION) {
         if (!*st->validity) {
-            dlg_error_msg(dp, "未为此密钥配置有效的"
-                          "表达式");
+            dlg_error_msg(dp, "对于此密钥未配置有效主机"
+                          "的表达式");
             return;
         }
 
@@ -348,7 +348,7 @@ static void ca_pubkey_file_handler(dlgcontrol *ctrl, dlgparam *dp,
                                 NULL, &load_error);
         if (!ok) {
             char *message = dupprintf(
-                "无法从'%s': %s加载公钥",
+                "无法加载公钥,从'%s'： %s",
                 filename_to_str(filename), load_error);
             dlg_error_msg(dp, message);
             sfree(message);
@@ -419,9 +419,9 @@ void setup_ca_config_box(struct controlbox *b)
 
     /* Load/save box, as similar as possible to the main saved sessions one */
     s = ctrl_getset(b, "Main", "loadsave",
-                    "加载/保存/删除主机CA记录");
+                    "加载/保存/删除主机CA记录：");
     ctrl_columns(s, 2, 75, 25);
-    c = ctrl_editbox(s, "CA的名称（用于显示在日志消息中）",
+    c = ctrl_editbox(s, "此CA的名称 (显示在日志消息中)",
                      'n', 100, HELPCTX(ssh_kex_cert),
                      ca_name_handler, P(st), P(NULL));
     c->column = 0;
@@ -445,7 +445,7 @@ void setup_ca_config_box(struct controlbox *b)
                         ca_delete_handler, P(st));
     c->column = 1;
 
-    s = ctrl_getset(b, "Main", "pubkey", "CA的公钥记录");
+    s = ctrl_getset(b, "Main", "pubkey", "CA的公钥记录：");
 
     ctrl_columns(s, 2, 75, 25);
     c = ctrl_editbox(s, "证书颁发机构的公钥", 'k', 100,
@@ -463,15 +463,15 @@ void setup_ca_config_box(struct controlbox *b)
     st->ca_pubkey_info = c = ctrl_text(s, " ", HELPCTX(ssh_kex_cert));
     c->text.wrap = false;
 
-    s = ctrl_getset(b, "Main", "options", "CA的可信度");
+    s = ctrl_getset(b, "Main", "options", "CA的可信度：");
 
-    c = ctrl_editbox(s, "信任此密钥以验证的有效主机", 'h', 100,
+    c = ctrl_editbox(s, "信任此密钥进行认证的有效主机 [如:(*.a.com || *.b.com) && port:22]", 'h', 100,
                      HELPCTX(ssh_cert_valid_expr), ca_validity_handler,
                      P(st), P(NULL));
     st->ca_validity_edit = c;
 
     ctrl_columns(s, 4, 44, 18, 18, 18);
-    c = ctrl_text(s, "签名类型（仅限 RSA 密钥）：",
+    c = ctrl_text(s, "签名类型(仅限RSA密钥)：",
                   HELPCTX(ssh_cert_rsa_hash));
     c->column = 0;
     dlgcontrol *sigtypelabel = c;

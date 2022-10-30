@@ -48,8 +48,8 @@ static void logwrite(LogContext *ctx, ptrlen data)
         if (fwrite(data.ptr, 1, data.len, ctx->lgfp) < data.len) {
             logfclose(ctx);
             ctx->state = L_ERROR;
-            lp_eventlog(ctx->lp, "禁用写入会话日志，"
-                        "由于写入时出错");
+            lp_eventlog(ctx->lp, "由于禁用写入会话日志，"
+                        "写入时出错。");
         }
     }                                  /* else L_ERROR, so ignore the write */
 }

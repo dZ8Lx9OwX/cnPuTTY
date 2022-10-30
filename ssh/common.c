@@ -475,7 +475,7 @@ struct ssh_ttymodes get_ttymodes_from_conf(Seat *seat, Conf *conf)
                     ival = (atoi(sval) != 0);
                 break;
               default:
-                unreachable("Bad mode->type");
+                unreachable("错误模式->类型");
             }
 
             modes.have_mode[mode->opcode] = true;
@@ -910,7 +910,7 @@ SeatPromptResult verify_ssh_host_key(
             sfree(base64blob);
         }
 
-        return SPR_SW_ABORT("主机密钥不在手动配置的列表中");
+        return SPR_SW_ABORT("主机密钥不在手动配置的列表中。");
     }
 
     /*
@@ -932,82 +932,82 @@ SeatPromptResult verify_ssh_host_key(
         ssh2_pick_default_fingerprint(fingerprints);
 
     seat_dialog_text_append(
-        text, SDT_TITLE, "%s Security Alert", appname);
+        text, SDT_TITLE, "cn%s 安全报警！！！", appname);
 
     HelpCtx helpctx;
 
     if (key && ssh_key_alg(key)->is_certificate) {
         seat_dialog_text_append(
-            text, SDT_SCARY_HEADING, "WARNING - POTENTIAL SECURITY BREACH!");
+            text, SDT_SCARY_HEADING, "警告 —— 潜在安全漏洞！！！");
         seat_dialog_text_append(
-            text, SDT_PARA, "This server presented a certified host key:");
+            text, SDT_PARA, "此服务器提供了经CA认证的主机密钥：");
         seat_dialog_text_append(
-            text, SDT_DISPLAY, "%s (port %d)", host, port);
+            text, SDT_DISPLAY, "%s (端口号 %d)", host, port);
         if (ca_count) {
             seat_dialog_text_append(
-                text, SDT_PARA, "which was signed by a different "
-                "certification authority from the %s %s is configured to "
-                "trust for this server.", ca_count > 1 ? "ones" : "one",
+                text, SDT_PARA, "由来自另"
+                "一个 %s %s 证书颁发机构配置"
+                "为信任此服务器。", ca_count > 1 ? "ones" : "one",
                 appname);
             if (storage_status == 2) {
                 seat_dialog_text_append(
-                    text, SDT_PARA, "ALSO, that key does not match the key "
-                    "%s had previously cached for this server.", appname);
+                    text, SDT_PARA, "此外，该密钥与cn%s"
+                    "以前为此服务器缓存的密钥不匹配", appname);
                 seat_dialog_text_append(
-                    text, SDT_PARA, "This means that either another "
-                    "certification authority is operating in this realm AND "
-                    "the server administrator has changed the host key, or "
-                    "you have actually connected to another computer "
-                    "pretending to be the server.");
+                    text, SDT_PARA, "这意味着有别的证书颁发机构"
+                    "在这个域中运行，并且服务器管理员已经更"
+                    "改了主机密钥，或者您实际上"
+                    "已经连接到另外一台计算机"
+                    "伪装成的服务器。");
             } else {
                 seat_dialog_text_append(
-                    text, SDT_PARA, "This means that either another "
-                    "certification authority is operating in this realm, or "
-                    "you have actually connected to another computer "
-                    "pretending to be the server.");
+                    text, SDT_PARA, "这意味着有别的证书颁发机构"
+                    "在这个域中运行，或者您实际上"
+                    "已经连接到另外一台计算机"
+                    "伪装成的服务器。");
             }
         } else {
             assert(storage_status == 2);
             seat_dialog_text_append(
-                text, SDT_PARA, "which does not match the certified key %s "
-                "had previously cached for this server.", appname);
+                text, SDT_PARA, "认证密钥与cn%s"
+                "以前为此服务器缓存的不匹配", appname);
             seat_dialog_text_append(
-                text, SDT_PARA, "This means that either the server "
-                "administrator has changed the host key, or you have actually "
-                "connected to another computer pretending to be the server.");
+                text, SDT_PARA, "这意味着服务器管理员"
+            "已更改主机密钥，或者您实际已连接到"
+            "另一台计算机伪装成的服务器。");
         }
         seat_dialog_text_append(
-            text, SDT_PARA, "The new %s key fingerprint is:", keytype);
+            text, SDT_PARA, "新的 %s 密钥指纹是：", keytype);
         seat_dialog_text_append(
             text, SDT_DISPLAY, "%s", fingerprints[fptype_default]);
         helpctx = HELPCTX(errors_cert_mismatch);
     } else if (storage_status == 1) {
         seat_dialog_text_append(
-            text, SDT_PARA, "The host key is not cached for this server:");
+            text, SDT_PARA, "未缓存此服务器主机密钥：");
         seat_dialog_text_append(
-            text, SDT_DISPLAY, "%s (port %d)", host, port);
+            text, SDT_DISPLAY, "%s (端口号 %d)", host, port);
         seat_dialog_text_append(
-            text, SDT_PARA, "You have no guarantee that the server is the "
-            "computer you think it is.");
+            text, SDT_PARA, "不能为您保证当前服务器就是"
+            "您要连接的主机。");
         seat_dialog_text_append(
-            text, SDT_PARA, "The server's %s key fingerprint is:", keytype);
+            text, SDT_PARA, "当前服务器的 %s 密钥指纹是：", keytype);
         seat_dialog_text_append(
             text, SDT_DISPLAY, "%s", fingerprints[fptype_default]);
         helpctx = HELPCTX(errors_hostkey_absent);
     } else {
         seat_dialog_text_append(
-            text, SDT_SCARY_HEADING, "WARNING - POTENTIAL SECURITY BREACH!");
+            text, SDT_SCARY_HEADING, "警告 —— 潜在安全漏洞！！！");
         seat_dialog_text_append(
-            text, SDT_PARA, "The host key does not match the one %s has "
-            "cached for this server:", appname);
+            text, SDT_PARA, "主机密钥与cn%s为此服务器缓存的"
+            "主机密钥不匹配：", appname);
         seat_dialog_text_append(
-            text, SDT_DISPLAY, "%s (port %d)", host, port);
+            text, SDT_DISPLAY, "%s (端口号 %d)", host, port);
         seat_dialog_text_append(
-            text, SDT_PARA, "This means that either the server administrator "
-            "has changed the host key, or you have actually connected to "
-            "another computer pretending to be the server.");
+            text, SDT_PARA, "这意味着服务器管理员"
+            "已更改主机密钥，或者您实际已连接到"
+            "另一台计算机伪装成的服务器。");
         seat_dialog_text_append(
-            text, SDT_PARA, "The new %s key fingerprint is:", keytype);
+            text, SDT_PARA, "新的 %s 密钥指纹是：", keytype);
         seat_dialog_text_append(
             text, SDT_DISPLAY, "%s", fingerprints[fptype_default]);
         helpctx = HELPCTX(errors_hostkey_changed);
@@ -1016,55 +1016,55 @@ SeatPromptResult verify_ssh_host_key(
     /* The above text is printed even in batch mode. Here's where we stop if
      * we can't present interactive prompts. */
     seat_dialog_text_append(
-        text, SDT_BATCH_ABORT, "Connection abandoned.");
+        text, SDT_BATCH_ABORT, "连接已放弃。");
 
     if (storage_status == 1) {
         seat_dialog_text_append(
-            text, SDT_PARA, "If you trust this host, %s to add the key to "
-            "%s's cache and carry on connecting.",
+            text, SDT_PARA, "如果您信任此主机，请%s 将密钥添加到"
+            "cn%s的缓存并继续连接。",
             pds->hk_accept_action, appname);
         seat_dialog_text_append(
-            text, SDT_PARA, "If you want to carry on connecting just once, "
-            "without adding the key to the cache, %s.",
+            text, SDT_PARA, "如果您只想进行一次连接，"
+            "而不想将密钥添加到缓存中，请%s。",
             pds->hk_connect_once_action);
         seat_dialog_text_append(
-            text, SDT_PARA, "If you do not trust this host, %s to abandon the "
-            "connection.", pds->hk_cancel_action);
+            text, SDT_PARA, "如果您不信任此主机，请%s "
+            "将放弃连接。", pds->hk_cancel_action);
         seat_dialog_text_append(
-            text, SDT_PROMPT, "Store key in cache?");
+            text, SDT_PROMPT, "是否将密钥存储在缓存中？");
     } else {
         seat_dialog_text_append(
-            text, SDT_PARA, "If you were expecting this change and trust the "
-            "new key, %s to update %s's cache and carry on connecting.",
+            text, SDT_PARA, "如果您期待这一变化，并信任"
+            "新的密钥，请%s 用于更新cn%s的密钥缓存并继续连接。",
             pds->hk_accept_action, appname);
         if (key && ssh_key_alg(key)->is_certificate) {
             seat_dialog_text_append(
-                text, SDT_PARA, "(Storing this certified key in the cache "
-                "will NOT cause its certification authority to be trusted "
-                "for any other key or host.)");
+                text, SDT_PARA, "(将此认证密钥存储在缓存中"
+                "不会使其证书颁发机构受到信任，"
+                "用于任何其他密钥或者主机。)");
         }
         seat_dialog_text_append(
-            text, SDT_PARA, "If you want to carry on connecting but without "
-            "updating the cache, %s.", pds->hk_connect_once_action);
+            text, SDT_PARA, "如果您想要继续连接但不"
+            "更新密钥缓存，请%s。", pds->hk_connect_once_action);
         seat_dialog_text_append(
-            text, SDT_PARA, "If you want to abandon the connection "
-            "completely, %s to cancel. %s is the ONLY guaranteed safe choice.",
+            text, SDT_PARA, "如果您想要完全放弃"
+            "连接，请%s。 %s 是唯一保证安全的选项。",
             pds->hk_cancel_action, pds->hk_cancel_action_Participle);
         seat_dialog_text_append(
-            text, SDT_PROMPT, "Update cached key?");
+            text, SDT_PROMPT, "是否更新缓存密钥？");
     }
 
     seat_dialog_text_append(text, SDT_MORE_INFO_KEY,
-                            "Full text of host's public key");
+                            "主机公钥全文：");
     seat_dialog_text_append(text, SDT_MORE_INFO_VALUE_BLOB, "%s", keydisp);
 
     if (fingerprints[SSH_FPTYPE_SHA256]) {
-        seat_dialog_text_append(text, SDT_MORE_INFO_KEY, "SHA256 fingerprint");
+        seat_dialog_text_append(text, SDT_MORE_INFO_KEY, "SHA256 指纹：");
         seat_dialog_text_append(text, SDT_MORE_INFO_VALUE_SHORT, "%s",
                                 fingerprints[SSH_FPTYPE_SHA256]);
     }
     if (fingerprints[SSH_FPTYPE_MD5]) {
-        seat_dialog_text_append(text, SDT_MORE_INFO_KEY, "MD5 fingerprint");
+        seat_dialog_text_append(text, SDT_MORE_INFO_KEY, "MD5 指纹：");
         seat_dialog_text_append(text, SDT_MORE_INFO_VALUE_SHORT, "%s",
                                 fingerprints[SSH_FPTYPE_MD5]);
     }

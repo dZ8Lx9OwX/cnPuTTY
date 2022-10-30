@@ -398,7 +398,7 @@ static void keylist_update_callback(
     if (ext_flags & LIST_EXTENDED_FLAG_HAS_NO_CLEARTEXT_KEY) {
         put_fmt(disp->info, "(加密的)");
     } else if (ext_flags & LIST_EXTENDED_FLAG_HAS_ENCRYPTED_KEY_FILE) {
-        put_fmt(disp->info, "(可加密)");
+        put_fmt(disp->info, "(已解密)");
 
         /* At least one key can be re-encrypted */
         ctx->enable_reencrypt_controls = true;
@@ -598,8 +598,8 @@ static INT_PTR CALLBACK KeyListProc(HWND hwnd, UINT msg,
     } fptypes[] = {
         {"SHA256", SSH_FPTYPE_SHA256},
         {"MD5", SSH_FPTYPE_MD5},
-        {"SHA256 including certificate", SSH_FPTYPE_SHA256_CERT},
-        {"MD5 including certificate", SSH_FPTYPE_MD5_CERT},
+        {"SHA256 (含证书)", SSH_FPTYPE_SHA256_CERT},
+        {"MD5    (含证书)", SSH_FPTYPE_MD5_CERT},
     };
 
     switch (msg) {
@@ -1761,10 +1761,10 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
                 pageant_listener_new(&pl_plug, &wpc->plc);
             Socket *sock = sk_newlistener_unix(unixsocket, pl_plug);
             if (sk_socket_error(sock)) {
-                char *err = dupprintf("Unable to open AF_UNIX socket at %s "
-                                      "for SSH agent:\n%s", unixsocket,
+                char *err = dupprintf("在 %s 上无法打开UAF_UNIX socket，"
+                                      "对于SSH代理：\n%s", unixsocket,
                                       sk_socket_error(sock));
-                MessageBox(NULL, err, "Pageant Error", MB_ICONERROR | MB_OK);
+                MessageBox(NULL, err, "cnPageant错误！！！", MB_ICONERROR | MB_OK);
                 return 1;
             }
             pageant_listener_got_socket(pl, sock);
