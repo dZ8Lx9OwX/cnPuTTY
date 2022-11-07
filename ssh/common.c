@@ -1023,6 +1023,12 @@ SeatPromptResult verify_ssh_host_key(
             text, SDT_PARA, "如果您信任此主机，请%s 将密钥添加到"
             "cn%s的缓存并继续连接。",
             pds->hk_accept_action, appname);
+        if (key && ssh_key_alg(key)->is_certificate) {
+            seat_dialog_text_append(
+                text, SDT_PARA, "(Storing this certified key in the cache "
+                "will NOT cause its certification authority to be trusted "
+                "for any other key or host.)");
+        }
         seat_dialog_text_append(
             text, SDT_PARA, "如果您只想进行一次连接，"
             "而不想将密钥添加到缓存中，请%s。",
