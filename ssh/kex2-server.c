@@ -192,7 +192,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
         }
     } else if (s->kex_alg->main_type == KEXTYPE_ECDH) {
         char *desc = ecdh_keyalg_description(s->kex_alg);
-        ppl_logevent("执行 %s, 使用哈希 %s", desc,
+        ppl_logevent("执行 %s,使用哈希 %s", desc,
                      ssh_hash_alg(s->exhash)->text_name);
         sfree(desc);
 
@@ -246,7 +246,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
         ssh_sw_abort(s->ppl.ssh, "服务器不支持GSS密钥交换");
     } else {
         assert(s->kex_alg->main_type == KEXTYPE_RSA);
-        ppl_logevent("进行RSA密钥交换，包含%s哈希",
+        ppl_logevent("进行RSA密钥交换,包含%s哈希",
                      ssh_hash_alg(s->exhash)->text_name);
         s->ppl.bpp->pls->kctx = SSH2_PKTCTX_RSAKEX;
 
