@@ -98,7 +98,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
             s->kex_reply_value = SSH2_MSG_KEX_DH_GEX_REPLY;
 
             ppl_logevent("进行Diffie-Hellman密钥交换，使用%d-bit"
-                         "模数和%s哈希，包含服务器提供的组",
+                         "模数和%s哈希,包含服务器提供的组",
                          dh_modulus_bit_size(s->dh_ctx),
                          ssh_hash_alg(s->exhash)->text_name);
         } else {
@@ -108,7 +108,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
             s->kex_reply_value = SSH2_MSG_KEXDH_REPLY;
 
             ppl_logevent("进行Diffie-Hellman密钥交换，使用%d-bit"
-                         "模数和%s哈希，包含标准组\"%s\"",
+                         "模数和%s哈希,包含标准组\"%s\"",
                          dh_modulus_bit_size(s->dh_ctx),
                          ssh_hash_alg(s->exhash)->text_name,
                          s->kex_alg->groupname);
@@ -186,7 +186,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
         }
     } else if (s->kex_alg->main_type == KEXTYPE_ECDH) {
         char *desc = ecdh_keyalg_description(s->kex_alg);
-        ppl_logevent("执行 %s, 使用哈希 %s", desc,
+        ppl_logevent("执行 %s,使用哈希 %s", desc,
                      ssh_hash_alg(s->exhash)->text_name);
         sfree(desc);
 
@@ -569,7 +569,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
         ptrlen rsakeydata;
 
         assert(s->kex_alg->main_type == KEXTYPE_RSA);
-        ppl_logevent("进行RSA密钥交换，包含%s哈希",
+        ppl_logevent("进行RSA密钥交换,包含%s哈希",
                      ssh_hash_alg(s->exhash)->text_name);
         s->ppl.bpp->pls->kctx = SSH2_PKTCTX_RSAKEX;
         /*
@@ -841,7 +841,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
                 ssh_transient_hostkey_cache_add(s->thc, s->hkey);
                 s->need_gss_transient_hostkey = false;
             } else if (!ssh_transient_hostkey_cache_verify(s->thc, s->hkey)) {
-                ppl_logevent("初始GSS kex后的非GSS重新生成密钥，"
+                ppl_logevent("初始GSS kex后的非GSS重新生成密钥,"
                              "使用的主机密钥：");
                 ppl_logevent("%s", fingerprint);
                 sfree(fingerprint);
@@ -885,10 +885,10 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
                     }
                 }
                 if (list) {
-                    ppl_logevent("服务器也有%s主机密钥，但我们"
-                                 "不知道%s", list,
-                                 nkeys > 1 ? "s" : "",
-                                 nkeys > 1 ? "其中任何一个" : "it");
+                    ppl_logevent("服务器也有%s主机密钥,但我们"
+                                 "未存储%s", list,
+                                 nkeys > 1 ? "它们" : "",
+                                 nkeys > 1 ? "其中任何一个" : "它");
                     sfree(list);
                 }
             }
@@ -911,7 +911,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
             if (ssh_key_alg(s->hkey)->is_certificate) {
                 char *base_fp = ssh2_fingerprint(
                     s->hkey, ssh_fptype_to_cert(fptype_default));
-                ppl_logevent("主机密钥是一个证书。"
+                ppl_logevent("主机密钥是一个证书."
                              "Hash包含证书:");
                 ppl_logevent("%s", base_fp);
                 sfree(base_fp);
@@ -998,7 +998,7 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
                      * explain why we chose to continue with the
                      * connection anyway!
                      */
-                    ppl_logevent("无论任何时候，都接受经过认证的"
+                    ppl_logevent("无论任何时候,都接受经过认证的"
                                  "主机密钥缓存");
                 }
             }

@@ -295,7 +295,7 @@ static void ssh1_login_process_queue(PacketProtocolLayer *ppl)
                 warn = true;
             } else if (next_cipher == CIPHER_AES) {
                 /* XXX Probably don't need to mention this. */
-                ppl_logevent("SSH-1 不支持 AES，跳过");
+                ppl_logevent("SSH-1 不支持 AES,跳过");
             } else {
                 switch (next_cipher) {
                   case CIPHER_3DES:     s->cipher_type = SSH1_CIPHER_3DES;
@@ -476,7 +476,7 @@ static void ssh1_login_process_queue(PacketProtocolLayer *ppl)
              */
             s->authed = false;
             s->tried_agent = true;
-            ppl_logevent("Pageant正在运行。请求密钥。");
+            ppl_logevent("Pageant正在运行中,尝试请求密钥");
 
             /* Request the keys held by the agent. */
             {
@@ -527,7 +527,7 @@ static void ssh1_login_process_queue(PacketProtocolLayer *ppl)
                         blobstart, blobend - blobstart);
                 }
 
-                ppl_logevent("Pageant有 %"SIZEu" SSH-1密钥", nkeys);
+                ppl_logevent("Pageant有 %"SIZEu" 个SSH-1密钥", nkeys);
 
                 if (s->publickey_blob) {
                     /*

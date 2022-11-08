@@ -562,7 +562,7 @@ static void ssh2_userauth_process_queue(PacketProtocolLayer *ppl)
      * key configured, filter out all others).
      */
     if (s->tryagent && agent_exists()) {
-        ppl_logevent("Pageant正在运行。请求密钥。");
+        ppl_logevent("Pageant正在运行中,尝试请求密钥");
 
         /* Request the keys held by the agent. */
         {
@@ -608,7 +608,7 @@ static void ssh2_userauth_process_queue(PacketProtocolLayer *ppl)
                     ptrlen_from_strbuf(s->agent_keys[i].blob));
             }
 
-            ppl_logevent("Pageant有 %"SIZEu" SSH-2密钥", nkeys);
+            ppl_logevent("Pageant有 %"SIZEu" 个SSH-2密钥", nkeys);
 
             if (s->publickey_blob) {
                 /*
@@ -1396,7 +1396,7 @@ static void ssh2_userauth_process_queue(PacketProtocolLayer *ppl)
                         s->shgss->lib, s->fullhostname, &s->shgss->srv_name);
                     if (s->gss_stat != SSH_GSS_OK) {
                         if (s->gss_stat == SSH_GSS_BAD_HOST_NAME)
-                            ppl_logevent("GSSAPI 导入名称失败，"
+                            ppl_logevent("GSSAPI 导入名称失败,"
                                          "服务名称错误");
                         else
                             ppl_logevent("GSSAPI 导入名称失败");
