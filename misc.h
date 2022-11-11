@@ -248,26 +248,29 @@ void smemclr(void *b, size_t len);
  * by the 'eq' in the name. */
 unsigned smemeq(const void *av, const void *bv, size_t len);
 
-/* Encode a single UTF-8 character. Assumes that illegal characters
- * (such as things in the surrogate range, or > 0x10FFFF) have already
- * been removed. */
-size_t encode_utf8(void *output, unsigned long ch);
-
 /* Encode a wide-character string into UTF-8. Tolerates surrogates if
  * sizeof(wchar_t) == 2, assuming that in that case the wide string is
  * encoded in UTF-16. */
 char *encode_wide_string_as_utf8(const wchar_t *wstr);
 
 /* Decode a single UTF-8 character. Returns U+FFFD for any of the
- * illegal cases. */
-unsigned long decode_utf8(const char **utf8);
+ * illegal cases. If the source is empty, returns L'\0' (and sets the
+ * error indicator on the source, of course). */
+unsigned decode_utf8(BinarySource *src);
 
 /* Decode a single UTF-8 character to an output buffer of the
  * platform's wchar_t. May write a pair of surrogates if
  * sizeof(wchar_t) == 2, assuming that in that case the wide string is
  * encoded in UTF-16. Otherwise, writes one character. Returns the
  * number written. */
-size_t decode_utf8_to_wchar(const char **utf8, wchar_t *out);
+size_t decode_utf8_to_wchar(BinarySource *src, wchar_t *out);
+
+/* Normalise a UTF-8 string into Normalisation Form C. */
+strbuf *utf8_to_nfc(ptrlen input);
+
+/* Determine if a UTF-8 string contains any characters unknown to our
+ * supported version of Unicode. */
+char *utf8_unknown_char(ptrlen input);
 
 /* Write a string out in C string-literal format. */
 void write_c_string_literal(FILE *fp, ptrlen str);

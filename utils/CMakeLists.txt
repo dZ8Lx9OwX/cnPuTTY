@@ -65,6 +65,8 @@ add_sources_from_current_dir(utils
   stripctrl.c
   tempseat.c
   tree234.c
+  unicode-known.c
+  unicode-norm.c
   validate_manual_hostkey.c
   version.c
   wcwidth.c
