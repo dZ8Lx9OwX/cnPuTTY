@@ -363,7 +363,8 @@ typedef enum {
     MBT_NOTHING,
     MBT_LEFT, MBT_MIDDLE, MBT_RIGHT,   /* `raw' button designations */
     MBT_SELECT, MBT_EXTEND, MBT_PASTE, /* `cooked' button designations */
-    MBT_WHEEL_UP, MBT_WHEEL_DOWN       /* mouse wheel */
+    MBT_WHEEL_UP, MBT_WHEEL_DOWN,      /* vertical mouse wheel */
+    MBT_WHEEL_LEFT, MBT_WHEEL_RIGHT    /* horizontal mouse wheel */
 } Mouse_Button;
 
 typedef enum {
@@ -994,6 +995,17 @@ struct prompts_t {
     void *data;         /* slot for housekeeping data, managed by
                          * seat_get_userpass_input(); initially NULL */
     SeatPromptResult spr; /* some implementations need to cache one of these */
+
+    /*
+     * Set this flag to indicate that the caller has encoded the
+     * prompts in UTF-8, and expects the responses to be UTF-8 too.
+     *
+     * Ideally this flag would be unnecessary because it would always
+     * be true, but for legacy reasons, we have to switch over a bit
+     * at a time from the old behaviour, and may never manage to get
+     * rid of it completely.
+     */
+    bool utf8;
 
     /*
      * Callback you can fill in to be notified when all the prompts'
@@ -2561,6 +2573,9 @@ bool have_ssh_host_key(const char *host, int port, const char *keytype);
  * that aren't equivalents to things in windlg.c et al.
  */
 extern bool console_batch_mode, console_antispoof_prompt;
+extern bool console_set_batch_mode(bool);
+extern bool console_set_stdio_prompts(bool);
+extern bool console_set_legacy_charset_handling(bool);
 SeatPromptResult console_get_userpass_input(prompts_t *p);
 bool is_interactive(void);
 void console_print_error_msg(const char *prefix, const char *msg);
@@ -2626,6 +2641,7 @@ extern const unsigned cmdline_tooltype;
     X(TOOLTYPE_HOST_ARG_FROM_LAUNCHABLE_LOAD)   \
     X(TOOLTYPE_PORT_ARG)                        \
     X(TOOLTYPE_NO_VERBOSE_OPTION)               \
+    X(TOOLTYPE_GUI)                             \
     /* end of list */
 #define BITFLAG_INDEX(val) val ## _bitflag_index,
 enum { TOOLTYPE_LIST(BITFLAG_INDEX) };

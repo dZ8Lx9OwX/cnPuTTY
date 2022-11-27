@@ -31,6 +31,7 @@ char *dupcat_fn(const char *s1, ...);
 char *dupprintf(const char *fmt, ...) PRINTF_LIKE(1, 2);
 char *dupvprintf(const char *fmt, va_list ap);
 void burnstr(char *string);
+void burnwcs(wchar_t *string);
 
 /*
  * The visible part of a strbuf structure. There's a surrounding
@@ -69,10 +70,11 @@ void strbuf_finalise_agent_query(strbuf *buf);
 
 /* String-to-Unicode converters that auto-allocate the destination and
  * work around the rather deficient interface of mb_to_wc. */
-wchar_t *dup_mb_to_wc_c(int codepage, int flags, const char *string, int len);
+wchar_t *dup_mb_to_wc_c(int codepage, int flags, const char *string,
+                        size_t len, size_t *outlen_p);
 wchar_t *dup_mb_to_wc(int codepage, int flags, const char *string);
-char *dup_wc_to_mb_c(int codepage, int flags, const wchar_t *string, int len,
-                     const char *defchr);
+char *dup_wc_to_mb_c(int codepage, int flags, const wchar_t *string,
+                     size_t len, const char *defchr, size_t *outlen_p);
 char *dup_wc_to_mb(int codepage, int flags, const wchar_t *string,
                    const char *defchr);
 
