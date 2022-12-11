@@ -945,9 +945,9 @@ SeatPromptResult verify_ssh_host_key(
             text, SDT_DISPLAY, "%s (端口号 %d)", host, port);
         if (ca_count) {
             seat_dialog_text_append(
-                text, SDT_PARA, "由来自另"
-                "一个 %s %s 证书颁发机构配置"
-                "为信任此服务器。", ca_count > 1 ? "ones" : "one",
+                text, SDT_PARA, "由来自不相同"
+                "%scn%s证书颁发机构配置"
+                "为信任此服务器。", ca_count > 1 ? "的" : "的一个",
                 appname);
             if (storage_status == 2) {
                 seat_dialog_text_append(
@@ -1025,9 +1025,9 @@ SeatPromptResult verify_ssh_host_key(
             pds->hk_accept_action, appname);
         if (key && ssh_key_alg(key)->is_certificate) {
             seat_dialog_text_append(
-                text, SDT_PARA, "(Storing this certified key in the cache "
-                "will NOT cause its certification authority to be trusted "
-                "for any other key or host.)");
+                text, SDT_PARA, "(将此认证密钥存储在缓存当中，"
+                "对于其他任何密钥或主机不会导致其证书颁发"
+                "机构受到信任。)");
         }
         seat_dialog_text_append(
             text, SDT_PARA, "如果您只想进行一次连接，"

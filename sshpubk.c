@@ -1933,25 +1933,25 @@ const char *key_type_to_str(int type)
 {
     switch (type) {
       case SSH_KEYTYPE_UNOPENABLE:
-        return "无法打开文件";
+        return "unable to open file";
       case SSH_KEYTYPE_UNKNOWN:
-        return "不可识别的密钥文件格式";
+        return "not a recognised key file format";
       case SSH_KEYTYPE_SSH1_PUBLIC:
-        return "SSH-1 公钥";
+        return "SSH-1 public key";
       case SSH_KEYTYPE_SSH2_PUBLIC_RFC4716:
-        return "SSH-2 公钥(RFC 4716 格式)";
+        return "SSH-2 public key (RFC 4716 format)";
       case SSH_KEYTYPE_SSH2_PUBLIC_OPENSSH:
-        return "SSH-2 公钥(OpenSSH 格式)";
+        return "SSH-2 public key (OpenSSH format)";
       case SSH_KEYTYPE_SSH1:
-        return "SSH-1 私钥";
+        return "SSH-1 private key";
       case SSH_KEYTYPE_SSH2:
-        return "PuTTY SSH-2 私钥";
+        return "PuTTY SSH-2 private key";
       case SSH_KEYTYPE_OPENSSH_PEM:
-        return "OpenSSH SSH-2 私钥(旧PEM格式)";
+        return "OpenSSH SSH-2 private key (old PEM format)";
       case SSH_KEYTYPE_OPENSSH_NEW:
-        return "OpenSSH SSH-2 私钥(新格式)";
+        return "OpenSSH SSH-2 private key (new format)";
       case SSH_KEYTYPE_SSHCOM:
-        return "ssh.com SSH-2 私钥";
+        return "ssh.com SSH-2 private key";
 
         /*
          * This function is called with a key type derived from

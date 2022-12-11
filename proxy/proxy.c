@@ -279,7 +279,7 @@ static void plug_proxy_sent (Plug *p, size_t bufsize)
 static int plug_proxy_accepting(Plug *p,
                                 accept_fn_t constructor, accept_ctx_t ctx)
 {
-    unreachable("ProxySockets never create listening Sockets");
+    unreachable("ProxySockets从不创建侦听套接字");
 }
 
 /*
@@ -565,7 +565,7 @@ Socket *new_connection(SockAddr *addr, const char *hostname,
             vt = &telnet_proxy_negotiator_vt;
             break;
           default:
-            ps->error = "Proxy error: Unknown proxy method";
+            ps->error = "代理错误：未知代理方法";
             return &ps->sock;
         }
         ps->pn = proxy_negotiator_new(vt);
@@ -581,7 +581,7 @@ Socket *new_connection(SockAddr *addr, const char *hostname,
 
         {
             char *logmsg = dupprintf("将使用 %s 代理在 %s:%d 进行连接"
-                                     " to %s:%d", vt->type,
+                                     "到 %s:%d", vt->type,
                                      conf_get_str(conf, CONF_proxy_host),
                                      conf_get_int(conf, CONF_proxy_port),
                                      hostname, port);
@@ -602,7 +602,7 @@ Socket *new_connection(SockAddr *addr, const char *hostname,
                                    &proxy_canonical_name,
                                    conf_get_int(conf, CONF_addressfamily));
         if (sk_addr_error(proxy_addr) != NULL) {
-            ps->error = "Proxy error: Unable to resolve proxy host name";
+            ps->error = "代理错误：无法解析代理主机名";
             sk_addr_free(proxy_addr);
             return &ps->sock;
         }
@@ -611,7 +611,7 @@ Socket *new_connection(SockAddr *addr, const char *hostname,
         {
             char addrbuf[256], *logmsg;
             sk_getaddr(proxy_addr, addrbuf, lenof(addrbuf));
-            logmsg = dupprintf("Connecting to %s proxy at %s port %d",
+            logmsg = dupprintf("正在连接到 %s 通过代理在 %s 端口 %d",
                                vt->type, addrbuf,
                                conf_get_int(conf, CONF_proxy_port));
             plug_log(plug, PLUGLOG_PROXY_MSG, NULL, 0, logmsg, 0);

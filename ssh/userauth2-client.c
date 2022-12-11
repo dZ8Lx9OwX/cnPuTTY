@@ -403,15 +403,15 @@ static void authplugin_bad_packet(struct ssh2_userauth_state *s,
     strbuf *msg = strbuf_new();
     switch (type) {
       case PLUGIN_EOF:
-        put_dataz(msg, "Unexpected end of file from auth helper plugin");
+        put_dataz(msg, "来自认证帮助插件文件的意外结束");
         break;
       case PLUGIN_NOTYPE:
-        put_dataz(msg, "Received malformed packet from auth helper plugin "
-                  "(too short to have a type code)");
+        put_dataz(msg, "从认证帮助插件接收到的数据包格式错误"
+                  "(包太短，没有类型代码)");
         break;
       default:
-        put_fmt(msg, "Received unknown message type %u "
-                "from auth helper plugin", type);
+        put_fmt(msg, "从认证帮助插件收到"
+                "未知消息类型 %u ", type);
         break;
 
       #define CASEDECL(name, value)                                     \
@@ -524,13 +524,13 @@ static void ssh2_userauth_process_queue(PacketProtocolLayer *ppl)
         const ssh_keyalg *certalg = find_pubkey_alg(algname);
         if (!certalg) {
             cert_error = dupprintf(
-                "unrecognised certificate type '%s'", algname);
+                "未识别的证书类型 '%s'", algname);
             goto cert_load_done;
         }
 
         if (!certalg->is_certificate) {
             cert_error = dupprintf(
-                "key type '%s' is not a certificate", certalg->ssh_id);
+                "密钥类型 '%s' 不属于证书", certalg->ssh_id);
             goto cert_load_done;
         }
 
@@ -586,7 +586,7 @@ static void ssh2_userauth_process_queue(PacketProtocolLayer *ppl)
                 get_string(s->asrc);   /* blob */
                 get_string(s->asrc);   /* comment */
                 if (get_err(s->asrc)) {
-                    ppl_logevent("Pageant的回复被截断");
+                    ppl_logevent("Pageant的回复被中止");
                     goto done_agent_query;
                 }
             }
@@ -673,13 +673,13 @@ static void ssh2_userauth_process_queue(PacketProtocolLayer *ppl)
             s->authplugin_version = get_uint32(src);
             ptrlen username = get_string(src);
             if (get_err(src)) {
-                ssh_sw_abort(s->ppl.ssh, "Received malformed "
-                             "PLUGIN_INIT_RESPONSE from auth helper plugin");
+                ssh_sw_abort(s->ppl.ssh, "从认证帮助插件收到的 "
+                             "PLUGIN_INIT_RESPONSE 格式不正确");
                 return;
             }
             if (s->authplugin_version > PLUGIN_PROTOCOL_MAX_VERSION) {
-                ssh_sw_abort(s->ppl.ssh, "Auth helper plugin announced "
-                             "unsupported version number %"PRIu32,
+                ssh_sw_abort(s->ppl.ssh, "认证帮助插件发布"
+                             "不支持的版本号 %"PRIu32,
                              s->authplugin_version);
                 return;
             }
@@ -694,8 +694,8 @@ static void ssh2_userauth_process_queue(PacketProtocolLayer *ppl)
           case PLUGIN_INIT_FAILURE: {
             ptrlen message = get_string(src);
             if (get_err(src)) {
-                ssh_sw_abort(s->ppl.ssh, "Received malformed "
-                             "PLUGIN_INIT_FAILURE from auth helper plugin");
+                ssh_sw_abort(s->ppl.ssh, "从认证帮助插件收到的 "
+                             "PLUGIN_INIT_FAILURE 格式不正确");
                 return;
             }
             /* This is a controlled error, so we need not completely
@@ -710,7 +710,7 @@ static void ssh2_userauth_process_queue(PacketProtocolLayer *ppl)
             break;
           }
           default:
-            authplugin_bad_packet(s, type, "expected PLUGIN_INIT_RESPONSE or "
+            authplugin_bad_packet(s, type, "预期是 PLUGIN_INIT_RESPONSE 或者 "
                                   "PLUGIN_INIT_FAILURE");
             return;
         }
@@ -1187,7 +1187,7 @@ static void ssh2_userauth_process_queue(PacketProtocolLayer *ppl)
                     s->type = AUTH_TYPE_PUBLICKEY_OFFER_LOUD;
                     continue; /* process this new message */
                 }
-                ppl_logevent("接受提供的公钥");
+                ppl_logevent("提供的公钥被接受");
 
                 /*
                  * Actually attempt a serious authentication using
@@ -1571,9 +1571,9 @@ static void ssh2_userauth_process_queue(PacketProtocolLayer *ppl)
                             message = get_string(src);
                         }
                         if (get_err(src)) {
-                            ssh_sw_abort(s->ppl.ssh, "Received malformed "
-                                         "PLUGIN_PROTOCOL_REJECT from auth "
-                                         "helper plugin");
+                            ssh_sw_abort(s->ppl.ssh, "从认证帮助插件收到的 "
+                                         "PLUGIN_PROTOCOL_REJECT 格式"
+                                         "不正确");
                             return;
                         }
                         if (message.len) {
@@ -1605,7 +1605,7 @@ static void ssh2_userauth_process_queue(PacketProtocolLayer *ppl)
                         break;
                       default:
                         authplugin_bad_packet(
-                            s, type, "expected PLUGIN_PROTOCOL_ACCEPT or "
+                            s, type, "预期是 PLUGIN_PROTOCOL_ACCEPT 或者 "
                             "PLUGIN_PROTOCOL_REJECT");
                         return;
                     }
@@ -1735,8 +1735,8 @@ static void ssh2_userauth_process_queue(PacketProtocolLayer *ppl)
 
                         if (type != PLUGIN_KI_SERVER_RESPONSE) {
                             authplugin_bad_packet(
-                                s, type, "expected PLUGIN_KI_SERVER_RESPONSE "
-                                "or PLUGIN_PROTOCOL_USER_REQUEST");
+                                s, type, "预期是 PLUGIN_KI_SERVER_RESPONSE "
+                                "或者 PLUGIN_PROTOCOL_USER_REQUEST");
                             return;
                         }
 
@@ -2112,8 +2112,8 @@ static bool ssh2_userauth_ki_setup_prompts(
         bool echo = get_bool(src);
 
         if (get_err(src)) {
-            ssh_proto_error(s->ppl.ssh, "%s sent truncated %s packet",
-                            plugin ? "Plugin" : "Server",
+            ssh_proto_error(s->ppl.ssh, "%s 发送已中止 %s 数据包",
+                            plugin ? "插件" : "服务器",
                             plugin ? "PLUGIN_KI_USER_REQUEST" :
                             "SSH_MSG_USERAUTH_INFO_REQUEST");
             return false;
@@ -2121,8 +2121,8 @@ static bool ssh2_userauth_ki_setup_prompts(
 
         sb = strbuf_new();
         if (!prompt.len) {
-            put_fmt(sb, "<%s failed to send prompt>: ",
-                    plugin ? "plugin" : "server");
+            put_fmt(sb, "<%s 无法发送提示>: ",
+                    plugin ? "插件" : "服务器");
         } else if (s->ki_scc) {
             stripctrl_retarget(s->ki_scc, BinarySink_UPCAST(sb));
             put_datapl(s->ki_scc, prompt);
@@ -2308,7 +2308,7 @@ static void ssh2_userauth_add_alg_and_publickey(
 
         certkey = ssh_key_new_pub(certalg, detached_cert_pl);
         if (!certkey) {
-            put_fmt(fail_reason, "certificate key file is invalid");
+            put_fmt(fail_reason, "证书密钥文件无效");
             goto no_match;
         }
 
@@ -2326,13 +2326,13 @@ static void ssh2_userauth_add_alg_and_publickey(
          * In that situation, the detached cert should still override.
          */
         if (!pkalg) {
-            put_fmt(fail_reason, "unable to identify algorithm of base key");
+            put_fmt(fail_reason, "无法识别基础密钥的算法");
             goto no_match;
         }
 
         pk = ssh_key_new_pub(pkalg, pkblob);
         if (!pk) {
-            put_fmt(fail_reason, "base public key is invalid");
+            put_fmt(fail_reason, "基础公钥无效");
             goto no_match;
         }
 
@@ -2343,7 +2343,7 @@ static void ssh2_userauth_add_alg_and_publickey(
             goto match;                /* yes, a match on 2nd attempt! */
 
         /* Give up; we've tried to match these keys up and failed. */
-        put_fmt(fail_reason, "base public key does not match certificate");
+        put_fmt(fail_reason, "公钥与证书不匹配");
         goto no_match;
 
       match:
@@ -2360,7 +2360,7 @@ static void ssh2_userauth_add_alg_and_publickey(
          * SHA-512 name rsa-sha2-512-cert-v01@... .)
          */
         if (verbose) {
-            ppl_logevent("正在从带有证书的公钥发送 \"%s\"",
+            ppl_logevent("正在从带有公钥的证书发送 \"%s\"",
                          filename_to_str(s->detached_cert_file));
         }
         put_stringz(pkt, ssh_keyalg_related_alg(certalg, pkalg)->ssh_id);
@@ -2374,7 +2374,7 @@ static void ssh2_userauth_add_alg_and_publickey(
          * avoid verbosely logging once for the offer and once for the
          * real auth attempt.) */
 	if (verbose) {
-            ppl_logevent("不替代证书 \"%s\" 对于"
+            ppl_logevent("不能替代证书 \"%s\" 对于"
                          "公钥：%s", filename_to_str(s->detached_cert_file),
                          fail_reason->s);
             if (s->publickey_blob) {

@@ -911,8 +911,8 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
             if (ssh_key_alg(s->hkey)->is_certificate) {
                 char *base_fp = ssh2_fingerprint(
                     s->hkey, ssh_fptype_to_cert(fptype_default));
-                ppl_logevent("主机密钥是一个证书."
-                             "Hash包含证书:");
+                ppl_logevent("主机密钥是一个证书,"
+                             "Hash值(包含证书)：");
                 ppl_logevent("%s", base_fp);
                 sfree(base_fp);
 
@@ -957,10 +957,10 @@ void ssh2kex_coroutine(struct ssh2_transport_state *s, bool *aborted)
                 if (cert_ok) {
                     strbuf_free(error);
                     ssh2_free_all_fingerprints(fingerprints);
-                    ppl_logevent("接受的证书");
+                    ppl_logevent("证书被接受");
                     goto host_key_ok;
                 } else {
-                    ppl_logevent("被拒绝的主机密钥证书：%s",
+                    ppl_logevent("主机密钥证书被拒绝：%s",
                                  error->s);
                     strbuf_free(error);
                     /* now fall through into normal host key checking */
