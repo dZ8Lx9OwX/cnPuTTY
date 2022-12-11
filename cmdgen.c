@@ -96,13 +96,13 @@ void showversion(void)
 void usage(bool standalone)
 {
     fprintf(standalone ? stderr : stdout,
-            "ÓÃ·¨: puttygen ( ÃÜÔ¿ÎÄ¼ş | -t ÀàĞÍ [ -b Î»Êı ] )\n"
-            "                [ -C ×¢ÊÍ ] [ -P ] [ -q ]\n"
-            "                [ -o Êä³öÃÜÔ¿ÎÄ¼ş ] [ -O ÀàĞÍ | -l | -L"
+            "ç”¨æ³•: puttygen ( å¯†é’¥æ–‡ä»¶ | -t ç±»å‹ [ -b ä½æ•° ] )\n"
+            "                [ -C æ³¨é‡Š ] [ -P ] [ -q ]\n"
+            "                [ -o è¾“å‡ºå¯†é’¥æ–‡ä»¶ ] [ -O ç±»å‹ | -l | -L"
             " | -p ]\n");
     if (standalone)
         fprintf(stderr,
-                "Ê¹ÓÃ \"puttygen --help\" ÁË½â¸ü¶àÏêÇé.\n");
+                "ä½¿ç”¨ \"puttygen --help\" äº†è§£æ›´å¤šè¯¦æƒ….\n");
 }
 
 void help(void)
@@ -111,59 +111,59 @@ void help(void)
      * Help message is an extended version of the usage message. So
      * start with that, plus a version heading.
      */
-    printf("PuTTYgen: PuTTYµÄÃÜÔ¿Éú³ÉºÍ×ª»»¹¤¾ß\n"
+    printf("PuTTYgen: PuTTYçš„å¯†é’¥ç”Ÿæˆå’Œè½¬æ¢å·¥å…·\n"
            "%s\n", ver);
     usage(false);
-    printf("  -t    Éú³ÉÊ±Ö¸¶¨ÃÜÔ¿ÀàĞÍ:\n"
-           "           eddsa, ecdsa, rsa, dsa, rsa1   ÓÃÓÚ -b ²ÎÊı\n"
-           "           ed25519, ed448                 ÓÃÓÚeddsaµÄÌØÊâÇé¿ö\n"
-           "  -b    Éú³ÉÃÜÔ¿Ê±Ö¸¶¨Î»Êı\n"
-           "  -C    ¸ü¸Ä»òÕßÖ¸¶¨ÃÜÔ¿µÄ×¢ÊÍĞÅÏ¢\n"
-           "  -P    ¸ü¸ÄÃÜÔ¿ÃÜÂë\n"
-           "  -q    ²»ÏÔÊ¾½ø¶ÈÌõ\n"
-           "  -O    Ö¸¶¨Êä³öÀàĞÍ:\n"
-           "           private             Êä³öPuTTYË½Ô¿¸ñÊ½\n"
-           "           private-openssh     µ¼³öOpenSSHË½Ô¿\n"
-           "           private-openssh-new µ¼³öOpenSSHË½Ô¿ "
-                                             "(Ç¿ÖÆĞÂ¸ñÊ½)\n"
-           "           private-sshcom      µ¼³össh.comË½Ô¿\n"
-           "           public              RFC 4716/ssh.com¹«Ô¿\n"
-           "           public-openssh      OpenSSH¹«Ô¿\n"
-           "           fingerprint         Êä³öÃÜÔ¿Ö¸ÎÆ\n"
-           "           cert-info           Êä³öÖ¤ÊéĞÅÏ¢\n"
-           "           text                Êä³öÃÜÔ¿×é¼şĞÅÏ¢£¬Èç "
+    printf("  -t    ç”Ÿæˆæ—¶æŒ‡å®šå¯†é’¥ç±»å‹:\n"
+           "           eddsa, ecdsa, rsa, dsa, rsa1   ç”¨äº -b å‚æ•°\n"
+           "           ed25519, ed448                 ç”¨äºeddsaçš„ç‰¹æ®Šæƒ…å†µ\n"
+           "  -b    ç”Ÿæˆå¯†é’¥æ—¶æŒ‡å®šä½æ•°\n"
+           "  -C    æ›´æ”¹æˆ–è€…æŒ‡å®šå¯†é’¥çš„æ³¨é‡Šä¿¡æ¯\n"
+           "  -P    æ›´æ”¹å¯†é’¥å¯†ç \n"
+           "  -q    ä¸æ˜¾ç¤ºè¿›åº¦æ¡\n"
+           "  -O    æŒ‡å®šè¾“å‡ºç±»å‹:\n"
+           "           private             è¾“å‡ºPuTTYç§é’¥æ ¼å¼\n"
+           "           private-openssh     å¯¼å‡ºOpenSSHç§é’¥\n"
+           "           private-openssh-new å¯¼å‡ºOpenSSHç§é’¥ "
+                                             "(å¼ºåˆ¶æ–°æ ¼å¼)\n"
+           "           private-sshcom      å¯¼å‡ºssh.comç§é’¥\n"
+           "           public              RFC 4716/ssh.comå…¬é’¥\n"
+           "           public-openssh      OpenSSHå…¬é’¥\n"
+           "           fingerprint         è¾“å‡ºå¯†é’¥æŒ‡çº¹\n"
+           "           cert-info           è¾“å‡ºè¯ä¹¦ä¿¡æ¯\n"
+           "           text                è¾“å‡ºå¯†é’¥ç»„ä»¶ä¿¡æ¯ï¼Œå¦‚ "
            "'name=0x####'\n"
-           "  -o    Ö¸¶¨Êä³öÎÄ¼ş\n"
-           "  -l    Ïàµ±ÓÚ `-O fingerprint'\n"
-           "  -L    Ïàµ±ÓÚ `-O public-openssh'\n"
-           "  -p    Ïàµ±ÓÚ `-O public'\n"
-           "  --cert-info   Ïàµ±ÓÚ `-O cert-info'\n"
-           "  --dump   Ïàµ±ÓÚ `-O text'\n"
-           "  -E fptype            Ö¸¶¨Ö¸ÎÆÊä³öÀàĞÍ£º\n"
+           "  -o    æŒ‡å®šè¾“å‡ºæ–‡ä»¶\n"
+           "  -l    ç›¸å½“äº `-O fingerprint'\n"
+           "  -L    ç›¸å½“äº `-O public-openssh'\n"
+           "  -p    ç›¸å½“äº `-O public'\n"
+           "  --cert-info   ç›¸å½“äº `-O cert-info'\n"
+           "  --dump   ç›¸å½“äº `-O text'\n"
+           "  -E fptype            æŒ‡å®šæŒ‡çº¹è¾“å‡ºç±»å‹ï¼š\n"
            "                          sha256, md5, sha256-cert, md5-cert\n"
-           "  --certificate file   ½«Ö¤ÊéÌí¼Óµ½ÃÜÔ¿\n"
-           "  --remove-certificate ´ÓÃÜÔ¿ÖĞÉ¾³ıÈÎºÎÖ¤Êé\n"
-           "  --reencrypt          ¼ÓÔØÃÜÔ¿²¢Ê¹ÓÃĞÂ¸ñÊ½"
-           "±£´æ\n"
-           "  --old-passphrase ÎÄ¼ş\n"
-           "        Ö¸¶¨°üº¬¾ÉÃÜÔ¿ÃÜÂëµÄÎÄ¼ş\n"
-           "  --new-passphrase ÎÄ¼ş\n"
-           "        Ö¸¶¨°üº¬ĞÂÃÜÔ¿ÃÜÂëµÄÎÄ¼ş\n"
-           "  --random-device Éè±¸\n"
-           "        Ö¸¶¨´ÓÉè±¸ÖĞ¶ÁÈ¡ (ÀıÈç /dev/urandom)\n"
-           "  --primes <type>      Ñ¡ÔñËØÊıÉú³ÉµÄ·½·¨:\n"
-           "        probable       Ê¹ÓÃ³£¹æ¸ÅÂÊµÄËØÊı(¿ìËÙ)\n"
-           "        proven         Ê¹ÓÃ¾­¹ıÑéÖ¤µÄËØÊı(½ÏÂı)\n"
-           "        proven-even    Ê¹ÓÃ¾­¹ıÑéÖ¤ÇÒ¾ùÔÈ·Ö²¼µÄËØÊı(×îÂı)\n"
-           "  --strong-rsa         Ê¹ÓÃ\"Ç¿\"ËØÊı×÷ÎªRSAÃÜÔ¿ÒªËØ\n"
+           "  --certificate file   å°†è¯ä¹¦æ·»åŠ åˆ°å¯†é’¥\n"
+           "  --remove-certificate ä»å¯†é’¥ä¸­åˆ é™¤ä»»ä½•è¯ä¹¦\n"
+           "  --reencrypt          åŠ è½½å¯†é’¥å¹¶ä½¿ç”¨æ–°æ ¼å¼"
+           "ä¿å­˜\n"
+           "  --old-passphrase æ–‡ä»¶\n"
+           "        æŒ‡å®šåŒ…å«æ—§å¯†é’¥å¯†ç çš„æ–‡ä»¶\n"
+           "  --new-passphrase æ–‡ä»¶\n"
+           "        æŒ‡å®šåŒ…å«æ–°å¯†é’¥å¯†ç çš„æ–‡ä»¶\n"
+           "  --random-device è®¾å¤‡\n"
+           "        æŒ‡å®šä»è®¾å¤‡ä¸­è¯»å– (ä¾‹å¦‚ /dev/urandom)\n"
+           "  --primes <type>      é€‰æ‹©ç´ æ•°ç”Ÿæˆçš„æ–¹æ³•:\n"
+           "        probable       ä½¿ç”¨å¸¸è§„æ¦‚ç‡çš„ç´ æ•°(å¿«é€Ÿ)\n"
+           "        proven         ä½¿ç”¨ç»è¿‡éªŒè¯çš„ç´ æ•°(è¾ƒæ…¢)\n"
+           "        proven-even    ä½¿ç”¨ç»è¿‡éªŒè¯ä¸”å‡åŒ€åˆ†å¸ƒçš„ç´ æ•°(æœ€æ…¢)\n"
+           "  --strong-rsa         ä½¿ç”¨\"å¼º\"ç´ æ•°ä½œä¸ºRSAå¯†é’¥è¦ç´ \n"
            "  --ppk-param <key>=<value>[,<key>=<value>,...]\n"
-           "            Ğ´ÈëPuTTYË½Ô¿ÎÄ¼şÊ±Ö¸¶¨²ÎÊı¸ñÊ½:\n"
-           "                version       PPK¸ñÊ½°æ±¾ (×îĞ¡ 2,×î´ó 3,Ä¬ÈÏ 3)\n"
-           "                kdf           ÃÜÔ¿µ¼³öº¯Êı (argon2id, argon2i, argon2d)\n"
-           "                memory        ÓÃÓÚÃÜÔ¿¹şÏ£µÄÄÚ´æKbyte (Ä¬ÈÏ 8192)\n"
-           "                time          ÃÜÔ¿¹şÏ£µÄºÁÃëÊı (Ä¬ÈÏ 100)\n"
-           "                passes        ÒªÔËĞĞµÄ¹şÏ£´«µİÊı (Ìæ»»'time')\n"
-           "                parallelism   ¹şÏ£º¯ÊıÖĞµÄ²¢ĞĞÏß³ÌÊı (Ä¬ÈÏ 1)\n"
+           "            å†™å…¥PuTTYç§é’¥æ–‡ä»¶æ—¶æŒ‡å®šå‚æ•°æ ¼å¼:\n"
+           "                version       PPKæ ¼å¼ç‰ˆæœ¬ (æœ€å° 2,æœ€å¤§ 3,é»˜è®¤ 3)\n"
+           "                kdf           å¯†é’¥å¯¼å‡ºå‡½æ•° (argon2id, argon2i, argon2d)\n"
+           "                memory        ç”¨äºå¯†é’¥å“ˆå¸Œçš„å†…å­˜Kbyte (é»˜è®¤ 8192)\n"
+           "                time          å¯†é’¥å“ˆå¸Œçš„æ¯«ç§’æ•° (é»˜è®¤ 100)\n"
+           "                passes        è¦è¿è¡Œçš„å“ˆå¸Œä¼ é€’æ•° (æ›¿æ¢'time')\n"
+           "                parallelism   å“ˆå¸Œå‡½æ•°ä¸­çš„å¹¶è¡Œçº¿ç¨‹æ•° (é»˜è®¤ 1)\n"
            );
 }
 
@@ -180,7 +180,7 @@ static bool move(char *from, char *to)
         ret = rename(from, to);
     }
     if (ret) {
-        perror("puttygen: ÎŞ·¨½«ĞÂÎÄ¼ş¸²¸Ç¾ÉÎÄ¼ş");
+        perror("puttygen: æ— æ³•å°†æ–°æ–‡ä»¶è¦†ç›–æ—§æ–‡ä»¶");
         return false;
     }
     return true;
@@ -193,7 +193,7 @@ static char *readpassphrase(const char *filename)
 
     fp = fopen(filename, "r");
     if (!fp) {
-        fprintf(stderr, "puttygen: ÎŞ·¨´ò¿ª %s: %s\n",
+        fprintf(stderr, "puttygen: æ— æ³•æ‰“å¼€ %s: %s\n",
                 filename, strerror(errno));
         return NULL;
     }
@@ -201,7 +201,7 @@ static char *readpassphrase(const char *filename)
     if (line)
         line[strcspn(line, "\r\n")] = '\0';
     else if (ferror(fp))
-        fprintf(stderr, "puttygen: ¶ÁÈ¡´íÎó %s: %s\n",
+        fprintf(stderr, "puttygen: è¯»å–é”™è¯¯ %s: %s\n",
                 filename, strerror(errno));
     else        /* empty file */
         line = dupstr("");
@@ -215,7 +215,7 @@ static void spr_error(SeatPromptResult spr)
 {
     if (spr.kind == SPRK_SW_ABORT) {
         char *err = spr_get_error_message(spr);
-        fprintf(stderr, "puttygen: ÎŞ·¨¶ÁÈ¡ÃÜÂë: %s", err);
+        fprintf(stderr, "puttygen: æ— æ³•è¯»å–å¯†ç : %s", err);
         sfree(err);
     }
 }
@@ -302,8 +302,8 @@ int main(int argc, char **argv)
                     if (!strcmp(opt, "-help")) {
                         if (val) {
                             errs = true;
-                            fprintf(stderr, "puttygen: Ñ¡Ïî `-%s'"
-                                    " Ô¤ÆÚÎŞ²ÎÊı\n", opt);
+                            fprintf(stderr, "puttygen: é€‰é¡¹ `-%s'"
+                                    " é¢„æœŸæ— å‚æ•°\n", opt);
                         } else {
                             help();
                             nogo = true;
@@ -311,8 +311,8 @@ int main(int argc, char **argv)
                     } else if (!strcmp(opt, "-version")) {
                         if (val) {
                             errs = true;
-                            fprintf(stderr, "puttygen: Ñ¡Ïî `-%s'"
-                                    " Ô¤ÆÚÎŞ²ÎÊı\n", opt);
+                            fprintf(stderr, "puttygen: é€‰é¡¹ `-%s'"
+                                    " é¢„æœŸæ— å‚æ•°\n", opt);
                         } else {
                             showversion();
                             nogo = true;
@@ -320,8 +320,8 @@ int main(int argc, char **argv)
                     } else if (!strcmp(opt, "-pgpfp")) {
                         if (val) {
                             errs = true;
-                            fprintf(stderr, "puttygen: Ñ¡Ïî `-%s'"
-                                    " Ô¤ÆÚÎŞ²ÎÊı\n", opt);
+                            fprintf(stderr, "puttygen: é€‰é¡¹ `-%s'"
+                                    " é¢„æœŸæ— å‚æ•°\n", opt);
                         } else {
                             /* support --pgpfp for consistency */
                             pgp_fingerprints();
@@ -332,8 +332,8 @@ int main(int argc, char **argv)
                             --argc, val = *++argv;
                         if (!val) {
                             errs = true;
-                            fprintf(stderr, "puttygen: Ñ¡Ïî `-%s'"
-                                    " ĞèÒªÒ»¸ö²ÎÊı\n", opt);
+                            fprintf(stderr, "puttygen: é€‰é¡¹ `-%s'"
+                                    " éœ€è¦ä¸€ä¸ªå‚æ•°\n", opt);
                         } else {
                             old_passphrase = readpassphrase(val);
                             if (!old_passphrase)
@@ -344,8 +344,8 @@ int main(int argc, char **argv)
                             --argc, val = *++argv;
                         if (!val) {
                             errs = true;
-                            fprintf(stderr, "puttygen: Ñ¡Ïî `-%s'"
-                                    " ĞèÒªÒ»¸ö²ÎÊı\n", opt);
+                            fprintf(stderr, "puttygen: é€‰é¡¹ `-%s'"
+                                    " éœ€è¦ä¸€ä¸ªå‚æ•°\n", opt);
                         } else {
                             new_passphrase = readpassphrase(val);
                             if (!new_passphrase)
@@ -356,8 +356,8 @@ int main(int argc, char **argv)
                             --argc, val = *++argv;
                         if (!val) {
                             errs = true;
-                            fprintf(stderr, "puttygen: Ñ¡Ïî `-%s'"
-                                    " Ô¤ÆÚÎŞ²ÎÊı\n", opt);
+                            fprintf(stderr, "puttygen: é€‰é¡¹ `-%s'"
+                                    " é¢„æœŸæ— å‚æ•°\n", opt);
                         } else {
                             random_device = val;
                         }
@@ -372,8 +372,8 @@ int main(int argc, char **argv)
                             --argc, val = *++argv;
                         if (!val) {
                             errs = true;
-                            fprintf(stderr, "puttygen: Ñ¡Ïî `-%s'"
-                                    " ĞèÒªÒ»¸ö²ÎÊı\n", opt);
+                            fprintf(stderr, "puttygen: é€‰é¡¹ `-%s'"
+                                    " éœ€è¦ä¸€ä¸ªå‚æ•°\n", opt);
                         } else if (!strcmp(val, "probable") ||
                                    !strcmp(val, "probabilistic")) {
                             primegen = &primegen_probabilistic;
@@ -390,8 +390,8 @@ int main(int argc, char **argv)
                             primegen = &primegen_provable_maurer_complex;
                         } else {
                             errs = true;
-                            fprintf(stderr, "puttygen: ÎŞ·¨Ê¶±ğËØÊı"
-                                    "Éú³ÉÄ£Ê½ `%s'\n", val);
+                            fprintf(stderr, "puttygen: æ— æ³•è¯†åˆ«ç´ æ•°"
+                                    "ç”Ÿæˆæ¨¡å¼ `%s'\n", val);
                         }
                     } else if (!strcmp(opt, "-strong-rsa")) {
                         strong_rsa = true;
@@ -400,8 +400,8 @@ int main(int argc, char **argv)
                             --argc, val = *++argv;
                         if (!val) {
                             errs = true;
-                            fprintf(stderr, "puttygen: Ñ¡Ïî `-%s'"
-                                    " ĞèÒªÒ»¸ö²ÎÊı\n", opt);
+                            fprintf(stderr, "puttygen: é€‰é¡¹ `-%s'"
+                                    " éœ€è¦ä¸€ä¸ªå‚æ•°\n", opt);
                         } else {
                             certfile = val;
                         }
@@ -415,8 +415,8 @@ int main(int argc, char **argv)
                             --argc, val = *++argv;
                         if (!val) {
                             errs = true;
-                            fprintf(stderr, "puttygen: Ñ¡Ïî `-%s'"
-                                    " ĞèÒªÒ»¸ö²ÎÊı\n", opt);
+                            fprintf(stderr, "puttygen: é€‰é¡¹ `-%s'"
+                                    " éœ€è¦ä¸€ä¸ªå‚æ•°\n", opt);
                         } else {
                             char *nextval;
                             for (; val; val = nextval) {
@@ -427,8 +427,8 @@ int main(int argc, char **argv)
                                 char *optvalue = strchr(val, '=');
                                 if (!optvalue) {
                                     errs = true;
-                                    fprintf(stderr, "puttygen: PPK²ÎÊı "
-                                            "'%s' ĞèÒªÒ»¸öÖµ\n", val);
+                                    fprintf(stderr, "puttygen: PPKå‚æ•° "
+                                            "'%s' éœ€è¦ä¸€ä¸ªå€¼\n", val);
                                     continue;
                                 }
                                 *optvalue++ = '\0';
@@ -446,7 +446,7 @@ int main(int argc, char **argv)
                                         params.argon2_flavour = Argon2d;
                                     } else {
                                         errs = true;
-                                        fprintf(stderr, "puttygen: ÎŞ·¨Ê¶±ğ"
+                                        fprintf(stderr, "puttygen: æ— æ³•è¯†åˆ«"
                                                 "d kdf '%s'\n", optvalue);
                                     }
                                     continue;
@@ -456,9 +456,9 @@ int main(int argc, char **argv)
                                 unsigned long n = strtoul(optvalue, &end, 0);
                                 if (!*optvalue || *end) {
                                     errs = true;
-                                    fprintf(stderr, "puttygen: '%s' Îª"
-                                            "PPK²ÎÊıÖµ '%s': Ó¦¸ÃÊÇÒ»¸ö"
-                                            "Êı×Ö\n", optvalue, val);
+                                    fprintf(stderr, "puttygen: '%s' ä¸º"
+                                            "PPKå‚æ•°å€¼ '%s': åº”è¯¥æ˜¯ä¸€ä¸ª"
+                                            "æ•°å­—\n", optvalue, val);
                                     continue;
                                 }
 
@@ -478,8 +478,8 @@ int main(int argc, char **argv)
                                     params.argon2_parallelism = n;
                                 } else {
                                     errs = true;
-                                    fprintf(stderr, "puttygen: ÎŞ·¨Ê¶±ğµÄ"
-                                            "PPK²ÎÊı '%s'\n", val);
+                                    fprintf(stderr, "puttygen: æ— æ³•è¯†åˆ«çš„"
+                                            "PPKå‚æ•° '%s'\n", val);
                                     continue;
                                 }
                             }
@@ -487,7 +487,7 @@ int main(int argc, char **argv)
                     } else {
                         errs = true;
                         fprintf(stderr,
-                                "puttygen: ÎŞĞ§Ñ¡Ïî `-%s'\n", opt);
+                                "puttygen: æ— æ•ˆé€‰é¡¹ `-%s'\n", opt);
                     }
                     p = NULL;
                     break;
@@ -541,8 +541,8 @@ int main(int argc, char **argv)
                     if (!*p && argc > 1)
                         --argc, p = *++argv;
                     else if (!*p) {
-                        fprintf(stderr, "puttygen: Ñ¡Ïî `-%c' ĞèÒªÒ»¸ö"
-                                "²ÎÊı\n", c);
+                        fprintf(stderr, "puttygen: é€‰é¡¹ `-%c' éœ€è¦ä¸€ä¸ª"
+                                "å‚æ•°\n", c);
                         errs = true;
                     }
                     /*
@@ -566,7 +566,7 @@ int main(int argc, char **argv)
                             keytype = EDDSA, bits = 448, sshver = 2;
                         else {
                             fprintf(stderr,
-                                    "puttygen: Î´ÖªÃÜÔ¿ÀàĞÍ `%s'\n", p);
+                                    "puttygen: æœªçŸ¥å¯†é’¥ç±»å‹ `%s'\n", p);
                             errs = true;
                         }
                         break;
@@ -597,7 +597,7 @@ int main(int argc, char **argv)
                             outtype = CERTINFO;
                         else {
                             fprintf(stderr,
-                                    "puttygen: Î´ÖªÊä³öÀàĞÍ `%s'\n", p);
+                                    "puttygen: æœªçŸ¥è¾“å‡ºç±»å‹ `%s'\n", p);
                             errs = true;
                         }
                         break;
@@ -614,8 +614,8 @@ int main(int argc, char **argv)
                         else if (!strcmp(p, "sha256-cert"))
                             fptype = SSH_FPTYPE_SHA256_CERT;
                         else {
-                            fprintf(stderr, "puttygen: Î´ÖªÖ¸ÎÆ"
-                                    "ÀàĞÍ `%s'\n", p);
+                            fprintf(stderr, "puttygen: æœªçŸ¥æŒ‡çº¹"
+                                    "ç±»å‹ `%s'\n", p);
                             errs = true;
                         }
                         break;
@@ -627,7 +627,7 @@ int main(int argc, char **argv)
                      * Unrecognised option.
                      */
                     errs = true;
-                    fprintf(stderr, "puttygen: ÎŞĞ§Ñ¡Ïî `-%c'\n", c);
+                    fprintf(stderr, "puttygen: æ— æ•ˆé€‰é¡¹ `-%c'\n", c);
                     break;
                 }
             }
@@ -639,8 +639,8 @@ int main(int argc, char **argv)
                 infile = p;
             else {
                 errs = true;
-                fprintf(stderr, "puttygen: ²»ÄÜ´¦Àí¶à¸ö"
-                         "ÊäÈëÎÄ¼ş\n");
+                fprintf(stderr, "puttygen: ä¸èƒ½å¤„ç†å¤šä¸ª"
+                         "è¾“å…¥æ–‡ä»¶\n");
             }
         }
     }
@@ -678,7 +678,7 @@ int main(int argc, char **argv)
         const ssh_keyalg *alg;
 
         if (!alg_and_curve_by_bits(bits, &curve, &alg)) {
-            fprintf(stderr, "puttygen: ÎŞĞ§µÄÎ»Ñ¡Ôñ %s", name);
+            fprintf(stderr, "puttygen: æ— æ•ˆçš„ä½é€‰æ‹© %s", name);
             for (size_t i = 0; i < n_lengths; i++)
                 fprintf(stderr, "%s%d", (i == 0 ? " " :
                                          i == n_lengths-1 ? " or " : ", "),
@@ -690,12 +690,12 @@ int main(int argc, char **argv)
 
     if (keytype == RSA2 || keytype == RSA1 || keytype == DSA) {
         if (bits < 256) {
-            fprintf(stderr, "puttygen: ÎŞ·¨Éú³É %s µÍÓÚ"
-                    "256Î»µÄÃÜÔ¿\n", (keytype == DSA ? "DSA" : "RSA"));
+            fprintf(stderr, "puttygen: æ— æ³•ç”Ÿæˆ %s ä½äº"
+                    "256ä½çš„å¯†é’¥\n", (keytype == DSA ? "DSA" : "RSA"));
             errs = true;
         } else if (bits < DEFAULT_RSADSA_BITS) {
-            fprintf(stderr, "puttygen: ¾¯¸æ: %s ÃÜÔ¿µÍÓÚ"
-                    " %d Î»¿ÉÄÜ²»°²È«\n",
+            fprintf(stderr, "puttygen: è­¦å‘Š: %s å¯†é’¥ä½äº"
+                    " %d ä½å¯èƒ½ä¸å®‰å…¨\n",
                     (keytype == DSA ? "DSA" : "RSA"), DEFAULT_RSADSA_BITS);
             /* but this is just a warning, so proceed anyway */
         }
@@ -725,7 +725,7 @@ int main(int argc, char **argv)
      * key.
      */
     if (keytype != NOKEYGEN && infile) {
-        fprintf(stderr, "puttygen: ²»ÄÜÍ¬Ê±¼ÓÔØºÍÉú³ÉÃÜÔ¿\n");
+        fprintf(stderr, "puttygen: ä¸èƒ½åŒæ—¶åŠ è½½å’Œç”Ÿæˆå¯†é’¥\n");
         RETURN(1);
     }
 
@@ -735,8 +735,8 @@ int main(int argc, char **argv)
     if (keytype != NOKEYGEN &&
         (outtype != PRIVATE && outtype != OPENSSH_AUTO &&
          outtype != OPENSSH_NEW && outtype != SSHCOM && outtype != TEXT)) {
-        fprintf(stderr, "puttygen: Õâ½«Éú³ÉÒ»¸öĞÂÃÜÔ¿£¬µ«»á"
-                "¶ªÆúË½ÓĞ²¿·Ö\n");
+        fprintf(stderr, "puttygen: è¿™å°†ç”Ÿæˆä¸€ä¸ªæ–°å¯†é’¥ï¼Œä½†ä¼š"
+                "ä¸¢å¼ƒç§æœ‰éƒ¨åˆ†\n");
         RETURN(1);
     }
 
@@ -754,7 +754,7 @@ int main(int argc, char **argv)
             infile_lf = lf_load_keyfile(infilename, &load_error);
 
         if (!infile_lf) {
-            fprintf(stderr, "puttygen: ÎŞ·¨¼ÓÔØÎÄ¼ş `%s': %s\n",
+            fprintf(stderr, "puttygen: æ— æ³•åŠ è½½æ–‡ä»¶ `%s': %s\n",
                     infile, load_error);
             RETURN(1);
         }
@@ -766,15 +766,15 @@ int main(int argc, char **argv)
         switch (intype) {
           case SSH_KEYTYPE_UNOPENABLE:
           case SSH_KEYTYPE_UNKNOWN:
-            fprintf(stderr, "puttygen: ÎŞ·¨¼ÓÔØÎÄ¼ş `%s': %s\n",
+            fprintf(stderr, "puttygen: æ— æ³•åŠ è½½æ–‡ä»¶ `%s': %s\n",
                     infile, key_type_to_str(intype));
             RETURN(1);
 
           case SSH_KEYTYPE_SSH1:
           case SSH_KEYTYPE_SSH1_PUBLIC:
             if (sshver == 2) {
-                fprintf(stderr, "puttygen: ´ÓSSH-1µ½SSH-2µÄÃÜÔ¿µÄ×ª»»"
-                        "²»ÊÜÖ§³Ö\n");
+                fprintf(stderr, "puttygen: ä»SSH-1åˆ°SSH-2çš„å¯†é’¥çš„è½¬æ¢"
+                        "ä¸å—æ”¯æŒ\n");
                 RETURN(1);
             }
             sshver = 1;
@@ -787,8 +787,8 @@ int main(int argc, char **argv)
           case SSH_KEYTYPE_OPENSSH_NEW:
           case SSH_KEYTYPE_SSHCOM:
             if (sshver == 1) {
-                fprintf(stderr, "puttygen: ´ÓSSH-2µ½SSH-1µÄÃÜÔ¿µÄ×ª»»"
-                        "²»ÊÜÖ§³Ö\n");
+                fprintf(stderr, "puttygen: ä»SSH-2åˆ°SSH-1çš„å¯†é’¥çš„è½¬æ¢"
+                        "ä¸å—æ”¯æŒ\n");
                 RETURN(1);
             }
             sshver = 2;
@@ -796,7 +796,7 @@ int main(int argc, char **argv)
 
           case SSH_KEYTYPE_OPENSSH_AUTO:
           default:
-            unreachable("ÓÀÔ¶²»Ó¦¸ÃÔÚÊäÈëÎÄ¼şÖĞ¿´µ½ÕâĞ©ÀàĞÍ");
+            unreachable("æ°¸è¿œä¸åº”è¯¥åœ¨è¾“å…¥æ–‡ä»¶ä¸­çœ‹åˆ°è¿™äº›ç±»å‹");
         }
     }
 
@@ -822,8 +822,8 @@ int main(int argc, char **argv)
 
         if (!change_passphrase && !comment && !reencrypt && !certfile &&
             !remove_cert) {
-            fprintf(stderr, "puttygen: ´ËÃüÁî²»»áÖ´ĞĞÈÎºÎÓĞÓÃµÄ"
-                    "²Ù×÷\n");
+            fprintf(stderr, "puttygen: æ­¤å‘½ä»¤ä¸ä¼šæ‰§è¡Œä»»ä½•æœ‰ç”¨çš„"
+                    "æ“ä½œ\n");
             RETURN(1);
         }
     } else {
@@ -834,7 +834,7 @@ int main(int argc, char **argv)
              */
             if (outtype == PRIVATE || outtype == OPENSSH_AUTO ||
                 outtype == OPENSSH_NEW || outtype == SSHCOM) {
-                fprintf(stderr, "puttygen: ĞèÒªÖ¸¶¨Êä³öÎÄ¼ş\n");
+                fprintf(stderr, "puttygen: éœ€è¦æŒ‡å®šè¾“å‡ºæ–‡ä»¶\n");
                 RETURN(1);
             }
         }
@@ -866,8 +866,8 @@ int main(int argc, char **argv)
         load_encrypted = false;
 
     if (load_encrypted && !intype_has_private) {
-        fprintf(stderr, "puttygen: ÎŞ·¨¶Ôµ¥´¿µÄ¹«Ô¿ÊäÈëÎÄ¼ş "
-                "Ö´ĞĞ´Ë²Ù×÷\n");
+        fprintf(stderr, "puttygen: æ— æ³•å¯¹å•çº¯çš„å…¬é’¥è¾“å…¥æ–‡ä»¶ "
+                "æ‰§è¡Œæ­¤æ“ä½œ\n");
         RETURN(1);
     }
 
@@ -876,18 +876,18 @@ int main(int argc, char **argv)
      */
     if (certfile && !(sshver == 2 && intype_has_private &&
                       outtype_has_private && infile)) {
-        fprintf(stderr, "puttygen: Ö¤ÊéÖ»ÄÜÌí¼Óµ½ÏÖÓĞµÄ "
-                "SSH-2 Ë½Ô¿ÎÄ¼ş\n");
+        fprintf(stderr, "puttygen: è¯ä¹¦åªèƒ½æ·»åŠ åˆ°ç°æœ‰çš„ "
+                "SSH-2 ç§é’¥æ–‡ä»¶\n");
         RETURN(1);
     }
     if (remove_cert && !(sshver == 2 && infile)) {
-        fprintf(stderr, "puttygen: Ö»ÄÜ´ÓÏÖÓĞµÄ SSH-2 ÃÜÔ¿ÎÄ¼ş"
-                "ÖĞÉ¾³ıÖ¤Êé\n");
+        fprintf(stderr, "puttygen: åªèƒ½ä»ç°æœ‰çš„ SSH-2 å¯†é’¥æ–‡ä»¶"
+                "ä¸­åˆ é™¤è¯ä¹¦\n");
         RETURN(1);
     }
     if (certfile && remove_cert) {
-        fprintf(stderr, "puttygen: ²»ÄÜÍ¬Ê±Ìí¼ÓºÍ"
-                "É¾³ıÖ¤Êé\n");
+        fprintf(stderr, "puttygen: ä¸èƒ½åŒæ—¶æ·»åŠ å’Œ"
+                "åˆ é™¤è¯ä¹¦\n");
         RETURN(1);
     }
 
@@ -917,8 +917,8 @@ int main(int argc, char **argv)
 
         entropy = get_random_data(bits / 8, random_device);
         if (!entropy) {
-            fprintf(stderr, "puttygen: ÎŞ·¨ÊÕ¼¯entropy, "
-                    "ÎŞ·¨Éú³ÉÃÜÔ¿\n");
+            fprintf(stderr, "puttygen: æ— æ³•æ”¶é›†entropy, "
+                    "æ— æ³•ç”Ÿæˆå¯†é’¥\n");
             RETURN(1);
         }
         random_setup_special();
@@ -995,8 +995,8 @@ int main(int argc, char **argv)
                 SeatPromptResult spr;
                 p->to_server = false;
                 p->from_server = false;
-                p->name = dupstr("SSH ÃÜÔ¿ÃÜÂë");
-                add_prompt(p, dupstr("ÊäÈëÃÜÔ¿ÒÔ¼ÓÔØÃÜÔ¿: "), false);
+                p->name = dupstr("SSH å¯†é’¥å¯†ç ");
+                add_prompt(p, dupstr("è¾“å…¥å¯†é’¥ä»¥åŠ è½½å¯†é’¥: "), false);
                 spr = console_get_userpass_input(p);
                 assert(spr.kind != SPRK_INCOMPLETE);
                 if (spr_is_abort(spr)) {
@@ -1046,7 +1046,7 @@ int main(int argc, char **argv)
             if (ret > 0)
                 error = NULL;
             else if (!error)
-                error = "Î´Öª´íÎó";
+                error = "æœªçŸ¥é”™è¯¯";
             break;
 
           case SSH_KEYTYPE_SSH2:
@@ -1078,9 +1078,9 @@ int main(int argc, char **argv)
                 error = NULL;
             else if (!error) {
                 if (ssh2key == SSH2_WRONG_PASSPHRASE)
-                    error = "ÃÜÂë´íÎó";
+                    error = "å¯†ç é”™è¯¯";
                 else
-                    error = "Î´Öª´íÎó";
+                    error = "æœªçŸ¥é”™è¯¯";
             }
             break;
 
@@ -1092,17 +1092,17 @@ int main(int argc, char **argv)
                 if (ssh2key != SSH2_WRONG_PASSPHRASE)
                     error = NULL;
                 else
-                    error = "ÃÜÂë´íÎó";
+                    error = "å¯†ç é”™è¯¯";
             } else if (!error)
-                error = "Î´Öª´íÎó";
+                error = "æœªçŸ¥é”™è¯¯";
             break;
 
           default:
-            unreachable("ÊäÈëÃÜÔ¿ÀàĞÍ´íÎó");
+            unreachable("è¾“å…¥å¯†é’¥ç±»å‹é”™è¯¯");
         }
 
         if (error) {
-            fprintf(stderr, "puttygen: ¼ÓÔØ³ö´í `%s': %s\n",
+            fprintf(stderr, "puttygen: åŠ è½½å‡ºé”™ `%s': %s\n",
                     infile, error);
             RETURN(1);
         }
@@ -1139,7 +1139,7 @@ int main(int argc, char **argv)
         filename_free(certfilename);
 
         if (!certfile_lf) {
-            fprintf(stderr, "puttygen: ÎŞ·¨¼ÓÔØÖ¤ÊéÎÄ¼ş `%s': "
+            fprintf(stderr, "puttygen: æ— æ³•åŠ è½½è¯ä¹¦æ–‡ä»¶ `%s': "
                     "%s\n", certfile, error);
             RETURN(1);
         }
@@ -1149,7 +1149,7 @@ int main(int argc, char **argv)
         strbuf *pub = strbuf_new();
         if (!ppk_loadpub_s(BinarySource_UPCAST(certfile_lf), &algname,
                            BinarySink_UPCAST(pub), &comment, &error)) {
-            fprintf(stderr, "puttygen: ÎŞ·¨¼ÓÔØÖ¤ÊéÎÄ¼ş `%s': "
+            fprintf(stderr, "puttygen: æ— æ³•åŠ è½½è¯ä¹¦æ–‡ä»¶ `%s': "
                     "%s\n", certfile, error);
             strbuf_free(pub);
             sfree(algname);
@@ -1163,8 +1163,8 @@ int main(int argc, char **argv)
 
         const ssh_keyalg *alg = find_pubkey_alg(algname);
         if (!alg) {
-            fprintf(stderr, "puttygen: Ö¤ÊéÎÄ¼ş `%s' ÒÑ²»ÊÜÖ§³Ö£¬"
-                    "Ëã·¨Ãû³Æ `%s'\n", certfile, algname);
+            fprintf(stderr, "puttygen: è¯ä¹¦æ–‡ä»¶ `%s' å·²ä¸å—æ”¯æŒï¼Œ"
+                    "ç®—æ³•åç§° `%s'\n", certfile, algname);
             strbuf_free(pub);
             sfree(algname);
             RETURN(1);
@@ -1189,8 +1189,8 @@ int main(int argc, char **argv)
         strbuf_free(new_basepub);
 
         if (!match) {
-            fprintf(stderr, "puttygen: `%s' Ö¤ÊéÓë"
-                    " `%s' ÖĞµÄ¹«Ô¿²»Æ¥Åä\n", certfile, infile);
+            fprintf(stderr, "puttygen: `%s' è¯ä¹¦ä¸"
+                    " `%s' ä¸­çš„å…¬é’¥ä¸åŒ¹é…\n", certfile, infile);
             strbuf_free(pub);
             RETURN(1);
         }
@@ -1203,8 +1203,8 @@ int main(int argc, char **argv)
         strbuf_free(priv);
 
         if (!newkey) {
-            fprintf(stderr, "puttygen: ÎŞ·¨½« `%s' ÖĞµÄÖ¤ÊéÓë"
-                    "Ë½Ô¿×éºÏÔÚÒ»Æğ\n", certfile);
+            fprintf(stderr, "puttygen: æ— æ³•å°† `%s' ä¸­çš„è¯ä¹¦ä¸"
+                    "ç§é’¥ç»„åˆåœ¨ä¸€èµ·\n", certfile);
             RETURN(1);
         }
 
@@ -1226,8 +1226,8 @@ int main(int argc, char **argv)
             const ssh_keyalg *alg = find_pubkey_alg_len(algname);
 
             if (!alg) {
-                fprintf(stderr, "puttygen: ÊäÈëÎÄ¼ş `%s' ÒÑ²»Ö§³Ö"
-                        "Ãû³ÆÎª `%.*s'µÄËã·¨\n", infile,
+                fprintf(stderr, "puttygen: è¾“å…¥æ–‡ä»¶ `%s' å·²ä¸æ”¯æŒ"
+                        "åç§°ä¸º `%.*s'çš„ç®—æ³•\n", infile,
                         PTRLEN_PRINTF(algname));
                 RETURN(1);
             }
@@ -1263,9 +1263,9 @@ int main(int argc, char **argv)
 
         p->to_server = false;
         p->from_server = false;
-        p->name = dupstr("ĞÂµÄSSHÃÜÔ¿ÃÜÂë");
-        add_prompt(p, dupstr("ÊäÈëÃÜÂëÒÔ±£´æÃÜÔ¿: "), false);
-        add_prompt(p, dupstr("ÖØĞÂÊäÈëÃÜÂëÒÔÑéÖ¤: "), false);
+        p->name = dupstr("æ–°çš„SSHå¯†é’¥å¯†ç ");
+        add_prompt(p, dupstr("è¾“å…¥å¯†ç ä»¥ä¿å­˜å¯†é’¥: "), false);
+        add_prompt(p, dupstr("é‡æ–°è¾“å…¥å¯†ç ä»¥éªŒè¯: "), false);
         spr = console_get_userpass_input(p);
         assert(spr.kind != SPRK_INCOMPLETE);
         if (spr_is_abort(spr)) {
@@ -1276,7 +1276,7 @@ int main(int argc, char **argv)
             if (strcmp(prompt_get_result_ref(p->prompts[0]),
                        prompt_get_result_ref(p->prompts[1]))) {
                 free_prompts(p);
-                fprintf(stderr, "puttygen: ÃÜÂë²»Æ¥Åä\n");
+                fprintf(stderr, "puttygen: å¯†ç ä¸åŒ¹é…\n");
                 RETURN(1);
             }
             new_passphrase = prompt_get_result(p->prompts[0]);
@@ -1311,14 +1311,14 @@ int main(int argc, char **argv)
             assert(ssh1key);
             ret = rsa1_save_f(outfilename, ssh1key, new_passphrase);
             if (!ret) {
-                fprintf(stderr, "puttygen: ÎŞ·¨±£´æSSH-1Ë½Ô¿\n");
+                fprintf(stderr, "puttygen: æ— æ³•ä¿å­˜SSH-1ç§é’¥\n");
                 RETURN(1);
             }
         } else {
             assert(ssh2key);
             ret = ppk_save_f(outfilename, ssh2key, new_passphrase, &params);
             if (!ret) {
-                fprintf(stderr, "puttygen: ÎŞ·¨±£´æSSH-2Ë½Ô¿\n");
+                fprintf(stderr, "puttygen: æ— æ³•ä¿å­˜SSH-2ç§é’¥\n");
                 RETURN(1);
             }
         }
@@ -1335,7 +1335,7 @@ int main(int argc, char **argv)
         if (outfile) {
             fp = f_open(outfilename, "w", false);
             if (!fp) {
-                fprintf(stderr, "ÎŞ·¨´ò¿ªÊä³öÎÄ¼ş\n");
+                fprintf(stderr, "æ— æ³•æ‰“å¼€è¾“å‡ºæ–‡ä»¶\n");
                 exit(1);
             }
         } else {
@@ -1384,7 +1384,7 @@ int main(int argc, char **argv)
         if (outfile) {
             fp = f_open(outfilename, "w", false);
             if (!fp) {
-                fprintf(stderr, "ÎŞ·¨´ò¿ªÊä³öÎÄ¼ş\n");
+                fprintf(stderr, "æ— æ³•æ‰“å¼€è¾“å‡ºæ–‡ä»¶\n");
                 exit(1);
             }
         } else {
@@ -1416,11 +1416,11 @@ int main(int argc, char **argv)
             real_outtype = SSH_KEYTYPE_SSHCOM;
             break;
           default:
-            unreachable("¿ØÖÆÁ÷´íÎó");
+            unreachable("æ§åˆ¶æµé”™è¯¯");
         }
         ret = export_ssh2(outfilename, real_outtype, ssh2key, new_passphrase);
         if (!ret) {
-            fprintf(stderr, "puttygen: ÎŞ·¨µ¼³öÃÜÔ¿\n");
+            fprintf(stderr, "puttygen: æ— æ³•å¯¼å‡ºå¯†é’¥\n");
             RETURN(1);
         }
         if (outfiletmp) {
@@ -1444,15 +1444,15 @@ int main(int argc, char **argv)
                     ptrlen_from_strbuf(ssh2blob));
                 const ssh_keyalg *alg = find_pubkey_alg_len(algname);
                 if (!alg) {
-                    fprintf(stderr, "puttygen: ÎŞ·¨È¡µÃÃÜÔ¿×é¼ş£¬"
-                            "À´×ÔÎ´ÖªÀàĞÍµÄ¹«Ô¿ '%.*s'\n",
+                    fprintf(stderr, "puttygen: æ— æ³•å–å¾—å¯†é’¥ç»„ä»¶ï¼Œ"
+                            "æ¥è‡ªæœªçŸ¥ç±»å‹çš„å…¬é’¥ '%.*s'\n",
                             PTRLEN_PRINTF(algname));
                     RETURN(1);
                 }
                 ssh_key *sk = ssh_key_new_pub(
                     alg, ptrlen_from_strbuf(ssh2blob));
                 if (!sk) {
-                    fprintf(stderr, "puttygen: ÎŞ·¨½âÂë¹«Ô¿\n");
+                    fprintf(stderr, "puttygen: æ— æ³•è§£ç å…¬é’¥\n");
                     RETURN(1);
                 }
                 kc = ssh_key_components(sk);
@@ -1464,7 +1464,7 @@ int main(int argc, char **argv)
         if (outfile) {
             fp = f_open(outfilename, "w", false);
             if (!fp) {
-                fprintf(stderr, "ÎŞ·¨´ò¿ªÊä³öÎÄ¼ş\n");
+                fprintf(stderr, "æ— æ³•æ‰“å¼€è¾“å‡ºæ–‡ä»¶\n");
                 exit(1);
             }
         } else {
@@ -1520,7 +1520,7 @@ int main(int argc, char **argv)
                 break;
               }
               default:
-                unreachable("´íÎóµÄÃÜÔ¿×é¼şÀàĞÍ");
+                unreachable("é”™è¯¯çš„å¯†é’¥ç»„ä»¶ç±»å‹");
             }
         }
 
@@ -1532,8 +1532,8 @@ int main(int argc, char **argv)
 
       case CERTINFO: {
         if (sshver == 1) {
-            fprintf(stderr, "puttygen: SSH-1 ÃÜÔ¿²»ÄÜ"
-                    "°üº¬Ö¤Êé\n");
+            fprintf(stderr, "puttygen: SSH-1 å¯†é’¥ä¸èƒ½"
+                    "åŒ…å«è¯ä¹¦\n");
             RETURN(1);
         }
 
@@ -1550,21 +1550,21 @@ int main(int argc, char **argv)
                 ptrlen_from_strbuf(ssh2blob));
             alg = find_pubkey_alg_len(algname);
             if (!alg) {
-                fprintf(stderr, "puttygen: '%.*s' ¹«Ô¿ÀàĞÍÎ´Öª£¬"
-                        "ÎŞ·¨ÌáÈ¡Ö¤ÊéĞÅÏ¢\n",
+                fprintf(stderr, "puttygen: '%.*s' å…¬é’¥ç±»å‹æœªçŸ¥ï¼Œ"
+                        "æ— æ³•æå–è¯ä¹¦ä¿¡æ¯\n",
                         PTRLEN_PRINTF(algname));
                 RETURN(1);
             }
             sk = ssh_key_new_pub(alg, ptrlen_from_strbuf(ssh2blob));
             if (!sk) {
-                fprintf(stderr, "puttygen: ÎŞ·¨½âÂë¹«Ô¿\n");
+                fprintf(stderr, "puttygen: æ— æ³•è§£ç å…¬é’¥\n");
                 RETURN(1);
             }
             sk_allocated = true;
         }
 
         if (!alg->is_certificate) {
-            fprintf(stderr, "puttygen: ÃÜÔ¿²»ÊÇÖ¤Êé\n");
+            fprintf(stderr, "puttygen: å¯†é’¥ä¸æ˜¯è¯ä¹¦\n");
         } else {
             SeatDialogText *text = ssh_key_cert_info(sk);
 
@@ -1572,7 +1572,7 @@ int main(int argc, char **argv)
             if (outfile) {
                 fp = f_open(outfilename, "w", false);
                 if (!fp) {
-                    fprintf(stderr, "ÎŞ·¨´ò¿ªÊä³öÎÄ¼ş\n");
+                    fprintf(stderr, "æ— æ³•æ‰“å¼€è¾“å‡ºæ–‡ä»¶\n");
                     exit(1);
                 }
             } else {

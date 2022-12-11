@@ -1496,7 +1496,7 @@ static void ssh2_transport_process_queue(PacketProtocolLayer *ppl)
 
     if (s->warn_kex) {
         s->spr = ssh2_transport_confirm_weak_crypto_primitive(
-            s, "key-exchange algorithm", s->kex_alg->name, s->kex_alg);
+            s, "密钥交换算法", s->kex_alg->name, s->kex_alg);
         crMaybeWaitUntilV(s->spr.kind != SPRK_INCOMPLETE);
         if (spr_is_abort(s->spr)) {
             ssh_spr_close(s->ppl.ssh, s->spr, "密钥警告");
@@ -1550,7 +1550,7 @@ static void ssh2_transport_process_queue(PacketProtocolLayer *ppl)
             /* If none exist, use the more general 'weak crypto'
              * warning prompt */
             s->spr = ssh2_transport_confirm_weak_crypto_primitive(
-                s, "host key type", s->hostkey_alg->ssh_id,
+                s, "主机密钥类型", s->hostkey_alg->ssh_id,
                 s->hostkey_alg);
         }
         crMaybeWaitUntilV(s->spr.kind != SPRK_INCOMPLETE);
@@ -1562,22 +1562,22 @@ static void ssh2_transport_process_queue(PacketProtocolLayer *ppl)
 
     if (s->warn_cscipher) {
         s->spr = ssh2_transport_confirm_weak_crypto_primitive(
-            s, "client-to-server cipher", s->out.cipher->ssh2_id,
+            s, " client-to-server 加密", s->out.cipher->ssh2_id,
             s->out.cipher);
         crMaybeWaitUntilV(s->spr.kind != SPRK_INCOMPLETE);
         if (spr_is_abort(s->spr)) {
-            ssh_spr_close(s->ppl.ssh, s->spr, "密码警告");
+            ssh_spr_close(s->ppl.ssh, s->spr, "加密警告");
             return;
         }
     }
 
     if (s->warn_sccipher) {
         s->spr = ssh2_transport_confirm_weak_crypto_primitive(
-            s, "server-to-client cipher", s->in.cipher->ssh2_id,
+            s, " server-to-client 加密", s->in.cipher->ssh2_id,
             s->in.cipher);
         crMaybeWaitUntilV(s->spr.kind != SPRK_INCOMPLETE);
         if (spr_is_abort(s->spr)) {
-            ssh_spr_close(s->ppl.ssh, s->spr, "密码警告");
+            ssh_spr_close(s->ppl.ssh, s->spr, "加密警告");
             return;
         }
     }
@@ -2145,7 +2145,7 @@ static void ssh2_transport_gss_update(struct ssh2_transport_state *s,
          * it shouldn't pop up all the time regardless.
          */
         if (definitely_rekeying)
-            ppl_logevent("没有GSSAPI安全可用的上下文");
+            ppl_logevent("没有GSSAPI安全可用的使用条件");
 
         return;
     }
@@ -2336,12 +2336,12 @@ static void ssh2_transport_reconfigure(PacketProtocolLayer *ppl, Conf *conf)
     for (i = 0; i < CIPHER_MAX; i++)
         if (conf_get_int_int(s->conf, CONF_ssh_cipherlist, i) !=
             conf_get_int_int(conf, CONF_ssh_cipherlist, i)) {
-            rekey_reason = "密码设置已更改";
+            rekey_reason = "加密设置已更改";
             rekey_mandatory = true;
         }
     if (conf_get_bool(s->conf, CONF_ssh2_des_cbc) !=
         conf_get_bool(conf, CONF_ssh2_des_cbc)) {
-        rekey_reason = "密码设置已更改";
+        rekey_reason = "加密设置已更改";
         rekey_mandatory = true;
     }
 

@@ -1161,7 +1161,7 @@ SeatPromptResult win_seat_confirm_weak_crypto_primitive(
     static const char mbtitle[] = "cn%s 安全警报";
     static const char msg[] =
         "当前服务器支持的%s\n"
-        "为%s，低于配置的警告阀值。\n"
+        "为 %s，低于配置的警告阀值。\n"
         "您想继续这个连接吗？？？\n";
     char *message, *title;
     int mbret;

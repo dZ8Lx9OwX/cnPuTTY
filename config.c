@@ -1892,7 +1892,7 @@ void setup_config_box(struct controlbox *b, bool midsession,
      * The Load/Save panel is available even in mid-session.
      */
     s = ctrl_getset(b, "会话", "savedsessions",
-                    midsession ? "当前保存的会话设置" :
+                    midsession ? "---保存当前会话设置---" :
                     "---加载/保存或者删除存储的会话---");
     ctrl_columns(s, 2, 75, 25);
     get_sesslist(&ssd->sesslist, true);
