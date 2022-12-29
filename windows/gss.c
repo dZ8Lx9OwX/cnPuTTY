@@ -26,7 +26,7 @@
     if (uli.QuadPart != 0) \
         uli.QuadPart = uli.QuadPart / CNS_PERSEC - UNIX_EPOCH; \
     (t) = (time_t) uli.QuadPart; \
-} while(0)
+} while (0)
 
 /* Windows code to set up the GSSAPI library list. */
 
@@ -142,7 +142,7 @@ struct ssh_gss_liblist *ssh_gss_setup(Conf *conf)
         char *installdir = get_reg_sz(regkey, "InstallDir");
         if (installdir) {
             char *bindir = dupcat(installdir, "\\bin");
-            if(p_AddDllDirectory) {
+            if (p_AddDllDirectory) {
                 /* Add MIT Kerberos' path to the DLL search path,
                  * it loads its own DLLs further down the road */
                 wchar_t *dllPath = dup_mb_to_wc(DEFAULT_CODEPAGE, 0, bindir);
@@ -235,7 +235,7 @@ struct ssh_gss_liblist *ssh_gss_setup(Conf *conf)
     module = NULL;
     path = conf_get_filename(conf, CONF_ssh_gss_custom)->path;
     if (*path) {
-        if(p_AddDllDirectory) {
+        if (p_AddDllDirectory) {
             /* Add the custom directory as well in case it chainloads
              * some other DLLs (e.g a non-installed MIT Kerberos
              * instance) */
@@ -451,8 +451,8 @@ static Ssh_gss_stat ssh_sspi_init_sec_context(struct ssh_gss_library *lib,
     winSsh_gss_ctx *winctx = (winSsh_gss_ctx *) *ctx;
     SecBuffer wsend_tok = {send_tok->length,SECBUFFER_TOKEN,send_tok->value};
     SecBuffer wrecv_tok = {recv_tok->length,SECBUFFER_TOKEN,recv_tok->value};
-    SecBufferDesc output_desc={SECBUFFER_VERSION,1,&wsend_tok};
-    SecBufferDesc input_desc ={SECBUFFER_VERSION,1,&wrecv_tok};
+    SecBufferDesc output_desc = {SECBUFFER_VERSION,1,&wsend_tok};
+    SecBufferDesc input_desc  = {SECBUFFER_VERSION,1,&wrecv_tok};
     unsigned long flags=ISC_REQ_MUTUAL_AUTH|ISC_REQ_REPLAY_DETECT|
         ISC_REQ_CONFIDENTIALITY|ISC_REQ_ALLOCATE_MEMORY;
     ULONG ret_flags=0;
@@ -503,7 +503,7 @@ static Ssh_gss_stat ssh_sspi_free_tok(struct ssh_gss_library *lib,
 static Ssh_gss_stat ssh_sspi_release_cred(struct ssh_gss_library *lib,
                                           Ssh_gss_ctx *ctx)
 {
-    winSsh_gss_ctx *winctx= (winSsh_gss_ctx *) *ctx;
+    winSsh_gss_ctx *winctx = (winSsh_gss_ctx *) *ctx;
 
     /* check input */
     if (winctx == NULL) return SSH_GSS_FAILURE;
@@ -523,7 +523,7 @@ static Ssh_gss_stat ssh_sspi_release_cred(struct ssh_gss_library *lib,
 static Ssh_gss_stat ssh_sspi_release_name(struct ssh_gss_library *lib,
                                           Ssh_gss_name *srv_name)
 {
-    char *pStr= (char *) *srv_name;
+    char *pStr = (char *) *srv_name;
 
     if (pStr == NULL) return SSH_GSS_FAILURE;
     sfree(pStr);
@@ -587,7 +587,7 @@ static Ssh_gss_stat ssh_sspi_get_mic(struct ssh_gss_library *lib,
                                      Ssh_gss_ctx ctx, Ssh_gss_buf *buf,
                                      Ssh_gss_buf *hash)
 {
-    winSsh_gss_ctx *winctx= (winSsh_gss_ctx *) ctx;
+    winSsh_gss_ctx *winctx = (winSsh_gss_ctx *) ctx;
     SecPkgContext_Sizes ContextSizes;
     SecBufferDesc InputBufferDescriptor;
     SecBuffer InputSecurityToken[2];
@@ -634,7 +634,7 @@ static Ssh_gss_stat ssh_sspi_verify_mic(struct ssh_gss_library *lib,
                                         Ssh_gss_buf *buf,
                                         Ssh_gss_buf *mic)
 {
-    winSsh_gss_ctx *winctx= (winSsh_gss_ctx *) ctx;
+    winSsh_gss_ctx *winctx = (winSsh_gss_ctx *) ctx;
     SecBufferDesc InputBufferDescriptor;
     SecBuffer InputSecurityToken[2];
     ULONG qop;
