@@ -689,6 +689,11 @@ void init_ucs(Conf *conf, struct unicode_data *ucsdata)
     }
 }
 
+void init_ucs_generic(Conf *conf, struct unicode_data *ucsdata)
+{
+    init_ucs(conf, ucsdata);
+}
+
 static void link_font(WCHAR *line_tbl, WCHAR *font_tbl, WCHAR attr)
 {
     int font_index, line_index, i;
@@ -1365,7 +1370,7 @@ int mb_to_wc(int codepage, int flags, const char *mbstr, int mblen,
 
         while (get_avail(src)) {
             wchar_t wcbuf[2];
-            size_t nwc = decode_utf8_to_wchar(src, wcbuf);
+            size_t nwc = decode_utf8_to_wchar(src, wcbuf, NULL);
 
             for (size_t i = 0; i < nwc; i++) {
                 if (remaining > 0) {

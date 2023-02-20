@@ -286,6 +286,11 @@ struct unicode_data {
 #define LGTYP_PACKETS 3                /* logmode: SSH data packets */
 #define LGTYP_SSHRAW 4                 /* logmode: SSH raw data */
 
+/* Platform-generic function to set up a struct unicode_data. This is
+ * only likely to be useful to test programs; real clients will want
+ * to use the more flexible per-platform setup functions. */
+void init_ucs_generic(Conf *conf, struct unicode_data *ucsdata);
+
 /*
  * Enumeration of 'special commands' that can be sent during a
  * session, separately from the byte stream of ordinary session data.
@@ -2118,7 +2123,15 @@ bool conf_deserialise(Conf *conf, BinarySource *src);/*returns true on success*/
  * Functions to copy, free, serialise and deserialise FontSpecs.
  * Provided per-platform, to go with the platform's idea of a
  * FontSpec's contents.
+ *
+ * The full fontspec_new is declared in the platform header, because
+ * each platform may need it to have a different prototype, due to
+ * constructing fonts in different ways. But fontspec_new_default()
+ * will at least produce _some_ kind of a FontSpec, for use in
+ * situations where one needs to exist (e.g. to put in a Conf) and be
+ * freeable but won't actually be used for anything important.
  */
+FontSpec *fontspec_new_default(void);
 FontSpec *fontspec_copy(const FontSpec *f);
 void fontspec_free(FontSpec *f);
 void fontspec_serialise(BinarySink *bs, FontSpec *f);
