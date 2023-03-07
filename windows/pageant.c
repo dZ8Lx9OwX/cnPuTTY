@@ -1833,7 +1833,7 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
             args = strchr(command, ' ');
         if (args) {
             *args++ = 0;
-            while (*args && isspace(*args)) args++;
+            while (*args && isspace((unsigned char)*args)) args++;
         }
         spawn_cmd(command, args, show);
     }
