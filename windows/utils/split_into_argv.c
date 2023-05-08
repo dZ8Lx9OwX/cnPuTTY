@@ -161,17 +161,13 @@
 #define MOD3 0
 #endif
 
-#ifdef SPLIT_INTO_ARGV_W
-#define FUNCTION split_into_argv_w
-#define CHAR wchar_t
-#define STRLEN wcslen
-#else
-#define FUNCTION split_into_argv
-#define CHAR char
-#define STRLEN strlen
-#endif
+static inline bool is_word_sep(char c)
+{
+    return c == ' ' || c == '\t';
+}
 
-static inline bool is_word_sep(CHAR c)
+void split_into_argv(char *cmdline, int *argc, char ***argv,
+                     char ***argstart)
 {
     return c == ' ' || c == '\t';
 }

@@ -3173,6 +3173,10 @@ void setup_config_box(struct controlbox *b, bool midsession,
 
             s = ctrl_getset(b, "连接/SSH/更多纠错", "main",
                             "检测SSH服务已知的错误：");
+            ctrl_droplist(s, "旧的RSA/SHA2证书算法命名", 'l', 20,
+                          HELPCTX(ssh_bugs_rsa_sha2_cert_userauth),
+                          sshbug_handler,
+                          I(CONF_sshbug_rsa_sha2_cert_userauth));
             ctrl_droplist(s, "需要对SSH-2 RSA签名进行填充", 'p', 20,
                           HELPCTX(ssh_bugs_rsapad2),
                           sshbug_handler, I(CONF_sshbug_rsapad2));

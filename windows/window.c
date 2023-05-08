@@ -1661,25 +1661,25 @@ static void wintw_request_resize(TermWin *tw, int w, int h)
     WinGuiSeat *wgs = container_of(tw, WinGuiSeat, termwin);
     const struct BackendVtable *vt;
     int width, height;
-    int resize_action = conf_get_int(wgs->conf, CONF_resize_action);
+    int resize_action = conf_get_int(conf, CONF_resize_action);
     bool deny_resize = false;
 
     /* Suppress server-originated resizing attempts if local resizing
      * is disabled entirely, or if it's supposed to change
      * rows/columns but the window is maximised. */
     if (resize_action == RESIZE_DISABLED
-        || (resize_action == RESIZE_TERM && IsZoomed(wgs->term_hwnd))) {
+        || (resize_action == RESIZE_TERM && IsZoomed(wgs.term_hwnd))) {
         deny_resize = true;
     }
 
     vt = backend_vt_from_proto(be_default_protocol);
     if (vt && vt->flags & BACKEND_RESIZE_FORBIDDEN)
         deny_resize = true;
-    if (h == wgs->term->rows && w == wgs->term->cols) deny_resize = true;
+    if (h == term->rows && w == term->cols) deny_resize = true;
 
     /* We still need to acknowledge a suppressed resize attempt. */
     if (deny_resize) {
-        term_resize_request_completed(wgs->term);
+        term_resize_request_completed(term);
         return;
     }
 
@@ -1702,7 +1702,7 @@ static void wintw_request_resize(TermWin *tw, int w, int h)
         }
     }
 
-    if (resize_action != RESIZE_FONT && !IsZoomed(wgs->term_hwnd)) {
+    if (resize_action != RESIZE_FONT && !IsZoomed(wgs.term_hwnd)) {
         width = extra_width + font_width * w;
         height = extra_height + font_height * h;
 
@@ -2733,7 +2733,7 @@ static LRESULT CALLBACK WndProc(HWND hwnd, UINT message,
                        TO_CHR_Y(Y_POS(lParam)), wParam & MK_SHIFT,
                        wParam & MK_CONTROL, is_alt_pressed());
         } else {
-            term_mouse(wgs->term, MBT_NOTHING, MBT_NOTHING, MA_MOVE,
+            term_mouse(term, MBT_NOTHING, MBT_NOTHING, MA_MOVE,
                        TO_CHR_X(X_POS(lParam)),
                        TO_CHR_Y(Y_POS(lParam)), false,
                        false, false);
@@ -3385,7 +3385,7 @@ static LRESULT CALLBACK WndProc(HWND hwnd, UINT message,
             bool shift_pressed = false, control_pressed = false;
 
             if (message == WM_MOUSEWHEEL || message == WM_MOUSEHWHEEL) {
-                wgs->wheel_accumulator += (short)HIWORD(wParam);
+                wheel_accumulator += (short)HIWORD(wParam);
                 shift_pressed=LOWORD(wParam) & MK_SHIFT;
                 control_pressed=LOWORD(wParam) & MK_CONTROL;
             } else {
@@ -3402,12 +3402,12 @@ static LRESULT CALLBACK WndProc(HWND hwnd, UINT message,
                 int b;
 
                 /* reduce amount for next time */
-                if (wgs->wheel_accumulator > 0) {
+                if (wheel_accumulator > 0) {
                     b = message == WM_MOUSEHWHEEL ? MBT_WHEEL_RIGHT : MBT_WHEEL_UP;
-                    wgs->wheel_accumulator -= WHEEL_DELTA;
-                } else if (wgs->wheel_accumulator < 0) {
+                    wheel_accumulator -= WHEEL_DELTA;
+                } else if (wheel_accumulator < 0) {
                     b =  message == WM_MOUSEHWHEEL ? MBT_WHEEL_LEFT : MBT_WHEEL_DOWN;
-                    wgs->wheel_accumulator += WHEEL_DELTA;
+                    wheel_accumulator += WHEEL_DELTA;
                 } else
                     break;
 

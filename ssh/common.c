@@ -742,6 +742,10 @@ size_t ssh_ppl_default_queued_data_size(PacketProtocolLayer *ppl)
     return ppl->out_pq->pqb.total_size;
 }
 
+void ssh_ppl_default_final_output(PacketProtocolLayer *ppl)
+{
+}
+
 static void ssh_ppl_prompts_callback(void *ctx)
 {
     ssh_ppl_process_queue((PacketProtocolLayer *)ctx);
@@ -1025,9 +1029,9 @@ SeatPromptResult verify_ssh_host_key(
             pds->hk_accept_action, appname);
         if (key && ssh_key_alg(key)->is_certificate) {
             seat_dialog_text_append(
-                text, SDT_PARA, "(将此认证密钥存储在缓存当中，"
-                "对于其他任何密钥或主机不会导致其证书颁发"
-                "机构受到信任。)");
+                text, SDT_PARA, "(将此认证过的密钥存储"
+                "在缓存当中，不会导致其它任何密钥或主机"
+                "信任此证书的颁发机构。)");
         }
         seat_dialog_text_append(
             text, SDT_PARA, "如果您只想进行一次连接，"

@@ -1032,13 +1032,13 @@ static bool opensshcert_check_cert(
      * Check the time bounds on the certificate.
      */
     if (time < ck->valid_after) {
-        put_fmt(error, "证书在之前无效");
+        put_fmt(error, "证书生效期于");
         opensshcert_time_to_iso8601(BinarySink_UPCAST(error),
                                     ck->valid_after);
         goto out;
     }
     if (time >= ck->valid_before) {
-        put_fmt(error, "证书在之后过期");
+        put_fmt(error, "证书过期于");
         opensshcert_time_to_iso8601(BinarySink_UPCAST(error),
                                     ck->valid_before);
         goto out;
