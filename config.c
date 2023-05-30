@@ -2248,9 +2248,9 @@ void setup_config_box(struct controlbox *b, bool midsession,
                       HELPCTX(appearance_cursor),
                       conf_radiobutton_handler,
                       I(CONF_cursor_type),
-                      "块状", 'l', I(0),
-                      "下划线", 'u', I(1),
-                      "垂直线", 'v', I(2));
+                      "块状", 'l', I(CURSOR_BLOCK),
+                      "下划线", 'u', I(CURSOR_UNDERLINE),
+                      "垂直线", 'v', I(CURSOR_VERTICAL_LINE));
     ctrl_checkbox(s, "光标闪烁", 'b',
                   HELPCTX(appearance_cursor),
                   conf_checkbox_handler, I(CONF_blink_cur));
@@ -2420,9 +2420,9 @@ void setup_config_box(struct controlbox *b, bool midsession,
     ctrl_radiobuttons(s, "如何突出加粗的文本：", 'b', 3,
                       HELPCTX(colours_bold),
                       conf_radiobutton_handler, I(CONF_bold_style),
-                      "通过字体", I(1),
-                      "通过颜色", I(2),
-                      "两者", I(3));
+                      "通过字体", I(BOLD_STYLE_FONT),
+                      "通过颜色", I(BOLD_STYLE_COLOUR),
+                      "两者", I(BOLD_STYLE_FONT | BOLD_STYLE_COLOUR));
 
     str = dupprintf("自定义cn%s颜色显示：", appname);
     s = ctrl_getset(b, "窗口/颜色", "adjust", str);

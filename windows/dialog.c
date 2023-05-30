@@ -1226,11 +1226,12 @@ static int win_gui_askappend(LogPolicy *lp, Filename *filename,
     char *mbtitle;
     int mbret;
 
-    message = dupprintf(msgtemplate, FILENAME_MAX, filename->path);
+    message = dupprintf(msgtemplate, FILENAME_MAX, filename->utf8path);
     mbtitle = dupprintf("cn%s 写入日志文件", appname);
 
-    mbret = MessageBox(NULL, message, mbtitle,
-                       MB_ICONQUESTION | MB_YESNOCANCEL | MB_DEFBUTTON3);
+    mbret = message_box(NULL, message, mbtitle,
+                        MB_ICONQUESTION | MB_YESNOCANCEL | MB_DEFBUTTON3,
+                        true, 0);
 
     socket_reselect_all();
 

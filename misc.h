@@ -26,6 +26,7 @@ char *host_strrchr(const char *s, int c);
 char *host_strduptrim(const char *s);
 
 char *dupstr(const char *s);
+wchar_t *dupwcs(const wchar_t *s);
 char *dupcat_fn(const char *s1, ...);
 #define dupcat(...) dupcat_fn(__VA_ARGS__, (const char *)NULL)
 char *dupprintf(const char *fmt, ...) PRINTF_LIKE(1, 2);
@@ -254,6 +255,10 @@ unsigned smemeq(const void *av, const void *bv, size_t len);
  * sizeof(wchar_t) == 2, assuming that in that case the wide string is
  * encoded in UTF-16. */
 char *encode_wide_string_as_utf8(const wchar_t *wstr);
+
+/* Decode UTF-8 to a wide-character string, emitting UTF-16 surrogates
+ * if sizeof(wchar_t) == 2. */
+wchar_t *decode_utf8_to_wide_string(const char *ustr);
 
 /* Decode a single UTF-8 character. Returns U+FFFD for any of the
  * illegal cases. If the source is empty, returns L'\0' (and sets the

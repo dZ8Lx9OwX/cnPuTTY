@@ -21,10 +21,12 @@ add_sources_from_current_dir(utils
   debug.c
   decode_utf8.c
   decode_utf8_to_wchar.c
+  decode_utf8_to_wide_string.c
   default_description.c
   dupcat.c
   dupprintf.c
   dupstr.c
+  dupwcs.c
   dup_mb_to_wc.c
   dup_wc_to_mb.c
   encode_utf8.c

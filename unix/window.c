@@ -3896,11 +3896,11 @@ static void do_text_internal(
         truecolour.fg = truecolour.bg;
         truecolour.bg = trgb;
     }
-    if ((inst->bold_style & 2) && (attr & ATTR_BOLD)) {
+    if ((inst->bold_style & BOLD_STYLE_COLOUR) && (attr & ATTR_BOLD)) {
         if (nfg < 16) nfg |= 8;
         else if (nfg >= 256) nfg |= 1;
     }
-    if ((inst->bold_style & 2) && (attr & ATTR_BLINK)) {
+    if ((inst->bold_style & BOLD_STYLE_COLOUR) && (attr & ATTR_BLINK)) {
         if (nbg < 16) nbg |= 8;
         else if (nbg >= 256) nbg |= 1;
     }
@@ -3920,7 +3920,7 @@ static void do_text_internal(
         widefactor = 1;
     }
 
-    if ((attr & ATTR_BOLD) && (inst->bold_style & 1)) {
+    if ((attr & ATTR_BOLD) && (inst->bold_style & BOLD_STYLE_FONT)) {
         bold = true;
         fontid |= 1;
     } else {
@@ -4075,7 +4075,7 @@ static void gtkwin_draw_cursor(
         passive = true;
     } else
         passive = false;
-    if ((attr & TATTR_ACTCURS) && inst->cursor_type != 0) {
+    if ((attr & TATTR_ACTCURS) && inst->cursor_type != CURSOR_BLOCK) {
         attr &= ~TATTR_ACTCURS;
         active = true;
     } else
@@ -4100,7 +4100,7 @@ static void gtkwin_draw_cursor(
         len *= 2;
     }
 
-    if (inst->cursor_type == 0) {
+    if (inst->cursor_type == CURSOR_BLOCK) {
         /*
          * An active block cursor will already have been done by
          * the above do_text call, so we only need to do anything
@@ -4125,7 +4125,7 @@ static void gtkwin_draw_cursor(
         else
             char_width = inst->font_width;
 
-        if (inst->cursor_type == 1) {
+        if (inst->cursor_type == CURSOR_UNDERLINE) {
             uheight = inst->fonts[0]->ascent + 1;
             if (uheight >= inst->font_height)
                 uheight = inst->font_height - 1;
@@ -4135,7 +4135,7 @@ static void gtkwin_draw_cursor(
             dx = 1;
             dy = 0;
             length = len * widefactor * char_width;
-        } else {
+        } else /* inst->cursor_type == CURSOR_VERTICAL_LINE */ {
             int xadjust = 0;
             if (attr & TATTR_RIGHTCURS)
                 xadjust = char_width - 1;

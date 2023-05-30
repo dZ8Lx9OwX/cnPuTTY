@@ -488,6 +488,13 @@ enum {
 };
 
 enum {
+    /* Mouse-button assignments */
+    MOUSE_COMPROMISE, /* xterm-ish but with paste on RB in case no MB exists */
+    MOUSE_XTERM, /* xterm-style: MB pastes, RB extends selection */
+    MOUSE_WINDOWS /* Windows-style: RB brings up menu. MB still extends. */
+};
+
+enum {
     /* Function key types (CONF_funky_type) */
     FUNKY_TILDE,
     FUNKY_LINUX,
@@ -506,6 +513,16 @@ enum {
 
 enum {
     FQ_DEFAULT, FQ_ANTIALIASED, FQ_NONANTIALIASED, FQ_CLEARTYPE
+};
+
+enum {
+    CURSOR_BLOCK, CURSOR_UNDERLINE, CURSOR_VERTICAL_LINE
+};
+
+enum {
+    /* these are really bit flags */
+    BOLD_STYLE_FONT = 1,
+    BOLD_STYLE_COLOUR = 2,
 };
 
 enum {

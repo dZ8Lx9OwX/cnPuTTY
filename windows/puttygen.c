@@ -1137,7 +1137,7 @@ void load_key_file(HWND hwnd, struct MainDlgState *state,
         char *msg = dupprintf("无法加载密钥 (%s)",
                               key_type_to_str(type));
         message_box(hwnd, msg, "cnPuTTYgen错误！！！", MB_OK | MB_ICONERROR,
-                    HELPCTXID(errors_cantloadkey));
+                    false, HELPCTXID(errors_cantloadkey));
         sfree(msg);
         return;
     }
@@ -1200,7 +1200,7 @@ void load_key_file(HWND hwnd, struct MainDlgState *state,
     if (ret == 0) {
         char *msg = dupprintf("无法加载密钥 (%s)", errmsg);
         message_box(hwnd, msg, "cnPuTTYgen错误！！！", MB_OK | MB_ICONERROR,
-                    HELPCTXID(errors_cantloadkey));
+                    false, HELPCTXID(errors_cantloadkey));
         sfree(msg);
     } else if (ret == 1) {
         /*
@@ -1239,7 +1239,7 @@ void add_certificate(HWND hwnd, struct MainDlgState *state,
         char *msg = dupprintf("无法加载证书 (%s)",
                               key_type_to_str(type));
         message_box(hwnd, msg, "cnPuTTYgen错误！！！", MB_OK | MB_ICONERROR,
-                    HELPCTXID(errors_cantloadkey));
+                    false, HELPCTXID(errors_cantloadkey));
         sfree(msg);
         return;
     }
@@ -1252,7 +1252,7 @@ void add_certificate(HWND hwnd, struct MainDlgState *state,
                        &error)) {
         char *msg = dupprintf("无法加载证书 (%s)", error);
         message_box(hwnd, msg, "cnPuTTYgen错误！！！", MB_OK | MB_ICONERROR,
-                    HELPCTXID(errors_cantloadkey));
+                    false, HELPCTXID(errors_cantloadkey));
         sfree(msg);
         strbuf_free(pub);
         return;
@@ -1265,7 +1265,7 @@ void add_certificate(HWND hwnd, struct MainDlgState *state,
         char *msg = dupprintf("无法加载证书(不支持的"
                               "算法名称 '%s')", algname);
         message_box(hwnd, msg, "cnPuTTYgen错误！！！", MB_OK | MB_ICONERROR,
-                    HELPCTXID(errors_cantloadkey));
+                    false, HELPCTXID(errors_cantloadkey));
         sfree(msg);
         sfree(algname);
         strbuf_free(pub);
@@ -1293,7 +1293,7 @@ void add_certificate(HWND hwnd, struct MainDlgState *state,
     if (!match) {
         char *msg = dupprintf("证书中的公钥是不相同的");
         message_box(hwnd, msg, "cnPuTTYgen错误！！！", MB_OK | MB_ICONERROR,
-                    HELPCTXID(errors_cantloadkey));
+                    false, HELPCTXID(errors_cantloadkey));
         sfree(msg);
         strbuf_free(pub);
         return;
@@ -1309,7 +1309,7 @@ void add_certificate(HWND hwnd, struct MainDlgState *state,
     if (!newkey) {
         char *msg = dupprintf("无法将证书与密钥组合在一起");
         message_box(hwnd, msg, "cnPuTTYgen错误！！！", MB_OK | MB_ICONERROR,
-                    HELPCTXID(errors_cantloadkey));
+                    false, HELPCTXID(errors_cantloadkey));
         sfree(msg);
         return;
     }
