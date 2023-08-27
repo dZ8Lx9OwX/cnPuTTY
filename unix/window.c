@@ -251,7 +251,7 @@ static void post_fatal_message_box(void *vctx, int result)
 static void common_connfatal_message_box(
     GtkFrontend *inst, const char *msg, post_dialog_fn_t postfn)
 {
-    char *title = dupcat(appname, " Fatal Error");
+    char *title = dupcat(appname, " 致命错误");
     GtkWidget *dialog = create_message_box(
         inst->window, title, msg,
         string_width("REASONABLY LONG LINE OF TEXT FOR BASIC SANITY"),
@@ -665,12 +665,12 @@ gint delete_window(GtkWidget *widget, GdkEvent *event, GtkFrontend *inst)
          * case we'll just re-emphasise that one.
          */
         if (!find_and_raise_dialog(inst, DIALOG_SLOT_WARN_ON_CLOSE)) {
-            char *title = dupcat(appname, " Exit Confirmation");
+            char *title = dupcat(appname, " 退出确认");
             char *msg, *additional = NULL;
             if (inst->backend && inst->backend->vt->close_warn_text) {
                 additional = inst->backend->vt->close_warn_text(inst->backend);
             }
-            msg = dupprintf("Are you sure you want to close this session?%s%s",
+            msg = dupprintf("是否确实要关闭此会话？%s%s",
                             additional ? "\n" : "",
                             additional ? additional : "");
             GtkWidget *dialog = create_message_box(
@@ -5586,25 +5586,25 @@ void new_session_window(Conf *conf, const char *geometry_string)
         } while (0)
 
         if (new_session)
-            MKMENUITEM("New Session...", new_session_menuitem);
-        MKMENUITEM("Restart Session", restart_session_menuitem);
+            MKMENUITEM("新建会话...", new_session_menuitem);
+        MKMENUITEM("重启会话", restart_session_menuitem);
         inst->restartitem = menuitem;
         gtk_widget_set_sensitive(inst->restartitem, false);
-        MKMENUITEM("Duplicate Session", dup_session_menuitem);
+        MKMENUITEM("重复会话", dup_session_menuitem);
         if (saved_sessions) {
             inst->sessionsmenu = gtk_menu_new();
             /* sessionsmenu will be updated when it's invoked */
             /* XXX is this the right way to do dynamic menus in Gtk? */
-            MKMENUITEM("Saved Sessions", update_savedsess_menu);
+            MKMENUITEM("保存会话", update_savedsess_menu);
             gtk_menu_item_set_submenu(GTK_MENU_ITEM(menuitem),
                                       inst->sessionsmenu);
         }
         MKSEP();
-        MKMENUITEM("Change Settings...", change_settings_menuitem);
+        MKMENUITEM("修改设置...", change_settings_menuitem);
         MKSEP();
         if (use_event_log)
             MKMENUITEM("Event Log", event_log_menuitem);
-        MKSUBMENU("Special Commands");
+        MKSUBMENU("特殊命令");
         inst->specialsmenu = gtk_menu_new();
         gtk_menu_item_set_submenu(GTK_MENU_ITEM(menuitem), inst->specialsmenu);
         inst->specialsitem1 = menuitem;
@@ -5612,16 +5612,16 @@ void new_session_window(Conf *conf, const char *geometry_string)
         inst->specialsitem2 = menuitem;
         gtk_widget_hide(inst->specialsitem1);
         gtk_widget_hide(inst->specialsitem2);
-        MKMENUITEM("Clear Scrollback", clear_scrollback_menuitem);
-        MKMENUITEM("Reset Terminal", reset_terminal_menuitem);
+        MKMENUITEM("清除回滚", clear_scrollback_menuitem);
+        MKMENUITEM("重启终端", reset_terminal_menuitem);
         MKSEP();
-        MKMENUITEM("Copy to " CLIPNAME_EXPLICIT_OBJECT,
+        MKMENUITEM("复制到 " CLIPNAME_EXPLICIT_OBJECT,
                    copy_clipboard_menuitem);
-        MKMENUITEM("Paste from " CLIPNAME_EXPLICIT_OBJECT,
+        MKMENUITEM("粘贴自 " CLIPNAME_EXPLICIT_OBJECT,
                    paste_clipboard_menuitem);
-        MKMENUITEM("Copy All", copy_all_menuitem);
+        MKMENUITEM("复制所有", copy_all_menuitem);
         MKSEP();
-        s = dupcat("About ", appname);
+        s = dupcat("关于 ", appname);
         MKMENUITEM(s, about_menuitem);
         sfree(s);
 #undef MKMENUITEM

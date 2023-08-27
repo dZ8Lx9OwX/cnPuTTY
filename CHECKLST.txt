@@ -162,6 +162,15 @@ Preparing to make the release
       enabled), by editing prerel_version() in components/Base.mc to
       return undef.
 
+ - Prepare some 'what's new in this release' blurb for the Windows
+   Store. This should be very brief - even briefer than the website
+   news item. Keep it to a couple of sentences in a single paragraph,
+   templated along the lines of 'X.YZ adds support for this, that and
+   the other, and fixes bugs including this and that', or 'X.YZ is a
+   bug-fix release, mostly in the area of Foo, with one important fix
+   to Bar'.
+    * Might as well check this into putty-aux too.
+
  - Update the wishlist, in a local checkout:
     * If there are any last-minute wishlist entries (e.g. security
       vulnerabilities fixed in the new release), write entries for

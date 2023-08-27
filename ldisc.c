@@ -276,6 +276,55 @@ void ldisc_send(Ldisc *ldisc, const void *vbuf, int len, bool interactive)
         type = interactive ? NORMAL : NONINTERACTIVE;
     }
 
+    /*
+     * Append our data to input_queue, and ensure it's marked with the
+     * right type.
+     */
+    bufchain_add(&ldisc->input_queue, vbuf, len);
+    if (!(ldisc->inchunk_tail && ldisc->inchunk_tail->type == type)) {
+        struct input_chunk *new_chunk = snew(struct input_chunk);
+
+        new_chunk->type = type;
+        new_chunk->size = 0;
+
+        new_chunk->next = NULL;
+        if (ldisc->inchunk_tail)
+            ldisc->inchunk_tail->next = new_chunk;
+        else
+            ldisc->inchunk_head = new_chunk;
+        ldisc->inchunk_tail = new_chunk;
+    }
+    ldisc->inchunk_tail->size += len;
+
+    /*
+     * And process as much of the data immediately as we can.
+     */
+    ldisc_input_queue_callback(ldisc);
+}
+
+static void ldisc_input_queue_callback(void *ctx)
+{
+    Ldisc *ldisc = (Ldisc *)ctx;
+
+    /*
+     * Toplevel callback that is triggered whenever the input queue
+     * lengthens.
+     */
+    while (bufchain_size(&ldisc->input_queue)) {
+        ptrlen pl = bufchain_prefix(&ldisc->input_queue);
+        const char *start = pl.ptr, *buf = pl.ptr;
+        size_t len = (pl.len < ldisc->inchunk_head->size ?
+                      pl.len : ldisc->inchunk_head->size);
+        InputType type = ldisc->inchunk_head->type;
+
+        while (len > 0 && ldisc->userpass_le) {
+            char c = *buf++;
+            len--;
+
+            bool dedicated = is_dedicated_byte(c, type);
+            lineedit_input(ldisc->userpass_le, c, dedicated);
+        }
+
         if (!backend_sendok(ldisc->backend)) {
             ldisc_input_queue_consume(ldisc, buf - start);
             break;
