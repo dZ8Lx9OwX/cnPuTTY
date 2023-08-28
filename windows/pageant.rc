@@ -5,7 +5,7 @@
 #include "rcstuff.h"
 
 #define APPNAME "Pageant"
-#define APPDESC "PuTTY SSH认证代理"
+#define APPDESC "cnPuTTY SSH认证代理"
 
 #include "pageant-rc.h"
 

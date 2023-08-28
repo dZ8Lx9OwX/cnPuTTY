@@ -264,7 +264,8 @@ locally, this is the procedure for putting it up on the web.
          listing
        * upload revised screenshots, if necessary
        * update the URL in the "Applicable license terms" box
-    + press Publish to submit that to the actual upload process
+    + press Publish or Submit (or whatever the button is called this
+      time) to submit that to the actual upload process
 
  - Announce the release!
     + Construct a release announcement email whose message body is the

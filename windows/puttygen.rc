@@ -5,7 +5,7 @@
 #include "rcstuff.h"
 
 #define APPNAME "PuTTYgen"
-#define APPDESC "PuTTY SSH密钥生成实用程序"
+#define APPDESC "cnPuTTY SSH密钥生成实用程序"
 
 #include "help.rc2"
 #include "puttygen-rc.h"
