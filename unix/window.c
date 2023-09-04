@@ -254,7 +254,7 @@ static void common_connfatal_message_box(
     char *title = dupcat(appname, " 致命错误");
     GtkWidget *dialog = create_message_box(
         inst->window, title, msg,
-        string_width("REASONABLY LONG LINE OF TEXT FOR BASIC SANITY"),
+        string_width("请理智的使用合理的长文本行"),
         false, &buttons_ok, postfn, inst);
     register_dialog(&inst->seat, DIALOG_SLOT_CONNECTION_FATAL, dialog);
     sfree(title);
@@ -675,7 +675,7 @@ gint delete_window(GtkWidget *widget, GdkEvent *event, GtkFrontend *inst)
                             additional ? additional : "");
             GtkWidget *dialog = create_message_box(
                 inst->window, title, msg,
-                string_width("Most of the width of the above text"),
+                string_width("以上文字大部分为宽体"),
                 false, &buttons_yn, warn_on_close_callback, inst);
             register_dialog(&inst->seat, DIALOG_SLOT_WARN_ON_CLOSE, dialog);
             sfree(title);
@@ -1042,7 +1042,7 @@ char *dup_keyval_name(guint keyval)
     if (name)
         return dupstr(name);
     else
-        return dupprintf("UNKNOWN[%u]", (unsigned)keyval);
+        return dupprintf("未知 [%u]", (unsigned)keyval);
 }
 #endif
 
@@ -1108,7 +1108,7 @@ gint key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 
         type_string = (event->type == GDK_KEY_PRESS ? dupstr("PRESS") :
                        event->type == GDK_KEY_RELEASE ? dupstr("RELEASE") :
-                       dupprintf("UNKNOWN[%d]", (int)event->type));
+                       dupprintf("未知 [%d]", (int)event->type));
 
         {
             static const struct {
@@ -2559,7 +2559,7 @@ static void gtkwin_timer(void *vctx, unsigned long now)
     if (inst->win_resize_pending && now == inst->win_resize_timeout) {
         if (inst->term_resize_notification_required)
             term_resize_request_completed(inst->term);
-        inst->win_resize_pending = false;        
+        inst->win_resize_pending = false;
     }
 }
 
@@ -4346,7 +4346,7 @@ GdkCursor *make_mouse_ptr(GtkFrontend *inst, int cursor_val)
 void modalfatalbox(const char *p, ...)
 {
     va_list ap;
-    fprintf(stderr, "FATAL ERROR: ");
+    fprintf(stderr, "致命错误：");
     va_start(ap, p);
     vfprintf(stderr, p, ap);
     va_end(ap);
@@ -4383,7 +4383,7 @@ char *setup_fonts_ucs(GtkFrontend *inst)
     fonts[0] = multifont_create(inst->area, fs->name, false, false,
                                 shadowboldoffset, shadowbold);
     if (!fonts[0]) {
-        return dupprintf("unable to load font \"%s\"", fs->name);
+        return dupprintf("无法加载字体 \"%s\"", fs->name);
     }
 
     fs = conf_get_fontspec(inst->conf, CONF_boldfont);
@@ -4395,7 +4395,7 @@ char *setup_fonts_ucs(GtkFrontend *inst)
         if (!fonts[1]) {
             if (fonts[0])
                 unifont_destroy(fonts[0]);
-            return dupprintf("unable to load bold font \"%s\"", fs->name);
+            return dupprintf("无法加载粗体字体 \"%s\"", fs->name);
         }
     }
 
@@ -4407,7 +4407,7 @@ char *setup_fonts_ucs(GtkFrontend *inst)
             for (i = 0; i < 2; i++)
                 if (fonts[i])
                     unifont_destroy(fonts[i]);
-            return dupprintf("unable to load wide font \"%s\"", fs->name);
+            return dupprintf("无法加载宽字体 \"%s\"", fs->name);
         }
     } else {
         fonts[2] = NULL;
@@ -4423,7 +4423,7 @@ char *setup_fonts_ucs(GtkFrontend *inst)
             for (i = 0; i < 3; i++)
                 if (fonts[i])
                     unifont_destroy(fonts[i]);
-            return dupprintf("unable to load wide bold font \"%s\"", fs->name);
+            return dupprintf("无法加载加粗字体 \"%s\"", fs->name);
         }
     }
 
@@ -4867,11 +4867,11 @@ static void after_change_settings_dialog(void *vctx, int retval)
             char *errmsg = setup_fonts_ucs(inst);
             if (errmsg) {
                 char *msgboxtext =
-                    dupprintf("Could not change fonts in terminal window: %s\n",
+                    dupprintf("无法在终端窗口中更改字体： %s\n",
                               errmsg);
                 create_message_box(
-                    inst->window, "Font setup error", msgboxtext,
-                    string_width("Could not change fonts in terminal window:"),
+                    inst->window, "字体设置错误", msgboxtext,
+                    string_width("无法在终端窗口中更改字体："),
                     false, &buttons_ok, trivial_post_dialog_fn, NULL);
                 sfree(msgboxtext);
                 sfree(errmsg);
