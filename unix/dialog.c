@@ -4115,7 +4115,7 @@ void showeventlog(eventlog_stuff *es, void *parentwin)
     c->listbox.percentages[2] = 65;
 
     es->window = window = our_dialog_new();
-    title = dupcat(appname, " Event Log");
+    title = dupcat(appname, " 事件日志");
     gtk_window_set_title(GTK_WINDOW(window), title);
     sfree(title);
     w0 = layout_ctrls(&es->dp, NULL, &es->scs, s0, GTK_WINDOW(window));

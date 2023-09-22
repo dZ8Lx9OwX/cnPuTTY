@@ -15,7 +15,7 @@ char *buildinfo(const char *newline)
 
 #ifdef __clang_version__
 #define FOUND_COMPILER
-    put_fmt(buf, "%sCompiler: clang %s", newline, __clang_version__);
+    put_fmt(buf, "%s编译器：clang %s", newline, __clang_version__);
 #elif defined __GNUC__ && defined __VERSION__
 #define FOUND_COMPILER
     put_fmt(buf, "%s编译器：gcc %s", newline, __VERSION__);
@@ -121,7 +121,7 @@ char *buildinfo(const char *newline)
     {
         char *gtk_buildinfo = buildinfo_gtk_version();
         if (gtk_buildinfo) {
-            put_fmt(buf, "%s针对GTK版本编译 %s",
+            put_fmt(buf, "%s针对GTK v%s 生成编译",
                     newline, gtk_buildinfo);
             sfree(gtk_buildinfo);
         }

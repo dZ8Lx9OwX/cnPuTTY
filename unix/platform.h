@@ -60,10 +60,12 @@ struct Filename {
 };
 FILE *f_open(const struct Filename *, char const *, bool);
 
+#ifndef SUPERSEDE_FONTSPEC_FOR_TESTING
 struct FontSpec {
     char *name;    /* may be "" to indicate no selected font at all */
 };
 struct FontSpec *fontspec_new(const char *name);
+#endif
 
 extern const struct BackendVtable pty_backend;
 
@@ -133,7 +135,7 @@ unsigned long getticks(void);
 #else
 #define MOUSE_SELECT_CLIPBOARD CLIP_PRIMARY
 #define MOUSE_PASTE_CLIPBOARD CLIP_PRIMARY
-#define CLIPNAME_IMPLICIT "PRIMARY"
+#define CLIPNAME_IMPLICIT "最近的文本"
 #define CLIPNAME_EXPLICIT "剪贴板"
 #define CLIPNAME_EXPLICIT_OBJECT "剪贴板"
 /* These defaults are the ones Unix PuTTY has historically had since

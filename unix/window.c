@@ -4773,7 +4773,7 @@ void change_settings_menuitem(GtkMenuItem *item, gpointer data)
     if (find_and_raise_dialog(inst, DIALOG_SLOT_RECONFIGURE))
         return;
 
-    title = dupcat(appname, " Reconfiguration");
+    title = dupcat(appname, " 重新配置");
 
     ctx = snew(struct after_change_settings_dialog_ctx);
     ctx->inst = inst;
@@ -5603,7 +5603,7 @@ void new_session_window(Conf *conf, const char *geometry_string)
         MKMENUITEM("修改设置...", change_settings_menuitem);
         MKSEP();
         if (use_event_log)
-            MKMENUITEM("Event Log", event_log_menuitem);
+            MKMENUITEM("事件日志", event_log_menuitem);
         MKSUBMENU("特殊命令");
         inst->specialsmenu = gtk_menu_new();
         gtk_menu_item_set_submenu(GTK_MENU_ITEM(menuitem), inst->specialsmenu);

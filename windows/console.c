@@ -114,7 +114,7 @@ static ConsoleIO *conio_setup(bool utf8)
     /*
      * Fall back from that to using the standard handles. We use
      * standard error rather than standard output for our prompts,
-     * because that has a better chance of separating them from 
+     * because that has a better chance of separating them from
      */
     if (conio->hin == INVALID_HANDLE_VALUE)
         conio->hin = GetStdHandle(STD_INPUT_HANDLE);
@@ -381,7 +381,7 @@ SeatPromptResult console_confirm_ssh_host_key(
     ResponseType response;
 
     while (true) {
-        put_fmt(conio, "%s (y/n, Return cancels connection, i for more info) ",
+        put_fmt(conio, "%s (y/n, 返回取消连接, i 了解更多信息) ",
                 prompt);
 
         response = parse_and_free_response(console_read_line(conio, true));
@@ -696,7 +696,7 @@ SeatPromptResult console_get_userpass_input(prompts_t *p)
 
         if (!console_read_line_to_strbuf(conio, pr->echo, pr->result)) {
             result = make_spr_sw_abort_winerror(
-                "Error reading from console", GetLastError());
+                "从控制台读取时出错", GetLastError());
             goto out;
         } else if (!pr->result->len) {
             /* Regard EOF on the terminal as a deliberate user-abort */
