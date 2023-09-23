@@ -94,9 +94,9 @@ static void proxy_socks4_process_queue(ProxyNegotiator *pn)
          */
 
         if (data[0] != SOCKS4_REPLY_VERSION) {
-            pn->error = dupprintf("SOCKS ä»£ç†å“åº”åŒ…å«å›å¤çš„"
-                                  "ç‰ˆæœ¬å· %d (é¢„æœŸä¸º 0)",
-                                  (int)data[0]);
+            pn->error = dupprintf("SOCKS ´úÀíÏìÓ¦°üº¬»Ø¸´µÄ"
+                                  "°æ±¾ºÅ %d (Ô¤ÆÚÎª 0)",
+                                  (int)data[0], SOCKS4_REPLY_VERSION);
             crStopV;
         }
 
@@ -118,8 +118,8 @@ static void proxy_socks4_process_queue(ProxyNegotiator *pn)
             break;
 
           default:
-            pn->error = dupprintf("SOCKS æœåŠ¡å™¨å‘é€æ— æ³•è¯†åˆ«çš„é”™è¯¯"
-                                  "ä»£ç  %d", (int)data[1]);
+            pn->error = dupprintf("SOCKS ·şÎñÆ÷·¢ËÍÎŞ·¨Ê¶±ğµÄ´íÎó"
+                                  "´úÂë %d", (int)data[1]);
             break;
         }
         crStopV;
