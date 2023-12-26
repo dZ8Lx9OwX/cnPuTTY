@@ -1194,16 +1194,8 @@ SeatPromptResult win_seat_confirm_weak_cached_hostkey(
     Seat *seat, SeatDialogText *text,
     void (*callback)(void *ctx, SeatPromptResult result), void *ctx)
 {
-    static const char mbtitle[] = "cn%s 安全警报";
-    static const char msg[] =
-        "我们为此服务器存储的第一个主机密钥类型\n"
-        "是%s，低于配置的警告阀值。\n"
-        "服务器还提供一下类型的主机密钥\n"
-        "超过阀值，我们没有存储：\n"
-        "%s\n"
-        "您想继续这个连接吗？？？\n";
-    char *message, *title;
-    int mbret;
+    strbuf *dlg_text = strbuf_new();
+    const char *dlg_title = process_seatdialogtext(dlg_text, NULL, text);
 
     int mbret = MessageBox(NULL, dlg_text->s, dlg_title,
                            MB_ICONWARNING | MB_YESNO | MB_DEFBUTTON2);
