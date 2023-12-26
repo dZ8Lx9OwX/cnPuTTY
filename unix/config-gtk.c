@@ -85,30 +85,30 @@ void gtk_setup_config_box(struct controlbox *b, bool midsession, void *win)
             break;
         }
     }
-    ctrl_settitle(b, "窗口/字体", "控制字体用法的选项");
+    ctrl_settitle(b, "窗口/字体", "字体设置");
     s = ctrl_getset(b, "窗口/字体", "font",
                     "用于显示非粗体文本的字体：");
-    ctrl_fontsel(s, "用于普通文本的字体", 'f',
+    ctrl_fontsel(s, "普通文本的字体", 'f',
                  HELPCTX(no_help),
                  conf_fontsel_handler, I(CONF_font));
-    ctrl_fontsel(s, "用于宽文本(CJK)的字体", 'w',
+    ctrl_fontsel(s, "宽文本(CJK)的字体", 'w',
                  HELPCTX(no_help),
                  conf_fontsel_handler, I(CONF_widefont));
     s = ctrl_getset(b, "窗口/字体", "fontbold",
                     "用于显示粗体文本的字体：");
-    ctrl_fontsel(s, "用于粗体文本的字体", 'b',
+    ctrl_fontsel(s, "粗体普通文本的字体", 'b',
                  HELPCTX(no_help),
                  conf_fontsel_handler, I(CONF_boldfont));
-    ctrl_fontsel(s, "用于粗体宽文本的字体", 'i',
+    ctrl_fontsel(s, "粗体宽文本(CJK)的字体", 'i',
                  HELPCTX(no_help),
                  conf_fontsel_handler, I(CONF_wideboldfont));
-    ctrl_checkbox(s, "使用阴影粗体而不是粗体字体", 'u',
+    ctrl_checkbox(s, "使用阴影粗体而不是字体粗体", 'u',
                   HELPCTX(no_help),
                   conf_checkbox_handler,
                   I(CONF_shadowbold));
-    ctrl_text(s, "(请注意，仅当您未请求通过更改"
-              "文本颜色进行粗体时，才会"
-              "使用粗体或阴影粗体.)",
+    ctrl_text(s, "(请注意，仅当您未设置通过改变"
+              "文本颜色来突出粗体时，才会"
+              "使用字体粗体或阴影粗体.)",
               HELPCTX(no_help));
     ctrl_editbox(s, "阴影粗体的水平偏移量", 'z', 20,
                  HELPCTX(no_help), conf_editbox_handler,

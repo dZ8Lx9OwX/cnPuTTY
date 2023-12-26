@@ -106,7 +106,8 @@ void ssh2_bpp_new_outgoing_crypto(
     BinaryPacketProtocol *bpp,
     const ssh_cipheralg *cipher, const void *ckey, const void *iv,
     const ssh2_macalg *mac, bool etm_mode, const void *mac_key,
-    const ssh_compression_alg *compression, bool delayed_compression)
+    const ssh_compression_alg *compression, bool delayed_compression,
+    bool reset_sequence_number)
 {
     struct ssh2_bpp_state *s;
     assert(bpp->vt == &ssh2_bpp_vtable);
@@ -142,13 +143,16 @@ void ssh2_bpp_new_outgoing_crypto(
 
         bpp_logevent("已初始化 %s 出站MAC算法%s%s",
                      ssh2_mac_text_name(s->out.mac),
-                     etm_mode ? " (in ETM mode)" : "",
+                     etm_mode ? "(在ETM模式)" : "",
                      (s->out.cipher &&
                       ssh_cipher_alg(s->out.cipher)->required_mac ?
-                      " (required by cipher)" : ""));
+                      "(加密要求)" : ""));
     } else {
         s->out.mac = NULL;
     }
+
+    if (reset_sequence_number)
+        s->out.sequence = 0;
 
     if (delayed_compression && !s->seen_userauth_success) {
         s->out.pending_compression = compression;
@@ -174,7 +178,8 @@ void ssh2_bpp_new_incoming_crypto(
     BinaryPacketProtocol *bpp,
     const ssh_cipheralg *cipher, const void *ckey, const void *iv,
     const ssh2_macalg *mac, bool etm_mode, const void *mac_key,
-    const ssh_compression_alg *compression, bool delayed_compression)
+    const ssh_compression_alg *compression, bool delayed_compression,
+    bool reset_sequence_number)
 {
     struct ssh2_bpp_state *s;
     assert(bpp->vt == &ssh2_bpp_vtable);
@@ -200,10 +205,10 @@ void ssh2_bpp_new_incoming_crypto(
 
         bpp_logevent("已初始化 %s 入站MAC算法%s%s",
                      ssh2_mac_text_name(s->in.mac),
-                     etm_mode ? " (in ETM mode)" : "",
+                     etm_mode ? "(在ETM模式)" : "",
                      (s->in.cipher &&
                       ssh_cipher_alg(s->in.cipher)->required_mac ?
-                      " (required by cipher)" : ""));
+                      "(加密要求)" : ""));
     } else {
         s->in.mac = NULL;
     }
@@ -230,6 +235,9 @@ void ssh2_bpp_new_incoming_crypto(
     /* Clear the pending_newkeys flag, so that handle_input below will
      * start consuming the input data again. */
     s->pending_newkeys = false;
+
+    if (reset_sequence_number)
+        s->in.sequence = 0;
 
     /* And schedule a run of handle_input, in case there's already
      * input data in the queue. */

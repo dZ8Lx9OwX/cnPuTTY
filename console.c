@@ -9,19 +9,7 @@
 #include "misc.h"
 #include "console.h"
 
-const char weakcrypto_msg_common_fmt[] =
-    "服务器支持的第一个 %s 是\n"
-    "%s，低于设置的警告阀值。\n";
-
-const char weakhk_msg_common_fmt[] =
-    "我们为此服务器存储的第一个主机密钥类型\n"
-    "是 %s，低于配置的警告阀值。\n"
-    "服务器还提供以下类型的主机密钥\n"
-    "超过过阀值， 我们还没有存储:\n"
-    "%s\n";
-
-const char console_continue_prompt[] = "继续连接？？(y/n) ";
-const char console_abandoned_msg[] = "已放弃连接。\n";
+const char console_abandoned_msg[] = "Connection abandoned.\n";
 
 const SeatDialogPromptDescriptions *console_prompt_descriptions(Seat *seat)
 {
@@ -30,6 +18,8 @@ const SeatDialogPromptDescriptions *console_prompt_descriptions(Seat *seat)
         .hk_connect_once_action = "输入 \"n\"并回车",
         .hk_cancel_action = "确认回车",
         .hk_cancel_action_Participle = "确认回车",
+        .weak_accept_action = "输入 \"y\"",
+        .weak_cancel_action = "输入 \"n\"",
     };
     return &descs;
 }

@@ -3344,14 +3344,14 @@ static void messagebox_handler(dlgcontrol *ctrl, dlgparam *dp,
 }
 
 static const struct message_box_button button_array_yn[] = {
-    {"Yes", 'y', +1, 1},
-    {"No", 'n', -1, 0},
+    {"是(Y)", 'y', +1, 1},
+    {"否(N)", 'n', -1, 0},
 };
 const struct message_box_buttons buttons_yn = {
     button_array_yn, lenof(button_array_yn),
 };
 static const struct message_box_button button_array_ok[] = {
-    {"OK", 'o', 1, 1},
+    {"确定", 'o', 1, 1},
 };
 const struct message_box_buttons buttons_ok = {
     button_array_ok, lenof(button_array_ok),
@@ -3608,8 +3608,52 @@ const SeatDialogPromptDescriptions *gtk_seat_prompt_descriptions(Seat *seat)
         .hk_connect_once_action = "选择 \"连接一次\"",
         .hk_cancel_action = "选择 \"取消\"",
         .hk_cancel_action_Participle = "选择 \"取消\"",
+        .weak_accept_action = "选择 \"是(Y)\"",
+        .weak_cancel_action = "选择 \"否(N)\"",
     };
     return &descs;
+}
+
+/*
+ * Format a SeatDialogText into a strbuf, also adjusting the box width
+ * to cope with displayed text. Returns the dialog box title.
+ */
+static const char *gtk_format_seatdialogtext(
+    SeatDialogText *text, strbuf *dlg_text, int *width)
+{
+    const char *dlg_title = NULL;
+
+    for (SeatDialogTextItem *item = text->items,
+             *end = item + text->nitems; item < end; item++) {
+        switch (item->type) {
+          case SDT_PARA:
+            put_fmt(dlg_text, "%s\n\n", item->text);
+            break;
+          case SDT_DISPLAY: {
+            put_fmt(dlg_text, "%s\n\n", item->text);
+            int thiswidth = string_width(item->text);
+            if (*width < thiswidth)
+                *width = thiswidth;
+            break;
+          }
+          case SDT_SCARY_HEADING:
+            /* Can't change font size or weight in this context */
+            put_fmt(dlg_text, "%s\n\n", item->text);
+            break;
+          case SDT_TITLE:
+            dlg_title = item->text;
+            break;
+          default:
+            break;
+        }
+    }
+
+    /*
+     * Trim trailing newlines.
+     */
+    while (strbuf_chomp(dlg_text, '\n'));
+
+    return dlg_title;
 }
 
 SeatPromptResult gtk_seat_confirm_ssh_host_key(
@@ -3626,35 +3670,9 @@ SeatPromptResult gtk_seat_confirm_ssh_host_key(
         button_array_hostkey, lenof(button_array_hostkey),
     };
 
-    const char *dlg_title = NULL;
-    strbuf *dlg_text = strbuf_new();
     int width = string_width("default dialog width determination string");
-
-    for (SeatDialogTextItem *item = text->items,
-             *end = item + text->nitems; item < end; item++) {
-        switch (item->type) {
-          case SDT_PARA:
-            put_fmt(dlg_text, "%s\n\n", item->text);
-            break;
-          case SDT_DISPLAY: {
-            put_fmt(dlg_text, "%s\n\n", item->text);
-            int thiswidth = string_width(item->text);
-            if (width < thiswidth)
-                width = thiswidth;
-            break;
-          }
-          case SDT_SCARY_HEADING:
-            /* Can't change font size or weight in this context */
-            put_fmt(dlg_text, "%s\n\n", item->text);
-            break;
-          case SDT_TITLE:
-            dlg_title = item->text;
-            break;
-          default:
-            break;
-        }
-    }
-    while (strbuf_chomp(dlg_text, '\n'));
+    strbuf *dlg_text = strbuf_new();
+    const char *dlg_title = gtk_format_seatdialogtext(text, dlg_text, &width);
 
     GtkWidget *mainwin, *msgbox;
 
@@ -3751,19 +3769,16 @@ static void simple_prompt_result_spr_callback(void *vctx, int result)
  * below the configured 'warn' threshold).
  */
 SeatPromptResult gtk_seat_confirm_weak_crypto_primitive(
-    Seat *seat, const char *algtype, const char *algname,
+    Seat *seat, SeatDialogText *text,
     void (*callback)(void *ctx, SeatPromptResult result), void *ctx)
 {
-    static const char msg[] =
-        "服务器支持的第一个%s是 "
-        "%s, 低于配置的警告阈值。\n"
-        "继续连接？";
-
-    char *text;
     struct simple_prompt_result_spr_ctx *result_ctx;
     GtkWidget *mainwin, *msgbox;
 
-    text = dupprintf(msg, algtype, algname);
+    int width = string_width("Reasonably long line of text "
+                             "as a width template");
+    strbuf *dlg_text = strbuf_new();
+    const char *dlg_title = gtk_format_seatdialogtext(text, dlg_text, &width);
 
     result_ctx = snew(struct simple_prompt_result_spr_ctx);
     result_ctx->callback = callback;
@@ -3773,33 +3788,26 @@ SeatPromptResult gtk_seat_confirm_weak_crypto_primitive(
 
     mainwin = GTK_WIDGET(gtk_seat_get_window(seat));
     msgbox = create_message_box(
-        mainwin, "PuTTY 安全警报", text,
-        string_width("Reasonably long line of text as a width template"),
-        false, &buttons_yn, simple_prompt_result_spr_callback, result_ctx);
+        mainwin, dlg_title, dlg_text->s, width, false,
+        &buttons_yn, simple_prompt_result_spr_callback, result_ctx);
     register_dialog(seat, result_ctx->dialog_slot, msgbox);
 
-    sfree(text);
+    strbuf_free(dlg_text);
 
     return SPR_INCOMPLETE;
 }
 
 SeatPromptResult gtk_seat_confirm_weak_cached_hostkey(
-    Seat *seat, const char *algname, const char *betteralgs,
+    Seat *seat, SeatDialogText *text,
     void (*callback)(void *ctx, SeatPromptResult result), void *ctx)
 {
-    static const char msg[] =
-        "我们为此服务器存储的第一个主机密钥类型\n"
-        "是 %s, 低于配置的警告阈值.\n"
-        "服务器还提供以下类型的主机密钥\n"
-        "高于阈值，我们没有存储：\n"
-        "%s\n"
-        "继续连接？";
-
-    char *text;
     struct simple_prompt_result_spr_ctx *result_ctx;
     GtkWidget *mainwin, *msgbox;
 
-    text = dupprintf(msg, algname, betteralgs);
+    int width = string_width("is ecdsa-nistp521, which is below the configured"
+                             " warning threshold.");
+    strbuf *dlg_text = strbuf_new();
+    const char *dlg_title = gtk_format_seatdialogtext(text, dlg_text, &width);
 
     result_ctx = snew(struct simple_prompt_result_spr_ctx);
     result_ctx->callback = callback;
@@ -3809,13 +3817,11 @@ SeatPromptResult gtk_seat_confirm_weak_cached_hostkey(
 
     mainwin = GTK_WIDGET(gtk_seat_get_window(seat));
     msgbox = create_message_box(
-        mainwin, "PuTTY 安全警报", text,
-        string_width("is ecdsa-nistp521, which is below the configured"
-                     " warning threshold."),
-        false, &buttons_yn, simple_prompt_result_spr_callback, result_ctx);
+        mainwin, dlg_title, dlg_text->s, width, false,
+        &buttons_yn, simple_prompt_result_spr_callback, result_ctx);
     register_dialog(seat, result_ctx->dialog_slot, msgbox);
 
-    sfree(text);
+    strbuf_free(dlg_text);
 
     return SPR_INCOMPLETE;
 }

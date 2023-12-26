@@ -102,19 +102,17 @@ static int block_and_read(int fd, void *buf, size_t len)
     return ret;
 }
 
-SeatPromptResult console_confirm_ssh_host_key(
-    Seat *seat, const char *host, int port, const char *keytype,
-    char *keystr, SeatDialogText *text, HelpCtx helpctx,
-    void (*callback)(void *ctx, SeatPromptResult result), void *ctx)
+/*
+ * Helper function to print the message from a SeatDialogText. Returns
+ * the final prompt to print on the input line, or NULL if a
+ * batch-mode abort is needed. In the latter case it will have printed
+ * the abort text already.
+ */
+static const char *console_print_seatdialogtext(SeatDialogText *text)
 {
-    char line[32];
-    struct termios cf;
     const char *prompt = NULL;
-
     stdio_sink errsink[1];
     stdio_sink_init(errsink, stderr);
-
-    premsg(&cf);
 
     for (SeatDialogTextItem *item = text->items,
              *end = item+text->nitems; item < end; item++) {
@@ -135,8 +133,7 @@ SeatPromptResult console_confirm_ssh_host_key(
             if (console_batch_mode) {
                 fprintf(stderr, "%s\n", item->text);
                 fflush(stderr);
-                postmsg(&cf);
-                return SPR_SW_ABORT("æ— æ³•åœ¨æ‰¹å¤„ç†æ¨¡å¼ä¸‹ç¡®è®¤ä¸»æœºå¯†é’¥");
+                return NULL;
             }
             break;
           case SDT_PROMPT:
@@ -146,11 +143,30 @@ SeatPromptResult console_confirm_ssh_host_key(
             break;
         }
     }
+
     assert(prompt); /* something in the SeatDialogText should have set this */
+    return prompt;
+}
+
+SeatPromptResult console_confirm_ssh_host_key(
+    Seat *seat, const char *host, int port, const char *keytype,
+    char *keystr, SeatDialogText *text, HelpCtx helpctx,
+    void (*callback)(void *ctx, SeatPromptResult result), void *ctx)
+{
+    char line[32];
+    struct termios cf;
+
+    premsg(&cf);
+
+    const char *prompt = console_print_seatdialogtext(text);
+    if (!prompt) {
+        postmsg(&cf);
+        return SPR_SW_ABORT("Cannot confirm a host key in batch mode");
+    }
 
     while (true) {
         fprintf(stderr,
-                "%s (y/n, è¿”å›å–æ¶ˆè¿æ¥, i äº†è§£æ›´å¤šä¿¡æ¯) ",
+                "%s (y/n, ·µ»ØÈ¡ÏûÁ¬½Ó, i ÁË½â¸ü¶àĞÅÏ¢) ",
                 prompt);
         fflush(stderr);
 
@@ -202,23 +218,22 @@ SeatPromptResult console_confirm_ssh_host_key(
 }
 
 SeatPromptResult console_confirm_weak_crypto_primitive(
-    Seat *seat, const char *algtype, const char *algname,
+    Seat *seat, SeatDialogText *text,
     void (*callback)(void *ctx, SeatPromptResult result), void *ctx)
 {
     char line[32];
     struct termios cf;
 
     premsg(&cf);
-    fprintf(stderr, weakcrypto_msg_common_fmt, algtype, algname);
 
-    if (console_batch_mode) {
-        fputs(console_abandoned_msg, stderr);
+    const char *prompt = console_print_seatdialogtext(text);
+    if (!prompt) {
         postmsg(&cf);
-        return SPR_SW_ABORT("æ— æ³•åœ¨æ‰¹å¤„ç†æ¨¡å¼ä¸‹ç¡®è®¤"
-                            "åŸå§‹çš„å¼±åŠ å¯†");
+        return SPR_SW_ABORT("ÎŞ·¨ÔÚÅú´¦ÀíÄ£Ê½ÏÂÈ·ÈÏ"
+                            "Ô­Ê¼µÄÈõ¼ÓÃÜ");
     }
 
-    fputs(console_continue_prompt, stderr);
+    fprintf(stderr, "%s (y/n) ", prompt);
     fflush(stderr);
 
     {
@@ -244,23 +259,22 @@ SeatPromptResult console_confirm_weak_crypto_primitive(
 }
 
 SeatPromptResult console_confirm_weak_cached_hostkey(
-    Seat *seat, const char *algname, const char *betteralgs,
+    Seat *seat, SeatDialogText *text,
     void (*callback)(void *ctx, SeatPromptResult result), void *ctx)
 {
     char line[32];
     struct termios cf;
 
     premsg(&cf);
-    fprintf(stderr, weakhk_msg_common_fmt, algname, betteralgs);
 
-    if (console_batch_mode) {
-        fputs(console_abandoned_msg, stderr);
+    const char *prompt = console_print_seatdialogtext(text);
+    if (!prompt) {
         postmsg(&cf);
-        return SPR_SW_ABORT("æ— æ³•åœ¨æ‰¹å¤„ç†æ¨¡å¼ä¸‹ç¡®è®¤"
-                            "ç¼“å­˜çš„ä¸»æœºå¯†é’¥");
+        return SPR_SW_ABORT("ÎŞ·¨ÔÚÅú´¦ÀíÄ£Ê½ÏÂÈ·ÈÏ"
+                            "»º´æµÄÖ÷»úÃÜÔ¿");
     }
 
-    fputs(console_continue_prompt, stderr);
+    fprintf(stderr, "%s (y/n) ", prompt);
     fflush(stderr);
 
     {
@@ -293,17 +307,17 @@ int console_askappend(LogPolicy *lp, Filename *filename,
                       void (*callback)(void *ctx, int result), void *ctx)
 {
     static const char msgtemplate[] =
-        "ä¼šè¯æ—¥å¿—æ–‡ä»¶\"%.*s\"å·²å­˜åœ¨ã€‚\n"
-        "æ‚¨å¯ä»¥ç”¨æ–°çš„ä¼šè¯æ—¥å¿—è¦†ç›–å®ƒï¼Œ\n"
-        "æˆ–è€…å°†æ–°çš„ä¼šè¯æ—¥å¿—é™„åŠ åˆ°å®ƒçš„æœ«å°¾ï¼Œ\n"
-        "æˆ–è€…ç¦æ­¢æ­¤æ¬¡ä¼šè¯çš„æ—¥å¿—è®°å½•ã€‚\n"
-        "é€‰æ‹©â€œæ˜¯â€æ“¦é™¤æ–‡ä»¶ï¼Œâ€œå¦â€è¿½åŠ åˆ°æœ«å°¾ï¼Œ\n"
-        "æˆ–è€…â€œå–æ¶ˆâ€ç¦ç”¨æ­¤æ¬¡æ—¥å¿—è®°å½•ã€‚\n"
-        "æ“¦é™¤æ—¥å¿—æ–‡ä»¶å—ï¼Ÿ(Y/N, Cancelå–æ¶ˆæ—¥å¿—)";
+        "»á»°ÈÕÖ¾ÎÄ¼ş\"%.*s\"ÒÑ´æÔÚ¡£\n"
+        "Äú¿ÉÒÔÓÃĞÂµÄ»á»°ÈÕÖ¾¸²¸ÇËü£¬\n"
+        "»òÕß½«ĞÂµÄ»á»°ÈÕÖ¾¸½¼Óµ½ËüµÄÄ©Î²£¬\n"
+        "»òÕß½ûÖ¹´Ë´Î»á»°µÄÈÕÖ¾¼ÇÂ¼¡£\n"
+        "Ñ¡Ôñ¡°ÊÇ¡±²Á³ıÎÄ¼ş£¬¡°·ñ¡±×·¼Óµ½Ä©Î²£¬\n"
+        "»òÕß¡°È¡Ïû¡±½ûÓÃ´Ë´ÎÈÕÖ¾¼ÇÂ¼¡£\n"
+        "²Á³ıÈÕÖ¾ÎÄ¼şÂğ£¿(Y/N, CancelÈ¡ÏûÈÕÖ¾)";
 
     static const char msgtemplate_batch[] =
-        "ä¼šè¯æ—¥å¿—æ–‡ä»¶\"%ã€‚*s\"å·²ç»å­˜åœ¨ã€‚\n"
-        "ä¸ä¼šå¯åŠ¨æ—¥å¿—è®°å½•ã€‚\n";
+        "»á»°ÈÕÖ¾ÎÄ¼ş\"%¡£*s\"ÒÑ¾­´æÔÚ¡£\n"
+        "²»»áÆô¶¯ÈÕÖ¾¼ÇÂ¼¡£\n";
 
     char line[32];
     struct termios cf;
@@ -392,13 +406,13 @@ bool console_has_mixed_input_stream(Seat *seat)
 void old_keyfile_warning(void)
 {
     static const char message[] =
-        "æ‚¨æ­£åœ¨åŠ è½½ä¸€ä¸ªæ—§ç‰ˆæœ¬çš„SSH-2ç§é’¥æ–‡ä»¶ã€‚\n"
-        "è¿™æ„å‘³ç€å½“å‰å¯†é’¥æ–‡ä»¶ä¸æ˜¯å®Œå…¨é˜²ç¯¡æ”¹çš„ã€‚\n"
-        "æœªæ¥ç‰ˆæœ¬çš„ç¨‹åºå¯èƒ½ä¼šåœæ­¢æ”¯æŒè¿™ç§ç§é’¥ï¼Œ\n"
-        "æ‰€æœ‰æˆ‘ä»¬å»ºè®®æ‚¨å°†å¯†é’¥è½¬æ¢ä¸ºæ–°çš„æ ¼å¼ã€‚\n"
+        "ÄúÕıÔÚ¼ÓÔØÒ»¸ö¾É°æ±¾µÄSSH-2Ë½Ô¿ÎÄ¼ş¡£\n"
+        "ÕâÒâÎ¶×Åµ±Ç°ÃÜÔ¿ÎÄ¼ş²»ÊÇÍêÈ«·À´Û¸ÄµÄ¡£\n"
+        "Î´À´°æ±¾µÄ³ÌĞò¿ÉÄÜ»áÍ£Ö¹Ö§³ÖÕâÖÖË½Ô¿£¬\n"
+        "ËùÓĞÎÒÃÇ½¨ÒéÄú½«ÃÜÔ¿×ª»»ÎªĞÂµÄ¸ñÊ½¡£\n"
         "\n"
-        "å°†å¯†é’¥åŠ è½½åˆ°PuTTYgenä¸­ï¼Œåªéœ€è¦å†æ¬¡ä¿\n"
-        "å­˜å³å¯å®Œæˆè½¬æ¢ã€‚";
+        "½«ÃÜÔ¿¼ÓÔØµ½PuTTYgenÖĞ£¬Ö»ĞèÒªÔÙ´Î±£\n"
+        "´æ¼´¿ÉÍê³É×ª»»¡£";
 
     struct termios cf;
     premsg(&cf);
@@ -479,8 +493,8 @@ SeatPromptResult console_get_userpass_input(prompts_t *p)
     }
 
     if (p->n_prompts && console_batch_mode)
-        return SPR_SW_ABORT("åœ¨æ‰¹å¤„ç†æ¨¡å¼ä¸‹æ— æ³•å›åº”"
-                            "äº¤äº’å¼æç¤º");
+        return SPR_SW_ABORT("ÔÚÅú´¦ÀíÄ£Ê½ÏÂÎŞ·¨»ØÓ¦"
+                            "½»»¥Ê½ÌáÊ¾");
 
     console_open(&outfp, &infd);
 
@@ -538,7 +552,7 @@ SeatPromptResult console_get_userpass_input(prompts_t *p)
                  * an unexpected error and reported to the user. */
                 failed = true;
                 spr = make_spr_sw_abort_errno(
-                    "ä»ç»ˆç«¯è¯»å–æ—¶å‡ºé”™", errno);
+                    "´ÓÖÕ¶Ë¶ÁÈ¡Ê±³ö´í", errno);
                 break;
             }
 

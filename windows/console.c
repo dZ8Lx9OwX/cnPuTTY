@@ -342,10 +342,7 @@ SeatPromptResult console_confirm_ssh_host_key(
     char *keystr, SeatDialogText *text, HelpCtx helpctx,
     void (*callback)(void *ctx, SeatPromptResult result), void *ctx)
 {
-    ConsoleIO *conio = conio_setup(false);
     const char *prompt = NULL;
-    SeatPromptResult result;
-
     for (SeatDialogTextItem *item = text->items,
              *end = item+text->nitems; item < end; item++) {
         switch (item->type) {
@@ -363,10 +360,9 @@ SeatPromptResult console_confirm_ssh_host_key(
             break;
           case SDT_BATCH_ABORT:
             if (console_batch_mode) {
-                put_fmt(conio, "%s\n", item->text);
-                result = SPR_SW_ABORT(
-                    "无法在批处理模式下确认主机密钥");
-                goto out;
+                fprintf(stderr, "%s\n", item->text);
+                fflush(stderr);
+                return NULL;
             }
             break;
           case SDT_PROMPT:
@@ -377,8 +373,22 @@ SeatPromptResult console_confirm_ssh_host_key(
         }
     }
     assert(prompt); /* something in the SeatDialogText should have set this */
+    return prompt;
+}
 
-    ResponseType response;
+SeatPromptResult console_confirm_ssh_host_key(
+    Seat *seat, const char *host, int port, const char *keytype,
+    char *keystr, SeatDialogText *text, HelpCtx helpctx,
+    void (*callback)(void *ctx, SeatPromptResult result), void *ctx)
+{
+    HANDLE hin;
+    DWORD savemode, i;
+
+    const char *prompt = console_print_seatdialogtext(text);
+    if (!prompt)
+        return SPR_SW_ABORT("Cannot confirm a host key in batch mode");
+
+    char line[32];
 
     while (true) {
         put_fmt(conio, "%s (y/n, 返回取消连接, i 了解更多信息) ",
@@ -422,13 +432,18 @@ SeatPromptResult console_confirm_ssh_host_key(
 }
 
 SeatPromptResult console_confirm_weak_crypto_primitive(
-    Seat *seat, const char *algtype, const char *algname,
+    Seat *seat, SeatDialogText *text,
     void (*callback)(void *ctx, SeatPromptResult result), void *ctx)
 {
     ConsoleIO *conio = conio_setup(false);
     SeatPromptResult result;
 
-    put_fmt(conio, weakcrypto_msg_common_fmt, algtype, algname);
+    const char *prompt = console_print_seatdialogtext(text);
+    if (!prompt)
+        return SPR_SW_ABORT("无法在批处理模式下确认"
+                            "原始的弱加密");
+
+    char line[32];
 
     if (console_batch_mode) {
         put_dataz(conio, console_abandoned_msg);
@@ -454,7 +469,7 @@ SeatPromptResult console_confirm_weak_crypto_primitive(
 }
 
 SeatPromptResult console_confirm_weak_cached_hostkey(
-    Seat *seat, const char *algname, const char *betteralgs,
+    Seat *seat, SeatDialogText *text,
     void (*callback)(void *ctx, SeatPromptResult result), void *ctx)
 {
     ConsoleIO *conio = conio_setup(false);
@@ -467,7 +482,6 @@ SeatPromptResult console_confirm_weak_cached_hostkey(
         result = SPR_SW_ABORT("无法在批处理模式下确认"
                               "缓存的主机密钥");
         goto out;
-    }
 
     put_dataz(conio, console_continue_prompt);
 

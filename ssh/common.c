@@ -1085,6 +1085,110 @@ SeatPromptResult verify_ssh_host_key(
     return toret;
 }
 
+SeatPromptResult confirm_weak_crypto_primitive(
+    InteractionReadySeat iseat, const char *algtype, const char *algname,
+    void (*callback)(void *ctx, SeatPromptResult result), void *ctx,
+    WeakCryptoReason wcr)
+{
+    SeatDialogText *text = seat_dialog_text_new();
+    const SeatDialogPromptDescriptions *pds =
+        seat_prompt_descriptions(iseat.seat);
+
+    seat_dialog_text_append(text, SDT_TITLE, "cn%s 安全报警！！！", appname);
+
+    switch (wcr) {
+      case WCR_BELOW_THRESHOLD:
+        seat_dialog_text_append(
+            text, SDT_PARA,
+            "服务器支持的第一个%s是 %s，"
+            "它低于配置的警告阈值。",
+            algtype, algname);
+        break;
+      case WCR_TERRAPIN:
+      case WCR_TERRAPIN_AVOIDABLE:
+        seat_dialog_text_append(
+            text, SDT_PARA,
+            "为此会话选择的 %s是 %s，"
+            "在使用此服务器容时易受到'Terrapin'攻击"
+            "(别名CVE-2023-48795)，可能允许攻击者"
+            "修改加密会话。",
+            algtype, algname);
+        seat_dialog_text_append(
+            text, SDT_PARA,
+            "如果可能的话，建议升级、修补或重新配置"
+            "此SSH服务器是避免此漏洞的最佳方法。");
+        if (wcr == WCR_TERRAPIN_AVOIDABLE) {
+            seat_dialog_text_append(
+                text, SDT_PARA,
+                "您还可以通过放弃本次连接，"
+                "然后在cnPuTTY的SSH加密"
+                "设置中，将加密策略ChaCha20 移动到"
+                "'-- 以下为警告选项 --'行下方"
+                "(以便选择不受该漏洞影响的加密算法)，"
+                "并启动新连接来避免此漏洞。");
+        }
+        break;
+      default:
+        unreachable("严重的弱加密原因");
+    }
+
+    /* In batch mode, we print the above information and then this
+     * abort message, and stop. */
+    seat_dialog_text_append(text, SDT_BATCH_ABORT, "连接已放弃。");
+
+    seat_dialog_text_append(
+        text, SDT_PARA, "接受风险并继续, %s。"
+        "放弃连接, %s。",
+        pds->weak_accept_action, pds->weak_cancel_action);
+
+    seat_dialog_text_append(text, SDT_PROMPT, "确定继续连接？");
+
+    SeatPromptResult toret = seat_confirm_weak_crypto_primitive(
+        iseat, text, callback, ctx);
+    seat_dialog_text_free(text);
+    return toret;
+}
+
+SeatPromptResult confirm_weak_cached_hostkey(
+    InteractionReadySeat iseat, const char *algname, const char **betteralgs,
+    void (*callback)(void *ctx, SeatPromptResult result), void *ctx)
+{
+    SeatDialogText *text = seat_dialog_text_new();
+    const SeatDialogPromptDescriptions *pds =
+        seat_prompt_descriptions(iseat.seat);
+
+    seat_dialog_text_append(text, SDT_TITLE, "cn%s 安全报警！！！", appname);
+
+    seat_dialog_text_append(
+        text, SDT_PARA,
+        "我们为此服务器存储的第一个主机密钥"
+        "类型是%s，它低于配置的警告阈值。", algname);
+
+    seat_dialog_text_append(
+        text, SDT_PARA,
+        "服务器还提供以下类型的主机密钥，这些密钥"
+        "高于阈值，我们没有存储这些密钥：");
+
+    for (const char **p = betteralgs; *p; p++)
+        seat_dialog_text_append(text, SDT_DISPLAY, "%s", *p);
+
+    /* In batch mode, we print the above information and then this
+     * abort message, and stop. */
+    seat_dialog_text_append(text, SDT_BATCH_ABORT, "连接已放弃。");
+
+    seat_dialog_text_append(
+        text, SDT_PARA, "接受风险并继续，%s。"
+        "放弃连接, %s。",
+        pds->weak_accept_action, pds->weak_cancel_action);
+
+    seat_dialog_text_append(text, SDT_PROMPT, "确定继续连接？");
+
+    SeatPromptResult toret = seat_confirm_weak_cached_hostkey(
+        iseat, text, callback, ctx);
+    seat_dialog_text_free(text);
+    return toret;
+}
+
 /* ----------------------------------------------------------------------
  * Common functions shared between SSH-1 layers.
  */

@@ -175,7 +175,8 @@ static void ssh1_login_server_process_queue(PacketProtocolLayer *ppl)
 
     crMaybeWaitUntilV((pktin = ssh1_login_server_pop(s)) != NULL);
     if (pktin->type != SSH1_CMSG_SESSION_KEY) {
-        ssh_proto_error(s->ppl.ssh, "回复公钥初始化数据包时，收到意外数据包，类型：%d (%s)",
+        ssh_proto_error(s->ppl.ssh, "回复公钥初始化数据包时，"
+                        "收到意外数据包，类型：%d (%s)",
                         pktin->type, ssh1_pkt_type(pktin->type));
         return;
     }
