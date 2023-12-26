@@ -162,7 +162,7 @@ static int sshproxy_askappend(LogPolicy *lp, Filename *filename,
     /*
      * Otherwise, fall back to the safe noninteractive assumption.
      */
-    char *msg = dupprintf("Log file \"%s\" already exists; logging cancelled",
+    char *msg = dupprintf("日志文件\"%s\"已经存在；记录已取消",
                           filename_to_str(filename));
     sshproxy_eventlog(lp, msg);
     sfree(msg);
@@ -186,7 +186,7 @@ static void sshproxy_logging_error(LogPolicy *lp, const char *event)
      * Otherwise, the best we can do is to put it in the outer SSH
      * connection's Event Log.
      */
-    char *msg = dupprintf("Logging error: %s", event);
+    char *msg = dupprintf("记录错误：%s", event);
     sshproxy_eventlog(lp, msg);
     sfree(msg);
 }
@@ -383,10 +383,10 @@ static SeatPromptResult sshproxy_get_userpass_input(Seat *seat, prompts_t *p)
      * reject all attempts to present a prompt to the user, and log in
      * the Event Log to say why not.
      */
-    sshproxy_error(sp, "Unable to provide interactive authentication "
-                   "requested by proxy SSH connection");
-    return SPR_SW_ABORT("Noninteractive SSH proxy cannot perform "
-                        "interactive authentication");
+    sshproxy_error(sp, "代理SSH连接请求"
+                  "无法提供交互式身份验证");
+    return SPR_SW_ABORT("非交互式SSH代理无法执行"
+                        "交互式身份验证");
 }
 
 static void sshproxy_connection_fatal_callback(void *vctx)
@@ -400,7 +400,7 @@ static void sshproxy_connection_fatal(Seat *seat, const char *message)
     SshProxy *sp = container_of(seat, SshProxy, seat);
     if (!sp->errmsg) {
         sp->errmsg = dupprintf(
-            "fatal error in proxy SSH connection: %s", message);
+            "代理SSH连接中的致命错误：%s", message);
         queue_toplevel_callback(sshproxy_connection_fatal_callback, sp);
     }
 }
@@ -427,7 +427,7 @@ static SeatPromptResult sshproxy_confirm_ssh_host_key(
      * option in the absence of interactive confirmation, i.e. abort
      * the connection.
      */
-    return SPR_SW_ABORT("Noninteractive SSH proxy cannot confirm host key");
+    return SPR_SW_ABORT("非交互式SSH代理无法确认主机密钥");
 }
 
 static void sshproxy_format_seatdialogtext(strbuf *sb, SeatDialogText *text)
@@ -478,8 +478,8 @@ static SeatPromptResult sshproxy_confirm_weak_crypto_primitive(
     sshproxy_error(sp, sb->s);
     strbuf_free(sb);
 
-    return SPR_SW_ABORT("Noninteractive SSH proxy cannot confirm "
-                        "weak crypto primitive");
+    return SPR_SW_ABORT("非交互式SSH代理无法确认"
+                        "弱加密原语");
 }
 
 static SeatPromptResult sshproxy_confirm_weak_cached_hostkey(
@@ -506,8 +506,8 @@ static SeatPromptResult sshproxy_confirm_weak_cached_hostkey(
     sshproxy_error(sp, sb->s);
     strbuf_free(sb);
 
-    return SPR_SW_ABORT("Noninteractive SSH proxy cannot confirm "
-                        "weak cached host key");
+    return SPR_SW_ABORT("非交互式SSH代理无法确认"
+                        "弱缓存主机密钥");
 }
 
 static const SeatDialogPromptDescriptions *sshproxy_prompt_descriptions(
@@ -616,7 +616,7 @@ Socket *sshproxy_new_connection(SockAddr *addr, const char *hostname,
     const char *proxy_hostname = conf_get_str(clientconf, CONF_proxy_host);
     if (do_defaults(proxy_hostname, sp->conf)) {
         if (!conf_launchable(sp->conf)) {
-            sp->errmsg = dupprintf("saved session '%s' is not launchable",
+            sp->errmsg = dupprintf("保存的会话'%s' 无法启动",
                                    proxy_hostname);
             return &sp->sock;
         }
@@ -651,8 +651,8 @@ Socket *sshproxy_new_connection(SockAddr *addr, const char *hostname,
      * our check is for whether the backend sets the flag promising
      * that it does.
      */
-    if (!backvt || !(backvt->flags & BACKEND_SUPPORTS_NC_HOST)) {
-        sp->errmsg = dupprintf("saved session '%s' is not an SSH session",
+    if (!(backvt->flags & BACKEND_SUPPORTS_NC_HOST)) {
+        sp->errmsg = dupprintf("保存的会话'%s' 不是SSH会话",
                                proxy_hostname);
         return &sp->sock;
     }
@@ -744,7 +744,7 @@ Socket *sshproxy_new_connection(SockAddr *addr, const char *hostname,
                          &realhost, nodelay,
                          conf_get_bool(sp->conf, CONF_tcp_keepalives));
     if (error) {
-        sp->errmsg = dupprintf("unable to open SSH proxy connection: %s",
+        sp->errmsg = dupprintf("无法打开SSH代理连接：%s",
                                error);
         return &sp->sock;
     }

@@ -112,7 +112,7 @@ static const char *telopt(int opt)
     switch (opt) {
         TELOPTS(telnet_str)
       default:
-        return "<unknown>";
+        return "<未知>";
     }
 #undef telnet_str
 }
@@ -220,7 +220,7 @@ static void log_option(Telnet *telnet, const char *sender, int cmd, int option)
      * trigraph - a double question mark followed by > maps to a
      * closing brace character!
      */
-    logeventf(telnet->logctx, "%s negotiation: %s %s", sender,
+    logeventf(telnet->logctx, "%s 协商：%s %s", sender,
               (cmd == WILL ? "WILL" : cmd == WONT ? "WONT" :
                cmd == DO ? "DO" : cmd == DONT ? "DONT" : "<?""?>"),
               telopt(option));
@@ -234,7 +234,7 @@ static void send_opt(Telnet *telnet, int cmd, int option)
     b[1] = cmd;
     b[2] = option;
     telnet->bufsize = sk_write(telnet->s, b, 3);
-    log_option(telnet, "client", cmd, option);
+    log_option(telnet, "客户端", cmd, option);
 }
 
 static void deactivate_option(Telnet *telnet, const struct Opt *o)
@@ -308,7 +308,7 @@ static void proc_rec_opt(Telnet *telnet, int cmd, int option)
 {
     const struct Opt *const *o;
 
-    log_option(telnet, "server", cmd, option);
+    log_option(telnet, "服务器", cmd, option);
     for (o = opts; *o; o++) {
         if ((*o)->option == option && (*o)->ack == cmd) {
             switch (telnet->opt_states[(*o)->index]) {
@@ -376,13 +376,13 @@ static void process_subneg(Telnet *telnet)
             b[n] = IAC;
             b[n + 1] = SE;
             telnet->bufsize = sk_write(telnet->s, b, n + 2);
-            logevent(telnet->logctx, "server subnegotiation: SB TSPEED SEND");
+            logevent(telnet->logctx, "服务器 子协商: SB TSPEED SEND");
             logeventf(telnet->logctx,
-                      "client subnegotiation: SB TSPEED IS %s", termspeed);
+                      "客户端 子协商: SB TSPEED IS %s", termspeed);
             sfree(b);
         } else
             logevent(telnet->logctx,
-                     "server subnegotiation: SB TSPEED <something weird>");
+                     "服务器 子协商: SB TSPEED <something weird>");
         break;
       case TELOPT_TTYPE:
         if (telnet->sb_buf->len == 1 && telnet->sb_buf->u[0] == TELQUAL_SEND) {
@@ -401,13 +401,13 @@ static void process_subneg(Telnet *telnet)
             telnet->bufsize = sk_write(telnet->s, b, n + 6);
             b[n + 4] = 0;
             logevent(telnet->logctx,
-                     "server subnegotiation: SB TTYPE SEND");
+                     "服务器 子协商: SB TTYPE SEND");
             logeventf(telnet->logctx,
-                      "client subnegotiation: SB TTYPE IS %s", b + 4);
+                      "客户端 子协商: SB TTYPE IS %s", b + 4);
             sfree(b);
         } else
             logevent(telnet->logctx,
-                     "server subnegotiation: SB TTYPE <something weird>\r\n");
+                     "服务器 子协商: SB TTYPE <something weird>\r\n");
         break;
       case TELOPT_OLD_ENVIRON:
       case TELOPT_NEW_ENVIRON:
@@ -415,7 +415,7 @@ static void process_subneg(Telnet *telnet)
         q = p + telnet->sb_buf->len;
         if (p < q && *p == TELQUAL_SEND) {
             p++;
-            logeventf(telnet->logctx, "server subnegotiation: SB %s SEND",
+            logeventf(telnet->logctx, "服务器 子协商: SB %s SEND",
                       telopt(telnet->sb_opt));
             if (telnet->sb_opt == TELOPT_OLD_ENVIRON) {
                 if (conf_get_bool(telnet->conf, CONF_rfc_environ)) {
@@ -490,10 +490,10 @@ static void process_subneg(Telnet *telnet)
             telnet->bufsize = sk_write(telnet->s, b, n);
             if (n == 6) {
                 logeventf(telnet->logctx,
-                          "client subnegotiation: SB %s IS <nothing>",
+                          "客户端 子协商: SB %s IS <nothing>",
                           telopt(telnet->sb_opt));
             } else {
-                logeventf(telnet->logctx, "client subnegotiation: SB %s IS:",
+                logeventf(telnet->logctx, "客户端 子协商: SB %s IS:",
                           telopt(telnet->sb_opt));
                 for (eval = conf_get_str_strs(telnet->conf, CONF_environmt,
                                               NULL, &ekey);
@@ -764,7 +764,7 @@ static char *telnet_init(const BackendVtable *vt, Seat *seat,
      */
     addressfamily = conf_get_int(telnet->conf, CONF_addressfamily);
     addr = name_lookup(host, port, realhost, telnet->conf, addressfamily,
-                       telnet->logctx, "Telnet connection");
+                       telnet->logctx, "Telnet连接");
     if ((err = sk_addr_error(addr)) != NULL) {
         sk_addr_free(addr);
         return dupstr(err);
@@ -933,7 +933,7 @@ static void telnet_size(Backend *be, int width, int height)
     b[n++] = IAC;
     b[n++] = SE;
     telnet->bufsize = sk_write(telnet->s, b, n);
-    logeventf(telnet->logctx, "client subnegotiation: SB NAWS %d,%d",
+    logeventf(telnet->logctx, "客户端 子协商: SB NAWS %d,%d",
               telnet->term_width, telnet->term_height);
 }
 
@@ -1025,21 +1025,21 @@ static void telnet_special(Backend *be, SessionSpecialCode code, int arg)
 static const SessionSpecial *telnet_get_specials(Backend *be)
 {
     static const SessionSpecial specials[] = {
-        {"Are You There", SS_AYT},
-        {"Break", SS_BRK},
-        {"Synch", SS_SYNCH},
-        {"Erase Character", SS_EC},
-        {"Erase Line", SS_EL},
-        {"Go Ahead", SS_GA},
-        {"No Operation", SS_NOP},
+        {"在线吗？", SS_AYT},
+        {"中断", SS_BRK},
+        {"同步", SS_SYNCH},
+        {"删除字符", SS_EC},
+        {"删除行", SS_EL},
+        {"前进", SS_GA},
+        {"无操作", SS_NOP},
         {NULL, SS_SEP},
-        {"Abort Process", SS_ABORT},
-        {"Abort Output", SS_AO},
-        {"Interrupt Process", SS_IP},
-        {"Suspend Process", SS_SUSP},
+        {"中止过程", SS_ABORT},
+        {"中止输出", SS_AO},
+        {"中断进程", SS_IP},
+        {"暂停进程", SS_SUSP},
         {NULL, SS_SEP},
-        {"End Of Record", SS_EOR},
-        {"End Of File", SS_EOF},
+        {"记录结束", SS_EOR},
+        {"文件结束", SS_EOF},
         {NULL, SS_EXITMENU}
     };
     return specials;
