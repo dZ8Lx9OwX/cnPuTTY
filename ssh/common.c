@@ -1109,7 +1109,7 @@ SeatPromptResult confirm_weak_crypto_primitive(
         seat_dialog_text_append(
             text, SDT_PARA,
             "为此会话选择的 %s是 %s，"
-            "在使用此服务器容时易受到'Terrapin'攻击"
+            "在使用此服务器时容易受到'Terrapin'攻击"
             "(别名CVE-2023-48795)，可能允许攻击者"
             "修改加密会话。",
             algtype, algname);

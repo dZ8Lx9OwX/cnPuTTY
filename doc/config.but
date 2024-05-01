@@ -1,2545 +1,2545 @@
-\C{config} ÅäÖÃ PuTTY
+\C{config} é…ç½® PuTTY
 
-±¾ÕÂ½éÉÜ PuTTY ÖÐµÄËùÓÐÅäÖÃÑ¡Ïî¡£ \i{configuration options}
+æœ¬ç« ä»‹ç» PuTTY ä¸­çš„æ‰€æœ‰é…ç½®é€‰é¡¹ã€‚ \i{configuration options}
 
-PuTTY Ê¹ÓÃÔÚÄú¿ªÊ¼»á»°Ö®Ç°³öÏÖµÄ¿ØÖÆÃæ°å½øÐÐÅäÖÃ¡£
-Í¨¹ý´Ó´°¿Ú²Ëµ¥ÖÐÑ¡Ôñ\q{¸ü¸ÄÉèÖÃ}£¬
-Ò²¿ÉÒÔÔÚ»á»°ÖÐ¼ä¸ü¸ÄÄ³Ð©Ñ¡Ïî¡£
+PuTTY ä½¿ç”¨åœ¨æ‚¨å¼€å§‹ä¼šè¯ä¹‹å‰å‡ºçŽ°çš„æŽ§åˆ¶é¢æ¿è¿›è¡Œé…ç½®ã€‚
+é€šè¿‡ä»Žçª—å£èœå•ä¸­é€‰æ‹©\q{æ›´æ”¹è®¾ç½®}ï¼Œ
+ä¹Ÿå¯ä»¥åœ¨ä¼šè¯ä¸­é—´æ›´æ”¹æŸäº›é€‰é¡¹ã€‚
 
-\H{config-session} »á»°Ãæ°å
+\H{config-session} ä¼šè¯é¢æ¿
 
-»á»°ÅäÖÃÃæ°å°üº¬ÄúÐèÒªÖ¸¶¨ÒÔ±ãÍê
-È«´ò¿ª»á»°µÄ»ù±¾Ñ¡Ïî£¬
-»¹ÔÊÐíÄú±£´æÉèÖÃÒÔ¹©ÒÔºóÖØÐÂ¼ÓÔØ¡£
+ä¼šè¯é…ç½®é¢æ¿åŒ…å«æ‚¨éœ€è¦æŒ‡å®šä»¥ä¾¿å®Œ
+å…¨æ‰“å¼€ä¼šè¯çš„åŸºæœ¬é€‰é¡¹ï¼Œ
+è¿˜å…è®¸æ‚¨ä¿å­˜è®¾ç½®ä»¥ä¾›ä»¥åŽé‡æ–°åŠ è½½ã€‚
 
-\S{config-hostname}\i{Ö÷»úÃû}
+\S{config-hostname}\i{ä¸»æœºå}
 
-»á»°Ãæ°åÉÏµÄ¶¥²¿¿ò£¬±êÓÐ\q{Ö¸¶¨ÒªÁ¬½ÓµÄÄ¿µÄµØÖ·}£¬
-°üº¬ÔÚ PuTTYÍêÈ«¿ÉÒÔ´ò¿ª»á»°Ö®
-Ç°ÐèÒªÌîÐ´µÄÏêÏ¸ÐÅÏ¢¡£
+ä¼šè¯é¢æ¿ä¸Šçš„é¡¶éƒ¨æ¡†ï¼Œæ ‡æœ‰\q{æŒ‡å®šè¦è¿žæŽ¥çš„ç›®çš„åœ°å€}ï¼Œ
+åŒ…å«åœ¨ PuTTYå®Œå…¨å¯ä»¥æ‰“å¼€ä¼šè¯ä¹‹
+å‰éœ€è¦å¡«å†™çš„è¯¦ç»†ä¿¡æ¯ã€‚
 
-\b \q{Ö÷»úÃû} ¿òÊÇÄúÊäÈëÒªÁ¬½ÓµÄ
-·þÎñÆ÷µÄÃû³Æ»ò \i{IPµØÖ·}µÄµØ·½¡£
+\b \q{ä¸»æœºå} æ¡†æ˜¯æ‚¨è¾“å…¥è¦è¿žæŽ¥çš„
+æœåŠ¡å™¨çš„åç§°æˆ– \i{IPåœ°å€}çš„åœ°æ–¹ã€‚
 
-\b \q{Á¬½ÓÀàÐÍ} ¿Ø¼þ¿ÉÈÃÄúÑ¡ÔñÒª½¨Á¢
-µÄÁ¬½ÓÀàÐÍ£º\i{SSH}
-ÍøÂçÁ¬½Ó¡¢Óë\i{serial line}µÄ
-Á¬½Ó»ò¸÷ÖÖÆäËûÀàÐÍµÄÍøÂçÁ¬½Ó¡£
+\b \q{è¿žæŽ¥ç±»åž‹} æŽ§ä»¶å¯è®©æ‚¨é€‰æ‹©è¦å»ºç«‹
+çš„è¿žæŽ¥ç±»åž‹ï¼š\i{SSH}
+ç½‘ç»œè¿žæŽ¥ã€ä¸Ž\i{serial line}çš„
+è¿žæŽ¥æˆ–å„ç§å…¶ä»–ç±»åž‹çš„ç½‘ç»œè¿žæŽ¥ã€‚
 
 \lcont{
 
-\b ²é¿´ \k{which-one} ÓÐ¹ØÍøÂç
-Ô¶³ÌµÇÂ¼Ð­Òé SSH¡¢Telnet¡¢Rlogin
-ºÍ SUPDUP Ö®¼ä²îÒìµÄÕªÒª¡£
+\b æŸ¥çœ‹ \k{which-one} æœ‰å…³ç½‘ç»œ
+è¿œç¨‹ç™»å½•åè®® SSHã€Telnetã€Rlogin
+å’Œ SUPDUP ä¹‹é—´å·®å¼‚çš„æ‘˜è¦ã€‚
 
-\b ²é¿´ \k{using-serial} ÓÐ¹ØÊ¹ÓÃ´®¿ÚµÄÐÅÏ¢¡£
+\b æŸ¥çœ‹ \k{using-serial} æœ‰å…³ä½¿ç”¨ä¸²å£çš„ä¿¡æ¯ã€‚
 
-\b ²é¿´ \k{using-rawprot} ÓÐ¹Ø \q{raw}
-Á¬½ÓµÄ½âÊÍ¡£
+\b æŸ¥çœ‹ \k{using-rawprot} æœ‰å…³ \q{raw}
+è¿žæŽ¥çš„è§£é‡Šã€‚
 
-\b ²é¿´ \k{using-telnet} ÓÐ¹Ø Telnet µÄÒ»Ð©ÐÅÏ¢¡£
+\b æŸ¥çœ‹ \k{using-telnet} æœ‰å…³ Telnet çš„ä¸€äº›ä¿¡æ¯ã€‚
 
-\b ²é¿´ \k{using-rlogin} ÓÐ¹ØÊ¹ÓÃ Rlogin µÄÐÅÏ¢¡£
+\b æŸ¥çœ‹ \k{using-rlogin} æœ‰å…³ä½¿ç”¨ Rlogin çš„ä¿¡æ¯ã€‚
 
-\b ²é¿´ \k{using-supdup} ÓÐ¹ØÊ¹ÓÃ SUPDUP µÄÐÅÏ¢¡£
+\b æŸ¥çœ‹ \k{using-supdup} æœ‰å…³ä½¿ç”¨ SUPDUP çš„ä¿¡æ¯ã€‚
 
-\b \q{Á¬½ÓÀàÐÍ}ÖÐµÄ\q{Bare ssh-connection}
-Ñ¡ÏîÊÊÓÃÓÚ²»Éæ¼°ÍøÂçÁ¬½ÓµÄ×¨ÒµÓÃÍ¾¡£
-Çë²ÎÔÄ \k{config-psusan} ÓÐ¹ØËüµÄÒ»Ð©ÐÅÏ¢¡£
+\b \q{è¿žæŽ¥ç±»åž‹}ä¸­çš„\q{Bare ssh-connection}
+é€‰é¡¹é€‚ç”¨äºŽä¸æ¶‰åŠç½‘ç»œè¿žæŽ¥çš„ä¸“ä¸šç”¨é€”ã€‚
+è¯·å‚é˜… \k{config-psusan} æœ‰å…³å®ƒçš„ä¸€äº›ä¿¡æ¯ã€‚
 
 }
 
-\b \q{¶Ë¿Ú}¿ò¿ÉÈÃÄúÖ¸¶¨·þÎñÆ÷ÉÏÒªÁ¬½ÓµÄ\i{¶Ë¿ÚºÅ}¡£
-Èç¹ûÄúÑ¡Ôñ Telnet¡¢Rlogin¡¢SUPDUP »ò SSH£¬
-´Ë¿ò½«×Ô¶¯ÌîÐ´ÎªÍ¨³£µÄÖµ£¬
-ÄúÖ»ÐèÔÚ·þÎñÆ÷Òì³£Ê±½øÐÐ¸ü¸Ä¡£
-Èç¹ûÄúÑ¡Ôñ Raw Ä£Ê½£¬
-Äú¼¸ºõ¿Ï¶¨ÐèÒª×Ô¼ºÌîÐ´\q{¶Ë¿Ú}¿ò¡£
+\b \q{ç«¯å£}æ¡†å¯è®©æ‚¨æŒ‡å®šæœåŠ¡å™¨ä¸Šè¦è¿žæŽ¥çš„\i{ç«¯å£å·}ã€‚
+å¦‚æžœæ‚¨é€‰æ‹© Telnetã€Rloginã€SUPDUP æˆ– SSHï¼Œ
+æ­¤æ¡†å°†è‡ªåŠ¨å¡«å†™ä¸ºé€šå¸¸çš„å€¼ï¼Œ
+æ‚¨åªéœ€åœ¨æœåŠ¡å™¨å¼‚å¸¸æ—¶è¿›è¡Œæ›´æ”¹ã€‚
+å¦‚æžœæ‚¨é€‰æ‹© Raw æ¨¡å¼ï¼Œ
+æ‚¨å‡ ä¹Žè‚¯å®šéœ€è¦è‡ªå·±å¡«å†™\q{ç«¯å£}æ¡†ã€‚
 
-Èç¹ûÄú´Ó\q{Á¬½ÓÀàÐÍ}µ¥Ñ¡°´Å¥ÖÐÑ¡Ôñ\q{´®¿Ú}£¬
-Ôò\q{Ö÷»úÃû} ºÍ\q{¶Ë¿Ú}¿ò½«±»\q{´®ÐÐÏß}ºÍ\q{²¨ÌØÂÊ}Ìæ»»£»
-ÓÐ¹ØÕâÐ©µÄ¸ü¶àÏêÏ¸ÐÅÏ¢£¬Çë²ÎÔÄ \k{config-serial} ¡£
+å¦‚æžœæ‚¨ä»Ž\q{è¿žæŽ¥ç±»åž‹}å•é€‰æŒ‰é’®ä¸­é€‰æ‹©\q{ä¸²å£}ï¼Œ
+åˆ™\q{ä¸»æœºå} å’Œ\q{ç«¯å£}æ¡†å°†è¢«\q{ä¸²è¡Œçº¿}å’Œ\q{æ³¢ç‰¹çŽ‡}æ›¿æ¢ï¼›
+æœ‰å…³è¿™äº›çš„æ›´å¤šè¯¦ç»†ä¿¡æ¯ï¼Œè¯·å‚é˜… \k{config-serial} ã€‚
 
-\S{config-saving} \ii{¼ÓÔØºÍ´æ´¢±£´æµÄ»á»°}
+\S{config-saving} \ii{åŠ è½½å’Œå­˜å‚¨ä¿å­˜çš„ä¼šè¯}
 
-»á»°ÅäÖÃÃæ°åµÄÏÂÒ»²¿·ÖÔÊÐíÄú±£´æÊ×Ñ¡µÄ PuTTY Ñ¡Ïî£¬
-ÒÔ±ãÏÂ´ÎÆô¶¯ PuTTY Ê±ËüÃÇ»á×Ô¶¯³öÏÖ¡£
-Ëü»¹ÔÊÐíÄú´´½¨±£´æµÄ»á»°£¬ÆäÖÐ°üº¬È«Ì×
-ÅäÖÃÑ¡ÏîÒÔ¼°Ö÷»úÃûºÍÐ­Òé¡£
-±£´æµÄ»á»°°üº¬ PuTTY Æô¶¯ËùÐè»á»°
-ËùÐèµÄËùÓÐÐÅÏ¢¡£
+ä¼šè¯é…ç½®é¢æ¿çš„ä¸‹ä¸€éƒ¨åˆ†å…è®¸æ‚¨ä¿å­˜é¦–é€‰çš„ PuTTY é€‰é¡¹ï¼Œ
+ä»¥ä¾¿ä¸‹æ¬¡å¯åŠ¨ PuTTY æ—¶å®ƒä»¬ä¼šè‡ªåŠ¨å‡ºçŽ°ã€‚
+å®ƒè¿˜å…è®¸æ‚¨åˆ›å»ºä¿å­˜çš„ä¼šè¯ï¼Œå…¶ä¸­åŒ…å«å…¨å¥—
+é…ç½®é€‰é¡¹ä»¥åŠä¸»æœºåå’Œåè®®ã€‚
+ä¿å­˜çš„ä¼šè¯åŒ…å« PuTTY å¯åŠ¨æ‰€éœ€ä¼šè¯
+æ‰€éœ€çš„æ‰€æœ‰ä¿¡æ¯ã€‚
 
-\b Òª±£´æÄ¬ÈÏÉèÖÃ£ºÊ×ÏÈ°´ÕÕÄúÏ£ÍûµÄ·½Ê½Éè
-ÖÃÉèÖÃ¡£ È»ºó·µ»Ø»á»°Ãæ°å¡£
-ÔÚ±£´æµÄ»á»°ÁÐ±íÖÐÑ¡Ôñ\q{\i{Ä¬ÈÏÉèÖÃ}}
-ÌõÄ¿¡£ È»ºó°´\q{±£´æ}°´Å¥£¬Ö»Ðèµ¥»÷Ò»ÏÂ£¬¼´¿É¡£
+\b è¦ä¿å­˜é»˜è®¤è®¾ç½®ï¼šé¦–å…ˆæŒ‰ç…§æ‚¨å¸Œæœ›çš„æ–¹å¼è®¾
+ç½®è®¾ç½®ã€‚ ç„¶åŽè¿”å›žä¼šè¯é¢æ¿ã€‚
+åœ¨ä¿å­˜çš„ä¼šè¯åˆ—è¡¨ä¸­é€‰æ‹©\q{\i{é»˜è®¤è®¾ç½®}}
+æ¡ç›®ã€‚ ç„¶åŽæŒ‰\q{ä¿å­˜}æŒ‰é’®ï¼Œåªéœ€å•å‡»ä¸€ä¸‹ï¼Œå³å¯ã€‚
 
-Èç¹ûÄúÒª´æ´¢ÌØ¶¨Ö÷»úµÄÁ¬½Ó·½Ê½µÄÏêÏ¸ÐÅÏ¢£¬
-ÔòÓ¦´´½¨Ò»¸öÒÑ±£´æµÄ»á»°£¬
-¸Ã»á»°½«ÓëÄ¬ÈÏÉèÖÃ·Ö¿ª¡£
+å¦‚æžœæ‚¨è¦å­˜å‚¨ç‰¹å®šä¸»æœºçš„è¿žæŽ¥æ–¹å¼çš„è¯¦ç»†ä¿¡æ¯ï¼Œ
+åˆ™åº”åˆ›å»ºä¸€ä¸ªå·²ä¿å­˜çš„ä¼šè¯ï¼Œ
+è¯¥ä¼šè¯å°†ä¸Žé»˜è®¤è®¾ç½®åˆ†å¼€ã€‚
 
-\b ±£´æ»á»°£ºÊ×ÏÈÍ¨¹ýÅäÖÃ¿òµÄÆäÓà²¿
-·ÖÉèÖÃÄúÏëÒªµÄËùÓÐÑ¡Ïî¡£
-È»ºó·µ»Ø»á»°Ãæ°å¡£ ÔÚ\q{±£´æ»á»°}Êä
-Èë¿òÖÐÊäÈëÒÑ±£´æ»á»°µÄÃû³Æ¡£ £¨·þÎñÆ÷Ãû³ÆÍ¨³£ÊÇ±£´æ»á»°Ãû³Æ
-µÄ²»´íÑ¡Ôñ¡££©È»ºó°´\q{±£´æ}°´Å¥¡£
- Äú±£´æµÄ»á»°Ãû³ÆÏÖÔÚÓ¦¸Ã³öÏÖÔÚÁÐ±í¿òÖÐ¡£
-
-\lcont{
-Äú»¹¿ÉÒÔÔÚ»á»°ÖÐÍ¨¹ý\q{¸ü¸ÄÉèÖÃ}¶Ô»°
-¿ò±£´æÉèÖÃ¡£ ×Ô»á»°¿ªÊ¼ÒÔÀ´¸ü¸ÄµÄÉè
-ÖÃ½«ÓëÆäµ±Ç°ÖµÒ»Æð±£´æ£» ÒÔ¼°Í¨¹ý¶Ô»°¿ò¸ü¸ÄµÄÉèÖÃ£¬
-°üÀ¨´°¿Ú´óÐ¡µÄ¸ü¸Ä¡¢
-·þÎñÆ÷·¢ËÍµÄ´°¿Ú±êÌâ¸ü¸ÄµÈ¡£
-}
-
-\b ÖØÐÂ¼ÓÔØÒÑ±£´æµÄ»á»°£ºµ¥»÷ÒÔÔÚÁÐ±í¿òÖÐ
-Ñ¡Ôñ»á»°Ãû³Æ£¬È»ºó°´\q{¼ÓÔØ}°´Å¥¡£
-Äú±£´æµÄÉèÖÃÓ¦È«²¿ÏÔÊ¾ÔÚÅäÖÃÃæ°åÖÐ¡£
-
-\b ÒªÐÞ¸ÄÒÑ±£´æµÄ»á»°£ºÊ×ÏÈÈçÉÏËùÊö¼ÓÔØËü¡£
-È»ºó½øÐÐÄúÏëÒªµÄ¸ü¸Ä¡£ ·µ»Ø»á»°Ãæ°å£¬
-È»ºó°´\q{±£´æ}°´Å¥¡£
-ÐÂÉèÖÃ½«±£´æÔÚ¾ÉÉèÖÃÖ®ÉÏ¡£
+\b ä¿å­˜ä¼šè¯ï¼šé¦–å…ˆé€šè¿‡é…ç½®æ¡†çš„å…¶ä½™éƒ¨
+åˆ†è®¾ç½®æ‚¨æƒ³è¦çš„æ‰€æœ‰é€‰é¡¹ã€‚
+ç„¶åŽè¿”å›žä¼šè¯é¢æ¿ã€‚ åœ¨\q{ä¿å­˜ä¼šè¯}è¾“
+å…¥æ¡†ä¸­è¾“å…¥å·²ä¿å­˜ä¼šè¯çš„åç§°ã€‚ ï¼ˆæœåŠ¡å™¨åç§°é€šå¸¸æ˜¯ä¿å­˜ä¼šè¯åç§°
+çš„ä¸é”™é€‰æ‹©ã€‚ï¼‰ç„¶åŽæŒ‰\q{ä¿å­˜}æŒ‰é’®ã€‚
+ æ‚¨ä¿å­˜çš„ä¼šè¯åç§°çŽ°åœ¨åº”è¯¥å‡ºçŽ°åœ¨åˆ—è¡¨æ¡†ä¸­ã€‚
 
 \lcont{
-ÒªÒÔ²»Í¬µÄÃû³Æ±£´æÐÂÉèÖÃ£¬
-Äú¿ÉÒÔÔÚ\q{±£´æ»á»°}¿òÖÐÊäÈëÐÂÃû³Æ£¬
-»òµ¥»÷ÒÔÔÚÁÐ±í¿òÖÐÑ¡ÔñÒ»¸ö»á»°Ãû³ÆÒÔ¸²¸Ç¸Ã»á»°¡£
-Òª±£´æ\q{Ä¬ÈÏÉèÖÃ}£¬Äú±ØÐëÔÚ±£´æÇ°µ¥»÷Ãû³Æ¡£
+æ‚¨è¿˜å¯ä»¥åœ¨ä¼šè¯ä¸­é€šè¿‡\q{æ›´æ”¹è®¾ç½®}å¯¹è¯
+æ¡†ä¿å­˜è®¾ç½®ã€‚ è‡ªä¼šè¯å¼€å§‹ä»¥æ¥æ›´æ”¹çš„è®¾
+ç½®å°†ä¸Žå…¶å½“å‰å€¼ä¸€èµ·ä¿å­˜ï¼› ä»¥åŠé€šè¿‡å¯¹è¯æ¡†æ›´æ”¹çš„è®¾ç½®ï¼Œ
+åŒ…æ‹¬çª—å£å¤§å°çš„æ›´æ”¹ã€
+æœåŠ¡å™¨å‘é€çš„çª—å£æ ‡é¢˜æ›´æ”¹ç­‰ã€‚
 }
 
-\b Á¢¼´¿ªÊ¼±£´æµÄ»á»°£º
-Ë«»÷ÁÐ±í¿òÖÐµÄ»á»°Ãû³Æ¡£
+\b é‡æ–°åŠ è½½å·²ä¿å­˜çš„ä¼šè¯ï¼šå•å‡»ä»¥åœ¨åˆ—è¡¨æ¡†ä¸­
+é€‰æ‹©ä¼šè¯åç§°ï¼Œç„¶åŽæŒ‰\q{åŠ è½½}æŒ‰é’®ã€‚
+æ‚¨ä¿å­˜çš„è®¾ç½®åº”å…¨éƒ¨æ˜¾ç¤ºåœ¨é…ç½®é¢æ¿ä¸­ã€‚
 
-\b ÒªÉ¾³ýÒÑ±£´æµÄ»á»°£ºµ¥»÷ÒÔÔÚÁÐ±í¿ò
-ÖÐÑ¡Ôñ»á»°Ãû³Æ£¬È»ºó°´\q{É¾³ý}°´Å¥¡£
+\b è¦ä¿®æ”¹å·²ä¿å­˜çš„ä¼šè¯ï¼šé¦–å…ˆå¦‚ä¸Šæ‰€è¿°åŠ è½½å®ƒã€‚
+ç„¶åŽè¿›è¡Œæ‚¨æƒ³è¦çš„æ›´æ”¹ã€‚ è¿”å›žä¼šè¯é¢æ¿ï¼Œ
+ç„¶åŽæŒ‰\q{ä¿å­˜}æŒ‰é’®ã€‚
+æ–°è®¾ç½®å°†ä¿å­˜åœ¨æ—§è®¾ç½®ä¹‹ä¸Šã€‚
 
-Ã¿¸ö±£´æµÄ»á»°¶¼¶ÀÁ¢ÓÚÄ¬ÈÏÉèÖÃÅäÖÃ¡£
-Èç¹ûÄú¸ü¸ÄÊ×Ñ¡Ïî²¢¸üÐÂÄ¬ÈÏÉèÖÃ£¬
-Äú»¹±ØÐëµ¥¶À¸üÐÂÃ¿¸ö±£´æµÄ»á»°¡£
+\lcont{
+è¦ä»¥ä¸åŒçš„åç§°ä¿å­˜æ–°è®¾ç½®ï¼Œ
+æ‚¨å¯ä»¥åœ¨\q{ä¿å­˜ä¼šè¯}æ¡†ä¸­è¾“å…¥æ–°åç§°ï¼Œ
+æˆ–å•å‡»ä»¥åœ¨åˆ—è¡¨æ¡†ä¸­é€‰æ‹©ä¸€ä¸ªä¼šè¯åç§°ä»¥è¦†ç›–è¯¥ä¼šè¯ã€‚
+è¦ä¿å­˜\q{é»˜è®¤è®¾ç½®}ï¼Œæ‚¨å¿…é¡»åœ¨ä¿å­˜å‰å•å‡»åç§°ã€‚
+}
 
-±£´æµÄ»á»°´æ´¢ÔÚ\i{×¢²á±í}ÖÐµÄÎ»ÖÃ£º
+\b ç«‹å³å¼€å§‹ä¿å­˜çš„ä¼šè¯ï¼š
+åŒå‡»åˆ—è¡¨æ¡†ä¸­çš„ä¼šè¯åç§°ã€‚
+
+\b è¦åˆ é™¤å·²ä¿å­˜çš„ä¼šè¯ï¼šå•å‡»ä»¥åœ¨åˆ—è¡¨æ¡†
+ä¸­é€‰æ‹©ä¼šè¯åç§°ï¼Œç„¶åŽæŒ‰\q{åˆ é™¤}æŒ‰é’®ã€‚
+
+æ¯ä¸ªä¿å­˜çš„ä¼šè¯éƒ½ç‹¬ç«‹äºŽé»˜è®¤è®¾ç½®é…ç½®ã€‚
+å¦‚æžœæ‚¨æ›´æ”¹é¦–é€‰é¡¹å¹¶æ›´æ–°é»˜è®¤è®¾ç½®ï¼Œ
+æ‚¨è¿˜å¿…é¡»å•ç‹¬æ›´æ–°æ¯ä¸ªä¿å­˜çš„ä¼šè¯ã€‚
+
+ä¿å­˜çš„ä¼šè¯å­˜å‚¨åœ¨\i{æ³¨å†Œè¡¨}ä¸­çš„ä½ç½®ï¼š
 
 \c HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions
 
-Èç¹ûÄúÐèÒª½«ËüÃÇ´æ´¢ÔÚÎÄ¼þÖÐ£¬
-Äú¿ÉÒÔ³¢ÊÔÖÐÃèÊöµÄ·½·¨£¬Çë²Î¿¼ \k{config-file}¡£
+å¦‚æžœæ‚¨éœ€è¦å°†å®ƒä»¬å­˜å‚¨åœ¨æ–‡ä»¶ä¸­ï¼Œ
+æ‚¨å¯ä»¥å°è¯•ä¸­æè¿°çš„æ–¹æ³•ï¼Œè¯·å‚è€ƒ \k{config-file}ã€‚
 
-\S{config-closeonexit} \q{ÍË³öÊ±\ii{¹Ø±Õ´°¿Ú}}
+\S{config-closeonexit} \q{é€€å‡ºæ—¶\ii{å…³é—­çª—å£}}
 
-×îºóÔÚ»á»°Ãæ°åÖÐ£¬ÓÐÒ»¸ö±ê¼ÇÎª\q{ÍË³öÊ±¹Ø±Õ´°¿Ú}
-µÄÑ¡Ïî¡£ Õâ¿ØÖÆ PuTTY \i{ÖÕ¶Ë´°¿Ú}ÊÇ·ñÔÚÆäÄÚ²¿µÄ
-»á»°ÖÕÖ¹ºóÁ¢¼´ÏûÊ§¡£ Èç¹ûÄú¿ÉÄÜÏ£ÍûÔÚ
-»á»°ÖÕÖ¹ºó½«ÎÄ±¾¸´ÖÆ²¢Õ³Ìùµ½»á»°Ö®Íâ£¬
-»òÕßÖØÐÂÆô¶¯»á»°£¬
-ÔòÓ¦°²ÅÅ¹Ø±Õ´ËÑ¡Ïî¡£
+æœ€åŽåœ¨ä¼šè¯é¢æ¿ä¸­ï¼Œæœ‰ä¸€ä¸ªæ ‡è®°ä¸º\q{é€€å‡ºæ—¶å…³é—­çª—å£}
+çš„é€‰é¡¹ã€‚ è¿™æŽ§åˆ¶ PuTTY \i{ç»ˆç«¯çª—å£}æ˜¯å¦åœ¨å…¶å†…éƒ¨çš„
+ä¼šè¯ç»ˆæ­¢åŽç«‹å³æ¶ˆå¤±ã€‚ å¦‚æžœæ‚¨å¯èƒ½å¸Œæœ›åœ¨
+ä¼šè¯ç»ˆæ­¢åŽå°†æ–‡æœ¬å¤åˆ¶å¹¶ç²˜è´´åˆ°ä¼šè¯ä¹‹å¤–ï¼Œ
+æˆ–è€…é‡æ–°å¯åŠ¨ä¼šè¯ï¼Œ
+åˆ™åº”å®‰æŽ’å…³é—­æ­¤é€‰é¡¹ã€‚
 
-\q{ÍË³öÊ±¹Ø±Õ´°¿Ú}¾ßÓÐÈý¸öÉèÖÃ¡£
-\q{Ê¼ÖÕ}ÊÇÖ¸ÔÚÍË³öÊ±Ê¼ÖÕ¹Ø±Õ´°¿Ú£» ¡°\q{´Ó²»}±íÊ¾ÍË³öÊ±´Ó²»¹Ø±Õ
-£¨Ê¼ÖÕ±£³Ö´°¿Ú´ò¿ª£¬µ«\I{inactive window}²»»î¶¯£©¡£
-µÚÈý¸öÉèÖÃ£¬Ò²ÊÇÄ¬ÈÏÉèÖÃ£¬ÊÇ\q{½öÕý³£ÍË³ö}¡£
-ÔÚÕâÖÖÄ£Ê½ÏÂ£¬Õý³£ÖÕÖ¹µÄ»á»°½«µ¼ÖÂÆä´°¿Ú¹Ø±Õ£¬
-µ«ÓÉÓÚÍøÂç¹ÊÕÏ»òÀ´×Ô·þÎñÆ÷µÄ»ìÂÒÏûÏ¢¶øÒâÍâ
-ÖÐÖ¹µÄ»á»°½«Ê¹´°¿Ú±£³Ö´ò¿ª×´Ì¬¡£
+\q{é€€å‡ºæ—¶å…³é—­çª—å£}å…·æœ‰ä¸‰ä¸ªè®¾ç½®ã€‚
+\q{å§‹ç»ˆ}æ˜¯æŒ‡åœ¨é€€å‡ºæ—¶å§‹ç»ˆå…³é—­çª—å£ï¼› â€œ\q{ä»Žä¸}è¡¨ç¤ºé€€å‡ºæ—¶ä»Žä¸å…³é—­
+ï¼ˆå§‹ç»ˆä¿æŒçª—å£æ‰“å¼€ï¼Œä½†\I{inactive window}ä¸æ´»åŠ¨ï¼‰ã€‚
+ç¬¬ä¸‰ä¸ªè®¾ç½®ï¼Œä¹Ÿæ˜¯é»˜è®¤è®¾ç½®ï¼Œæ˜¯\q{ä»…æ­£å¸¸é€€å‡º}ã€‚
+åœ¨è¿™ç§æ¨¡å¼ä¸‹ï¼Œæ­£å¸¸ç»ˆæ­¢çš„ä¼šè¯å°†å¯¼è‡´å…¶çª—å£å…³é—­ï¼Œ
+ä½†ç”±äºŽç½‘ç»œæ•…éšœæˆ–æ¥è‡ªæœåŠ¡å™¨çš„æ··ä¹±æ¶ˆæ¯è€Œæ„å¤–
+ä¸­æ­¢çš„ä¼šè¯å°†ä½¿çª—å£ä¿æŒæ‰“å¼€çŠ¶æ€ã€‚
 
-\H{config-logging} ÈÕÖ¾Ãæ°å
+\H{config-logging} æ—¥å¿—é¢æ¿
 
-ÈÕÖ¾ÅäÖÃÃæ°åÔÊÐíÄú±£´æ PuTTY »á»°µÄ\i{ÈÕÖ¾ÎÄ¼þ}£¬
-ÒÔ¹©µ÷ÊÔ¡¢·ÖÎö»ò½«À´²Î¿¼¡£
+æ—¥å¿—é…ç½®é¢æ¿å…è®¸æ‚¨ä¿å­˜ PuTTY ä¼šè¯çš„\i{æ—¥å¿—æ–‡ä»¶}ï¼Œ
+ä»¥ä¾›è°ƒè¯•ã€åˆ†æžæˆ–å°†æ¥å‚è€ƒã€‚
 
-Ö÷ÒªÑ¡ÏîÊÇÒ»¸öµ¥Ñ¡°´Å¥¼¯£¬
-ËüÖ¸¶¨ PuTTY ÊÇ·ñ»á¼ÇÂ¼ÈÎºÎÄÚÈÝ¡£ Ñ¡Ïî°üÀ¨£º
+ä¸»è¦é€‰é¡¹æ˜¯ä¸€ä¸ªå•é€‰æŒ‰é’®é›†ï¼Œ
+å®ƒæŒ‡å®š PuTTY æ˜¯å¦ä¼šè®°å½•ä»»ä½•å†…å®¹ã€‚ é€‰é¡¹åŒ…æ‹¬ï¼š
 
-\b \q{ÔÝÎÞÈÕÖ¾}¡ª¡ªÕâÊÇÄ¬ÈÏÑ¡Ïî;
-ÔÚÕâÖÖÄ£Ê½ÏÂ£¬PuTTY ¸ù±¾²»»á´´½¨ÈÕÖ¾ÎÄ¼þ¡£
+\b \q{æš‚æ— æ—¥å¿—}â€”â€”è¿™æ˜¯é»˜è®¤é€‰é¡¹;
+åœ¨è¿™ç§æ¨¡å¼ä¸‹ï¼ŒPuTTY æ ¹æœ¬ä¸ä¼šåˆ›å»ºæ—¥å¿—æ–‡ä»¶ã€‚
 
-\b \q{¿É´òÓ¡µÄÊä³ö}¡ª¡ªÔÚ´ËÄ£Ê½ÏÂ£¬
-½«´´½¨²¢Ð´ÈëÈÕÖ¾ÎÄ¼þ£¬µ«Ö»»á½«¿É´òÓ¡µÄÎÄ
-±¾±£´æµ½ÆäÖÐ¡£ ½«Ê¡ÂÔÍ¨³£Óë¿É´òÓ¡ÎÄ±¾Ò»
-ÆðÔÚ½»»¥Ê½»á»°ÖÐ·¢ËÍµÄ¸÷ÖÖÖÕ¶Ë¿ØÖÆ´úÂë¡£
-Èç¹ûÄúÏëÔÚÎÄ±¾±à¼­Æ÷ÖÐÔÄ¶ÁÈÕÖ¾ÎÄ
-¼þ²¢Ï£ÍûÄÜ¹»Àí½âËü£¬Õâ¿ÉÄÜÊÇÒ»ÖÖÓÐÓÃµÄÄ£Ê½¡£
+\b \q{å¯æ‰“å°çš„è¾“å‡º}â€”â€”åœ¨æ­¤æ¨¡å¼ä¸‹ï¼Œ
+å°†åˆ›å»ºå¹¶å†™å…¥æ—¥å¿—æ–‡ä»¶ï¼Œä½†åªä¼šå°†å¯æ‰“å°çš„æ–‡
+æœ¬ä¿å­˜åˆ°å…¶ä¸­ã€‚ å°†çœç•¥é€šå¸¸ä¸Žå¯æ‰“å°æ–‡æœ¬ä¸€
+èµ·åœ¨äº¤äº’å¼ä¼šè¯ä¸­å‘é€çš„å„ç§ç»ˆç«¯æŽ§åˆ¶ä»£ç ã€‚
+å¦‚æžœæ‚¨æƒ³åœ¨æ–‡æœ¬ç¼–è¾‘å™¨ä¸­é˜…è¯»æ—¥å¿—æ–‡
+ä»¶å¹¶å¸Œæœ›èƒ½å¤Ÿç†è§£å®ƒï¼Œè¿™å¯èƒ½æ˜¯ä¸€ç§æœ‰ç”¨çš„æ¨¡å¼ã€‚
 
-\b \q{ËùÓÐ»á»°Êä³ö}¡ª¡ªÔÚÕâÖÖÄ£Ê½ÏÂ£¬·þÎñÆ÷
-·¢ËÍµ½ÄúµÄÖÕ¶Ë»á»°µÄ\e{ËùÓÐ}ÄÚÈÝ¶¼»á±»¼ÇÂ¼ÏÂÀ´¡£
-Òò´Ë£¬Èç¹ûÄúÔÚÎÄ±¾±à¼­Æ÷ÖÐ²é¿´ÈÕÖ¾ÎÄ¼þ£¬
-Äú¿ÉÄÜ»á·¢ÏÖËü³äÂúÁËÆæ¹ÖµÄ¿ØÖÆ×Ö·û¡£
-Èç¹ûÄúÔÚÊ¹ÓÃ PuTTY µÄÖÕ¶Ë´¦ÀíÊ±Óöµ½ÎÊÌâ£¬
-ÕâÊÇÒ»ÖÖÌØ±ð
-ÓÐÓÃµÄÄ£Ê½£ºÄú¿ÉÒÔ¼ÇÂ¼µ½ÖÕ¶ËµÄËùÓÐÄÚÈÝ£¬
-ÒÔ±ãÆäËûÈËÉÔºó¿ÉÒÔÂý¶¯×÷ÖØ²¥»á»°²¢²é¿´³öÏÖÁËÊ²Ã´ÎÊÌâ¡£
+\b \q{æ‰€æœ‰ä¼šè¯è¾“å‡º}â€”â€”åœ¨è¿™ç§æ¨¡å¼ä¸‹ï¼ŒæœåŠ¡å™¨
+å‘é€åˆ°æ‚¨çš„ç»ˆç«¯ä¼šè¯çš„\e{æ‰€æœ‰}å†…å®¹éƒ½ä¼šè¢«è®°å½•ä¸‹æ¥ã€‚
+å› æ­¤ï¼Œå¦‚æžœæ‚¨åœ¨æ–‡æœ¬ç¼–è¾‘å™¨ä¸­æŸ¥çœ‹æ—¥å¿—æ–‡ä»¶ï¼Œ
+æ‚¨å¯èƒ½ä¼šå‘çŽ°å®ƒå……æ»¡äº†å¥‡æ€ªçš„æŽ§åˆ¶å­—ç¬¦ã€‚
+å¦‚æžœæ‚¨åœ¨ä½¿ç”¨ PuTTY çš„ç»ˆç«¯å¤„ç†æ—¶é‡åˆ°é—®é¢˜ï¼Œ
+è¿™æ˜¯ä¸€ç§ç‰¹åˆ«
+æœ‰ç”¨çš„æ¨¡å¼ï¼šæ‚¨å¯ä»¥è®°å½•åˆ°ç»ˆç«¯çš„æ‰€æœ‰å†…å®¹ï¼Œ
+ä»¥ä¾¿å…¶ä»–äººç¨åŽå¯ä»¥æ…¢åŠ¨ä½œé‡æ’­ä¼šè¯å¹¶æŸ¥çœ‹å‡ºçŽ°äº†ä»€ä¹ˆé—®é¢˜ã€‚
 
-\b \I{SSH packet log}\q{SSH Êý¾Ý°ü}¡ª¡ªÔÚ´Ë
-Ä£Ê½ÏÂ£¨½öÓÉ SSH Á¬½ÓÊ¹ÓÃ£©£¬Í¨¹ý¼ÓÃÜÁ¬
-½Ó·¢ËÍµÄ SSH ÏûÏ¢Êý¾Ý°ü½«Ð´ÈëÈÕÖ¾ÎÄ¼þ
-£¨ÒÔ¼°\i{ÊÂ¼þÈÕÖ¾}ÌõÄ¿£©¡£ Äú¿ÉÄÜÐèÒªËüÀ´µ÷ÊÔÍøÂç¼¶ÎÊÌâ£¬»òÕß¸üÓÐ¿ÉÄÜ
-½«Æä×÷Îª´íÎó±¨¸æµÄÒ»²¿·Ö·¢ËÍ¸ø PuTTY ×÷Õß¡£
- \e{Çë×¢Òâ}£¬Èç¹ûÄúÊ¹ÓÃÃÜÂëµÇÂ¼£¬ÃÜÂë¿ÉÄÜ»á
- ³öÏÖÔÚÈÕÖ¾ÎÄ¼þÖÐ£»Çë²ÎÔÄ \k{config-logssh}¡£
- ÔÚ½«ÈÕÖ¾ÎÄ¼þ·¢ËÍ¸øÆäËûÈÎºÎÈËÖ®Ç°£¬
- ÕâÐ©Ñ¡Ïî¿ÉÄÜÓÐÖúÓÚ´ÓÈÕÖ¾ÎÄ¼þÖÐÉ¾³ýÃô¸Ð²ÄÁÏ¡£
+\b \I{SSH packet log}\q{SSH æ•°æ®åŒ…}â€”â€”åœ¨æ­¤
+æ¨¡å¼ä¸‹ï¼ˆä»…ç”± SSH è¿žæŽ¥ä½¿ç”¨ï¼‰ï¼Œé€šè¿‡åŠ å¯†è¿ž
+æŽ¥å‘é€çš„ SSH æ¶ˆæ¯æ•°æ®åŒ…å°†å†™å…¥æ—¥å¿—æ–‡ä»¶
+ï¼ˆä»¥åŠ\i{äº‹ä»¶æ—¥å¿—}æ¡ç›®ï¼‰ã€‚ æ‚¨å¯èƒ½éœ€è¦å®ƒæ¥è°ƒè¯•ç½‘ç»œçº§é—®é¢˜ï¼Œæˆ–è€…æ›´æœ‰å¯èƒ½
+å°†å…¶ä½œä¸ºé”™è¯¯æŠ¥å‘Šçš„ä¸€éƒ¨åˆ†å‘é€ç»™ PuTTY ä½œè€…ã€‚
+ \e{è¯·æ³¨æ„}ï¼Œå¦‚æžœæ‚¨ä½¿ç”¨å¯†ç ç™»å½•ï¼Œå¯†ç å¯èƒ½ä¼š
+ å‡ºçŽ°åœ¨æ—¥å¿—æ–‡ä»¶ä¸­ï¼›è¯·å‚é˜… \k{config-logssh}ã€‚
+ åœ¨å°†æ—¥å¿—æ–‡ä»¶å‘é€ç»™å…¶ä»–ä»»ä½•äººä¹‹å‰ï¼Œ
+ è¿™äº›é€‰é¡¹å¯èƒ½æœ‰åŠ©äºŽä»Žæ—¥å¿—æ–‡ä»¶ä¸­åˆ é™¤æ•æ„Ÿææ–™ã€‚
 
-\b \q{SSHÊý¾Ý°üºÍrawÊý¾Ý}¡ª¡ªÔÚÕâÖÖÄ£Ê½ÏÂ£¬
-³ýÁË½âÃÜµÄÊý¾Ý°ü£¨ÈçÇ°Ò»ÖÖÄ£Ê½£©£¬
-\e{raw}£¨¼ÓÃÜ¡¢Ñ¹ËõµÈ£©Êý¾Ý°ü\e{Ò²}±»¼ÇÂ¼ÏÂÀ´¡£
-Õâ¿ÉÄÜÓÐÖúÓÚÕï¶Ï´«Êä¹ý³ÌÖÐµÄ²î´í¡£
-£¨µ±È»£¬ÓëÒÔÇ°µÄÄ£Ê½ÏàÍ¬µÄ¾¯¸æÒ²ÊÊÓÃ¡££©
+\b \q{SSHæ•°æ®åŒ…å’Œrawæ•°æ®}â€”â€”åœ¨è¿™ç§æ¨¡å¼ä¸‹ï¼Œ
+é™¤äº†è§£å¯†çš„æ•°æ®åŒ…ï¼ˆå¦‚å‰ä¸€ç§æ¨¡å¼ï¼‰ï¼Œ
+\e{raw}ï¼ˆåŠ å¯†ã€åŽ‹ç¼©ç­‰ï¼‰æ•°æ®åŒ…\e{ä¹Ÿ}è¢«è®°å½•ä¸‹æ¥ã€‚
+è¿™å¯èƒ½æœ‰åŠ©äºŽè¯Šæ–­ä¼ è¾“è¿‡ç¨‹ä¸­çš„å·®é”™ã€‚
+ï¼ˆå½“ç„¶ï¼Œä¸Žä»¥å‰çš„æ¨¡å¼ç›¸åŒçš„è­¦å‘Šä¹Ÿé€‚ç”¨ã€‚ï¼‰
 
-Çë×¢Òâ£¬·Ç SSH ÈÕÖ¾¼ÇÂ¼Ñ¡Ïî£¨\q{¿É´òÓ¡Êä³ö}
-ºÍ\q{ËùÓÐ»á»°Êä³ö}£©½öÊÊÓÃÓÚ PuTTY£»
- ÔÚÃ»ÓÐÖÕ¶Ë·ÂÕæµÄ³ÌÐò£¨ÀýÈç Plink£©ÖÐ£¬¼´Ê¹Í¨¹ý±£´æ
- µÄÉèÖÃÆôÓÃ£¬ËüÃÇÒ²²»»áÆð×÷ÓÃ¡£
+è¯·æ³¨æ„ï¼Œéž SSH æ—¥å¿—è®°å½•é€‰é¡¹ï¼ˆ\q{å¯æ‰“å°è¾“å‡º}
+å’Œ\q{æ‰€æœ‰ä¼šè¯è¾“å‡º}ï¼‰ä»…é€‚ç”¨äºŽ PuTTYï¼›
+ åœ¨æ²¡æœ‰ç»ˆç«¯ä»¿çœŸçš„ç¨‹åºï¼ˆä¾‹å¦‚ Plinkï¼‰ä¸­ï¼Œå³ä½¿é€šè¿‡ä¿å­˜
+ çš„è®¾ç½®å¯ç”¨ï¼Œå®ƒä»¬ä¹Ÿä¸ä¼šèµ·ä½œç”¨ã€‚
 
-\S{config-logfilename} \q{ÈÕÖ¾ÎÄ¼þÃû}
+\S{config-logfilename} \q{æ—¥å¿—æ–‡ä»¶å}
 
-ÔÚ´Ë±à¼­¿òÖÐ£¬ÄúÊäÈëÒª½«»á»°¼ÇÂ¼µ½µÄ
-ÎÄ¼þµÄÃû³Æ¡£ \q{ä¯ÀÀ} °´Å¥¿ÉÈÃÄú²é¿´ÎÄ
-¼þÏµÍ³ÒÔÕÒµ½·ÅÖÃÎÄ¼þµÄÕýÈ·Î»ÖÃ£»
-»òÕß£¬Èç¹ûÄúÒÑ¾­ÖªµÀÈ·ÇÐµÄÈ¥Ïò£¬
-ÄúÖ»ÐèÔÚ±à¼­¿òÖÐÊäÈëÂ·¾¶Ãû¼´¿É¡£
+åœ¨æ­¤ç¼–è¾‘æ¡†ä¸­ï¼Œæ‚¨è¾“å…¥è¦å°†ä¼šè¯è®°å½•åˆ°çš„
+æ–‡ä»¶çš„åç§°ã€‚ \q{æµè§ˆ} æŒ‰é’®å¯è®©æ‚¨æŸ¥çœ‹æ–‡
+ä»¶ç³»ç»Ÿä»¥æ‰¾åˆ°æ”¾ç½®æ–‡ä»¶çš„æ­£ç¡®ä½ç½®ï¼›
+æˆ–è€…ï¼Œå¦‚æžœæ‚¨å·²ç»çŸ¥é“ç¡®åˆ‡çš„åŽ»å‘ï¼Œ
+æ‚¨åªéœ€åœ¨ç¼–è¾‘æ¡†ä¸­è¾“å…¥è·¯å¾„åå³å¯ã€‚
 
-Õâ¸öÊäÈë¿òÓÐÒ»Ð©ÌØÊâ¹¦ÄÜ¡£
-Èç¹ûÔÚÎÄ¼þÃû¿òÖÐÊ¹ÓÃ \c{&} ×Ö·û£¬
-PuTTY ½«ÔÚÊµ¼Ê´ò¿ªµÄÎÄ¼þÃûÖÐ²åÈëµ±
-Ç°»á»°µÄÏêÏ¸ÐÅÏ¢¡£ Ëü½«×öµÄ¾«È·Ìæ»»ÊÇ£º
+è¿™ä¸ªè¾“å…¥æ¡†æœ‰ä¸€äº›ç‰¹æ®ŠåŠŸèƒ½ã€‚
+å¦‚æžœåœ¨æ–‡ä»¶åæ¡†ä¸­ä½¿ç”¨ \c{&} å­—ç¬¦ï¼Œ
+PuTTY å°†åœ¨å®žé™…æ‰“å¼€çš„æ–‡ä»¶åä¸­æ’å…¥å½“
+å‰ä¼šè¯çš„è¯¦ç»†ä¿¡æ¯ã€‚ å®ƒå°†åšçš„ç²¾ç¡®æ›¿æ¢æ˜¯ï¼š
 
-\b \c{&Y} ½«±»µ±Ç°Äê·ÝÌæ»»ÎªËÄÎ»Êý¡£
+\b \c{&Y} å°†è¢«å½“å‰å¹´ä»½æ›¿æ¢ä¸ºå››ä½æ•°ã€‚
 
-\b \c{&M} ½«±»µ±Ç°ÔÂ·ÝÌæ»»ÎªÁ½Î»Êý¡£
+\b \c{&M} å°†è¢«å½“å‰æœˆä»½æ›¿æ¢ä¸ºä¸¤ä½æ•°ã€‚
 
-\b \c{&D} ½«±»µ±ÔÂµÄµ±Ç°ÈÕ
-ÆÚÌæ»»ÎªÁ½Î»Êý¡£
+\b \c{&D} å°†è¢«å½“æœˆçš„å½“å‰æ—¥
+æœŸæ›¿æ¢ä¸ºä¸¤ä½æ•°ã€‚
 
-\b \c{&T} ½«±»µ±Ç°Ê±¼äÌæ»»Îª
-ÁùÎ»Êý×Ö (HHMMSS)£¬Ã»ÓÐ±êµã·ûºÅ¡£
+\b \c{&T} å°†è¢«å½“å‰æ—¶é—´æ›¿æ¢ä¸º
+å…­ä½æ•°å­— (HHMMSS)ï¼Œæ²¡æœ‰æ ‡ç‚¹ç¬¦å·ã€‚
 
-\b \c{&H} ½«Ìæ»»ÎªÄúÒªÁ¬½ÓµÄÖ÷»úÃû¡£
-(»ò´®¿Ú£¬ÓÃÓÚ´®ÐÐÁ¬½Ó)¡£
+\b \c{&H} å°†æ›¿æ¢ä¸ºæ‚¨è¦è¿žæŽ¥çš„ä¸»æœºåã€‚
+(æˆ–ä¸²å£ï¼Œç”¨äºŽä¸²è¡Œè¿žæŽ¥)ã€‚
 
-\b \c{&P} ½«Ìæ»»ÎªÄúÔÚÄ¿±êÖ÷»ú
-ÉÏÁ¬½ÓµÄ¶Ë¿ÚºÅ¡£
+\b \c{&P} å°†æ›¿æ¢ä¸ºæ‚¨åœ¨ç›®æ ‡ä¸»æœº
+ä¸Šè¿žæŽ¥çš„ç«¯å£å·ã€‚
 
-(These are all case-insensitive.)
+(è¿™äº›éƒ½æ˜¯ä¸åŒºåˆ†å¤§å°å†™çš„ã€‚)
 
-ÀýÈç£¬Èç¹ûÄúÊäÈëÖ÷
+ä¾‹å¦‚ï¼Œå¦‚æžœæ‚¨è¾“å…¥ä¸»
 \c{c:\\puttylogs\\log-&h-&y&m&d-&t.dat},
-Äã×îÖÕ»áµÃµ½µÄÎÄ¼þ¿´ÆðÀ´Ïñ
+ä½ æœ€ç»ˆä¼šå¾—åˆ°çš„æ–‡ä»¶çœ‹èµ·æ¥åƒ
 
 \c log-server1.example.com-20010528-110859.dat
 \c log-unixbox.somewhere.org-20010611-221001.dat
 
-\S{config-logfileexists} \q{Èç¹ûÈÕÖ¾ÎÄ¼þÒÑ¾­´æÔÚÔõÃ´°ì}
+\S{config-logfileexists} \q{å¦‚æžœæ—¥å¿—æ–‡ä»¶å·²ç»å­˜åœ¨æ€Žä¹ˆåŠž}
 
-´Ë¿Ø¼þÔÊÐíÄúÖ¸¶¨ PuTTY ÔÚ³¢ÊÔ¿ª
-Ê¼Ð´ÈëÈÕÖ¾ÎÄ¼þ²¢ÇÒ·¢ÏÖ¸ÃÎÄ¼þÒÑ´æ
-ÔÚÊ±Ó¦¸ÃÖ´ÐÐµÄ²Ù×÷¡£ Äú¿ÉÄÜÏ£Íû×Ô¶¯
-Ïú»ÙÏÖÓÐµÄÈÕÖ¾ÎÄ¼þ²¢Æô¶¯Ò»¸ö¾ßÓÐÏà
-Í¬Ãû³ÆµÄÐÂÎÄ¼þ¡£ »òÕß£¬Äú¿ÉÄÜÏëÒª´ò¿ªÏÖ
-ÓÐÈÕÖ¾ÎÄ¼þ²¢½«Êý¾ÝÌí¼Óµ½ËüµÄ\e{Ä©Î²}¡£ ×îºó£¨Ä¬ÈÏÑ¡Ïî£©£¬
-Äú¿ÉÄÜ²»Ï£ÍûÓÐÈÎºÎ×Ô¶¯ÐÐÎª£¬
-¶øÊÇÔÚÃ¿´Î³öÏÖÎÊÌâÊ±Ñ¯ÎÊÓÃ»§¡£
+æ­¤æŽ§ä»¶å…è®¸æ‚¨æŒ‡å®š PuTTY åœ¨å°è¯•å¼€
+å§‹å†™å…¥æ—¥å¿—æ–‡ä»¶å¹¶ä¸”å‘çŽ°è¯¥æ–‡ä»¶å·²å­˜
+åœ¨æ—¶åº”è¯¥æ‰§è¡Œçš„æ“ä½œã€‚ æ‚¨å¯èƒ½å¸Œæœ›è‡ªåŠ¨
+é”€æ¯çŽ°æœ‰çš„æ—¥å¿—æ–‡ä»¶å¹¶å¯åŠ¨ä¸€ä¸ªå…·æœ‰ç›¸
+åŒåç§°çš„æ–°æ–‡ä»¶ã€‚ æˆ–è€…ï¼Œæ‚¨å¯èƒ½æƒ³è¦æ‰“å¼€çŽ°
+æœ‰æ—¥å¿—æ–‡ä»¶å¹¶å°†æ•°æ®æ·»åŠ åˆ°å®ƒçš„\e{æœ«å°¾}ã€‚ æœ€åŽï¼ˆé»˜è®¤é€‰é¡¹ï¼‰ï¼Œ
+æ‚¨å¯èƒ½ä¸å¸Œæœ›æœ‰ä»»ä½•è‡ªåŠ¨è¡Œä¸ºï¼Œ
+è€Œæ˜¯åœ¨æ¯æ¬¡å‡ºçŽ°é—®é¢˜æ—¶è¯¢é—®ç”¨æˆ·ã€‚
 
-\S{config-logflush} \I{log file, flushing}\q{Æµ·±Ë¢ÐÂÈÕÖ¾ÎÄ¼þ}
+\S{config-logflush} \I{log file, flushing}\q{é¢‘ç¹åˆ·æ–°æ—¥å¿—æ–‡ä»¶}
 
-´ËÑ¡ÏîÔÊÐíÄú¿ØÖÆ½«¼ÇÂ¼µÄÊý¾ÝË¢ÐÂµ½´ÅÅÌµÄÆµÂÊ¡£
-Ä¬ÈÏÇé¿öÏÂ£¬PuTTY »áÔÚÏÔÊ¾Êý¾ÝºóÁ¢¼´Ë¢
-ÐÂÊý¾Ý£¬Òò´ËÈç¹ûÄúÔÚ»á»°ÈÔ´¦ÓÚ´ò¿ª×´Ì¬
-Ê±²é¿´ÈÕÖ¾ÎÄ¼þ£¬Ëü½«ÊÇ×îÐÂµÄ£» Èç¹û¿Í»§¶ËÏµÍ³±ÀÀ££¬
-ÔòÊý¾Ý±»±£ÁôµÄ¿ÉÄÜÐÔ¸ü´ó¡£
+æ­¤é€‰é¡¹å…è®¸æ‚¨æŽ§åˆ¶å°†è®°å½•çš„æ•°æ®åˆ·æ–°åˆ°ç£ç›˜çš„é¢‘çŽ‡ã€‚
+é»˜è®¤æƒ…å†µä¸‹ï¼ŒPuTTY ä¼šåœ¨æ˜¾ç¤ºæ•°æ®åŽç«‹å³åˆ·
+æ–°æ•°æ®ï¼Œå› æ­¤å¦‚æžœæ‚¨åœ¨ä¼šè¯ä»å¤„äºŽæ‰“å¼€çŠ¶æ€
+æ—¶æŸ¥çœ‹æ—¥å¿—æ–‡ä»¶ï¼Œå®ƒå°†æ˜¯æœ€æ–°çš„ï¼› å¦‚æžœå®¢æˆ·ç«¯ç³»ç»Ÿå´©æºƒï¼Œ
+åˆ™æ•°æ®è¢«ä¿ç•™çš„å¯èƒ½æ€§æ›´å¤§ã€‚
 
-µ«ÊÇ£¬Õâ¿ÉÄÜ»áµ¼ÖÂÐÔÄÜËðÊ§¡£
-Èç¹û PuTTY ÔÚÆôÓÃÈÕÖ¾¼ÇÂ¼µÄÇé¿öÏÂ
-ÔËÐÐ»ºÂý£¬Äú¿ÉÒÔ³¢ÊÔÈ¡ÏûÑ¡ÖÐ´ËÑ¡Ïî¡£ Çë×¢Òâ£¬
-ÈÕÖ¾ÎÄ¼þ¿ÉÄÜ²¢²»×ÜÊÇ×îÐÂµÄ
-£¨¾¡¹ÜËüµ±È»»áÔÚ¹Ø±ÕÊ±±»Ë¢ÐÂ£¬ÀýÈçÔÚ»á»°½áÊøÊ±£©¡£
+ä½†æ˜¯ï¼Œè¿™å¯èƒ½ä¼šå¯¼è‡´æ€§èƒ½æŸå¤±ã€‚
+å¦‚æžœ PuTTY åœ¨å¯ç”¨æ—¥å¿—è®°å½•çš„æƒ…å†µä¸‹
+è¿è¡Œç¼“æ…¢ï¼Œæ‚¨å¯ä»¥å°è¯•å–æ¶ˆé€‰ä¸­æ­¤é€‰é¡¹ã€‚ è¯·æ³¨æ„ï¼Œ
+æ—¥å¿—æ–‡ä»¶å¯èƒ½å¹¶ä¸æ€»æ˜¯æœ€æ–°çš„
+ï¼ˆå°½ç®¡å®ƒå½“ç„¶ä¼šåœ¨å…³é—­æ—¶è¢«åˆ·æ–°ï¼Œä¾‹å¦‚åœ¨ä¼šè¯ç»“æŸæ—¶ï¼‰ã€‚
 
-\S{config-logheader} \I{log file, header}\q{°üÀ¨±êÌâ}
+\S{config-logheader} \I{log file, header}\q{åŒ…æ‹¬æ ‡é¢˜}
 
-´ËÑ¡ÏîÔÊÐíÄúÑ¡ÔñÊÇ·ñÔÚ´ò¿ªÈÕÖ¾
-ÎÄ¼þÊ±°üº¬´øÓÐÈÕÆÚºÍÊ±¼äµÄ±êÌâÐÐ¡£
-Èç¹ûÈÕÖ¾ÎÄ¼þ±»ÓÃ×÷ÆäËû²»ÐèÒª±êÌâ
-ÐÐµÄ³ÌÐòµÄÊµÊ±ÊäÈë£¬½ûÓÃ´Ë¹¦ÄÜ¿ÉÄÜºÜÓÐÓÃ¡£
+æ­¤é€‰é¡¹å…è®¸æ‚¨é€‰æ‹©æ˜¯å¦åœ¨æ‰“å¼€æ—¥å¿—
+æ–‡ä»¶æ—¶åŒ…å«å¸¦æœ‰æ—¥æœŸå’Œæ—¶é—´çš„æ ‡é¢˜è¡Œã€‚
+å¦‚æžœæ—¥å¿—æ–‡ä»¶è¢«ç”¨ä½œå…¶ä»–ä¸éœ€è¦æ ‡é¢˜
+è¡Œçš„ç¨‹åºçš„å®žæ—¶è¾“å…¥ï¼Œç¦ç”¨æ­¤åŠŸèƒ½å¯èƒ½å¾ˆæœ‰ç”¨ã€‚
 
-\S{config-logssh} ÌØ¶¨µÄ\i{SSHÊý¾Ý°üÈÕÖ¾}Ñ¡Ïî
+\S{config-logssh} ç‰¹å®šçš„\i{SSHæ•°æ®åŒ…æ—¥å¿—}é€‰é¡¹
 
-ÕâÐ©Ñ¡Ïî½öÔÚ¼ÇÂ¼ SSH Êý¾Ý°üÊý¾ÝÊ±ÊÊÓÃ¡£
+è¿™äº›é€‰é¡¹ä»…åœ¨è®°å½• SSH æ•°æ®åŒ…æ•°æ®æ—¶é€‚ç”¨ã€‚
 
-ÒÔÏÂÑ¡ÏîÔÊÐí½«Î´¼ÓÃÜÊý¾Ý°üµÄÌØ±ðÃô
-¸Ð²¿·Ö×Ô¶¯ÅÅ³ýÔÚÈÕÖ¾ÎÄ¼þÖ®Íâ¡£
-ËüÃÇÖ»ÊÇÎªÁË×èÖ¹ËæÒâµÄ¼ÇÂ¼Êý¾Ý£»
-¹¥»÷ÕßÉõÖÁ¿ÉÒÔ´ÓÕâÐ©»ìÏýµÄÈÕÖ¾
-ÖÐÊÕ¼¯µ½ºÜ¶àÓÐÓÃµÄÐÅÏ¢£¨ÀýÈç£¬ÃÜÂë³¤¶È£©¡£
+ä»¥ä¸‹é€‰é¡¹å…è®¸å°†æœªåŠ å¯†æ•°æ®åŒ…çš„ç‰¹åˆ«æ•
+æ„Ÿéƒ¨åˆ†è‡ªåŠ¨æŽ’é™¤åœ¨æ—¥å¿—æ–‡ä»¶ä¹‹å¤–ã€‚
+å®ƒä»¬åªæ˜¯ä¸ºäº†é˜»æ­¢éšæ„çš„è®°å½•æ•°æ®ï¼›
+æ”»å‡»è€…ç”šè‡³å¯ä»¥ä»Žè¿™äº›æ··æ·†çš„æ—¥å¿—
+ä¸­æ”¶é›†åˆ°å¾ˆå¤šæœ‰ç”¨çš„ä¿¡æ¯ï¼ˆä¾‹å¦‚ï¼Œå¯†ç é•¿åº¦ï¼‰ã€‚
 
-\S2{config-logssh-omitpw} \q{Ê¡ÂÔÒÑÖªÃÜÂë×Ö¶Î}
+\S2{config-logssh-omitpw} \q{çœç•¥å·²çŸ¥å¯†ç å­—æ®µ}
 
-Ñ¡ÖÐºó£¬½âÃÜµÄÃÜÂë×Ö¶Î½«´Ó´«ÊäÊý¾Ý°üµÄ
-ÈÕÖ¾ÖÐÉ¾³ý¡££¨Õâ°üÀ¨ÈÎºÎÓÃ»§¶ÔÖÊÑ¯-Ïì
-Ó¦Éí·ÝÑéÖ¤·½·¨µÄÏìÓ¦£¬ÀýÈç\q{¼üÅÌ½»»¥}¡££©
-Èç¹ûÊ¹ÓÃ X11 ×ª·¢£¬
-Ôò²»°üÀ¨ X11 Éí·ÝÑéÖ¤Êý¾Ý¡£
+é€‰ä¸­åŽï¼Œè§£å¯†çš„å¯†ç å­—æ®µå°†ä»Žä¼ è¾“æ•°æ®åŒ…çš„
+æ—¥å¿—ä¸­åˆ é™¤ã€‚ï¼ˆè¿™åŒ…æ‹¬ä»»ä½•ç”¨æˆ·å¯¹è´¨è¯¢-å“
+åº”èº«ä»½éªŒè¯æ–¹æ³•çš„å“åº”ï¼Œä¾‹å¦‚\q{é”®ç›˜äº¤äº’}ã€‚ï¼‰
+å¦‚æžœä½¿ç”¨ X11 è½¬å‘ï¼Œ
+åˆ™ä¸åŒ…æ‹¬ X11 èº«ä»½éªŒè¯æ•°æ®ã€‚
 
-Çë×¢Òâ£¬ÕâÖ»»áºöÂÔ PuTTY \e{ÖªµÀ}ÊÇÃÜÂëµÄÊý¾Ý¡£
-µ«ÊÇ£¬ÀýÈç£¬Èç¹ûÄúÔÚ PuTTY »á»°ÖÐÆô¶¯
-ÁíÒ»¸öµÇÂ¼»á»°£¬ÔòÊ¹ÓÃµÄÈÎºÎÃÜÂë¶¼»á
-ÒÔÃ÷ÎÄÐÎÊ½ÏÔÊ¾ÔÚÊý¾Ý°üÈÕÖ¾ÖÐ¡£
-ÏÂÒ»¸öÑ¡Ïî¿ÉÄÜÓÃÓÚ·ÀÖ¹ÕâÖÖÇé¿ö¡£
+è¯·æ³¨æ„ï¼Œè¿™åªä¼šå¿½ç•¥ PuTTY \e{çŸ¥é“}æ˜¯å¯†ç çš„æ•°æ®ã€‚
+ä½†æ˜¯ï¼Œä¾‹å¦‚ï¼Œå¦‚æžœæ‚¨åœ¨ PuTTY ä¼šè¯ä¸­å¯åŠ¨
+å¦ä¸€ä¸ªç™»å½•ä¼šè¯ï¼Œåˆ™ä½¿ç”¨çš„ä»»ä½•å¯†ç éƒ½ä¼š
+ä»¥æ˜Žæ–‡å½¢å¼æ˜¾ç¤ºåœ¨æ•°æ®åŒ…æ—¥å¿—ä¸­ã€‚
+ä¸‹ä¸€ä¸ªé€‰é¡¹å¯èƒ½ç”¨äºŽé˜²æ­¢è¿™ç§æƒ…å†µã€‚
 
-Ä¬ÈÏÇé¿öÏÂÆôÓÃ´ËÑ¡Ïî¡£
+é»˜è®¤æƒ…å†µä¸‹å¯ç”¨æ­¤é€‰é¡¹ã€‚
 
-\S2{config-logssh-omitdata} \q{Ê¡ÂÔ»á»°Êý¾Ý}
+\S2{config-logssh-omitdata} \q{çœç•¥ä¼šè¯æ•°æ®}
 
-Ñ¡ÖÐºó£¬ËùÓÐ½âÃÜµÄ\q{»á»°Êý¾Ý}¶¼½«±»ºöÂÔ£»
-Õâ±»¶¨ÒåÎªÖÕ¶Ë»á»°ºÍ×ª·¢Í¨µÀ£¨TCP¡¢X11
-ºÍÉí·ÝÑéÖ¤´úÀí£©ÖÐµÄÊý¾Ý¡£ ÕâÍ¨³£»á
-´ó´ó¼õÉÙÉú³ÉµÄÈÕÖ¾ÎÄ¼þµÄ´óÐ¡¡£
+é€‰ä¸­åŽï¼Œæ‰€æœ‰è§£å¯†çš„\q{ä¼šè¯æ•°æ®}éƒ½å°†è¢«å¿½ç•¥ï¼›
+è¿™è¢«å®šä¹‰ä¸ºç»ˆç«¯ä¼šè¯å’Œè½¬å‘é€šé“ï¼ˆTCPã€X11
+å’Œèº«ä»½éªŒè¯ä»£ç†ï¼‰ä¸­çš„æ•°æ®ã€‚ è¿™é€šå¸¸ä¼š
+å¤§å¤§å‡å°‘ç”Ÿæˆçš„æ—¥å¿—æ–‡ä»¶çš„å¤§å°ã€‚
 
-Ä¬ÈÏÇé¿öÏÂ½ûÓÃ´ËÑ¡Ïî¡£
+é»˜è®¤æƒ…å†µä¸‹ç¦ç”¨æ­¤é€‰é¡¹ã€‚
 
-\H{config-terminal} ÖÕ¶ËÃæ°å
+\H{config-terminal} ç»ˆç«¯é¢æ¿
 
-ÖÕ¶ËÅäÖÃÃæ°åÔÊÐíÄú¿ØÖÆ
-PuTTY \i{ÖÕ¶Ë·ÂÕæ}µÄÐÐÎª¡£
+ç»ˆç«¯é…ç½®é¢æ¿å…è®¸æ‚¨æŽ§åˆ¶
+PuTTY \i{ç»ˆç«¯ä»¿çœŸ}çš„è¡Œä¸ºã€‚
 
-\S{config-autowrap} \q{¿ªÆô×Ô¶¯»»ÐÐÄ£Ê½}
+\S{config-autowrap} \q{å¼€å¯è‡ªåŠ¨æ¢è¡Œæ¨¡å¼}
 
-\ii{Auto wrap mode} ×Ô¶¯»»ÐÐÄ£Ê½¿ØÖÆÔÚ PuTTY
-´°¿ÚÖÐ´òÓ¡µÄÎÄ±¾µ½´ï´°¿ÚÓÒ²à±ßÔµÊ±·¢ÉúµÄÇé¿ö¡£
+\ii{Auto wrap mode} è‡ªåŠ¨æ¢è¡Œæ¨¡å¼æŽ§åˆ¶åœ¨ PuTTY
+çª—å£ä¸­æ‰“å°çš„æ–‡æœ¬åˆ°è¾¾çª—å£å³ä¾§è¾¹ç¼˜æ—¶å‘ç”Ÿçš„æƒ…å†µã€‚
 
-ÆôÓÃ×Ô¶¯»»ÐÐÄ£Ê½ºó£¬Èç¹ûÒ»³¤ÐÐÎÄ±¾µ½´ïÓÒ
-²à±ßÔµ£¬Ëü½«»»ÐÐµ½ÏÂÒ»ÐÐ£¬Òò´ËÄúÈÔÈ»
-¿ÉÒÔ¿´µ½ËùÓÐÎÄ±¾¡£ ¹Ø±Õ×Ô¶¯»»ÐÐÄ£Ê½ºó£¬¹â±ê
-½«Í£ÁôÔÚÆÁÄ»µÄÓÒ²à±ßÔµ£¬²¢ÇÒ¸ÃÐÐÖÐµÄËù
-ÓÐ×Ö·û½«Ïà»¥ÖØµþ´òÓ¡¡£
+å¯ç”¨è‡ªåŠ¨æ¢è¡Œæ¨¡å¼åŽï¼Œå¦‚æžœä¸€é•¿è¡Œæ–‡æœ¬åˆ°è¾¾å³
+ä¾§è¾¹ç¼˜ï¼Œå®ƒå°†æ¢è¡Œåˆ°ä¸‹ä¸€è¡Œï¼Œå› æ­¤æ‚¨ä»ç„¶
+å¯ä»¥çœ‹åˆ°æ‰€æœ‰æ–‡æœ¬ã€‚ å…³é—­è‡ªåŠ¨æ¢è¡Œæ¨¡å¼åŽï¼Œå…‰æ ‡
+å°†åœç•™åœ¨å±å¹•çš„å³ä¾§è¾¹ç¼˜ï¼Œå¹¶ä¸”è¯¥è¡Œä¸­çš„æ‰€
+æœ‰å­—ç¬¦å°†ç›¸äº’é‡å æ‰“å°ã€‚
 
-Èç¹ûÄúÕýÔÚÔËÐÐÈ«ÆÁÓ¦ÓÃ³ÌÐò£¬
-²¢ÇÒÄúÅ¼¶û»á·¢ÏÖÆÁÄ»ËÆºõ²»Ó¦¸ÃÏòÉÏ¹ö¶¯£¬
-Äú¿ÉÒÔ³¢ÊÔ¹Ø±Õ´ËÑ¡Ïî¡£
+å¦‚æžœæ‚¨æ­£åœ¨è¿è¡Œå…¨å±åº”ç”¨ç¨‹åºï¼Œ
+å¹¶ä¸”æ‚¨å¶å°”ä¼šå‘çŽ°å±å¹•ä¼¼ä¹Žä¸åº”è¯¥å‘ä¸Šæ»šåŠ¨ï¼Œ
+æ‚¨å¯ä»¥å°è¯•å…³é—­æ­¤é€‰é¡¹ã€‚
 
-×Ô¶¯»»ÐÐÄ£Ê½¿ÉÒÔÍ¨¹ý·þÎñÆ÷·¢ËÍ
-µÄ\i{¿ØÖÆÐòÁÐ}´ò¿ªºÍ¹Ø±Õ¡£
-´ËÅäÖÃÑ¡Ïî¿ØÖÆ\e{Ä¬ÈÏ}×´Ì¬£¬µ±Äú
-ÖØÖÃÖÕ¶ËÊ±½«»Ö¸´(Çë²ÎÔÄ \k{reset-terminal})¡£
-µ«ÊÇ£¬Èç¹ûÄúÔÚ»á»°ÖÐÊ¹ÓÃ\q{¸ü¸ÄÉèÖÃ}ÐÞ¸Ä´ËÑ¡Ïî£¬
-Ëü½«Á¢¼´ÉúÐ§¡£
+è‡ªåŠ¨æ¢è¡Œæ¨¡å¼å¯ä»¥é€šè¿‡æœåŠ¡å™¨å‘é€
+çš„\i{æŽ§åˆ¶åºåˆ—}æ‰“å¼€å’Œå…³é—­ã€‚
+æ­¤é…ç½®é€‰é¡¹æŽ§åˆ¶\e{é»˜è®¤}çŠ¶æ€ï¼Œå½“æ‚¨
+é‡ç½®ç»ˆç«¯æ—¶å°†æ¢å¤(è¯·å‚é˜… \k{reset-terminal})ã€‚
+ä½†æ˜¯ï¼Œå¦‚æžœæ‚¨åœ¨ä¼šè¯ä¸­ä½¿ç”¨\q{æ›´æ”¹è®¾ç½®}ä¿®æ”¹æ­¤é€‰é¡¹ï¼Œ
+å®ƒå°†ç«‹å³ç”Ÿæ•ˆã€‚
 
-\S{config-decom} \q{¿ªÆôDECÔ­Ê¼Ä£Ê½}
+\S{config-decom} \q{å¼€å¯DECåŽŸå§‹æ¨¡å¼}
 
-\i{DEC Ô­Ê¼Ä£Ê½} ÊÇÒ»¸ö´ÎÒªÑ¡Ïî£¬
-Ëü¿ØÖÆ PuTTY ÈçºÎ½âÊÍ·þÎñÆ÷·¢ËÍµÄ¹â±êÎ»ÖÃ\i{¿ØÖÆÐòÁÐ}¡£
+\i{DEC åŽŸå§‹æ¨¡å¼} æ˜¯ä¸€ä¸ªæ¬¡è¦é€‰é¡¹ï¼Œ
+å®ƒæŽ§åˆ¶ PuTTY å¦‚ä½•è§£é‡ŠæœåŠ¡å™¨å‘é€çš„å…‰æ ‡ä½ç½®\i{æŽ§åˆ¶åºåˆ—}ã€‚
 
-·þÎñÆ÷¿ÉÒÔ·¢ËÍÏÞÖÆÏÔÊ¾\i{¹ö¶¯ÇøÓò}µÄ¿ØÖÆÐòÁÐ¡£
-ÀýÈç£¬ÔÚ±à¼­Æ÷ÖÐ£¬·þÎñÆ÷¿ÉÄÜ»áÔÚÆÁÄ»¶¥²¿±£ÁôÒ»ÐÐ£¬
-ÔÚÆÁÄ»µ×²¿±£ÁôÒ»ÐÐ£¬
-²¢¿ÉÄÜ·¢ËÍÒ»¸ö¿ØÖÆÐòÁÐ£¬
-Ê¹¹ö¶¯²Ù×÷½öÓ°ÏìÊ£ÓàµÄÐÐ¡£
+æœåŠ¡å™¨å¯ä»¥å‘é€é™åˆ¶æ˜¾ç¤º\i{æ»šåŠ¨åŒºåŸŸ}çš„æŽ§åˆ¶åºåˆ—ã€‚
+ä¾‹å¦‚ï¼Œåœ¨ç¼–è¾‘å™¨ä¸­ï¼ŒæœåŠ¡å™¨å¯èƒ½ä¼šåœ¨å±å¹•é¡¶éƒ¨ä¿ç•™ä¸€è¡Œï¼Œ
+åœ¨å±å¹•åº•éƒ¨ä¿ç•™ä¸€è¡Œï¼Œ
+å¹¶å¯èƒ½å‘é€ä¸€ä¸ªæŽ§åˆ¶åºåˆ—ï¼Œ
+ä½¿æ»šåŠ¨æ“ä½œä»…å½±å“å‰©ä½™çš„è¡Œã€‚
 
-ÆôÓÃ DEC Ô­Ê¼Ä£Ê½ºó£¬\i{¹â±ê×ø±ê}
-´Ó¹ö¶¯ÇøÓòµÄ¶¥²¿¿ªÊ¼¼ÆËã¡£
-¹Ø±ÕËüºó£¬ÎÞÂÛ¹ö¶¯ÇøÓòÈçºÎ£¬
-¹â±ê×ø±ê¶¼´ÓÕû¸öÆÁÄ»µÄ¶¥²¿¿ªÊ¼¼ÆËã¡£
+å¯ç”¨ DEC åŽŸå§‹æ¨¡å¼åŽï¼Œ\i{å…‰æ ‡åæ ‡}
+ä»Žæ»šåŠ¨åŒºåŸŸçš„é¡¶éƒ¨å¼€å§‹è®¡ç®—ã€‚
+å…³é—­å®ƒåŽï¼Œæ— è®ºæ»šåŠ¨åŒºåŸŸå¦‚ä½•ï¼Œ
+å…‰æ ‡åæ ‡éƒ½ä»Žæ•´ä¸ªå±å¹•çš„é¡¶éƒ¨å¼€å§‹è®¡ç®—ã€‚
 
-Äú²»Ì«¿ÉÄÜÐèÒª¸ü¸Ä´ËÑ¡Ïî£¬
-µ«Èç¹ûÄú·¢ÏÖÈ«ÆÁÓ¦ÓÃ³ÌÐòÔÚÆÁÄ»
-µÄ´íÎó²¿·ÖÏÔÊ¾ÎÄ±¾£¬Äú¿ÉÒÔ³¢
-ÊÔ´ò¿ª DEC Ô­Ê¼Ä£Ê½ÒÔ²é¿´ÊÇ·ñÓÐ°ïÖú¡£
+æ‚¨ä¸å¤ªå¯èƒ½éœ€è¦æ›´æ”¹æ­¤é€‰é¡¹ï¼Œ
+ä½†å¦‚æžœæ‚¨å‘çŽ°å…¨å±åº”ç”¨ç¨‹åºåœ¨å±å¹•
+çš„é”™è¯¯éƒ¨åˆ†æ˜¾ç¤ºæ–‡æœ¬ï¼Œæ‚¨å¯ä»¥å°
+è¯•æ‰“å¼€ DEC åŽŸå§‹æ¨¡å¼ä»¥æŸ¥çœ‹æ˜¯å¦æœ‰å¸®åŠ©ã€‚
 
-¿ÉÒÔÍ¨¹ý·þÎñÆ÷·¢ËÍµÄ¿ØÖÆÐòÁÐ´ò¿ªºÍ¹Ø
-±Õ DEC Ô­Ê¼Ä£Ê½¡£´ËÅäÖÃÑ¡Ïî¿ØÖÆ\e{Ä¬ÈÏ×´Ì¬}£¬
-µ±ÄúÖØÖÃÖÕ¶ËÊ±½«»Ö¸´ (Çë²ÎÔÄ \k{reset-terminal})¡£
-µ«ÊÇ£¬Èç¹ûÄúÔÚ»á»°ÖÐÊ¹
-ÓÃ\q{¸ü¸ÄÉèÖÃ}ÐÞ¸Ä´ËÑ¡Ïî£¬
-Ëü½«Á¢¼´ÉúÐ§¡£
+å¯ä»¥é€šè¿‡æœåŠ¡å™¨å‘é€çš„æŽ§åˆ¶åºåˆ—æ‰“å¼€å’Œå…³
+é—­ DEC åŽŸå§‹æ¨¡å¼ã€‚æ­¤é…ç½®é€‰é¡¹æŽ§åˆ¶\e{é»˜è®¤çŠ¶æ€}ï¼Œ
+å½“æ‚¨é‡ç½®ç»ˆç«¯æ—¶å°†æ¢å¤ (è¯·å‚é˜… \k{reset-terminal})ã€‚
+ä½†æ˜¯ï¼Œå¦‚æžœæ‚¨åœ¨ä¼šè¯ä¸­ä½¿
+ç”¨\q{æ›´æ”¹è®¾ç½®}ä¿®æ”¹æ­¤é€‰é¡¹ï¼Œ
+å®ƒå°†ç«‹å³ç”Ÿæ•ˆã€‚
 
-\S{config-crlf} \q{Ã¿¸öLF×Ö·ûºóÃæÔö¼ÓCR×Ö·û}
+\S{config-crlf} \q{æ¯ä¸ªLFå­—ç¬¦åŽé¢å¢žåŠ CRå­—ç¬¦}
 
-´ó¶àÊý·þÎñÆ÷·¢ËÍÁ½¸ö¿ØÖÆ×Ö·û \i{CR} ºÍ \i{LF}
-À´¿ªÊ¼ÆÁÄ»µÄ\i{ÐÂÐÐ}¡£ CR ×Ö·ûÊ¹¹â±ê·µ»Øµ½ÆÁ
-Ä»µÄ×ó²à¡£ LF ×Ö·ûÊ¹¹â±êÏòÏÂÒÆ¶¯Ò»ÐÐ
-£¨²¢¿ÉÄÜÊ¹ÆÁÄ»¹ö¶¯£©¡£
+å¤§å¤šæ•°æœåŠ¡å™¨å‘é€ä¸¤ä¸ªæŽ§åˆ¶å­—ç¬¦ \i{CR} å’Œ \i{LF}
+æ¥å¼€å§‹å±å¹•çš„\i{æ–°è¡Œ}ã€‚ CR å­—ç¬¦ä½¿å…‰æ ‡è¿”å›žåˆ°å±
+å¹•çš„å·¦ä¾§ã€‚ LF å­—ç¬¦ä½¿å…‰æ ‡å‘ä¸‹ç§»åŠ¨ä¸€è¡Œ
+ï¼ˆå¹¶å¯èƒ½ä½¿å±å¹•æ»šåŠ¨ï¼‰ã€‚
 
-ÓÐÐ©·þÎñÆ÷Ö»·¢ËÍLF£¬²¢ÆÚÍûÖÕ¶Ë×Ô¶¯½«¹â±êÒÆµ½×ó±ß¡£
-Èç¹ûÄúÓöµ½Ö´ÐÐ´Ë²Ù×÷µÄ·þÎñÆ÷£¬
-Äú½«ÔÚÆÁÄ»ÉÏ¿´µ½\I{stair-stepping}½×ÌÝÊ½µÄÐ§¹û£¬
-ÈçÏÂËùÊ¾£º
+æœ‰äº›æœåŠ¡å™¨åªå‘é€LFï¼Œå¹¶æœŸæœ›ç»ˆç«¯è‡ªåŠ¨å°†å…‰æ ‡ç§»åˆ°å·¦è¾¹ã€‚
+å¦‚æžœæ‚¨é‡åˆ°æ‰§è¡Œæ­¤æ“ä½œçš„æœåŠ¡å™¨ï¼Œ
+æ‚¨å°†åœ¨å±å¹•ä¸Šçœ‹åˆ°\I{stair-stepping}é˜¶æ¢¯å¼çš„æ•ˆæžœï¼Œ
+å¦‚ä¸‹æ‰€ç¤ºï¼š
 
 \c First line of text
 \c                   Second line
 \c                              Third line
 
-Èç¹ûÄúÓöµ½ÕâÖÖÇé¿ö£¬Çë³¢ÊÔÆôÓÃ\q{Ã¿¸öLF×Ö·ûºóÃæÔö¼ÓCR×Ö·û}Ñ¡Ïî£¬
-ÊÂÇé¿ÉÄÜ»á»Ö¸´Õý³££º
+å¦‚æžœæ‚¨é‡åˆ°è¿™ç§æƒ…å†µï¼Œè¯·å°è¯•å¯ç”¨\q{æ¯ä¸ªLFå­—ç¬¦åŽé¢å¢žåŠ CRå­—ç¬¦}é€‰é¡¹ï¼Œ
+äº‹æƒ…å¯èƒ½ä¼šæ¢å¤æ­£å¸¸ï¼š
 
 \c First line of text
 \c Second line
 \c Third line
 
-\S{config-lfcr} \q{Ã¿¸öCR×Ö·ûºóÃæÔö¼ÓLF×Ö·û}
-
-´ó¶àÊý·þÎñÆ÷·¢ËÍÁ½¸ö¿ØÖÆ×Ö·û \i{CR} ºÍ \i{LF}
-À´¿ªÊ¼ÆÁÄ»µÄ\i{ÐÂÐÐ}¡£
-CR ×Ö·ûÊ¹¹â±ê·µ»Øµ½ÆÁÄ»µÄ×ó²à¡£
-LF ×Ö·ûÊ¹¹â±êÏòÏÂÒÆ¶¯Ò»ÐÐ£¨²¢¿ÉÄÜÊ¹ÆÁÄ»¹ö¶¯£©¡£
-
-ÓÐÐ©·þÎñÆ÷Ö»·¢ËÍ CR£¬
-ËùÒÔÐÂÐ´ÈëµÄÐÐ±»ÏÂÒ»ÐÐ¸²¸Ç¡£
-´ËÑ¡Ïî»áµ¼ÖÂ»»ÐÐ£¬ÒÔ±ãÏÔÊ¾ËùÓÐÐÐ¡£
-
-\S{config-erase} \q{Ê¹ÓÃ\i{±³¾°ÑÕÉ«}ÇåÆÁ}
-
-µ±·þÎñÆ÷·¢ËÍ\q{\i{ÇåÆÁ}} ÃüÁîÊ±£¬
-²¢·ÇËùÓÐÖÕ¶Ë¶¼Í¬Òâ½«ÆÁÄ»±ä³ÉÊ²Ã´ÑÕÉ«¡£
-Ò»Ð©ÖÕ¶ËÈÏÎªÓ¦¸ÃÊ¼ÖÕ½«ÆÁÄ»Çå³ýÎª\e{Ä¬ÈÏ}±³
-¾°ÑÕÉ«¡£ ÆäËûÈËÈÏÎªÆÁÄ»Ó¦¸Ã±»Çå³ý
-Îª·þÎñÆ÷Ñ¡ÔñµÄÈÎºÎ±³¾°ÑÕÉ«¡£
-
-´æÔÚÆÚÍûÕâÁ½ÖÖÐÐÎªµÄÓ¦ÓÃ³ÌÐò¡£
-Òò´Ë£¬PuTTY ¿ÉÒÔÅäÖÃÎªÖ´ÐÐÈÎÒ»²Ù×÷¡£
-
-½ûÓÃ´ËÑ¡Ïîºó£¬ÆÁÄ»Çå³ýÊ¼ÖÕÒÔÄ¬ÈÏ±³¾°
-ÑÕÉ«Íê³É¡£ ÆôÓÃ´ËÑ¡Ïîºó£¬
-\e{ÏÖÔÚ} ½«ÒÔµ±Ç°±³¾°ÑÕÉ«Íê³É¡£
-
-±³¾°ÑÕÉ«²Á³ý¿ÉÒÔÍ¨¹ý·þÎñÆ÷·¢ËÍµÄ\i{¿ØÖÆÐòÁÐ}
-´ò¿ªºÍ¹Ø±Õ¡£
-´ËÅäÖÃÑ¡Ïî¿ØÖÆ\e{Ä¬ÈÏ}×´Ì¬£¬
-µ±ÄúÖØÖÃÖÕ¶ËÊ±½«»Ö¸´(Çë²ÎÔÄ \k{reset-terminal})¡£µ«ÊÇ£¬
-Èç¹ûÄúÔÚ»á»°ÖÐÊ¹ÓÃ\q{¸ü¸ÄÉèÖÃ}ÐÞ¸Ä´ËÑ¡Ïî£¬
-Ëü½«Á¢¼´ÉúÐ§¡£
-
-\S{config-blink} \q{ÆôÓÃ\i{ÉÁË¸ÎÄ±¾}}
-
-·þÎñÆ÷¿ÉÒÔÒªÇó PuTTY ÏÔÊ¾ÉÁË¸µÄÎÄ±¾¡£
- Õâ·Ç³£·ÖÉ¢×¢ÒâÁ¦£¬
- Òò´Ë PuTTY ÔÊÐíÄúÍêÈ«¹Ø±ÕÉÁË¸ÎÄ±¾¡£
-
-µ±ÉÁË¸ÎÄ±¾±»½ûÓÃ²¢ÇÒ·þÎñÆ÷³¢ÊÔÊ¹Ä³Ð©
-ÎÄ±¾ÉÁË¸Ê±£¬PuTTY ½«¸ÄÎªÒÔ\I{background
-colour, bright}´ÖÌå±³¾°ÑÕÉ«ÏÔÊ¾ÎÄ±¾¡£
-
-ÉÁË¸ÎÄ±¾¿ÉÒÔÍ¨¹ý·þÎñÆ÷·¢ËÍ
-µÄ\i{¿ØÖÆÐòÁÐ}´ò¿ªºÍ¹Ø±Õ¡£
-´ËÅäÖÃÑ¡Ïî¿ØÖÆ\e{Ä¬ÈÏ}×´Ì¬£¬
-µ±ÄúÖØÖÃÖÕ¶ËÊ±½«»Ö¸´(Çë²ÎÔÄ \k{reset-terminal})¡£
-µ«ÊÇ£¬Èç¹ûÄúÔÚ»á»°ÖÐÊ¹ÓÃ\q{¸ü¸ÄÉèÖÃ}ÐÞ¸Ä´ËÑ¡Ïî£¬
-Ëü½«Á¢¼´ÉúÐ§¡£
-
-\S{config-answerback} \q{\ii{»Ø´ð} ^E}
-
-Èç¹û·þÎñÆ÷Ïò PuTTY ·¢ËÍ ^E \i{²éÑ¯×Ö·û}£¬
-´ËÑ¡Ïî¿ØÖÆ PuTTY ½«·¢ËÍ»Ø·þÎñÆ÷µÄÄÚÈÝ¡£
-Í¨³£ËüÖ»·¢ËÍ×Ö·û´®\q{PuTTY}¡£
-
-Èç¹ûÄú²»Ð¡ÐÄ½«¶þ½øÖÆÎÄ¼þµÄÄÚÈÝÐ´ÈëÖÕ¶Ë£¬
-Äú¿ÉÄÜ»á·¢ÏÖËü°üº¬¶à¸ö ^E ×Ö·û£¬Òò´ËÄú
-µÄÏÂÒ»¸öÃüÁîÐÐ¿ÉÄÜ»á¶ÁÈ¡ \q{PuTTYPuTTYPuTTY...}
-¾ÍºÃÏñÄãÊäÈëÁË ÔÚ¼üÅÌÉÏ¶à´Î»Ø¸´×Ö·û´®¡£
-Èç¹ûÄú½«Ó¦´ð×Ö·û´®ÉèÖÃÎª¿Õ£¬
-Ôò´ËÎÊÌâÓ¦¸Ã»áÏûÊ§£¬
-µ«ÕâÑù×ö¿ÉÄÜ»áµ¼ÖÂÆäËûÎÊÌâ¡£
-
-Çë×¢Òâ£¬Õâ\e{²»ÊÇ} PuTTY µÄ¹¦ÄÜ£¬
-·þÎñÆ÷Í¨³£»áÊ¹ÓÃËüÀ´È·¶¨ÄúµÄÖÕ¶ËÀàÐÍ¡£
-¸Ã¹¦ÄÜÊÇÁ¬½ÓÃæ°åÖÐµÄ\q{\ii{ÖÕ¶ËÀàÐÍ}×Ö·û´®}£¬
-ÏêÏ¸ÄÚÈÝÇë²ÎÔÄ \k{config-termtype}¡£
-
-Äú¿ÉÒÔÊ¹ÓÃ \c{^C}±íÊ¾·¨ÔÚÓ¦´ð×Ö·û´®ÖÐ°üº¬¿ØÖÆ×Ö·û¡£
-£¨Ê¹ÓÃ \c{^~} »ñµÃ \c{^} ·ûºÅ¡££©
-
-\S{config-localecho} \q{\ii{±¾µØ»ØÏÔ}}
-
-½ûÓÃ±¾µØ»ØÏÔºó£¬ÄúÔÚ PuTTY ´°¿ÚÖÐ¼üÈëµÄ×Ö·û²»»á
-±» \e{PuTTY} ÔÚ´°¿ÚÖÐ»ØÏÔ¡£ ËüÃÇÖ»ÊÇ±»·¢ËÍµ½·þÎñÆ÷¡£
-£¨\e{·þÎñÆ÷}¿ÉÄÜ»áÑ¡Ôñ½«ËüÃÇ\I{remote echo}»ØÏÔ¸øÄú£»
-ÕâÎÞ·¨Í¨¹ý PuTTY ¿ØÖÆÃæ°å½øÐÐ¿ØÖÆ¡££©
-
-Ä³Ð©ÀàÐÍµÄ»á»°ÐèÒª±¾µØ»ØÏÔ£¬¶øÐí¶à²»ÐèÒª¡£
-ÔÚÆäÄ¬ÈÏÄ£Ê½ÏÂ£¬PuTTY ½«×Ô¶¯³¢ÊÔÍÆ¶Ï±¾µØ»Ø
-ÏÔÊÇ·ñÊÊºÏÄúÕýÔÚ¹¤×÷µÄ»á»°¡£
-Èç¹ûÄú·¢ÏÖËü×ö³öÁË´íÎóµÄ¾ö¶¨£¬
-Äú¿ÉÒÔÊ¹ÓÃ´ËÅäÖÃÑ¡Ïî¸²¸ÇÆäÑ¡Ôñ£º
-Äú¿ÉÒÔÇ¿ÖÆ ±¾µØ»Ø²¨±»´ò¿ª£¬
-»òÕßÇ¿ÖÆ¹Ø±Õ£¬¶ø²»ÊÇÒÀ¿¿×Ô¶¯¼ì²â¡£
-
-\S{config-localedit} \q{\ii{±¾µØÐÐ±à¼­}}
-
-Í¨³££¬ÄúÔÚ PuTTY ´°¿ÚÖÐ¼üÈëµÄÃ¿¸ö×Ö
-·û¶¼»áÔÚÄú¼üÈëµÄÄÇÒ»¿ÌÁ¢¼´·¢ËÍµ½·þÎñÆ÷¡£
-
-Èç¹ûÄúÆôÓÃ±¾µØÐÐ±à¼­£¬Õâ»á¸Ä±ä¡£
-PuTTY ½«ÔÊÐíÄúÔÚ±¾µØÒ»´Î±à¼­Ò»ÕûÐÐ£¬
-²¢ÇÒ¸ÃÐÐ½öÔÚÄú°´ Return Ê±²Å»á·¢ËÍµ½·þÎñÆ÷¡£
-Èç¹û³öÏÖ´íÎó£¬¿ÉÒÔÔÚ°´ Return Ö®Ç°Ê¹
-ÓÃ Backspace ¼ü¸üÕý£¬·þÎñÆ÷½«ÓÀÔ¶²»»á¿´µ½´íÎó¡£
-
-ÓÉÓÚÎÞ·¨ÔÚ±¾µØ±à¼­ÐÐ¶øÎÞ·¨¿´µ½Ëü£¬
-Òò´Ë±¾µØÐÐ±à¼­Ö÷ÒªÓë\i{±¾µØ»ØÏÔ}½áºÏÊ¹
-ÓÃ (\k{config-localecho})¡£ ÕâÊ¹Æä·Ç³£
-ÊÊºÏÔÚrawÄ£Ê½\#{FIXME}»òÁ¬½Óµ½ \i{MUD} »ò\i{talker}Ê±Ê¹ÓÃ¡£
-£¨ËäÈ»Ò»Ð©¸ü¸ß¼¶µÄ MUD Å¼¶û»á´ò¿ª±¾µØÐÐ±à¼­²¢¹Ø±Õ±¾µØ»ØÏÔ£¬
-ÒÔ±ã½ÓÊÜÓÃ»§µÄÃÜÂë¡££©
-
-Ä³Ð©ÀàÐÍµÄ»á»°ÐèÒª±¾µØÐÐ±à¼­£¬
-¶øÐí¶à²»ÐèÒª¡£ ÔÚÆäÄ¬ÈÏÄ£Ê½ÏÂ£¬
-PuTTY ½«×Ô¶¯³¢ÊÔÍÆ¶Ï±¾µØÐÐ±à¼­ÊÇ·ñÊÊºÏ
-ÄúÕýÔÚ¹¤×÷µÄ»á»°¡£Èç¹ûÄú·¢ÏÖËü×ö³öÁË´íÎóµÄ
-¾ö¶¨£¬Äú¿ÉÒÔÊ¹ÓÃ´ËÅäÖÃÑ¡ÏîÀ´¸²¸ÇËüµÄÑ¡Ôñ£º
-Äú¿ÉÒÔ Ç¿ÖÆ´ò¿ª±¾µØÐÐ±à¼­£¬
-»òÕßÇ¿ÖÆ¹Ø±Õ£¬¶ø²»ÊÇÒÀ¿¿×Ô¶¯¼ì²â¡£
-
-\S{config-printing} \ii{Ô¶³Ì´òÓ¡}
-
-Ðí¶à¼æÈÝ VT100 µÄÖÕ¶ËÖ§³ÖÔÚÔ¶
-³Ì·þÎñÆ÷µÄ¿ØÖÆÏÂ½øÐÐ´òÓ¡£¨ÓÐÊ±³ÆÎª\q{Ö±Í¨´òÓ¡}£©¡£
-PuTTY Ò²Ö§³Ö´Ë¹¦ÄÜ£¬µ«Ä¬ÈÏ¹Ø±Õ¡£
-
-ÒªÆôÓÃÔ¶³Ì¿ØÖÆ´òÓ¡£¬Çë´Ó\q{½« ANSI ´òÓ¡»úÊä³ö·¢ËÍ
-µ½µÄ´òÓ¡»ú}ÏÂÀ­ÁÐ±í¿òÖÐÑ¡Ôñ´òÓ¡»ú¡£
-ÕâÓ¦¸ÃÔÊÐíÄú´ÓÒÑÔÚ¼ÆËã»úÉÏ°²×°Çý¶¯³Ì
-ÐòµÄËùÓÐ´òÓ¡»úÖÐ½øÐÐÑ¡Ôñ¡£
-»òÕß£¬Äú¿ÉÒÔ¼üÈëÁªÍø´òÓ¡»úµÄÍøÂçÃû³Æ
-£¨ÀýÈç£¬\c{\\\\printserver\\printer1}£©£¬
-¼´Ê¹ÄúÉÐÎ´ÔÚ×Ô¼ºµÄ»úÆ÷ÉÏ°²×°ËüµÄÇý¶¯³ÌÐò¡£
-
-µ±Ô¶³Ì·þÎñÆ÷³¢ÊÔ´òÓ¡Ä³Ð©Êý¾ÝÊ±£¬
-PuTTY »á½«ÕâÐ©\e{raw}Ô­Ê¼·¢ËÍµ½´òÓ¡»ú - ÎÞÐè¶Ô
-Æä½øÐÐ·­Òë¡¢³¢ÊÔ¸ñÊ½»¯»ò¶ÔÆäÖ´ÐÐÈÎºÎÆäËû²Ù×÷¡£
-Äú¿ÉÒÔÈ·±£ÄúµÄÔ¶³Ì·þÎñÆ÷ÖªµÀ
-ËüÕýÔÚÓëÄÄÖÖÀàÐÍµÄ´òÓ¡»úÍ¨ÐÅ¡£
-
-ÓÉÓÚ PuTTY ½«Êý¾ÝÔ­Ê¼·¢ËÍµ½´òÓ¡»ú£¬
-Òò´ËËüÎÞ·¨Ìá¹©×ÝÏòÓëºáÏò¡¢
-´òÓ¡ÖÊÁ¿»òÖ½ºÐÑ¡ÔñµÈÑ¡Ïî¡£
-ËùÓÐÕâÐ©ÊÂÇé¶¼½«ÓÉÄúµÄ PC ´òÓ¡»úÇý¶¯³ÌÐò£¨PuTTY ÈÆ¹ý£©Íê³É£»Èç¹ûÄúÐèÒªÍê³ÉËüÃÇ£¬
-Äú½«±ØÐëÕÒµ½Ò»ÖÖ·½·¨À´ÅäÖÃÄúµÄÔ¶³Ì·þÎñÆ÷À´Íê³ÉËüÃÇ¡£
-
-ÒªÔÙ´Î½ûÓÃÔ¶³Ì´òÓ¡£¬Çë´Ó´òÓ¡»úÑ¡ÔñÁÐ±í
-ÖÐÑ¡Ôñ\q{ÎÞ£¨½ûÓÃ´òÓ¡£©}¡£
-ÕâÊÇÄ¬ÈÏ×´Ì¬¡£
-
-\H{config-keyboard} ¼üÅÌÃæ°å
-
-\i{¼üÅÌÃæ°å}ÅäÖÃÔÊÐíÄú¿ØÖÆ PuTTY ÖÐ¼üÅÌµÄÐÐÎª¡£
-Ðí¶àÕâÐ©ÉèÖÃµÄÕýÈ·×´Ì¬È¡¾öÓÚ PuTTY Á¬½Óµ½µÄ·þ
-ÎñÆ÷ËùÆÚÍûµÄ×´Ì¬¡£ ¶ÔÓÚ \i{Unix}·þÎñÆ÷£¬Õâ¿É
-ÄÜÈ¡¾öÓÚËüÊ¹ÓÃµÄ \i\c{termcap} »ò \i\c{terminfo}
-ÌõÄ¿£¬¶øÕâÓÖ¿ÉÄÜÓÉ Á¬½ÓÃæ°åÖÐµÄ\q{\ii{ÖÕ¶Ë
-ÀàÐÍ}×Ö·û´®}ÉèÖÃ¿ØÖÆ£»ÏêÏ¸ÄÚÈÝ²Î¿¼ \k{config-termtype}¡£
-Èç¹û´Ë´¦µÄÉèÖÃËÆºõ¶¼Ã»ÓÐ°ïÖú£¬
-ÄÇÃ´\k{faq-keyboard}ÃèÊöµÄÎÊÌâ¿ÉÄÜ¶ÔÄãÓÐ°ïÖú¡£
-
-\S{config-backspace} ¸ü¸Ä\ii{ÍË¸ñ¼ü}µÄ²Ù×÷
-
-Ò»Ð©ÖÕ¶ËÈÏÎª Backspace ¼üÓ¦¸ÃÏò·þÎñÆ÷·¢ËÍ
-Óë \i{Control-H}£¨ASCII ´úÂë 8£©ÏàÍ¬µÄÄÚÈÝ¡£
-ÆäËûÖÕ¶ËÈÏÎª Backspace ¼üÓ¦¸Ã·¢ËÍ ASCII
-Âë 127£¨Í¨³£³ÆÎª \i{Control-?}£©£¬
-ÒÔ±ãÓë Control-H Çø·Ö¿ªÀ´¡£ ´ËÑ¡ÏîÔÊÐíÄú
-Ñ¡Ôñµ±Äú°´ Backspace Ê± PuTTY Éú³ÉµÄ´úÂë¡£
-
-Èç¹ûÄúÍ¨¹ý SSH Á¬½Ó£¬Ä¬ÈÏÇé¿öÏÂ PuTTY »á
-¸æËß·þÎñÆ÷´ËÑ¡ÏîµÄÖµ(Çë²ÎÔÄ \k{config-ttymodes})£¬
-Òò´Ë£¬Äú¿ÉÄÜ»á·¢ÏÖ Backspace ¼üÎÞÂÛÄÄÖÖ·½Ê½¶¼ÊÇÕýÈ·µÄ¡£ Í¬Ñù£¬
-Èç¹ûÄúÒªÁ¬½Óµ½ \i{Unix} ÏµÍ³£¬Äú¿ÉÄÜ»á·¢ÏÖ
-Unix \i\c{stty} ÃüÁîÔÊÐíÄúÅäÖÃ·þÎñÆ÷ÆÚÍû¿´µ½µÄ
-ÄÚÈÝ£¬Òò´ËÄú¿ÉÄÜ²»ÐèÒª¸ü¸Ä PuTTY Éú³ÉµÄÄÚÈÝ¡£
-ÔÚÆäËûÏµÍ³ÉÏ£¬·þÎñÆ÷µÄÆÚÍû¿ÉÄÜÊÇ¹Ì¶¨µÄ£¬
-Äú¿ÉÄÜ±ðÎÞÑ¡Ôñ£¬Ö»ÄÜÅäÖÃ PuTTY¡£
-
-Èç¹ûÄúÈ·ÊµÓÐÑ¡Ôñ£¬ÎÒÃÇ½¨ÒéÅäÖÃ PuTTY
-ÒÔÉú³É Control-? ²¢ÅäÖÃ·þÎñÆ÷ÒÔÆÚÍûËü£¬
-ÒòÎªÕâÔÊÐíÖîÈç \c{emacs}Ö®ÀàµÄÓ¦ÓÃ
-³ÌÐòÊ¹ÓÃ Control-H Ñ°Çó°ïÖú¡£
-
-£¨¼üÈë \i{Shift-Backspace} ½«
-µ¼ÖÂ PuTTY ·¢ËÍ´Ë´¦Î´ÅäÖÃÎªÄ¬ÈÏÖµµÄÈÎºÎ´úÂë¡££©
-
-\S{config-homeend} ¸Ä±ä\i{HomeºÍEnd¼ü}µÄ¶¯×÷
-
-Unix ÖÕ¶ËÄ£ÄâÆ÷ \i\c{rxvt} Óë
-ÖÕ¶Ë¿ÉÄÜ²»Í¬£¬Home ºÍ End ¼üÓ¦
-¸Ã½«ÄÄÐ©×Ö·ûÐòÁÐ·¢ËÍµ½·þÎñÆ÷¡£
-
-\i\c{xterm} ºÍÆäËûÖÕ¶Ë·¢ËÍ \c{ESC [1~} Îª Home ¼ü£¬
-\c{ESC [4~} Îª End ¼ü¡£ \c{rxvt} ·¢ËÍ \c{ESC [H} ÓÃÓÚ Home ¼ü£¬
-\c{ESC [Ow} ÓÃÓÚ End ¼ü¡£
-
-Èç¹ûÄú·¢ÏÖ Home ºÍ End ¼ü²»Æð×÷ÓÃµÄÓ¦ÓÃ³ÌÐò£¬
-Äú¿ÉÒÔ³¢ÊÔÇÐ»»´ËÑ¡ÏîÒÔ²é¿´ÊÇ·ñÓÐ°ïÖú¡£
-
-\S{config-funkeys} ¸ü¸Ä\i{¹¦ÄÜ¼ü}
-ºÍ\i{Êý×Ö¼ü}µÄ¶¯×÷
-
-´ËÑ¡ÏîÓ°Ïì¹¦ÄÜ¼ü£¨F1 µ½ F12£©ºÍ
-¶¥ÐÐµÄÊý×ÖÐ¡¼üÅÌ¡£
-
-\b ÔÚ Ä¬ÈÏ Ä£Ê½ÏÂ£¬±ê¼ÇÎª \c{ESC [n~}£¬
-¹¦ÄÜ¼üÉú³É \c{ESC [11~}¡¢\c{ESC [12~}
-µÈÐòÁÐ¡£ Õâ·ûºÏ Digital ÖÕ¶ËµÄÒ»°ãÐÐÎª¡£
-
-\b ÔÚ Linux Ä£Ê½ÏÂ£¬F6 µ½ F12 µÄÐÐÎªÓëÄ¬ÈÏÄ£
-Ê½ÏàÍ¬£¬µ« F1 µ½ F5 Éú³É \c{ESC [[A} µ½ \c{ESC [[E}¡£
-ÕâÄ£·ÂÁË \i{Linux ÐéÄâ¿ØÖÆÌ¨}¡£
-
-\b ÔÚ \I{xterm}Xterm R6 Ä£Ê½ÏÂ£¬
-F5 µ½ F12 µÄÐÐÎªÀàËÆÓÚÄ¬ÈÏÄ£Ê½£¬
-µ« F1 µ½ F4 Éú³É \c{ESC OP} µ½ \c{ESC OS}£¬
-ÕâÊÇÓÉ Digital ÖÕ¶ËÉÏµÄ\e{¼üÅÌ}¶¥ÐÐ²úÉúµÄÐòÁÐ¡£
-
-\b ÔÚ \i{VT400} Ä£Ê½ÏÂ£¬ËùÓÐ¹¦ÄÜ¼üµÄÐÐÎªÓëÄ¬ÈÏÄ£
-Ê½ÏàÍ¬£¬µ«Êý×Ö¼üÅÌµÄÊµ¼Ê¶¥ÐÐ»áÉú³É \c{ESC
-OP} µ½ \c{ESC OS}¡£
-
-\b ÔÚ \i{VT100+} Ä£Ê½ÏÂ£¬¹¦ÄÜ¼ü
-Éú³É \c{ESC OP} µ½ \c{ESC O[}
-
-\b ÔÚ \i{SCO} Ä£Ê½ÏÂ£¬¹¦ÄÜ¼ü F1 µ½ F12 Éú
-³É \c{ESC [M} µ½ \c{ESC [X}¡£ Óë shift Ò»Æð£¬
-ËüÃÇÉú³É \c{ESC [Y} µ½ \c{ESC [j}¡£ Í¨¹ý¿ØÖÆ£¬
-ËüÃÇÉú³É \c{ESC [k} µ½ \c{ESC [v}£¬²¢ÇÒÍ¨
-¹ýÒÆÎ»ºÍ¿ØÖÆÒ»ÆðÉú³É \c{ESC [w} µ½ \c{ESC [\{}¡£
-
-\b ÔÚ \I{xterm}Xterm 216 Ä£Ê½ÏÂ£¬
-Î´ÒÆÎ»µÄ¹¦ÄÜ¼üµÄÐÐÎªÓë Xterm R6 Ä£Ê½ÏàÍ¬¡£
-µ«ÊÇ½«¹¦ÄÜ¼üÓë Shift »ò Alt »ò Ctrl Ò»Æð°´ÏÂ»áÉú³ÉÒ»¸ö²»Í¬µÄÐòÁÐ£¬ÆäÖÐ°üº¬Ò»¸ö¶îÍâµÄÊý×Ö
-²ÎÊý£¬ÆäÐÎÊ½Îª£¨1 ±íÊ¾ Shift£©+£¨2 ±íÊ¾ Alt£©+
-£¨4 ±íÊ¾ Ctrl£©+1¡£¶ÔÓÚ F1-F4£¬ Ïñ ESC OP ÕâÑùµÄ
-»ù±¾ÐòÁÐ±ä³É \cw{ESC [1;}\e{bitmap}\cw{P} ºÍÀàËÆµÄ£»
-¶ÔÓÚ F5 ¼°ÒÔÉÏ£¬\cw{ESC[}\e{index}\cw{~}
-±äÎª \cw{ESC[}\e{index}\cw{;}\e{bitmap}\cw{~}¡£
-
-Èç¹ûÄã²»ÖªµÀÕâÒâÎ¶×ÅÊ²Ã´£¬
-Äã¿ÉÄÜ²»ÐèÒª°ÚÅªËü¡£
-
-\S{config-sharrow} ¸Ä±ä\i{·½Ïò¼ü}µÄ¶¯×÷
-
-Èç¹ûÄúÔÚ°´×¡ÈÎºÎÐÞ¸Ä¼ü Shift¡¢Ctrl »ò Alt µÄÍ¬Ê±°´ÏÂ¼ýÍ·¼ü£¬
-´ËÑ¡Ïî»áÓ°Ïì·½Ïò¼ü¡£
-
-\b ÔÚÄ¬ÈÏÄ£Ê½ÏÂ£¬±ê¼ÇÎª \c{CtrlÇÐ»»Ó¦ÓÃ³ÌÐòÄ£Ê½}£¬
-Ctrl ¼üÔÚÄ¬ÈÏ¼ýÍ·¼üÐòÁÐÖ®¼äÇÐ»»£¬
-Èç \c{ESC [A} ºÍ \c{ESC [B}£¬
-ÒÔ¼° Digital ÖÕ¶ËÔÚ\q{Ó¦ÓÃ³ÌÐò¹â±ê¼ü}
-Ä£Ê½ÏÂÉú³ÉµÄÐòÁÐ£¬¼´ \c{ESC O A} µÈ ÔÚ¡£ Shift ºÍ Alt ÎÞÐ§¡£
-
-\b ÔÚ\q{xterm Î»Í¼·ç¸ñ}Ä£Ê½ÏÂ£¬
-Shift¡¢Ctrl ºÍ Alt ¶¼»áÉú³É²»Í¬µÄÐòÁÐ£¬
-²¢´øÓÐÒ»¸öÊý×Ö±íÊ¾ÄÄÒ»×éÐÞÊÎ·û´¦ÓÚ»î¶¯×´Ì¬¡£
-
-Èç¹ûÄã²»ÖªµÀÕâÒâÎ¶×ÅÊ²Ã´£¬
-Äã¿ÉÄÜ²»ÐèÒª°ÚÅªËü¡£
-
-\S{config-appcursor} ¿ØÖÆ\i{Ó¦ÓÃ³ÌÐò·½Ïò¼ü}Ä£Ê½
-
-Ó¦ÓÃ³ÌÐò¹â±ê¼üÄ£Ê½ÊÇ·þÎñÆ÷¸ü¸Ä¼ýÍ·¼ü
-·¢ËÍµÄ¿ØÖÆÐòÁÐµÄÒ»ÖÖ·½Ê½¡£ ÔÚÕý³£Ä£Ê½ÏÂ£¬
-¼ýÍ·¼ü½« \c{ESC [A} ·¢ËÍµ½ \c{ESC [D}¡£
-ÔÚÓ¦ÓÃÄ£Ê½ÏÂ£¬ËûÃÇ½« \c{ESC OA} ·¢ËÍµ½ \c{ESC OD}¡£
-
-Ó¦ÓÃ³ÌÐò¹â±ê¼üÄ£Ê½¿ÉÒÔÓÉ·þÎñÆ÷´ò¿ªºÍ¹Ø±Õ£¬
-¾ßÌåÈ¡¾öÓÚÓ¦ÓÃ³ÌÐò¡£
-PuTTY ÔÊÐíÄúÅäÖÃ³õÊ¼×´Ì¬¡£
-
-Äú»¹¿ÉÒÔÊ¹ÓÃ\q{¹¦ÄÜ}ÅäÖÃÃæ°åÍêÈ«½ûÓÃ
-Ó¦ÓÃ³ÌÐò¹â±ê¼üÄ£Ê½£»
-Çë²ÎÔÄ \k{config-features-application}¡£
-
-\S{config-appkeypad} ¿ØÖÆ\i{Ó¦ÓÃ³ÌÐòÊý×ÖÐ¡¼üÅÌ}Ä£Ê½
-
-Ó¦ÓÃ³ÌÐò¼üÅÌÄ£Ê½ÊÇ·þÎñÆ÷¸ü¸Ä
-Êý×Ö¼üÅÌÐÐÎªµÄÒ»ÖÖ·½Ê½¡£
-
-ÔÚÕý³£Ä£Ê½ÏÂ£¬¼üÅÌµÄÐÐÎªÀàËÆÓÚÆÕÍ¨µÄ Windows
-¼üÅÌ£º´ò¿ª \i{NumLock} Ê±£¬Êý×Ö¼ü»áÉú³ÉÊý×Ö£¬
-¶ø¹Ø±Õ NumLock Ê±£¬ËüÃÇ¾ÍÏñ¼ýÍ·¼üºÍ Home¡¢End µÈ¡£
-
-ÔÚÓ¦ÓÃÄ£Ê½ÏÂ£¬ËùÓÐ¼üÅÌ°´¼ü¶¼»á·¢ËÍÌØÊâµÄ¿ØÖÆÐòÁÐ£¬
-\e{°üÀ¨}  Num Lock¡£ Num Lock ²»ÔÙÏñ Num Lock ÄÇÑù¹¤×÷£¬
-¶øÊÇ³ÉÎªÁíÒ»¸ö¹¦ÄÜ¼ü¡£
-
-¸ù¾ÝÄúÔËÐÐµÄ Windows °æ±¾£¬Äú¿ÉÄÜ»á·¢ÏÖÃ¿´Î
-°´ÏÂ Num Lock Ê± Num Lock Ö¸Ê¾µÆÈÔ»áÉÁË¸£¬
-¼´Ê¹ÔÚÓ¦ÓÃ³ÌÐòÄ£Ê½´¦ÓÚ»î¶¯×´Ì¬
-ÇÒ Num Lock ¾ÍÏñÒ»¸ö¹¦ÄÜ¼üÊ±Ò²ÊÇÈç´Ë¡£ ÕâÊÇ²»¿É±ÜÃâµÄ¡£
-
-·þÎñÆ÷¿ÉÒÔ¸ù¾ÝÓ¦ÓÃ³ÌÐò´ò¿ªºÍ¹Ø
-±ÕÓ¦ÓÃ³ÌÐò¼üÅÌÄ£Ê½¡£
-PuTTY ÔÊÐíÄúÅäÖÃ³õÊ¼×´Ì¬¡£
-
-Äú»¹¿ÉÒÔÊ¹ÓÃ\q{¹¦ÄÜ}ÅäÖÃÃæ°åÍêÈ«½ûÓÃ
-Ó¦ÓÃ³ÌÐò¼üÅÌÄ£Ê½£»
-Çë²ÎÔÄ \k{config-features-application}¡£
-
-\S{config-nethack} Ê¹ÓÃ\i{NetHack¼üÅÌÄ£Ê½}
-
-PuTTY ÓÐÒ»¸öÍæ NetHack µÄÌØÊâÄ£Ê½¡£
-Äú¿ÉÒÔÍ¨¹ýÔÚ\q{Êý×Ö¼üÅÌµÄ³õÊ¼×´Ì¬}¿Ø
-¼þÖÐÑ¡Ôñ\q{NetHack}À´ÆôÓÃËü¡£
-
-ÔÚ´ËÄ£Ê½ÏÂ£¬Êý×Ö¼üÅÌ¼ü 1-9 Éú³É NetHack
-ÒÆ¶¯ÃüÁî (\cw{hjklyubn})¡£ 5 ¼ü
-Éú³É \c{.} ÃüÁî£¨Ê²Ã´¶¼²»×ö£©¡£
-
-´ËÍâ£¬Ê¹ÓÃÐ¡¼üÅÌ¼ü°´ÏÂ Shift »ò Ctrl »áÉú³É
-ÄúÆÚÍûµÄ Shift »ò Ctrl ¼ü£¨ÀýÈç£¬keypad-7
-Éú³É\cq{y}£¬Òò´Ë Shift-keypad-7 Éú³É\cq{Y}£¬
-Ctrl-keypad-7 Éú³É Ctrl -Y); ÕâÐ©ÃüÁî¸æ
-Ëß NetHack ¼ÌÐøÏòÍ¬Ò»¸ö·½ÏòÒÆ¶¯£¬Ö±µ½ÄãÓöµ½ÓÐÈ¤µÄÊÂÇé¡£
-
-³öÓÚÄ³ÖÖÔ­Òò£¬´Ë¹¦ÄÜ½öÔÚ \i{Num Lock}
-¿ªÆôÊ±²ÅÄÜÕý³£¹¤×÷¡£ ÎÒÃÇ²»ÖªµÀÎªÊ²Ã´¡£
-
-\S{config-compose} ÆôÓÃÀàËÆDECµÄ\ii{Compose¼ü}
-
-DEC ÖÕ¶ËÓÐÒ»¸ö Compose ¼ü£¬
-ËüÌá¹©ÁËÒ»ÖÖÒ×ÓÚ¼ÇÒäµÄÊäÈë\i{ÖØÒô×Ö·û}µÄ·½Ê½¡£
-Äú°´ Compose£¬È»ºóÔÙ¼üÈëÁ½¸ö×Ö·û¡£
-ÕâÁ½¸ö×Ö·û±»\q{×éºÏ}ÒÔ²úÉúÖØÒô×Ö·û¡£
-×Ö·ûµÄÑ¡Ôñ±»Éè¼Æ³ÉÒ×ÓÚ¼ÇÒä£» ÀýÈç£¬
-×éºÏ\q{e}ºÍ\q{`}»á²úÉú\q{\u00e8{e-grave}}×Ö·û¡£
-
-Èç¹ûÄúµÄ¼üÅÌ¾ßÓÐ Windows \i{Ó¦ÓÃ³ÌÐò¼ü}£¬ÔòËüÔÚ
-PuTTY ÖÐ³äµ± Compose ¼ü¡£ »òÕß£¬Èç¹ûÄúÆô
-ÓÃ\q{\i{AltGr} ×÷Îª Compose ¼ü}Ñ¡Ïî£¬AltGr ¼ü½«³ÉÎª Compose ¼ü¡£
-
-\S{config-ctrlalt} \q{Control-AltÓë\i{AltGr}²»Í¬}
-
-Ò»Ð©¾É¼üÅÌÃ»ÓÐ AltGr ¼ü£¬
-Õâ¿ÉÄÜ»áµ¼ÖÂÄÑÒÔ¼üÈëÄ³Ð©×Ö·û¡£
-PuTTY ¿ÉÒÔÅäÖÃÎª½«×éºÏ¼ü Ctrl + Left Alt ÒÔÓë AltGr ¼üÏàÍ¬µÄ·½Ê½´¦Àí¡£
-
-Ä¬ÈÏÇé¿öÏÂ£¬Ñ¡ÖÐ´Ë¸´Ñ¡¿ò£¬
-²¢ÇÒ×éºÏ¼ü Ctrl + Left Alt Ö´ÐÐÍêÈ«²»Í¬µÄ²Ù×÷¡£
-PuTTY ¶Ô×ó Alt ¼üµÄÍ¨³£´¦ÀíÊÇ½« Escape (Control-\cw{[}) ×Ö·û
-Ìí¼Óµ½ÆäÓà°´¼ü½«Éú³ÉµÄÈÎºÎ×Ö·ûÐòÁÐµÄÇ°×º¡£
-Èç£¬Alt-A Éú³É Escape ºó¸ú \c{a}¡£
-ËùÒÔ Alt-Ctrl-A »áÉú³É Escape£¬È»ºóÊÇ Control-A¡£
-
-Èç¹ûÄúÈ¡ÏûÑ¡ÖÐ´Ë¿ò£¬
-Ctrl-Alt ½«³ÉÎª AltGr µÄÍ¬Òå´Ê£¬
-Òò´ËÄú¿ÉÒÔÊ¹ÓÃËüÀ´¼üÈë¶îÍâµÄÍ¼ÐÎ×Ö·û£¨Èç¹ûÄúµÄ¼üÅÌÓÐ£©¡£
-
-£¨µ«ÊÇ£¬Ctrl-Alt ÓÀÔ¶²»»á³äµ± Compose ¼ü£¬
-¶ø²»Óë\q{AltGr³äµ±Compose¼ü}Ïà¹Ø£©
-Çë²ÎÔÄ \k{config-compose}¡£)
-
-\H{config-bell} ÌáÊ¾ÒôÃæ°å
-
-ÌáÊ¾ÒôÃæ°å¿ØÖÆ\i{ÖÕ¶ËÉùÒô}ÌáÊ¾¹¦ÄÜ£º
-·þÎñÆ÷Ê¹ PuTTY ÏòÄú·¢³ößÙßÙÉùµÄÄÜÁ¦¡£
-
-ÔÚÄ¬ÈÏÅäÖÃÏÂ£¬µ±·þÎñÆ÷·¢ËÍ´øÓÐ ASCII
-Âë 7 (Control-G) µÄ×Ö·ûÊ±£¬
-PuTTY »á²¥·Å \i{Windows Default
-Beep} ÉùÒô¡£ Õâ²¢²»×ÜÊÇÄúÏ£ÍûÖÕ¶ËÏì
-Áå¹¦ÄÜÖ´ÐÐµÄ²Ù×÷£» ÌáÊ¾ÒôÃæ°åÔÊÐíÄúÅäÖÃÌæ´ú²Ù×÷¡£
-
-\S{config-bellstyle} \q{ÉèÖÃÌáÊ¾ÒôÀàÐÍ}
-
-´Ë¿Ø¼þÔÊÐíÄúÑ¡ÔñÔÚÖÕ¶ËÌáÊ¾
-ÒôÉÏ·¢ÉúµÄ¸÷ÖÖ²»Í¬²Ù×÷£º
-
-\b Ñ¡Ôñ\q{ÔÝÎÞ}\I{terminal bell, disabling}
-»áÍêÈ«½ûÓÃÌáÊ¾Òô¡£ ÔÚÕâÖÖÄ£Ê½ÏÂ£¬·þÎñÆ÷¿ÉÒÔ·¢ËÍÈÎÒâÊýÁ¿
-µÄ Control-G ×Ö·û£¬²¢ÇÒ²»»á·¢ÉúÈÎºÎÊÂÇé¡£
-
-\b \q{ÏµÍ³Ä¬ÈÏÌáÊ¾Òô}ÊÇÄ¬ÈÏÉèÖÃ¡£
-Ëü»áµ¼ÖÂ²¥·Å Windows ÏµÍ³\q{Ä¬ÈÏÌáÊ¾Òô}¡£ Òª¸ü¸Ä´ËÉùÒôµÄº¬Òå£¬»òÔÚËÆºõÃ»ÓÐÈÎºÎ
-·´Ó¦Ê±¶ÔÆä½øÐÐ²âÊÔ£¬
-ÇëÊ¹ÓÃ Windows ¿ØÖÆÃæ°åÖÐµÄÉùÒôÅäÖÃÆ÷¡£
-
-\b \q{\ii{¿ÉÊÓÌáÊ¾Òô}}ÊÇÏµÍ³Ä¬ÈÏÌáÊ¾ÒôµÄÎÞÉùÌæ´ú·½°¸¡£
-ÔÚÕâÖÖÄ£Ê½ÏÂ£¬µ±·þÎñÆ÷·¢ËÍ Control-G Ê±£¬
-Õû¸ö PuTTY ´°¿Ú½«ÉÁË¸°×É«£¬³ÖÐø¼¸·ÖÖ®Ò»Ãë¡£
-
-\b \q{\i{PC·äÃùÆ÷}ÌáÊ¾Òô}²»ÑÔ×ÔÃ÷µÄ¡£
-
-\b \q{²¥·Å×Ô¶¨Òå\i{ÌáÊ¾Òô}}ÔÊÐíÄúÖ¸¶¨Ò»¸öÌØ¶¨µÄ
-ÉùÒôÎÄ¼þ¹© PuTTY µ¥¶ÀÊ¹ÓÃ£¬ÉõÖÁÓÉÌØ¶¨µÄµ¥
-¸ö PuTTY »á»°Ê¹ÓÃ¡£
-ÕâÊ¹Äú¿ÉÒÔ½« PuTTY ÌáÊ¾ÒôÓëÏµÍ³ÉÏµÄÈÎºÎÆäËûÉùÒôÇø·Ö¿ªÀ´¡£
-Èç¹ûÑ¡Ôñ´ËÑ¡Ïî£¬
-Äú»¹ÐèÒªÔÚ\q{×Ô¶¨ÒåÌáÊ¾ÒôÎÄ¼þ}Ö¸¶¨ÉùÒôÎÄ¼þ¡£
-
-\S{config-belltaskbar} \q{\ii{ÈÎÎñÀ¸}/\I{window caption}±êÌâ
-À¸ÌáÊ¾Òô±êÖ¾}
-
-Èç¹ûÔÚ´°¿Ú²»ÔÚÊäÈë×´Ì¬Ê±³öÏÖÌáÊ¾Òô£¬
-´Ë¹¦ÄÜ¿ØÖÆÔÚ Windows ÈÎÎñÀ¸ÖÐ
-µÄ PuTTY ´°¿ÚÌõÄ¿»á·¢ÉúÊ²Ã´¡£
-
-ÔÚÄ¬ÈÏ×´Ì¬£¨\q{ÒÑ½ûÓÃ}£©ÏÂ£¬²»»á·¢ÉúÈÎºÎÒì³£Çé¿ö¡£
-
-Èç¹ûÄúÑ¡Ôñ\q{³£¹æ}£¬
-Ôòµ±³öÏÖÁåÉùÇÒ´°¿Ú²»ÔÚ½¹µãÉÏÊ±£¬
-´°¿ÚµÄÈÎÎñÀ¸ÌõÄ¿¼°Æä±êÌâÀ¸½«¸Ä±äÑÕÉ«£¬
-ÈÃÄúÖªµÀ PuTTY »á»°ÕýÔÚÒýÆðÄúµÄ×¢Òâ¡£
-ÑÕÉ«µÄ±ä»¯»áÒ»Ö±³ÖÐøµ½ÄúÑ¡Ôñ´°¿ÚÎªÖ¹£¬
-Òò´ËÄú¿ÉÒÔÔÚÖÕ¶ËÖÐ½«¼¸¸ö PuTTY ´°¿Ú×îÐ¡»¯£¬Àë¿ª¼üÅÌ£¬
-²¢È·±£ÔÚ·µ»ØÊ±²»»á´í¹ýÈÎºÎÖØÒªµÄÌáÊ¾¡£
-
-\q{ÉÁË¸}¸ü¼ÓÐÑÄ¿£ºÈÎÎñÀ¸ÌõÄ¿»á²»¶ÏÉÁË¸£¬
-Ö±µ½ÄúÑ¡Ôñ´°¿Ú¡£
-
-\S{config-bellovl} \q{¿ØÖÆ\i{ÌáÊ¾ÒôÖØ¸´}ÉèÖÃ}
-
-ÖÕ¶Ë»á»°ÖÐµÄÒ»¸ö³£¼ûÓÃ»§´íÎóÊÇÔÚ²»ÊÊµ±µÄÎÄ
-¼þÀàÐÍ£¨ÀýÈç¿ÉÖ´ÐÐÎÄ¼þ¡¢Í¼ÏñÎÄ¼þ»ò ZIP ÎÄ¼þ£©
-ÉÏÒâÍâÔËÐÐ Unix ÃüÁî \c{cat}£¨»òµÈÐ§ÃüÁî£©¡£
-Õâ»á²úÉú´óÁ¿·¢ËÍµ½ÖÕ¶ËµÄ·ÇÎÄ±¾×Ö·ûÁ÷£¬
-ÆäÖÐÍ¨³£°üº¬´óÁ¿´¥·¢ÌáÊ¾ÒôµÄ×Ö·û¡£
-Òò´Ë£¬ÖÕ¶Ë»úµÄ·äÃùÉùÍ¨³£²»»áÍ£Ö¹Ê®·ÖÖÓ£¬
-°ì¹«ÊÒÀïµÄÆäËûÈË¶¼»áÉúÆø¡£
-
-ÎªÁË±ÜÃâÕâÖÖÐÐÎª£¬»òÈÎºÎÆäËûÔ­Òòµ¼ÖÂ¹ý¶ÈµÄÉùÒôÌáÊ¾£¬
-PuTTY °üº¬Ò»¸öÌáÊ¾Òô¹ýÔØ¹ÜÀí¹¦ÄÜ¡£ÔÚÄ¬ÈÏÅäÖÃÖÐ£¬
-ÔÚÁ½ÃëÄÚ½ÓÊÕ³¬¹ýÎå¸öÁåÒô×Ö·û½«µ¼ÖÂ¹ýÔØ¹¦ÄÜ¼¤»î¡£
-Ò»µ©ÖØÔØ¹¦ÄÜ±»¼¤»î£¬¸ü¶àµÄÌáÊ¾Òô½«ÍêÈ«Ã»ÓÐÐ§¹û
-\I{terminal bell,disabling}£¬
-ËùÒÔÄãµÄ¶þ½øÖÆÎÄ¼þµÄÆäÓà²¿·Ö½«±»ÎÞ
-ÉùµØ·¢ËÍµ½ÆÁÄ»ÉÏ¡£ÔÚÎåÃëÖÓÄÚÃ»ÓÐÊÕµ½¸ü¶àÁåÉùºó£¬
-¹ýÔØ¹¦ÄÜ½«ÔÙ´Î×ÔÐÐ¹Ø±Õ£¬
-ÌáÊ¾Òô½«ÖØÐÂÆôÓÃ¡£
-
-Èç¹ûÄúÏ£ÍûÍêÈ«½ûÓÃ´Ë¹¦ÄÜ£¬
-Äú¿ÉÒÔÊ¹ÓÃ¸´Ñ¡¿ò\q{¹ý¶ÈÌáÐÑÊ±ÔÝÊ±½ûÓÃÌáÊ¾Òô}½«Æä¹Ø±Õ¡£
-
-»òÕß£¬Èç¹ûÄúÏ²»¶ÁåÉù¹ýÔØ
-¹¦ÄÜµ«²»Í¬ÒâÉèÖÃ£¬
-Äú¿ÉÒÔÅäÖÃÏêÏ¸ÐÅÏ¢£º¶àÉÙÁåÉù¹¹³É¹ýÔØ£¬
-ËüÃÇ±ØÐëµ½´ïµÄÊ±¼ä¶ÎÓÐ¶à¶Ì£¬
-ÒÔ¼°¾²ÒôÊ±¼ä¶à³¤ÔÚ¹ýÔØ¹¦ÄÜ×ÔÐÐÍ£ÓÃÖ®Ç°ÐèÒª¡£
-
-ÖÕ¶ËÖÐµÄÈÎºÎ°´¼ü¶¼Ê¼ÖÕ½ûÓÃÁå¹ýÔØÄ£Ê½¡£
-ÕâÒâÎ¶×ÅËü¿ÉÒÔÏìÓ¦´óÁ¿ÒâÍâµÄÊý¾ÝÁ÷£¬
-µ«²»»á¸ÉÈÅ²úÉúßÙßÙÉùµÄÆÕÍ¨Ãü
-ÁîÐÐ»î¶¯£¨ÀýÈçÎÄ¼þÃûÍê³É£©¡£
-
-\H{config-features} ¸ß¼¶ÉèÖÃ
-
-PuTTYµÄ\i{ÖÕ¶Ë·ÂÕæ}¹¦ÄÜ·Ç³£Ç¿´ó£¬
-¿ÉÒÔÔÚÔ¶³Ì·þÎñÆ÷¿ØÖÆÏÂ×öºÜ¶àÊÂÇé¡£
-ÆäÖÐÒ»Ð©¹¦ÄÜ¿ÉÄÜ»áÓÉÓÚ
-´íÎó»òÅäÖÃÒì³£µÄ·þÎñÆ÷Ó¦ÓÃ³ÌÐò¶øµ¼ÖÂÎÊÌâ¡£
-
-¹¦ÄÜÅäÖÃÃæ°åÔÊÐíÄú½ûÓÃ
-PuTTY µÄÒ»Ð©¸ü¸ß¼¶µÄÖÕ¶Ë¹¦ÄÜ£¬ÒÔ·ÀËüÃÇÒýÆðÂé·³¡£
-
-\S{config-features-application} ½ûÓÃÓ¦ÓÃ³ÌÐòÊý×ÖÐ¡¼üÅÌºÍ·½Ïò¼ü
-
-\I{Application Keypad}Êý×ÖÐ¡¼üÅÌÓ¦ÓÃÄ£
-Ê½(Çë²ÎÔÄ \k{config-appkeypad})
-ºÍ\I{Application Cursor Keys}·½Ïò¼üÓ¦ÓÃÄ£
-Ê½(Çë²Î¿¼ \k{config-appcursor}) ¸Ä±äÐ¡
-¼üÅÌºÍ¹â±ê¼üµÄÐÐÎª¡£ Ò»Ð©Ó¦ÓÃ³ÌÐòÆôÓÃÁËÕâÐ©Ä£Ê½£¬
-µ«ËæºóÎÞ·¨ÕýÈ·´¦ÀíÐÞ¸ÄºóµÄ¼ü¡£ ÎÞÂÛ·þÎñÆ÷³¢ÊÔ×öÊ²Ã´£¬
-Äú¶¼¿ÉÒÔÇ¿ÖÆÓÀ¾Ã½ûÓÃÕâÐ©Ä£Ê½¡£
-
-\S{config-features-mouse} ½ûÓÃ\cw{xterm}·ç¸ñµÄ\i{Êó±ê½Ó¹Ü}
-
-PuTTY ÔÊÐí·þÎñÆ÷·¢ËÍ\i{¿ØÖÆ´úÂë}£¬
-ÈÃËü½Ó¹ÜÊó±ê²¢½«ÆäÓÃÓÚ\i{¸´ÖÆºÍÕ³Ìù}ÒÔÍâµÄÄ¿µÄ¡£
-Ê¹ÓÃ´Ë¹¦ÄÜµÄÓ¦ÓÃ³ÌÐò°üÀ¨ÎÄ±¾Ä£Ê½ Web
-ä¯ÀÀÆ÷\i\c{Á´½Ó}¡¢Usenet ÐÂÎÅÔÄ¶ÁÆ÷ \i\c{trn}
-°æ±¾ 4 ºÍÎÄ¼þ¹ÜÀíÆ÷ \i\c{mc} (Midnight Commander)¡£
-
-Èç¹ûÄú·¢ÏÖ´Ë¹¦ÄÜ²»·½±ã£¬
-¿ÉÒÔÊ¹ÓÃ¡°\q{½ûÓÃ xterm ÑùÊ½µÄ
-Êó±ê±¨¸æ}¿Ø¼þ½ûÓÃËü¡£ Ñ¡ÖÐ´Ë¿òºó£¬
-Êó±ê½«\e{ÖÕÒÔ}ÒÔÕý³£·½Ê½½øÐÐ¸´ÖÆºÍÕ³Ìù¡£
-
-Çë×¢Òâ£¬¼´Ê¹Ó¦ÓÃ³ÌÐò½Ó¹ÜÁËÊó±ê£¬ÄúÈÔÈ»¿É
-ÒÔÍ¨¹ýÔÚÑ¡ÔñºÍÕ³ÌùÊ±°´×¡ Shift ¼üÀ´¹Ü
-Àí PuTTY µÄ¸´ÖÆºÍÕ³Ìù£¬³ý·ÇÄú¹ÊÒâ¹Ø±Õ
-ÁË´Ë¹¦ÄÜ (Çë²ÎÔÄ \k{config-mouseshift})¡£
-
-\S{config-features-resize} ½ûÓÃÔ¶³Ì¿ØÖÆµ÷Õû\i{ÖÕ¶Ë´óÐ¡}
-
-PuTTY ÄÜ¹»ÏìÓ¦À´×Ô·þÎñÆ÷µÄÃüÁî¸ü
-¸ÄÖÕ¶ËµÄ´óÐ¡ºÍÎ»ÖÃ¡£
-Èç¹ûÄú·¢ÏÖ PuTTY ÒâÍâ»ò²»·½±ãµØÖ´ÐÐ´Ë²Ù×÷£¬
-Äú¿ÉÒÔ¸æËß PuTTY ²»ÒªÏìÓ¦ÕâÐ©·þÎñÆ÷ÃüÁî¡£
-
-\S{config-features-altscreen} ½ûÓÃÇÐ»»µ½\i{±¸ÓÃÖÕ¶ËÆÁÄ»}
-
-Ðí¶àÖÕ¶Ë£¬°üÀ¨ PuTTY£¬¶¼Ö§³Ö\q{±¸ÓÃÆÁÄ»}¡£
-ÕâÓëÆÕÍ¨ÖÕ¶ËÆÁÄ»´óÐ¡ÏàÍ¬£¬µ«·Ö¿ª¡£
-Í¨³££¬»ùÓÚÆÁÄ»µÄ³ÌÐò£¨ÀýÈçÎÄ±¾±à¼­Æ÷£©¿ÉÄÜ»á
-ÔÚÆô¶¯Ö®Ç°½«ÖÕ¶ËÇÐ»»µ½±¸ÓÃÆÁÄ»¡£
-È»ºóÔÚÔËÐÐ½áÊøÊ±£¬ËüÇÐ»»»ØÖ÷ÆÁÄ»£¬
-Äú¿ÉÒÔ¿´µ½ÓëÆô¶¯±à¼­Æ÷Ö®Ç°Ò»ÑùµÄÆÁÄ»ÄÚÈÝ¡£
-
-ÓÐÐ©ÈË²»Ï£ÍûÕâÖÖÇé¿ö·¢Éú¡£
-Èç¹ûÄúÏ£Íû±à¼­Æ÷ÓëÖÕ¶Ë»î¶¯µÄÆäÓà²¿·ÖÔÚÍ¬Ò»ÆÁÄ»ÉÏÔËÐÐ£¬
-Äú¿ÉÒÔÍêÈ«½ûÓÃ±¸ÓÃÆÁÄ»¹¦ÄÜ¡£
-
-\S{config-features-retitle} ½ûÓÃÔ¶³Ì¿ØÖÆ¸ü¸Ä\i{´°¿Ú±êÌâ}
-
-PuTTY ÄÜ¹»¸ü¸Ä´°¿Ú±êÌâÒÔ
-ÏìÓ¦À´×Ô·þÎñÆ÷µÄÃüÁî¡£
-Èç¹ûÄú·¢ÏÖ PuTTY ÒâÍâ»ò²»·½±ãµØÖ´ÐÐ´Ë²Ù×÷£¬
-Äú¿ÉÒÔ¸æËß PuTTY ²»ÒªÏìÓ¦ÕâÐ©·þÎñÆ÷ÃüÁî¡£
-
-\S{config-features-qtitle} ÏìÓ¦Ô¶³Ì\i{´°¿Ú±êÌâ}²éÑ¯
-
-PuTTY ¿ÉÒÔÑ¡ÔñÌá¹©ÔÊÐí·þÎñÆ÷Ó¦ÓÃ
-³ÌÐò²éÕÒ±¾µØ´°¿Ú±êÌâµÄ xterm ·þÎñ¡£
-Ä¬ÈÏÇé¿öÏÂ½ûÓÃ´Ë¹¦ÄÜ£¬µ«Èç¹ûÄúÈ·ÊµÐèÒª£¬¿ÉÒÔ½«Æä´ò¿ª¡£
-
-Çë×¢Òâ£¬´Ë¹¦ÄÜ´æÔÚ\e{Ç±ÔÚµÄ \i{°²È«Òþ»¼}}¡£
-Èç¹û¶ñÒâÓ¦ÓÃ³ÌÐò¿ÉÒÔ½«Êý¾ÝÐ´ÈëÄúµÄÖÕ¶Ë£¨ÀýÈç£¬
-Èç¹ûÄúÖ»ÊÇÔÚ·þÎñÆ÷¼ÆËã»úÉÏ¶ÔÆäËûÈËÓµÓÐµÄÎÄ¼þ½øÐÐ\c{cat}£©£¬
-Ëü¿ÉÒÔ¸ü¸ÄÄúµÄ´°¿Ú±êÌâ(³ý·ÇÄúÒÑ°´ÕÕÖÐ
-ÄÜ \k{config-features-retitle}
-ËùÊö½ûÓÃ´Ë¹¦)È»ºóÊ¹ÓÃ´Ë·þÎñ½«ÐÂ\q{´°¿Ú±êÌâ}
-·¢ËÍ»Ø·þÎñÆ÷£¬¾ÍÏñÔÚ¼üÅÌÉÏ¼üÈëÒ»Ñù¡£
-ÕâÔÊÐí¹¥»÷ÕßÎ±Ôì°´¼ü£¬²¢¿ÉÄÜµ¼ÖÂÄúµÄ·þÎñÆ÷¶Ë
-Ó¦ÓÃ³ÌÐòÖ´ÐÐÄú²»ÏëÒªµÄ²Ù×÷¡£ Òò´Ë£¬´Ë¹¦ÄÜÄ¬ÈÏ½ûÓÃ£¬
-ÎÒÃÇ½¨ÒéÄú²»Òª½«Æä
-ÉèÖÃÎª\q{´°¿Ú±êÌâ}£¬³ý·ÇÄú\e{ÕæµÄ}ÖªµÀ×Ô¼ºÔÚ×öÊ²Ã´¡£
-
-´ËÑ¡ÏîÓÐÈý¸öÉèÖÃ£º
-
-\dt \q{ÎÞ}
-
-\dd PuTTY ²»»á¶ÔÏà¹ØµÄ×ªÒå
-ÐòÁÐ×ö³öÈÎºÎÏìÓ¦¡£
-Õâ¿ÉÄÜ»áÈÅÂÒÆÚ´ýÄ³ÖÖÏìÓ¦µÄ·þÎñÆ÷¶ËÈí¼þ¡£
-
-\dt \q{¿Õ×Ö·û´®}
-
-\dd PuTTY ×ö³ö¸ñÊ½Á¼ºÃµÄÏìÓ¦£¬µ«½«ÆäÁô¿Õ¡£
-Òò´Ë£¬ÆÚÍûÏìÓ¦µÄ·þÎñÆ÷¶ËÈí¼þ±£³ÖÕý³£ÔËÐÐ£¬
-µ«¹¥»÷ÕßÎÞ·¨Ó°ÏìÏìÓ¦×Ö·û´®¡£
-Èç¹ûÄúÃ»ÓÐ¸üºÃµÄÏë·¨£¬Õâ¿ÉÄÜÊÇÄúÏëÒªµÄÉèÖÃ¡£
-
-\dt \q{´°¿Ú±êÌâ}
-
-\dd PuTTY ÒÔÊµ¼ÊµÄ´°¿Ú±êÌâ½øÐÐÏìÓ¦¡£
-ÓÉÓÚÉÏÊöÔ­Òò£¬ÕâÊÇÎ£ÏÕµÄ¡£
-
-\S{config-features-clearscroll} ½ûÓÃÔ¶³Ì¿ØÖÆ\i{Çå³ý»Ø¹ö}»º³åÇø
-
-PuTTY ÄÜ¹»ÏìÓ¦À´×Ô·þÎñÆ÷µÄÃüÁîÇå
-³ýÖÕ¶ËµÄ»Ø¹ö»º³åÇø¡£
-Èç¹ûÄú·¢ÏÖ PuTTY ÒâÍâ»ò²»·½±ãµØÖ´ÐÐ´Ë²Ù×÷£¬
-Äú¿ÉÒÔ¸æËß PuTTY ²»ÒªÏìÓ¦¸Ã·þÎñÆ÷ÃüÁî¡£
-
-\S{config-features-dbackspace} ½ûÓÃ\i{ÆÆ»µÐÔÍË¸ñ}
-
-Í¨³££¬µ± PuTTY ´Ó·þÎñÆ÷½ÓÊÕµ½×Ö·û 127 (^?) Ê±£¬
-Ëü»áÖ´ÐÐ\q{ÆÆ»µÐÔÍË¸ñ}£º½«¹â±êÏò×óÒÆ
-¶¯Ò»¸ö¿Õ¸ñ²¢É¾³ýÆäÏÂµÄ×Ö·û¡£
-ÕâÏÔÈ»»áÔÚÄ³Ð©Ó¦ÓÃ³ÌÐòÖÐÒýÆðÎÊÌâ£¬
-Òò´Ë PuTTY Ìá¹©ÁË½«×Ö·û 127
-ÅäÖÃÎªÖ´ÐÐÕý³£ÍË¸ñ£¨²»É¾³ý×Ö·û£©µÄÄÜÁ¦¡£
-
-\S{config-features-charset} ½ûÓÃÔ¶³Ì¿ØÖÆ
-\i{ÉèÖÃ×Ö·û¼¯}
-
-PuTTY ÄÜ¹»¸ü¸ÄÆä×Ö·û¼¯ÅäÖÃÒÔÏìÓ¦
-À´×Ô·þÎñÆ÷µÄÃüÁî¡£ Ä³Ð©³ÌÐò»áÒâÍâ»ò²»
-·½±ãµØ·¢ËÍÕâÐ©ÃüÁî¡£ ÌØ±ðÊÇ£¬\i{BitchX}
-£¨Ò»¸ö IRC ¿Í»§¶Ë£©ËÆºõÏ°¹ßÓÚ½«×Ö·û¼¯ÖØ
-ÐÂÅäÖÃÎª²»Í¬ÓÚÓÃ»§Ô¤ÆÚµÄ×Ö·û¼¯¡£
-
-Èç¹ûÄú·¢ÏÖÖØÒô×Ö·ûÃ»ÓÐ°´ÕÕÄúÆÚÍûµÄ·½Ê½ÏÔÊ¾£¬
-ÓÈÆäÊÇÔÚÄúÔËÐÐ BitchX Ê±£¬
-Äú¿ÉÒÔ³¢ÊÔ½ûÓÃÔ¶³Ì×Ö·û¼¯ÅäÖÃÃüÁî¡£
-
-\S{config-features-shaping} ½ûÓÃ\i{°¢À­²®ÓïÎÄ±¾ÐÞÕû}
-
-PuTTY Ö§³Ö°¢À­²®ÎÄ±¾µÄÕûÐÎ£¬
-ÕâÒâÎ¶×ÅÈç¹ûÄúµÄ·þÎñÆ÷·¢ËÍÒÔ»ù±¾ \i{Unicode} °¢À­²®×ÖÄ¸ÊéÐ´µÄÎÄ±¾£¬
-ÄÇÃ´Ëü½«ÔÚ½«Æä´òÓ¡µ½ÆÁÄ»ÉÏÖ®
-Ç°½«Æä×ª»»ÎªÕýÈ·µÄÏÔÊ¾ÐÎÊ½¡£
-
-Èç¹ûÄúÊ¹ÓÃµÄÈ«ÆÁÈí¼þÃ»ÓÐÔ¤ÁÏµ½»á·¢ÉúÕâÖÖÇé¿ö
-£¨ÌØ±ðÊÇÈç¹ûÄú²»ÊÇËµ°¢À­²®ÓïµÄÈË£¬²¢ÇÒÄúÒâ
-ÍâµØ·¢ÏÖ×Ô¼ºÔÚ´¦Àí²»Ö§³Ö°¢À­²®ÓïµÄÓ¦ÓÃ³ÌÐò
-ÖÐµÄ°¢À­²®ÓïÎÄ±¾ÎÄ¼þ£©£¬Äú¿ÉÄÜ»á·¢ÏÖ\i{ÏÔ
-Ê¾ÄÚÈÝËð»µ}¡£ Í¨¹ý¹´Ñ¡´Ë¿ò£¬Äú¿ÉÒÔ½ûÓÃ°¢
-À­²®ÓïÎÄ±¾ÕûÐÎ£¬ÒÔ±ã PuTTY ¾«È·ÏÔ
-Ê¾Ëü±»¸æÖªÒªÏÔÊ¾µÄ×Ö·û¡£
-
-Äú¿ÉÄÜ»¹»á·¢ÏÖÐèÒª½ûÓÃË«ÏòÎÄ±¾
-ÏÔÊ¾£»Çë²ÎÔÄ \k{config-features-bidi}¡£
-
-\S{config-features-bidi} ½ûÓÃ\i{Ë«ÏòÎÄ±¾}ÏÔÊ¾
-
-PuTTY Ö§³ÖË«ÏòÎÄ±¾ÏÔÊ¾£¬
-ÕâÒâÎ¶×ÅÈç¹ûÄúµÄ·þÎñÆ÷·¢ËÍÒÔÍ¨³£
-´ÓÓÒµ½×óÏÔÊ¾µÄÓïÑÔ£¨ÀýÈç\i{°¢À­²®Óï}»ò\i{Ï£
-²®À´Óï}£©±àÐ´µÄÎÄ±¾£¬ÄÇÃ´ PuTTY »á×Ô¶¯½«Æä·­×ª£¬
-ÒÔ±ãÔÚÕýÈ·µÄ·½ÏòÏÔÊ¾ÆÁÄ»¡£
-
-Èç¹ûÄúÊ¹ÓÃµÄÈ«ÆÁÈí¼þÃ»ÓÐÔ¤ÁÏµ½»á·¢ÉúÕâÖÖ
-Çé¿ö£¨ÌØ±ðÊÇÈç¹ûÄú²»ÊÇËµ°¢À­²®ÓïµÄÈË£¬²¢ÇÒ
-ÄúÒâÍâµØ·¢ÏÖ×Ô¼ºÔÚ´¦Àí²»Ö§³Ö°¢À­²®ÓïµÄÓ¦ÓÃ
-³ÌÐòÖÐµÄ°¢À­²®ÓïÎÄ±¾ÎÄ¼þ£©£¬Äú¿ÉÄÜ»á
-·¢ÏÖ\i{ÏÔÊ¾ÄÚÈÝËð»µ}¡£ Í¨¹ý¹´Ñ¡´Ë¿ò£¬
-Äú¿ÉÒÔ½ûÓÃË«ÏòÎÄ±¾ÏÔÊ¾£¬ÒÔ±ã PuTTY
-ÔÚËùÓÐÇé¿öÏÂ´Ó×óµ½ÓÒÏÔÊ¾ÎÄ±¾¡£
-
-Äú¿ÉÄÜ»¹»á·¢ÏÖÐèÒª½ûÓÃ°¢À­²®Óï
-ÎÄ±¾ÕûÐÎ£»Çë²ÎÔÄ \k{config-features-shaping}¡£
-
-\H{config-window} ´°¿ÚÃæ°å
-
-´°¿ÚÅäÖÃÃæ°åÔÊÐíÄú¿Ø
-ÖÆ \i{PuTTY ´°¿Ú}µÄ¸÷¸ö·½Ãæ¡£
-
-\S{config-winsize} ÉèÖÃPuTTY\I{window size}´°¿ÚµÄ´óÐ¡
-
-\q{\ii{ÁÐ}}ºÍ\q{\ii{ÐÐ}}¿ò¿ÉÈÃÄú½« PuTTY ´°¿ÚÉè
-ÖÃÎª¾«È·µÄ´óÐ¡¡£ µ±È»£¬
-ÄúÒ²¿ÉÒÔÔÚ»á»°ÔËÐÐÊ±\I{window resizing}½«´°¿ÚÍÏ¶¯µ½ÐÂµÄ´óÐ¡¡£
-
-\S{config-winsizelock} µ÷Õû´°¿Ú´óÐ¡Ê±µÄ²Ù×÷
-
-ÕâÐ©Ñ¡ÏîÔÊÐíÄú¿ØÖÆµ±ÓÃ»§³¢ÊÔÊ¹ÓÃ\I{window resizing}
-µ÷Õû PuTTY ´°¿ÚµÄ´óÐ¡Ê±´°¿ÚÏÔÊ¾·¢ÉúµÄÇé¿ö¡£
-
-ÕâÀïÓÐËÄ¸öÑ¡Ïî£º
-
-\b \q{¸ü¸ÄÐÐÁÐÊý}: ×ÖÌå´óÐ¡
-²»»á¸Ä±ä¡£ £¨ÕâÊÇÄ¬ÈÏÉèÖÃ¡££©
-
-\b \q{¸ü¸Ä×ÖÌå´óÐ¡}: ÖÕ¶ËÖÐµÄÐÐÊýºÍÁÐÊý½«±£³Ö²»±ä£¬
-\i{×ÖÌå´óÐ¡}»á·¢Éú±ä»¯¡£
-
-\b \q{½öÔÚ×î´ó»¯Ê±¸ü¸Ä×ÖÌå´óÐ¡}: µ÷Õû´°¿Ú´óÐ¡Ê±£¬
-ÐÐÊýºÍÁÐÊý»á·¢Éú±ä»¯£¬\e{³ý·Ç}´°¿Ú\i{×î´ó»¯}£¨
-»ò»Ö¸´£©Ê±£¬×ÖÌå´óÐ¡²Å»á·¢Éú±ä»¯¡£
-£¨ÔÚÕâÖÖÄ£Ê½ÏÂ£¬ÔÚµ÷Õû´óÐ¡µÄÍ¬Ê±°´
-×¡ Alt ¼üÒ²»áµ¼ÖÂ×ÖÌå´óÐ¡·¢Éú±ä»¯¡££©
-
-\b \q{ÍêÈ«½ûÖ¹µ÷Õû´óÐ¡}: ÖÕ¶Ë½«
-ÍêÈ«¾Ü¾øµ÷Õû´óÐ¡¡£
-
-\S{config-scrollback} ¿ØÖÆ\i{»Ø¹ö}
-
-ÕâÐ©Ñ¡Ïî¿ÉÈÃÄúÅäÖÃ PuTTY ÔÚ¹ö¶¯Àë¿ªÆÁÄ»¶¥
-²¿ºó±£ÁôÎÄ±¾µÄ·½Ê½ (Çë²ÎÔÄ \k{using-scrollback})¡£
-
-\q{»Ø¹öÐÐÊý}¿ò¿ÉÈÃÄúÅäÖÃ PuTTY ±£ÁôµÄÎÄ±¾ÐÐÊý¡£
-\q{ÏÔÊ¾¹ö¶¯Ìõ}Ñ¡ÏîÔÊÐíÄúÒþ²Ø\i{¹ö¶¯Ìõ}
-£¨¾¡¹ÜÄúÈÔÈ»¿ÉÒÔÊ¹ÓÃ¼üÅÌ²é¿´»Ø¹ö£¬
-Çë²ÎÔÄ \k{using-scrollback})¡£
-Äú¿ÉÒÔ·Ö±ðÅäÖÃ¹ö¶¯ÌõÊÇ·ñ
-ÒÔ\i{È«ÆÁÄ£Ê½}ºÍÆÕÍ¨Ä£Ê½ÏÔÊ¾¡£
-
-Èç¹ûÄúÔÚ·þÎñÆ÷Ïò PuTTY ·¢ËÍ¸ü¶àÎÄ±¾Ê±²é
-¿´²¿·Ö»Ø¹ö£¬ÔòÆÁÄ»½«»Ö¸´ÎªÏÔÊ¾µ±Ç°ÖÕ¶ËÄÚÈÝ¡£
-Äú¿ÉÒÔÍ¨¹ý¹Ø±Õ\q{ÏÔÊ¾¸üÐÂ
-Ê±ÖØÖÃ»Ø¹ö}À´½ûÓÃ´ËÐÐÎª¡£
-Äú»¹¿ÉÒÔÍ¨¹ý´ò¿ª\q{°´¼üÊ±
-ÖØÖÃ»Ø¹ö}ÔÚ°´¼üÊ±»Ö¸´ÆÁÄ»¡£
-
-\S{config-erasetoscrollback} \q{½«ÇåÆÁµÄÄÚÈÝÍÆËÍµ½»Ø¹ö}
-
-ÆôÓÃ´ËÑ¡Ïîºó£¬µ±·þÎñÆ÷¶ËÓ¦ÓÃ³ÌÐòÇå³ýÆÁÄ»Ê±£¬
-ÖÕ¶ËÆÁÄ»µÄÄÚÈÝ½«±»ÍÆËÍµ½»Ø¹öÖÐ£¬
-ÒÔ±ãÄúµÄ»Ø¹ö½«¸üºÃµØ
-¼ÇÂ¼Äú¹ýÈ¥ÆÁÄ»ÉÏµÄÄÚÈÝ¡£
-
-Èç¹ûÓ¦ÓÃ³ÌÐòÇÐ»»µ½\i{±¸ÓÃÆÁ
-Ä»}(¸ü¶àÐÅÏ¢Çë²Î¿¼ \k{config-features-altscreen} )£¬
-È»ºóÖ÷ÆÁÄ»µÄÄÚÈÝ½«ÔÚ»Ø¹öÖÐ¿É¼û£¬
-Ö±µ½Ó¦ÓÃ³ÌÐòÔÙ´ÎÇÐ»»»ØÀ´¡£
-
-Ä¬ÈÏÇé¿öÏÂÆôÓÃ´ËÑ¡Ïî¡£
-
-\H{config-appearance} Íâ¹ÛÃæ°å
-
-Íâ¹ÛÅäÖÃÃæ°åÔÊÐíÄú¿ØÖÆ
-\I{PuTTY window}PuTTY ´°¿ÚÍâ¹ÛµÄ¸÷¸ö·½Ãæ¡£
-
-\S{config-cursor} ¿ØÖÆ\i{¹â±ê}µÄÍâ¹Û
-
-\q{¹â±êÍâ¹Û}Ñ¡Ïî¿ÉÈÃÄú½«¹â±êÅäÖÃ
-Îª¿é¡¢ÏÂ»®Ïß»ò´¹Ö±Ïß¡£
-µ±´°¿Ú²»ÊÇµ±Ç°´°¿ÚÊ±£¬¿é¹â±ê±äÎª
-¿Õ¿ò£» ÏÂ»®Ïß»ò´¹Ö±Ïß±äÎªÐéÏß¡£
-
-\q{\ii{¹â±êÉÁË¸}}Ñ¡ÏîÊ¹¹â±êÉÁË¸¡£
-ÕâÊÊÓÃÓÚÈÎºÎ¹â±êÄ£Ê½¡£
-
-\S{config-font} ¿ØÖÆÖÕ¶Ë´°¿ÚÖÐÊ¹ÓÃµÄ\i{×ÖÌå}
-
-´ËÑ¡ÏîÔÊÐíÄúÑ¡Ôñ PuTTY ÖÕ¶Ë´°¿Ú
-ÓÃÓÚÔÚ»á»°ÖÐÏÔÊ¾ÎÄ±¾µÄ\I{font size}×ÖÌå¡¢´óÐ¡¡£
-
-Ä¬ÈÏÇé¿öÏÂ£¬Äú¿ÉÒÔ´ÓÏµÍ³ÉÏ°²×°µÄËùÓÐ¹Ì¶¨
-¿í¶È×ÖÌåÖÐ½øÐÐÑ¡Ôñ£¬ÒòÎª VT100 ·ç¸ñµÄÖÕ
-¶Ë´¦ÀíÐèÒª¹Ì¶¨¿í¶È×ÖÌå¡£ µ«ÊÇ£¬Èç¹ûÄú¹´Ñ¡±ê¼ÇÎª\q{ÔÊÐíÑ¡Ôñ
-¿É±ä¼ä¾à×ÖÌå}µÄ¿ò£¬PuTTY Ò²»á
-Ìá¹©¿É±ä¿í¶È×ÖÌå£ºÈç¹ûÄúÑ¡Ôñ
-ÆäÖÐÒ»ÖÖ£¬×ÖÌå½«±»Ç¿ÖÆ×ª»»Îª¹Ì¶¨´óÐ¡µÄ×Ö·ûµ¥Ôª£¬
-Õâ¿ÉÄÜ»á ¿´ÆðÀ´²»Ì«ºÃ£¨µ«¿ÉÒÔÊ¹ÓÃÄ³Ð©×ÖÌå£©¡£
-
-\S{config-mouseptr} \q{ÔÚ´°¿ÚÖÐÊäÈëÊ±Òþ²Ø\i{Êó±êÖ¸Õë}}
-
-Èç¹ûÆôÓÃ´ËÑ¡Ïî£¬Èç¹ûÑ¡Ôñ PuTTY ´°¿Ú²¢°´
-ÏÂÄ³¸ö¼ü£¬Êó±êÖ¸Õë½«ÏûÊ§¡£ ÕâÑù£¬µ±ÄúÔÚ»á»°ÖÐ¹¤×÷Ê±£¬
-Ëü²»»áÕÚµ²´°¿ÚÖÐµÄÈÎºÎÎÄ±¾¡£
-Ö»ÒªÄãÒÆ¶¯Êó±ê£¬Ö¸Õë¾Í»áÖØÐÂ³öÏÖ¡£
-
-Ä¬ÈÏÇé¿öÏÂ½ûÓÃ´ËÑ¡Ïî£¬
-Òò´ËÊó±êÖ¸ÕëÊ¼ÖÕ¿É¼û¡£
-
-\S{config-winborder} ¿ØÖÆ\i{´°¿Ú±ß¿ò}
-
-PuTTY ÔÊÐíÄúÔÚÒ»¶¨³Ì¶È
-ÉÏÅäÖÃ´°¿Ú±ß¿òµÄÍâ¹Û¡£
-
-±ê¼ÇÎª\q{ÏÂ³Á±ß¿ò±ßÔµ}µÄ¸´Ñ¡¿ò½«
-´°¿Ú±ß¿òµÄÍâ¹Û¸ü¸ÄÎª¸üÏñ DOS
-¿ò£º±ß¿òµÄÄÚ²à±ßÔµ±»Í»³öÏÔÊ¾£¬
-¾ÍºÃÏñËüÏÂ³ÁÒÔÓë´°¿ÚÄÚµÄ±íÃæÏà½Ó¡£
-ÕâÒ²Ê¹±ß¿ò¸üºñÒ»Ð©¡£ ºÜÄÑÐÎÈÝ¡£ ÊÔÊÔ¿´ÄãÏ²²»Ï²»¶¡£
-
-Äú»¹¿ÉÒÔÊ¹ÓÃ\q{ÎÄ±¾Óë´°¿Ú¼äµÄ¼äÏ¶}¿Ø
-¼þÔÚ´°¿ÚÖÐµÄÎÄ±¾ºÍ±ß¿òÖ®¼äÅäÖÃÍêÈ«
-¿Õ°×µÄ¼äÏ¶¡£ Ä¬ÈÏÇé¿öÏÂ£¬
-ÕâÉèÖÃÎªÒ»¸öÏñËØ¡£ Äú¿ÉÒÔ½«Æä¼õÉÙµ½Áã£¬»ò½øÒ»²½Ôö¼Ó¡£
-
-\H{config-behaviour} ÐÐÎªÃæ°å
-
-ÐÐÎªÅäÖÃÃæ°åÔÊÐíÄú¿ØÖÆ \I{PuTTY window}PuTTY
-´°¿ÚÐÐÎªµÄ¸÷¸ö·½Ãæ¡£
-
-\S{config-title} ¿ØÖÆ\i{´°¿Ú±êÌâ}
-
-\q{´°¿Ú±êÌâ}±à¼­¿òÔÊÐíÄúÉèÖÃ PuTTY ´°¿ÚµÄ±êÌâ¡£
-Ä¬ÈÏÇé¿öÏÂ£¬´°¿Ú±êÌâ½«°üº¬\i{Ö÷»úÃû}£¬
-ºó¸ú\q{PuTTY}£¬ÀýÈç \c{server1.example.com - PuTTY}¡£
-Èç¹ûÄãÏëÒªÒ»¸ö²»Í¬µÄ´°¿Ú±êÌâ£¬ÕâÊÇÉèÖÃËüµÄµØ·½¡£
-
-PuTTY ÔÊÐí·þÎñÆ÷·¢ËÍÔÚ»á»°ÖÐÐÞ¸Ä´°¿Ú
-±êÌâµÄ \c{xterm} \i{¿ØÖÆÐòÁÐ} (³ý·Ç
-Õâ±»½ûÓÃ - Çë²ÎÔÄ \k{config-features-retitle})£»
-Òò´Ë£¬´Ë´¦ÉèÖÃµÄ±êÌâ×Ö·û´®Ö»ÊÇ\e{³õÊ¼}´°¿Ú±êÌâ¡£
-
-³ýÁË\e{´°¿Ú}±êÌâ£¬»¹ÓÐÒ»¸ö \c{xterm} Ðò
-ÁÐÀ´ÐÞ¸Ä´°¿Ú\I{icon title}±êÌâµÄ\e{Í¼±ê}¡£
-ÕâÔÚ´°¿ÚÏµÍ³ÖÐÊÇÓÐÒâÒåµÄ£¬ÔÚ´°¿ÚÏµÍ³ÖÐ£¬
-´°¿ÚÔÚ×îÐ¡»¯Ê±»á±ä³ÉÒ»¸öÍ¼±ê£¬
-ÀýÈç Windows 3.1 »ò´ó¶àÊý X ´°¿ÚÏµÍ³ÉèÖÃ£»
-µ«ÔÚÀàËÆ Windows 95 µÄÓÃ»§½çÃæÖÐ£¬Ëü²¢²»ÊÊÓÃ¡£
-
-Ä¬ÈÏÇé¿öÏÂ£¬PuTTY ½öÊ¹ÓÃ·þÎñÆ÷Ìá¹©
-µÄ\e{´°¿Ú}±êÌâ£¬ÍêÈ«ºöÂÔÍ¼±ê±êÌâ¡£ Èç¹û³öÓÚÄ³ÖÖÔ­ÒòÄúÏëÍ¬Ê±²é¿´
-ÕâÁ½¸ö±êÌâ£¬ÇëÑ¡ÖÐ±êÓÐ\q{Ê¹ÓÃµ¥¶ÀµÄ±êÌâºÍÍ¼±ê}Ñ¡¿ò¡£ Èç¹ûÄãÕâÑù×ö£¬
-Èç¹ûÄã\i{×îÐ¡»¯} PuTTY ´°¿Ú£¬
-PuTTY µÄ\I{window caption}´°¿Ú±êÌâºÍ
-ÈÎÎñÀ¸±êÌâ½«±äÎª·þÎñÆ÷Ìá¹©µÄÍ¼±ê±êÌâ£¬
-Èç¹ûÄã»Ö¸´Ëü£¬Ôò¸Ä»Ø·þÎñÆ÷Ìá¹©µÄ´°¿Ú±êÌâ¡£
-£¨Èç¹û·þÎñÆ÷Ã»ÓÐ·ÑÐÄÌá¹©´°¿Ú»òÍ¼±ê±êÌâ£¬ÕâÒ»ÇÐ¶¼²»»á·¢Éú¡££©
-
-\S{config-warnonclose} \q{\i{¹Ø±Õ´°¿Ú}Ç°µÄ¾¯¸æ}
-
-Èç¹ûÄúÔÚ°üº¬ÕýÔÚÔËÐÐµÄ»á»°µÄ PuTTY ´°¿Ú
-ÖÐ°´ÏÂ\i{¹Ø±Õ°´Å¥}£¬PuTTY ½«µ¯³öÒ»¸ö¾¯¸æ´°¿Ú£¬
-Ñ¯ÎÊÄúÊÇ·ñÕæµÄÒª¹Ø±Õ¸Ã´°¿Ú¡£ »á»°ÒÑ¾­ÖÕÖ¹µÄ´°¿Ú
-×ÜÊÇ¿ÉÒÔÔÚÃ»ÓÐ¾¯¸æµÄÇé¿öÏÂ¹Ø±Õ¡£
-
-Èç¹ûÄúÏ£ÍûÄÜ¹»¿ìËÙ¹Ø±Õ´°¿Ú£¬
-¿ÉÒÔ½ûÓÃ\q{¹Ø±Õ´°¿ÚÇ°·¢³ö¾¯¸æ}Ñ¡Ïî¡£
-
-\S{config-altf4} \q{\i{ALT-F4}¹Ø±Õ´°¿Ú}
-
-Ä¬ÈÏÇé¿öÏÂ£¬°´ ALT-F4 »áµ¼\I{closing window}ÖÂ´°¿Ú
-¹Ø±Õ£¨»ò³öÏÖ¾¯¸æ¿ò£»Çë²ÎÔÄ \k{config-warnonclose})¡£
-Èç¹ûÄú½ûÓÃ\q{°´ ALT-F4 ¹Ø±Õ´°¿Ú}Ñ¡Ïî£¬
-Ôò°´ ALT-F4 Ö»»á½«°´¼üÐòÁÐ·¢ËÍµ½·þÎñÆ÷¡£
-
-\S{config-altspace} \q{\i{ALT-Space}ÏÔÊ¾\ii{ÏµÍ³²Ëµ¥}}
-
-Èç¹ûÆôÓÃ´ËÑ¡Ïî£¬Ôò°´ ALT-Space ½«µ¯³ö PuTTY
-´°¿ÚµÄ²Ëµ¥£¬¾ÍÏñµ¥»÷×óÉÏ½ÇÒ»Ñù¡£
-Èç¹ûËü±»½ûÓÃ£¬ÄÇÃ´°´ ALT-Space
-Ö»»á½« \c{ESC SPACE} ·¢ËÍµ½·þÎñÆ÷¡£
-
-Ò»Ð©ÊÊÓÃÓÚ Windows µÄ¸¨Öú¹¦ÄÜ³ÌÐò\i{¿ÉÄÜÐèÒª}Æô
-ÓÃ´ËÑ¡Ïî²ÅÄÜ³É¹¦¿ØÖÆ PuTTY µÄ´°¿Ú¡£
-ÀýÈç£¬\i{Dragon NaturallySpeaking}ÒªÇóËü¼ÈÒªÍ¨¹ý
-ÓïÒô´ò¿ªÏµÍ³²Ëµ¥£¬
-ÓÖÒª¹Ø±Õ¡¢×îÐ¡»¯¡¢×î´ó»¯ºÍ»Ö¸´´°¿Ú¡£
-
-\S{config-altonly} \q{\i{Alt}ÏÔÊ¾\ii{ÏµÍ³²Ëµ¥}}
-
-Èç¹ûÆôÓÃ´ËÑ¡Ïî£¬Ôò°´ÏÂ²¢ÊÍ·Å ALT
-½«µ¯³ö PuTTY ´°¿ÚµÄ²Ëµ¥£¬
-¾ÍÏñµ¥»÷×óÉÏ½ÇÒ»Ñù¡£ Èç¹ûËü±»½ûÓÃ£¬
-ÄÇÃ´°´ÏÂ²¢ÊÍ·Å ALT ½«ÎÞÐ§¡£
-
-\S{config-alwaysontop} \q{È·±£´°¿Ú\i{Ê¼ÖÕÔÚ¶¥²¿}}
-
-Èç¹ûÆôÓÃ´ËÑ¡Ïî£¬PuTTY ´°¿Ú
-½«Î»ÓÚËùÓÐÆäËû´°¿ÚµÄ¶¥²¿¡£
-
-\S{config-fullscreen} \q{Alt-Enter \ii{È«ÆÁ}}
-
-Èç¹ûÆôÓÃ´ËÑ¡Ïî£¬Ôò°´ Alt-Enter ½«
-Ê¹ PuTTY ´°¿Ú±äÎªÈ«ÆÁ¡£
-ÔÙ´Î°´ Alt-Enter ½«»Ö¸´ÒÔÇ°µÄ´°¿Ú´óÐ¡¡£
-
-È«ÆÁ¹¦ÄÜÒ²¿ÉÒÔ´Ó \ii{ÏµÍ³²Ëµ¥}ÖÐÊ¹ÓÃ£¬
-¼´Ê¹Ëü±»ÅäÖÃÎªÔÚ Alt-Enter ¼üÉÏ²»¿ÉÓÃ¡£
-Çë²ÎÔÄ \k{using-fullscreen}¡£
-
-\H{config-translation} ×Ö·û×ª»»Ãæ°å
-
-×Ö·û×ª»»ÅäÖÃÃæ°åÔÊÐíÄú¿ØÖÆ·þÎñ
-Æ÷Àí½â\i{×Ö·û¼¯ÉèÖÃ}ºÍ PuTTY
-Àí½âµÄ×Ö·û¼¯Ö®¼äµÄ×ª»»¡£
-
-\S{config-charset} ¿ØÖÆ×Ö·û¼¯×ª»»
-
-ÔÚ½»»¥Ê½»á»°ÆÚ¼ä£¬PuTTY ´Ó·þÎñÆ÷½ÓÊÕ 8 Î»×Ö½ÚÁ÷£¬
-ÎªÁËÔÚÆÁÄ»ÉÏÏÔÊ¾ËüÃÇ£¬ËüÐèÒªÖªµÀÓÃÊ²
-Ã´×Ö·û¼¯À´½âÊÍËüÃÇ¡£
-Í¬Ñù£¬PuTTY ÐèÒªÖªµÀÈçºÎ·­ÒëÄãµÄ»÷¼ü
-½øÈë·þÎñÆ÷ÆÚÍûµÄ±àÂë¡£ ÒÅº¶µÄÊÇ£¬
-PuTTY ºÍ·þÎñÆ÷Ö®¼äÃ»ÓÐÁîÈËÂúÒâ
-µÄ»úÖÆÀ´´«µÝÕâÐ©ÐÅÏ¢£¬Òò´ËÍ¨³£±ØÐëÊÖ¶¯ÅäÖÃ¡£
-
-ÓÐºÜ¶à×Ö·û¼¯¿É¹©Ñ¡Ôñ¡£
-\q{Ô¶³Ì×Ö·û¼¯}Ñ¡Ïî¿ÉÈÃÄúÑ¡ÔñÒ»¸ö¡£
-
-Ä¬ÈÏÇé¿öÏÂ£¬PuTTY ½«Ê¹ÓÃ \i{Unicode} µÄ \i{UTF-8} ±àÂë£¬
-Ëü¼¸ºõ¿ÉÒÔ±íÊ¾ÈÎºÎ×Ö·û£» À´×Ô·þÎñÆ÷µÄÊý¾Ý±»½âÊÍÎª UTF-8£¬
-»÷¼üÒÔ UTF-8 ±àÂë·¢ËÍ¡£
-ÕâÊÇ´ó¶àÊýÏÖ´ú Linux ·¢ÐÐ°æÄ¬ÈÏÇé¿öÏÂËùÆÚÍûµÄ¡£
-µ«ÊÇ£¬Èç¹ûÕâ¶ÔÄúµÄ·þÎñÆ÷À´ËµÊÇ´íÎóµÄ£¬
-Äú¿ÉÒÔÊ¹ÓÃ´Ë¿Ø¼þÑ¡Ôñ²»Í¬µÄ×Ö·û¼¯¡£
-
-ÆäËûÒ»Ð©ÖµµÃ×¢ÒâµÄ×Ö·û¼¯ÊÇ£º
-
-\b \i{ISO-8859} ÏµÁÐ¶¼
-ÊÇ±ê×¼×Ö·û¼¯£¬°üÀ¨ÊÊÓÃ
-ÓÚ²»Í¬ÓïÑÔ¼¯µÄ¸÷ÖÖÖØÒô×Ö·û¡£
-
-\b \i{Win125x} ÏµÁÐÓÉ Microsoft ¶¨Òå£¬
-ÓÃÓÚÀàËÆÄ¿µÄ¡£ ÌØ±ðÊÇ Win1252 ¼¸ºõµÈÍ¬ÓÚ ISO-8859-1£¬
-µ«°üº¬Ò»Ð©¶îÍâµÄ×Ö·û£¬
-ÀýÈçÆ¥ÅäµÄÒýºÅºÍÅ·Ôª·ûºÅ¡£
-
-\b Èç¹ûÄúÏëÒª´øÓÐ¿éÍ¼ÐÎºÍ»­Ïß×Ö·ûµÄ
-¾É IBM PC ×Ö·û¼¯£¬Äú¿ÉÒÔÑ¡Ôñ\q{\i{CP437}}¡£
-
-Èç¹ûÄúÐèÒªÏÂÀ­ÁÐ±íÖÐÎ´ÁÐ³öµÄÊý×Ö\i{´úÂëÒ³}µÄÖ§³Ö£¬
-ÀýÈç´úÂëÒ³ 866£¬Ôò¿ÉÒÔ³¢ÊÔÔÚÁÐ±í¿òÖÐÊÖ¶¯Êä
-ÈëÆäÃû³Æ£¨ÀýÈç \c{\i{CP866}}£©¡£
-Èç¹û Windows µÄµ×²ã°æ±¾°²×°ÁËÊÊ
-µ±µÄ×ª»»±í£¬PuTTY ½«Ê¹ÓÃËü¡£
-
-\S{config-cjk-ambig-wide} \q{½«Ä£ÀâÁ½¿ÉµÄ×Ö·ûÊÓÎª\i{CJK}¿í×Ö·û}
-
-ÓÐÒ»Ð© \I{East Asian Ambiguous
-characters}Unicode ×Ö·ûµÄ¿í¶ÈÃ»ÓÐÃ÷È·¶¨Òå¡£
-ÔÚ´ó¶àÊýÇé¿öÏÂ£¬³öÓÚ»»ÐÐµÈÄ¿µÄ£¬
-´ËÀà×Ö·û\I{character width}Ó¦±»ÊÓÎªµ¥¿í£»
-µ«ÊÇ£¬ÔÚÄ³Ð© CJK ÉÏÏÂÎÄÖÐ£¬ÓÉÓÚÀúÊ·Ô­Òò£¬\I{wrapping,
-terminal}ËüÃÇ±»¸üºÃµØÊÓÎªË«¿í¶È£¬
-²¢ÇÒÄ³Ð©·þÎñÆ÷¶ËÓ¦ÓÃ³ÌÐò¿ÉÄÜÏ£ÍûËüÃÇÒÔÕâÑùµÄ·½Ê½ÏÔÊ¾¡£ ÉèÖÃ´ËÑ¡Ïî½«µ¼ÖÂ PuTTY ²ÉÓÃË«±¶¿í¶È½âÊÍ¡£
-
-Èç¹ûÄúÊ¹ÓÃ¾ÉµÄ CJK Ó¦ÓÃ³ÌÐò£¬²¢ÇÒ·¢ÏÖÄúµÄÐÐÔÚ
-´íÎóµÄÎ»ÖÃ»»ÐÐ£¬»òÕßÄúÓÐÆäËûÏÔÊ¾ÎÊÌâ£¬
-Äú¿ÉÄÜÏëÒªÊ¹ÓÃ´ËÉèÖÃ¡£
-
-´ËÑ¡Ïî½öÔÚ UTF-8 Ä£Ê½ÏÂÓÐÐ§
-(Çë²ÎÔÄ \k{config-charset})¡£
-
-\S{config-cyr} \q{\i{´óÐ´Ëø¶¨¼ü}ÓÃÓÚ\i{CyrillicÇÐ»»}}
-
-Èç¹ûÄúÐèÒªÔÚÍ¬Ò»ÎÄµµÖÐ²¢ÅÅ¼üÈë£¨ÀýÈç£©\i{¶íÓï}ºÍÓ¢Óï£¬
-´Ë¹¦ÄÜÔÊÐíÄúÊ¹ÓÃ CapsLock ¼üÔÚÃÀ¹ú/Ó¢¹ú¼üÅÌ²¼¾Ö
-ºÍCyrillic¼üÅÌ²¼¾ÖÖ®¼äÇÐ»»¡£
-
-Ä¿Ç°£¬Èç¹ûÄúµÄ±¾µØ¼üÅÌ²¼¾Ö²»ÊÇÃÀ¹ú
-»òÓ¢¹ú£¬Ôò´Ë¹¦ÄÜÔ¤¼ÆÎÞ·¨Õý³£¹¤×÷¡£
-
-\S{config-linedraw} ¿ØÖÆ\i{»­Ïß×Ö·û}µÄÏÔÊ¾
-
-VT100 ÏµÁÐÖÕ¶ËÔÊÐí·þÎñÆ÷·¢ËÍ¿ØÖÆÐòÁÐ£¬
-ÕâÐ©\i{¿ØÖÆÐòÁÐ}ÁÙÊ±×ª»»Îªµ¥¶ÀµÄ×Ö·û¼¯£¬
-ÓÃÓÚ»æÖÆ¼òµ¥µÄÏßÌõºÍ¿ò¡£ µ«ÊÇ£¬PuTTY ¿ÉÒÔÍ¨
-¹ý¶àÖÖ·½Ê½³¢ÊÔÕÒµ½ºÏÊÊµÄ×Ö·û£¬
-¶øÊ¹ÓÃÕýÈ·µÄ·½Ê½È¡¾öÓÚ±¾µØÅäÖÃµÄ\i{×ÖÌå}¡£
-Ò»°ãÀ´Ëµ£¬Äú¿ÉÄÜÓ¦¸Ã³¢ÊÔºÜ¶àÑ¡Ïî£¬
-Ö±µ½ÕÒµ½ÄúµÄÌØ¶¨×ÖÌåÖ§³ÖµÄÑ¡Ïî¡£
-
-\b \q{Ê¹ÓÃUnicode»­Ïß´úÂëµã»æÖÆ}
-³¢ÊÔÊ¹ÓÃ \i{Unicode} ÖÐ´æÔÚµÄ·½¿ò×Ö·û¡£
-¶ÔÓÚÁ¼ºÃµÄ Unicode Ö§³Ö×ÖÌå£¬Õâ¿ÉÄÜÊÇ×î¿É¿¿ºÍ×îÊµÓÃµÄÑ¡Ïî¡£
-
-\b \q{¼òµ¥µÄ»­Ïß}   ¼Ù¶¨×ÖÌå¸ù±¾\e{ÎÞ·¨}Éú
-³ÉÐÐºÍ¿ò×Ö·û£¬Òò´ËËü½«Ê¹ÓÃ \c{+}¡¢\c{-} ºÍ \c{|} ×Ö
-·ûÀ´»æÖÆ¿òµÄ½üËÆÖµ¡£ Èç¹ûÆäËûÑ¡Ïî¾ùÎÞÐ§£¬
-ÔòÓ¦Ê¹ÓÃ´ËÑ¡Ïî¡£
-
-\b \q{X Windows »­Ïß»æÖÆ}
-ÓÃÓÚ¾ßÓÐÌØÊâ±àÂëµÄ×ÖÌå£¬
-ÆäÖÐ×îµÍ 32 ¸ö×Ö·ûÎ»ÖÃ£¨µÍÓÚ ASCII ¿É´òÓ¡·¶Î§£©
-°üº¬»­Ïß×Ö·û¡£ ÈÎºÎ±ê×¼µÄ Windows ×ÖÌå¶¼²»Ì«
-¿ÉÄÜ³öÏÖÕâÖÖÇé¿ö£» Ëü¿ÉÄÜÖ»ÊÊÓÃÓÚ¶¨ÖÆ
-×ÖÌå»ò´Ó X Window ÏµÍ³×Ô¶¯×ª»»µÄ×ÖÌå¡£
-
-\b \q{ANSI/OEM Ä£Ê½»­Ïß}  ³¢ÊÔÔÚÁ½¸ö²»Í¬µÄ×Ö·û¼¯ÖÐ
-Ê¹ÓÃÏàÍ¬µÄ×ÖÌå£¬ÒÔ»ñµÃ¸ü¹ã·ºµÄ×Ö·û¡£
-Õâ²¢²»×ÜÊÇÓÐÐ§¡£ ¸ù¾ÝÄú³¢ÊÔÊ¹ÓÃµÄ×Ö·û¼¯£¬
-Ä³Ð©×ÖÌåÉù³ÆÆä´óÐ¡²»Í¬¡£
-
-\b \q{½öÓÃOEMÄ£Ê½±àÂë»æÖÆ}   ±ÈÕâ¸ü¿É¿¿£¬
-µ«¿ÉÄÜ»á´í¹ýÖ÷Òª½ÇÉ«¼¯ÖÐµÄÆäËû½ÇÉ«¡£
-
-\S{config-linedrawpaste} ¿ØÖÆ»­Ïß×Ö·ûµÄ
-\i{¸´ÖÆºÍÕ³Ìù}
-
-Ä¬ÈÏÇé¿öÏÂ£¬
-µ±Äú¸´ÖÆ²¢Õ³Ìù°üº¬ VT100 ÏßÌõ
-ºÍ·½¿òÍ¼×Ö·ûµÄ PuTTY ÆÁÄ»Ê±£¬PuTTY ½«ÒÔËüÃÇÔÚ
-ÆÁÄ»ÉÏÏÔÊ¾µÄÐÎÊ½Õ³ÌùËüÃÇ£º\i{Unicode} ÏßÌõ»æÍ¼´úÂë
-µã»ò\q{¼òµ¥}ÏßÌõ»æÖÆ×Ö·û \c{+}¡¢\c{-} ºÍ \c{|}¡£
-¸´Ñ¡¿ò\q{½« VT100 »­Ïß×Ö·û¸´ÖÆ²¢Õ³ÌùÎª lqqqk}»á½ûÓÃ´Ë¹¦ÄÜ£¬
-Òò´Ë»­Ïß×Ö·û½«±»Õ³ÌùÎªÉú³ÉËüÃÇÊ±´òÓ¡µÄ \i{ASCII} ×Ö·û¡£
-ÕâÍ¨³£ÒâÎ¶×ÅËüÃÇÖ÷ÒªÒÔ \c{q} ºÍ \c{x} µÄÐÎÊ½³öÏÖ£¬
-ÔÚ¹Õ½Ç´¦É¢²¼×Å \c{jklmntuvw}¡£
-ÀýÈç£¬Èç¹ûÄú³¢ÊÔÔÚÁíÒ»¸ö³ÌÐòÖÐÖØÐÂ´´½¨ÏàÍ¬µÄ¿ò²¼¾Ö£¬
-Õâ¿ÉÄÜ»áºÜÓÐÓÃ¡£
-
-Çë×¢Òâ£¬´ËÑ¡Ïî½öÊÊÓÃÓÚÊ¹ÓÃ VT100
-»úÖÆ´òÓ¡µÄ»­Ïß×Ö·û¡£
-×÷Îª Unicode ´úÂëµã½ÓÊÕµÄ»­
-Ïß×Ö·û½«Ê¼ÖÕÕ³ÌùÎª Unicode¡£
-
-\S{config-utf8linedraw} VT100 »­ÏßÓë UTF-8 ½áºÏ
-
-Èç¹û PuTTY ÅäÖÃÎªÒÔ UTF-8 ±àÂë
-´¦ÀíÀ´×Ô·þÎñÆ÷µÄÊý¾Ý£¬ÔòÄ¬ÈÏÇé¿öÏÂ£¬
-Ëü»á½ûÓÃ¾ÉµÄ VT100 ÑùÊ½µÄ¿ØÖÆÐòÁÐÏµÍ³£¬
-¸ÃÏµÍ³»áµ¼ÖÂÐ¡Ð´×ÖÄ¸ÔÝÊ±±»ÏßÌõ»æÖÆ×Ö·ûÌæ»»¡£
-
-»ù±¾Ô­ÀíÊÇ£¬ÔÚ UTF-8 Ä£Ê½ÏÂ£¬
-ÎÞÂÛÈçºÎÄú¶¼²»ÐèÒªÕâÐ©¿ØÖÆÐòÁÐ£¬
-ÒòÎªËüÃÇ·ÃÎÊµÄËùÓÐ»­Ïß×Ö·û¶¼ÒÑ×÷Îª Unicode ×Ö·û¿ÉÓÃ£¬
-Òò´ËÓ¦ÓÃ³ÌÐòÎÞÐè½«ÖÕ¶ËÖÃÓÚÌØÊâ×´Ì¬¶Ô¸¶ËûÃÇ¡£
-
-´ËÍâ£¬Ëü»¹Ïû³ýÁËÖÕ¶Ë\e{ÒâÍâ}½øÈë¸Ã×´Ì¬µÄ·çÏÕ£º
-Èç¹ûÄú²»Ð¡ÐÄ½«²»ÊÜ¿ØÖÆµÄ¶þ½øÖÆÊý¾ÝÐ´Èë·Ç UTF-8 ÖÕ¶Ë£¬
-ÔòÁîÈË¾ªÑÈµÄÊÇ£¬ÄúµÄÏÂÒ»¸ö shell ÌáÊ¾·ûÏÔÊ¾ÎªÒ»ÏµÁÐÐÐ -»æÖÆ×Ö·û£¬
-È»ºóÄú±ØÐë¼Ç×¡»ò²éÕÒÈçºÎÍË³ö¸ÃÄ£Ê½¡£
-Òò´Ë£¬Ä¬ÈÏÇé¿öÏÂ£¬
-UTF-8 Ä£Ê½¸ù±¾Ã»ÓÐÏñÕâÑùÁîÈËÀ§»óµÄÄ£Ê½£¬
-ÎÞÂÛÊÇÒâÍâ»¹ÊÇ¹ÊÒâ½øÈë¡£
-
-µ«ÊÇ£¬²¢·ÇËùÓÐÓ¦ÓÃ³ÌÐò¶¼»áÕâÑù¿´¡£
-¼´Ê¹ÊÇ UTF-8 ÖÕ¶ËÓÃ»§ÓÐÊ±ÈÔ±ØÐëÔËÐÐ³¢ÊÔÒÔ
-ÀÏÊ½·½Ê½´òÓ¡ÏßÌõ»æÖÆ×Ö·ûµÄÈí¼þ¡£
-Òò´Ë£¬ÅäÖÃÑ¡Ïî\q{¼´Ê¹ÔÚ UTF-8 Ä£Ê½ÏÂÒ²
-ÆôÓÃ VT100 »­Ïß}½« PuTTY ÖÃÓÚ»ìºÏÄ£Ê½£¬
-ÔÚÕâÖÖÄ£Ê½ÏÂ£¬Ëü¿ÉÒÔÀí½â VT100 ÑùÊ½µÄ¿ØÖÆÐòÁÐ£¬
-ÕâÐ©¿ØÖÆÐòÁÐ»á¸Ä±ä ASCII Ð¡Ð´×ÖÄ¸µÄº¬Òå£¬\e{²¢ÇÒ}¿ÉÒÔÀí½â UTF-8¡£
-
-\H{config-selection} Ñ¡ÔñÃæ°å
-
-Ñ¡ÔñÃæ°åÔÊÐíÄú¿ØÖÆÔÚ PuTTY
-´°¿ÚÖÐ\i{¸´ÖÆºÍÕ³Ìù}¹¤×÷µÄ·½Ê½¡£
-
-\S{config-mouse} ¸ü¸ÄÊó±ê°´Å¥µÄ¶¯×÷
-
-PuTTY µÄ¸´ÖÆºÍÕ³Ìù»úÖÆÄ¬ÈÏÒÔ Unix \i\c{xterm}
-Ó¦ÓÃ³ÌÐòÎªÄ£ÐÍ¡£
-X Window ÏµÍ³Ê¹ÓÃÈý¼üÊó±ê£¬
-¸ÃÏµÍ³ÖÐµÄÔ¼¶¨ÊÇ\i{×ó¼ü}\I{selecting text}Ñ¡Ôñ£¬
-\i{ÓÒ¼ü}À©Õ¹ÏÖÓÐÑ¡Ôñ£¬\i{ÖÐ¼ü}Õ³Ìù¡£
-
-Windows Í¨³£Ö»ÓÐÁ½¸öÊó±ê°´Å¥£¬
-Òò´ËÔÚ Windows ÉÏÔËÐÐÊ±£¬
-PuTTY ÊÇ¿ÉÅäÖÃµÄ¡£ÔÚ PuTTY µÄÄ¬ÈÏÅäÖÃ£¨\q{Í×Ð­}£©ÖÐ£¬
-\e{ÓÒ}¼üÕ³Ìù£¬\e{ÖÐ¼ä}°´
-Å¥£¨Èç¹ûÓÐµÄ»°£©\I{adjusting a selection}À©Õ¹Ñ¡Ôñ¡£
-
-Èç¹ûÄúÓÐÒ»¸ö\i{Èý¼üÊó±ê}²¢ÇÒÄúÒÑ¾­
-Ï°¹ßÁË xterm ÅÅÁÐ£¬
-Äú¿ÉÒÔÊ¹ÓÃ\q{Êó±ê°´Å¥²Ù×÷}¿Ø¼þÀ´Ñ¡ÔñËü¡£
-
-»òÕß£¬Ñ¡Ôñ\q{Windows}Ñ¡Ïîºó£¬ÖÐ¼ä°´Å¥»áÕ¹¿ª£¬
-²¢ÇÒÓÒ¼ü»áµ¯³öÒ»¸ö\i{ÓÒ¼ü²Ëµ¥}
-£¨ÆäÖÐÒ»¸öÑ¡ÏîÊÇ\q{Õ³Ìù}£©¡£
-£¨ÎÞÂÛ´ËÑ¡ÏîµÄÉèÖÃÈçºÎ£¬°´×¡ Ctrl
-²¢µ¥»÷Êó±êÓÒ¼üÊ¼ÖÕ¿ÉÒÔÊ¹ÓÃ´ËÓÒ¼ü²Ëµ¥¡££©
-
-£¨µ± PuTTY ±¾ÉíÔÚ Unix ÉÏÔËÐÐÊ±£¬
-Ëü×ñÑ­ X Window System Ô¼¶¨¡££©
-
-\S{config-mouseshift} \q{Shift ¸²¸ÇÓ¦ÓÃ³ÌÐò¶ÔÊó±êµÄÊ¹ÓÃ}
-
-PuTTY ÔÊÐí·þÎñÆ÷·¢ËÍ\i{¿ØÖÆ´úÂë}£¬
-ÈÃËü\I{mouse reporting}½Ó¹ÜÊó±ê²¢½«ÆäÓÃ
-ÓÚ\i{¸´ÖÆºÍÕ³Ìù}ÒÔÍâµÄÄ¿µÄ¡£
-Ê¹ÓÃ´Ë¹¦ÄÜµÄÓ¦ÓÃ³ÌÐò°üÀ¨ÎÄ±¾Ä£Ê½ Web ä¯ÀÀ
-Æ÷\c{Á´½Ó}¡¢Usenet ÐÂÎÅÔÄ¶ÁÆ÷ \c{trn} °æ
-±¾ 4 ºÍÎÄ¼þ¹ÜÀíÆ÷ \c{mc} (Midnight Commander)¡£
-
-ÔËÐÐÕâÐ©Ó¦ÓÃ³ÌÐòÖ®Ò»Ê±£¬°´ÏÂÊó±ê°´Å¥
-²»ÔÙÖ´ÐÐ¸´ÖÆºÍÕ³Ìù¡£Èç¹ûÄúÈ·ÊµÐèÒª¸´
-ÖÆºÍÕ³Ìù£¬ÄúÈÔÈ»¿ÉÒÔÔÚµ¥»÷Êó±êµÄÍ¬
-Ê±°´×¡ Shift ¼ü¡£
-
-µ«ÊÇ£¬ÀíÂÛÉÏÓ¦ÓÃ³ÌÐòÉõÖÁ¿ÉÒÔ¼ì²âºÍ
-Ê¹ÓÃ Shift + Êó±êµã»÷¡£ÎÒÃÇ²»ÖªµÀÓÐÈÎºÎÓ¦ÓÃ³Ì
-ÐòÕâÑù×ö£¬µ«Èç¹ûÓÐÈËÐ´¹ýÒ»¸ö£¬
-È¡ÏûÑ¡ÖÐ\q{Shift ¸²¸ÇÓ¦ÓÃ³ÌÐò¶ÔÊó±ê
-µÄÊ¹ÓÃ}¸´Ñ¡¿ò½«µ¼ÖÂ Shift + Êó±êµ¥»÷Ò²×ªµ½·þÎñÆ÷£¨ÒÔ±ãÊó±ê
-Çý¶¯¸´ÖÆºÍÕ³Ìù½«±»ÍêÈ«½ûÓÃ£©¡£
-
-Èç¹ûÄúÏëÍêÈ«×èÖ¹Ó¦ÓÃ³ÌÐò½Ó¹ÜÊó±ê£¬
-Äú¿ÉÒÔÊ¹ÓÃ¹¦ÄÜ¿ØÖÆÃæ°åÖ´ÐÐ´Ë²Ù×÷£»
-Çë²ÎÔÄ \k{config-features-mouse}¡£
-
-\S{config-rectselect} Ä¬ÈÏÑ¡ÔñÄ£Ê½
-
-Èç \k{using-selection} ËùÊö£¬PuTTY ÓÐÁ½ÖÖÑ¡ÔñÒª
-¸´ÖÆµ½¼ôÌù°åµÄÎÄ±¾µÄÄ£Ê½¡£
-ÔÚÄ¬ÈÏÄ£Ê½£¨\q{Õý³£}£©ÏÂ£¬½«Êó±ê´Ó A µãÍÏ
-¶¯µ½ B µã»áÑ¡Ôñ°üº¬ A µÄÐÐµÄÄ©Î²¡¢
-ÖÐ¼äµÄËùÓÐÐÐ£¬ÒÔ¼°°üº¬ B µÄÐÐµÄ¿ªÍ·¡£
-ÔÚÆäËûÄ£Ê½ÏÂ £¨\q{¾ØÐÎ¿é}£©£¬ÔÚÁ½µãÖ®¼äÍÏ¶¯
-Êó±ê¶¨ÒåÒ»¸ö¾ØÐÎ£¬²¢¸´ÖÆ¸Ã¾ØÐÎÄÚµÄËùÓÐÄÚÈÝ¡£
-
-Í¨³££¬Äú±ØÐëÔÚÍÏ¶¯Êó±êµÄÍ¬Ê±°´×¡ Alt ÒÔÑ¡Ôñ¾ØÐÎ¿é¡£
-Ê¹ÓÃ\q{Ä¬ÈÏÑ¡ÔñÄ£Ê½}¿Ø¼þ£¬
-Äú¿ÉÒÔ½«\i{¾ØÐÎÑ¡Ôñ}ÉèÖÃÎªÄ¬ÈÏÉèÖÃ£¬
-È»ºóÄú±ØÐë°´×¡ Alt ²ÅÄÜ»ñµÃÕý³£ÐÐÎª¡£
-
-\S{config-clipboards} Îª¼ôÌù°å·ÖÅä¸´ÖÆºÍÕ³Ìù²Ù×÷
-
-ÔÚÕâÀï£¬Äú¿ÉÒÔÅäÖÃ PuTTY µÄ¸÷
-ÖÖ¸´ÖÆºÍÕ³Ìù²Ù×÷Ð´Èë»ò¶ÁÈ¡ÄÄÐ©¼ôÌù°å¡£
-
-´ó¶àÊýÆ½Ì¨£¬°üÀ¨ Windows£¬¶¼ÓÐÒ»¸öÏµÍ³¼ôÌù°å¡£
-ÔÚÕâÐ©Æ½Ì¨ÉÏ£¬PuTTY Ìá¹©ÁËµÚ¶þ¸öÀàËÆ¼ôÌù°åµÄ¹¤¾ß£¬
-ËüÔÊÐíÄúÕ³ÌùÉÏ´ÎÔÚ\e{´Ë´°¿Ú}ÖÐÑ¡ÔñµÄÎÄ±¾£¬
-ÎÞÂÛËüµ±Ç°ÊÇ·ñÒ²ÔÚÏµÍ³¼ôÌù°åÖÐ¡£
-Ä¬ÈÏÇé¿öÏÂ²»ÆôÓÃ´Ë¹¦ÄÜ¡£
-
-X Window ÏµÍ³£¨´ó¶àÊý Unix Í¼ÐÎ½çÃæµÄ»ù´¡£©
-Ìá¹©¶à¸ö£¨\q{\i{¼ôÌù°åÑ¡Ôñ}}£©£¬
-Ðí¶àÓ¦ÓÃ³ÌÐòÍ¨¹ý²»Í¬µÄÓÃ»§½çÃæ»úÖÆÖ§³Ö¶à¸ö¼ôÌù°å¡£
-µ± PuTTY ±¾ÉíÔÚ Unix ÉÏÔËÐÐÊ±£¬
-Ëü¾ßÓÐÓëÕâÐ©Ñ¡ÔñÏà¹ØµÄ¸ü¶à¿ÉÅäÖÃÐÔ¡£
-
-×î³£ÓÃµÄÁ½¸öÑ¡Ïî³ÆÎª\cq{\i{PRIMARY}}ºÍ\cq{\I{CLIPBOARD}}£»
-ÔÚÖ§³ÖÕâÁ½ÕßµÄÓ¦ÓÃ³ÌÐòÖÐ£¬Í¨³£µÄÐÐÎªÊÇ \cw{PRIMARY}
-½öÓÃÓÚÊó±ê²Ù×÷£¨\i{Ñ¡Ôñ}ÎÄ±¾»á×Ô¶¯½«
-Æä¸´ÖÆµ½ \cw{PRIMARY}£¬²¢´Ó
-\cw{PRIMARY}\i{µ¥»÷Êó±êÖÐ¼ü}Õ³Ìù£©£¬
-¶ø \cw{\i{CLIPBOARD}} ÓÉÏÔÊ½¸´ÖÆºÍÕ³Ìù²Ë
-µ¥Ïî»ò°´¼üµÈÊ¹ÓÃ×÷Îª \i{Ctrl-C} ºÍ \i{Ctrl-V}¡£
-
-\S2{config-selection-autocopy} \q{×Ô¶¯¸´ÖÆÑ¡¶¨ÎÄ±¾}
-
-¸´Ñ¡¿ò\q{×Ô¶¯½«ËùÑ¡ÎÄ±¾¸´ÖÆµ½ÏµÍ³¼ôÌù°å}¿Ø
-ÖÆÔÚ PuTTY ÖÕ¶Ë´°¿ÚÖÐÑ¡ÔñÎÄ±¾ÊÇ·ñ×Ô¶¯¾ß
-ÓÐ½«Æä¸´ÖÆµ½ÏµÍ³¼ôÌù°åµÄ¸±×÷ÓÃ£¬
-¶øÎÞÐèµ¥¶ÀµÄÓÃ»§½çÃæ²Ù×÷¡£
-
-ÔÚ X ÉÏ£¬´ËÑ¡ÏîµÄ´ë´ÇÂÔÓÐ¸ü¸Ä£¬
-Òò´ËÌáµ½ÁË\cq{CLIPBOARD}À´´úÌæ\q{ÏµÍ³¼ôÌù°å}¡£
-°´ÕÕ¹ßÀý£¬ÔÚÖÕ¶Ë´°¿ÚÖÐÑ¡ÔñµÄÎÄ±¾½«Ê¼ÖÕ×Ô¶¯
-·ÅÖÃÔÚ \cw{PRIMARY} Ñ¡ÔñÖÐ£¬
-µ«Èç¹ûÄú¹´Ñ¡´Ë¿ò£¬
-ËüÒ²»áÍ¬Ê±·ÅÖÃÔÚ\cq{¼ôÌù°å}ÖÐ¡£
-
-\S2{config-selection-clipactions} Îª UI ²Ù×÷Ñ¡Ôñ¼ôÌù°å
-
-PuTTY ¾ßÓÐÈý¸öÓÃ»§½çÃæ²Ù×÷£¬
-¿ÉÅäÖÃÎªÕ³Ìùµ½ÖÕ¶Ë£¨²»°üÀ¨²Ëµ¥Ïî£©¡£
-Äú¿ÉÒÔµ¥»÷ÅäÖÃÎªÕ³ÌùµÄÈÎºÎÊó±ê°´Å¥£¨Èç¹ûÓÐ£©
-(Çë²ÎÔÄ \k{config-mouse})£»Äú¿ÉÒÔ°´ \i{Shift-Ins}£»
-»òÕßÄú¿ÉÒÔ°´ \i{Ctrl-Shift-V}£¬¾¡¹ÜÄ¬ÈÏÇé¿öÏÂ²»ÆôÓÃ¸Ã²Ù×÷¡£
-
-Äú¿ÉÒÔÅäÖÃÃ¿¸ö²Ù×÷´ÓÄÄ¸ö¿ÉÓÃ¼ôÌù°åÕ³
-Ìù£¨°üÀ¨ÍêÈ«¹Ø±ÕÕ³Ìù²Ù×÷£©¡£ÔÚ¾ßÓÐµ¥
-¸öÏµÍ³¼ôÌù°åµÄÆ½Ì¨£¨ÀýÈç Windows£©ÉÏ£¬
-¿ÉÓÃÑ¡ÏîÊÇ´Ó¸Ã¼ôÌù°åÕ³Ìù»ò´Ó PuTTY µÄ
-ÄÚ´æÕ³Ìù¸Ã´°¿ÚÖÐ\i{ºóÑ¡ÔñµÄÎÄ±¾}¡£
-ÔÚ X ÉÏ£¬±ê×¼Ñ¡Ïî
-ÊÇ \cw{CLIPBOARD} »ò \cw{PRIMARY}¡£
-
-£¨\cw{PRIMARY} ÔÚ¸ÅÄîÉÏÊÇÏàËÆµÄ£¬
-ÒòÎªËü»¹ÒýÓÃ×îºóÑ¡ÔñµÄÎÄ±¾¡ª¡ªÖ»
-ÊÇ¿çËùÓÐÓ¦ÓÃ³ÌÐò£¬¶ø²»½ö½öÊÇÕâ¸ö´°¿Ú¡££©
-
-ÕâÁ½¸ö¼üÅÌÑ¡Ïî¶¼´øÓÐÒ»¸öÏàÓ¦µÄ¼ü£¬
-¿ÉÒÔ¸´ÖÆµ½Í¬Ò»¸ö¼ôÌù°å¡£ÎÞÂÛÄúÅäÖÃ Shift-Ins À´Õ³
-ÌùÊ²Ã´£¬\i{Ctrl-Ins} ¶¼»á¸´ÖÆµ½ÏàÍ¬µÄÎ»ÖÃ£»
-Í¬Ñù£¬\i{Ctrl-Shift-C} ½«¸´ÖÆµ½ÈÎºÎ Ctrl-Shift-V Õ³ÌùµÄÄÚÈÝ¡£
-
-ÔÚ X ÉÏ£¬Äú»¹¿ÉÒÔÊäÈëÄúÑ¡ÔñµÄÑ¡ÔñÃû³Æ¡£
-ÀýÈç£¬ÓÐÒ»¸öºÜÉÙÊ¹ÓÃµÄ±ê×¼Ñ¡Ôñ£¬
-³ÆÎª\cq{\i{SECONDARY}}£¬
-Èç¹ûÄúÔÚÍÏ¶¯Ñ¡Ôñ»òµ¥»÷Õ³ÌùÊ±°´×¡ Meta ¼ü£¬Emacs£¨ÀýÈç£©
-¿ÉÒÔÊ¹ÓÃËü£»Èç¹ûÄúÅäÖÃ PuTTY ¼üÅÌ²Ù×÷À´·ÃÎÊ´Ë¼ôÌù°å£¬
-ÄÇÃ´Äú¿ÉÒÔÓëÆäËûÓ¦ÓÃ³ÌÐò¶ÔËüµÄÊ¹ÓÃ½øÐÐ»¥²Ù×÷¡£
-Äú¿ÉÒÔ×öµÄÁíÒ»¼þÊÂÊÇ×Ô¼º·¢Ã÷Ò»¸ö¼ôÌù°åÃû³Æ£¬
-´´½¨Ò»¸ö½öÔÚ PuTTY ÊµÀýÖ®¼ä»ò\e{½ö}ÔÚÒÔ¸ÃÌØ
-¶¨·½Ê½ÅäÖÃµÄÊµÀýÖ®¼ä¹²ÏíµÄÌØÊâ¼ôÌù°å¡£
-
-\S{config-paste-ctrl-char} \q{ÔÊÐíÕ³ÌùÎÄ±¾ÖÐµÄ¿ØÖÆ×Ö·û}
-
-¼ôÌù°å¿ÉÄÜ²»½ö°üº¬ÎÄ±¾£¨´øÓÐ»»ÐÐ·ûºÍÖÆ±í·û£©£¬
-»¹°üº¬¿ØÖÆ×Ö·û£¬ÀýÈç ESC£¬Èç¹ûÕ³Ìù
-µ½ÖÕ¶Ë»á»°ÖÐ£¬¿ÉÄÜ»á²úÉúÁîÈË¾ªÑÈµÄÐ§¹û£¬
-¾ßÌåÈ¡¾öÓÚ·þÎñÆ÷¶ËÔËÐÐµÄ³ÌÐò¡£ ´Ó¶ñ×÷¾çµÄÍøÒ³¸´ÖÆÎÄ±¾
-¿ÉÄÜ»á½«ÕâÐ©×Ö·û·Åµ½¼ôÌù°åÉÏ¡£
-
-Ä¬ÈÏÇé¿öÏÂ£¬PuTTY »á¹ýÂËµô¸ü²»³£¼ûµÄ¿ØÖÆ×Ö·û£¬
-Ö»ÈÃ¸üÃ÷ÏÔµÄÎÄ±¾¸ñÊ½×Ö
-·û£¨»»ÐÐ·û¡¢ÖÆ±í·û¡¢ÍË¸ñ·ûºÍ DEL£©Í¨¹ý¡£
-
-ÉèÖÃ´ËÑ¡Ïî»áÍ£Ö¹´Ë¹ýÂË£» Õ³ÌùÊ±£¬
-¼ôÌù°åÉÏµÄÈÎºÎ×Ö·û¶¼»áÎ´¾­Éó²é·¢ËÍµ½»á»°¡£ ÀýÈç£¬
-Èç¹ûÄúÓÐÒâ½«¿ØÖÆ×Ö·ûÕ³ÌùÓÃ×÷Ò»ÖÖ¼òµ¥µÄ½Å±¾ÐÎÊ½£¬
-Õâ¿ÉÄÜ»áºÜÓÐÓÃ¡£
-
-\H{config-selection-copy} ¸´ÖÆÃæ°å
-
-¸´ÖÆÅäÖÃÃæ°å¿ØÖÆÓë´ÓÖÕ¶Ë´°
-¿Ú¸´ÖÆµ½¼ôÌù°åÌØ±ðÏà¹ØµÄÐÐÎª¡£
-
-\S{config-charclasses} ×Ö·ûÀà
-
-Èç¹ûÄú\I{word-by-word selection}\i{Ë«»÷}¿ªÊ¼ÍÏ¶¯£¬
-PuTTY ½«ÔÚÖÕ¶Ë´°¿ÚÖÐÒ»´ÎÑ¡ÔñÒ»¸öµ¥´Ê¡£
-´Ë²¿·ÖÔÊÐíÄú¾«È·¿ØÖÆ±»ÊÓÎªµ¥´ÊµÄÄÚÈÝ¡£
-
-Ã¿¸ö×Ö·û¶¼ÓÐÒ»¸ö\e{Àà±ð}£¬
-ÕâÊÇÒ»¸öºÜÐ¡µÄÊý×Ö£¨Í¨³£Îª 0¡¢1 »ò 2£©¡£
-PuTTY ½«µ¥¸öµ¥´ÊÊÓÎªÍ¬Ò»Àà
-ÖÐÈÎÒâÊýÁ¿µÄÏàÁÚ×Ö·û¡£ Òò´Ë£¬Í¨¹ýÐÞ¸Ä¶ÔÀàµÄ×Ö·û·ÖÅä£¬
-Äú¿ÉÒÔÐÞ¸ÄÖð×ÖÑ¡ÔñÐÐÎª¡£
-
-ÔÚÄ¬ÈÏÅäÖÃÖÐ£¬\i{×Ö·ûÀà}ÊÇ£º
-
-\b Class 0 °üº¬\i{¿Õ¸ñ}ºÍ¿ØÖÆ×Ö·û¡£
-
-\b Class 1 °üº¬×î¶àµÄ\i{±êµã·ûºÅ}¡£
-
-\b Class 2 °üº¬×ÖÄ¸¡¢Êý×Ö
-ºÍÒ»Ð©±êµã·û
-ºÅ£¨Ë«ÒýºÅ¡¢¼õºÅ¡¢¾äµã¡¢ÕýÐ±¸ÜºÍÏÂ»®Ïß£©¡£
-
-Òò´Ë£¬ÀýÈç£¬Èç¹ûÄú½« \c{@} ·û
-ºÅ·ÖÅä¸ø×Ö·ûÀà 2£¬
-ÄúÖ»ÐèË«»÷¼´¿ÉÑ¡ÔñÒ»¸öµç×ÓÓÊ¼þµØÖ·¡£
-
-ÎªÁËµ÷ÕûÕâÐ©·ÖÅä£¬
-ÄúÊ×ÏÈÔÚÁÐ±í¿òÖÐÑ¡ÔñÒ»×é×Ö·û¡£ È»ºóÔÚÏÂÃæµÄ±à¼­¿òÖÐÊäÈë°à¼¶±àºÅ£¬
-È»ºó°´\q{ÉèÖÃ}°´Å¥¡£
-
-ÕâÖÖ»úÖÆÄ¿Ç°Ö»º­¸Ç ASCII ×Ö·û£¬
-ÒòÎªÀ©Õ¹ÁÐ±íÒÔº­¸ÇÕû¸ö Unicode ÊÇ²»¿ÉÐÐµÄ¡£
-
-×Ö·ûÀà¶¨Òå¿ÉÒÔÍ¨¹ý·þÎñÆ÷·¢ËÍ
-µÄ\i{¿ØÖÆÐòÁÐ}½øÐÐÐÞ¸Ä¡£
-´ËÅäÖÃÑ¡Ïî¿ØÖÆ\e{Ä¬ÈÏ}×´Ì¬£¬
-µ±ÄúÖØÖÃÖÕ¶ËÊ±½«»Ö¸´(Çë²ÎÔÄ \k{reset-terminal})¡£
-µ«ÊÇ£¬Èç¹ûÄúÔÚ»á»°ÖÐÊ¹ÓÃ\q{¸ü¸ÄÉèÖÃ}ÐÞ¸Ä´ËÑ¡Ïî£¬
-Ëü½«Á¢¼´ÉúÐ§¡£
-
-\S{config-rtfcopy} ÒÔ\i{RTF}ºÍ´¿ÎÄ±¾¸ñÊ½¸´ÖÆ
-
-Èç¹ûÄúÆôÓÃ\q{ÒÔRTFºÍ´¿ÎÄ±¾¸ñÊ½¸´ÖÆ}£¬
-PuTTY »á½«¸ñÊ½ÐÅÏ¢ÒÔ¼°Äú¸´ÖÆµÄ
-Êµ¼ÊÎÄ±¾Ð´Èë¼ôÌù°å¡£
-ÕâÑù×öµÄÐ§¹ûÊÇ£¬Èç¹ûÄúÕ³Ìùµ½£¨±ÈÈçËµ£©ÎÄ×Ö´¦ÀíÆ÷ÖÐ£¬
-ÎÄ±¾½«ÒÔ PuTTY ÓÃÀ´ÏÔÊ¾ËüµÄÏàÍ¬\i{×ÖÌå}¡¢\i{ÑÕÉ«}ºÍ
-ÑùÊ½£¨ÀýÈç´ÖÌå¡¢ÏÂ»®Ïß£©³öÏÖÔÚÎÄ×Ö´¦ÀíÆ÷ÖÐ¡£
-
-´ËÑ¡ÏîºÜÈÝÒ×´øÀ´²»±ã£¬
-Òò´ËÄ¬ÈÏÇé¿öÏÂËüÊÇ½ûÓÃµÄ¡£
-
-\H{config-colours} ÑÕÉ«Ãæ°å
-
-ÑÕÉ«Ãæ°åÔÊÐíÄú¿ØÖÆ PuTTY ¶Ô\i{ÑÕÉ«}µÄÊ¹ÓÃ¡£
-
-\S{config-ansicolour} \q{ÔÊÐíÖÕ¶ËÖ¸¶¨\i{ANSIÑÕÉ«}}
-
-Ä¬ÈÏÇé¿öÏÂÆôÓÃ´ËÑ¡Ïî¡£
-Èç¹û½ûÓÃ£¬PuTTY ½«ºöÂÔ·þÎñÆ÷·¢ËÍ
-µÄÈÎºÎ\i{¿ØÖÆÐòÁÐ}ÒÔÇëÇó²ÊÉ«ÎÄ±¾¡£
-
-Èç¹ûÄãÓÐÒ»¸öÌØ±ð»¨ÉÚµÄÓ¦ÓÃ³ÌÐò£¬
-Äã¿ÉÄÜÏë¹Ø±ÕÕâ¸öÑ¡Ïî£¬
-ÈÃ PuTTY Ö»Ê¹ÓÃÄ¬ÈÏµÄÇ°¾°É«ºÍ±³¾°É«¡£
-
-\S{config-xtermcolour} \q{ÔÊÐíÖÕ¶ËÊ¹ÓÃxterm
-\i{256É«Ä£Ê½}}
-
-Ä¬ÈÏÇé¿öÏÂÆôÓÃ´ËÑ¡Ïî¡£ Èç¹û½ûÓÃ£¬PuTTY ½«ºöÂÔ·þÎñÆ÷·¢ËÍµÄÈÎ
-ºÎ¿ØÖÆÐòÁÐ£¬ÕâÐ©¿ØÖÆÐòÁÐÊ¹ÓÃ \cw{xterm} ×îÐÂ°æ±¾Ö§³ÖµÄÀ©Õ¹ 256 É«Ä£Ê½¡£
-
-Èç¹ûÄúµÄÓ¦ÓÃ³ÌÐòÓ¦¸ÃÊ¹ÓÃ 256 É«Ä£Ê½µ«Ëü²»¹¤×÷£¬
-Äú¿ÉÄÜ»á·¢ÏÖÄúÐèÒª¸æËß·þÎñÆ÷ÄúµÄÖÕ¶ËÖ§³Ö 256 É«¡£
-ÔÚ Unix ÉÏ£¬Äú¿ÉÒÔÍ¨¹ýÈ·±£ \i\cw{TERM} µÄ
-ÉèÖÃÃèÊöÖ§³Ö 256 É«µÄÖÕ¶ËÀ´×öµ½ÕâÒ»µã¡£
-Äú¿ÉÒÔÊ¹ÓÃÒÔÏÂÃüÁî\c{infocmp}½øÐÐ¼ì²é£º
+\S{config-lfcr} \q{æ¯ä¸ªCRå­—ç¬¦åŽé¢å¢žåŠ LFå­—ç¬¦}
+
+å¤§å¤šæ•°æœåŠ¡å™¨å‘é€ä¸¤ä¸ªæŽ§åˆ¶å­—ç¬¦ \i{CR} å’Œ \i{LF}
+æ¥å¼€å§‹å±å¹•çš„\i{æ–°è¡Œ}ã€‚
+CR å­—ç¬¦ä½¿å…‰æ ‡è¿”å›žåˆ°å±å¹•çš„å·¦ä¾§ã€‚
+LF å­—ç¬¦ä½¿å…‰æ ‡å‘ä¸‹ç§»åŠ¨ä¸€è¡Œï¼ˆå¹¶å¯èƒ½ä½¿å±å¹•æ»šåŠ¨ï¼‰ã€‚
+
+æœ‰äº›æœåŠ¡å™¨åªå‘é€ CRï¼Œ
+æ‰€ä»¥æ–°å†™å…¥çš„è¡Œè¢«ä¸‹ä¸€è¡Œè¦†ç›–ã€‚
+æ­¤é€‰é¡¹ä¼šå¯¼è‡´æ¢è¡Œï¼Œä»¥ä¾¿æ˜¾ç¤ºæ‰€æœ‰è¡Œã€‚
+
+\S{config-erase} \q{ä½¿ç”¨\i{èƒŒæ™¯é¢œè‰²}æ¸…å±}
+
+å½“æœåŠ¡å™¨å‘é€\q{\i{æ¸…å±}} å‘½ä»¤æ—¶ï¼Œ
+å¹¶éžæ‰€æœ‰ç»ˆç«¯éƒ½åŒæ„å°†å±å¹•å˜æˆä»€ä¹ˆé¢œè‰²ã€‚
+ä¸€äº›ç»ˆç«¯è®¤ä¸ºåº”è¯¥å§‹ç»ˆå°†å±å¹•æ¸…é™¤ä¸º\e{é»˜è®¤}èƒŒ
+æ™¯é¢œè‰²ã€‚ å…¶ä»–äººè®¤ä¸ºå±å¹•åº”è¯¥è¢«æ¸…é™¤
+ä¸ºæœåŠ¡å™¨é€‰æ‹©çš„ä»»ä½•èƒŒæ™¯é¢œè‰²ã€‚
+
+å­˜åœ¨æœŸæœ›è¿™ä¸¤ç§è¡Œä¸ºçš„åº”ç”¨ç¨‹åºã€‚
+å› æ­¤ï¼ŒPuTTY å¯ä»¥é…ç½®ä¸ºæ‰§è¡Œä»»ä¸€æ“ä½œã€‚
+
+ç¦ç”¨æ­¤é€‰é¡¹åŽï¼Œå±å¹•æ¸…é™¤å§‹ç»ˆä»¥é»˜è®¤èƒŒæ™¯
+é¢œè‰²å®Œæˆã€‚ å¯ç”¨æ­¤é€‰é¡¹åŽï¼Œ
+\e{çŽ°åœ¨} å°†ä»¥å½“å‰èƒŒæ™¯é¢œè‰²å®Œæˆã€‚
+
+èƒŒæ™¯é¢œè‰²æ“¦é™¤å¯ä»¥é€šè¿‡æœåŠ¡å™¨å‘é€çš„\i{æŽ§åˆ¶åºåˆ—}
+æ‰“å¼€å’Œå…³é—­ã€‚
+æ­¤é…ç½®é€‰é¡¹æŽ§åˆ¶\e{é»˜è®¤}çŠ¶æ€ï¼Œ
+å½“æ‚¨é‡ç½®ç»ˆç«¯æ—¶å°†æ¢å¤(è¯·å‚é˜… \k{reset-terminal})ã€‚ä½†æ˜¯ï¼Œ
+å¦‚æžœæ‚¨åœ¨ä¼šè¯ä¸­ä½¿ç”¨\q{æ›´æ”¹è®¾ç½®}ä¿®æ”¹æ­¤é€‰é¡¹ï¼Œ
+å®ƒå°†ç«‹å³ç”Ÿæ•ˆã€‚
+
+\S{config-blink} \q{å¯ç”¨\i{é—ªçƒæ–‡æœ¬}}
+
+æœåŠ¡å™¨å¯ä»¥è¦æ±‚ PuTTY æ˜¾ç¤ºé—ªçƒçš„æ–‡æœ¬ã€‚
+ è¿™éžå¸¸åˆ†æ•£æ³¨æ„åŠ›ï¼Œ
+ å› æ­¤ PuTTY å…è®¸æ‚¨å®Œå…¨å…³é—­é—ªçƒæ–‡æœ¬ã€‚
+
+å½“é—ªçƒæ–‡æœ¬è¢«ç¦ç”¨å¹¶ä¸”æœåŠ¡å™¨å°è¯•ä½¿æŸäº›
+æ–‡æœ¬é—ªçƒæ—¶ï¼ŒPuTTY å°†æ”¹ä¸ºä»¥\I{background
+colour, bright}ç²—ä½“èƒŒæ™¯é¢œè‰²æ˜¾ç¤ºæ–‡æœ¬ã€‚
+
+é—ªçƒæ–‡æœ¬å¯ä»¥é€šè¿‡æœåŠ¡å™¨å‘é€
+çš„\i{æŽ§åˆ¶åºåˆ—}æ‰“å¼€å’Œå…³é—­ã€‚
+æ­¤é…ç½®é€‰é¡¹æŽ§åˆ¶\e{é»˜è®¤}çŠ¶æ€ï¼Œ
+å½“æ‚¨é‡ç½®ç»ˆç«¯æ—¶å°†æ¢å¤(è¯·å‚é˜… \k{reset-terminal})ã€‚
+ä½†æ˜¯ï¼Œå¦‚æžœæ‚¨åœ¨ä¼šè¯ä¸­ä½¿ç”¨\q{æ›´æ”¹è®¾ç½®}ä¿®æ”¹æ­¤é€‰é¡¹ï¼Œ
+å®ƒå°†ç«‹å³ç”Ÿæ•ˆã€‚
+
+\S{config-answerback} \q{\ii{å›žç­”} ^E}
+
+å¦‚æžœæœåŠ¡å™¨å‘ PuTTY å‘é€ ^E \i{æŸ¥è¯¢å­—ç¬¦}ï¼Œ
+æ­¤é€‰é¡¹æŽ§åˆ¶ PuTTY å°†å‘é€å›žæœåŠ¡å™¨çš„å†…å®¹ã€‚
+é€šå¸¸å®ƒåªå‘é€å­—ç¬¦ä¸²\q{PuTTY}ã€‚
+
+å¦‚æžœæ‚¨ä¸å°å¿ƒå°†äºŒè¿›åˆ¶æ–‡ä»¶çš„å†…å®¹å†™å…¥ç»ˆç«¯ï¼Œ
+æ‚¨å¯èƒ½ä¼šå‘çŽ°å®ƒåŒ…å«å¤šä¸ª ^E å­—ç¬¦ï¼Œå› æ­¤æ‚¨
+çš„ä¸‹ä¸€ä¸ªå‘½ä»¤è¡Œå¯èƒ½ä¼šè¯»å– \q{PuTTYPuTTYPuTTY...}
+å°±å¥½åƒä½ è¾“å…¥äº† åœ¨é”®ç›˜ä¸Šå¤šæ¬¡å›žå¤å­—ç¬¦ä¸²ã€‚
+å¦‚æžœæ‚¨å°†åº”ç­”å­—ç¬¦ä¸²è®¾ç½®ä¸ºç©ºï¼Œ
+åˆ™æ­¤é—®é¢˜åº”è¯¥ä¼šæ¶ˆå¤±ï¼Œ
+ä½†è¿™æ ·åšå¯èƒ½ä¼šå¯¼è‡´å…¶ä»–é—®é¢˜ã€‚
+
+è¯·æ³¨æ„ï¼Œè¿™\e{ä¸æ˜¯} PuTTY çš„åŠŸèƒ½ï¼Œ
+æœåŠ¡å™¨é€šå¸¸ä¼šä½¿ç”¨å®ƒæ¥ç¡®å®šæ‚¨çš„ç»ˆç«¯ç±»åž‹ã€‚
+è¯¥åŠŸèƒ½æ˜¯è¿žæŽ¥é¢æ¿ä¸­çš„\q{\ii{ç»ˆç«¯ç±»åž‹}å­—ç¬¦ä¸²}ï¼Œ
+è¯¦ç»†å†…å®¹è¯·å‚é˜… \k{config-termtype}ã€‚
+
+æ‚¨å¯ä»¥ä½¿ç”¨ \c{^C}è¡¨ç¤ºæ³•åœ¨åº”ç­”å­—ç¬¦ä¸²ä¸­åŒ…å«æŽ§åˆ¶å­—ç¬¦ã€‚
+ï¼ˆä½¿ç”¨ \c{^~} èŽ·å¾— \c{^} ç¬¦å·ã€‚ï¼‰
+
+\S{config-localecho} \q{\ii{æœ¬åœ°å›žæ˜¾}}
+
+ç¦ç”¨æœ¬åœ°å›žæ˜¾åŽï¼Œæ‚¨åœ¨ PuTTY çª—å£ä¸­é”®å…¥çš„å­—ç¬¦ä¸ä¼š
+è¢« \e{PuTTY} åœ¨çª—å£ä¸­å›žæ˜¾ã€‚ å®ƒä»¬åªæ˜¯è¢«å‘é€åˆ°æœåŠ¡å™¨ã€‚
+ï¼ˆ\e{æœåŠ¡å™¨}å¯èƒ½ä¼šé€‰æ‹©å°†å®ƒä»¬\I{remote echo}å›žæ˜¾ç»™æ‚¨ï¼›
+è¿™æ— æ³•é€šè¿‡ PuTTY æŽ§åˆ¶é¢æ¿è¿›è¡ŒæŽ§åˆ¶ã€‚ï¼‰
+
+æŸäº›ç±»åž‹çš„ä¼šè¯éœ€è¦æœ¬åœ°å›žæ˜¾ï¼Œè€Œè®¸å¤šä¸éœ€è¦ã€‚
+åœ¨å…¶é»˜è®¤æ¨¡å¼ä¸‹ï¼ŒPuTTY å°†è‡ªåŠ¨å°è¯•æŽ¨æ–­æœ¬åœ°å›ž
+æ˜¾æ˜¯å¦é€‚åˆæ‚¨æ­£åœ¨å·¥ä½œçš„ä¼šè¯ã€‚
+å¦‚æžœæ‚¨å‘çŽ°å®ƒåšå‡ºäº†é”™è¯¯çš„å†³å®šï¼Œ
+æ‚¨å¯ä»¥ä½¿ç”¨æ­¤é…ç½®é€‰é¡¹è¦†ç›–å…¶é€‰æ‹©ï¼š
+æ‚¨å¯ä»¥å¼ºåˆ¶ æœ¬åœ°å›žæ³¢è¢«æ‰“å¼€ï¼Œ
+æˆ–è€…å¼ºåˆ¶å…³é—­ï¼Œè€Œä¸æ˜¯ä¾é è‡ªåŠ¨æ£€æµ‹ã€‚
+
+\S{config-localedit} \q{\ii{æœ¬åœ°è¡Œç¼–è¾‘}}
+
+é€šå¸¸ï¼Œæ‚¨åœ¨ PuTTY çª—å£ä¸­é”®å…¥çš„æ¯ä¸ªå­—
+ç¬¦éƒ½ä¼šåœ¨æ‚¨é”®å…¥çš„é‚£ä¸€åˆ»ç«‹å³å‘é€åˆ°æœåŠ¡å™¨ã€‚
+
+å¦‚æžœæ‚¨å¯ç”¨æœ¬åœ°è¡Œç¼–è¾‘ï¼Œè¿™ä¼šæ”¹å˜ã€‚
+PuTTY å°†å…è®¸æ‚¨åœ¨æœ¬åœ°ä¸€æ¬¡ç¼–è¾‘ä¸€æ•´è¡Œï¼Œ
+å¹¶ä¸”è¯¥è¡Œä»…åœ¨æ‚¨æŒ‰ Return æ—¶æ‰ä¼šå‘é€åˆ°æœåŠ¡å™¨ã€‚
+å¦‚æžœå‡ºçŽ°é”™è¯¯ï¼Œå¯ä»¥åœ¨æŒ‰ Return ä¹‹å‰ä½¿
+ç”¨ Backspace é”®æ›´æ­£ï¼ŒæœåŠ¡å™¨å°†æ°¸è¿œä¸ä¼šçœ‹åˆ°é”™è¯¯ã€‚
+
+ç”±äºŽæ— æ³•åœ¨æœ¬åœ°ç¼–è¾‘è¡Œè€Œæ— æ³•çœ‹åˆ°å®ƒï¼Œ
+å› æ­¤æœ¬åœ°è¡Œç¼–è¾‘ä¸»è¦ä¸Ž\i{æœ¬åœ°å›žæ˜¾}ç»“åˆä½¿
+ç”¨ (\k{config-localecho})ã€‚ è¿™ä½¿å…¶éžå¸¸
+é€‚åˆåœ¨rawæ¨¡å¼\#{FIXME}æˆ–è¿žæŽ¥åˆ° \i{MUD} æˆ–\i{talker}æ—¶ä½¿ç”¨ã€‚
+ï¼ˆè™½ç„¶ä¸€äº›æ›´é«˜çº§çš„ MUD å¶å°”ä¼šæ‰“å¼€æœ¬åœ°è¡Œç¼–è¾‘å¹¶å…³é—­æœ¬åœ°å›žæ˜¾ï¼Œ
+ä»¥ä¾¿æŽ¥å—ç”¨æˆ·çš„å¯†ç ã€‚ï¼‰
+
+æŸäº›ç±»åž‹çš„ä¼šè¯éœ€è¦æœ¬åœ°è¡Œç¼–è¾‘ï¼Œ
+è€Œè®¸å¤šä¸éœ€è¦ã€‚ åœ¨å…¶é»˜è®¤æ¨¡å¼ä¸‹ï¼Œ
+PuTTY å°†è‡ªåŠ¨å°è¯•æŽ¨æ–­æœ¬åœ°è¡Œç¼–è¾‘æ˜¯å¦é€‚åˆ
+æ‚¨æ­£åœ¨å·¥ä½œçš„ä¼šè¯ã€‚å¦‚æžœæ‚¨å‘çŽ°å®ƒåšå‡ºäº†é”™è¯¯çš„
+å†³å®šï¼Œæ‚¨å¯ä»¥ä½¿ç”¨æ­¤é…ç½®é€‰é¡¹æ¥è¦†ç›–å®ƒçš„é€‰æ‹©ï¼š
+æ‚¨å¯ä»¥ å¼ºåˆ¶æ‰“å¼€æœ¬åœ°è¡Œç¼–è¾‘ï¼Œ
+æˆ–è€…å¼ºåˆ¶å…³é—­ï¼Œè€Œä¸æ˜¯ä¾é è‡ªåŠ¨æ£€æµ‹ã€‚
+
+\S{config-printing} \ii{è¿œç¨‹æ‰“å°}
+
+è®¸å¤šå…¼å®¹ VT100 çš„ç»ˆç«¯æ”¯æŒåœ¨è¿œ
+ç¨‹æœåŠ¡å™¨çš„æŽ§åˆ¶ä¸‹è¿›è¡Œæ‰“å°ï¼ˆæœ‰æ—¶ç§°ä¸º\q{ç›´é€šæ‰“å°}ï¼‰ã€‚
+PuTTY ä¹Ÿæ”¯æŒæ­¤åŠŸèƒ½ï¼Œä½†é»˜è®¤å…³é—­ã€‚
+
+è¦å¯ç”¨è¿œç¨‹æŽ§åˆ¶æ‰“å°ï¼Œè¯·ä»Ž\q{å°† ANSI æ‰“å°æœºè¾“å‡ºå‘é€
+åˆ°çš„æ‰“å°æœº}ä¸‹æ‹‰åˆ—è¡¨æ¡†ä¸­é€‰æ‹©æ‰“å°æœºã€‚
+è¿™åº”è¯¥å…è®¸æ‚¨ä»Žå·²åœ¨è®¡ç®—æœºä¸Šå®‰è£…é©±åŠ¨ç¨‹
+åºçš„æ‰€æœ‰æ‰“å°æœºä¸­è¿›è¡Œé€‰æ‹©ã€‚
+æˆ–è€…ï¼Œæ‚¨å¯ä»¥é”®å…¥è”ç½‘æ‰“å°æœºçš„ç½‘ç»œåç§°
+ï¼ˆä¾‹å¦‚ï¼Œ\c{\\\\printserver\\printer1}ï¼‰ï¼Œ
+å³ä½¿æ‚¨å°šæœªåœ¨è‡ªå·±çš„æœºå™¨ä¸Šå®‰è£…å®ƒçš„é©±åŠ¨ç¨‹åºã€‚
+
+å½“è¿œç¨‹æœåŠ¡å™¨å°è¯•æ‰“å°æŸäº›æ•°æ®æ—¶ï¼Œ
+PuTTY ä¼šå°†è¿™äº›\e{raw}åŽŸå§‹å‘é€åˆ°æ‰“å°æœº - æ— éœ€å¯¹
+å…¶è¿›è¡Œç¿»è¯‘ã€å°è¯•æ ¼å¼åŒ–æˆ–å¯¹å…¶æ‰§è¡Œä»»ä½•å…¶ä»–æ“ä½œã€‚
+æ‚¨å¯ä»¥ç¡®ä¿æ‚¨çš„è¿œç¨‹æœåŠ¡å™¨çŸ¥é“
+å®ƒæ­£åœ¨ä¸Žå“ªç§ç±»åž‹çš„æ‰“å°æœºé€šä¿¡ã€‚
+
+ç”±äºŽ PuTTY å°†æ•°æ®åŽŸå§‹å‘é€åˆ°æ‰“å°æœºï¼Œ
+å› æ­¤å®ƒæ— æ³•æä¾›çºµå‘ä¸Žæ¨ªå‘ã€
+æ‰“å°è´¨é‡æˆ–çº¸ç›’é€‰æ‹©ç­‰é€‰é¡¹ã€‚
+æ‰€æœ‰è¿™äº›äº‹æƒ…éƒ½å°†ç”±æ‚¨çš„ PC æ‰“å°æœºé©±åŠ¨ç¨‹åºï¼ˆPuTTY ç»•è¿‡ï¼‰å®Œæˆï¼›å¦‚æžœæ‚¨éœ€è¦å®Œæˆå®ƒä»¬ï¼Œ
+æ‚¨å°†å¿…é¡»æ‰¾åˆ°ä¸€ç§æ–¹æ³•æ¥é…ç½®æ‚¨çš„è¿œç¨‹æœåŠ¡å™¨æ¥å®Œæˆå®ƒä»¬ã€‚
+
+è¦å†æ¬¡ç¦ç”¨è¿œç¨‹æ‰“å°ï¼Œè¯·ä»Žæ‰“å°æœºé€‰æ‹©åˆ—è¡¨
+ä¸­é€‰æ‹©\q{æ— ï¼ˆç¦ç”¨æ‰“å°ï¼‰}ã€‚
+è¿™æ˜¯é»˜è®¤çŠ¶æ€ã€‚
+
+\H{config-keyboard} é”®ç›˜é¢æ¿
+
+\i{é”®ç›˜é¢æ¿}é…ç½®å…è®¸æ‚¨æŽ§åˆ¶ PuTTY ä¸­é”®ç›˜çš„è¡Œä¸ºã€‚
+è®¸å¤šè¿™äº›è®¾ç½®çš„æ­£ç¡®çŠ¶æ€å–å†³äºŽ PuTTY è¿žæŽ¥åˆ°çš„æœ
+åŠ¡å™¨æ‰€æœŸæœ›çš„çŠ¶æ€ã€‚ å¯¹äºŽ \i{Unix}æœåŠ¡å™¨ï¼Œè¿™å¯
+èƒ½å–å†³äºŽå®ƒä½¿ç”¨çš„ \i\c{termcap} æˆ– \i\c{terminfo}
+æ¡ç›®ï¼Œè€Œè¿™åˆå¯èƒ½ç”± è¿žæŽ¥é¢æ¿ä¸­çš„\q{\ii{ç»ˆç«¯
+ç±»åž‹}å­—ç¬¦ä¸²}è®¾ç½®æŽ§åˆ¶ï¼›è¯¦ç»†å†…å®¹å‚è€ƒ \k{config-termtype}ã€‚
+å¦‚æžœæ­¤å¤„çš„è®¾ç½®ä¼¼ä¹Žéƒ½æ²¡æœ‰å¸®åŠ©ï¼Œ
+é‚£ä¹ˆ\k{faq-keyboard}æè¿°çš„é—®é¢˜å¯èƒ½å¯¹ä½ æœ‰å¸®åŠ©ã€‚
+
+\S{config-backspace} æ›´æ”¹\ii{é€€æ ¼é”®}çš„æ“ä½œ
+
+ä¸€äº›ç»ˆç«¯è®¤ä¸º Backspace é”®åº”è¯¥å‘æœåŠ¡å™¨å‘é€
+ä¸Ž \i{Control-H}ï¼ˆASCII ä»£ç  8ï¼‰ç›¸åŒçš„å†…å®¹ã€‚
+å…¶ä»–ç»ˆç«¯è®¤ä¸º Backspace é”®åº”è¯¥å‘é€ ASCII
+ç  127ï¼ˆé€šå¸¸ç§°ä¸º \i{Control-?}ï¼‰ï¼Œ
+ä»¥ä¾¿ä¸Ž Control-H åŒºåˆ†å¼€æ¥ã€‚ æ­¤é€‰é¡¹å…è®¸æ‚¨
+é€‰æ‹©å½“æ‚¨æŒ‰ Backspace æ—¶ PuTTY ç”Ÿæˆçš„ä»£ç ã€‚
+
+å¦‚æžœæ‚¨é€šè¿‡ SSH è¿žæŽ¥ï¼Œé»˜è®¤æƒ…å†µä¸‹ PuTTY ä¼š
+å‘Šè¯‰æœåŠ¡å™¨æ­¤é€‰é¡¹çš„å€¼(è¯·å‚é˜… \k{config-ttymodes})ï¼Œ
+å› æ­¤ï¼Œæ‚¨å¯èƒ½ä¼šå‘çŽ° Backspace é”®æ— è®ºå“ªç§æ–¹å¼éƒ½æ˜¯æ­£ç¡®çš„ã€‚ åŒæ ·ï¼Œ
+å¦‚æžœæ‚¨è¦è¿žæŽ¥åˆ° \i{Unix} ç³»ç»Ÿï¼Œæ‚¨å¯èƒ½ä¼šå‘çŽ°
+Unix \i\c{stty} å‘½ä»¤å…è®¸æ‚¨é…ç½®æœåŠ¡å™¨æœŸæœ›çœ‹åˆ°çš„
+å†…å®¹ï¼Œå› æ­¤æ‚¨å¯èƒ½ä¸éœ€è¦æ›´æ”¹ PuTTY ç”Ÿæˆçš„å†…å®¹ã€‚
+åœ¨å…¶ä»–ç³»ç»Ÿä¸Šï¼ŒæœåŠ¡å™¨çš„æœŸæœ›å¯èƒ½æ˜¯å›ºå®šçš„ï¼Œ
+æ‚¨å¯èƒ½åˆ«æ— é€‰æ‹©ï¼Œåªèƒ½é…ç½® PuTTYã€‚
+
+å¦‚æžœæ‚¨ç¡®å®žæœ‰é€‰æ‹©ï¼Œæˆ‘ä»¬å»ºè®®é…ç½® PuTTY
+ä»¥ç”Ÿæˆ Control-? å¹¶é…ç½®æœåŠ¡å™¨ä»¥æœŸæœ›å®ƒï¼Œ
+å› ä¸ºè¿™å…è®¸è¯¸å¦‚ \c{emacs}ä¹‹ç±»çš„åº”ç”¨
+ç¨‹åºä½¿ç”¨ Control-H å¯»æ±‚å¸®åŠ©ã€‚
+
+ï¼ˆé”®å…¥ \i{Shift-Backspace} å°†
+å¯¼è‡´ PuTTY å‘é€æ­¤å¤„æœªé…ç½®ä¸ºé»˜è®¤å€¼çš„ä»»ä½•ä»£ç ã€‚ï¼‰
+
+\S{config-homeend} æ”¹å˜\i{Homeå’ŒEndé”®}çš„åŠ¨ä½œ
+
+Unix ç»ˆç«¯æ¨¡æ‹Ÿå™¨ \i\c{rxvt} ä¸Ž
+ç»ˆç«¯å¯èƒ½ä¸åŒï¼ŒHome å’Œ End é”®åº”
+è¯¥å°†å“ªäº›å­—ç¬¦åºåˆ—å‘é€åˆ°æœåŠ¡å™¨ã€‚
+
+\i\c{xterm} å’Œå…¶ä»–ç»ˆç«¯å‘é€ \c{ESC [1~} ä¸º Home é”®ï¼Œ
+\c{ESC [4~} ä¸º End é”®ã€‚ \c{rxvt} å‘é€ \c{ESC [H} ç”¨äºŽ Home é”®ï¼Œ
+\c{ESC [Ow} ç”¨äºŽ End é”®ã€‚
+
+å¦‚æžœæ‚¨å‘çŽ° Home å’Œ End é”®ä¸èµ·ä½œç”¨çš„åº”ç”¨ç¨‹åºï¼Œ
+æ‚¨å¯ä»¥å°è¯•åˆ‡æ¢æ­¤é€‰é¡¹ä»¥æŸ¥çœ‹æ˜¯å¦æœ‰å¸®åŠ©ã€‚
+
+\S{config-funkeys} æ›´æ”¹\i{åŠŸèƒ½é”®}
+å’Œ\i{æ•°å­—é”®}çš„åŠ¨ä½œ
+
+æ­¤é€‰é¡¹å½±å“åŠŸèƒ½é”®ï¼ˆF1 åˆ° F12ï¼‰å’Œ
+é¡¶è¡Œçš„æ•°å­—å°é”®ç›˜ã€‚
+
+\b åœ¨ é»˜è®¤ æ¨¡å¼ä¸‹ï¼Œæ ‡è®°ä¸º \c{ESC [n~}ï¼Œ
+åŠŸèƒ½é”®ç”Ÿæˆ \c{ESC [11~}ã€\c{ESC [12~}
+ç­‰åºåˆ—ã€‚ è¿™ç¬¦åˆ Digital ç»ˆç«¯çš„ä¸€èˆ¬è¡Œä¸ºã€‚
+
+\b åœ¨ Linux æ¨¡å¼ä¸‹ï¼ŒF6 åˆ° F12 çš„è¡Œä¸ºä¸Žé»˜è®¤æ¨¡
+å¼ç›¸åŒï¼Œä½† F1 åˆ° F5 ç”Ÿæˆ \c{ESC [[A} åˆ° \c{ESC [[E}ã€‚
+è¿™æ¨¡ä»¿äº† \i{Linux è™šæ‹ŸæŽ§åˆ¶å°}ã€‚
+
+\b åœ¨ \I{xterm}Xterm R6 æ¨¡å¼ä¸‹ï¼Œ
+F5 åˆ° F12 çš„è¡Œä¸ºç±»ä¼¼äºŽé»˜è®¤æ¨¡å¼ï¼Œ
+ä½† F1 åˆ° F4 ç”Ÿæˆ \c{ESC OP} åˆ° \c{ESC OS}ï¼Œ
+è¿™æ˜¯ç”± Digital ç»ˆç«¯ä¸Šçš„\e{é”®ç›˜}é¡¶è¡Œäº§ç”Ÿçš„åºåˆ—ã€‚
+
+\b åœ¨ \i{VT400} æ¨¡å¼ä¸‹ï¼Œæ‰€æœ‰åŠŸèƒ½é”®çš„è¡Œä¸ºä¸Žé»˜è®¤æ¨¡
+å¼ç›¸åŒï¼Œä½†æ•°å­—é”®ç›˜çš„å®žé™…é¡¶è¡Œä¼šç”Ÿæˆ \c{ESC
+OP} åˆ° \c{ESC OS}ã€‚
+
+\b åœ¨ \i{VT100+} æ¨¡å¼ä¸‹ï¼ŒåŠŸèƒ½é”®
+ç”Ÿæˆ \c{ESC OP} åˆ° \c{ESC O[}
+
+\b åœ¨ \i{SCO} æ¨¡å¼ä¸‹ï¼ŒåŠŸèƒ½é”® F1 åˆ° F12 ç”Ÿ
+æˆ \c{ESC [M} åˆ° \c{ESC [X}ã€‚ ä¸Ž shift ä¸€èµ·ï¼Œ
+å®ƒä»¬ç”Ÿæˆ \c{ESC [Y} åˆ° \c{ESC [j}ã€‚ é€šè¿‡æŽ§åˆ¶ï¼Œ
+å®ƒä»¬ç”Ÿæˆ \c{ESC [k} åˆ° \c{ESC [v}ï¼Œå¹¶ä¸”é€š
+è¿‡ç§»ä½å’ŒæŽ§åˆ¶ä¸€èµ·ç”Ÿæˆ \c{ESC [w} åˆ° \c{ESC [\{}ã€‚
+
+\b åœ¨ \I{xterm}Xterm 216 æ¨¡å¼ä¸‹ï¼Œ
+æœªç§»ä½çš„åŠŸèƒ½é”®çš„è¡Œä¸ºä¸Ž Xterm R6 æ¨¡å¼ç›¸åŒã€‚
+ä½†æ˜¯å°†åŠŸèƒ½é”®ä¸Ž Shift æˆ– Alt æˆ– Ctrl ä¸€èµ·æŒ‰ä¸‹ä¼šç”Ÿæˆä¸€ä¸ªä¸åŒçš„åºåˆ—ï¼Œå…¶ä¸­åŒ…å«ä¸€ä¸ªé¢å¤–çš„æ•°å­—
+å‚æ•°ï¼Œå…¶å½¢å¼ä¸ºï¼ˆ1 è¡¨ç¤º Shiftï¼‰+ï¼ˆ2 è¡¨ç¤º Altï¼‰+
+ï¼ˆ4 è¡¨ç¤º Ctrlï¼‰+1ã€‚å¯¹äºŽ F1-F4ï¼Œ åƒ ESC OP è¿™æ ·çš„
+åŸºæœ¬åºåˆ—å˜æˆ \cw{ESC [1;}\e{bitmap}\cw{P} å’Œç±»ä¼¼çš„ï¼›
+å¯¹äºŽ F5 åŠä»¥ä¸Šï¼Œ\cw{ESC[}\e{index}\cw{~}
+å˜ä¸º \cw{ESC[}\e{index}\cw{;}\e{bitmap}\cw{~}ã€‚
+
+å¦‚æžœä½ ä¸çŸ¥é“è¿™æ„å‘³ç€ä»€ä¹ˆï¼Œ
+ä½ å¯èƒ½ä¸éœ€è¦æ‘†å¼„å®ƒã€‚
+
+\S{config-sharrow} æ”¹å˜\i{æ–¹å‘é”®}çš„åŠ¨ä½œ
+
+å¦‚æžœæ‚¨åœ¨æŒ‰ä½ä»»ä½•ä¿®æ”¹é”® Shiftã€Ctrl æˆ– Alt çš„åŒæ—¶æŒ‰ä¸‹ç®­å¤´é”®ï¼Œ
+æ­¤é€‰é¡¹ä¼šå½±å“æ–¹å‘é”®ã€‚
+
+\b åœ¨é»˜è®¤æ¨¡å¼ä¸‹ï¼Œæ ‡è®°ä¸º \c{Ctrlåˆ‡æ¢åº”ç”¨ç¨‹åºæ¨¡å¼}ï¼Œ
+Ctrl é”®åœ¨é»˜è®¤ç®­å¤´é”®åºåˆ—ä¹‹é—´åˆ‡æ¢ï¼Œ
+å¦‚ \c{ESC [A} å’Œ \c{ESC [B}ï¼Œ
+ä»¥åŠ Digital ç»ˆç«¯åœ¨\q{åº”ç”¨ç¨‹åºå…‰æ ‡é”®}
+æ¨¡å¼ä¸‹ç”Ÿæˆçš„åºåˆ—ï¼Œå³ \c{ESC O A} ç­‰ åœ¨ã€‚ Shift å’Œ Alt æ— æ•ˆã€‚
+
+\b åœ¨\q{xterm ä½å›¾é£Žæ ¼}æ¨¡å¼ä¸‹ï¼Œ
+Shiftã€Ctrl å’Œ Alt éƒ½ä¼šç”Ÿæˆä¸åŒçš„åºåˆ—ï¼Œ
+å¹¶å¸¦æœ‰ä¸€ä¸ªæ•°å­—è¡¨ç¤ºå“ªä¸€ç»„ä¿®é¥°ç¬¦å¤„äºŽæ´»åŠ¨çŠ¶æ€ã€‚
+
+å¦‚æžœä½ ä¸çŸ¥é“è¿™æ„å‘³ç€ä»€ä¹ˆï¼Œ
+ä½ å¯èƒ½ä¸éœ€è¦æ‘†å¼„å®ƒã€‚
+
+\S{config-appcursor} æŽ§åˆ¶\i{åº”ç”¨ç¨‹åºæ–¹å‘é”®}æ¨¡å¼
+
+åº”ç”¨ç¨‹åºå…‰æ ‡é”®æ¨¡å¼æ˜¯æœåŠ¡å™¨æ›´æ”¹ç®­å¤´é”®
+å‘é€çš„æŽ§åˆ¶åºåˆ—çš„ä¸€ç§æ–¹å¼ã€‚ åœ¨æ­£å¸¸æ¨¡å¼ä¸‹ï¼Œ
+ç®­å¤´é”®å°† \c{ESC [A} å‘é€åˆ° \c{ESC [D}ã€‚
+åœ¨åº”ç”¨æ¨¡å¼ä¸‹ï¼Œä»–ä»¬å°† \c{ESC OA} å‘é€åˆ° \c{ESC OD}ã€‚
+
+åº”ç”¨ç¨‹åºå…‰æ ‡é”®æ¨¡å¼å¯ä»¥ç”±æœåŠ¡å™¨æ‰“å¼€å’Œå…³é—­ï¼Œ
+å…·ä½“å–å†³äºŽåº”ç”¨ç¨‹åºã€‚
+PuTTY å…è®¸æ‚¨é…ç½®åˆå§‹çŠ¶æ€ã€‚
+
+æ‚¨è¿˜å¯ä»¥ä½¿ç”¨\q{åŠŸèƒ½}é…ç½®é¢æ¿å®Œå…¨ç¦ç”¨
+åº”ç”¨ç¨‹åºå…‰æ ‡é”®æ¨¡å¼ï¼›
+è¯·å‚é˜… \k{config-features-application}ã€‚
+
+\S{config-appkeypad} æŽ§åˆ¶\i{åº”ç”¨ç¨‹åºæ•°å­—å°é”®ç›˜}æ¨¡å¼
+
+åº”ç”¨ç¨‹åºé”®ç›˜æ¨¡å¼æ˜¯æœåŠ¡å™¨æ›´æ”¹
+æ•°å­—é”®ç›˜è¡Œä¸ºçš„ä¸€ç§æ–¹å¼ã€‚
+
+åœ¨æ­£å¸¸æ¨¡å¼ä¸‹ï¼Œé”®ç›˜çš„è¡Œä¸ºç±»ä¼¼äºŽæ™®é€šçš„ Windows
+é”®ç›˜ï¼šæ‰“å¼€ \i{NumLock} æ—¶ï¼Œæ•°å­—é”®ä¼šç”Ÿæˆæ•°å­—ï¼Œ
+è€Œå…³é—­ NumLock æ—¶ï¼Œå®ƒä»¬å°±åƒç®­å¤´é”®å’Œ Homeã€End ç­‰ã€‚
+
+åœ¨åº”ç”¨æ¨¡å¼ä¸‹ï¼Œæ‰€æœ‰é”®ç›˜æŒ‰é”®éƒ½ä¼šå‘é€ç‰¹æ®Šçš„æŽ§åˆ¶åºåˆ—ï¼Œ
+\e{åŒ…æ‹¬}  Num Lockã€‚ Num Lock ä¸å†åƒ Num Lock é‚£æ ·å·¥ä½œï¼Œ
+è€Œæ˜¯æˆä¸ºå¦ä¸€ä¸ªåŠŸèƒ½é”®ã€‚
+
+æ ¹æ®æ‚¨è¿è¡Œçš„ Windows ç‰ˆæœ¬ï¼Œæ‚¨å¯èƒ½ä¼šå‘çŽ°æ¯æ¬¡
+æŒ‰ä¸‹ Num Lock æ—¶ Num Lock æŒ‡ç¤ºç¯ä»ä¼šé—ªçƒï¼Œ
+å³ä½¿åœ¨åº”ç”¨ç¨‹åºæ¨¡å¼å¤„äºŽæ´»åŠ¨çŠ¶æ€
+ä¸” Num Lock å°±åƒä¸€ä¸ªåŠŸèƒ½é”®æ—¶ä¹Ÿæ˜¯å¦‚æ­¤ã€‚ è¿™æ˜¯ä¸å¯é¿å…çš„ã€‚
+
+æœåŠ¡å™¨å¯ä»¥æ ¹æ®åº”ç”¨ç¨‹åºæ‰“å¼€å’Œå…³
+é—­åº”ç”¨ç¨‹åºé”®ç›˜æ¨¡å¼ã€‚
+PuTTY å…è®¸æ‚¨é…ç½®åˆå§‹çŠ¶æ€ã€‚
+
+æ‚¨è¿˜å¯ä»¥ä½¿ç”¨\q{åŠŸèƒ½}é…ç½®é¢æ¿å®Œå…¨ç¦ç”¨
+åº”ç”¨ç¨‹åºé”®ç›˜æ¨¡å¼ï¼›
+è¯·å‚é˜… \k{config-features-application}ã€‚
+
+\S{config-nethack} ä½¿ç”¨\i{NetHacké”®ç›˜æ¨¡å¼}
+
+PuTTY æœ‰ä¸€ä¸ªçŽ© NetHack çš„ç‰¹æ®Šæ¨¡å¼ã€‚
+æ‚¨å¯ä»¥é€šè¿‡åœ¨\q{æ•°å­—é”®ç›˜çš„åˆå§‹çŠ¶æ€}æŽ§
+ä»¶ä¸­é€‰æ‹©\q{NetHack}æ¥å¯ç”¨å®ƒã€‚
+
+åœ¨æ­¤æ¨¡å¼ä¸‹ï¼Œæ•°å­—é”®ç›˜é”® 1-9 ç”Ÿæˆ NetHack
+ç§»åŠ¨å‘½ä»¤ (\cw{hjklyubn})ã€‚ 5 é”®
+ç”Ÿæˆ \c{.} å‘½ä»¤ï¼ˆä»€ä¹ˆéƒ½ä¸åšï¼‰ã€‚
+
+æ­¤å¤–ï¼Œä½¿ç”¨å°é”®ç›˜é”®æŒ‰ä¸‹ Shift æˆ– Ctrl ä¼šç”Ÿæˆ
+æ‚¨æœŸæœ›çš„ Shift æˆ– Ctrl é”®ï¼ˆä¾‹å¦‚ï¼Œkeypad-7
+ç”Ÿæˆ\cq{y}ï¼Œå› æ­¤ Shift-keypad-7 ç”Ÿæˆ\cq{Y}ï¼Œ
+Ctrl-keypad-7 ç”Ÿæˆ Ctrl -Y); è¿™äº›å‘½ä»¤å‘Š
+è¯‰ NetHack ç»§ç»­å‘åŒä¸€ä¸ªæ–¹å‘ç§»åŠ¨ï¼Œç›´åˆ°ä½ é‡åˆ°æœ‰è¶£çš„äº‹æƒ…ã€‚
+
+å‡ºäºŽæŸç§åŽŸå› ï¼Œæ­¤åŠŸèƒ½ä»…åœ¨ \i{Num Lock}
+å¼€å¯æ—¶æ‰èƒ½æ­£å¸¸å·¥ä½œã€‚ æˆ‘ä»¬ä¸çŸ¥é“ä¸ºä»€ä¹ˆã€‚
+
+\S{config-compose} å¯ç”¨ç±»ä¼¼DECçš„\ii{Composeé”®}
+
+DEC ç»ˆç«¯æœ‰ä¸€ä¸ª Compose é”®ï¼Œ
+å®ƒæä¾›äº†ä¸€ç§æ˜“äºŽè®°å¿†çš„è¾“å…¥\i{é‡éŸ³å­—ç¬¦}çš„æ–¹å¼ã€‚
+æ‚¨æŒ‰ Composeï¼Œç„¶åŽå†é”®å…¥ä¸¤ä¸ªå­—ç¬¦ã€‚
+è¿™ä¸¤ä¸ªå­—ç¬¦è¢«\q{ç»„åˆ}ä»¥äº§ç”Ÿé‡éŸ³å­—ç¬¦ã€‚
+å­—ç¬¦çš„é€‰æ‹©è¢«è®¾è®¡æˆæ˜“äºŽè®°å¿†ï¼› ä¾‹å¦‚ï¼Œ
+ç»„åˆ\q{e}å’Œ\q{`}ä¼šäº§ç”Ÿ\q{\u00e8{e-grave}}å­—ç¬¦ã€‚
+
+å¦‚æžœæ‚¨çš„é”®ç›˜å…·æœ‰ Windows \i{åº”ç”¨ç¨‹åºé”®}ï¼Œåˆ™å®ƒåœ¨
+PuTTY ä¸­å……å½“ Compose é”®ã€‚ æˆ–è€…ï¼Œå¦‚æžœæ‚¨å¯
+ç”¨\q{\i{AltGr} ä½œä¸º Compose é”®}é€‰é¡¹ï¼ŒAltGr é”®å°†æˆä¸º Compose é”®ã€‚
+
+\S{config-ctrlalt} \q{Control-Altä¸Ž\i{AltGr}ä¸åŒ}
+
+ä¸€äº›æ—§é”®ç›˜æ²¡æœ‰ AltGr é”®ï¼Œ
+è¿™å¯èƒ½ä¼šå¯¼è‡´éš¾ä»¥é”®å…¥æŸäº›å­—ç¬¦ã€‚
+PuTTY å¯ä»¥é…ç½®ä¸ºå°†ç»„åˆé”® Ctrl + Left Alt ä»¥ä¸Ž AltGr é”®ç›¸åŒçš„æ–¹å¼å¤„ç†ã€‚
+
+é»˜è®¤æƒ…å†µä¸‹ï¼Œé€‰ä¸­æ­¤å¤é€‰æ¡†ï¼Œ
+å¹¶ä¸”ç»„åˆé”® Ctrl + Left Alt æ‰§è¡Œå®Œå…¨ä¸åŒçš„æ“ä½œã€‚
+PuTTY å¯¹å·¦ Alt é”®çš„é€šå¸¸å¤„ç†æ˜¯å°† Escape (Control-\cw{[}) å­—ç¬¦
+æ·»åŠ åˆ°å…¶ä½™æŒ‰é”®å°†ç”Ÿæˆçš„ä»»ä½•å­—ç¬¦åºåˆ—çš„å‰ç¼€ã€‚
+å¦‚ï¼ŒAlt-A ç”Ÿæˆ Escape åŽè·Ÿ \c{a}ã€‚
+æ‰€ä»¥ Alt-Ctrl-A ä¼šç”Ÿæˆ Escapeï¼Œç„¶åŽæ˜¯ Control-Aã€‚
+
+å¦‚æžœæ‚¨å–æ¶ˆé€‰ä¸­æ­¤æ¡†ï¼Œ
+Ctrl-Alt å°†æˆä¸º AltGr çš„åŒä¹‰è¯ï¼Œ
+å› æ­¤æ‚¨å¯ä»¥ä½¿ç”¨å®ƒæ¥é”®å…¥é¢å¤–çš„å›¾å½¢å­—ç¬¦ï¼ˆå¦‚æžœæ‚¨çš„é”®ç›˜æœ‰ï¼‰ã€‚
+
+ï¼ˆä½†æ˜¯ï¼ŒCtrl-Alt æ°¸è¿œä¸ä¼šå……å½“ Compose é”®ï¼Œ
+è€Œä¸ä¸Ž\q{AltGrå……å½“Composeé”®}ç›¸å…³ï¼‰
+è¯·å‚é˜… \k{config-compose}ã€‚)
+
+\H{config-bell} æç¤ºéŸ³é¢æ¿
+
+æç¤ºéŸ³é¢æ¿æŽ§åˆ¶\i{ç»ˆç«¯å£°éŸ³}æç¤ºåŠŸèƒ½ï¼š
+æœåŠ¡å™¨ä½¿ PuTTY å‘æ‚¨å‘å‡ºå“”å“”å£°çš„èƒ½åŠ›ã€‚
+
+åœ¨é»˜è®¤é…ç½®ä¸‹ï¼Œå½“æœåŠ¡å™¨å‘é€å¸¦æœ‰ ASCII
+ç  7 (Control-G) çš„å­—ç¬¦æ—¶ï¼Œ
+PuTTY ä¼šæ’­æ”¾ \i{Windows Default
+Beep} å£°éŸ³ã€‚ è¿™å¹¶ä¸æ€»æ˜¯æ‚¨å¸Œæœ›ç»ˆç«¯å“
+é“ƒåŠŸèƒ½æ‰§è¡Œçš„æ“ä½œï¼› æç¤ºéŸ³é¢æ¿å…è®¸æ‚¨é…ç½®æ›¿ä»£æ“ä½œã€‚
+
+\S{config-bellstyle} \q{è®¾ç½®æç¤ºéŸ³ç±»åž‹}
+
+æ­¤æŽ§ä»¶å…è®¸æ‚¨é€‰æ‹©åœ¨ç»ˆç«¯æç¤º
+éŸ³ä¸Šå‘ç”Ÿçš„å„ç§ä¸åŒæ“ä½œï¼š
+
+\b é€‰æ‹©\q{æš‚æ— }\I{terminal bell, disabling}
+ä¼šå®Œå…¨ç¦ç”¨æç¤ºéŸ³ã€‚ åœ¨è¿™ç§æ¨¡å¼ä¸‹ï¼ŒæœåŠ¡å™¨å¯ä»¥å‘é€ä»»æ„æ•°é‡
+çš„ Control-G å­—ç¬¦ï¼Œå¹¶ä¸”ä¸ä¼šå‘ç”Ÿä»»ä½•äº‹æƒ…ã€‚
+
+\b \q{ç³»ç»Ÿé»˜è®¤æç¤ºéŸ³}æ˜¯é»˜è®¤è®¾ç½®ã€‚
+å®ƒä¼šå¯¼è‡´æ’­æ”¾ Windows ç³»ç»Ÿ\q{é»˜è®¤æç¤ºéŸ³}ã€‚ è¦æ›´æ”¹æ­¤å£°éŸ³çš„å«ä¹‰ï¼Œæˆ–åœ¨ä¼¼ä¹Žæ²¡æœ‰ä»»ä½•
+ååº”æ—¶å¯¹å…¶è¿›è¡Œæµ‹è¯•ï¼Œ
+è¯·ä½¿ç”¨ Windows æŽ§åˆ¶é¢æ¿ä¸­çš„å£°éŸ³é…ç½®å™¨ã€‚
+
+\b \q{\ii{å¯è§†æç¤ºéŸ³}}æ˜¯ç³»ç»Ÿé»˜è®¤æç¤ºéŸ³çš„æ— å£°æ›¿ä»£æ–¹æ¡ˆã€‚
+åœ¨è¿™ç§æ¨¡å¼ä¸‹ï¼Œå½“æœåŠ¡å™¨å‘é€ Control-G æ—¶ï¼Œ
+æ•´ä¸ª PuTTY çª—å£å°†é—ªçƒç™½è‰²ï¼ŒæŒç»­å‡ åˆ†ä¹‹ä¸€ç§’ã€‚
+
+\b \q{\i{PCèœ‚é¸£å™¨}æç¤ºéŸ³}ä¸è¨€è‡ªæ˜Žçš„ã€‚
+
+\b \q{æ’­æ”¾è‡ªå®šä¹‰\i{æç¤ºéŸ³}}å…è®¸æ‚¨æŒ‡å®šä¸€ä¸ªç‰¹å®šçš„
+å£°éŸ³æ–‡ä»¶ä¾› PuTTY å•ç‹¬ä½¿ç”¨ï¼Œç”šè‡³ç”±ç‰¹å®šçš„å•
+ä¸ª PuTTY ä¼šè¯ä½¿ç”¨ã€‚
+è¿™ä½¿æ‚¨å¯ä»¥å°† PuTTY æç¤ºéŸ³ä¸Žç³»ç»Ÿä¸Šçš„ä»»ä½•å…¶ä»–å£°éŸ³åŒºåˆ†å¼€æ¥ã€‚
+å¦‚æžœé€‰æ‹©æ­¤é€‰é¡¹ï¼Œ
+æ‚¨è¿˜éœ€è¦åœ¨\q{è‡ªå®šä¹‰æç¤ºéŸ³æ–‡ä»¶}æŒ‡å®šå£°éŸ³æ–‡ä»¶ã€‚
+
+\S{config-belltaskbar} \q{\ii{ä»»åŠ¡æ }/\I{window caption}æ ‡é¢˜
+æ æç¤ºéŸ³æ ‡å¿—}
+
+å¦‚æžœåœ¨çª—å£ä¸åœ¨è¾“å…¥çŠ¶æ€æ—¶å‡ºçŽ°æç¤ºéŸ³ï¼Œ
+æ­¤åŠŸèƒ½æŽ§åˆ¶åœ¨ Windows ä»»åŠ¡æ ä¸­
+çš„ PuTTY çª—å£æ¡ç›®ä¼šå‘ç”Ÿä»€ä¹ˆã€‚
+
+åœ¨é»˜è®¤çŠ¶æ€ï¼ˆ\q{å·²ç¦ç”¨}ï¼‰ä¸‹ï¼Œä¸ä¼šå‘ç”Ÿä»»ä½•å¼‚å¸¸æƒ…å†µã€‚
+
+å¦‚æžœæ‚¨é€‰æ‹©\q{å¸¸è§„}ï¼Œ
+åˆ™å½“å‡ºçŽ°é“ƒå£°ä¸”çª—å£ä¸åœ¨ç„¦ç‚¹ä¸Šæ—¶ï¼Œ
+çª—å£çš„ä»»åŠ¡æ æ¡ç›®åŠå…¶æ ‡é¢˜æ å°†æ”¹å˜é¢œè‰²ï¼Œ
+è®©æ‚¨çŸ¥é“ PuTTY ä¼šè¯æ­£åœ¨å¼•èµ·æ‚¨çš„æ³¨æ„ã€‚
+é¢œè‰²çš„å˜åŒ–ä¼šä¸€ç›´æŒç»­åˆ°æ‚¨é€‰æ‹©çª—å£ä¸ºæ­¢ï¼Œ
+å› æ­¤æ‚¨å¯ä»¥åœ¨ç»ˆç«¯ä¸­å°†å‡ ä¸ª PuTTY çª—å£æœ€å°åŒ–ï¼Œç¦»å¼€é”®ç›˜ï¼Œ
+å¹¶ç¡®ä¿åœ¨è¿”å›žæ—¶ä¸ä¼šé”™è¿‡ä»»ä½•é‡è¦çš„æç¤ºã€‚
+
+\q{é—ªçƒ}æ›´åŠ é†’ç›®ï¼šä»»åŠ¡æ æ¡ç›®ä¼šä¸æ–­é—ªçƒï¼Œ
+ç›´åˆ°æ‚¨é€‰æ‹©çª—å£ã€‚
+
+\S{config-bellovl} \q{æŽ§åˆ¶\i{æç¤ºéŸ³é‡å¤}è®¾ç½®}
+
+ç»ˆç«¯ä¼šè¯ä¸­çš„ä¸€ä¸ªå¸¸è§ç”¨æˆ·é”™è¯¯æ˜¯åœ¨ä¸é€‚å½“çš„æ–‡
+ä»¶ç±»åž‹ï¼ˆä¾‹å¦‚å¯æ‰§è¡Œæ–‡ä»¶ã€å›¾åƒæ–‡ä»¶æˆ– ZIP æ–‡ä»¶ï¼‰
+ä¸Šæ„å¤–è¿è¡Œ Unix å‘½ä»¤ \c{cat}ï¼ˆæˆ–ç­‰æ•ˆå‘½ä»¤ï¼‰ã€‚
+è¿™ä¼šäº§ç”Ÿå¤§é‡å‘é€åˆ°ç»ˆç«¯çš„éžæ–‡æœ¬å­—ç¬¦æµï¼Œ
+å…¶ä¸­é€šå¸¸åŒ…å«å¤§é‡è§¦å‘æç¤ºéŸ³çš„å­—ç¬¦ã€‚
+å› æ­¤ï¼Œç»ˆç«¯æœºçš„èœ‚é¸£å£°é€šå¸¸ä¸ä¼šåœæ­¢ååˆ†é’Ÿï¼Œ
+åŠžå…¬å®¤é‡Œçš„å…¶ä»–äººéƒ½ä¼šç”Ÿæ°”ã€‚
+
+ä¸ºäº†é¿å…è¿™ç§è¡Œä¸ºï¼Œæˆ–ä»»ä½•å…¶ä»–åŽŸå› å¯¼è‡´è¿‡åº¦çš„å£°éŸ³æç¤ºï¼Œ
+PuTTY åŒ…å«ä¸€ä¸ªæç¤ºéŸ³è¿‡è½½ç®¡ç†åŠŸèƒ½ã€‚åœ¨é»˜è®¤é…ç½®ä¸­ï¼Œ
+åœ¨ä¸¤ç§’å†…æŽ¥æ”¶è¶…è¿‡äº”ä¸ªé“ƒéŸ³å­—ç¬¦å°†å¯¼è‡´è¿‡è½½åŠŸèƒ½æ¿€æ´»ã€‚
+ä¸€æ—¦é‡è½½åŠŸèƒ½è¢«æ¿€æ´»ï¼Œæ›´å¤šçš„æç¤ºéŸ³å°†å®Œå…¨æ²¡æœ‰æ•ˆæžœ
+\I{terminal bell,disabling}ï¼Œ
+æ‰€ä»¥ä½ çš„äºŒè¿›åˆ¶æ–‡ä»¶çš„å…¶ä½™éƒ¨åˆ†å°†è¢«æ— 
+å£°åœ°å‘é€åˆ°å±å¹•ä¸Šã€‚åœ¨äº”ç§’é’Ÿå†…æ²¡æœ‰æ”¶åˆ°æ›´å¤šé“ƒå£°åŽï¼Œ
+è¿‡è½½åŠŸèƒ½å°†å†æ¬¡è‡ªè¡Œå…³é—­ï¼Œ
+æç¤ºéŸ³å°†é‡æ–°å¯ç”¨ã€‚
+
+å¦‚æžœæ‚¨å¸Œæœ›å®Œå…¨ç¦ç”¨æ­¤åŠŸèƒ½ï¼Œ
+æ‚¨å¯ä»¥ä½¿ç”¨å¤é€‰æ¡†\q{è¿‡åº¦æé†’æ—¶æš‚æ—¶ç¦ç”¨æç¤ºéŸ³}å°†å…¶å…³é—­ã€‚
+
+æˆ–è€…ï¼Œå¦‚æžœæ‚¨å–œæ¬¢é“ƒå£°è¿‡è½½
+åŠŸèƒ½ä½†ä¸åŒæ„è®¾ç½®ï¼Œ
+æ‚¨å¯ä»¥é…ç½®è¯¦ç»†ä¿¡æ¯ï¼šå¤šå°‘é“ƒå£°æž„æˆè¿‡è½½ï¼Œ
+å®ƒä»¬å¿…é¡»åˆ°è¾¾çš„æ—¶é—´æ®µæœ‰å¤šçŸ­ï¼Œ
+ä»¥åŠé™éŸ³æ—¶é—´å¤šé•¿åœ¨è¿‡è½½åŠŸèƒ½è‡ªè¡Œåœç”¨ä¹‹å‰éœ€è¦ã€‚
+
+ç»ˆç«¯ä¸­çš„ä»»ä½•æŒ‰é”®éƒ½å§‹ç»ˆç¦ç”¨é“ƒè¿‡è½½æ¨¡å¼ã€‚
+è¿™æ„å‘³ç€å®ƒå¯ä»¥å“åº”å¤§é‡æ„å¤–çš„æ•°æ®æµï¼Œ
+ä½†ä¸ä¼šå¹²æ‰°äº§ç”Ÿå“”å“”å£°çš„æ™®é€šå‘½
+ä»¤è¡Œæ´»åŠ¨ï¼ˆä¾‹å¦‚æ–‡ä»¶åå®Œæˆï¼‰ã€‚
+
+\H{config-features} é«˜çº§è®¾ç½®
+
+PuTTYçš„\i{ç»ˆç«¯ä»¿çœŸ}åŠŸèƒ½éžå¸¸å¼ºå¤§ï¼Œ
+å¯ä»¥åœ¨è¿œç¨‹æœåŠ¡å™¨æŽ§åˆ¶ä¸‹åšå¾ˆå¤šäº‹æƒ…ã€‚
+å…¶ä¸­ä¸€äº›åŠŸèƒ½å¯èƒ½ä¼šç”±äºŽ
+é”™è¯¯æˆ–é…ç½®å¼‚å¸¸çš„æœåŠ¡å™¨åº”ç”¨ç¨‹åºè€Œå¯¼è‡´é—®é¢˜ã€‚
+
+åŠŸèƒ½é…ç½®é¢æ¿å…è®¸æ‚¨ç¦ç”¨
+PuTTY çš„ä¸€äº›æ›´é«˜çº§çš„ç»ˆç«¯åŠŸèƒ½ï¼Œä»¥é˜²å®ƒä»¬å¼•èµ·éº»çƒ¦ã€‚
+
+\S{config-features-application} ç¦ç”¨åº”ç”¨ç¨‹åºæ•°å­—å°é”®ç›˜å’Œæ–¹å‘é”®
+
+\I{Application Keypad}æ•°å­—å°é”®ç›˜åº”ç”¨æ¨¡
+å¼(è¯·å‚é˜… \k{config-appkeypad})
+å’Œ\I{Application Cursor Keys}æ–¹å‘é”®åº”ç”¨æ¨¡
+å¼(è¯·å‚è€ƒ \k{config-appcursor}) æ”¹å˜å°
+é”®ç›˜å’Œå…‰æ ‡é”®çš„è¡Œä¸ºã€‚ ä¸€äº›åº”ç”¨ç¨‹åºå¯ç”¨äº†è¿™äº›æ¨¡å¼ï¼Œ
+ä½†éšåŽæ— æ³•æ­£ç¡®å¤„ç†ä¿®æ”¹åŽçš„é”®ã€‚ æ— è®ºæœåŠ¡å™¨å°è¯•åšä»€ä¹ˆï¼Œ
+æ‚¨éƒ½å¯ä»¥å¼ºåˆ¶æ°¸ä¹…ç¦ç”¨è¿™äº›æ¨¡å¼ã€‚
+
+\S{config-features-mouse} ç¦ç”¨\cw{xterm}é£Žæ ¼çš„\i{é¼ æ ‡æŽ¥ç®¡}
+
+PuTTY å…è®¸æœåŠ¡å™¨å‘é€\i{æŽ§åˆ¶ä»£ç }ï¼Œ
+è®©å®ƒæŽ¥ç®¡é¼ æ ‡å¹¶å°†å…¶ç”¨äºŽ\i{å¤åˆ¶å’Œç²˜è´´}ä»¥å¤–çš„ç›®çš„ã€‚
+ä½¿ç”¨æ­¤åŠŸèƒ½çš„åº”ç”¨ç¨‹åºåŒ…æ‹¬æ–‡æœ¬æ¨¡å¼ Web
+æµè§ˆå™¨\i\c{é“¾æŽ¥}ã€Usenet æ–°é—»é˜…è¯»å™¨ \i\c{trn}
+ç‰ˆæœ¬ 4 å’Œæ–‡ä»¶ç®¡ç†å™¨ \i\c{mc} (Midnight Commander)ã€‚
+
+å¦‚æžœæ‚¨å‘çŽ°æ­¤åŠŸèƒ½ä¸æ–¹ä¾¿ï¼Œ
+å¯ä»¥ä½¿ç”¨â€œ\q{ç¦ç”¨ xterm æ ·å¼çš„
+é¼ æ ‡æŠ¥å‘Š}æŽ§ä»¶ç¦ç”¨å®ƒã€‚ é€‰ä¸­æ­¤æ¡†åŽï¼Œ
+é¼ æ ‡å°†\e{ç»ˆä»¥}ä»¥æ­£å¸¸æ–¹å¼è¿›è¡Œå¤åˆ¶å’Œç²˜è´´ã€‚
+
+è¯·æ³¨æ„ï¼Œå³ä½¿åº”ç”¨ç¨‹åºæŽ¥ç®¡äº†é¼ æ ‡ï¼Œæ‚¨ä»ç„¶å¯
+ä»¥é€šè¿‡åœ¨é€‰æ‹©å’Œç²˜è´´æ—¶æŒ‰ä½ Shift é”®æ¥ç®¡
+ç† PuTTY çš„å¤åˆ¶å’Œç²˜è´´ï¼Œé™¤éžæ‚¨æ•…æ„å…³é—­
+äº†æ­¤åŠŸèƒ½ (è¯·å‚é˜… \k{config-mouseshift})ã€‚
+
+\S{config-features-resize} ç¦ç”¨è¿œç¨‹æŽ§åˆ¶è°ƒæ•´\i{ç»ˆç«¯å¤§å°}
+
+PuTTY èƒ½å¤Ÿå“åº”æ¥è‡ªæœåŠ¡å™¨çš„å‘½ä»¤æ›´
+æ”¹ç»ˆç«¯çš„å¤§å°å’Œä½ç½®ã€‚
+å¦‚æžœæ‚¨å‘çŽ° PuTTY æ„å¤–æˆ–ä¸æ–¹ä¾¿åœ°æ‰§è¡Œæ­¤æ“ä½œï¼Œ
+æ‚¨å¯ä»¥å‘Šè¯‰ PuTTY ä¸è¦å“åº”è¿™äº›æœåŠ¡å™¨å‘½ä»¤ã€‚
+
+\S{config-features-altscreen} ç¦ç”¨åˆ‡æ¢åˆ°\i{å¤‡ç”¨ç»ˆç«¯å±å¹•}
+
+è®¸å¤šç»ˆç«¯ï¼ŒåŒ…æ‹¬ PuTTYï¼Œéƒ½æ”¯æŒ\q{å¤‡ç”¨å±å¹•}ã€‚
+è¿™ä¸Žæ™®é€šç»ˆç«¯å±å¹•å¤§å°ç›¸åŒï¼Œä½†åˆ†å¼€ã€‚
+é€šå¸¸ï¼ŒåŸºäºŽå±å¹•çš„ç¨‹åºï¼ˆä¾‹å¦‚æ–‡æœ¬ç¼–è¾‘å™¨ï¼‰å¯èƒ½ä¼š
+åœ¨å¯åŠ¨ä¹‹å‰å°†ç»ˆç«¯åˆ‡æ¢åˆ°å¤‡ç”¨å±å¹•ã€‚
+ç„¶åŽåœ¨è¿è¡Œç»“æŸæ—¶ï¼Œå®ƒåˆ‡æ¢å›žä¸»å±å¹•ï¼Œ
+æ‚¨å¯ä»¥çœ‹åˆ°ä¸Žå¯åŠ¨ç¼–è¾‘å™¨ä¹‹å‰ä¸€æ ·çš„å±å¹•å†…å®¹ã€‚
+
+æœ‰äº›äººä¸å¸Œæœ›è¿™ç§æƒ…å†µå‘ç”Ÿã€‚
+å¦‚æžœæ‚¨å¸Œæœ›ç¼–è¾‘å™¨ä¸Žç»ˆç«¯æ´»åŠ¨çš„å…¶ä½™éƒ¨åˆ†åœ¨åŒä¸€å±å¹•ä¸Šè¿è¡Œï¼Œ
+æ‚¨å¯ä»¥å®Œå…¨ç¦ç”¨å¤‡ç”¨å±å¹•åŠŸèƒ½ã€‚
+
+\S{config-features-retitle} ç¦ç”¨è¿œç¨‹æŽ§åˆ¶æ›´æ”¹\i{çª—å£æ ‡é¢˜}
+
+PuTTY èƒ½å¤Ÿæ›´æ”¹çª—å£æ ‡é¢˜ä»¥
+å“åº”æ¥è‡ªæœåŠ¡å™¨çš„å‘½ä»¤ã€‚
+å¦‚æžœæ‚¨å‘çŽ° PuTTY æ„å¤–æˆ–ä¸æ–¹ä¾¿åœ°æ‰§è¡Œæ­¤æ“ä½œï¼Œ
+æ‚¨å¯ä»¥å‘Šè¯‰ PuTTY ä¸è¦å“åº”è¿™äº›æœåŠ¡å™¨å‘½ä»¤ã€‚
+
+\S{config-features-qtitle} å“åº”è¿œç¨‹\i{çª—å£æ ‡é¢˜}æŸ¥è¯¢
+
+PuTTY å¯ä»¥é€‰æ‹©æä¾›å…è®¸æœåŠ¡å™¨åº”ç”¨
+ç¨‹åºæŸ¥æ‰¾æœ¬åœ°çª—å£æ ‡é¢˜çš„ xterm æœåŠ¡ã€‚
+é»˜è®¤æƒ…å†µä¸‹ç¦ç”¨æ­¤åŠŸèƒ½ï¼Œä½†å¦‚æžœæ‚¨ç¡®å®žéœ€è¦ï¼Œå¯ä»¥å°†å…¶æ‰“å¼€ã€‚
+
+è¯·æ³¨æ„ï¼Œæ­¤åŠŸèƒ½å­˜åœ¨\e{æ½œåœ¨çš„ \i{å®‰å…¨éšæ‚£}}ã€‚
+å¦‚æžœæ¶æ„åº”ç”¨ç¨‹åºå¯ä»¥å°†æ•°æ®å†™å…¥æ‚¨çš„ç»ˆç«¯ï¼ˆä¾‹å¦‚ï¼Œ
+å¦‚æžœæ‚¨åªæ˜¯åœ¨æœåŠ¡å™¨è®¡ç®—æœºä¸Šå¯¹å…¶ä»–äººæ‹¥æœ‰çš„æ–‡ä»¶è¿›è¡Œ\c{cat}ï¼‰ï¼Œ
+å®ƒå¯ä»¥æ›´æ”¹æ‚¨çš„çª—å£æ ‡é¢˜(é™¤éžæ‚¨å·²æŒ‰ç…§ä¸­
+èƒ½ \k{config-features-retitle}
+æ‰€è¿°ç¦ç”¨æ­¤åŠŸ)ç„¶åŽä½¿ç”¨æ­¤æœåŠ¡å°†æ–°\q{çª—å£æ ‡é¢˜}
+å‘é€å›žæœåŠ¡å™¨ï¼Œå°±åƒåœ¨é”®ç›˜ä¸Šé”®å…¥ä¸€æ ·ã€‚
+è¿™å…è®¸æ”»å‡»è€…ä¼ªé€ æŒ‰é”®ï¼Œå¹¶å¯èƒ½å¯¼è‡´æ‚¨çš„æœåŠ¡å™¨ç«¯
+åº”ç”¨ç¨‹åºæ‰§è¡Œæ‚¨ä¸æƒ³è¦çš„æ“ä½œã€‚ å› æ­¤ï¼Œæ­¤åŠŸèƒ½é»˜è®¤ç¦ç”¨ï¼Œ
+æˆ‘ä»¬å»ºè®®æ‚¨ä¸è¦å°†å…¶
+è®¾ç½®ä¸º\q{çª—å£æ ‡é¢˜}ï¼Œé™¤éžæ‚¨\e{çœŸçš„}çŸ¥é“è‡ªå·±åœ¨åšä»€ä¹ˆã€‚
+
+æ­¤é€‰é¡¹æœ‰ä¸‰ä¸ªè®¾ç½®ï¼š
+
+\dt \q{æ— }
+
+\dd PuTTY ä¸ä¼šå¯¹ç›¸å…³çš„è½¬ä¹‰
+åºåˆ—åšå‡ºä»»ä½•å“åº”ã€‚
+è¿™å¯èƒ½ä¼šæ‰°ä¹±æœŸå¾…æŸç§å“åº”çš„æœåŠ¡å™¨ç«¯è½¯ä»¶ã€‚
+
+\dt \q{ç©ºå­—ç¬¦ä¸²}
+
+\dd PuTTY åšå‡ºæ ¼å¼è‰¯å¥½çš„å“åº”ï¼Œä½†å°†å…¶ç•™ç©ºã€‚
+å› æ­¤ï¼ŒæœŸæœ›å“åº”çš„æœåŠ¡å™¨ç«¯è½¯ä»¶ä¿æŒæ­£å¸¸è¿è¡Œï¼Œ
+ä½†æ”»å‡»è€…æ— æ³•å½±å“å“åº”å­—ç¬¦ä¸²ã€‚
+å¦‚æžœæ‚¨æ²¡æœ‰æ›´å¥½çš„æƒ³æ³•ï¼Œè¿™å¯èƒ½æ˜¯æ‚¨æƒ³è¦çš„è®¾ç½®ã€‚
+
+\dt \q{çª—å£æ ‡é¢˜}
+
+\dd PuTTY ä»¥å®žé™…çš„çª—å£æ ‡é¢˜è¿›è¡Œå“åº”ã€‚
+ç”±äºŽä¸Šè¿°åŽŸå› ï¼Œè¿™æ˜¯å±é™©çš„ã€‚
+
+\S{config-features-clearscroll} ç¦ç”¨è¿œç¨‹æŽ§åˆ¶\i{æ¸…é™¤å›žæ»š}ç¼“å†²åŒº
+
+PuTTY èƒ½å¤Ÿå“åº”æ¥è‡ªæœåŠ¡å™¨çš„å‘½ä»¤æ¸…
+é™¤ç»ˆç«¯çš„å›žæ»šç¼“å†²åŒºã€‚
+å¦‚æžœæ‚¨å‘çŽ° PuTTY æ„å¤–æˆ–ä¸æ–¹ä¾¿åœ°æ‰§è¡Œæ­¤æ“ä½œï¼Œ
+æ‚¨å¯ä»¥å‘Šè¯‰ PuTTY ä¸è¦å“åº”è¯¥æœåŠ¡å™¨å‘½ä»¤ã€‚
+
+\S{config-features-dbackspace} ç¦ç”¨\i{ç ´åæ€§é€€æ ¼}
+
+é€šå¸¸ï¼Œå½“ PuTTY ä»ŽæœåŠ¡å™¨æŽ¥æ”¶åˆ°å­—ç¬¦ 127 (^?) æ—¶ï¼Œ
+å®ƒä¼šæ‰§è¡Œ\q{ç ´åæ€§é€€æ ¼}ï¼šå°†å…‰æ ‡å‘å·¦ç§»
+åŠ¨ä¸€ä¸ªç©ºæ ¼å¹¶åˆ é™¤å…¶ä¸‹çš„å­—ç¬¦ã€‚
+è¿™æ˜¾ç„¶ä¼šåœ¨æŸäº›åº”ç”¨ç¨‹åºä¸­å¼•èµ·é—®é¢˜ï¼Œ
+å› æ­¤ PuTTY æä¾›äº†å°†å­—ç¬¦ 127
+é…ç½®ä¸ºæ‰§è¡Œæ­£å¸¸é€€æ ¼ï¼ˆä¸åˆ é™¤å­—ç¬¦ï¼‰çš„èƒ½åŠ›ã€‚
+
+\S{config-features-charset} ç¦ç”¨è¿œç¨‹æŽ§åˆ¶
+\i{è®¾ç½®å­—ç¬¦é›†}
+
+PuTTY èƒ½å¤Ÿæ›´æ”¹å…¶å­—ç¬¦é›†é…ç½®ä»¥å“åº”
+æ¥è‡ªæœåŠ¡å™¨çš„å‘½ä»¤ã€‚ æŸäº›ç¨‹åºä¼šæ„å¤–æˆ–ä¸
+æ–¹ä¾¿åœ°å‘é€è¿™äº›å‘½ä»¤ã€‚ ç‰¹åˆ«æ˜¯ï¼Œ\i{BitchX}
+ï¼ˆä¸€ä¸ª IRC å®¢æˆ·ç«¯ï¼‰ä¼¼ä¹Žä¹ æƒ¯äºŽå°†å­—ç¬¦é›†é‡
+æ–°é…ç½®ä¸ºä¸åŒäºŽç”¨æˆ·é¢„æœŸçš„å­—ç¬¦é›†ã€‚
+
+å¦‚æžœæ‚¨å‘çŽ°é‡éŸ³å­—ç¬¦æ²¡æœ‰æŒ‰ç…§æ‚¨æœŸæœ›çš„æ–¹å¼æ˜¾ç¤ºï¼Œ
+å°¤å…¶æ˜¯åœ¨æ‚¨è¿è¡Œ BitchX æ—¶ï¼Œ
+æ‚¨å¯ä»¥å°è¯•ç¦ç”¨è¿œç¨‹å­—ç¬¦é›†é…ç½®å‘½ä»¤ã€‚
+
+\S{config-features-shaping} ç¦ç”¨\i{é˜¿æ‹‰ä¼¯è¯­æ–‡æœ¬ä¿®æ•´}
+
+PuTTY æ”¯æŒé˜¿æ‹‰ä¼¯æ–‡æœ¬çš„æ•´å½¢ï¼Œ
+è¿™æ„å‘³ç€å¦‚æžœæ‚¨çš„æœåŠ¡å™¨å‘é€ä»¥åŸºæœ¬ \i{Unicode} é˜¿æ‹‰ä¼¯å­—æ¯ä¹¦å†™çš„æ–‡æœ¬ï¼Œ
+é‚£ä¹ˆå®ƒå°†åœ¨å°†å…¶æ‰“å°åˆ°å±å¹•ä¸Šä¹‹
+å‰å°†å…¶è½¬æ¢ä¸ºæ­£ç¡®çš„æ˜¾ç¤ºå½¢å¼ã€‚
+
+å¦‚æžœæ‚¨ä½¿ç”¨çš„å…¨å±è½¯ä»¶æ²¡æœ‰é¢„æ–™åˆ°ä¼šå‘ç”Ÿè¿™ç§æƒ…å†µ
+ï¼ˆç‰¹åˆ«æ˜¯å¦‚æžœæ‚¨ä¸æ˜¯è¯´é˜¿æ‹‰ä¼¯è¯­çš„äººï¼Œå¹¶ä¸”æ‚¨æ„
+å¤–åœ°å‘çŽ°è‡ªå·±åœ¨å¤„ç†ä¸æ”¯æŒé˜¿æ‹‰ä¼¯è¯­çš„åº”ç”¨ç¨‹åº
+ä¸­çš„é˜¿æ‹‰ä¼¯è¯­æ–‡æœ¬æ–‡ä»¶ï¼‰ï¼Œæ‚¨å¯èƒ½ä¼šå‘çŽ°\i{æ˜¾
+ç¤ºå†…å®¹æŸå}ã€‚ é€šè¿‡å‹¾é€‰æ­¤æ¡†ï¼Œæ‚¨å¯ä»¥ç¦ç”¨é˜¿
+æ‹‰ä¼¯è¯­æ–‡æœ¬æ•´å½¢ï¼Œä»¥ä¾¿ PuTTY ç²¾ç¡®æ˜¾
+ç¤ºå®ƒè¢«å‘ŠçŸ¥è¦æ˜¾ç¤ºçš„å­—ç¬¦ã€‚
+
+æ‚¨å¯èƒ½è¿˜ä¼šå‘çŽ°éœ€è¦ç¦ç”¨åŒå‘æ–‡æœ¬
+æ˜¾ç¤ºï¼›è¯·å‚é˜… \k{config-features-bidi}ã€‚
+
+\S{config-features-bidi} ç¦ç”¨\i{åŒå‘æ–‡æœ¬}æ˜¾ç¤º
+
+PuTTY æ”¯æŒåŒå‘æ–‡æœ¬æ˜¾ç¤ºï¼Œ
+è¿™æ„å‘³ç€å¦‚æžœæ‚¨çš„æœåŠ¡å™¨å‘é€ä»¥é€šå¸¸
+ä»Žå³åˆ°å·¦æ˜¾ç¤ºçš„è¯­è¨€ï¼ˆä¾‹å¦‚\i{é˜¿æ‹‰ä¼¯è¯­}æˆ–\i{å¸Œ
+ä¼¯æ¥è¯­}ï¼‰ç¼–å†™çš„æ–‡æœ¬ï¼Œé‚£ä¹ˆ PuTTY ä¼šè‡ªåŠ¨å°†å…¶ç¿»è½¬ï¼Œ
+ä»¥ä¾¿åœ¨æ­£ç¡®çš„æ–¹å‘æ˜¾ç¤ºå±å¹•ã€‚
+
+å¦‚æžœæ‚¨ä½¿ç”¨çš„å…¨å±è½¯ä»¶æ²¡æœ‰é¢„æ–™åˆ°ä¼šå‘ç”Ÿè¿™ç§
+æƒ…å†µï¼ˆç‰¹åˆ«æ˜¯å¦‚æžœæ‚¨ä¸æ˜¯è¯´é˜¿æ‹‰ä¼¯è¯­çš„äººï¼Œå¹¶ä¸”
+æ‚¨æ„å¤–åœ°å‘çŽ°è‡ªå·±åœ¨å¤„ç†ä¸æ”¯æŒé˜¿æ‹‰ä¼¯è¯­çš„åº”ç”¨
+ç¨‹åºä¸­çš„é˜¿æ‹‰ä¼¯è¯­æ–‡æœ¬æ–‡ä»¶ï¼‰ï¼Œæ‚¨å¯èƒ½ä¼š
+å‘çŽ°\i{æ˜¾ç¤ºå†…å®¹æŸå}ã€‚ é€šè¿‡å‹¾é€‰æ­¤æ¡†ï¼Œ
+æ‚¨å¯ä»¥ç¦ç”¨åŒå‘æ–‡æœ¬æ˜¾ç¤ºï¼Œä»¥ä¾¿ PuTTY
+åœ¨æ‰€æœ‰æƒ…å†µä¸‹ä»Žå·¦åˆ°å³æ˜¾ç¤ºæ–‡æœ¬ã€‚
+
+æ‚¨å¯èƒ½è¿˜ä¼šå‘çŽ°éœ€è¦ç¦ç”¨é˜¿æ‹‰ä¼¯è¯­
+æ–‡æœ¬æ•´å½¢ï¼›è¯·å‚é˜… \k{config-features-shaping}ã€‚
+
+\H{config-window} çª—å£é¢æ¿
+
+çª—å£é…ç½®é¢æ¿å…è®¸æ‚¨æŽ§
+åˆ¶ \i{PuTTY çª—å£}çš„å„ä¸ªæ–¹é¢ã€‚
+
+\S{config-winsize} è®¾ç½®PuTTY\I{window size}çª—å£çš„å¤§å°
+
+\q{\ii{åˆ—}}å’Œ\q{\ii{è¡Œ}}æ¡†å¯è®©æ‚¨å°† PuTTY çª—å£è®¾
+ç½®ä¸ºç²¾ç¡®çš„å¤§å°ã€‚ å½“ç„¶ï¼Œ
+æ‚¨ä¹Ÿå¯ä»¥åœ¨ä¼šè¯è¿è¡Œæ—¶\I{window resizing}å°†çª—å£æ‹–åŠ¨åˆ°æ–°çš„å¤§å°ã€‚
+
+\S{config-winsizelock} è°ƒæ•´çª—å£å¤§å°æ—¶çš„æ“ä½œ
+
+è¿™äº›é€‰é¡¹å…è®¸æ‚¨æŽ§åˆ¶å½“ç”¨æˆ·å°è¯•ä½¿ç”¨\I{window resizing}
+è°ƒæ•´ PuTTY çª—å£çš„å¤§å°æ—¶çª—å£æ˜¾ç¤ºå‘ç”Ÿçš„æƒ…å†µã€‚
+
+è¿™é‡Œæœ‰å››ä¸ªé€‰é¡¹ï¼š
+
+\b \q{æ›´æ”¹è¡Œåˆ—æ•°}: å­—ä½“å¤§å°
+ä¸ä¼šæ”¹å˜ã€‚ ï¼ˆè¿™æ˜¯é»˜è®¤è®¾ç½®ã€‚ï¼‰
+
+\b \q{æ›´æ”¹å­—ä½“å¤§å°}: ç»ˆç«¯ä¸­çš„è¡Œæ•°å’Œåˆ—æ•°å°†ä¿æŒä¸å˜ï¼Œ
+\i{å­—ä½“å¤§å°}ä¼šå‘ç”Ÿå˜åŒ–ã€‚
+
+\b \q{ä»…åœ¨æœ€å¤§åŒ–æ—¶æ›´æ”¹å­—ä½“å¤§å°}: è°ƒæ•´çª—å£å¤§å°æ—¶ï¼Œ
+è¡Œæ•°å’Œåˆ—æ•°ä¼šå‘ç”Ÿå˜åŒ–ï¼Œ\e{é™¤éž}çª—å£\i{æœ€å¤§åŒ–}ï¼ˆ
+æˆ–æ¢å¤ï¼‰æ—¶ï¼Œå­—ä½“å¤§å°æ‰ä¼šå‘ç”Ÿå˜åŒ–ã€‚
+ï¼ˆåœ¨è¿™ç§æ¨¡å¼ä¸‹ï¼Œåœ¨è°ƒæ•´å¤§å°çš„åŒæ—¶æŒ‰
+ä½ Alt é”®ä¹Ÿä¼šå¯¼è‡´å­—ä½“å¤§å°å‘ç”Ÿå˜åŒ–ã€‚ï¼‰
+
+\b \q{å®Œå…¨ç¦æ­¢è°ƒæ•´å¤§å°}: ç»ˆç«¯å°†
+å®Œå…¨æ‹’ç»è°ƒæ•´å¤§å°ã€‚
+
+\S{config-scrollback} æŽ§åˆ¶\i{å›žæ»š}
+
+è¿™äº›é€‰é¡¹å¯è®©æ‚¨é…ç½® PuTTY åœ¨æ»šåŠ¨ç¦»å¼€å±å¹•é¡¶
+éƒ¨åŽä¿ç•™æ–‡æœ¬çš„æ–¹å¼ (è¯·å‚é˜… \k{using-scrollback})ã€‚
+
+\q{å›žæ»šè¡Œæ•°}æ¡†å¯è®©æ‚¨é…ç½® PuTTY ä¿ç•™çš„æ–‡æœ¬è¡Œæ•°ã€‚
+\q{æ˜¾ç¤ºæ»šåŠ¨æ¡}é€‰é¡¹å…è®¸æ‚¨éšè—\i{æ»šåŠ¨æ¡}
+ï¼ˆå°½ç®¡æ‚¨ä»ç„¶å¯ä»¥ä½¿ç”¨é”®ç›˜æŸ¥çœ‹å›žæ»šï¼Œ
+è¯·å‚é˜… \k{using-scrollback})ã€‚
+æ‚¨å¯ä»¥åˆ†åˆ«é…ç½®æ»šåŠ¨æ¡æ˜¯å¦
+ä»¥\i{å…¨å±æ¨¡å¼}å’Œæ™®é€šæ¨¡å¼æ˜¾ç¤ºã€‚
+
+å¦‚æžœæ‚¨åœ¨æœåŠ¡å™¨å‘ PuTTY å‘é€æ›´å¤šæ–‡æœ¬æ—¶æŸ¥
+çœ‹éƒ¨åˆ†å›žæ»šï¼Œåˆ™å±å¹•å°†æ¢å¤ä¸ºæ˜¾ç¤ºå½“å‰ç»ˆç«¯å†…å®¹ã€‚
+æ‚¨å¯ä»¥é€šè¿‡å…³é—­\q{æ˜¾ç¤ºæ›´æ–°
+æ—¶é‡ç½®å›žæ»š}æ¥ç¦ç”¨æ­¤è¡Œä¸ºã€‚
+æ‚¨è¿˜å¯ä»¥é€šè¿‡æ‰“å¼€\q{æŒ‰é”®æ—¶
+é‡ç½®å›žæ»š}åœ¨æŒ‰é”®æ—¶æ¢å¤å±å¹•ã€‚
+
+\S{config-erasetoscrollback} \q{å°†æ¸…å±çš„å†…å®¹æŽ¨é€åˆ°å›žæ»š}
+
+å¯ç”¨æ­¤é€‰é¡¹åŽï¼Œå½“æœåŠ¡å™¨ç«¯åº”ç”¨ç¨‹åºæ¸…é™¤å±å¹•æ—¶ï¼Œ
+ç»ˆç«¯å±å¹•çš„å†…å®¹å°†è¢«æŽ¨é€åˆ°å›žæ»šä¸­ï¼Œ
+ä»¥ä¾¿æ‚¨çš„å›žæ»šå°†æ›´å¥½åœ°
+è®°å½•æ‚¨è¿‡åŽ»å±å¹•ä¸Šçš„å†…å®¹ã€‚
+
+å¦‚æžœåº”ç”¨ç¨‹åºåˆ‡æ¢åˆ°\i{å¤‡ç”¨å±
+å¹•}(æ›´å¤šä¿¡æ¯è¯·å‚è€ƒ \k{config-features-altscreen} )ï¼Œ
+ç„¶åŽä¸»å±å¹•çš„å†…å®¹å°†åœ¨å›žæ»šä¸­å¯è§ï¼Œ
+ç›´åˆ°åº”ç”¨ç¨‹åºå†æ¬¡åˆ‡æ¢å›žæ¥ã€‚
+
+é»˜è®¤æƒ…å†µä¸‹å¯ç”¨æ­¤é€‰é¡¹ã€‚
+
+\H{config-appearance} å¤–è§‚é¢æ¿
+
+å¤–è§‚é…ç½®é¢æ¿å…è®¸æ‚¨æŽ§åˆ¶
+\I{PuTTY window}PuTTY çª—å£å¤–è§‚çš„å„ä¸ªæ–¹é¢ã€‚
+
+\S{config-cursor} æŽ§åˆ¶\i{å…‰æ ‡}çš„å¤–è§‚
+
+\q{å…‰æ ‡å¤–è§‚}é€‰é¡¹å¯è®©æ‚¨å°†å…‰æ ‡é…ç½®
+ä¸ºå—ã€ä¸‹åˆ’çº¿æˆ–åž‚ç›´çº¿ã€‚
+å½“çª—å£ä¸æ˜¯å½“å‰çª—å£æ—¶ï¼Œå—å…‰æ ‡å˜ä¸º
+ç©ºæ¡†ï¼› ä¸‹åˆ’çº¿æˆ–åž‚ç›´çº¿å˜ä¸ºè™šçº¿ã€‚
+
+\q{\ii{å…‰æ ‡é—ªçƒ}}é€‰é¡¹ä½¿å…‰æ ‡é—ªçƒã€‚
+è¿™é€‚ç”¨äºŽä»»ä½•å…‰æ ‡æ¨¡å¼ã€‚
+
+\S{config-font} æŽ§åˆ¶ç»ˆç«¯çª—å£ä¸­ä½¿ç”¨çš„\i{å­—ä½“}
+
+æ­¤é€‰é¡¹å…è®¸æ‚¨é€‰æ‹© PuTTY ç»ˆç«¯çª—å£
+ç”¨äºŽåœ¨ä¼šè¯ä¸­æ˜¾ç¤ºæ–‡æœ¬çš„\I{font size}å­—ä½“ã€å¤§å°ã€‚
+
+é»˜è®¤æƒ…å†µä¸‹ï¼Œæ‚¨å¯ä»¥ä»Žç³»ç»Ÿä¸Šå®‰è£…çš„æ‰€æœ‰å›ºå®š
+å®½åº¦å­—ä½“ä¸­è¿›è¡Œé€‰æ‹©ï¼Œå› ä¸º VT100 é£Žæ ¼çš„ç»ˆ
+ç«¯å¤„ç†éœ€è¦å›ºå®šå®½åº¦å­—ä½“ã€‚ ä½†æ˜¯ï¼Œå¦‚æžœæ‚¨å‹¾é€‰æ ‡è®°ä¸º\q{å…è®¸é€‰æ‹©
+å¯å˜é—´è·å­—ä½“}çš„æ¡†ï¼ŒPuTTY ä¹Ÿä¼š
+æä¾›å¯å˜å®½åº¦å­—ä½“ï¼šå¦‚æžœæ‚¨é€‰æ‹©
+å…¶ä¸­ä¸€ç§ï¼Œå­—ä½“å°†è¢«å¼ºåˆ¶è½¬æ¢ä¸ºå›ºå®šå¤§å°çš„å­—ç¬¦å•å…ƒï¼Œ
+è¿™å¯èƒ½ä¼š çœ‹èµ·æ¥ä¸å¤ªå¥½ï¼ˆä½†å¯ä»¥ä½¿ç”¨æŸäº›å­—ä½“ï¼‰ã€‚
+
+\S{config-mouseptr} \q{åœ¨çª—å£ä¸­è¾“å…¥æ—¶éšè—\i{é¼ æ ‡æŒ‡é’ˆ}}
+
+å¦‚æžœå¯ç”¨æ­¤é€‰é¡¹ï¼Œå¦‚æžœé€‰æ‹© PuTTY çª—å£å¹¶æŒ‰
+ä¸‹æŸä¸ªé”®ï¼Œé¼ æ ‡æŒ‡é’ˆå°†æ¶ˆå¤±ã€‚ è¿™æ ·ï¼Œå½“æ‚¨åœ¨ä¼šè¯ä¸­å·¥ä½œæ—¶ï¼Œ
+å®ƒä¸ä¼šé®æŒ¡çª—å£ä¸­çš„ä»»ä½•æ–‡æœ¬ã€‚
+åªè¦ä½ ç§»åŠ¨é¼ æ ‡ï¼ŒæŒ‡é’ˆå°±ä¼šé‡æ–°å‡ºçŽ°ã€‚
+
+é»˜è®¤æƒ…å†µä¸‹ç¦ç”¨æ­¤é€‰é¡¹ï¼Œ
+å› æ­¤é¼ æ ‡æŒ‡é’ˆå§‹ç»ˆå¯è§ã€‚
+
+\S{config-winborder} æŽ§åˆ¶\i{çª—å£è¾¹æ¡†}
+
+PuTTY å…è®¸æ‚¨åœ¨ä¸€å®šç¨‹åº¦
+ä¸Šé…ç½®çª—å£è¾¹æ¡†çš„å¤–è§‚ã€‚
+
+æ ‡è®°ä¸º\q{ä¸‹æ²‰è¾¹æ¡†è¾¹ç¼˜}çš„å¤é€‰æ¡†å°†
+çª—å£è¾¹æ¡†çš„å¤–è§‚æ›´æ”¹ä¸ºæ›´åƒ DOS
+æ¡†ï¼šè¾¹æ¡†çš„å†…ä¾§è¾¹ç¼˜è¢«çªå‡ºæ˜¾ç¤ºï¼Œ
+å°±å¥½åƒå®ƒä¸‹æ²‰ä»¥ä¸Žçª—å£å†…çš„è¡¨é¢ç›¸æŽ¥ã€‚
+è¿™ä¹Ÿä½¿è¾¹æ¡†æ›´åŽšä¸€äº›ã€‚ å¾ˆéš¾å½¢å®¹ã€‚ è¯•è¯•çœ‹ä½ å–œä¸å–œæ¬¢ã€‚
+
+æ‚¨è¿˜å¯ä»¥ä½¿ç”¨\q{æ–‡æœ¬ä¸Žçª—å£é—´çš„é—´éš™}æŽ§
+ä»¶åœ¨çª—å£ä¸­çš„æ–‡æœ¬å’Œè¾¹æ¡†ä¹‹é—´é…ç½®å®Œå…¨
+ç©ºç™½çš„é—´éš™ã€‚ é»˜è®¤æƒ…å†µä¸‹ï¼Œ
+è¿™è®¾ç½®ä¸ºä¸€ä¸ªåƒç´ ã€‚ æ‚¨å¯ä»¥å°†å…¶å‡å°‘åˆ°é›¶ï¼Œæˆ–è¿›ä¸€æ­¥å¢žåŠ ã€‚
+
+\H{config-behaviour} è¡Œä¸ºé¢æ¿
+
+è¡Œä¸ºé…ç½®é¢æ¿å…è®¸æ‚¨æŽ§åˆ¶ \I{PuTTY window}PuTTY
+çª—å£è¡Œä¸ºçš„å„ä¸ªæ–¹é¢ã€‚
+
+\S{config-title} æŽ§åˆ¶\i{çª—å£æ ‡é¢˜}
+
+\q{çª—å£æ ‡é¢˜}ç¼–è¾‘æ¡†å…è®¸æ‚¨è®¾ç½® PuTTY çª—å£çš„æ ‡é¢˜ã€‚
+é»˜è®¤æƒ…å†µä¸‹ï¼Œçª—å£æ ‡é¢˜å°†åŒ…å«\i{ä¸»æœºå}ï¼Œ
+åŽè·Ÿ\q{PuTTY}ï¼Œä¾‹å¦‚ \c{server1.example.com - PuTTY}ã€‚
+å¦‚æžœä½ æƒ³è¦ä¸€ä¸ªä¸åŒçš„çª—å£æ ‡é¢˜ï¼Œè¿™æ˜¯è®¾ç½®å®ƒçš„åœ°æ–¹ã€‚
+
+PuTTY å…è®¸æœåŠ¡å™¨å‘é€åœ¨ä¼šè¯ä¸­ä¿®æ”¹çª—å£
+æ ‡é¢˜çš„ \c{xterm} \i{æŽ§åˆ¶åºåˆ—} (é™¤éž
+è¿™è¢«ç¦ç”¨ - è¯·å‚é˜… \k{config-features-retitle})ï¼›
+å› æ­¤ï¼Œæ­¤å¤„è®¾ç½®çš„æ ‡é¢˜å­—ç¬¦ä¸²åªæ˜¯\e{åˆå§‹}çª—å£æ ‡é¢˜ã€‚
+
+é™¤äº†\e{çª—å£}æ ‡é¢˜ï¼Œè¿˜æœ‰ä¸€ä¸ª \c{xterm} åº
+åˆ—æ¥ä¿®æ”¹çª—å£\I{icon title}æ ‡é¢˜çš„\e{å›¾æ ‡}ã€‚
+è¿™åœ¨çª—å£ç³»ç»Ÿä¸­æ˜¯æœ‰æ„ä¹‰çš„ï¼Œåœ¨çª—å£ç³»ç»Ÿä¸­ï¼Œ
+çª—å£åœ¨æœ€å°åŒ–æ—¶ä¼šå˜æˆä¸€ä¸ªå›¾æ ‡ï¼Œ
+ä¾‹å¦‚ Windows 3.1 æˆ–å¤§å¤šæ•° X çª—å£ç³»ç»Ÿè®¾ç½®ï¼›
+ä½†åœ¨ç±»ä¼¼ Windows 95 çš„ç”¨æˆ·ç•Œé¢ä¸­ï¼Œå®ƒå¹¶ä¸é€‚ç”¨ã€‚
+
+é»˜è®¤æƒ…å†µä¸‹ï¼ŒPuTTY ä»…ä½¿ç”¨æœåŠ¡å™¨æä¾›
+çš„\e{çª—å£}æ ‡é¢˜ï¼Œå®Œå…¨å¿½ç•¥å›¾æ ‡æ ‡é¢˜ã€‚ å¦‚æžœå‡ºäºŽæŸç§åŽŸå› æ‚¨æƒ³åŒæ—¶æŸ¥çœ‹
+è¿™ä¸¤ä¸ªæ ‡é¢˜ï¼Œè¯·é€‰ä¸­æ ‡æœ‰\q{ä½¿ç”¨å•ç‹¬çš„æ ‡é¢˜å’Œå›¾æ ‡}é€‰æ¡†ã€‚ å¦‚æžœä½ è¿™æ ·åšï¼Œ
+å¦‚æžœä½ \i{æœ€å°åŒ–} PuTTY çª—å£ï¼Œ
+PuTTY çš„\I{window caption}çª—å£æ ‡é¢˜å’Œ
+ä»»åŠ¡æ æ ‡é¢˜å°†å˜ä¸ºæœåŠ¡å™¨æä¾›çš„å›¾æ ‡æ ‡é¢˜ï¼Œ
+å¦‚æžœä½ æ¢å¤å®ƒï¼Œåˆ™æ”¹å›žæœåŠ¡å™¨æä¾›çš„çª—å£æ ‡é¢˜ã€‚
+ï¼ˆå¦‚æžœæœåŠ¡å™¨æ²¡æœ‰è´¹å¿ƒæä¾›çª—å£æˆ–å›¾æ ‡æ ‡é¢˜ï¼Œè¿™ä¸€åˆ‡éƒ½ä¸ä¼šå‘ç”Ÿã€‚ï¼‰
+
+\S{config-warnonclose} \q{\i{å…³é—­çª—å£}å‰çš„è­¦å‘Š}
+
+å¦‚æžœæ‚¨åœ¨åŒ…å«æ­£åœ¨è¿è¡Œçš„ä¼šè¯çš„ PuTTY çª—å£
+ä¸­æŒ‰ä¸‹\i{å…³é—­æŒ‰é’®}ï¼ŒPuTTY å°†å¼¹å‡ºä¸€ä¸ªè­¦å‘Šçª—å£ï¼Œ
+è¯¢é—®æ‚¨æ˜¯å¦çœŸçš„è¦å…³é—­è¯¥çª—å£ã€‚ ä¼šè¯å·²ç»ç»ˆæ­¢çš„çª—å£
+æ€»æ˜¯å¯ä»¥åœ¨æ²¡æœ‰è­¦å‘Šçš„æƒ…å†µä¸‹å…³é—­ã€‚
+
+å¦‚æžœæ‚¨å¸Œæœ›èƒ½å¤Ÿå¿«é€Ÿå…³é—­çª—å£ï¼Œ
+å¯ä»¥ç¦ç”¨\q{å…³é—­çª—å£å‰å‘å‡ºè­¦å‘Š}é€‰é¡¹ã€‚
+
+\S{config-altf4} \q{\i{ALT-F4}å…³é—­çª—å£}
+
+é»˜è®¤æƒ…å†µä¸‹ï¼ŒæŒ‰ ALT-F4 ä¼šå¯¼\I{closing window}è‡´çª—å£
+å…³é—­ï¼ˆæˆ–å‡ºçŽ°è­¦å‘Šæ¡†ï¼›è¯·å‚é˜… \k{config-warnonclose})ã€‚
+å¦‚æžœæ‚¨ç¦ç”¨\q{æŒ‰ ALT-F4 å…³é—­çª—å£}é€‰é¡¹ï¼Œ
+åˆ™æŒ‰ ALT-F4 åªä¼šå°†æŒ‰é”®åºåˆ—å‘é€åˆ°æœåŠ¡å™¨ã€‚
+
+\S{config-altspace} \q{\i{ALT-Space}æ˜¾ç¤º\ii{ç³»ç»Ÿèœå•}}
+
+å¦‚æžœå¯ç”¨æ­¤é€‰é¡¹ï¼Œåˆ™æŒ‰ ALT-Space å°†å¼¹å‡º PuTTY
+çª—å£çš„èœå•ï¼Œå°±åƒå•å‡»å·¦ä¸Šè§’ä¸€æ ·ã€‚
+å¦‚æžœå®ƒè¢«ç¦ç”¨ï¼Œé‚£ä¹ˆæŒ‰ ALT-Space
+åªä¼šå°† \c{ESC SPACE} å‘é€åˆ°æœåŠ¡å™¨ã€‚
+
+ä¸€äº›é€‚ç”¨äºŽ Windows çš„è¾…åŠ©åŠŸèƒ½ç¨‹åº\i{å¯èƒ½éœ€è¦}å¯
+ç”¨æ­¤é€‰é¡¹æ‰èƒ½æˆåŠŸæŽ§åˆ¶ PuTTY çš„çª—å£ã€‚
+ä¾‹å¦‚ï¼Œ\i{Dragon NaturallySpeaking}è¦æ±‚å®ƒæ—¢è¦é€šè¿‡
+è¯­éŸ³æ‰“å¼€ç³»ç»Ÿèœå•ï¼Œ
+åˆè¦å…³é—­ã€æœ€å°åŒ–ã€æœ€å¤§åŒ–å’Œæ¢å¤çª—å£ã€‚
+
+\S{config-altonly} \q{\i{Alt}æ˜¾ç¤º\ii{ç³»ç»Ÿèœå•}}
+
+å¦‚æžœå¯ç”¨æ­¤é€‰é¡¹ï¼Œåˆ™æŒ‰ä¸‹å¹¶é‡Šæ”¾ ALT
+å°†å¼¹å‡º PuTTY çª—å£çš„èœå•ï¼Œ
+å°±åƒå•å‡»å·¦ä¸Šè§’ä¸€æ ·ã€‚ å¦‚æžœå®ƒè¢«ç¦ç”¨ï¼Œ
+é‚£ä¹ˆæŒ‰ä¸‹å¹¶é‡Šæ”¾ ALT å°†æ— æ•ˆã€‚
+
+\S{config-alwaysontop} \q{ç¡®ä¿çª—å£\i{å§‹ç»ˆåœ¨é¡¶éƒ¨}}
+
+å¦‚æžœå¯ç”¨æ­¤é€‰é¡¹ï¼ŒPuTTY çª—å£
+å°†ä½äºŽæ‰€æœ‰å…¶ä»–çª—å£çš„é¡¶éƒ¨ã€‚
+
+\S{config-fullscreen} \q{Alt-Enter \ii{å…¨å±}}
+
+å¦‚æžœå¯ç”¨æ­¤é€‰é¡¹ï¼Œåˆ™æŒ‰ Alt-Enter å°†
+ä½¿ PuTTY çª—å£å˜ä¸ºå…¨å±ã€‚
+å†æ¬¡æŒ‰ Alt-Enter å°†æ¢å¤ä»¥å‰çš„çª—å£å¤§å°ã€‚
+
+å…¨å±åŠŸèƒ½ä¹Ÿå¯ä»¥ä»Ž \ii{ç³»ç»Ÿèœå•}ä¸­ä½¿ç”¨ï¼Œ
+å³ä½¿å®ƒè¢«é…ç½®ä¸ºåœ¨ Alt-Enter é”®ä¸Šä¸å¯ç”¨ã€‚
+è¯·å‚é˜… \k{using-fullscreen}ã€‚
+
+\H{config-translation} å­—ç¬¦è½¬æ¢é¢æ¿
+
+å­—ç¬¦è½¬æ¢é…ç½®é¢æ¿å…è®¸æ‚¨æŽ§åˆ¶æœåŠ¡
+å™¨ç†è§£\i{å­—ç¬¦é›†è®¾ç½®}å’Œ PuTTY
+ç†è§£çš„å­—ç¬¦é›†ä¹‹é—´çš„è½¬æ¢ã€‚
+
+\S{config-charset} æŽ§åˆ¶å­—ç¬¦é›†è½¬æ¢
+
+åœ¨äº¤äº’å¼ä¼šè¯æœŸé—´ï¼ŒPuTTY ä»ŽæœåŠ¡å™¨æŽ¥æ”¶ 8 ä½å­—èŠ‚æµï¼Œ
+ä¸ºäº†åœ¨å±å¹•ä¸Šæ˜¾ç¤ºå®ƒä»¬ï¼Œå®ƒéœ€è¦çŸ¥é“ç”¨ä»€
+ä¹ˆå­—ç¬¦é›†æ¥è§£é‡Šå®ƒä»¬ã€‚
+åŒæ ·ï¼ŒPuTTY éœ€è¦çŸ¥é“å¦‚ä½•ç¿»è¯‘ä½ çš„å‡»é”®
+è¿›å…¥æœåŠ¡å™¨æœŸæœ›çš„ç¼–ç ã€‚ é—æ†¾çš„æ˜¯ï¼Œ
+PuTTY å’ŒæœåŠ¡å™¨ä¹‹é—´æ²¡æœ‰ä»¤äººæ»¡æ„
+çš„æœºåˆ¶æ¥ä¼ é€’è¿™äº›ä¿¡æ¯ï¼Œå› æ­¤é€šå¸¸å¿…é¡»æ‰‹åŠ¨é…ç½®ã€‚
+
+æœ‰å¾ˆå¤šå­—ç¬¦é›†å¯ä¾›é€‰æ‹©ã€‚
+\q{è¿œç¨‹å­—ç¬¦é›†}é€‰é¡¹å¯è®©æ‚¨é€‰æ‹©ä¸€ä¸ªã€‚
+
+é»˜è®¤æƒ…å†µä¸‹ï¼ŒPuTTY å°†ä½¿ç”¨ \i{Unicode} çš„ \i{UTF-8} ç¼–ç ï¼Œ
+å®ƒå‡ ä¹Žå¯ä»¥è¡¨ç¤ºä»»ä½•å­—ç¬¦ï¼› æ¥è‡ªæœåŠ¡å™¨çš„æ•°æ®è¢«è§£é‡Šä¸º UTF-8ï¼Œ
+å‡»é”®ä»¥ UTF-8 ç¼–ç å‘é€ã€‚
+è¿™æ˜¯å¤§å¤šæ•°çŽ°ä»£ Linux å‘è¡Œç‰ˆé»˜è®¤æƒ…å†µä¸‹æ‰€æœŸæœ›çš„ã€‚
+ä½†æ˜¯ï¼Œå¦‚æžœè¿™å¯¹æ‚¨çš„æœåŠ¡å™¨æ¥è¯´æ˜¯é”™è¯¯çš„ï¼Œ
+æ‚¨å¯ä»¥ä½¿ç”¨æ­¤æŽ§ä»¶é€‰æ‹©ä¸åŒçš„å­—ç¬¦é›†ã€‚
+
+å…¶ä»–ä¸€äº›å€¼å¾—æ³¨æ„çš„å­—ç¬¦é›†æ˜¯ï¼š
+
+\b \i{ISO-8859} ç³»åˆ—éƒ½
+æ˜¯æ ‡å‡†å­—ç¬¦é›†ï¼ŒåŒ…æ‹¬é€‚ç”¨
+äºŽä¸åŒè¯­è¨€é›†çš„å„ç§é‡éŸ³å­—ç¬¦ã€‚
+
+\b \i{Win125x} ç³»åˆ—ç”± Microsoft å®šä¹‰ï¼Œ
+ç”¨äºŽç±»ä¼¼ç›®çš„ã€‚ ç‰¹åˆ«æ˜¯ Win1252 å‡ ä¹Žç­‰åŒäºŽ ISO-8859-1ï¼Œ
+ä½†åŒ…å«ä¸€äº›é¢å¤–çš„å­—ç¬¦ï¼Œ
+ä¾‹å¦‚åŒ¹é…çš„å¼•å·å’Œæ¬§å…ƒç¬¦å·ã€‚
+
+\b å¦‚æžœæ‚¨æƒ³è¦å¸¦æœ‰å—å›¾å½¢å’Œç”»çº¿å­—ç¬¦çš„
+æ—§ IBM PC å­—ç¬¦é›†ï¼Œæ‚¨å¯ä»¥é€‰æ‹©\q{\i{CP437}}ã€‚
+
+å¦‚æžœæ‚¨éœ€è¦ä¸‹æ‹‰åˆ—è¡¨ä¸­æœªåˆ—å‡ºçš„æ•°å­—\i{ä»£ç é¡µ}çš„æ”¯æŒï¼Œ
+ä¾‹å¦‚ä»£ç é¡µ 866ï¼Œåˆ™å¯ä»¥å°è¯•åœ¨åˆ—è¡¨æ¡†ä¸­æ‰‹åŠ¨è¾“
+å…¥å…¶åç§°ï¼ˆä¾‹å¦‚ \c{\i{CP866}}ï¼‰ã€‚
+å¦‚æžœ Windows çš„åº•å±‚ç‰ˆæœ¬å®‰è£…äº†é€‚
+å½“çš„è½¬æ¢è¡¨ï¼ŒPuTTY å°†ä½¿ç”¨å®ƒã€‚
+
+\S{config-cjk-ambig-wide} \q{å°†æ¨¡æ£±ä¸¤å¯çš„å­—ç¬¦è§†ä¸º\i{CJK}å®½å­—ç¬¦}
+
+æœ‰ä¸€äº› \I{East Asian Ambiguous
+characters}Unicode å­—ç¬¦çš„å®½åº¦æ²¡æœ‰æ˜Žç¡®å®šä¹‰ã€‚
+åœ¨å¤§å¤šæ•°æƒ…å†µä¸‹ï¼Œå‡ºäºŽæ¢è¡Œç­‰ç›®çš„ï¼Œ
+æ­¤ç±»å­—ç¬¦\I{character width}åº”è¢«è§†ä¸ºå•å®½ï¼›
+ä½†æ˜¯ï¼Œåœ¨æŸäº› CJK ä¸Šä¸‹æ–‡ä¸­ï¼Œç”±äºŽåŽ†å²åŽŸå› ï¼Œ\I{wrapping,
+terminal}å®ƒä»¬è¢«æ›´å¥½åœ°è§†ä¸ºåŒå®½åº¦ï¼Œ
+å¹¶ä¸”æŸäº›æœåŠ¡å™¨ç«¯åº”ç”¨ç¨‹åºå¯èƒ½å¸Œæœ›å®ƒä»¬ä»¥è¿™æ ·çš„æ–¹å¼æ˜¾ç¤ºã€‚ è®¾ç½®æ­¤é€‰é¡¹å°†å¯¼è‡´ PuTTY é‡‡ç”¨åŒå€å®½åº¦è§£é‡Šã€‚
+
+å¦‚æžœæ‚¨ä½¿ç”¨æ—§çš„ CJK åº”ç”¨ç¨‹åºï¼Œå¹¶ä¸”å‘çŽ°æ‚¨çš„è¡Œåœ¨
+é”™è¯¯çš„ä½ç½®æ¢è¡Œï¼Œæˆ–è€…æ‚¨æœ‰å…¶ä»–æ˜¾ç¤ºé—®é¢˜ï¼Œ
+æ‚¨å¯èƒ½æƒ³è¦ä½¿ç”¨æ­¤è®¾ç½®ã€‚
+
+æ­¤é€‰é¡¹ä»…åœ¨ UTF-8 æ¨¡å¼ä¸‹æœ‰æ•ˆ
+(è¯·å‚é˜… \k{config-charset})ã€‚
+
+\S{config-cyr} \q{\i{å¤§å†™é”å®šé”®}ç”¨äºŽ\i{Cyrillicåˆ‡æ¢}}
+
+å¦‚æžœæ‚¨éœ€è¦åœ¨åŒä¸€æ–‡æ¡£ä¸­å¹¶æŽ’é”®å…¥ï¼ˆä¾‹å¦‚ï¼‰\i{ä¿„è¯­}å’Œè‹±è¯­ï¼Œ
+æ­¤åŠŸèƒ½å…è®¸æ‚¨ä½¿ç”¨ CapsLock é”®åœ¨ç¾Žå›½/è‹±å›½é”®ç›˜å¸ƒå±€
+å’ŒCyrillicé”®ç›˜å¸ƒå±€ä¹‹é—´åˆ‡æ¢ã€‚
+
+ç›®å‰ï¼Œå¦‚æžœæ‚¨çš„æœ¬åœ°é”®ç›˜å¸ƒå±€ä¸æ˜¯ç¾Žå›½
+æˆ–è‹±å›½ï¼Œåˆ™æ­¤åŠŸèƒ½é¢„è®¡æ— æ³•æ­£å¸¸å·¥ä½œã€‚
+
+\S{config-linedraw} æŽ§åˆ¶\i{ç”»çº¿å­—ç¬¦}çš„æ˜¾ç¤º
+
+VT100 ç³»åˆ—ç»ˆç«¯å…è®¸æœåŠ¡å™¨å‘é€æŽ§åˆ¶åºåˆ—ï¼Œ
+è¿™äº›\i{æŽ§åˆ¶åºåˆ—}ä¸´æ—¶è½¬æ¢ä¸ºå•ç‹¬çš„å­—ç¬¦é›†ï¼Œ
+ç”¨äºŽç»˜åˆ¶ç®€å•çš„çº¿æ¡å’Œæ¡†ã€‚ ä½†æ˜¯ï¼ŒPuTTY å¯ä»¥é€š
+è¿‡å¤šç§æ–¹å¼å°è¯•æ‰¾åˆ°åˆé€‚çš„å­—ç¬¦ï¼Œ
+è€Œä½¿ç”¨æ­£ç¡®çš„æ–¹å¼å–å†³äºŽæœ¬åœ°é…ç½®çš„\i{å­—ä½“}ã€‚
+ä¸€èˆ¬æ¥è¯´ï¼Œæ‚¨å¯èƒ½åº”è¯¥å°è¯•å¾ˆå¤šé€‰é¡¹ï¼Œ
+ç›´åˆ°æ‰¾åˆ°æ‚¨çš„ç‰¹å®šå­—ä½“æ”¯æŒçš„é€‰é¡¹ã€‚
+
+\b \q{ä½¿ç”¨Unicodeç”»çº¿ä»£ç ç‚¹ç»˜åˆ¶}
+å°è¯•ä½¿ç”¨ \i{Unicode} ä¸­å­˜åœ¨çš„æ–¹æ¡†å­—ç¬¦ã€‚
+å¯¹äºŽè‰¯å¥½çš„ Unicode æ”¯æŒå­—ä½“ï¼Œè¿™å¯èƒ½æ˜¯æœ€å¯é å’Œæœ€å®žç”¨çš„é€‰é¡¹ã€‚
+
+\b \q{ç®€å•çš„ç”»çº¿}   å‡å®šå­—ä½“æ ¹æœ¬\e{æ— æ³•}ç”Ÿ
+æˆè¡Œå’Œæ¡†å­—ç¬¦ï¼Œå› æ­¤å®ƒå°†ä½¿ç”¨ \c{+}ã€\c{-} å’Œ \c{|} å­—
+ç¬¦æ¥ç»˜åˆ¶æ¡†çš„è¿‘ä¼¼å€¼ã€‚ å¦‚æžœå…¶ä»–é€‰é¡¹å‡æ— æ•ˆï¼Œ
+åˆ™åº”ä½¿ç”¨æ­¤é€‰é¡¹ã€‚
+
+\b \q{X Windows ç”»çº¿ç»˜åˆ¶}
+ç”¨äºŽå…·æœ‰ç‰¹æ®Šç¼–ç çš„å­—ä½“ï¼Œ
+å…¶ä¸­æœ€ä½Ž 32 ä¸ªå­—ç¬¦ä½ç½®ï¼ˆä½ŽäºŽ ASCII å¯æ‰“å°èŒƒå›´ï¼‰
+åŒ…å«ç”»çº¿å­—ç¬¦ã€‚ ä»»ä½•æ ‡å‡†çš„ Windows å­—ä½“éƒ½ä¸å¤ª
+å¯èƒ½å‡ºçŽ°è¿™ç§æƒ…å†µï¼› å®ƒå¯èƒ½åªé€‚ç”¨äºŽå®šåˆ¶
+å­—ä½“æˆ–ä»Ž X Window ç³»ç»Ÿè‡ªåŠ¨è½¬æ¢çš„å­—ä½“ã€‚
+
+\b \q{ANSI/OEM æ¨¡å¼ç”»çº¿}  å°è¯•åœ¨ä¸¤ä¸ªä¸åŒçš„å­—ç¬¦é›†ä¸­
+ä½¿ç”¨ç›¸åŒçš„å­—ä½“ï¼Œä»¥èŽ·å¾—æ›´å¹¿æ³›çš„å­—ç¬¦ã€‚
+è¿™å¹¶ä¸æ€»æ˜¯æœ‰æ•ˆã€‚ æ ¹æ®æ‚¨å°è¯•ä½¿ç”¨çš„å­—ç¬¦é›†ï¼Œ
+æŸäº›å­—ä½“å£°ç§°å…¶å¤§å°ä¸åŒã€‚
+
+\b \q{ä»…ç”¨OEMæ¨¡å¼ç¼–ç ç»˜åˆ¶}   æ¯”è¿™æ›´å¯é ï¼Œ
+ä½†å¯èƒ½ä¼šé”™è¿‡ä¸»è¦è§’è‰²é›†ä¸­çš„å…¶ä»–è§’è‰²ã€‚
+
+\S{config-linedrawpaste} æŽ§åˆ¶ç”»çº¿å­—ç¬¦çš„
+\i{å¤åˆ¶å’Œç²˜è´´}
+
+é»˜è®¤æƒ…å†µä¸‹ï¼Œ
+å½“æ‚¨å¤åˆ¶å¹¶ç²˜è´´åŒ…å« VT100 çº¿æ¡
+å’Œæ–¹æ¡†å›¾å­—ç¬¦çš„ PuTTY å±å¹•æ—¶ï¼ŒPuTTY å°†ä»¥å®ƒä»¬åœ¨
+å±å¹•ä¸Šæ˜¾ç¤ºçš„å½¢å¼ç²˜è´´å®ƒä»¬ï¼š\i{Unicode} çº¿æ¡ç»˜å›¾ä»£ç 
+ç‚¹æˆ–\q{ç®€å•}çº¿æ¡ç»˜åˆ¶å­—ç¬¦ \c{+}ã€\c{-} å’Œ \c{|}ã€‚
+å¤é€‰æ¡†\q{å°† VT100 ç”»çº¿å­—ç¬¦å¤åˆ¶å¹¶ç²˜è´´ä¸º lqqqk}ä¼šç¦ç”¨æ­¤åŠŸèƒ½ï¼Œ
+å› æ­¤ç”»çº¿å­—ç¬¦å°†è¢«ç²˜è´´ä¸ºç”Ÿæˆå®ƒä»¬æ—¶æ‰“å°çš„ \i{ASCII} å­—ç¬¦ã€‚
+è¿™é€šå¸¸æ„å‘³ç€å®ƒä»¬ä¸»è¦ä»¥ \c{q} å’Œ \c{x} çš„å½¢å¼å‡ºçŽ°ï¼Œ
+åœ¨æ‹è§’å¤„æ•£å¸ƒç€ \c{jklmntuvw}ã€‚
+ä¾‹å¦‚ï¼Œå¦‚æžœæ‚¨å°è¯•åœ¨å¦ä¸€ä¸ªç¨‹åºä¸­é‡æ–°åˆ›å»ºç›¸åŒçš„æ¡†å¸ƒå±€ï¼Œ
+è¿™å¯èƒ½ä¼šå¾ˆæœ‰ç”¨ã€‚
+
+è¯·æ³¨æ„ï¼Œæ­¤é€‰é¡¹ä»…é€‚ç”¨äºŽä½¿ç”¨ VT100
+æœºåˆ¶æ‰“å°çš„ç”»çº¿å­—ç¬¦ã€‚
+ä½œä¸º Unicode ä»£ç ç‚¹æŽ¥æ”¶çš„ç”»
+çº¿å­—ç¬¦å°†å§‹ç»ˆç²˜è´´ä¸º Unicodeã€‚
+
+\S{config-utf8linedraw} VT100 ç”»çº¿ä¸Ž UTF-8 ç»“åˆ
+
+å¦‚æžœ PuTTY é…ç½®ä¸ºä»¥ UTF-8 ç¼–ç 
+å¤„ç†æ¥è‡ªæœåŠ¡å™¨çš„æ•°æ®ï¼Œåˆ™é»˜è®¤æƒ…å†µä¸‹ï¼Œ
+å®ƒä¼šç¦ç”¨æ—§çš„ VT100 æ ·å¼çš„æŽ§åˆ¶åºåˆ—ç³»ç»Ÿï¼Œ
+è¯¥ç³»ç»Ÿä¼šå¯¼è‡´å°å†™å­—æ¯æš‚æ—¶è¢«çº¿æ¡ç»˜åˆ¶å­—ç¬¦æ›¿æ¢ã€‚
+
+åŸºæœ¬åŽŸç†æ˜¯ï¼Œåœ¨ UTF-8 æ¨¡å¼ä¸‹ï¼Œ
+æ— è®ºå¦‚ä½•æ‚¨éƒ½ä¸éœ€è¦è¿™äº›æŽ§åˆ¶åºåˆ—ï¼Œ
+å› ä¸ºå®ƒä»¬è®¿é—®çš„æ‰€æœ‰ç”»çº¿å­—ç¬¦éƒ½å·²ä½œä¸º Unicode å­—ç¬¦å¯ç”¨ï¼Œ
+å› æ­¤åº”ç”¨ç¨‹åºæ— éœ€å°†ç»ˆç«¯ç½®äºŽç‰¹æ®ŠçŠ¶æ€å¯¹ä»˜ä»–ä»¬ã€‚
+
+æ­¤å¤–ï¼Œå®ƒè¿˜æ¶ˆé™¤äº†ç»ˆç«¯\e{æ„å¤–}è¿›å…¥è¯¥çŠ¶æ€çš„é£Žé™©ï¼š
+å¦‚æžœæ‚¨ä¸å°å¿ƒå°†ä¸å—æŽ§åˆ¶çš„äºŒè¿›åˆ¶æ•°æ®å†™å…¥éž UTF-8 ç»ˆç«¯ï¼Œ
+åˆ™ä»¤äººæƒŠè®¶çš„æ˜¯ï¼Œæ‚¨çš„ä¸‹ä¸€ä¸ª shell æç¤ºç¬¦æ˜¾ç¤ºä¸ºä¸€ç³»åˆ—è¡Œ -ç»˜åˆ¶å­—ç¬¦ï¼Œ
+ç„¶åŽæ‚¨å¿…é¡»è®°ä½æˆ–æŸ¥æ‰¾å¦‚ä½•é€€å‡ºè¯¥æ¨¡å¼ã€‚
+å› æ­¤ï¼Œé»˜è®¤æƒ…å†µä¸‹ï¼Œ
+UTF-8 æ¨¡å¼æ ¹æœ¬æ²¡æœ‰åƒè¿™æ ·ä»¤äººå›°æƒ‘çš„æ¨¡å¼ï¼Œ
+æ— è®ºæ˜¯æ„å¤–è¿˜æ˜¯æ•…æ„è¿›å…¥ã€‚
+
+ä½†æ˜¯ï¼Œå¹¶éžæ‰€æœ‰åº”ç”¨ç¨‹åºéƒ½ä¼šè¿™æ ·çœ‹ã€‚
+å³ä½¿æ˜¯ UTF-8 ç»ˆç«¯ç”¨æˆ·æœ‰æ—¶ä»å¿…é¡»è¿è¡Œå°è¯•ä»¥
+è€å¼æ–¹å¼æ‰“å°çº¿æ¡ç»˜åˆ¶å­—ç¬¦çš„è½¯ä»¶ã€‚
+å› æ­¤ï¼Œé…ç½®é€‰é¡¹\q{å³ä½¿åœ¨ UTF-8 æ¨¡å¼ä¸‹ä¹Ÿ
+å¯ç”¨ VT100 ç”»çº¿}å°† PuTTY ç½®äºŽæ··åˆæ¨¡å¼ï¼Œ
+åœ¨è¿™ç§æ¨¡å¼ä¸‹ï¼Œå®ƒå¯ä»¥ç†è§£ VT100 æ ·å¼çš„æŽ§åˆ¶åºåˆ—ï¼Œ
+è¿™äº›æŽ§åˆ¶åºåˆ—ä¼šæ”¹å˜ ASCII å°å†™å­—æ¯çš„å«ä¹‰ï¼Œ\e{å¹¶ä¸”}å¯ä»¥ç†è§£ UTF-8ã€‚
+
+\H{config-selection} é€‰æ‹©é¢æ¿
+
+é€‰æ‹©é¢æ¿å…è®¸æ‚¨æŽ§åˆ¶åœ¨ PuTTY
+çª—å£ä¸­\i{å¤åˆ¶å’Œç²˜è´´}å·¥ä½œçš„æ–¹å¼ã€‚
+
+\S{config-mouse} æ›´æ”¹é¼ æ ‡æŒ‰é’®çš„åŠ¨ä½œ
+
+PuTTY çš„å¤åˆ¶å’Œç²˜è´´æœºåˆ¶é»˜è®¤ä»¥ Unix \i\c{xterm}
+åº”ç”¨ç¨‹åºä¸ºæ¨¡åž‹ã€‚
+X Window ç³»ç»Ÿä½¿ç”¨ä¸‰é”®é¼ æ ‡ï¼Œ
+è¯¥ç³»ç»Ÿä¸­çš„çº¦å®šæ˜¯\i{å·¦é”®}\I{selecting text}é€‰æ‹©ï¼Œ
+\i{å³é”®}æ‰©å±•çŽ°æœ‰é€‰æ‹©ï¼Œ\i{ä¸­é”®}ç²˜è´´ã€‚
+
+Windows é€šå¸¸åªæœ‰ä¸¤ä¸ªé¼ æ ‡æŒ‰é’®ï¼Œ
+å› æ­¤åœ¨ Windows ä¸Šè¿è¡Œæ—¶ï¼Œ
+PuTTY æ˜¯å¯é…ç½®çš„ã€‚åœ¨ PuTTY çš„é»˜è®¤é…ç½®ï¼ˆ\q{å¦¥å}ï¼‰ä¸­ï¼Œ
+\e{å³}é”®ç²˜è´´ï¼Œ\e{ä¸­é—´}æŒ‰
+é’®ï¼ˆå¦‚æžœæœ‰çš„è¯ï¼‰\I{adjusting a selection}æ‰©å±•é€‰æ‹©ã€‚
+
+å¦‚æžœæ‚¨æœ‰ä¸€ä¸ª\i{ä¸‰é”®é¼ æ ‡}å¹¶ä¸”æ‚¨å·²ç»
+ä¹ æƒ¯äº† xterm æŽ’åˆ—ï¼Œ
+æ‚¨å¯ä»¥ä½¿ç”¨\q{é¼ æ ‡æŒ‰é’®æ“ä½œ}æŽ§ä»¶æ¥é€‰æ‹©å®ƒã€‚
+
+æˆ–è€…ï¼Œé€‰æ‹©\q{Windows}é€‰é¡¹åŽï¼Œä¸­é—´æŒ‰é’®ä¼šå±•å¼€ï¼Œ
+å¹¶ä¸”å³é”®ä¼šå¼¹å‡ºä¸€ä¸ª\i{å³é”®èœå•}
+ï¼ˆå…¶ä¸­ä¸€ä¸ªé€‰é¡¹æ˜¯\q{ç²˜è´´}ï¼‰ã€‚
+ï¼ˆæ— è®ºæ­¤é€‰é¡¹çš„è®¾ç½®å¦‚ä½•ï¼ŒæŒ‰ä½ Ctrl
+å¹¶å•å‡»é¼ æ ‡å³é”®å§‹ç»ˆå¯ä»¥ä½¿ç”¨æ­¤å³é”®èœå•ã€‚ï¼‰
+
+ï¼ˆå½“ PuTTY æœ¬èº«åœ¨ Unix ä¸Šè¿è¡Œæ—¶ï¼Œ
+å®ƒéµå¾ª X Window System çº¦å®šã€‚ï¼‰
+
+\S{config-mouseshift} \q{Shift è¦†ç›–åº”ç”¨ç¨‹åºå¯¹é¼ æ ‡çš„ä½¿ç”¨}
+
+PuTTY å…è®¸æœåŠ¡å™¨å‘é€\i{æŽ§åˆ¶ä»£ç }ï¼Œ
+è®©å®ƒ\I{mouse reporting}æŽ¥ç®¡é¼ æ ‡å¹¶å°†å…¶ç”¨
+äºŽ\i{å¤åˆ¶å’Œç²˜è´´}ä»¥å¤–çš„ç›®çš„ã€‚
+ä½¿ç”¨æ­¤åŠŸèƒ½çš„åº”ç”¨ç¨‹åºåŒ…æ‹¬æ–‡æœ¬æ¨¡å¼ Web æµè§ˆ
+å™¨\c{é“¾æŽ¥}ã€Usenet æ–°é—»é˜…è¯»å™¨ \c{trn} ç‰ˆ
+æœ¬ 4 å’Œæ–‡ä»¶ç®¡ç†å™¨ \c{mc} (Midnight Commander)ã€‚
+
+è¿è¡Œè¿™äº›åº”ç”¨ç¨‹åºä¹‹ä¸€æ—¶ï¼ŒæŒ‰ä¸‹é¼ æ ‡æŒ‰é’®
+ä¸å†æ‰§è¡Œå¤åˆ¶å’Œç²˜è´´ã€‚å¦‚æžœæ‚¨ç¡®å®žéœ€è¦å¤
+åˆ¶å’Œç²˜è´´ï¼Œæ‚¨ä»ç„¶å¯ä»¥åœ¨å•å‡»é¼ æ ‡çš„åŒ
+æ—¶æŒ‰ä½ Shift é”®ã€‚
+
+ä½†æ˜¯ï¼Œç†è®ºä¸Šåº”ç”¨ç¨‹åºç”šè‡³å¯ä»¥æ£€æµ‹å’Œ
+ä½¿ç”¨ Shift + é¼ æ ‡ç‚¹å‡»ã€‚æˆ‘ä»¬ä¸çŸ¥é“æœ‰ä»»ä½•åº”ç”¨ç¨‹
+åºè¿™æ ·åšï¼Œä½†å¦‚æžœæœ‰äººå†™è¿‡ä¸€ä¸ªï¼Œ
+å–æ¶ˆé€‰ä¸­\q{Shift è¦†ç›–åº”ç”¨ç¨‹åºå¯¹é¼ æ ‡
+çš„ä½¿ç”¨}å¤é€‰æ¡†å°†å¯¼è‡´ Shift + é¼ æ ‡å•å‡»ä¹Ÿè½¬åˆ°æœåŠ¡å™¨ï¼ˆä»¥ä¾¿é¼ æ ‡
+é©±åŠ¨å¤åˆ¶å’Œç²˜è´´å°†è¢«å®Œå…¨ç¦ç”¨ï¼‰ã€‚
+
+å¦‚æžœæ‚¨æƒ³å®Œå…¨é˜»æ­¢åº”ç”¨ç¨‹åºæŽ¥ç®¡é¼ æ ‡ï¼Œ
+æ‚¨å¯ä»¥ä½¿ç”¨åŠŸèƒ½æŽ§åˆ¶é¢æ¿æ‰§è¡Œæ­¤æ“ä½œï¼›
+è¯·å‚é˜… \k{config-features-mouse}ã€‚
+
+\S{config-rectselect} é»˜è®¤é€‰æ‹©æ¨¡å¼
+
+å¦‚ \k{using-selection} æ‰€è¿°ï¼ŒPuTTY æœ‰ä¸¤ç§é€‰æ‹©è¦
+å¤åˆ¶åˆ°å‰ªè´´æ¿çš„æ–‡æœ¬çš„æ¨¡å¼ã€‚
+åœ¨é»˜è®¤æ¨¡å¼ï¼ˆ\q{æ­£å¸¸}ï¼‰ä¸‹ï¼Œå°†é¼ æ ‡ä»Ž A ç‚¹æ‹–
+åŠ¨åˆ° B ç‚¹ä¼šé€‰æ‹©åŒ…å« A çš„è¡Œçš„æœ«å°¾ã€
+ä¸­é—´çš„æ‰€æœ‰è¡Œï¼Œä»¥åŠåŒ…å« B çš„è¡Œçš„å¼€å¤´ã€‚
+åœ¨å…¶ä»–æ¨¡å¼ä¸‹ ï¼ˆ\q{çŸ©å½¢å—}ï¼‰ï¼Œåœ¨ä¸¤ç‚¹ä¹‹é—´æ‹–åŠ¨
+é¼ æ ‡å®šä¹‰ä¸€ä¸ªçŸ©å½¢ï¼Œå¹¶å¤åˆ¶è¯¥çŸ©å½¢å†…çš„æ‰€æœ‰å†…å®¹ã€‚
+
+é€šå¸¸ï¼Œæ‚¨å¿…é¡»åœ¨æ‹–åŠ¨é¼ æ ‡çš„åŒæ—¶æŒ‰ä½ Alt ä»¥é€‰æ‹©çŸ©å½¢å—ã€‚
+ä½¿ç”¨\q{é»˜è®¤é€‰æ‹©æ¨¡å¼}æŽ§ä»¶ï¼Œ
+æ‚¨å¯ä»¥å°†\i{çŸ©å½¢é€‰æ‹©}è®¾ç½®ä¸ºé»˜è®¤è®¾ç½®ï¼Œ
+ç„¶åŽæ‚¨å¿…é¡»æŒ‰ä½ Alt æ‰èƒ½èŽ·å¾—æ­£å¸¸è¡Œä¸ºã€‚
+
+\S{config-clipboards} ä¸ºå‰ªè´´æ¿åˆ†é…å¤åˆ¶å’Œç²˜è´´æ“ä½œ
+
+åœ¨è¿™é‡Œï¼Œæ‚¨å¯ä»¥é…ç½® PuTTY çš„å„
+ç§å¤åˆ¶å’Œç²˜è´´æ“ä½œå†™å…¥æˆ–è¯»å–å“ªäº›å‰ªè´´æ¿ã€‚
+
+å¤§å¤šæ•°å¹³å°ï¼ŒåŒ…æ‹¬ Windowsï¼Œéƒ½æœ‰ä¸€ä¸ªç³»ç»Ÿå‰ªè´´æ¿ã€‚
+åœ¨è¿™äº›å¹³å°ä¸Šï¼ŒPuTTY æä¾›äº†ç¬¬äºŒä¸ªç±»ä¼¼å‰ªè´´æ¿çš„å·¥å…·ï¼Œ
+å®ƒå…è®¸æ‚¨ç²˜è´´ä¸Šæ¬¡åœ¨\e{æ­¤çª—å£}ä¸­é€‰æ‹©çš„æ–‡æœ¬ï¼Œ
+æ— è®ºå®ƒå½“å‰æ˜¯å¦ä¹Ÿåœ¨ç³»ç»Ÿå‰ªè´´æ¿ä¸­ã€‚
+é»˜è®¤æƒ…å†µä¸‹ä¸å¯ç”¨æ­¤åŠŸèƒ½ã€‚
+
+X Window ç³»ç»Ÿï¼ˆå¤§å¤šæ•° Unix å›¾å½¢ç•Œé¢çš„åŸºç¡€ï¼‰
+æä¾›å¤šä¸ªï¼ˆ\q{\i{å‰ªè´´æ¿é€‰æ‹©}}ï¼‰ï¼Œ
+è®¸å¤šåº”ç”¨ç¨‹åºé€šè¿‡ä¸åŒçš„ç”¨æˆ·ç•Œé¢æœºåˆ¶æ”¯æŒå¤šä¸ªå‰ªè´´æ¿ã€‚
+å½“ PuTTY æœ¬èº«åœ¨ Unix ä¸Šè¿è¡Œæ—¶ï¼Œ
+å®ƒå…·æœ‰ä¸Žè¿™äº›é€‰æ‹©ç›¸å…³çš„æ›´å¤šå¯é…ç½®æ€§ã€‚
+
+æœ€å¸¸ç”¨çš„ä¸¤ä¸ªé€‰é¡¹ç§°ä¸º\cq{\i{PRIMARY}}å’Œ\cq{\I{CLIPBOARD}}ï¼›
+åœ¨æ”¯æŒè¿™ä¸¤è€…çš„åº”ç”¨ç¨‹åºä¸­ï¼Œé€šå¸¸çš„è¡Œä¸ºæ˜¯ \cw{PRIMARY}
+ä»…ç”¨äºŽé¼ æ ‡æ“ä½œï¼ˆ\i{é€‰æ‹©}æ–‡æœ¬ä¼šè‡ªåŠ¨å°†
+å…¶å¤åˆ¶åˆ° \cw{PRIMARY}ï¼Œå¹¶ä»Ž
+\cw{PRIMARY}\i{å•å‡»é¼ æ ‡ä¸­é”®}ç²˜è´´ï¼‰ï¼Œ
+è€Œ \cw{\i{CLIPBOARD}} ç”±æ˜¾å¼å¤åˆ¶å’Œç²˜è´´èœ
+å•é¡¹æˆ–æŒ‰é”®ç­‰ä½¿ç”¨ä½œä¸º \i{Ctrl-C} å’Œ \i{Ctrl-V}ã€‚
+
+\S2{config-selection-autocopy} \q{è‡ªåŠ¨å¤åˆ¶é€‰å®šæ–‡æœ¬}
+
+å¤é€‰æ¡†\q{è‡ªåŠ¨å°†æ‰€é€‰æ–‡æœ¬å¤åˆ¶åˆ°ç³»ç»Ÿå‰ªè´´æ¿}æŽ§
+åˆ¶åœ¨ PuTTY ç»ˆç«¯çª—å£ä¸­é€‰æ‹©æ–‡æœ¬æ˜¯å¦è‡ªåŠ¨å…·
+æœ‰å°†å…¶å¤åˆ¶åˆ°ç³»ç»Ÿå‰ªè´´æ¿çš„å‰¯ä½œç”¨ï¼Œ
+è€Œæ— éœ€å•ç‹¬çš„ç”¨æˆ·ç•Œé¢æ“ä½œã€‚
+
+åœ¨ X ä¸Šï¼Œæ­¤é€‰é¡¹çš„æŽªè¾žç•¥æœ‰æ›´æ”¹ï¼Œ
+å› æ­¤æåˆ°äº†\cq{CLIPBOARD}æ¥ä»£æ›¿\q{ç³»ç»Ÿå‰ªè´´æ¿}ã€‚
+æŒ‰ç…§æƒ¯ä¾‹ï¼Œåœ¨ç»ˆç«¯çª—å£ä¸­é€‰æ‹©çš„æ–‡æœ¬å°†å§‹ç»ˆè‡ªåŠ¨
+æ”¾ç½®åœ¨ \cw{PRIMARY} é€‰æ‹©ä¸­ï¼Œ
+ä½†å¦‚æžœæ‚¨å‹¾é€‰æ­¤æ¡†ï¼Œ
+å®ƒä¹Ÿä¼šåŒæ—¶æ”¾ç½®åœ¨\cq{å‰ªè´´æ¿}ä¸­ã€‚
+
+\S2{config-selection-clipactions} ä¸º UI æ“ä½œé€‰æ‹©å‰ªè´´æ¿
+
+PuTTY å…·æœ‰ä¸‰ä¸ªç”¨æˆ·ç•Œé¢æ“ä½œï¼Œ
+å¯é…ç½®ä¸ºç²˜è´´åˆ°ç»ˆç«¯ï¼ˆä¸åŒ…æ‹¬èœå•é¡¹ï¼‰ã€‚
+æ‚¨å¯ä»¥å•å‡»é…ç½®ä¸ºç²˜è´´çš„ä»»ä½•é¼ æ ‡æŒ‰é’®ï¼ˆå¦‚æžœæœ‰ï¼‰
+(è¯·å‚é˜… \k{config-mouse})ï¼›æ‚¨å¯ä»¥æŒ‰ \i{Shift-Ins}ï¼›
+æˆ–è€…æ‚¨å¯ä»¥æŒ‰ \i{Ctrl-Shift-V}ï¼Œå°½ç®¡é»˜è®¤æƒ…å†µä¸‹ä¸å¯ç”¨è¯¥æ“ä½œã€‚
+
+æ‚¨å¯ä»¥é…ç½®æ¯ä¸ªæ“ä½œä»Žå“ªä¸ªå¯ç”¨å‰ªè´´æ¿ç²˜
+è´´ï¼ˆåŒ…æ‹¬å®Œå…¨å…³é—­ç²˜è´´æ“ä½œï¼‰ã€‚åœ¨å…·æœ‰å•
+ä¸ªç³»ç»Ÿå‰ªè´´æ¿çš„å¹³å°ï¼ˆä¾‹å¦‚ Windowsï¼‰ä¸Šï¼Œ
+å¯ç”¨é€‰é¡¹æ˜¯ä»Žè¯¥å‰ªè´´æ¿ç²˜è´´æˆ–ä»Ž PuTTY çš„
+å†…å­˜ç²˜è´´è¯¥çª—å£ä¸­\i{åŽé€‰æ‹©çš„æ–‡æœ¬}ã€‚
+åœ¨ X ä¸Šï¼Œæ ‡å‡†é€‰é¡¹
+æ˜¯ \cw{CLIPBOARD} æˆ– \cw{PRIMARY}ã€‚
+
+ï¼ˆ\cw{PRIMARY} åœ¨æ¦‚å¿µä¸Šæ˜¯ç›¸ä¼¼çš„ï¼Œ
+å› ä¸ºå®ƒè¿˜å¼•ç”¨æœ€åŽé€‰æ‹©çš„æ–‡æœ¬â€”â€”åª
+æ˜¯è·¨æ‰€æœ‰åº”ç”¨ç¨‹åºï¼Œè€Œä¸ä»…ä»…æ˜¯è¿™ä¸ªçª—å£ã€‚ï¼‰
+
+è¿™ä¸¤ä¸ªé”®ç›˜é€‰é¡¹éƒ½å¸¦æœ‰ä¸€ä¸ªç›¸åº”çš„é”®ï¼Œ
+å¯ä»¥å¤åˆ¶åˆ°åŒä¸€ä¸ªå‰ªè´´æ¿ã€‚æ— è®ºæ‚¨é…ç½® Shift-Ins æ¥ç²˜
+è´´ä»€ä¹ˆï¼Œ\i{Ctrl-Ins} éƒ½ä¼šå¤åˆ¶åˆ°ç›¸åŒçš„ä½ç½®ï¼›
+åŒæ ·ï¼Œ\i{Ctrl-Shift-C} å°†å¤åˆ¶åˆ°ä»»ä½• Ctrl-Shift-V ç²˜è´´çš„å†…å®¹ã€‚
+
+åœ¨ X ä¸Šï¼Œæ‚¨è¿˜å¯ä»¥è¾“å…¥æ‚¨é€‰æ‹©çš„é€‰æ‹©åç§°ã€‚
+ä¾‹å¦‚ï¼Œæœ‰ä¸€ä¸ªå¾ˆå°‘ä½¿ç”¨çš„æ ‡å‡†é€‰æ‹©ï¼Œ
+ç§°ä¸º\cq{\i{SECONDARY}}ï¼Œ
+å¦‚æžœæ‚¨åœ¨æ‹–åŠ¨é€‰æ‹©æˆ–å•å‡»ç²˜è´´æ—¶æŒ‰ä½ Meta é”®ï¼ŒEmacsï¼ˆä¾‹å¦‚ï¼‰
+å¯ä»¥ä½¿ç”¨å®ƒï¼›å¦‚æžœæ‚¨é…ç½® PuTTY é”®ç›˜æ“ä½œæ¥è®¿é—®æ­¤å‰ªè´´æ¿ï¼Œ
+é‚£ä¹ˆæ‚¨å¯ä»¥ä¸Žå…¶ä»–åº”ç”¨ç¨‹åºå¯¹å®ƒçš„ä½¿ç”¨è¿›è¡Œäº’æ“ä½œã€‚
+æ‚¨å¯ä»¥åšçš„å¦ä¸€ä»¶äº‹æ˜¯è‡ªå·±å‘æ˜Žä¸€ä¸ªå‰ªè´´æ¿åç§°ï¼Œ
+åˆ›å»ºä¸€ä¸ªä»…åœ¨ PuTTY å®žä¾‹ä¹‹é—´æˆ–\e{ä»…}åœ¨ä»¥è¯¥ç‰¹
+å®šæ–¹å¼é…ç½®çš„å®žä¾‹ä¹‹é—´å…±äº«çš„ç‰¹æ®Šå‰ªè´´æ¿ã€‚
+
+\S{config-paste-ctrl-char} \q{å…è®¸ç²˜è´´æ–‡æœ¬ä¸­çš„æŽ§åˆ¶å­—ç¬¦}
+
+å‰ªè´´æ¿å¯èƒ½ä¸ä»…åŒ…å«æ–‡æœ¬ï¼ˆå¸¦æœ‰æ¢è¡Œç¬¦å’Œåˆ¶è¡¨ç¬¦ï¼‰ï¼Œ
+è¿˜åŒ…å«æŽ§åˆ¶å­—ç¬¦ï¼Œä¾‹å¦‚ ESCï¼Œå¦‚æžœç²˜è´´
+åˆ°ç»ˆç«¯ä¼šè¯ä¸­ï¼Œå¯èƒ½ä¼šäº§ç”Ÿä»¤äººæƒŠè®¶çš„æ•ˆæžœï¼Œ
+å…·ä½“å–å†³äºŽæœåŠ¡å™¨ç«¯è¿è¡Œçš„ç¨‹åºã€‚ ä»Žæ¶ä½œå‰§çš„ç½‘é¡µå¤åˆ¶æ–‡æœ¬
+å¯èƒ½ä¼šå°†è¿™äº›å­—ç¬¦æ”¾åˆ°å‰ªè´´æ¿ä¸Šã€‚
+
+é»˜è®¤æƒ…å†µä¸‹ï¼ŒPuTTY ä¼šè¿‡æ»¤æŽ‰æ›´ä¸å¸¸è§çš„æŽ§åˆ¶å­—ç¬¦ï¼Œ
+åªè®©æ›´æ˜Žæ˜¾çš„æ–‡æœ¬æ ¼å¼å­—
+ç¬¦ï¼ˆæ¢è¡Œç¬¦ã€åˆ¶è¡¨ç¬¦ã€é€€æ ¼ç¬¦å’Œ DELï¼‰é€šè¿‡ã€‚
+
+è®¾ç½®æ­¤é€‰é¡¹ä¼šåœæ­¢æ­¤è¿‡æ»¤ï¼› ç²˜è´´æ—¶ï¼Œ
+å‰ªè´´æ¿ä¸Šçš„ä»»ä½•å­—ç¬¦éƒ½ä¼šæœªç»å®¡æŸ¥å‘é€åˆ°ä¼šè¯ã€‚ ä¾‹å¦‚ï¼Œ
+å¦‚æžœæ‚¨æœ‰æ„å°†æŽ§åˆ¶å­—ç¬¦ç²˜è´´ç”¨ä½œä¸€ç§ç®€å•çš„è„šæœ¬å½¢å¼ï¼Œ
+è¿™å¯èƒ½ä¼šå¾ˆæœ‰ç”¨ã€‚
+
+\H{config-selection-copy} å¤åˆ¶é¢æ¿
+
+å¤åˆ¶é…ç½®é¢æ¿æŽ§åˆ¶ä¸Žä»Žç»ˆç«¯çª—
+å£å¤åˆ¶åˆ°å‰ªè´´æ¿ç‰¹åˆ«ç›¸å…³çš„è¡Œä¸ºã€‚
+
+\S{config-charclasses} å­—ç¬¦ç±»
+
+å¦‚æžœæ‚¨\I{word-by-word selection}\i{åŒå‡»}å¼€å§‹æ‹–åŠ¨ï¼Œ
+PuTTY å°†åœ¨ç»ˆç«¯çª—å£ä¸­ä¸€æ¬¡é€‰æ‹©ä¸€ä¸ªå•è¯ã€‚
+æ­¤éƒ¨åˆ†å…è®¸æ‚¨ç²¾ç¡®æŽ§åˆ¶è¢«è§†ä¸ºå•è¯çš„å†…å®¹ã€‚
+
+æ¯ä¸ªå­—ç¬¦éƒ½æœ‰ä¸€ä¸ª\e{ç±»åˆ«}ï¼Œ
+è¿™æ˜¯ä¸€ä¸ªå¾ˆå°çš„æ•°å­—ï¼ˆé€šå¸¸ä¸º 0ã€1 æˆ– 2ï¼‰ã€‚
+PuTTY å°†å•ä¸ªå•è¯è§†ä¸ºåŒä¸€ç±»
+ä¸­ä»»æ„æ•°é‡çš„ç›¸é‚»å­—ç¬¦ã€‚ å› æ­¤ï¼Œé€šè¿‡ä¿®æ”¹å¯¹ç±»çš„å­—ç¬¦åˆ†é…ï¼Œ
+æ‚¨å¯ä»¥ä¿®æ”¹é€å­—é€‰æ‹©è¡Œä¸ºã€‚
+
+åœ¨é»˜è®¤é…ç½®ä¸­ï¼Œ\i{å­—ç¬¦ç±»}æ˜¯ï¼š
+
+\b Class 0 åŒ…å«\i{ç©ºæ ¼}å’ŒæŽ§åˆ¶å­—ç¬¦ã€‚
+
+\b Class 1 åŒ…å«æœ€å¤šçš„\i{æ ‡ç‚¹ç¬¦å·}ã€‚
+
+\b Class 2 åŒ…å«å­—æ¯ã€æ•°å­—
+å’Œä¸€äº›æ ‡ç‚¹ç¬¦
+å·ï¼ˆåŒå¼•å·ã€å‡å·ã€å¥ç‚¹ã€æ­£æ–œæ å’Œä¸‹åˆ’çº¿ï¼‰ã€‚
+
+å› æ­¤ï¼Œä¾‹å¦‚ï¼Œå¦‚æžœæ‚¨å°† \c{@} ç¬¦
+å·åˆ†é…ç»™å­—ç¬¦ç±» 2ï¼Œ
+æ‚¨åªéœ€åŒå‡»å³å¯é€‰æ‹©ä¸€ä¸ªç”µå­é‚®ä»¶åœ°å€ã€‚
+
+ä¸ºäº†è°ƒæ•´è¿™äº›åˆ†é…ï¼Œ
+æ‚¨é¦–å…ˆåœ¨åˆ—è¡¨æ¡†ä¸­é€‰æ‹©ä¸€ç»„å­—ç¬¦ã€‚ ç„¶åŽåœ¨ä¸‹é¢çš„ç¼–è¾‘æ¡†ä¸­è¾“å…¥ç­çº§ç¼–å·ï¼Œ
+ç„¶åŽæŒ‰\q{è®¾ç½®}æŒ‰é’®ã€‚
+
+è¿™ç§æœºåˆ¶ç›®å‰åªæ¶µç›– ASCII å­—ç¬¦ï¼Œ
+å› ä¸ºæ‰©å±•åˆ—è¡¨ä»¥æ¶µç›–æ•´ä¸ª Unicode æ˜¯ä¸å¯è¡Œçš„ã€‚
+
+å­—ç¬¦ç±»å®šä¹‰å¯ä»¥é€šè¿‡æœåŠ¡å™¨å‘é€
+çš„\i{æŽ§åˆ¶åºåˆ—}è¿›è¡Œä¿®æ”¹ã€‚
+æ­¤é…ç½®é€‰é¡¹æŽ§åˆ¶\e{é»˜è®¤}çŠ¶æ€ï¼Œ
+å½“æ‚¨é‡ç½®ç»ˆç«¯æ—¶å°†æ¢å¤(è¯·å‚é˜… \k{reset-terminal})ã€‚
+ä½†æ˜¯ï¼Œå¦‚æžœæ‚¨åœ¨ä¼šè¯ä¸­ä½¿ç”¨\q{æ›´æ”¹è®¾ç½®}ä¿®æ”¹æ­¤é€‰é¡¹ï¼Œ
+å®ƒå°†ç«‹å³ç”Ÿæ•ˆã€‚
+
+\S{config-rtfcopy} ä»¥\i{RTF}å’Œçº¯æ–‡æœ¬æ ¼å¼å¤åˆ¶
+
+å¦‚æžœæ‚¨å¯ç”¨\q{ä»¥RTFå’Œçº¯æ–‡æœ¬æ ¼å¼å¤åˆ¶}ï¼Œ
+PuTTY ä¼šå°†æ ¼å¼ä¿¡æ¯ä»¥åŠæ‚¨å¤åˆ¶çš„
+å®žé™…æ–‡æœ¬å†™å…¥å‰ªè´´æ¿ã€‚
+è¿™æ ·åšçš„æ•ˆæžœæ˜¯ï¼Œå¦‚æžœæ‚¨ç²˜è´´åˆ°ï¼ˆæ¯”å¦‚è¯´ï¼‰æ–‡å­—å¤„ç†å™¨ä¸­ï¼Œ
+æ–‡æœ¬å°†ä»¥ PuTTY ç”¨æ¥æ˜¾ç¤ºå®ƒçš„ç›¸åŒ\i{å­—ä½“}ã€\i{é¢œè‰²}å’Œ
+æ ·å¼ï¼ˆä¾‹å¦‚ç²—ä½“ã€ä¸‹åˆ’çº¿ï¼‰å‡ºçŽ°åœ¨æ–‡å­—å¤„ç†å™¨ä¸­ã€‚
+
+æ­¤é€‰é¡¹å¾ˆå®¹æ˜“å¸¦æ¥ä¸ä¾¿ï¼Œ
+å› æ­¤é»˜è®¤æƒ…å†µä¸‹å®ƒæ˜¯ç¦ç”¨çš„ã€‚
+
+\H{config-colours} é¢œè‰²é¢æ¿
+
+é¢œè‰²é¢æ¿å…è®¸æ‚¨æŽ§åˆ¶ PuTTY å¯¹\i{é¢œè‰²}çš„ä½¿ç”¨ã€‚
+
+\S{config-ansicolour} \q{å…è®¸ç»ˆç«¯æŒ‡å®š\i{ANSIé¢œè‰²}}
+
+é»˜è®¤æƒ…å†µä¸‹å¯ç”¨æ­¤é€‰é¡¹ã€‚
+å¦‚æžœç¦ç”¨ï¼ŒPuTTY å°†å¿½ç•¥æœåŠ¡å™¨å‘é€
+çš„ä»»ä½•\i{æŽ§åˆ¶åºåˆ—}ä»¥è¯·æ±‚å½©è‰²æ–‡æœ¬ã€‚
+
+å¦‚æžœä½ æœ‰ä¸€ä¸ªç‰¹åˆ«èŠ±å“¨çš„åº”ç”¨ç¨‹åºï¼Œ
+ä½ å¯èƒ½æƒ³å…³é—­è¿™ä¸ªé€‰é¡¹ï¼Œ
+è®© PuTTY åªä½¿ç”¨é»˜è®¤çš„å‰æ™¯è‰²å’ŒèƒŒæ™¯è‰²ã€‚
+
+\S{config-xtermcolour} \q{å…è®¸ç»ˆç«¯ä½¿ç”¨xterm
+\i{256è‰²æ¨¡å¼}}
+
+é»˜è®¤æƒ…å†µä¸‹å¯ç”¨æ­¤é€‰é¡¹ã€‚ å¦‚æžœç¦ç”¨ï¼ŒPuTTY å°†å¿½ç•¥æœåŠ¡å™¨å‘é€çš„ä»»
+ä½•æŽ§åˆ¶åºåˆ—ï¼Œè¿™äº›æŽ§åˆ¶åºåˆ—ä½¿ç”¨ \cw{xterm} æœ€æ–°ç‰ˆæœ¬æ”¯æŒçš„æ‰©å±• 256 è‰²æ¨¡å¼ã€‚
+
+å¦‚æžœæ‚¨çš„åº”ç”¨ç¨‹åºåº”è¯¥ä½¿ç”¨ 256 è‰²æ¨¡å¼ä½†å®ƒä¸å·¥ä½œï¼Œ
+æ‚¨å¯èƒ½ä¼šå‘çŽ°æ‚¨éœ€è¦å‘Šè¯‰æœåŠ¡å™¨æ‚¨çš„ç»ˆç«¯æ”¯æŒ 256 è‰²ã€‚
+åœ¨ Unix ä¸Šï¼Œæ‚¨å¯ä»¥é€šè¿‡ç¡®ä¿ \i\cw{TERM} çš„
+è®¾ç½®æè¿°æ”¯æŒ 256 è‰²çš„ç»ˆç«¯æ¥åšåˆ°è¿™ä¸€ç‚¹ã€‚
+æ‚¨å¯ä»¥ä½¿ç”¨ä»¥ä¸‹å‘½ä»¤\c{infocmp}è¿›è¡Œæ£€æŸ¥ï¼š
 
 \c $ infocmp | grep colors
 \c         colors#256, cols#80, it#8, lines#24, pairs#256,
 \e         bbbbbbbbbb
 
-Èç¹ûÄúÔÚÊä³öÖÐÃ»ÓÐ¿´µ½\cq{colors#256}£¬
-Äú¿ÉÄÜÐèÒª¸ü¸ÄÖÕ¶ËÉèÖÃ¡£
-ÔÚÏÖ´ú Linux »úÆ÷ÉÏ£¬Äú¿ÉÒÔ³¢ÊÔ\cq{xterm-256color}¡£
-
-\S{config-truecolour} \q{ÔÊÐíÖÕ¶ËÊ¹ÓÃ24Î»ÑÕÉ«}
-
-Ä¬ÈÏÇé¿öÏÂÆôÓÃ´ËÑ¡Ïî¡£
-Èç¹û½ûÓÃ£¬PuTTY ½«ºöÂÔ·þÎñÆ÷·¢ËÍµÄÈÎºÎ¿ØÖÆÐòÁÐ£¬
-ÕâÐ©¿ØÖÆÐòÁÐÊ¹ÓÃÏÖ´úÖÕ¶ËÖ§³Ö
-µÄ¿ØÖÆÐòÁÐÀ´Ö¸¶¨ÈÎÒâ 24 Î» RGB ÑÕÉ«Öµ¡£
-
-\S{config-boldcolour} \q{Í¨¹ý¸Ä±ä¡­À´±íÊ¾´ÖÌåÎÄ±¾}
-
-µ±·þÎñÆ÷·¢ËÍÒ»¸ö\i{¿ØÖÆÐòÁÐ}Ö¸Ê¾
-Ä³Ð©ÎÄ±¾Ó¦ÒÔ\i{´ÖÌå}ÏÔÊ¾Ê±£¬PuTTY ¿ÉÒÔÍ¨
-¹ý¶àÖÖ·½Ê½´¦Àí´ËÎÊÌâ¡£ Ëü¿ÉÒÔ½«×ÖÌå¸ü¸ÄÎª´ÖÌå°æ±¾£¬
-»òÕßÊ¹ÓÃ¸üÁÁµÄÑÕÉ«Ê¹ÓÃÏàÍ¬µÄ\i{×ÖÌå}£¬
-»òÕßÁ½Õß¶¼¿ÉÒÔ£¨Ê¹ÑÕÉ«±äÁÁ\e{Í¬Ê±}¼Ó´Ö×ÖÌå£©¡£ ´Ë¿Ø¼þ¿ÉÈÃÄúÑ¡ÔñÄÄ¸ö¡£
-
-Ä¬ÈÏÇé¿öÏÂ£¬´ÖÌåÓÉÑÕÉ«±íÊ¾£¬Òò´Ë·Ç´ÖÌåÎÄ±¾ÏÔÊ¾ÎªÇ³»ÒÉ«£¬
-´ÖÌåÎÄ±¾ÏÔÊ¾ÎªÁÁ°×É«£¨ÆäËûÑÕÉ«Ò²ÀàËÆ£©¡£
-Èç¹ûÄú½«ÉèÖÃ¸ü¸ÄÎª\q{×ÖÌå}¿ò£¬
-´ÖÌåºÍ·Ç´ÖÌåÎÄ±¾½«ÒÔÏàÍ¬µÄÑÕÉ«ÏÔÊ¾£¬
-¶ø×ÖÌå½«¸ü¸ÄÒÔÖ¸Ê¾²îÒì¡£
-Èç¹ûÑ¡Ôñ\q{Á½Õß}£¬×ÖÌåºÍÑÕÉ«¶¼»á¸Ä±ä¡£
-
-Ò»Ð©Ó¦ÓÃ³ÌÐòÒÀÀµÓÚÓëºÚÉ«±³
-¾°Çø·Ö¿ªÀ´µÄ\q{\i{´ÖÌåºÚÉ«}}£» Èç¹ûÄúÑ¡Ôñ\q{×ÖÌå}£¬
-ËüÃÇµÄÎÄ±¾¿ÉÄÜ»á±äµÃ²»¿É¼û¡£
-
-\S{config-logpalette} \q{³¢ÊÔÊ¹ÓÃ\i{Âß¼­µ÷É«°å}}
-
-Âß¼­µ÷É«°åÊÇÒ»ÖÖ»úÖÆ£¬ÔËÐÐÔÚ\i{8Î»²ÊÉ«}ÏÔ
-Ê¾Æ÷ÉÏµÄ Windows Ó¦ÓÃ³ÌÐò¿ÉÒÔ¾«È·µØÑ¡
-ÔñËüÏëÒªµÄÑÕÉ«£¬¶ø²»ÊÇÊ¹ÓÃ Windows ±ê×¼Ä¬ÈÏÖµ¡£
-
-Èç¹ûÄúÔÚ 8 Î»ÏÔÊ¾Æ÷ÉÏÃ»ÓÐ»ñµÃÄúÒªÇóµÄÑÕÉ«£¬
-Äú¿ÉÒÔ³¢ÊÔÆôÓÃ´ËÑ¡Ïî¡£
-µ«ÊÇ£¬Çë×¢Òâ£¬Ëü´ÓÀ´Ã»ÓÐºÜºÃµØ¹¤×÷¹ý¡£
-
-\S{config-syscolour} \q{Ê¹ÓÃ\i{ÏµÍ³ÑÕÉ«}}
-
-ÆôÓÃ´ËÑ¡Ïî½«µ¼ÖÂ PuTTY ºöÂÔÎª\I{default background}
-\I{default foreground}\q{Ä¬ÈÏ±³¾°/Ç°¾°}
-ºÍ\I{cursor colour}\q{¹â±êÑÕÉ«/ÎÄ±¾}ÅäÖÃµÄÑÕÉ«
-(Çë²ÎÔÄ \k{config-colourcfg})£¬ ¶øÊÇÊ¹ÓÃÏµÍ³·¶Î§µÄÄ¬ÈÏÖµ¡£
-
-Çë×¢Òâ£¬Èç¹ûÆôÓÃ´ËÑ¡Ïî£¬·Ç´ÖÌåºÍ\i{´ÖÌåÎÄ±¾}½«
-ÊÇÏàÍ¬µÄÑÕÉ«¡£ Äú¿ÉÄÜÏ£ÍûÍ¨¹ý×ÖÌå
-¸ü¸ÄÀ´Ö¸Ê¾´ÖÌåÎÄ±¾(Çë²ÎÔÄ \k{config-boldcolour})¡£
-
-\S{config-colourcfg} ÔÚ\i{ÖÕ¶Ë´°¿Ú}ÖÐµ÷ÕûÑÕÉ«
-
-Ö÷ÑÕÉ«¿Ø¼þÔÊÐíÄú×¼È·Ö¸¶¨Ó¦ÏÔÊ¾µÄÑÕÉ«¡£
-ÒªÐÞ¸ÄÆäÖÐÒ»ÖÖ PuTTY ÑÕÉ«£¬
-ÇëÊ¹ÓÃÁÐ±í¿òÑ¡ÔñÒªÐÞ¸ÄµÄÑÕÉ«¡£
-¸ÃÑÕÉ«µÄ \i{RGB Öµ}½«ÏÔÊ¾ÔÚÁÐ±í¿òµÄÓÒ²à¡£
-ÏÖÔÚ£¬Èç¹ûÄú°´ÏÂ\q{ÐÞ¸Ä}°´Å¥£¬
-Äú½«¿´µ½Ò»¸öÑÕÉ«Ñ¡ÔñÆ÷£¬
-Äú¿ÉÒÔÔÚÆäÖÐÑ¡ÔñÒ»ÖÖÐÂÑÕÉ«À´´úÌæ¾ÉÑÕÉ«¡£
-£¨Èç¹ûÄúÔ¸Òâ£¬ÄúÒ²¿ÉÒÔÖ±½ÓÔÚ±à¼­¿òÖÐ±à¼­ RGB
-Öµ£»Ã¿¸öÖµ¶¼ÊÇ 0 µ½ 255 Ö®¼äµÄÕûÊý¡££©
-
-PuTTY ÔÊÐíÄúÉèÖÃ\i{¹â±êÑÕÉ«}¡¢
-\i{Ä¬ÈÏÇ°¾°}ºÍ\I{default background}Ä¬ÈÏ±³¾°£¬
-ÒÔ¼°ËùÓÐ\I{ANSI colours} ANSIÂë ¿ÉÅäÖÃÑÕÉ«£¨ºÚÉ«¡¢ºìÉ«¡¢ÂÌÉ«¡¢»ÆÉ«¡¢
-À¶É«¡¢ÑóºìÉ«¡¢ÇàÉ«ºÍ°×É«£©µÄ¾«È·ÒõÓ°¡£ Äú»¹¿ÉÒÔÐÞ¸ÄÓÃÓÚÕâÐ©ÑÕÉ«
-µÄ\i{´ÖÌå}°æ±¾µÄ¾«È·ÒõÓ°£» Èç¹ûÄúÑ¡ÔñÓÃÑÕÉ«±íÊ¾£¬ÕâÐ©
-ÓÃÓÚÏÔÊ¾´ÖÌåÎÄ±¾(Çë²ÎÔÄ \k{config-boldcolour})£¬Èç
-¹û·þÎñÆ÷ÌØ±ðÒªÇóÊ¹ÓÃËüÃÇ£¬
-Ò²¿ÉÒÔÊ¹ÓÃËüÃÇ¡£ £¨Çë×¢Òâ£¬\q{Ä¬ÈÏ´ÖÌå±³¾°}\e{²»ÊÇ}ÓÃ
-ÓÚ´ÖÌåÎÄ±¾µÄ±³¾°ÑÕÉ«£»
-Ëü½öÔÚ·þÎñÆ÷Ã÷È·ÒªÇóÊ¹ÓÃ´ÖÌå±³¾°Ê±Ê¹ÓÃ¡££©
-
-\H{config-connection} Á¬½ÓÃæ°å
-
-Á¬½ÓÃæ°åÔÊÐíÄúÅäÖÃÊÊÓÃ
-ÓÚÒ»ÖÖÒÔÉÏ\i{Á¬½Ó}ÀàÐÍµÄÑ¡Ïî¡£
-
-\S{config-keepalive} Ê¹ÓÃ\i{keepalives}·ÀÖ¹¶Ï¿ªÁ¬½Ó
-
-Èç¹ûÄú·¢ÏÖ»á»°ÔÚ¿ÕÏÐÒ»¶ÎÊ±¼äºóÒâÍâ¹Ø±Õ
-£¨Í¨³£ÊÇ\q{¶ÔµÈÁ¬½ÓÖØÖÃ}£©£¬
-Äú¿ÉÄÜÐèÒª³¢ÊÔÊ¹ÓÃ´ËÑ¡Ïî¡£
-
-Ò»Ð©ÍøÂç\i{Â·ÓÉÆ÷}ºÍ\i{·À»ðÇ½}ÐèÒª¸ú
-×ÙÍ¨¹ýËüÃÇµÄËùÓÐÁ¬½Ó¡£Í¨³££¬
-Èç¹ûÔÚÄ³¸öÊ±¼ä¼ä¸ôºóÃ»ÓÐÊý¾ÝÔÚÈÎÒ»·½Ïò´«Êä£¬
-ÕâÐ©·À»ðÇ½½«¼Ù¶¨Á¬½ÓÒÑÊ§Ð§¡£
-Èç¹ûÒ»¶ÎÊ±¼äÄÚ»á»°ÖÐÃ»ÓÐÈÎºÎÁ÷Á¿£¬
-Õâ¿ÉÄÜ»áµ¼ÖÂ PuTTY »á»°±»·À»ðÇ½ÒâÍâ¹Ø±Õ¡£
-
-keepalive Ñ¡Ïî£¨\q{Keepalives Ö®¼äµÄÃëÊý}£©
-ÔÊÐíÄú½« PuTTY ÅäÖÃÎª¶¨ÆÚÍ¨¹ý»á»°·¢ËÍÊý¾Ý£¬
-ÕâÖÖ·½Ê½²»»áÖÐ¶ÏÊµ¼ÊµÄÖÕ¶Ë»á»°¡£
-Èç¹ûÄú·¢ÏÖÄúµÄ·À»ðÇ½ÕýÔÚÇÐ¶Ï\i{¿ÕÏÐÁ¬½Ó}£¬
-Äú¿ÉÒÔ³¢ÊÔÔÚ´Ë×Ö¶ÎÖÐÊäÈëÒ»¸ö·ÇÁãÖµ¡£
-¸ÃÖµÒÔÃëÎªµ¥Î»£»Òò´Ë£¬ÀýÈç£¬
-Èç¹ûÄúµÄ·À»ðÇ½ÔÚÊ®·ÖÖÓºóÇÐ¶ÏÁ¬½Ó£¬ÄÇ
-Ã´Äú¿ÉÄÜÐèÒªÔÚ¿òÖÐÊäÈë 300 Ãë£¨5 ·ÖÖÓ£©¡£
-
-Çë×¢Òâ£¬keepalives ²¢²»×ÜÊÇÓÐÓÃµÄ¡£
-Èç¹ûÄúÓÐ·À»ðÇ½ÔÚ¿ÕÏÐÆÚºó¶Ï¿ªÁ¬½Ó£¬
-ËüÃÇ»áÓÐËù°ïÖú£»µ«ÊÇÈç¹ûÄãºÍ·þÎñÆ÷Ö®¼äµÄ\i{ÍøÂçÁ¬½ÓÖÐ¶Ï}£¬
-ÄÇÃ´keepalivesÊµ¼ÊÉÏ»áÈÃÊÂÇé±äµÃ¸üÔã¡£
-Èç¹û»á»°´¦ÓÚ¿ÕÏÐ×´Ì¬£¬
-²¢ÇÒ¶ËµãÖ®¼äµÄÁ¬½ÓÔÝÊ±¶ªÊ§£¬
-µ«ÔÚÈÎºÎÒ»·½³¢ÊÔ·¢ËÍÈÎºÎÄÚÈÝÖ®Ç°»Ö¸´ÁËÁ¬½Ó£¬
-ÄÇÃ´¾Í²»»áÓÐÎÊÌâ - Á½¸ö¶Ëµã¶¼²»»á×¢Òâµ½ÈÎºÎ´íÎó¡£µ«ÊÇ£¬
-Èç¹ûÒ»·½ÔÚÖÐ¶ÏÆÚ¼äÈ·Êµ·¢ËÍÁËÒ»Ð©¶«Î÷£¬
-Ëü»á·´¸´³¢ÊÔÖØÐÂ·¢ËÍ£¬
-×îÖÕ·ÅÆú²¢·ÅÆúÁ¬½Ó¡£
-È»ºóµ±Á¬½Ó»Ö¸´Ê±£¬
-¶Ô·½»á·¢ÏÖµÚÒ»·½²»ÔÙÏàÐÅÓÐ´ò¿ªµÄÁ¬½Ó¡£
-Keepalive »áÊ¹´ËÀàÎÊÌâ±äµÃ¸üÔã£¬
-ÒòÎªËüÃÇ»áÔö¼Ó PuTTY ÔÚÁ¬½ÓÖÐ¶ÏÆÚ¼ä³¢ÊÔ·¢ËÍÊý¾ÝµÄ¿ÉÄÜÐÔ¡£
-£¨ÆäËûÀàÐÍµÄÖÜÆÚÐÔÍøÂç»î¶¯¿ÉÄÜ»áµ¼ÖÂÕâÖÖÐÐÎª£»ÌØ±ðÊÇ SSH-2 ÖØÐÂÉú³ÉÃÜÔ¿¿ÉÄÜ»á²úÉúÕâÖÖÓ°Ïì¡£
-Çë²ÎÔÄ\k{config-ssh-kex-rekey}¡£)
-
-Òò´Ë£¬Äú¿ÉÄÜ»á·¢ÏÖ±£³ÖÁ¬½ÓÓÐÖúÓÚÁ¬½Ó¶ªÊ§£¬
-»òÕßÄú¿ÉÄÜ»á·¢ÏÖËüÃÇÊ¹Çé¿ö±äµÃ¸üÔã£¬
-ÕâÈ¡¾öÓÚÄúºÍ·þÎñÆ÷Ö®
-¼ä´æÔÚ\e{Ê²Ã´ÀàÐÍ}µÄÍøÂçÎÊÌâ¡£
-
-Ö»ÓÐ Telnet ºÍ SSH Ö§³Ö Keepalive£»
-Rlogin¡¢SUPDUP ºÍ Raw Ð­ÒéÃ»ÓÐÌá¹©ÊµÏÖËüÃÇµÄ·½·¨¡£
-£¨×÷ÎªÌæ´ú·½°¸£¬Çë²ÎÔÄ \k{config-tcp-keepalives}¡£)
-
-Çë×¢Òâ£¬Èç¹ûÄúÊ¹ÓÃµÄÊÇ SSH-1 ²¢ÇÒ·þÎñÆ÷ÓÐÒ»¸ö´íÎó£¬
-µ¼ÖÂËüÎÞ·¨´¦Àí SSH-1 ºöÂÔÏûÏ¢(Çë²ÎÔÄ \k{config-ssh-bug-ignore1})£¬
-ÆôÓÃkeepalives²»»áÓÐÈÎºÎÐ§¹û¡£
-
-\S{config-nodelay} \q{½ûÓÃ \i{Nagle Ëã·¨}}
-
-Nagle Ëã·¨ÊÇ TCP/IP ÊµÏÖµÄÒ»¸öÏ¸½Ú£¬
-ËüÊÔÍ¼×îÐ¡»¯Í¨¹ýÍøÂçÁ¬½Ó·¢ËÍµÄÐ¡Êý¾Ý°üµÄÊýÁ¿¡£
-ÆôÓÃ Nagle Ëã·¨ºó£¬PuTTY µÄ\i{´ø¿í}
-Ê¹ÓÃÐ§ÂÊ»áÉÔ¸ßÒ»Ð©£»
- ½ûÓÃËüºó£¬Äú¿ÉÄÜ»á·¢ÏÖÔÚÁ¬½Óµ½Ä³Ð©ÀàÐÍµÄ·þÎñ
- Æ÷Ê±¶Ô»÷¼üµÄÏìÓ¦ËÙ¶È¸ü¿ì¡£
-
-\i{½»»¥Ê½Á¬½Ó}Ä¬ÈÏ½ûÓÃ Nagle Ëã·¨¡£
-
-\S{config-tcp-keepalives} \q{ÆôÓÃ \i{TCP keepalives}}
-
-\e{×¢Òâ£º}²»Ó¦½« TCP keepalive Óë
-Ó¦ÓÃ³ÌÐò¼¶ keepalive Ïà»ìÏý£¬Çë²ÎÔÄ \k{config-keepalive}¡£
-Èç¹ûÓÐÒÉÎÊ£¬Äú¿ÉÄÜÐèÒªÓ¦ÓÃ³ÌÐò¼¶µÄ±£»î£»
-TCP keepalives ÊÇÎªÁËÍêÕûÐÔ¶øÌá¹©µÄ¡£
-
-TCP keepalives µÄÏë·¨ÀàËÆÓÚÓ¦ÓÃ³ÌÐò¼¶µÄ keepalives£¬²¢ÇÒÊÊÓÃÏàÍ¬µÄ¾¯¸æ¡£
-Ö÷ÒªÇø±ðÔÚÓÚ£º
-
-\b TCP keepalive ¿ÉÓÃÓÚ\e{ËùÓÐ}ÍøÂçÁ¬½ÓÀàÐÍ£¬
-°üÀ¨ Raw¡¢Rlogin ºÍ SUPDUP¡£
-
-\b TCP keepalive Ö®¼äµÄ¼ä¸ôÍ¨³£Òª³¤µÃ¶à£¬
-Í¨³£ÊÇÁ½¸öÐ¡Ê±£» ÕâÊÇÓÉ²Ù×÷ÏµÍ³ÉèÖÃµÄ£¬
-²»ÄÜÔÚ PuTTY ÖÐÅäÖÃ¡£
-
-\b Èç¹û²Ù×÷ÏµÍ³Ã»ÓÐÊÕµ½¶ÔkeepaliveµÄÏìÓ¦£¬
-Ëü¿ÉÄÜ»á¿ìËÙÁ¬Ðø·¢ËÍ¸ü¶àÐÅÏ¢£¬
-Èç¹ûÃ»ÓÐÊÕµ½ÏìÓ¦ÔòÖÕÖ¹Á¬½Ó¡£
-
-TCP keepalives ¶ÔÓÚÈ·±£ÖÕÖ¹\i{°ë¿ª·ÅÊ½Á¬½Ó}
-¿ÉÄÜ±È±£³ÖÁ¬½Ó»î¶¯¸üÓÐÓÃ¡£
-
-Ä¬ÈÏÇé¿öÏÂ½ûÓÃTCP keepalives ¡£
-
-\S{config-address-family} \q{\i{ÍøÂçÐ­Òé°æ±¾}}
-
-´ËÑ¡ÏîÔÊÐíÓÃ»§ÔÚÐÂ¾É Internet Ð­ÒéºÍÑ°Ö·
-·½°¸£¨\i{IPv4} ºÍ \i{IPv6}£©Ö®¼ä½øÐÐÑ¡Ôñ¡£
-ËùÑ¡Ð­Òé½«ÓÃÓÚ´ó¶àÊý´«³öÍøÂç
-Á¬½Ó£¨°üÀ¨Óë´úÀíµÄÁ¬½Ó£©£»È»¶ø£¬
-ËíµÀÓÐ×Ô¼ºµÄÅäÖÃ£¬
-Çë²ÎÔÄ \k{config-ssh-portfwd-address-family}¡£
-
-Ä¬ÈÏÉèÖÃÎª\q{×Ô¶¯}£¬ÕâÒâÎ¶×Å PuTTY »á×öÒ»Ð©
-Ã÷ÖÇµÄÊÂÇé²¢³¢ÊÔ²Â²âÄúÏëÒªµÄÐ­Òé¡£
-£¨Èç¹ûÄúÖ¸¶¨ÎÄ×Ö \i{Internet µØÖ·}£¬Ëü½«Ê¹ÓÃ¸ÃµØÖ·
-Ëù°µÊ¾µÄÈÎºÎÐ­Òé¡£Èç¹ûÄúÌá¹©\i{Ö÷»úÃû}£¬
-Ëü½«²é¿´¸ÃÖ÷»úÃû´æÔÚÄÄÐ©ÀàÐÍµÄµØÖ·£»
-Èç¹ûÓÐ¿ÉÓÃµÄ IPv6 µØÖ·£¬Ëü½«Ê¹ÓÃ IPv6£¬È»ºó Èç¹ûÃ»ÓÐ£¬Ôò·µ»Ø IPv4¡££©
-
-Èç¹ûÄúÐèÒªÇ¿ÖÆ PuTTY Ê¹ÓÃÌØ¶¨Ð­Òé£¬Äú¿ÉÒÔ½«Æä
-ÏÔÊ½ÉèÖÃÎª\q{IPv4}»ò\q{IPv6}¡£
-
-\S{config-loghost} \I{logical host name}\q{Ô¶³ÌÖ÷»úµÄ×¢²áÃû}
-
-ÕâÊ¹Äú¿ÉÒÔ¸æËß PuTTY Ëü×î
-ÖÕÁ¬½ÓµÄÖ÷»úÓëËü
-ÈÏÎªÕýÔÚ½¨Á¢ÍøÂçÁ¬½ÓµÄÖ÷»ú²»Í¬¡£
-
-ÀýÈç£¬Èç¹ûÄúÔÚÒ»¸ö PuTTY »á»°ÖÐÉèÖÃÁË SSH ¶Ë¿Ú×ª·¢£¬
-ÒÔ±ã½«ÓëÄ³¸öÈÎÒâ¶Ë¿Ú£¨ÀýÈç \cw{localhost} ¶Ë¿Ú 10022£©
-µÄÁ¬½Ó×ª·¢µ½ÁíÒ»Ì¨»úÆ÷µÄ SSH ¶Ë¿Ú£¨ÀýÈç \cw{foovax} ¶Ë¿Ú 22£©£¬
-Äú¿ÉÄÜ»áÊ¹ÓÃËü£¬
-È»ºó¿ªÊ¼Á¬½Óµ½×ª·¢¶Ë¿ÚµÄµÚ¶þ¸ö PuTTY¡£
-
-ÔÚÕý³£Ê¹ÓÃÖÐ£¬µÚ¶þ¸ö PuTTY ½«·ÃÎÊËüÊµ¼Ê
-Á¬½ÓµÄÖ÷»úÃûºÍ¶Ë¿Ú£¨¼´±¾ÀýÖÐµÄ \cw{localhost} ¶Ë¿Ú 10022£©ÏÂ
-µÄ\i{Ö÷»úÃÜÔ¿»º´æ}¡£µ«ÊÇ£¬Ê¹ÓÃÂß¼­Ö÷»úÃûÑ¡Ïî£¬
-\e{Äú}¿ÉÒÔÅäÖÃµÚ¶þ¸ö PuTTY ÒÔ½«Ö÷»úÃÜÔ¿»º´æÔÚÄú
-ÖªµÀËü×îÖÕ»áÓëÖ®½»Ì¸µÄÖ÷
-»úÃûÏÂ£¨´Ë´¦Îª \c{foovax}£©¡£
-
-Èç¹ûÄúÏ£ÍûÍ¨¹ýÐí¶à²»Í¬µÄÇþµÀÁ¬½Óµ½Í¬Ò»Ì¨Êµ¼Ê·þÎñ
-Æ÷£¨¿ÉÄÜÊÇÒòÎªÄúµÄ¶Ë¿Ú×ª·¢°²ÅÅ²»¶Ï±ä»¯£©£¬
-Õâ¿ÉÄÜºÜÓÐÓÃ£ºÍ¨¹ýÊ¼ÖÕÈçÒ»µØÉèÖÃÂß¼­Ö÷»úÃû£¬
-Äú¿ÉÒÔ°²ÅÅ PuTTY ²»»áÒ»Ö±ÒªÇóÄúÖØÐÂÈ·ÈÏËüÖ÷»úÃÜÔ¿¡£
-Ïà·´£¬Èç¹ûÄúÏ£ÍûÊ¹ÓÃÏàÍ¬µÄ±¾µØ¶Ë¿ÚºÅ
-½«¶Ë¿Ú×ª·¢µ½Ðí¶à²»Í¬µÄ·þÎñÆ÷£¬
-Äú¿ÉÄÜ²»Ï£ÍûÈÎºÎÌØ¶¨·þÎñÆ÷µÄÖ÷»úÃÜ
-Ô¿»º´æÔÚ¸Ã±¾µØ¶Ë¿ÚºÅÏÂ¡£ £¨¶ÔÓÚºóÒ»ÖÖÇé¿ö£¬
-Äú¿ÉÒÔ¸ÄÎªÔÚÏà¹Ø
-»á»°ÖÐÏÔÊ½ÅäÖÃÖ÷»úÃÜÔ¿£»Çë²ÎÔÄ \k{config-ssh-kex-manual-hostkeys}¡£)
-
-Èç¹ûÄúÖ»ÊÇÎª´ËÑ¡ÏîÊäÈëÒ»¸öÖ÷»úÃû£¬
-PuTTY ½«ÔÚ¸ÃÖ÷»úµÄÄ¬ÈÏ SSH ¶Ë¿ÚÏÂ»º´æ SSH Ö÷»úÃÜÔ¿£¬
-¶ø²»¹ÜÄúÕæÕýÁ¬½Óµ½µÄ¶Ë¿ÚÊÇÊ²Ã´£¨ÒòÎªµäÐÍµÄ³¡¾°ÀàËÆÓÚÉÏÃæµÄ
-Ê¾Àý£ºÄúÁ¬½Óµ½Ò»¸öÓÞ´ÀµÄÕæÊµ¶Ë¿ÚºÅ£¬ÄúµÄÁ¬½Ó×îÖÕ
-±»×ª·¢µ½ÆäËû»úÆ÷µÄÆÕÍ¨¶Ë¿Ú 22 SSH ·þÎñÆ÷£©¡£
-Òª¸²¸ÇËü£¬Äú¿ÉÒÔ½«¶Ë¿ÚºÅ¸½¼Óµ½Âß¼­Ö÷»úÃû£¬
-ÓÃÃ°ºÅ·Ö¸ô¡£ÀýÈç¡£ÊäÈë\cq{foovax:2200}×÷ÎªÂß¼­
-Ö÷»úÃû½«µ¼ÖÂÖ÷»úÃÜÔ¿±»»º´æ£¬
-¾ÍºÃÏñÄúÒÑÁ¬½Óµ½ \c{foovax} µÄ¶Ë¿Ú 2200¡£
-
-Èç¹ûÄúÊ¹ÓÃ´ËÑ¡ÏîÌá¹©Ö÷»úÃû£¬
-Ëü»¹»áÏÔÊ¾ÔÚ°üº¬Ô¶³ÌÖ÷»úÃûµÄÆäËûÎ»ÖÃ£¬
-ÀýÈçÄ¬ÈÏ´°¿Ú±êÌâºÍÄ¬ÈÏ SSH
-ÃÜÂëÌáÊ¾¡£
-Õâ·´Ó³ÁËÕâÊÇÄú\e{ÕæÕý}Á¬½Óµ½µÄÖ÷»úÕâÒ»ÊÂÊµ£¬
-Õâ±ÈÄúÅöÇÉÓÃÀ´ÁªÏµ¸ÃÖ÷»úµÄ·½Ê½¸üÖØÒª¡£
-£¨¼´Ê¹ÄúÊ¹ÓÃµÄÊÇ SSH ÒÔÍâµÄÐ­Òé£¬ÕâÒ²ÊÊÓÃ¡££©
-
-\H{config-data} Êý¾ÝÃæ°å
-
-Êý¾ÝÃæ°åÔÊÐíÄúÅäÖÃ¿ÉÒÔ·¢ËÍ
-µ½·þÎñÆ÷ÒÔÓ°ÏìÔ¶¶ËÁ¬½ÓµÄ¸÷ÖÖÊý¾Ý¡£
-
-´ËÃæ°åÉÏµÄÃ¿¸öÑ¡Ïî¶¼ÊÊÓÃÓÚ¶à¸öÐ­Òé¡£
- ½öÊÊÓÃÓÚÒ»ÖÖÐ­ÒéµÄÑ¡Ïî³ö
- ÏÖÔÚ¸ÃÐ­ÒéµÄÅäÖÃÃæ°åÉÏ¡£
-
-\S{config-username} \q{\ii{×Ô¶¯µÇÂ¼ÓÃ»§Ãû}}
-
-ËùÓÐÈýÖÖ SSH¡¢Telnet ºÍ Rlogin Ð­Òé
-¶¼ÔÊÐíÄúÖ¸¶¨ÒªµÇÂ¼µÄÓÃ»§Ãû£¬
-¶øÎÞÐèÃ¿´Î¶¼Ã÷È·¼üÈë¡£ £¨Ä³Ð© Telnet ·þÎñÆ÷²»Ö§³Ö´Ë¹¦ÄÜ¡££©
-
-ÔÚ´Ë¿òÖÐ£¬Äú¿ÉÒÔ¼üÈë¸ÃÓÃ»§Ãû¡£
-
-\S{config-username-from-env} ÏµÍ³ÓÃ»§ÃûµÄÊ¹ÓÃ
-
-µ±ÉÏÒ»¸ö¿ò (\k{config-username})Áô¿Õ£¬
-Ä¬ÈÏÇé¿öÏÂ£¬PuTTY ½«ÔÚÄú½¨Á¢Á¬½ÓÊ±ÌáÊ¾ÊäÈëÓÃ»§Ãû¡£
-
-ÔÚÄ³Ð©»·¾³ÖÐ£¬ÀýÈçÊµÏÖ\i{µ¥Ò»µÇÂ¼}µÄ´óÐÍ×éÖ¯µÄÍøÂç£¬
-¸üÃ÷ÖÇµÄÄ¬ÈÏÉèÖÃ¿ÉÄÜÊÇÊ¹ÓÃµÇÂ¼µ½±¾µØ²Ù×÷ÏµÍ³µÄ
-ÓÃ»§Ãû£¨Èç¹ûÓÐ£©£»Õâ¶ÔÓÚ\i{GSSAPI} ÃÜÔ¿½»»»
-ºÍÓÃ»§Éí·ÝÑéÖ¤ÌØ±ðÓÐÓÃ
-(Çë²ÎÔÄ \k{config-ssh-auth-gssapi}
-ºÍ \k{config-ssh-gssapi-kex})¡£
-´ËÉèÖÃÔÊÐíÄú¸ü¸ÄÄ¬ÈÏÐÐÎª¡£
-
-Îª·½±ãÆð¼û£¬µ±Ç°ÏµÍ³ÓÃ»§ÃûÏÔÊ¾ÔÚ¶Ô»°¿òÖÐ¡£
-²»±£´æÔÚÅäÖÃÖÐ£» Èç¹û±£´æµÄ»á
-»°ÉÔºó±»ÆäËûÓÃ»§Ê¹ÓÃ£¬Ôò½«Ê¹ÓÃ¸ÃÓÃ»§µÄÃû³Æ
-
-\S{config-termtype} \q{\ii{ÖÕ¶ËÀàÐÍ}×Ö·û´®}
-
-Äú¿ÉÄÜÊ¹ÓÃ PuTTY Á¬½ÓµÄ´ó¶àÊý·þÎñÆ÷¶¼Éè
-¼ÆÎª´ÓÐí¶à²»Í¬ÀàÐÍµÄÖÕ¶ËÁ¬½Ó¡£
-ÎªÁËÏòÃ¿Ò»¸ö·¢ËÍÕýÈ·µÄ\i{¿ØÖÆÐòÁÐ}£¬
-·þÎñÆ÷ÐèÒªÖªµÀËüÕýÔÚ´¦ÀíÊ²Ã´ÀàÐÍµÄÖÕ¶Ë¡£
-Òò´Ë£¬SSH¡¢Telnet ºÍ Rlogin Ð­ÒéÖÐµÄÃ¿Ò»¸ö¶¼ÔÊÐíÔÚÃèÊöÖÕ
-¶ËµÄÁ¬½ÓÏÂ·¢ËÍÒ»¸öÎÄ±¾×Ö·û´®¡£
-ÔÚ \i{Unix} ·þÎñÆ÷ÉÏ£¬
-Õâ»á´Ó i\c{termcap} »ò \i\c{terminfo} Êý¾Ý¿âÖÐÑ¡ÔñÒ»¸öÌõÄ¿£¬
-¸æËßÓ¦ÓÃ³ÌÐò½«ÄÄÐ©¿ØÖÆÐòÁÐ·¢ËÍµ½ÖÕ¶Ë£¬
-ÒÔ¼°ÆÚÍû\i{¼üÅÌ}Éú³ÉÄÄÐ©×Ö·ûÐòÁÐ¡£
-
-PuTTY ³¢ÊÔÄ£Äâ Unix \i\c{xterm} ³ÌÐò£¬
-Ä¬ÈÏÇé¿öÏÂËüÍ¨¹ý½« \c{xterm} ×÷ÎªÖÕ¶ËÀàÐÍ
-×Ö·û´®·¢ËÍÀ´·´Ó³ÕâÒ»µã¡£
-Èç¹ûÄã·¢ÏÖÕâ²»ÊÇÄãÏëÒªµÄ¡ª¡ªÒ²ÐíÔ¶³ÌÏµÍ³±¨
-¸æ\q{Î´ÖªÖÕ¶ËÀàÐÍ}¡ª¡ªÄã¿ÉÒÔ³¢ÊÔ½«ËüÉèÖÃÎª²»Í¬µÄ¶«Î÷£¬ÀýÈç \i\c{vt220}¡£
-
-Èç¹ûÄú²»È·¶¨ÎÊÌâÊÇ·ñÊÇ
-ÓÉÖÕ¶ËÀàÐÍÉèÖÃÒýÆðµÄ£¬
-Äú¿ÉÄÜÐèÒª²éÔÄÄúµÄÓ¦ÓÃ³ÌÐò»ò·þÎñÆ÷µÄÊÖ²á¡£
-
-\S{config-termspeed} \q{\ii{ÖÕ¶ËËÙ¶È}}
-
-Telnet¡¢Rlogin ºÍ SSH Ð­ÒéÔÊÐí¿Í»§
-¶ËÖ¸¶¨·þÎñÆ÷µÄÖÕ¶ËËÙ¶È¡£
-
-¸Ã²ÎÊý\e{²»}Ó°ÏìÁ¬½ÓµÄÊµ¼ÊËÙ¶È£¬
-Ê¼ÖÕ\q{¾¡¿ÉÄÜ¿ì}£» ÕâÖ»ÊÇ·þÎñÆ÷
-Èí¼þÓÐÊ±ÓÃÀ´ÐÞ¸ÄÆäÐÐÎªµÄÌáÊ¾¡£
-ÀýÈç£¬Èç¹ûÖ¸Ê¾ËÙ¶È½ÏÂý£¬Ôò·þÎñÆ÷
-¿ÉÄÜ»áÇÐ»»µ½\i{´ø¿í}ÏûºÄ½ÏÉÙµÄÏÔÊ¾Ä£Ê½¡£
-
-¸ÃÖµÔÚÍøÂç»·¾³ÖÐÍ¨³£Ã»ÓÐÒâÒå£¬
-µ« PuTTY ÔÊÐíÄú¶ÔÆä½øÐÐÅäÖÃ£¬
-ÒÔ·ÀÄú·¢ÏÖ·þÎñÆ÷¶ÔÄ¬ÈÏÖµ·´Ó¦²»¼Ñ¡£
-
-¸ñÊ½ÊÇÒ»¶ÔÓÃ¶ººÅ·Ö¸ôµÄÊý×Ö£¬
-ÀýÈç \c{38400,38400}¡£ µÚÒ»¸öÊý×Ö±íÊ¾Êä³öËÙ¶È£¨\e{À´×Ô}·þÎñÆ÷£©£¬
-ÒÔ±ÈÌØ/ÃëÎªµ¥Î»£¬
-µÚ¶þ¸öÊý×ÖÊÇÊäÈëËÙ¶È£¨\e{µ½}·þÎñÆ÷£©¡£
-£¨Ö»ÓÐµÚÒ»¸öÓÃÓÚ Rlogin Ð­Òé¡££©
-
-´ËÑ¡Ïî¶ÔRawÁ¬½ÓÃ»ÓÐÓ°Ïì¡£
-
-\S{config-environ} ÔÚ·þÎñÆ÷ÉÏÉèÖÃ\i{»·¾³±äÁ¿}
-
-Telnet Ð­ÒéÎª¿Í»§¶ËÌá¹©ÁËÒ»ÖÖ½«»·¾³±äÁ¿´«µÝ¸ø·þÎñÆ÷µÄ·½·¨¡£
-ÓÉÓÚ°²È«Â©¶´£¬Ðí¶à Telnet ·þÎñÆ÷ÒÑÍ£Ö¹Ö§³Ö´Ë¹¦ÄÜ£¬
-µ« PuTTY ÈÔÈ»Ö§³ÖËü£¬
-ÒÔ°ïÖúÈÎºÎÕÒµ½ÆäËû·½
-·¨½â¾ö°²È«ÎÊÌâµÄ·þÎñÆ÷£¬
-¶ø²»½ö½öÊÇ½ûÓÃÕû¸ö»úÖÆ¡£
-
-SSH Ð­ÒéµÄµÚ 2 °æÒ²Ìá¹©ÁËÀàËÆµÄ»úÖÆ£¬
-ÔÚÃ»ÓÐ°²È«Â©¶´µÄÇé¿öÏÂ¸üÈÝÒ×ÊµÏÖ¡£
-½Ï¾ÉµÄ \i{SSH-2} ·þÎñÆ÷¸üÓÐ¿ÉÄÜÖ§³ÖËü¡£
-
-´ËÅäÖÃÊý¾Ý²»ÓÃ
-ÓÚ SSH-1¡¢rlogin »òÔ­Ê¼Ð­Òé¡£
-
-Òª½«»·¾³±äÁ¿Ìí¼Óµ½Í¨¹ýÁ¬½Ó´«ÊäµÄÁÐ±íÖÐ£¬
-ÇëÔÚ\q{±äÁ¿}¿òÖÐÊäÈë±äÁ¿Ãû³Æ£¬
-ÔÚ\q{Öµ}¿òÖÐÊäÈëÆäÖµ£¬È»ºó°´\q{Ìí¼Ó}°´Å¥¡£
-Òª´ÓÁÐ±íÖÐÉ¾³ýÒ»¸ö£¬
-ÇëÔÚÁÐ±í¿òÖÐÑ¡ÔñËü²¢°´\q{É¾³ý}¡£
-
-\H{config-proxy} ´úÀíÃæ°å
-
-\ii{´úÀí}Ãæ°åÔÊÐíÄú½« PuTTY ÅäÖÃÎªÊ¹ÓÃ¸÷ÖÖÀàÐÍµÄ´ú
-ÀíÀ´½¨Á¢ÆäÍøÂçÁ¬½Ó¡£ ´ËÃæ°åÖÐµÄÉèÖÃ»áÓ°Ïì
-ÐÎ³É PuTTY »á»°µÄÖ÷ÒªÍøÂçÁ¬½Ó£¬
-ÒÔ¼°ÓÉÓÚ SSH \i{¶Ë¿Ú×ª·¢}¶ø½¨Á¢µÄÈÎºÎ¶îÍâÁ¬½Ó
-(Çë²ÎÔÄ \k{using-port-forwarding})¡£
-
-Çë×¢Òâ£¬ÓëÄ³Ð©Èí¼þ£¨ÀýÈç Web ä¯ÀÀÆ÷£©²»Í¬£¬
-PuTTY ²»»á³¢ÊÔ×Ô¶¯È·¶¨ÊÇ·ñÊ¹ÓÃ
-´úÀíÒÔ¼°£¨Èç¹ûÊÇ£©½«ÄÄ¸ö´úÀíÓÃÓÚ¸ø¶¨Ä¿±ê¡£
-Èç¹ûÄúÐèÒªÊ¹ÓÃ´úÀí£¬Ôò±ØÐëÊ¼ÖÕÃ÷È·ÅäÖÃ¡£
-
-\S{config-proxy-type} ÉèÖÃ´úÀíÀàÐÍ
-
-\q{´úÀíÀàÐÍ}ÏÂÀ­ÁÐ±íÔÊÐíÄúÅäÖÃÏ£
-ÍûPuTTYÓÃÓÚÆäÍøÂçÁ¬½ÓµÄ´úÀíÀàÐÍ¡£
-Ä¬ÈÏÉèÖÃÎª\q{ÎÞ´úÀí};ÔÚ´ËÄ£Ê½ÏÂ£¬
-²»¶ÔÈÎºÎÁ¬½ÓÊ¹ÓÃ´úÀí¡£
-
-\b Ñ¡Ôñ\I{HTTP proxy}\q{HTTPÁ¬½Ó}ÔÊÐíÄúÍ¨
-¹ýÖ§³Ö HTTP Á¬½ÓÃüÁîµÄ Web ·þÎñÆ÷´úÀíÁ¬½Ó£¬
-Èç \W{https://www.rfc-editor.org/rfc/rfc2817}{RFC 2817} ÖÐËùÊö¡£
-
-\b Ñ¡Ôñ\q{SOCKS 4}»ò\q{SOCKS 5}ÔÊÐí
-ÄúÍ¨¹ý \i{SOCKS ·þÎñÆ÷}´úÀíÄúµÄÁ¬½Ó¡£
-
-\b Ðí¶à·À»ðÇ½ÊµÏÖÁËÒ»ÖÖ²»Ì«ÕýÊ½µÄ´úÀíÀàÐÍ£¬
-ÆäÖÐÓÃ»§¿ÉÒÔÖ±½ÓÓë·À»ðÇ½»úÆ÷½¨Á¢ Telnet Á¬
-½Ó²¢ÊäÈëÖîÈç \c{connect myhost.com 22} Ö®
-ÀàµÄÃüÁîÒÔÁ¬½Óµ½Íâ²¿Ö÷»ú¡£
-Ñ¡Ôñ\I{Telnet proxy}\q{Telnet}ÔÊÐíÄú¸æËß PuTTY Ê¹ÓÃÕâÖÖÀàÐÍµÄ´úÀí¡£
-ÏêÏ¸Çë²ÎÔÄ \k{config-proxy-command}¡£
-
-\b ÓÐ¼¸ÖÖ·½·¨¿ÉÒÔ½« SSH ·þÎñÆ÷ÓÃ×÷´úÀí¡£
-ËùÓÐÕâÐ©¶¼»áµ¼ÖÂPuTTYÓë´úÀíÖ÷
-»ú£¨ÔÚ´ËÉÏÏÂÎÄÖÐÓÐÊ±³ÆÎª\q{\i{Ìø×ªÖ÷»ú}}£©½¨Á¢¸¨ÖúSSHÁ¬½Ó¡£
+å¦‚æžœæ‚¨åœ¨è¾“å‡ºä¸­æ²¡æœ‰çœ‹åˆ°\cq{colors#256}ï¼Œ
+æ‚¨å¯èƒ½éœ€è¦æ›´æ”¹ç»ˆç«¯è®¾ç½®ã€‚
+åœ¨çŽ°ä»£ Linux æœºå™¨ä¸Šï¼Œæ‚¨å¯ä»¥å°è¯•\cq{xterm-256color}ã€‚
+
+\S{config-truecolour} \q{å…è®¸ç»ˆç«¯ä½¿ç”¨24ä½é¢œè‰²}
+
+é»˜è®¤æƒ…å†µä¸‹å¯ç”¨æ­¤é€‰é¡¹ã€‚
+å¦‚æžœç¦ç”¨ï¼ŒPuTTY å°†å¿½ç•¥æœåŠ¡å™¨å‘é€çš„ä»»ä½•æŽ§åˆ¶åºåˆ—ï¼Œ
+è¿™äº›æŽ§åˆ¶åºåˆ—ä½¿ç”¨çŽ°ä»£ç»ˆç«¯æ”¯æŒ
+çš„æŽ§åˆ¶åºåˆ—æ¥æŒ‡å®šä»»æ„ 24 ä½ RGB é¢œè‰²å€¼ã€‚
+
+\S{config-boldcolour} \q{é€šè¿‡æ”¹å˜â€¦æ¥è¡¨ç¤ºç²—ä½“æ–‡æœ¬}
+
+å½“æœåŠ¡å™¨å‘é€ä¸€ä¸ª\i{æŽ§åˆ¶åºåˆ—}æŒ‡ç¤º
+æŸäº›æ–‡æœ¬åº”ä»¥\i{ç²—ä½“}æ˜¾ç¤ºæ—¶ï¼ŒPuTTY å¯ä»¥é€š
+è¿‡å¤šç§æ–¹å¼å¤„ç†æ­¤é—®é¢˜ã€‚ å®ƒå¯ä»¥å°†å­—ä½“æ›´æ”¹ä¸ºç²—ä½“ç‰ˆæœ¬ï¼Œ
+æˆ–è€…ä½¿ç”¨æ›´äº®çš„é¢œè‰²ä½¿ç”¨ç›¸åŒçš„\i{å­—ä½“}ï¼Œ
+æˆ–è€…ä¸¤è€…éƒ½å¯ä»¥ï¼ˆä½¿é¢œè‰²å˜äº®\e{åŒæ—¶}åŠ ç²—å­—ä½“ï¼‰ã€‚ æ­¤æŽ§ä»¶å¯è®©æ‚¨é€‰æ‹©å“ªä¸ªã€‚
+
+é»˜è®¤æƒ…å†µä¸‹ï¼Œç²—ä½“ç”±é¢œè‰²è¡¨ç¤ºï¼Œå› æ­¤éžç²—ä½“æ–‡æœ¬æ˜¾ç¤ºä¸ºæµ…ç°è‰²ï¼Œ
+ç²—ä½“æ–‡æœ¬æ˜¾ç¤ºä¸ºäº®ç™½è‰²ï¼ˆå…¶ä»–é¢œè‰²ä¹Ÿç±»ä¼¼ï¼‰ã€‚
+å¦‚æžœæ‚¨å°†è®¾ç½®æ›´æ”¹ä¸º\q{å­—ä½“}æ¡†ï¼Œ
+ç²—ä½“å’Œéžç²—ä½“æ–‡æœ¬å°†ä»¥ç›¸åŒçš„é¢œè‰²æ˜¾ç¤ºï¼Œ
+è€Œå­—ä½“å°†æ›´æ”¹ä»¥æŒ‡ç¤ºå·®å¼‚ã€‚
+å¦‚æžœé€‰æ‹©\q{ä¸¤è€…}ï¼Œå­—ä½“å’Œé¢œè‰²éƒ½ä¼šæ”¹å˜ã€‚
+
+ä¸€äº›åº”ç”¨ç¨‹åºä¾èµ–äºŽä¸Žé»‘è‰²èƒŒ
+æ™¯åŒºåˆ†å¼€æ¥çš„\q{\i{ç²—ä½“é»‘è‰²}}ï¼› å¦‚æžœæ‚¨é€‰æ‹©\q{å­—ä½“}ï¼Œ
+å®ƒä»¬çš„æ–‡æœ¬å¯èƒ½ä¼šå˜å¾—ä¸å¯è§ã€‚
+
+\S{config-logpalette} \q{å°è¯•ä½¿ç”¨\i{é€»è¾‘è°ƒè‰²æ¿}}
+
+é€»è¾‘è°ƒè‰²æ¿æ˜¯ä¸€ç§æœºåˆ¶ï¼Œè¿è¡Œåœ¨\i{8ä½å½©è‰²}æ˜¾
+ç¤ºå™¨ä¸Šçš„ Windows åº”ç”¨ç¨‹åºå¯ä»¥ç²¾ç¡®åœ°é€‰
+æ‹©å®ƒæƒ³è¦çš„é¢œè‰²ï¼Œè€Œä¸æ˜¯ä½¿ç”¨ Windows æ ‡å‡†é»˜è®¤å€¼ã€‚
+
+å¦‚æžœæ‚¨åœ¨ 8 ä½æ˜¾ç¤ºå™¨ä¸Šæ²¡æœ‰èŽ·å¾—æ‚¨è¦æ±‚çš„é¢œè‰²ï¼Œ
+æ‚¨å¯ä»¥å°è¯•å¯ç”¨æ­¤é€‰é¡¹ã€‚
+ä½†æ˜¯ï¼Œè¯·æ³¨æ„ï¼Œå®ƒä»Žæ¥æ²¡æœ‰å¾ˆå¥½åœ°å·¥ä½œè¿‡ã€‚
+
+\S{config-syscolour} \q{ä½¿ç”¨\i{ç³»ç»Ÿé¢œè‰²}}
+
+å¯ç”¨æ­¤é€‰é¡¹å°†å¯¼è‡´ PuTTY å¿½ç•¥ä¸º\I{default background}
+\I{default foreground}\q{é»˜è®¤èƒŒæ™¯/å‰æ™¯}
+å’Œ\I{cursor colour}\q{å…‰æ ‡é¢œè‰²/æ–‡æœ¬}é…ç½®çš„é¢œè‰²
+(è¯·å‚é˜… \k{config-colourcfg})ï¼Œ è€Œæ˜¯ä½¿ç”¨ç³»ç»ŸèŒƒå›´çš„é»˜è®¤å€¼ã€‚
+
+è¯·æ³¨æ„ï¼Œå¦‚æžœå¯ç”¨æ­¤é€‰é¡¹ï¼Œéžç²—ä½“å’Œ\i{ç²—ä½“æ–‡æœ¬}å°†
+æ˜¯ç›¸åŒçš„é¢œè‰²ã€‚ æ‚¨å¯èƒ½å¸Œæœ›é€šè¿‡å­—ä½“
+æ›´æ”¹æ¥æŒ‡ç¤ºç²—ä½“æ–‡æœ¬(è¯·å‚é˜… \k{config-boldcolour})ã€‚
+
+\S{config-colourcfg} åœ¨\i{ç»ˆç«¯çª—å£}ä¸­è°ƒæ•´é¢œè‰²
+
+ä¸»é¢œè‰²æŽ§ä»¶å…è®¸æ‚¨å‡†ç¡®æŒ‡å®šåº”æ˜¾ç¤ºçš„é¢œè‰²ã€‚
+è¦ä¿®æ”¹å…¶ä¸­ä¸€ç§ PuTTY é¢œè‰²ï¼Œ
+è¯·ä½¿ç”¨åˆ—è¡¨æ¡†é€‰æ‹©è¦ä¿®æ”¹çš„é¢œè‰²ã€‚
+è¯¥é¢œè‰²çš„ \i{RGB å€¼}å°†æ˜¾ç¤ºåœ¨åˆ—è¡¨æ¡†çš„å³ä¾§ã€‚
+çŽ°åœ¨ï¼Œå¦‚æžœæ‚¨æŒ‰ä¸‹\q{ä¿®æ”¹}æŒ‰é’®ï¼Œ
+æ‚¨å°†çœ‹åˆ°ä¸€ä¸ªé¢œè‰²é€‰æ‹©å™¨ï¼Œ
+æ‚¨å¯ä»¥åœ¨å…¶ä¸­é€‰æ‹©ä¸€ç§æ–°é¢œè‰²æ¥ä»£æ›¿æ—§é¢œè‰²ã€‚
+ï¼ˆå¦‚æžœæ‚¨æ„¿æ„ï¼Œæ‚¨ä¹Ÿå¯ä»¥ç›´æŽ¥åœ¨ç¼–è¾‘æ¡†ä¸­ç¼–è¾‘ RGB
+å€¼ï¼›æ¯ä¸ªå€¼éƒ½æ˜¯ 0 åˆ° 255 ä¹‹é—´çš„æ•´æ•°ã€‚ï¼‰
+
+PuTTY å…è®¸æ‚¨è®¾ç½®\i{å…‰æ ‡é¢œè‰²}ã€
+\i{é»˜è®¤å‰æ™¯}å’Œ\I{default background}é»˜è®¤èƒŒæ™¯ï¼Œ
+ä»¥åŠæ‰€æœ‰\I{ANSI colours} ANSIç  å¯é…ç½®é¢œè‰²ï¼ˆé»‘è‰²ã€çº¢è‰²ã€ç»¿è‰²ã€é»„è‰²ã€
+è“è‰²ã€æ´‹çº¢è‰²ã€é’è‰²å’Œç™½è‰²ï¼‰çš„ç²¾ç¡®é˜´å½±ã€‚ æ‚¨è¿˜å¯ä»¥ä¿®æ”¹ç”¨äºŽè¿™äº›é¢œè‰²
+çš„\i{ç²—ä½“}ç‰ˆæœ¬çš„ç²¾ç¡®é˜´å½±ï¼› å¦‚æžœæ‚¨é€‰æ‹©ç”¨é¢œè‰²è¡¨ç¤ºï¼Œè¿™äº›
+ç”¨äºŽæ˜¾ç¤ºç²—ä½“æ–‡æœ¬(è¯·å‚é˜… \k{config-boldcolour})ï¼Œå¦‚
+æžœæœåŠ¡å™¨ç‰¹åˆ«è¦æ±‚ä½¿ç”¨å®ƒä»¬ï¼Œ
+ä¹Ÿå¯ä»¥ä½¿ç”¨å®ƒä»¬ã€‚ ï¼ˆè¯·æ³¨æ„ï¼Œ\q{é»˜è®¤ç²—ä½“èƒŒæ™¯}\e{ä¸æ˜¯}ç”¨
+äºŽç²—ä½“æ–‡æœ¬çš„èƒŒæ™¯é¢œè‰²ï¼›
+å®ƒä»…åœ¨æœåŠ¡å™¨æ˜Žç¡®è¦æ±‚ä½¿ç”¨ç²—ä½“èƒŒæ™¯æ—¶ä½¿ç”¨ã€‚ï¼‰
+
+\H{config-connection} è¿žæŽ¥é¢æ¿
+
+è¿žæŽ¥é¢æ¿å…è®¸æ‚¨é…ç½®é€‚ç”¨
+äºŽä¸€ç§ä»¥ä¸Š\i{è¿žæŽ¥}ç±»åž‹çš„é€‰é¡¹ã€‚
+
+\S{config-keepalive} ä½¿ç”¨\i{keepalives}é˜²æ­¢æ–­å¼€è¿žæŽ¥
+
+å¦‚æžœæ‚¨å‘çŽ°ä¼šè¯åœ¨ç©ºé—²ä¸€æ®µæ—¶é—´åŽæ„å¤–å…³é—­
+ï¼ˆé€šå¸¸æ˜¯\q{å¯¹ç­‰è¿žæŽ¥é‡ç½®}ï¼‰ï¼Œ
+æ‚¨å¯èƒ½éœ€è¦å°è¯•ä½¿ç”¨æ­¤é€‰é¡¹ã€‚
+
+ä¸€äº›ç½‘ç»œ\i{è·¯ç”±å™¨}å’Œ\i{é˜²ç«å¢™}éœ€è¦è·Ÿ
+è¸ªé€šè¿‡å®ƒä»¬çš„æ‰€æœ‰è¿žæŽ¥ã€‚é€šå¸¸ï¼Œ
+å¦‚æžœåœ¨æŸä¸ªæ—¶é—´é—´éš”åŽæ²¡æœ‰æ•°æ®åœ¨ä»»ä¸€æ–¹å‘ä¼ è¾“ï¼Œ
+è¿™äº›é˜²ç«å¢™å°†å‡å®šè¿žæŽ¥å·²å¤±æ•ˆã€‚
+å¦‚æžœä¸€æ®µæ—¶é—´å†…ä¼šè¯ä¸­æ²¡æœ‰ä»»ä½•æµé‡ï¼Œ
+è¿™å¯èƒ½ä¼šå¯¼è‡´ PuTTY ä¼šè¯è¢«é˜²ç«å¢™æ„å¤–å…³é—­ã€‚
+
+keepalive é€‰é¡¹ï¼ˆ\q{Keepalives ä¹‹é—´çš„ç§’æ•°}ï¼‰
+å…è®¸æ‚¨å°† PuTTY é…ç½®ä¸ºå®šæœŸé€šè¿‡ä¼šè¯å‘é€æ•°æ®ï¼Œ
+è¿™ç§æ–¹å¼ä¸ä¼šä¸­æ–­å®žé™…çš„ç»ˆç«¯ä¼šè¯ã€‚
+å¦‚æžœæ‚¨å‘çŽ°æ‚¨çš„é˜²ç«å¢™æ­£åœ¨åˆ‡æ–­\i{ç©ºé—²è¿žæŽ¥}ï¼Œ
+æ‚¨å¯ä»¥å°è¯•åœ¨æ­¤å­—æ®µä¸­è¾“å…¥ä¸€ä¸ªéžé›¶å€¼ã€‚
+è¯¥å€¼ä»¥ç§’ä¸ºå•ä½ï¼›å› æ­¤ï¼Œä¾‹å¦‚ï¼Œ
+å¦‚æžœæ‚¨çš„é˜²ç«å¢™åœ¨ååˆ†é’ŸåŽåˆ‡æ–­è¿žæŽ¥ï¼Œé‚£
+ä¹ˆæ‚¨å¯èƒ½éœ€è¦åœ¨æ¡†ä¸­è¾“å…¥ 300 ç§’ï¼ˆ5 åˆ†é’Ÿï¼‰ã€‚
+
+è¯·æ³¨æ„ï¼Œkeepalives å¹¶ä¸æ€»æ˜¯æœ‰ç”¨çš„ã€‚
+å¦‚æžœæ‚¨æœ‰é˜²ç«å¢™åœ¨ç©ºé—²æœŸåŽæ–­å¼€è¿žæŽ¥ï¼Œ
+å®ƒä»¬ä¼šæœ‰æ‰€å¸®åŠ©ï¼›ä½†æ˜¯å¦‚æžœä½ å’ŒæœåŠ¡å™¨ä¹‹é—´çš„\i{ç½‘ç»œè¿žæŽ¥ä¸­æ–­}ï¼Œ
+é‚£ä¹ˆkeepaliveså®žé™…ä¸Šä¼šè®©äº‹æƒ…å˜å¾—æ›´ç³Ÿã€‚
+å¦‚æžœä¼šè¯å¤„äºŽç©ºé—²çŠ¶æ€ï¼Œ
+å¹¶ä¸”ç«¯ç‚¹ä¹‹é—´çš„è¿žæŽ¥æš‚æ—¶ä¸¢å¤±ï¼Œ
+ä½†åœ¨ä»»ä½•ä¸€æ–¹å°è¯•å‘é€ä»»ä½•å†…å®¹ä¹‹å‰æ¢å¤äº†è¿žæŽ¥ï¼Œ
+é‚£ä¹ˆå°±ä¸ä¼šæœ‰é—®é¢˜ - ä¸¤ä¸ªç«¯ç‚¹éƒ½ä¸ä¼šæ³¨æ„åˆ°ä»»ä½•é”™è¯¯ã€‚ä½†æ˜¯ï¼Œ
+å¦‚æžœä¸€æ–¹åœ¨ä¸­æ–­æœŸé—´ç¡®å®žå‘é€äº†ä¸€äº›ä¸œè¥¿ï¼Œ
+å®ƒä¼šåå¤å°è¯•é‡æ–°å‘é€ï¼Œ
+æœ€ç»ˆæ”¾å¼ƒå¹¶æ”¾å¼ƒè¿žæŽ¥ã€‚
+ç„¶åŽå½“è¿žæŽ¥æ¢å¤æ—¶ï¼Œ
+å¯¹æ–¹ä¼šå‘çŽ°ç¬¬ä¸€æ–¹ä¸å†ç›¸ä¿¡æœ‰æ‰“å¼€çš„è¿žæŽ¥ã€‚
+Keepalive ä¼šä½¿æ­¤ç±»é—®é¢˜å˜å¾—æ›´ç³Ÿï¼Œ
+å› ä¸ºå®ƒä»¬ä¼šå¢žåŠ  PuTTY åœ¨è¿žæŽ¥ä¸­æ–­æœŸé—´å°è¯•å‘é€æ•°æ®çš„å¯èƒ½æ€§ã€‚
+ï¼ˆå…¶ä»–ç±»åž‹çš„å‘¨æœŸæ€§ç½‘ç»œæ´»åŠ¨å¯èƒ½ä¼šå¯¼è‡´è¿™ç§è¡Œä¸ºï¼›ç‰¹åˆ«æ˜¯ SSH-2 é‡æ–°ç”Ÿæˆå¯†é’¥å¯èƒ½ä¼šäº§ç”Ÿè¿™ç§å½±å“ã€‚
+è¯·å‚é˜…\k{config-ssh-kex-rekey}ã€‚)
+
+å› æ­¤ï¼Œæ‚¨å¯èƒ½ä¼šå‘çŽ°ä¿æŒè¿žæŽ¥æœ‰åŠ©äºŽè¿žæŽ¥ä¸¢å¤±ï¼Œ
+æˆ–è€…æ‚¨å¯èƒ½ä¼šå‘çŽ°å®ƒä»¬ä½¿æƒ…å†µå˜å¾—æ›´ç³Ÿï¼Œ
+è¿™å–å†³äºŽæ‚¨å’ŒæœåŠ¡å™¨ä¹‹
+é—´å­˜åœ¨\e{ä»€ä¹ˆç±»åž‹}çš„ç½‘ç»œé—®é¢˜ã€‚
+
+åªæœ‰ Telnet å’Œ SSH æ”¯æŒ Keepaliveï¼›
+Rloginã€SUPDUP å’Œ Raw åè®®æ²¡æœ‰æä¾›å®žçŽ°å®ƒä»¬çš„æ–¹æ³•ã€‚
+ï¼ˆä½œä¸ºæ›¿ä»£æ–¹æ¡ˆï¼Œè¯·å‚é˜… \k{config-tcp-keepalives}ã€‚)
+
+è¯·æ³¨æ„ï¼Œå¦‚æžœæ‚¨ä½¿ç”¨çš„æ˜¯ SSH-1 å¹¶ä¸”æœåŠ¡å™¨æœ‰ä¸€ä¸ªé”™è¯¯ï¼Œ
+å¯¼è‡´å®ƒæ— æ³•å¤„ç† SSH-1 å¿½ç•¥æ¶ˆæ¯(è¯·å‚é˜… \k{config-ssh-bug-ignore1})ï¼Œ
+å¯ç”¨keepalivesä¸ä¼šæœ‰ä»»ä½•æ•ˆæžœã€‚
+
+\S{config-nodelay} \q{ç¦ç”¨ \i{Nagle ç®—æ³•}}
+
+Nagle ç®—æ³•æ˜¯ TCP/IP å®žçŽ°çš„ä¸€ä¸ªç»†èŠ‚ï¼Œ
+å®ƒè¯•å›¾æœ€å°åŒ–é€šè¿‡ç½‘ç»œè¿žæŽ¥å‘é€çš„å°æ•°æ®åŒ…çš„æ•°é‡ã€‚
+å¯ç”¨ Nagle ç®—æ³•åŽï¼ŒPuTTY çš„\i{å¸¦å®½}
+ä½¿ç”¨æ•ˆçŽ‡ä¼šç¨é«˜ä¸€äº›ï¼›
+ ç¦ç”¨å®ƒåŽï¼Œæ‚¨å¯èƒ½ä¼šå‘çŽ°åœ¨è¿žæŽ¥åˆ°æŸäº›ç±»åž‹çš„æœåŠ¡
+ å™¨æ—¶å¯¹å‡»é”®çš„å“åº”é€Ÿåº¦æ›´å¿«ã€‚
+
+\i{äº¤äº’å¼è¿žæŽ¥}é»˜è®¤ç¦ç”¨ Nagle ç®—æ³•ã€‚
+
+\S{config-tcp-keepalives} \q{å¯ç”¨ \i{TCP keepalives}}
+
+\e{æ³¨æ„ï¼š}ä¸åº”å°† TCP keepalive ä¸Ž
+åº”ç”¨ç¨‹åºçº§ keepalive ç›¸æ··æ·†ï¼Œè¯·å‚é˜… \k{config-keepalive}ã€‚
+å¦‚æžœæœ‰ç–‘é—®ï¼Œæ‚¨å¯èƒ½éœ€è¦åº”ç”¨ç¨‹åºçº§çš„ä¿æ´»ï¼›
+TCP keepalives æ˜¯ä¸ºäº†å®Œæ•´æ€§è€Œæä¾›çš„ã€‚
+
+TCP keepalives çš„æƒ³æ³•ç±»ä¼¼äºŽåº”ç”¨ç¨‹åºçº§çš„ keepalivesï¼Œå¹¶ä¸”é€‚ç”¨ç›¸åŒçš„è­¦å‘Šã€‚
+ä¸»è¦åŒºåˆ«åœ¨äºŽï¼š
+
+\b TCP keepalive å¯ç”¨äºŽ\e{æ‰€æœ‰}ç½‘ç»œè¿žæŽ¥ç±»åž‹ï¼Œ
+åŒ…æ‹¬ Rawã€Rlogin å’Œ SUPDUPã€‚
+
+\b TCP keepalive ä¹‹é—´çš„é—´éš”é€šå¸¸è¦é•¿å¾—å¤šï¼Œ
+é€šå¸¸æ˜¯ä¸¤ä¸ªå°æ—¶ï¼› è¿™æ˜¯ç”±æ“ä½œç³»ç»Ÿè®¾ç½®çš„ï¼Œ
+ä¸èƒ½åœ¨ PuTTY ä¸­é…ç½®ã€‚
+
+\b å¦‚æžœæ“ä½œç³»ç»Ÿæ²¡æœ‰æ”¶åˆ°å¯¹keepaliveçš„å“åº”ï¼Œ
+å®ƒå¯èƒ½ä¼šå¿«é€Ÿè¿žç»­å‘é€æ›´å¤šä¿¡æ¯ï¼Œ
+å¦‚æžœæ²¡æœ‰æ”¶åˆ°å“åº”åˆ™ç»ˆæ­¢è¿žæŽ¥ã€‚
+
+TCP keepalives å¯¹äºŽç¡®ä¿ç»ˆæ­¢\i{åŠå¼€æ”¾å¼è¿žæŽ¥}
+å¯èƒ½æ¯”ä¿æŒè¿žæŽ¥æ´»åŠ¨æ›´æœ‰ç”¨ã€‚
+
+é»˜è®¤æƒ…å†µä¸‹ç¦ç”¨TCP keepalives ã€‚
+
+\S{config-address-family} \q{\i{ç½‘ç»œåè®®ç‰ˆæœ¬}}
+
+æ­¤é€‰é¡¹å…è®¸ç”¨æˆ·åœ¨æ–°æ—§ Internet åè®®å’Œå¯»å€
+æ–¹æ¡ˆï¼ˆ\i{IPv4} å’Œ \i{IPv6}ï¼‰ä¹‹é—´è¿›è¡Œé€‰æ‹©ã€‚
+æ‰€é€‰åè®®å°†ç”¨äºŽå¤§å¤šæ•°ä¼ å‡ºç½‘ç»œ
+è¿žæŽ¥ï¼ˆåŒ…æ‹¬ä¸Žä»£ç†çš„è¿žæŽ¥ï¼‰ï¼›ç„¶è€Œï¼Œ
+éš§é“æœ‰è‡ªå·±çš„é…ç½®ï¼Œ
+è¯·å‚é˜… \k{config-ssh-portfwd-address-family}ã€‚
+
+é»˜è®¤è®¾ç½®ä¸º\q{è‡ªåŠ¨}ï¼Œè¿™æ„å‘³ç€ PuTTY ä¼šåšä¸€äº›
+æ˜Žæ™ºçš„äº‹æƒ…å¹¶å°è¯•çŒœæµ‹æ‚¨æƒ³è¦çš„åè®®ã€‚
+ï¼ˆå¦‚æžœæ‚¨æŒ‡å®šæ–‡å­— \i{Internet åœ°å€}ï¼Œå®ƒå°†ä½¿ç”¨è¯¥åœ°å€
+æ‰€æš—ç¤ºçš„ä»»ä½•åè®®ã€‚å¦‚æžœæ‚¨æä¾›\i{ä¸»æœºå}ï¼Œ
+å®ƒå°†æŸ¥çœ‹è¯¥ä¸»æœºåå­˜åœ¨å“ªäº›ç±»åž‹çš„åœ°å€ï¼›
+å¦‚æžœæœ‰å¯ç”¨çš„ IPv6 åœ°å€ï¼Œå®ƒå°†ä½¿ç”¨ IPv6ï¼Œç„¶åŽ å¦‚æžœæ²¡æœ‰ï¼Œåˆ™è¿”å›ž IPv4ã€‚ï¼‰
+
+å¦‚æžœæ‚¨éœ€è¦å¼ºåˆ¶ PuTTY ä½¿ç”¨ç‰¹å®šåè®®ï¼Œæ‚¨å¯ä»¥å°†å…¶
+æ˜¾å¼è®¾ç½®ä¸º\q{IPv4}æˆ–\q{IPv6}ã€‚
+
+\S{config-loghost} \I{logical host name}\q{è¿œç¨‹ä¸»æœºçš„æ³¨å†Œå}
+
+è¿™ä½¿æ‚¨å¯ä»¥å‘Šè¯‰ PuTTY å®ƒæœ€
+ç»ˆè¿žæŽ¥çš„ä¸»æœºä¸Žå®ƒ
+è®¤ä¸ºæ­£åœ¨å»ºç«‹ç½‘ç»œè¿žæŽ¥çš„ä¸»æœºä¸åŒã€‚
+
+ä¾‹å¦‚ï¼Œå¦‚æžœæ‚¨åœ¨ä¸€ä¸ª PuTTY ä¼šè¯ä¸­è®¾ç½®äº† SSH ç«¯å£è½¬å‘ï¼Œ
+ä»¥ä¾¿å°†ä¸ŽæŸä¸ªä»»æ„ç«¯å£ï¼ˆä¾‹å¦‚ \cw{localhost} ç«¯å£ 10022ï¼‰
+çš„è¿žæŽ¥è½¬å‘åˆ°å¦ä¸€å°æœºå™¨çš„ SSH ç«¯å£ï¼ˆä¾‹å¦‚ \cw{foovax} ç«¯å£ 22ï¼‰ï¼Œ
+æ‚¨å¯èƒ½ä¼šä½¿ç”¨å®ƒï¼Œ
+ç„¶åŽå¼€å§‹è¿žæŽ¥åˆ°è½¬å‘ç«¯å£çš„ç¬¬äºŒä¸ª PuTTYã€‚
+
+åœ¨æ­£å¸¸ä½¿ç”¨ä¸­ï¼Œç¬¬äºŒä¸ª PuTTY å°†è®¿é—®å®ƒå®žé™…
+è¿žæŽ¥çš„ä¸»æœºåå’Œç«¯å£ï¼ˆå³æœ¬ä¾‹ä¸­çš„ \cw{localhost} ç«¯å£ 10022ï¼‰ä¸‹
+çš„\i{ä¸»æœºå¯†é’¥ç¼“å­˜}ã€‚ä½†æ˜¯ï¼Œä½¿ç”¨é€»è¾‘ä¸»æœºåé€‰é¡¹ï¼Œ
+\e{æ‚¨}å¯ä»¥é…ç½®ç¬¬äºŒä¸ª PuTTY ä»¥å°†ä¸»æœºå¯†é’¥ç¼“å­˜åœ¨æ‚¨
+çŸ¥é“å®ƒæœ€ç»ˆä¼šä¸Žä¹‹äº¤è°ˆçš„ä¸»
+æœºåä¸‹ï¼ˆæ­¤å¤„ä¸º \c{foovax}ï¼‰ã€‚
+
+å¦‚æžœæ‚¨å¸Œæœ›é€šè¿‡è®¸å¤šä¸åŒçš„æ¸ é“è¿žæŽ¥åˆ°åŒä¸€å°å®žé™…æœåŠ¡
+å™¨ï¼ˆå¯èƒ½æ˜¯å› ä¸ºæ‚¨çš„ç«¯å£è½¬å‘å®‰æŽ’ä¸æ–­å˜åŒ–ï¼‰ï¼Œ
+è¿™å¯èƒ½å¾ˆæœ‰ç”¨ï¼šé€šè¿‡å§‹ç»ˆå¦‚ä¸€åœ°è®¾ç½®é€»è¾‘ä¸»æœºåï¼Œ
+æ‚¨å¯ä»¥å®‰æŽ’ PuTTY ä¸ä¼šä¸€ç›´è¦æ±‚æ‚¨é‡æ–°ç¡®è®¤å®ƒä¸»æœºå¯†é’¥ã€‚
+ç›¸åï¼Œå¦‚æžœæ‚¨å¸Œæœ›ä½¿ç”¨ç›¸åŒçš„æœ¬åœ°ç«¯å£å·
+å°†ç«¯å£è½¬å‘åˆ°è®¸å¤šä¸åŒçš„æœåŠ¡å™¨ï¼Œ
+æ‚¨å¯èƒ½ä¸å¸Œæœ›ä»»ä½•ç‰¹å®šæœåŠ¡å™¨çš„ä¸»æœºå¯†
+é’¥ç¼“å­˜åœ¨è¯¥æœ¬åœ°ç«¯å£å·ä¸‹ã€‚ ï¼ˆå¯¹äºŽåŽä¸€ç§æƒ…å†µï¼Œ
+æ‚¨å¯ä»¥æ”¹ä¸ºåœ¨ç›¸å…³
+ä¼šè¯ä¸­æ˜¾å¼é…ç½®ä¸»æœºå¯†é’¥ï¼›è¯·å‚é˜… \k{config-ssh-kex-manual-hostkeys}ã€‚)
+
+å¦‚æžœæ‚¨åªæ˜¯ä¸ºæ­¤é€‰é¡¹è¾“å…¥ä¸€ä¸ªä¸»æœºåï¼Œ
+PuTTY å°†åœ¨è¯¥ä¸»æœºçš„é»˜è®¤ SSH ç«¯å£ä¸‹ç¼“å­˜ SSH ä¸»æœºå¯†é’¥ï¼Œ
+è€Œä¸ç®¡æ‚¨çœŸæ­£è¿žæŽ¥åˆ°çš„ç«¯å£æ˜¯ä»€ä¹ˆï¼ˆå› ä¸ºå…¸åž‹çš„åœºæ™¯ç±»ä¼¼äºŽä¸Šé¢çš„
+ç¤ºä¾‹ï¼šæ‚¨è¿žæŽ¥åˆ°ä¸€ä¸ªæ„šè ¢çš„çœŸå®žç«¯å£å·ï¼Œæ‚¨çš„è¿žæŽ¥æœ€ç»ˆ
+è¢«è½¬å‘åˆ°å…¶ä»–æœºå™¨çš„æ™®é€šç«¯å£ 22 SSH æœåŠ¡å™¨ï¼‰ã€‚
+è¦è¦†ç›–å®ƒï¼Œæ‚¨å¯ä»¥å°†ç«¯å£å·é™„åŠ åˆ°é€»è¾‘ä¸»æœºåï¼Œ
+ç”¨å†’å·åˆ†éš”ã€‚ä¾‹å¦‚ã€‚è¾“å…¥\cq{foovax:2200}ä½œä¸ºé€»è¾‘
+ä¸»æœºåå°†å¯¼è‡´ä¸»æœºå¯†é’¥è¢«ç¼“å­˜ï¼Œ
+å°±å¥½åƒæ‚¨å·²è¿žæŽ¥åˆ° \c{foovax} çš„ç«¯å£ 2200ã€‚
+
+å¦‚æžœæ‚¨ä½¿ç”¨æ­¤é€‰é¡¹æä¾›ä¸»æœºåï¼Œ
+å®ƒè¿˜ä¼šæ˜¾ç¤ºåœ¨åŒ…å«è¿œç¨‹ä¸»æœºåçš„å…¶ä»–ä½ç½®ï¼Œ
+ä¾‹å¦‚é»˜è®¤çª—å£æ ‡é¢˜å’Œé»˜è®¤ SSH
+å¯†ç æç¤ºã€‚
+è¿™åæ˜ äº†è¿™æ˜¯æ‚¨\e{çœŸæ­£}è¿žæŽ¥åˆ°çš„ä¸»æœºè¿™ä¸€äº‹å®žï¼Œ
+è¿™æ¯”æ‚¨ç¢°å·§ç”¨æ¥è”ç³»è¯¥ä¸»æœºçš„æ–¹å¼æ›´é‡è¦ã€‚
+ï¼ˆå³ä½¿æ‚¨ä½¿ç”¨çš„æ˜¯ SSH ä»¥å¤–çš„åè®®ï¼Œè¿™ä¹Ÿé€‚ç”¨ã€‚ï¼‰
+
+\H{config-data} æ•°æ®é¢æ¿
+
+æ•°æ®é¢æ¿å…è®¸æ‚¨é…ç½®å¯ä»¥å‘é€
+åˆ°æœåŠ¡å™¨ä»¥å½±å“è¿œç«¯è¿žæŽ¥çš„å„ç§æ•°æ®ã€‚
+
+æ­¤é¢æ¿ä¸Šçš„æ¯ä¸ªé€‰é¡¹éƒ½é€‚ç”¨äºŽå¤šä¸ªåè®®ã€‚
+ ä»…é€‚ç”¨äºŽä¸€ç§åè®®çš„é€‰é¡¹å‡º
+ çŽ°åœ¨è¯¥åè®®çš„é…ç½®é¢æ¿ä¸Šã€‚
+
+\S{config-username} \q{\ii{è‡ªåŠ¨ç™»å½•ç”¨æˆ·å}}
+
+æ‰€æœ‰ä¸‰ç§ SSHã€Telnet å’Œ Rlogin åè®®
+éƒ½å…è®¸æ‚¨æŒ‡å®šè¦ç™»å½•çš„ç”¨æˆ·åï¼Œ
+è€Œæ— éœ€æ¯æ¬¡éƒ½æ˜Žç¡®é”®å…¥ã€‚ ï¼ˆæŸäº› Telnet æœåŠ¡å™¨ä¸æ”¯æŒæ­¤åŠŸèƒ½ã€‚ï¼‰
+
+åœ¨æ­¤æ¡†ä¸­ï¼Œæ‚¨å¯ä»¥é”®å…¥è¯¥ç”¨æˆ·åã€‚
+
+\S{config-username-from-env} ç³»ç»Ÿç”¨æˆ·åçš„ä½¿ç”¨
+
+å½“ä¸Šä¸€ä¸ªæ¡† (\k{config-username})ç•™ç©ºï¼Œ
+é»˜è®¤æƒ…å†µä¸‹ï¼ŒPuTTY å°†åœ¨æ‚¨å»ºç«‹è¿žæŽ¥æ—¶æç¤ºè¾“å…¥ç”¨æˆ·åã€‚
+
+åœ¨æŸäº›çŽ¯å¢ƒä¸­ï¼Œä¾‹å¦‚å®žçŽ°\i{å•ä¸€ç™»å½•}çš„å¤§åž‹ç»„ç»‡çš„ç½‘ç»œï¼Œ
+æ›´æ˜Žæ™ºçš„é»˜è®¤è®¾ç½®å¯èƒ½æ˜¯ä½¿ç”¨ç™»å½•åˆ°æœ¬åœ°æ“ä½œç³»ç»Ÿçš„
+ç”¨æˆ·åï¼ˆå¦‚æžœæœ‰ï¼‰ï¼›è¿™å¯¹äºŽ\i{GSSAPI} å¯†é’¥äº¤æ¢
+å’Œç”¨æˆ·èº«ä»½éªŒè¯ç‰¹åˆ«æœ‰ç”¨
+(è¯·å‚é˜… \k{config-ssh-auth-gssapi}
+å’Œ \k{config-ssh-gssapi-kex})ã€‚
+æ­¤è®¾ç½®å…è®¸æ‚¨æ›´æ”¹é»˜è®¤è¡Œä¸ºã€‚
+
+ä¸ºæ–¹ä¾¿èµ·è§ï¼Œå½“å‰ç³»ç»Ÿç”¨æˆ·åæ˜¾ç¤ºåœ¨å¯¹è¯æ¡†ä¸­ã€‚
+ä¸ä¿å­˜åœ¨é…ç½®ä¸­ï¼› å¦‚æžœä¿å­˜çš„ä¼š
+è¯ç¨åŽè¢«å…¶ä»–ç”¨æˆ·ä½¿ç”¨ï¼Œåˆ™å°†ä½¿ç”¨è¯¥ç”¨æˆ·çš„åç§°
+
+\S{config-termtype} \q{\ii{ç»ˆç«¯ç±»åž‹}å­—ç¬¦ä¸²}
+
+æ‚¨å¯èƒ½ä½¿ç”¨ PuTTY è¿žæŽ¥çš„å¤§å¤šæ•°æœåŠ¡å™¨éƒ½è®¾
+è®¡ä¸ºä»Žè®¸å¤šä¸åŒç±»åž‹çš„ç»ˆç«¯è¿žæŽ¥ã€‚
+ä¸ºäº†å‘æ¯ä¸€ä¸ªå‘é€æ­£ç¡®çš„\i{æŽ§åˆ¶åºåˆ—}ï¼Œ
+æœåŠ¡å™¨éœ€è¦çŸ¥é“å®ƒæ­£åœ¨å¤„ç†ä»€ä¹ˆç±»åž‹çš„ç»ˆç«¯ã€‚
+å› æ­¤ï¼ŒSSHã€Telnet å’Œ Rlogin åè®®ä¸­çš„æ¯ä¸€ä¸ªéƒ½å…è®¸åœ¨æè¿°ç»ˆ
+ç«¯çš„è¿žæŽ¥ä¸‹å‘é€ä¸€ä¸ªæ–‡æœ¬å­—ç¬¦ä¸²ã€‚
+åœ¨ \i{Unix} æœåŠ¡å™¨ä¸Šï¼Œ
+è¿™ä¼šä»Ž i\c{termcap} æˆ– \i\c{terminfo} æ•°æ®åº“ä¸­é€‰æ‹©ä¸€ä¸ªæ¡ç›®ï¼Œ
+å‘Šè¯‰åº”ç”¨ç¨‹åºå°†å“ªäº›æŽ§åˆ¶åºåˆ—å‘é€åˆ°ç»ˆç«¯ï¼Œ
+ä»¥åŠæœŸæœ›\i{é”®ç›˜}ç”Ÿæˆå“ªäº›å­—ç¬¦åºåˆ—ã€‚
+
+PuTTY å°è¯•æ¨¡æ‹Ÿ Unix \i\c{xterm} ç¨‹åºï¼Œ
+é»˜è®¤æƒ…å†µä¸‹å®ƒé€šè¿‡å°† \c{xterm} ä½œä¸ºç»ˆç«¯ç±»åž‹
+å­—ç¬¦ä¸²å‘é€æ¥åæ˜ è¿™ä¸€ç‚¹ã€‚
+å¦‚æžœä½ å‘çŽ°è¿™ä¸æ˜¯ä½ æƒ³è¦çš„â€”â€”ä¹Ÿè®¸è¿œç¨‹ç³»ç»ŸæŠ¥
+å‘Š\q{æœªçŸ¥ç»ˆç«¯ç±»åž‹}â€”â€”ä½ å¯ä»¥å°è¯•å°†å®ƒè®¾ç½®ä¸ºä¸åŒçš„ä¸œè¥¿ï¼Œä¾‹å¦‚ \i\c{vt220}ã€‚
+
+å¦‚æžœæ‚¨ä¸ç¡®å®šé—®é¢˜æ˜¯å¦æ˜¯
+ç”±ç»ˆç«¯ç±»åž‹è®¾ç½®å¼•èµ·çš„ï¼Œ
+æ‚¨å¯èƒ½éœ€è¦æŸ¥é˜…æ‚¨çš„åº”ç”¨ç¨‹åºæˆ–æœåŠ¡å™¨çš„æ‰‹å†Œã€‚
+
+\S{config-termspeed} \q{\ii{ç»ˆç«¯é€Ÿåº¦}}
+
+Telnetã€Rlogin å’Œ SSH åè®®å…è®¸å®¢æˆ·
+ç«¯æŒ‡å®šæœåŠ¡å™¨çš„ç»ˆç«¯é€Ÿåº¦ã€‚
+
+è¯¥å‚æ•°\e{ä¸}å½±å“è¿žæŽ¥çš„å®žé™…é€Ÿåº¦ï¼Œ
+å§‹ç»ˆ\q{å°½å¯èƒ½å¿«}ï¼› è¿™åªæ˜¯æœåŠ¡å™¨
+è½¯ä»¶æœ‰æ—¶ç”¨æ¥ä¿®æ”¹å…¶è¡Œä¸ºçš„æç¤ºã€‚
+ä¾‹å¦‚ï¼Œå¦‚æžœæŒ‡ç¤ºé€Ÿåº¦è¾ƒæ…¢ï¼Œåˆ™æœåŠ¡å™¨
+å¯èƒ½ä¼šåˆ‡æ¢åˆ°\i{å¸¦å®½}æ¶ˆè€—è¾ƒå°‘çš„æ˜¾ç¤ºæ¨¡å¼ã€‚
+
+è¯¥å€¼åœ¨ç½‘ç»œçŽ¯å¢ƒä¸­é€šå¸¸æ²¡æœ‰æ„ä¹‰ï¼Œ
+ä½† PuTTY å…è®¸æ‚¨å¯¹å…¶è¿›è¡Œé…ç½®ï¼Œ
+ä»¥é˜²æ‚¨å‘çŽ°æœåŠ¡å™¨å¯¹é»˜è®¤å€¼ååº”ä¸ä½³ã€‚
+
+æ ¼å¼æ˜¯ä¸€å¯¹ç”¨é€—å·åˆ†éš”çš„æ•°å­—ï¼Œ
+ä¾‹å¦‚ \c{38400,38400}ã€‚ ç¬¬ä¸€ä¸ªæ•°å­—è¡¨ç¤ºè¾“å‡ºé€Ÿåº¦ï¼ˆ\e{æ¥è‡ª}æœåŠ¡å™¨ï¼‰ï¼Œ
+ä»¥æ¯”ç‰¹/ç§’ä¸ºå•ä½ï¼Œ
+ç¬¬äºŒä¸ªæ•°å­—æ˜¯è¾“å…¥é€Ÿåº¦ï¼ˆ\e{åˆ°}æœåŠ¡å™¨ï¼‰ã€‚
+ï¼ˆåªæœ‰ç¬¬ä¸€ä¸ªç”¨äºŽ Rlogin åè®®ã€‚ï¼‰
+
+æ­¤é€‰é¡¹å¯¹Rawè¿žæŽ¥æ²¡æœ‰å½±å“ã€‚
+
+\S{config-environ} åœ¨æœåŠ¡å™¨ä¸Šè®¾ç½®\i{çŽ¯å¢ƒå˜é‡}
+
+Telnet åè®®ä¸ºå®¢æˆ·ç«¯æä¾›äº†ä¸€ç§å°†çŽ¯å¢ƒå˜é‡ä¼ é€’ç»™æœåŠ¡å™¨çš„æ–¹æ³•ã€‚
+ç”±äºŽå®‰å…¨æ¼æ´žï¼Œè®¸å¤š Telnet æœåŠ¡å™¨å·²åœæ­¢æ”¯æŒæ­¤åŠŸèƒ½ï¼Œ
+ä½† PuTTY ä»ç„¶æ”¯æŒå®ƒï¼Œ
+ä»¥å¸®åŠ©ä»»ä½•æ‰¾åˆ°å…¶ä»–æ–¹
+æ³•è§£å†³å®‰å…¨é—®é¢˜çš„æœåŠ¡å™¨ï¼Œ
+è€Œä¸ä»…ä»…æ˜¯ç¦ç”¨æ•´ä¸ªæœºåˆ¶ã€‚
+
+SSH åè®®çš„ç¬¬ 2 ç‰ˆä¹Ÿæä¾›äº†ç±»ä¼¼çš„æœºåˆ¶ï¼Œ
+åœ¨æ²¡æœ‰å®‰å…¨æ¼æ´žçš„æƒ…å†µä¸‹æ›´å®¹æ˜“å®žçŽ°ã€‚
+è¾ƒæ—§çš„ \i{SSH-2} æœåŠ¡å™¨æ›´æœ‰å¯èƒ½æ”¯æŒå®ƒã€‚
+
+æ­¤é…ç½®æ•°æ®ä¸ç”¨
+äºŽ SSH-1ã€rlogin æˆ–åŽŸå§‹åè®®ã€‚
+
+è¦å°†çŽ¯å¢ƒå˜é‡æ·»åŠ åˆ°é€šè¿‡è¿žæŽ¥ä¼ è¾“çš„åˆ—è¡¨ä¸­ï¼Œ
+è¯·åœ¨\q{å˜é‡}æ¡†ä¸­è¾“å…¥å˜é‡åç§°ï¼Œ
+åœ¨\q{å€¼}æ¡†ä¸­è¾“å…¥å…¶å€¼ï¼Œç„¶åŽæŒ‰\q{æ·»åŠ }æŒ‰é’®ã€‚
+è¦ä»Žåˆ—è¡¨ä¸­åˆ é™¤ä¸€ä¸ªï¼Œ
+è¯·åœ¨åˆ—è¡¨æ¡†ä¸­é€‰æ‹©å®ƒå¹¶æŒ‰\q{åˆ é™¤}ã€‚
+
+\H{config-proxy} ä»£ç†é¢æ¿
+
+\ii{ä»£ç†}é¢æ¿å…è®¸æ‚¨å°† PuTTY é…ç½®ä¸ºä½¿ç”¨å„ç§ç±»åž‹çš„ä»£
+ç†æ¥å»ºç«‹å…¶ç½‘ç»œè¿žæŽ¥ã€‚ æ­¤é¢æ¿ä¸­çš„è®¾ç½®ä¼šå½±å“
+å½¢æˆ PuTTY ä¼šè¯çš„ä¸»è¦ç½‘ç»œè¿žæŽ¥ï¼Œ
+ä»¥åŠç”±äºŽ SSH \i{ç«¯å£è½¬å‘}è€Œå»ºç«‹çš„ä»»ä½•é¢å¤–è¿žæŽ¥
+(è¯·å‚é˜… \k{using-port-forwarding})ã€‚
+
+è¯·æ³¨æ„ï¼Œä¸ŽæŸäº›è½¯ä»¶ï¼ˆä¾‹å¦‚ Web æµè§ˆå™¨ï¼‰ä¸åŒï¼Œ
+PuTTY ä¸ä¼šå°è¯•è‡ªåŠ¨ç¡®å®šæ˜¯å¦ä½¿ç”¨
+ä»£ç†ä»¥åŠï¼ˆå¦‚æžœæ˜¯ï¼‰å°†å“ªä¸ªä»£ç†ç”¨äºŽç»™å®šç›®æ ‡ã€‚
+å¦‚æžœæ‚¨éœ€è¦ä½¿ç”¨ä»£ç†ï¼Œåˆ™å¿…é¡»å§‹ç»ˆæ˜Žç¡®é…ç½®ã€‚
+
+\S{config-proxy-type} è®¾ç½®ä»£ç†ç±»åž‹
+
+\q{ä»£ç†ç±»åž‹}ä¸‹æ‹‰åˆ—è¡¨å…è®¸æ‚¨é…ç½®å¸Œ
+æœ›PuTTYç”¨äºŽå…¶ç½‘ç»œè¿žæŽ¥çš„ä»£ç†ç±»åž‹ã€‚
+é»˜è®¤è®¾ç½®ä¸º\q{æ— ä»£ç†};åœ¨æ­¤æ¨¡å¼ä¸‹ï¼Œ
+ä¸å¯¹ä»»ä½•è¿žæŽ¥ä½¿ç”¨ä»£ç†ã€‚
+
+\b é€‰æ‹©\I{HTTP proxy}\q{HTTPè¿žæŽ¥}å…è®¸æ‚¨é€š
+è¿‡æ”¯æŒ HTTP è¿žæŽ¥å‘½ä»¤çš„ Web æœåŠ¡å™¨ä»£ç†è¿žæŽ¥ï¼Œ
+å¦‚ \W{https://www.rfc-editor.org/rfc/rfc2817}{RFC 2817} ä¸­æ‰€è¿°ã€‚
+
+\b é€‰æ‹©\q{SOCKS 4}æˆ–\q{SOCKS 5}å…è®¸
+æ‚¨é€šè¿‡ \i{SOCKS æœåŠ¡å™¨}ä»£ç†æ‚¨çš„è¿žæŽ¥ã€‚
+
+\b è®¸å¤šé˜²ç«å¢™å®žçŽ°äº†ä¸€ç§ä¸å¤ªæ­£å¼çš„ä»£ç†ç±»åž‹ï¼Œ
+å…¶ä¸­ç”¨æˆ·å¯ä»¥ç›´æŽ¥ä¸Žé˜²ç«å¢™æœºå™¨å»ºç«‹ Telnet è¿ž
+æŽ¥å¹¶è¾“å…¥è¯¸å¦‚ \c{connect myhost.com 22} ä¹‹
+ç±»çš„å‘½ä»¤ä»¥è¿žæŽ¥åˆ°å¤–éƒ¨ä¸»æœºã€‚
+é€‰æ‹©\I{Telnet proxy}\q{Telnet}å…è®¸æ‚¨å‘Šè¯‰ PuTTY ä½¿ç”¨è¿™ç§ç±»åž‹çš„ä»£ç†ã€‚
+è¯¦ç»†è¯·å‚é˜… \k{config-proxy-command}ã€‚
+
+\b æœ‰å‡ ç§æ–¹æ³•å¯ä»¥å°† SSH æœåŠ¡å™¨ç”¨ä½œä»£ç†ã€‚
+æ‰€æœ‰è¿™äº›éƒ½ä¼šå¯¼è‡´PuTTYä¸Žä»£ç†ä¸»
+æœºï¼ˆåœ¨æ­¤ä¸Šä¸‹æ–‡ä¸­æœ‰æ—¶ç§°ä¸º\q{\i{è·³è½¬ä¸»æœº}}ï¼‰å»ºç«‹è¾…åŠ©SSHè¿žæŽ¥ã€‚
 
 \lcont{
-\q{´úÀíÖ÷»úÃû} ×Ö¶Î½«±»½âÊÍÎª PuTTY ±£´æµÄ»á»°µÄÃû³Æ
-£¨Èç¹û´æÔÚ£©£¬»òÕßÖ÷»úÃû£¨Èç¹û²»´æÔÚ£©¡£
- Èç¹ûÒýÓÃµÄÒÑ±£´æ»á»°±¾ÉíÅäÖÃÎªÊ¹ÓÃ SSH ´úÀí£¬
- ÔòÕâÔÊÐí¶àÌøÌø×ªÂ·¾¶£»
- ËüÔÊÐí½áºÏ SSH ºÍ·Ç SSH ´úÀí¡£
+\q{ä»£ç†ä¸»æœºå} å­—æ®µå°†è¢«è§£é‡Šä¸º PuTTY ä¿å­˜çš„ä¼šè¯çš„åç§°
+ï¼ˆå¦‚æžœå­˜åœ¨ï¼‰ï¼Œæˆ–è€…ä¸»æœºåï¼ˆå¦‚æžœä¸å­˜åœ¨ï¼‰ã€‚
+ å¦‚æžœå¼•ç”¨çš„å·²ä¿å­˜ä¼šè¯æœ¬èº«é…ç½®ä¸ºä½¿ç”¨ SSH ä»£ç†ï¼Œ
+ åˆ™è¿™å…è®¸å¤šè·³è·³è½¬è·¯å¾„ï¼›
+ å®ƒå…è®¸ç»“åˆ SSH å’Œéž SSH ä»£ç†ã€‚
 
-\b \q{SSH´úÀí + ¶Ë¿Ú×ª·¢}»áµ¼ÖÂ PuTTY Ê¹ÓÃ
-¸¨Öú SSH Á¬½Ó´ò¿ªµ½×îÖÕÄ¿±êÖ÷»ú
-µÄ¶Ë¿Ú×ª·¢Í¨µÀ£¨ÀàËÆÓÚ OpenSSH µÄ \cw{-J} Ñ¡Ïî£©¡£
+\b \q{SSHä»£ç† + ç«¯å£è½¬å‘}ä¼šå¯¼è‡´ PuTTY ä½¿ç”¨
+è¾…åŠ© SSH è¿žæŽ¥æ‰“å¼€åˆ°æœ€ç»ˆç›®æ ‡ä¸»æœº
+çš„ç«¯å£è½¬å‘é€šé“ï¼ˆç±»ä¼¼äºŽ OpenSSH çš„ \cw{-J} é€‰é¡¹ï¼‰ã€‚
 
-\b \q{SSH´úÀí + Ö´ÐÐÃüÁî}µ¼ÖÂPuTTYÔÚ
-´úÀíSSH·þÎñÆ÷ÉÏ
-ÔËÐÐÈÎÒâÔ¶³ÌÃüÁî£¬²¢Ê¹ÓÃ¸ÃÃü
-ÁîµÄ±ê×¼ÊäÈëºÍÊä³öÁ÷À´ÔËÐÐÖ÷Á¬½Ó¡£
-Ô¶³ÌÃüÁîÐÐµÄÖ¸¶¨Èç \k{config-proxy-command} ËùÊö¡£
+\b \q{SSHä»£ç† + æ‰§è¡Œå‘½ä»¤}å¯¼è‡´PuTTYåœ¨
+ä»£ç†SSHæœåŠ¡å™¨ä¸Š
+è¿è¡Œä»»æ„è¿œç¨‹å‘½ä»¤ï¼Œå¹¶ä½¿ç”¨è¯¥å‘½
+ä»¤çš„æ ‡å‡†è¾“å…¥å’Œè¾“å‡ºæµæ¥è¿è¡Œä¸»è¿žæŽ¥ã€‚
+è¿œç¨‹å‘½ä»¤è¡Œçš„æŒ‡å®šå¦‚ \k{config-proxy-command} æ‰€è¿°ã€‚
 
-\b ¡°SSH´úÀí + µ÷ÓÃ×ÓÏµÍ³¡±ÊÇÀàËÆµÄ£¬ µ«»áµ¼ÖÂPuTTY
-Æô¶¯SSH\q{\i{×ÓÏµÍ³}}¶ø²»ÊÇÆÕÍ¨µÄÃüÁîÐÐ¡£
-Õâ¶ÔÓÚ×¨ÃÅÉèÖÃµÄ SSH ´úÀí·þÎñÆ÷¿ÉÄÜºÜÓÐÓÃ¡£
+\b â€œSSHä»£ç† + è°ƒç”¨å­ç³»ç»Ÿâ€æ˜¯ç±»ä¼¼çš„ï¼Œ ä½†ä¼šå¯¼è‡´PuTTY
+å¯åŠ¨SSH\q{\i{å­ç³»ç»Ÿ}}è€Œä¸æ˜¯æ™®é€šçš„å‘½ä»¤è¡Œã€‚
+è¿™å¯¹äºŽä¸“é—¨è®¾ç½®çš„ SSH ä»£ç†æœåŠ¡å™¨å¯èƒ½å¾ˆæœ‰ç”¨ã€‚
 }
 
-\b Ñ¡Ôñ\I{Local proxy}\q{±¾µØ}ÔÊÐíÄúÔÚ
-±¾µØ¼ÆËã»úÉÏÖ¸¶¨ÈÎÒâÃüÁîÒÔ³äµ±´úÀí¡£
-µ±»á»°Æô¶¯Ê±£¬PuTTY ²»»á´´½¨ TCP Á¬½Ó£¬
-¶øÊÇÔËÐÐÃüÁî (Çë²ÎÔÄ \k{config-proxy-command})²¢
-Ê¹ÓÃÆä±ê×¼ÊäÈëºÍÊä³öÁ÷¡£
+\b é€‰æ‹©\I{Local proxy}\q{æœ¬åœ°}å…è®¸æ‚¨åœ¨
+æœ¬åœ°è®¡ç®—æœºä¸ŠæŒ‡å®šä»»æ„å‘½ä»¤ä»¥å……å½“ä»£ç†ã€‚
+å½“ä¼šè¯å¯åŠ¨æ—¶ï¼ŒPuTTY ä¸ä¼šåˆ›å»º TCP è¿žæŽ¥ï¼Œ
+è€Œæ˜¯è¿è¡Œå‘½ä»¤ (è¯·å‚é˜… \k{config-proxy-command})å¹¶
+ä½¿ç”¨å…¶æ ‡å‡†è¾“å…¥å’Œè¾“å‡ºæµã€‚
 
 \lcont{
-ÀýÈç£¬Õâ¿ÉÒÔÓÃÓÚÓë PuTTY ±¾Éí²»Ö§³ÖµÄ
-Ä³ÖÖÍøÂç´úÀí½øÐÐÍ¨ÐÅ£» »òÕßÄú¿ÉÒÔ
-ÍêÈ«Í¨¹ý TCP/IP ÒÔÍâµÄ·½Ê½½¨Á¢Á¬½Ó¡£
+ä¾‹å¦‚ï¼Œè¿™å¯ä»¥ç”¨äºŽä¸Ž PuTTY æœ¬èº«ä¸æ”¯æŒçš„
+æŸç§ç½‘ç»œä»£ç†è¿›è¡Œé€šä¿¡ï¼› æˆ–è€…æ‚¨å¯ä»¥
+å®Œå…¨é€šè¿‡ TCP/IP ä»¥å¤–çš„æ–¹å¼å»ºç«‹è¿žæŽ¥ã€‚
 
-ÄúÒ²¿ÉÒÔÔÚÃüÁîÐÐÆôÓÃ´ËÄ£Ê½£»
-Çë²ÎÔÄ \k{using-cmdline-proxycmd}¡£
+æ‚¨ä¹Ÿå¯ä»¥åœ¨å‘½ä»¤è¡Œå¯ç”¨æ­¤æ¨¡å¼ï¼›
+è¯·å‚é˜… \k{using-cmdline-proxycmd}ã€‚
 }
 
-\S{config-proxy-exclude} ´Ó´úÀíÖÐÅÅ³ý²¿·ÖÍøÂç
+\S{config-proxy-exclude} ä»Žä»£ç†ä¸­æŽ’é™¤éƒ¨åˆ†ç½‘ç»œ
 
-Í¨³££¬ÄúÖ»ÐèÒªÊ¹ÓÃ´úÀíÁ¬½Óµ½
-ÍøÂçµÄ·Ç±¾µØ²¿·Ö£» ÀýÈç£¬
-¹«Ë¾ÄÚ²¿ÍøÂçÍâ²¿µÄÁ¬½Ó¿ÉÄÜÐèÒªÄúµÄ´úÀí¡£
-ÔÚ\q{ÅÅ³ýÖ÷»ú/IP}¿òÖÐ£¬
-Äú¿ÉÒÔÊäÈë IP µØÖ··¶Î§»ò DNS Ãû³Æ·¶Î§£¬PuTTY
-½«±ÜÃâÊ¹ÓÃ´úÀí²¢¸ÄÎªÖ±½ÓÁ¬½Ó¡£
+é€šå¸¸ï¼Œæ‚¨åªéœ€è¦ä½¿ç”¨ä»£ç†è¿žæŽ¥åˆ°
+ç½‘ç»œçš„éžæœ¬åœ°éƒ¨åˆ†ï¼› ä¾‹å¦‚ï¼Œ
+å…¬å¸å†…éƒ¨ç½‘ç»œå¤–éƒ¨çš„è¿žæŽ¥å¯èƒ½éœ€è¦æ‚¨çš„ä»£ç†ã€‚
+åœ¨\q{æŽ’é™¤ä¸»æœº/IP}æ¡†ä¸­ï¼Œ
+æ‚¨å¯ä»¥è¾“å…¥ IP åœ°å€èŒƒå›´æˆ– DNS åç§°èŒƒå›´ï¼ŒPuTTY
+å°†é¿å…ä½¿ç”¨ä»£ç†å¹¶æ”¹ä¸ºç›´æŽ¥è¿žæŽ¥ã€‚
 
-\q{ÅÅ³ýÖ÷»ú/IP}¿ò¿ÉÄÜ°üº¬¶à¸öÅÅ³ý·¶Î§£¬
-ÒÔ¶ººÅ·Ö¸ô¡£ Ã¿¸ö·¶Î§¿ÉÒÔÊÇ IP µØÖ·
-»ò DNS Ãû³Æ£¬ÆäÖÐ \c{*} ×Ö·ûÔÊÐíÊ¹ÓÃÍ¨Åä·û¡£ ÀýÈç£º
+\q{æŽ’é™¤ä¸»æœº/IP}æ¡†å¯èƒ½åŒ…å«å¤šä¸ªæŽ’é™¤èŒƒå›´ï¼Œ
+ä»¥é€—å·åˆ†éš”ã€‚ æ¯ä¸ªèŒƒå›´å¯ä»¥æ˜¯ IP åœ°å€
+æˆ– DNS åç§°ï¼Œå…¶ä¸­ \c{*} å­—ç¬¦å…è®¸ä½¿ç”¨é€šé…ç¬¦ã€‚ ä¾‹å¦‚ï¼š
 
 \c *.example.com
 
-Õâ»á½«Ãû³ÆÒÔ \c{.example.com}
-½áÎ²µÄÈÎºÎÖ÷»úÅÅ³ýÔÚ´úÀíÖ®Íâ¡£
+è¿™ä¼šå°†åç§°ä»¥ \c{.example.com}
+ç»“å°¾çš„ä»»ä½•ä¸»æœºæŽ’é™¤åœ¨ä»£ç†ä¹‹å¤–ã€‚
 
 \c 192.168.88.*
 
-Õâ»á½« IP µØÖ·ÒÔ 192.168.88 ¿ª
-Í·µÄÈÎºÎÖ÷»úÅÅ³ýÔÚ´úÀíÖ®Íâ
+è¿™ä¼šå°† IP åœ°å€ä»¥ 192.168.88 å¼€
+å¤´çš„ä»»ä½•ä¸»æœºæŽ’é™¤åœ¨ä»£ç†ä¹‹å¤–
 
 \c 192.168.88.*,*.example.com
 
-ÕâÒ»´ÎÅÅ³ýÁËÉÏÊöÁ½¸ö·¶Î§¡£
+è¿™ä¸€æ¬¡æŽ’é™¤äº†ä¸Šè¿°ä¸¤ä¸ªèŒƒå›´ã€‚
 
-µ½±¾µØÖ÷»ú£¨Ö÷»úÃû \i\c{localhost} ºÍÈÎºÎ\i{»·»ØIPµØÖ·}£©
-µÄÁ¬½ÓÓÀÔ¶²»»á±»´úÀí£¬¼´Ê¹´úÀíÅÅ³ýÁÐ±íÃ»ÓÐÃ÷È·°üº¬ËüÃÇ¡£
-ÕâÖÖÐÐÎª²»Ì«¿ÉÄÜµ¼ÖÂÎÊÌâ£¬
-µ«Èç¹ûÈ·ÊµÈç´Ë£¬
-Äú¿ÉÒÔÍ¨¹ýÆôÓÃ\q{¿¼ÂÇ´úÀí±¾µØÖ÷»úÁ¬½Ó}À´¸ü¸ÄËü¡£
+åˆ°æœ¬åœ°ä¸»æœºï¼ˆä¸»æœºå \i\c{localhost} å’Œä»»ä½•\i{çŽ¯å›žIPåœ°å€}ï¼‰
+çš„è¿žæŽ¥æ°¸è¿œä¸ä¼šè¢«ä»£ç†ï¼Œå³ä½¿ä»£ç†æŽ’é™¤åˆ—è¡¨æ²¡æœ‰æ˜Žç¡®åŒ…å«å®ƒä»¬ã€‚
+è¿™ç§è¡Œä¸ºä¸å¤ªå¯èƒ½å¯¼è‡´é—®é¢˜ï¼Œ
+ä½†å¦‚æžœç¡®å®žå¦‚æ­¤ï¼Œ
+æ‚¨å¯ä»¥é€šè¿‡å¯ç”¨\q{è€ƒè™‘ä»£ç†æœ¬åœ°ä¸»æœºè¿žæŽ¥}æ¥æ›´æ”¹å®ƒã€‚
 
-Çë×¢Òâ£¬Èç¹ûÄúÔÚ\I{proxy DNS}´úÀíÉÏ½øÐÐ
-DNS (Çë²ÎÔÄ \k{config-proxy-dns})£¬ÄúÓ¦¸ÃÈ·±£ÄúµÄ´ú
-ÀíÅÅ³ýÉèÖÃ²»ÒÀÀµÓÚÖªµÀÖ÷»úµÄ IP µØÖ·¡£
-Èç¹ûÃû³ÆÔÚÃ»ÓÐ PuTTY ²éÕÒµÄÇé¿öÏÂ´«µÝ¸ø´úÀí£¬
-ËüÓÀÔ¶²»»áÖªµÀ IP µØÖ·£¬
-Ò²ÎÞ·¨¸ù¾ÝÄúµÄÁÐ±í¼ì²éËü¡£
+è¯·æ³¨æ„ï¼Œå¦‚æžœæ‚¨åœ¨\I{proxy DNS}ä»£ç†ä¸Šè¿›è¡Œ
+DNS (è¯·å‚é˜… \k{config-proxy-dns})ï¼Œæ‚¨åº”è¯¥ç¡®ä¿æ‚¨çš„ä»£
+ç†æŽ’é™¤è®¾ç½®ä¸ä¾èµ–äºŽçŸ¥é“ä¸»æœºçš„ IP åœ°å€ã€‚
+å¦‚æžœåç§°åœ¨æ²¡æœ‰ PuTTY æŸ¥æ‰¾çš„æƒ…å†µä¸‹ä¼ é€’ç»™ä»£ç†ï¼Œ
+å®ƒæ°¸è¿œä¸ä¼šçŸ¥é“ IP åœ°å€ï¼Œ
+ä¹Ÿæ— æ³•æ ¹æ®æ‚¨çš„åˆ—è¡¨æ£€æŸ¥å®ƒã€‚
 
-\S{config-proxy-dns} Ê¹ÓÃ´úÀíÊ±µÄDNS\I{proxy DNS}\ii{ÓòÃû½âÎö}
+\S{config-proxy-dns} ä½¿ç”¨ä»£ç†æ—¶çš„DNS\I{proxy DNS}\ii{åŸŸåè§£æž}
 
-Èç¹ûÄúÊ¹ÓÃ´úÀí·ÃÎÊ×¨ÓÃÍøÂç£¬
-\i{DNS} Ãû³Æ½âÎöÊÇÓÉ PuTTY ±¾Éí£¨ÔÚ¿Í»§¶Ë¼ÆËã»úÉÏ£©Ö´
-ÐÐ»¹ÊÇÓÉ´úÀíÖ´ÐÐ¿ÉÄÜ»áÓÐËù²»Í¬¡£
+å¦‚æžœæ‚¨ä½¿ç”¨ä»£ç†è®¿é—®ä¸“ç”¨ç½‘ç»œï¼Œ
+\i{DNS} åç§°è§£æžæ˜¯ç”± PuTTY æœ¬èº«ï¼ˆåœ¨å®¢æˆ·ç«¯è®¡ç®—æœºä¸Šï¼‰æ‰§
+è¡Œè¿˜æ˜¯ç”±ä»£ç†æ‰§è¡Œå¯èƒ½ä¼šæœ‰æ‰€ä¸åŒã€‚
 
-\q{ÔÚ´úÀí¶Ë½øÐÐ DNS Ãû³Æ²éÕÒ}ÅäÖÃÑ¡ÏîÔÊÐíÄú¶Ô´Ë½øÐÐ¿ØÖÆ¡£
-Èç¹ûÄú½«ÆäÉèÖÃÎª\q{·ñ}£¬PuTTY ½«Ê¼ÖÕÖ´ÐÐ×Ô¼ºµÄ DNS£¬
-²¢½«Ê¼ÖÕ½« IP µØÖ·´«µÝ¸ø´úÀí¡£
-Èç¹ûÄú½«ÆäÉèÖÃÎª\q{ÊÇ}£¬PuTTY ½«Ê¼ÖÕ½«Ö÷»úÃûÖ±½Ó´«µÝ¸ø´úÀí£¬
-¶øÎÞÐèÏÈ³¢ÊÔ²éÕÒËüÃÇ¡£
+\q{åœ¨ä»£ç†ç«¯è¿›è¡Œ DNS åç§°æŸ¥æ‰¾}é…ç½®é€‰é¡¹å…è®¸æ‚¨å¯¹æ­¤è¿›è¡ŒæŽ§åˆ¶ã€‚
+å¦‚æžœæ‚¨å°†å…¶è®¾ç½®ä¸º\q{å¦}ï¼ŒPuTTY å°†å§‹ç»ˆæ‰§è¡Œè‡ªå·±çš„ DNSï¼Œ
+å¹¶å°†å§‹ç»ˆå°† IP åœ°å€ä¼ é€’ç»™ä»£ç†ã€‚
+å¦‚æžœæ‚¨å°†å…¶è®¾ç½®ä¸º\q{æ˜¯}ï¼ŒPuTTY å°†å§‹ç»ˆå°†ä¸»æœºåç›´æŽ¥ä¼ é€’ç»™ä»£ç†ï¼Œ
+è€Œæ— éœ€å…ˆå°è¯•æŸ¥æ‰¾å®ƒä»¬ã€‚
 
-Èç¹ûÄú½«´ËÑ¡ÏîÉèÖÃÎª\q{×Ô¶¯}£¨Ä¬ÈÏ£©£¬
-PuTTY ½«Ö´ÐÐËüÈÏÎªÊÊºÏÃ¿ÖÖ´úÀíÀàÐÍµÄ²Ù×÷¡£
-´ó¶àÊýÀàÐÍµÄ´úÀí£¨HTTP¡¢SOCK5¡¢SSH¡¢Telnet ºÍ±¾µØ£©½«Ö÷»úÃûÖ±½Ó´«
-µÝ¸øËüÃÇ£» SOCKS4 ´úÀí²»»á
+å¦‚æžœæ‚¨å°†æ­¤é€‰é¡¹è®¾ç½®ä¸º\q{è‡ªåŠ¨}ï¼ˆé»˜è®¤ï¼‰ï¼Œ
+PuTTY å°†æ‰§è¡Œå®ƒè®¤ä¸ºé€‚åˆæ¯ç§ä»£ç†ç±»åž‹çš„æ“ä½œã€‚
+å¤§å¤šæ•°ç±»åž‹çš„ä»£ç†ï¼ˆHTTPã€SOCK5ã€SSHã€Telnet å’Œæœ¬åœ°ï¼‰å°†ä¸»æœºåç›´æŽ¥ä¼ 
+é€’ç»™å®ƒä»¬ï¼› SOCKS4 ä»£ç†ä¸ä¼š
 
-Çë×¢Òâ£¬Èç¹ûÄúÔÚ´úÀíÉÏ½øÐÐ DNS£¬
-ÔòÓ¦È·±£ÄúµÄ´úÀíÅÅ³ýÉèÖÃ(Çë²ÎÔÄ \k{config-proxy-exclude})
-²»ÒªÒÀÀµÓÚÖªµÀÖ÷»úµÄ IP µØÖ·¡£
-Èç¹ûÃû³ÆÔÚÃ»ÓÐ PuTTY ²éÕÒµÄÇé¿öÏÂ´«µÝ¸ø´úÀí£¬
-ËüÓÀÔ¶²»»áÖªµÀ IP µØÖ·£¬Ò²ÎÞ·¨¸ù¾ÝÄúµÄÁÐ±í¼ì²éËü¡£
+è¯·æ³¨æ„ï¼Œå¦‚æžœæ‚¨åœ¨ä»£ç†ä¸Šè¿›è¡Œ DNSï¼Œ
+åˆ™åº”ç¡®ä¿æ‚¨çš„ä»£ç†æŽ’é™¤è®¾ç½®(è¯·å‚é˜… \k{config-proxy-exclude})
+ä¸è¦ä¾èµ–äºŽçŸ¥é“ä¸»æœºçš„ IP åœ°å€ã€‚
+å¦‚æžœåç§°åœ¨æ²¡æœ‰ PuTTY æŸ¥æ‰¾çš„æƒ…å†µä¸‹ä¼ é€’ç»™ä»£ç†ï¼Œ
+å®ƒæ°¸è¿œä¸ä¼šçŸ¥é“ IP åœ°å€ï¼Œä¹Ÿæ— æ³•æ ¹æ®æ‚¨çš„åˆ—è¡¨æ£€æŸ¥å®ƒã€‚
 
-Ô­Ê¼µÄ SOCKS 4 Ð­Òé²»Ö§³Ö´úÀí¶Ë DNS¡£
-ÓÐÒ»¸öÐ­ÒéÀ©Õ¹£¨SOCKS 4A£©È·ÊµÖ§³ÖËü£¬
-µ«²¢·ÇËùÓÐ SOCKS 4 ·þÎñÆ÷¶¼Ìá¹©´ËÀ©Õ¹¡£
-Èç¹ûÄúÆôÓÃ´úÀí DNS ²¢ÇÒÄúµÄ SOCKS 4 ·þÎñÆ÷ÎÞ·¨´¦ÀíËü£¬Õâ¿ÉÄÜ¾ÍÊÇÔ­Òò¡£
+åŽŸå§‹çš„ SOCKS 4 åè®®ä¸æ”¯æŒä»£ç†ç«¯ DNSã€‚
+æœ‰ä¸€ä¸ªåè®®æ‰©å±•ï¼ˆSOCKS 4Aï¼‰ç¡®å®žæ”¯æŒå®ƒï¼Œ
+ä½†å¹¶éžæ‰€æœ‰ SOCKS 4 æœåŠ¡å™¨éƒ½æä¾›æ­¤æ‰©å±•ã€‚
+å¦‚æžœæ‚¨å¯ç”¨ä»£ç† DNS å¹¶ä¸”æ‚¨çš„ SOCKS 4 æœåŠ¡å™¨æ— æ³•å¤„ç†å®ƒï¼Œè¿™å¯èƒ½å°±æ˜¯åŽŸå› ã€‚
 
-Èç¹ûÄúÏë±ÜÃâ PuTTY ½øÐÐÓëÄúµÄÄ¿±êÖ÷»úÃûÏà
-¹ØµÄ\e{ÈÎºÎ} DNS ²éÑ¯£¨ÀýÈç£¬ÒòÎªÄúµÄ±¾µØ DNS ½â
-ÎöÆ÷ÔÚÕâÖÖÇé¿öÏÂ·µ»Ø·ñ¶¨ÏìÓ¦µÄËÙ¶È·Ç³£Âý£©£¬
-È»ºó½«´Ë¿Ø¼þÉèÖÃÎª\q{ÊÇ}£¬ Äú¿ÉÄÜ»¹ÐèÒªÔÚ
-SSH ÖÐ¹Ø±Õ GSSAPI Éí·ÝÑéÖ¤ºÍ GSSAPI ÃÜÔ¿½»»»
-(Çë²ÎÔÄ \k{config-ssh-auth-gssapi} ºÍ
- \k{config-ssh-gssapi-kex} )¡£ÕâÊÇ
- ÒòÎª GSSAPI ÉèÖÃ»¹Éæ¼°¶ÔÄ¿±êÖ÷»úÃûµÄ DNS ²éÑ¯£¬
- ²¢ÇÒ¸Ã²éÑ¯ÓÉµ¥¶ÀµÄ GSSAPI ¿âÖ´ÐÐ£¬Òò´Ë PuTTY ÎÞ·¨¸²¸Ç»òÖØÐÂÅäÖÃËü¡£
+å¦‚æžœæ‚¨æƒ³é¿å… PuTTY è¿›è¡Œä¸Žæ‚¨çš„ç›®æ ‡ä¸»æœºåç›¸
+å…³çš„\e{ä»»ä½•} DNS æŸ¥è¯¢ï¼ˆä¾‹å¦‚ï¼Œå› ä¸ºæ‚¨çš„æœ¬åœ° DNS è§£
+æžå™¨åœ¨è¿™ç§æƒ…å†µä¸‹è¿”å›žå¦å®šå“åº”çš„é€Ÿåº¦éžå¸¸æ…¢ï¼‰ï¼Œ
+ç„¶åŽå°†æ­¤æŽ§ä»¶è®¾ç½®ä¸º\q{æ˜¯}ï¼Œ æ‚¨å¯èƒ½è¿˜éœ€è¦åœ¨
+SSH ä¸­å…³é—­ GSSAPI èº«ä»½éªŒè¯å’Œ GSSAPI å¯†é’¥äº¤æ¢
+(è¯·å‚é˜… \k{config-ssh-auth-gssapi} å’Œ
+ \k{config-ssh-gssapi-kex} )ã€‚è¿™æ˜¯
+ å› ä¸º GSSAPI è®¾ç½®è¿˜æ¶‰åŠå¯¹ç›®æ ‡ä¸»æœºåçš„ DNS æŸ¥è¯¢ï¼Œ
+ å¹¶ä¸”è¯¥æŸ¥è¯¢ç”±å•ç‹¬çš„ GSSAPI åº“æ‰§è¡Œï¼Œå› æ­¤ PuTTY æ— æ³•è¦†ç›–æˆ–é‡æ–°é…ç½®å®ƒã€‚
 
-\S{config-proxy-auth} \I{proxy username}ÓÃ»§ÃûºÍ\I{proxy password}ÃÜÂë
+\S{config-proxy-auth} \I{proxy username}ç”¨æˆ·åå’Œ\I{proxy password}å¯†ç 
 
-Èç¹ûÄúµÄ´úÀíÐèÒªÉí·ÝÑéÖ¤£¬
-Äú¿ÉÒÔÔÚ\q{ÓÃ»§Ãû}ºÍ\q{ÃÜÂë}¿òÖÐ
-ÊäÈëÓÃ»§ÃûºÍÃÜÂë\I{proxy authentication}authentication¡£
+å¦‚æžœæ‚¨çš„ä»£ç†éœ€è¦èº«ä»½éªŒè¯ï¼Œ
+æ‚¨å¯ä»¥åœ¨\q{ç”¨æˆ·å}å’Œ\q{å¯†ç }æ¡†ä¸­
+è¾“å…¥ç”¨æˆ·åå’Œå¯†ç \I{proxy authentication}authenticationã€‚
 
-\I{security hazard}Çë×¢Òâ£¬
-Èç¹ûÄú±£´æ»á»°£¬´úÀíÃÜÂë½«ÒÔ´¿ÎÄ±¾ÐÎÊ½±£´æ£¬
-Òò´ËÈÎºÎ¿ÉÒÔ·ÃÎÊÄúµÄ PuTTY ÅäÖÃÊý¾ÝµÄÈË¶¼¿ÉÒÔ·¢ÏÖËü¡£
+\I{security hazard}è¯·æ³¨æ„ï¼Œ
+å¦‚æžœæ‚¨ä¿å­˜ä¼šè¯ï¼Œä»£ç†å¯†ç å°†ä»¥çº¯æ–‡æœ¬å½¢å¼ä¿å­˜ï¼Œ
+å› æ­¤ä»»ä½•å¯ä»¥è®¿é—®æ‚¨çš„ PuTTY é…ç½®æ•°æ®çš„äººéƒ½å¯ä»¥å‘çŽ°å®ƒã€‚
 
-Èç¹ûPuTTY·¢ÏÖËüÐèÒª´úÀíÓÃ»§Ãû»òÃÜÂë£¬
-¶øÄúÉÐÎ´ÔÚ´Ë´¦Ö¸¶¨£¬P
-uTTY½«ÔÚ¶Ô»°ÖÐÒÔ½»»¥·½Ê½ÌáÊ¾ÊäÈëÖÕ¶Ë´°¿Ú¡£
+å¦‚æžœPuTTYå‘çŽ°å®ƒéœ€è¦ä»£ç†ç”¨æˆ·åæˆ–å¯†ç ï¼Œ
+è€Œæ‚¨å°šæœªåœ¨æ­¤å¤„æŒ‡å®šï¼ŒP
+uTTYå°†åœ¨å¯¹è¯ä¸­ä»¥äº¤äº’æ–¹å¼æç¤ºè¾“å…¥ç»ˆç«¯çª—å£ã€‚
 
-²¢·ÇËùÓÐÐÎÊ½µÄ´úÀí¶¼ÍêÈ«Ö§³ÖÉí·ÝÑéÖ¤£º
+å¹¶éžæ‰€æœ‰å½¢å¼çš„ä»£ç†éƒ½å®Œå…¨æ”¯æŒèº«ä»½éªŒè¯ï¼š
 
-\b HTTP ´úÀíºÍ SOCKS 5 ´úÀí
-Ö§³ÖÓÃ»§ÃûºÍÃÜÂëÉí·ÝÑéÖ¤¡£
+\b HTTP ä»£ç†å’Œ SOCKS 5 ä»£ç†
+æ”¯æŒç”¨æˆ·åå’Œå¯†ç èº«ä»½éªŒè¯ã€‚
 
 \lcont{
 
-\b Ê¹ÓÃ SOCKS 5£¬Èç¹û´úÀíÖ§³Ö£¬
-ÔòÍ¨¹ý \i{CHAP} ½øÐÐÉí·ÝÑéÖ¤£¨\i{PuTTYtel} ²»Ö§³Ö£©£»
-·ñÔò\I{plaintext password}ÃÜÂëÒÔ´¿ÎÄ±¾ÐÎÊ½·¢ËÍµ½´úÀí¡£
+\b ä½¿ç”¨ SOCKS 5ï¼Œå¦‚æžœä»£ç†æ”¯æŒï¼Œ
+åˆ™é€šè¿‡ \i{CHAP} è¿›è¡Œèº«ä»½éªŒè¯ï¼ˆ\i{PuTTYtel} ä¸æ”¯æŒï¼‰ï¼›
+å¦åˆ™\I{plaintext password}å¯†ç ä»¥çº¯æ–‡æœ¬å½¢å¼å‘é€åˆ°ä»£ç†ã€‚
 
-\b Ê¹ÓÃ HTTP ´úÀí£¬Èç¹û¿ÉÄÜµÄ»°£¬
-Éí·ÝÑéÖ¤ÊÇÍ¨¹ý\q{\i{HTTP Digest}}£¨Í¬Ñù£¬PuTTYtel ²»Ö§³Ö£©
-»ò\q{\i{HTTP Basic}}¡£ ÔÚºóÒ»ÖÖÇé¿öÏÂ£¬\I{plaintext
-password}ÃÜÂëÒÔ´¿ÎÄ±¾ÐÎÊ½·¢ËÍµ½´úÀí¡£
+\b ä½¿ç”¨ HTTP ä»£ç†ï¼Œå¦‚æžœå¯èƒ½çš„è¯ï¼Œ
+èº«ä»½éªŒè¯æ˜¯é€šè¿‡\q{\i{HTTP Digest}}ï¼ˆåŒæ ·ï¼ŒPuTTYtel ä¸æ”¯æŒï¼‰
+æˆ–\q{\i{HTTP Basic}}ã€‚ åœ¨åŽä¸€ç§æƒ…å†µä¸‹ï¼Œ\I{plaintext
+password}å¯†ç ä»¥çº¯æ–‡æœ¬å½¢å¼å‘é€åˆ°ä»£ç†ã€‚
 
 }
 
-\b SOCKS 4 ¿ÉÒÔÊ¹ÓÃ\q{ÓÃ»§Ãû}×Ö¶Î£¬
-µ«²»Ö§³ÖÃÜÂë¡£
+\b SOCKS 4 å¯ä»¥ä½¿ç”¨\q{ç”¨æˆ·å}å­—æ®µï¼Œ
+ä½†ä¸æ”¯æŒå¯†ç ã€‚
 
-\b SSH ´úÀí¿ÉÒÔ½« PuTTY Ö§³ÖµÄËùÓÐÏàÍ¬ÐÎÊ½µÄ SSH Éí
-·ÝÑéÖ¤ÓÃÓÚÆäÖ÷Á¬½Ó¡£
-Èç¹û SSH ·þÎñÆ÷ÇëÇóÃÜÂëÑéÖ¤£¬
-½«Ê¹ÓÃÅäÖÃµÄ´úÀíÃÜÂë£¬
-µ«»áÏÈ³¢ÊÔÆäËûÑéÖ¤·½·¨£¬
-ÀýÈç¹«Ô¿£¬
-¾ÍÏñ SSH Á¬½ÓÒ»Ñù¡£
+\b SSH ä»£ç†å¯ä»¥å°† PuTTY æ”¯æŒçš„æ‰€æœ‰ç›¸åŒå½¢å¼çš„ SSH èº«
+ä»½éªŒè¯ç”¨äºŽå…¶ä¸»è¿žæŽ¥ã€‚
+å¦‚æžœ SSH æœåŠ¡å™¨è¯·æ±‚å¯†ç éªŒè¯ï¼Œ
+å°†ä½¿ç”¨é…ç½®çš„ä»£ç†å¯†ç ï¼Œ
+ä½†ä¼šå…ˆå°è¯•å…¶ä»–éªŒè¯æ–¹æ³•ï¼Œ
+ä¾‹å¦‚å…¬é’¥ï¼Œ
+å°±åƒ SSH è¿žæŽ¥ä¸€æ ·ã€‚
 
-\b Äú¿ÉÒÔÖ¸¶¨ÔÚTelnet/Local proxyÃüÁî
-£¨Çë²ÎÔÄ \k{config-proxy-command}£©¡£
-Èç¹ûÄãÕâÑù×öÁË£¬²»ÒªÔÚÅäÖÃ´úÀíÊ±£¬
-ÉèÖÃÓÃ»§Ãû»òÃÜÂë£¬PuTTY½«ÒÔ½»»¥·½Ê½ÌáÊ¾ÊäÈëËüÃÇ¡£
+\b æ‚¨å¯ä»¥æŒ‡å®šåœ¨Telnet/Local proxyå‘½ä»¤
+ï¼ˆè¯·å‚é˜… \k{config-proxy-command}ï¼‰ã€‚
+å¦‚æžœä½ è¿™æ ·åšäº†ï¼Œä¸è¦åœ¨é…ç½®ä»£ç†æ—¶ï¼Œ
+è®¾ç½®ç”¨æˆ·åæˆ–å¯†ç ï¼ŒPuTTYå°†ä»¥äº¤äº’æ–¹å¼æç¤ºè¾“å…¥å®ƒä»¬ã€‚
 
-\S{config-proxy-command} Ö¸¶¨Telnet¡¢SSH»ò±¾µØ´úÀíÃüÁî
+\S{config-proxy-command} æŒ‡å®šTelnetã€SSHæˆ–æœ¬åœ°ä»£ç†å‘½ä»¤
 
-Èç¹ûÄúÊ¹ÓÃµÄÊÇ \i{Telnet ´úÀí}ÀàÐÍ£¬
-Ôò·À»ðÇ½µÄ Telnet ·þÎñÆ÷ËùÐèµÄ³£ÓÃÃüÁîÊÇ\c{connect}£¬
-ºó¸úÖ÷»úÃûºÍ¶Ë¿ÚºÅ¡£Èç¹ûÄúµÄ´úÀíÐèÒªÆäËûÃüÁî£¬
-Äú¿ÉÒÔÔÚ\q{Òª·¢ËÍµ½´úÀíµÄÃüÁî}¿òÖÐÊäÈëÌæ´úÃüÁî¡£
+å¦‚æžœæ‚¨ä½¿ç”¨çš„æ˜¯ \i{Telnet ä»£ç†}ç±»åž‹ï¼Œ
+åˆ™é˜²ç«å¢™çš„ Telnet æœåŠ¡å™¨æ‰€éœ€çš„å¸¸ç”¨å‘½ä»¤æ˜¯\c{connect}ï¼Œ
+åŽè·Ÿä¸»æœºåå’Œç«¯å£å·ã€‚å¦‚æžœæ‚¨çš„ä»£ç†éœ€è¦å…¶ä»–å‘½ä»¤ï¼Œ
+æ‚¨å¯ä»¥åœ¨\q{è¦å‘é€åˆ°ä»£ç†çš„å‘½ä»¤}æ¡†ä¸­è¾“å…¥æ›¿ä»£å‘½ä»¤ã€‚
 
-Èç¹ûÄúÊ¹ÓÃµÄÊÇ\i{±¾µØ´úÀí}ÀàÐÍ£¬
-ÔòÔÚ´Ë´¦Ö¸¶¨ÒªÔËÐÐµÄ±¾µØÃüÁî¡£
+å¦‚æžœæ‚¨ä½¿ç”¨çš„æ˜¯\i{æœ¬åœ°ä»£ç†}ç±»åž‹ï¼Œ
+åˆ™åœ¨æ­¤å¤„æŒ‡å®šè¦è¿è¡Œçš„æœ¬åœ°å‘½ä»¤ã€‚
 
-Èç¹ûÊ¹ÓÃ\q{SSH´úÀí + Ö´ÐÐÃüÁî}ÀàÐÍ£¬
-ÔòÔÚ´Ë´¦Ö¸¶¨ÒªÔÚ SSH ´úÀí·þÎñÆ÷ÉÏÔËÐÐµÄÃüÁî¡£
-Í¬Ñù£¬Èç¹ûÊ¹ÓÃ\q{SSH´úÀí + µ÷ÓÃ×ÓÏµÍ³}£¬
-Ôò×ÓÏµÍ³Ãû³Æ½«°´´Ë´¦Ö¸¶¨µÄ·½Ê½¹¹Ôì¡£
+å¦‚æžœä½¿ç”¨\q{SSHä»£ç† + æ‰§è¡Œå‘½ä»¤}ç±»åž‹ï¼Œ
+åˆ™åœ¨æ­¤å¤„æŒ‡å®šè¦åœ¨ SSH ä»£ç†æœåŠ¡å™¨ä¸Šè¿è¡Œçš„å‘½ä»¤ã€‚
+åŒæ ·ï¼Œå¦‚æžœä½¿ç”¨\q{SSHä»£ç† + è°ƒç”¨å­ç³»ç»Ÿ}ï¼Œ
+åˆ™å­ç³»ç»Ÿåç§°å°†æŒ‰æ­¤å¤„æŒ‡å®šçš„æ–¹å¼æž„é€ ã€‚
 
-ÔÚ´Ë×Ö·û´®ÖÐ£¬
-¿ÉÒÔÊ¹ÓÃ \c{\\n} ±íÊ¾»»ÐÐ·û£¬
-\c{\\r} ±íÊ¾»Ø³µ·û£¬\c{\\t} ±íÊ¾ÖÆ±í·û£¬
-\c{\\x} ºó¸úÁ½¸öÊ®Áù½øÖÆÊý×Ö±íÊ¾ÈÎºÎÆäËû×Ö·û¡£
-\c{\\\\}ÓÃÓÚ¶Ô \c{\\}×Ö·û±¾Éí½øÐÐ±àÂë¡£
+åœ¨æ­¤å­—ç¬¦ä¸²ä¸­ï¼Œ
+å¯ä»¥ä½¿ç”¨ \c{\\n} è¡¨ç¤ºæ¢è¡Œç¬¦ï¼Œ
+\c{\\r} è¡¨ç¤ºå›žè½¦ç¬¦ï¼Œ\c{\\t} è¡¨ç¤ºåˆ¶è¡¨ç¬¦ï¼Œ
+\c{\\x} åŽè·Ÿä¸¤ä¸ªåå…­è¿›åˆ¶æ•°å­—è¡¨ç¤ºä»»ä½•å…¶ä»–å­—ç¬¦ã€‚
+\c{\\\\}ç”¨äºŽå¯¹ \c{\\}å­—ç¬¦æœ¬èº«è¿›è¡Œç¼–ç ã€‚
 
-´ËÍâ£¬ÌØÊâ×Ö·û´® \c{%host} ºÍ \c{%port} ½«Ìæ»»
-ÎªÒªÁ¬½Óµ½µÄÖ÷»úÃûºÍ¶Ë¿ÚºÅ¡£¶ÔÓÚ Telnet ºÍ±¾µØ
-´úÀíÀàÐÍ£¬×Ö·û´® \c{%user} ºÍ \c{%pass} ½«Ìæ»»Îª´úÀí
-ÓÃ»§ÃûºÍÃÜÂë£¨Èç¹ûÎ´ÔÚÅäÖÃÖÐÖ¸¶¨£¬
-ÏµÍ³½«ÌáÊ¾ÊäÈë£©¨C SSH ´úÀí
-ÀàÐÍ²»»á·¢ÉúÕâÖÖÇé¿ö£¨ÒòÎª´úÀíÓÃ»§Ãû/ÃÜÂëÓÃÓÚ SSH Éí·ÝÑéÖ¤£©¡£
-×Ö·û´® \c{%proxyhost} ºÍ \c{%proxyport} ½«±»Ìæ»»Îª\e{´úÀí}Ãæ
-°åÉÏÖ¸¶¨µÄÖ÷»úÏêÏ¸ÐÅÏ¢£¨Èç¹ûÓÐ£©
-£¨Õâ¶ÔÓÚÊ¹ÓÃ±¾µØ»òÔ¶³ÌÃüÁîµÄ´úÀíÀàÐÍ×îÓÐ¿ÉÄÜÓÐÓÃ£©¡£
-ÈôÒª»ñÈ¡ÎÄ×Ö \c{%} ·ûºÅ£¬ÇëÊäÈë \c{%%}¡£
+æ­¤å¤–ï¼Œç‰¹æ®Šå­—ç¬¦ä¸² \c{%host} å’Œ \c{%port} å°†æ›¿æ¢
+ä¸ºè¦è¿žæŽ¥åˆ°çš„ä¸»æœºåå’Œç«¯å£å·ã€‚å¯¹äºŽ Telnet å’Œæœ¬åœ°
+ä»£ç†ç±»åž‹ï¼Œå­—ç¬¦ä¸² \c{%user} å’Œ \c{%pass} å°†æ›¿æ¢ä¸ºä»£ç†
+ç”¨æˆ·åå’Œå¯†ç ï¼ˆå¦‚æžœæœªåœ¨é…ç½®ä¸­æŒ‡å®šï¼Œ
+ç³»ç»Ÿå°†æç¤ºè¾“å…¥ï¼‰â€“ SSH ä»£ç†
+ç±»åž‹ä¸ä¼šå‘ç”Ÿè¿™ç§æƒ…å†µï¼ˆå› ä¸ºä»£ç†ç”¨æˆ·å/å¯†ç ç”¨äºŽ SSH èº«ä»½éªŒè¯ï¼‰ã€‚
+å­—ç¬¦ä¸² \c{%proxyhost} å’Œ \c{%proxyport} å°†è¢«æ›¿æ¢ä¸º\e{ä»£ç†}é¢
+æ¿ä¸ŠæŒ‡å®šçš„ä¸»æœºè¯¦ç»†ä¿¡æ¯ï¼ˆå¦‚æžœæœ‰ï¼‰
+ï¼ˆè¿™å¯¹äºŽä½¿ç”¨æœ¬åœ°æˆ–è¿œç¨‹å‘½ä»¤çš„ä»£ç†ç±»åž‹æœ€æœ‰å¯èƒ½æœ‰ç”¨ï¼‰ã€‚
+è‹¥è¦èŽ·å–æ–‡å­— \c{%} ç¬¦å·ï¼Œè¯·è¾“å…¥ \c{%%}ã€‚
 
-Èç¹û Telnet ´úÀí·þÎñÆ÷ÔÚ·¢ËÍÃüÁîÖ®Ç°ÌáÊ¾Êä
-ÈëÓÃ»§ÃûºÍÃÜÂë£¬Äú¿ÉÒÔÊ¹ÓÃÈçÏÂÃüÁî£º
+å¦‚æžœ Telnet ä»£ç†æœåŠ¡å™¨åœ¨å‘é€å‘½ä»¤ä¹‹å‰æç¤ºè¾“
+å…¥ç”¨æˆ·åå’Œå¯†ç ï¼Œæ‚¨å¯ä»¥ä½¿ç”¨å¦‚ä¸‹å‘½ä»¤ï¼š
 
 \c %user\n%pass\nconnect %host %port\n
 
-Õâ»á½«ÄúµÄÓÃ»§ÃûºÍÃÜÂë×÷ÎªÇ°Á½ÐÐ·¢ËÍµ½´úÀí£¬
-È»ºóÊÇÁ¬½Óµ½ËùÐèÖ÷»úºÍ¶Ë¿ÚµÄÃüÁî¡£
-Çë×¢Òâ£¬Èç¹ûÄúÎ´ÔÚ Telnet ÃüÁî
-ÖÐ°üº¬ \c{%user} »ò \c{%pass} ÁîÅÆ£¬Ôò\q{ÓÃ»§Ãû}
-ºÍ\q{ÃÜÂë}ÅäÖÃ×Ö¶Î½«±»ºöÂÔ¡£
+è¿™ä¼šå°†æ‚¨çš„ç”¨æˆ·åå’Œå¯†ç ä½œä¸ºå‰ä¸¤è¡Œå‘é€åˆ°ä»£ç†ï¼Œ
+ç„¶åŽæ˜¯è¿žæŽ¥åˆ°æ‰€éœ€ä¸»æœºå’Œç«¯å£çš„å‘½ä»¤ã€‚
+è¯·æ³¨æ„ï¼Œå¦‚æžœæ‚¨æœªåœ¨ Telnet å‘½ä»¤
+ä¸­åŒ…å« \c{%user} æˆ– \c{%pass} ä»¤ç‰Œï¼Œåˆ™\q{ç”¨æˆ·å}
+å’Œ\q{å¯†ç }é…ç½®å­—æ®µå°†è¢«å¿½ç•¥ã€‚
 
-\S{config-proxy-logging} ¿ØÖÆ\i{´úÀíÈÕÖ¾}¼ÇÂ¼
+\S{config-proxy-logging} æŽ§åˆ¶\i{ä»£ç†æ—¥å¿—}è®°å½•
 
-Í¨³£´úÀí½»»¥ÓÐ×Ô¼ºµÄÕï¶ÏÊä³ö£»
-¶ÔÓÚ±¾µØ´úÀíÃüÁîÓÈÆäÈç´Ë¡£
+é€šå¸¸ä»£ç†äº¤äº’æœ‰è‡ªå·±çš„è¯Šæ–­è¾“å‡ºï¼›
+å¯¹äºŽæœ¬åœ°ä»£ç†å‘½ä»¤å°¤å…¶å¦‚æ­¤ã€‚
 
-ÉèÖÃ\q{ÔÚÖÕ¶Ë´°¿ÚÖÐ´òÓ¡´úÀíÕï¶Ï}¿ÉÈÃÄú¿Ø
-ÖÆ½«¶àÉÙ´úÀíÕï¶ÏÐÅÏ¢´òÓ¡µ½Ö÷ÖÕ¶Ë´°¿Ú£¬
-ÒÔ¼°Ö÷»á»°µÄÊä³ö¡£
+è®¾ç½®\q{åœ¨ç»ˆç«¯çª—å£ä¸­æ‰“å°ä»£ç†è¯Šæ–­}å¯è®©æ‚¨æŽ§
+åˆ¶å°†å¤šå°‘ä»£ç†è¯Šæ–­ä¿¡æ¯æ‰“å°åˆ°ä¸»ç»ˆç«¯çª—å£ï¼Œ
+ä»¥åŠä¸»ä¼šè¯çš„è¾“å‡ºã€‚
 
-Ä¬ÈÏÇé¿öÏÂ(\q{·ñ})£¬´úÀíÕï¶Ï½ö·¢ËÍµ½ÊÂ¼þÈÕÖ¾£»
-Èç¹ûÑ¡Ôñ\q{ÊÇ}£¬ËüÃÇÒ²»á´òÓ¡µ½ÖÕ¶Ë£¬
-ÔÚÄÇÀïËüÃÇ¿ÉÄÜ»áÓëÄúµÄÖ÷»á»°»ìÏý¡£
-\q{½öÔÚ»áÒé¿ªÊ¼Ö®Ç°}ÊÇÒ»ÖÖÍ×Ð­£» ´úÀíÏûÏ¢½«½øÈëÖÕ¶Ë´°¿Ú£¬
-Ö±µ½Ö÷»á»°±»ÈÏÎªÒÑ¾­¿ªÊ¼£¨ÒÔÐ­ÒéÏà¹ØµÄ·½Ê½£©£¬
-ÕâÊÇËüÃÇ×îÓÐ¿ÉÄÜÒýÆð¹Ø×¢µÄÊ±ºò£» »á»°ÆÚ¼äÈÎºÎÆäËûÓë´úÀíÏà
-¹ØµÄÏûÏ¢¶¼Ö»»á×ªµ½ÊÂ¼þÈÕÖ¾¡£
+é»˜è®¤æƒ…å†µä¸‹(\q{å¦})ï¼Œä»£ç†è¯Šæ–­ä»…å‘é€åˆ°äº‹ä»¶æ—¥å¿—ï¼›
+å¦‚æžœé€‰æ‹©\q{æ˜¯}ï¼Œå®ƒä»¬ä¹Ÿä¼šæ‰“å°åˆ°ç»ˆç«¯ï¼Œ
+åœ¨é‚£é‡Œå®ƒä»¬å¯èƒ½ä¼šä¸Žæ‚¨çš„ä¸»ä¼šè¯æ··æ·†ã€‚
+\q{ä»…åœ¨ä¼šè®®å¼€å§‹ä¹‹å‰}æ˜¯ä¸€ç§å¦¥åï¼› ä»£ç†æ¶ˆæ¯å°†è¿›å…¥ç»ˆç«¯çª—å£ï¼Œ
+ç›´åˆ°ä¸»ä¼šè¯è¢«è®¤ä¸ºå·²ç»å¼€å§‹ï¼ˆä»¥åè®®ç›¸å…³çš„æ–¹å¼ï¼‰ï¼Œ
+è¿™æ˜¯å®ƒä»¬æœ€æœ‰å¯èƒ½å¼•èµ·å…³æ³¨çš„æ—¶å€™ï¼› ä¼šè¯æœŸé—´ä»»ä½•å…¶ä»–ä¸Žä»£ç†ç›¸
+å…³çš„æ¶ˆæ¯éƒ½åªä¼šè½¬åˆ°äº‹ä»¶æ—¥å¿—ã€‚
 
-\H{config-ssh} SSH Ãæ°å
+\H{config-ssh} SSH é¢æ¿
 
-\i{SSH} Ãæ°åÔÊÐíÄúÅäÖÃ½ö
-ÊÊÓÃÓÚ SSH »á»°µÄÑ¡Ïî¡£
+\i{SSH} é¢æ¿å…è®¸æ‚¨é…ç½®ä»…
+é€‚ç”¨äºŽ SSH ä¼šè¯çš„é€‰é¡¹ã€‚
 
-\S{config-command} ÔÚ·þÎñÆ÷ÉÏÖ´ÐÐÌØ¶¨ÃüÁî
+\S{config-command} åœ¨æœåŠ¡å™¨ä¸Šæ‰§è¡Œç‰¹å®šå‘½ä»¤
 
-ÔÚ SSH ÖÐ£¬Äú²»±ØÔÚ·þÎñÆ÷ÉÏÔËÐÐ
-³£¹æ shell »á»°¡£ Ïà·´£¬Äú¿ÉÒÔÑ¡ÔñÔËÐÐµ¥¸öÌØ
-¶¨ÃüÁî£¨ÀýÈçÓÊ¼þÓÃ»§´úÀí£©¡£ Èç¹ûÒªÖ´ÐÐ´Ë²Ù×÷£¬
-ÇëÔÚ\q{\ii{Ô¶³ÌÃüÁî}}¿òÖÐÊäÈëÃüÁî¡£
+åœ¨ SSH ä¸­ï¼Œæ‚¨ä¸å¿…åœ¨æœåŠ¡å™¨ä¸Šè¿è¡Œ
+å¸¸è§„ shell ä¼šè¯ã€‚ ç›¸åï¼Œæ‚¨å¯ä»¥é€‰æ‹©è¿è¡Œå•ä¸ªç‰¹
+å®šå‘½ä»¤ï¼ˆä¾‹å¦‚é‚®ä»¶ç”¨æˆ·ä»£ç†ï¼‰ã€‚ å¦‚æžœè¦æ‰§è¡Œæ­¤æ“ä½œï¼Œ
+è¯·åœ¨\q{\ii{è¿œç¨‹å‘½ä»¤}}æ¡†ä¸­è¾“å…¥å‘½ä»¤ã€‚
 
-Çë×¢Òâ£¬´ó¶àÊý·þÎñÆ÷»áÔÚÖ´ÐÐ
-ÃüÁîºó¹Ø±Õ»á»°¡£
+è¯·æ³¨æ„ï¼Œå¤§å¤šæ•°æœåŠ¡å™¨ä¼šåœ¨æ‰§è¡Œ
+å‘½ä»¤åŽå…³é—­ä¼šè¯ã€‚
 
-\S{config-ssh-noshell} \q{²»Æô¶¯\I{remote shell}shell»òÃüÁî
+\S{config-ssh-noshell} \q{ä¸å¯åŠ¨\I{remote shell}shellæˆ–å‘½ä»¤
 \I{remote command}}
 
-Èç¹û¹´Ñ¡´Ë¿ò£¬PuTTY ½«²»»áÔÚÁ¬½Óµ½Ô¶³Ì
-·þÎñÆ÷ºó³¢ÊÔÔËÐÐ shell »òÃüÁî¡£
-Èç¹ûÄú½öÊ¹ÓÃ SSH Á¬½Ó½øÐÐ\i{¶Ë¿Ú×ª·¢}£¬
-²¢ÇÒÄúÔÚ·þÎñÆ÷ÉÏµÄÓÃ»§ÕÊ»§Ã»ÓÐÔËÐÐ shell µÄÄÜÁ¦£¬
-Ôò¿ÉÄÜÐèÒªÊ¹ÓÃ´ËÑ¡Ïî¡£
+å¦‚æžœå‹¾é€‰æ­¤æ¡†ï¼ŒPuTTY å°†ä¸ä¼šåœ¨è¿žæŽ¥åˆ°è¿œç¨‹
+æœåŠ¡å™¨åŽå°è¯•è¿è¡Œ shell æˆ–å‘½ä»¤ã€‚
+å¦‚æžœæ‚¨ä»…ä½¿ç”¨ SSH è¿žæŽ¥è¿›è¡Œ\i{ç«¯å£è½¬å‘}ï¼Œ
+å¹¶ä¸”æ‚¨åœ¨æœåŠ¡å™¨ä¸Šçš„ç”¨æˆ·å¸æˆ·æ²¡æœ‰è¿è¡Œ shell çš„èƒ½åŠ›ï¼Œ
+åˆ™å¯èƒ½éœ€è¦ä½¿ç”¨æ­¤é€‰é¡¹ã€‚
 
-´Ë¹¦ÄÜ½öÔÚ \i{SSHÐ­Òé°æ±¾2}
-ÖÐ¿ÉÓÃ£¨ÒòÎª°æ±¾ 1 Ð­Òé¼Ù¶¨Äú½«Ê¼ÖÕÏëÒªÔËÐÐ shell£©¡£
+æ­¤åŠŸèƒ½ä»…åœ¨ \i{SSHåè®®ç‰ˆæœ¬2}
+ä¸­å¯ç”¨ï¼ˆå› ä¸ºç‰ˆæœ¬ 1 åè®®å‡å®šæ‚¨å°†å§‹ç»ˆæƒ³è¦è¿è¡Œ shellï¼‰ã€‚
 
-Ò²¿ÉÒÔÊ¹ÓÃ \c{-N} ÃüÁîÐÐÑ¡ÏîÆôÓÃ´Ë¹¦ÄÜ£»
-Çë²ÎÔÄ \k{using-cmdline-noshell}¡£
+ä¹Ÿå¯ä»¥ä½¿ç”¨ \c{-N} å‘½ä»¤è¡Œé€‰é¡¹å¯ç”¨æ­¤åŠŸèƒ½ï¼›
+è¯·å‚é˜… \k{using-cmdline-noshell}ã€‚
 
-Èç¹ûÄúÔÚ Plink ÖÐÊ¹ÓÃ´Ë¹¦ÄÜ£¬
-Äú½«ÎÞ·¨Í¨¹ýÈÎºÎÓÅÑÅµÄ·½Ê½ÖÕÖ¹ Plink ½ø³Ì£»
-É±ËÀËüµÄÎ¨Ò»·½·¨ÊÇ°´ Control-C »ò
-´ÓÁíÒ»¸ö³ÌÐò·¢ËÍÖÕÖ¹ÐÅºÅ¡£
+å¦‚æžœæ‚¨åœ¨ Plink ä¸­ä½¿ç”¨æ­¤åŠŸèƒ½ï¼Œ
+æ‚¨å°†æ— æ³•é€šè¿‡ä»»ä½•ä¼˜é›…çš„æ–¹å¼ç»ˆæ­¢ Plink è¿›ç¨‹ï¼›
+æ€æ­»å®ƒçš„å”¯ä¸€æ–¹æ³•æ˜¯æŒ‰ Control-C æˆ–
+ä»Žå¦ä¸€ä¸ªç¨‹åºå‘é€ç»ˆæ­¢ä¿¡å·ã€‚
 
-\S{config-ssh-comp} \q{ÆôÓÃ\i{Ñ¹Ëõ}}
+\S{config-ssh-comp} \q{å¯ç”¨\i{åŽ‹ç¼©}}
 
-ÕâÑù¾Í¿ÉÒÔÔÚ SSH Á¬½ÓÖÐ½øÐÐÊý¾ÝÑ¹Ëõ£º·þÎñÆ÷
-·¢ËÍµÄÊý¾ÝÔÚ·¢ËÍÇ°±»Ñ¹Ëõ£¬ÔÚ¿Í»§¶Ë±»½âÑ¹¡£
-Í¬Ñù£¬PuTTY ·¢ËÍµ½·þÎñÆ÷µÄÊý¾ÝÊ×ÏÈ±»Ñ¹Ëõ£¬
-·þÎñÆ÷ÔÚÁíÒ»¶Ë½âÑ¹¡£
-ÕâÓÐÖúÓÚ³ä·ÖÀûÓÃµÍ\i{´ø¿í}Á¬½Ó¡£
+è¿™æ ·å°±å¯ä»¥åœ¨ SSH è¿žæŽ¥ä¸­è¿›è¡Œæ•°æ®åŽ‹ç¼©ï¼šæœåŠ¡å™¨
+å‘é€çš„æ•°æ®åœ¨å‘é€å‰è¢«åŽ‹ç¼©ï¼Œåœ¨å®¢æˆ·ç«¯è¢«è§£åŽ‹ã€‚
+åŒæ ·ï¼ŒPuTTY å‘é€åˆ°æœåŠ¡å™¨çš„æ•°æ®é¦–å…ˆè¢«åŽ‹ç¼©ï¼Œ
+æœåŠ¡å™¨åœ¨å¦ä¸€ç«¯è§£åŽ‹ã€‚
+è¿™æœ‰åŠ©äºŽå……åˆ†åˆ©ç”¨ä½Ž\i{å¸¦å®½}è¿žæŽ¥ã€‚
 
-\S{config-ssh-prot} \q{\i{SSH Ð­Òé°æ±¾}}
+\S{config-ssh-prot} \q{\i{SSH åè®®ç‰ˆæœ¬}}
 
-ÕâÔÊÐíÄúÑ¡ÔñÊÇÊ¹ÓÃ \i{SSH protocol version 2} »¹ÊÇ
-¾ÉµÄ\I{SSH-1}version 1¡£
+è¿™å…è®¸æ‚¨é€‰æ‹©æ˜¯ä½¿ç”¨ \i{SSH protocol version 2} è¿˜æ˜¯
+æ—§çš„\I{SSH-1}version 1ã€‚
 
-ÄúÍ¨³£Ó¦¸Ã½«Æä±£ÁôÎªÄ¬ÈÏÖµ\q{2}¡£
-³ýÁË¹¦ÄÜ½ÏÉÙÍâ£¬¾ÉµÄ SSH-1 Ð­Òé²»ÔÙ¿ª·¢£¬¾ßÓÐÐí¶àÒÑÖªµÄ¼ÓÃÜÈõµã£¬
-²¢ÇÒÍ¨³£²»±»ÈÏÎªÊÇ°²È«µÄ¡£
-PuTTY µÄÐ­Òé 1 ÊµÏÖÖ÷ÒªÊÇÎªÁË¼æÈÝÐÔ¶øÌá¹©µÄ£¬
-²»ÔÙ½øÐÐÔöÇ¿¡£
+æ‚¨é€šå¸¸åº”è¯¥å°†å…¶ä¿ç•™ä¸ºé»˜è®¤å€¼\q{2}ã€‚
+é™¤äº†åŠŸèƒ½è¾ƒå°‘å¤–ï¼Œæ—§çš„ SSH-1 åè®®ä¸å†å¼€å‘ï¼Œå…·æœ‰è®¸å¤šå·²çŸ¥çš„åŠ å¯†å¼±ç‚¹ï¼Œ
+å¹¶ä¸”é€šå¸¸ä¸è¢«è®¤ä¸ºæ˜¯å®‰å…¨çš„ã€‚
+PuTTY çš„åè®® 1 å®žçŽ°ä¸»è¦æ˜¯ä¸ºäº†å…¼å®¹æ€§è€Œæä¾›çš„ï¼Œ
+ä¸å†è¿›è¡Œå¢žå¼ºã€‚
 
-Èç¹û·þÎñÆ÷Í¬Ê±Ìá¹©Á½ÖÖ°æ±¾£¬ÔòÊ×Ñ¡\q{2}¡£
-Èç¹ûÄúÓÐÒ»Ð©Ö»Ê¹ÓÃ SSH-1 µÄ·þÎñÆ÷»òÉè±¸£¬
-ÇëÔÚ´Ë´¦Ñ¡Ôñ\q{1}£¬²¢ÇÒ²»Òª½«Éú³ÉµÄÁ¬½ÓÊÓÎª°²È«µÄ¡£
+å¦‚æžœæœåŠ¡å™¨åŒæ—¶æä¾›ä¸¤ç§ç‰ˆæœ¬ï¼Œåˆ™é¦–é€‰\q{2}ã€‚
+å¦‚æžœæ‚¨æœ‰ä¸€äº›åªä½¿ç”¨ SSH-1 çš„æœåŠ¡å™¨æˆ–è®¾å¤‡ï¼Œ
+è¯·åœ¨æ­¤å¤„é€‰æ‹©\q{1}ï¼Œå¹¶ä¸”ä¸è¦å°†ç”Ÿæˆçš„è¿žæŽ¥è§†ä¸ºå®‰å…¨çš„ã€‚
 
-Èç¹û·þÎñÆ÷ÓëÄúÔÚ´Ë´¦µÄÑ¡Ôñ²»Æ¥Åä£¬
-PuTTY ²»»á×Ô¶¯»ØÍËµ½Ð­ÒéµÄÆäËû°æ±¾£» Ïà·´£¬
-Ëü»áÏÔÊ¾Ò»Ìõ´íÎóÏûÏ¢²¢ÖÐÖ¹Á¬½Ó¡£
-Õâ¿ÉÒÔ·ÀÖ¹Ö÷¶¯¹¥»÷Õß½«
-Ô¤ÆÚµÄ SSH-2 Á¬½Ó½µ¼¶Îª SSH-1¡£
+å¦‚æžœæœåŠ¡å™¨ä¸Žæ‚¨åœ¨æ­¤å¤„çš„é€‰æ‹©ä¸åŒ¹é…ï¼Œ
+PuTTY ä¸ä¼šè‡ªåŠ¨å›žé€€åˆ°åè®®çš„å…¶ä»–ç‰ˆæœ¬ï¼› ç›¸åï¼Œ
+å®ƒä¼šæ˜¾ç¤ºä¸€æ¡é”™è¯¯æ¶ˆæ¯å¹¶ä¸­æ­¢è¿žæŽ¥ã€‚
+è¿™å¯ä»¥é˜²æ­¢ä¸»åŠ¨æ”»å‡»è€…å°†
+é¢„æœŸçš„ SSH-2 è¿žæŽ¥é™çº§ä¸º SSH-1ã€‚
 
-\S{config-ssh-sharing} PuTTY ¹¤¾ßÖ®¼ä¹²Ïí SSH Á¬½Ó
+\S{config-ssh-sharing} PuTTY å·¥å…·ä¹‹é—´å…±äº« SSH è¿žæŽ¥
 
-´Ë¿òÖÐµÄ¿Ø¼þÔÊÐíÄú½« PuTTY ÅäÖÃ
-Îª¾¡¿ÉÄÜÖØÓÃÏÖÓÐµÄ SSH Á¬½Ó¡£
+æ­¤æ¡†ä¸­çš„æŽ§ä»¶å…è®¸æ‚¨å°† PuTTY é…ç½®
+ä¸ºå°½å¯èƒ½é‡ç”¨çŽ°æœ‰çš„ SSH è¿žæŽ¥ã€‚
 
-SSH-2 Ð­ÒéÔÊÐíÄúÔÚÍ¬Ò»¸ö SSH Á¬½ÓÉÏÔËÐÐ¶à
-¸öÊý¾ÝÍ¨µÀ£¬Òò´ËÄúÖ»ÐèµÇÂ¼Ò»´Î£¨²¢ÇÒ
-Ö»Ðè½øÐÐÒ»´Î°º¹óµÄ¼ÓÃÜÉèÖÃ£©£¬
-È»ºó´ò¿ª¶à¸öÖÕ¶Ë´°¿Ú¡£
+SSH-2 åè®®å…è®¸æ‚¨åœ¨åŒä¸€ä¸ª SSH è¿žæŽ¥ä¸Šè¿è¡Œå¤š
+ä¸ªæ•°æ®é€šé“ï¼Œå› æ­¤æ‚¨åªéœ€ç™»å½•ä¸€æ¬¡ï¼ˆå¹¶ä¸”
+åªéœ€è¿›è¡Œä¸€æ¬¡æ˜‚è´µçš„åŠ å¯†è®¾ç½®ï¼‰ï¼Œ
+ç„¶åŽæ‰“å¼€å¤šä¸ªç»ˆç«¯çª—å£ã€‚
 
-Ã¿¸ö PuTTY ÊµÀýÈÔÈ»×î¶à¿ÉÒÔÔËÐÐÒ»¸ö
-ÖÕ¶Ë»á»°£¬µ«ÊÇÊ¹ÓÃ´Ë¿òÖÐµÄ¿Ø¼þ£¬
-Äú¿ÉÒÔÅäÖÃ PuTTY ÒÔ¼ì²éÆä×ÔÉíµÄÁíÒ»¸öÊµÀýÊÇ·ñÒÑ
-¾­Á¬½Óµ½Ä¿±êÖ÷»ú£¬Èç¹ûÊÇ£¬
-Ôò¹²Ïí¸ÃÊµÀýµÄ SSH Á¬½Ó¿ªÊ¼Ò»¸öµ¥¶ÀµÄÐÂµÄ¡£
+æ¯ä¸ª PuTTY å®žä¾‹ä»ç„¶æœ€å¤šå¯ä»¥è¿è¡Œä¸€ä¸ª
+ç»ˆç«¯ä¼šè¯ï¼Œä½†æ˜¯ä½¿ç”¨æ­¤æ¡†ä¸­çš„æŽ§ä»¶ï¼Œ
+æ‚¨å¯ä»¥é…ç½® PuTTY ä»¥æ£€æŸ¥å…¶è‡ªèº«çš„å¦ä¸€ä¸ªå®žä¾‹æ˜¯å¦å·²
+ç»è¿žæŽ¥åˆ°ç›®æ ‡ä¸»æœºï¼Œå¦‚æžœæ˜¯ï¼Œ
+åˆ™å…±äº«è¯¥å®žä¾‹çš„ SSH è¿žæŽ¥å¼€å§‹ä¸€ä¸ªå•ç‹¬çš„æ–°çš„ã€‚
 
-ÒªÆôÓÃ´Ë¹¦ÄÜ£¬Ö»Ðè¹´Ñ¡¡°Èç¹û¿ÉÄÜ£¬
-¹²ÏíSSHÁ¬½Ó¡±¿ò¡£È»ºó£¬
-Ã¿µ±ÄúÆô¶¯Á¬½Óµ½ÌØ¶¨Ö÷»úµÄ PuTTY »á»°Ê±£¬
-Ëü½«³¢ÊÔÖØÓÃÏÖÓÐµÄ SSH Á¬½Ó£¨Èç¹û¿ÉÓÃ£©¡£
-ÀýÈç£¬´ÓÏµÍ³²Ëµ¥ÖÐÑ¡Ôñ\q{¸´ÖÆ»á»°}½«ÔÚÍ¬Ò»
-Ö÷»úÉÏÆô¶¯ÁíÒ»¸ö»á»°£¬Èç¹ûÆôÓÃ¹²Ïí£¬ÔòËü½«ÖØÓÃÏÖÓÐµÄ SSH Á¬½Ó¡£
+è¦å¯ç”¨æ­¤åŠŸèƒ½ï¼Œåªéœ€å‹¾é€‰â€œå¦‚æžœå¯èƒ½ï¼Œ
+å…±äº«SSHè¿žæŽ¥â€æ¡†ã€‚ç„¶åŽï¼Œ
+æ¯å½“æ‚¨å¯åŠ¨è¿žæŽ¥åˆ°ç‰¹å®šä¸»æœºçš„ PuTTY ä¼šè¯æ—¶ï¼Œ
+å®ƒå°†å°è¯•é‡ç”¨çŽ°æœ‰çš„ SSH è¿žæŽ¥ï¼ˆå¦‚æžœå¯ç”¨ï¼‰ã€‚
+ä¾‹å¦‚ï¼Œä»Žç³»ç»Ÿèœå•ä¸­é€‰æ‹©\q{å¤åˆ¶ä¼šè¯}å°†åœ¨åŒä¸€
+ä¸»æœºä¸Šå¯åŠ¨å¦ä¸€ä¸ªä¼šè¯ï¼Œå¦‚æžœå¯ç”¨å…±äº«ï¼Œåˆ™å®ƒå°†é‡ç”¨çŽ°æœ‰çš„ SSH è¿žæŽ¥ã€‚
 
-Ê¹ÓÃ´ËÄ£Ê½Ê±£¬Á¬½Óµ½¸ø¶¨·þÎñ
-Æ÷µÄµÚÒ»¸ö PuTTY ³ÉÎª\q{ÉÏÓÎ}£¬
-ÕâÒâÎ¶×ÅËüÊÇ¹ÜÀíÕæÕý SSH Á¬½ÓµÄÄÇ¸ö¡£
-ËùÓÐºóÐøÖØÓÃÁ¬½ÓµÄ PuTTY ¶¼³ÆÎª\q{ÏÂÓÎ}£º
-ËüÃÇ¸ù±¾²»Á¬½Óµ½ÕæÊµ·þÎñÆ÷£¬
-¶øÊÇÍ¨¹ý±¾µØ½ø³Ì¼äÍ¨ÐÅ·½·¨Á¬½Óµ½ÉÏÓÎ PuTTY¡£
+ä½¿ç”¨æ­¤æ¨¡å¼æ—¶ï¼Œè¿žæŽ¥åˆ°ç»™å®šæœåŠ¡
+å™¨çš„ç¬¬ä¸€ä¸ª PuTTY æˆä¸º\q{ä¸Šæ¸¸}ï¼Œ
+è¿™æ„å‘³ç€å®ƒæ˜¯ç®¡ç†çœŸæ­£ SSH è¿žæŽ¥çš„é‚£ä¸ªã€‚
+æ‰€æœ‰åŽç»­é‡ç”¨è¿žæŽ¥çš„ PuTTY éƒ½ç§°ä¸º\q{ä¸‹æ¸¸}ï¼š
+å®ƒä»¬æ ¹æœ¬ä¸è¿žæŽ¥åˆ°çœŸå®žæœåŠ¡å™¨ï¼Œ
+è€Œæ˜¯é€šè¿‡æœ¬åœ°è¿›ç¨‹é—´é€šä¿¡æ–¹æ³•è¿žæŽ¥åˆ°ä¸Šæ¸¸ PuTTYã€‚
 
-Òª¼¤»î´ËÏµÍ³£¬PuTTY µÄÉÏÓÎºÍÏÂÓÎ
-ÊµÀý\e{¶¼}±ØÐëÆôÓÃ¹²ÏíÑ¡Ïî¡£
+è¦æ¿€æ´»æ­¤ç³»ç»Ÿï¼ŒPuTTY çš„ä¸Šæ¸¸å’Œä¸‹æ¸¸
+å®žä¾‹\e{éƒ½}å¿…é¡»å¯ç”¨å…±äº«é€‰é¡¹ã€‚
 
-Òò´Ë£¬ÉÏÓÎ PuTTY ÔÚÆäËùÓÐÏÂÓÎ¶¼¹Ø±Õ
-Ö®Ç°ÎÞ·¨ÖÕÖ¹¡£ÕâÀàËÆÓÚÄúÊ¹ÓÃ¶Ë¿Ú
-×ª·¢»ò X11 ×ª·¢»ñµÃµÄÐ§¹û£¬
-ÆäÖÐÖÕ¶Ë»á»°ÒÑ¾­Íê³ÉµÄ PuTTY ÈÔ½«±£³Ö´ò¿ª×´Ì¬£¬
-ÒÔ±ã¼ÌÐøÎª×ª·¢µÄÁ¬½ÓÌá¹©·þÎñ¡£
+å› æ­¤ï¼Œä¸Šæ¸¸ PuTTY åœ¨å…¶æ‰€æœ‰ä¸‹æ¸¸éƒ½å…³é—­
+ä¹‹å‰æ— æ³•ç»ˆæ­¢ã€‚è¿™ç±»ä¼¼äºŽæ‚¨ä½¿ç”¨ç«¯å£
+è½¬å‘æˆ– X11 è½¬å‘èŽ·å¾—çš„æ•ˆæžœï¼Œ
+å…¶ä¸­ç»ˆç«¯ä¼šè¯å·²ç»å®Œæˆçš„ PuTTY ä»å°†ä¿æŒæ‰“å¼€çŠ¶æ€ï¼Œ
+ä»¥ä¾¿ç»§ç»­ä¸ºè½¬å‘çš„è¿žæŽ¥æä¾›æœåŠ¡ã€‚
 
-Èç¹ûÄúÐèÒª¸üÏêÏ¸µØÅäÖÃ´ËÏµÍ³£¬
-»¹ÓÐÁ½¸ö¶îÍâµÄ¸´Ñ¡¿ò¿ÉÈÃÄúÖ¸¶¨ÌØ¶¨µÄ PuTTY ÊÇ·ñ¿ÉÒÔ³ä
-µ±ÉÏÓÎ»òÏÂÓÎ»òÁ½Õß¼æ¶øÓÐÖ®¡£
-£¨ÕâÐ©¿òÖ»ÓÐÔÚÖ÷ \q{Èç¹û¿ÉÄÜ£¬¹²ÏíSSHÁ¬½Ó}¿òÒ²
-±»¹´Ñ¡Ê±²Å»áÉúÐ§¡££©
-Ä¬ÈÏÇé¿öÏÂ£¬ÕâÁ½¸ö¿ò¶¼±»¹´Ñ¡£¬
-Òò´Ë´ÓÏàÍ¬ÅäÖÃÆô¶¯µÄ¶à¸ö PuTTY ½«
-Ö¸¶¨ËüÃÇ×Ô¼º×÷ÎªÉÏÓÎ²¢¹²Ïíµ¥Ò»Á¬½Ó£»
-µ«ÊÇÈç¹ûÓÉÓÚÄ³ÖÖÔ­ÒòÄúÐèÒªÌØ¶¨µÄ PuTTY ÅäÖÃ\e{²»}ÊÇÉÏÓÎ
-£¨ÀýÈç£¬ÒòÎªÄú¿Ï¶¨ÐèÒªËüÁ¢¼´¹Ø±Õ£©»ò²»ÊÇ
-ÏÂÓÎ£¨ÀýÈç£¬ÒòÎªËüÐèÒªÊ¹ÓÃÌØÊâµÄË½Ô¿½øÐÐ×Ô¼ºµÄÉí·ÝÑéÖ¤£©£¬
-ÄÇÃ´Äú¿ÉÒÔÈ¡ÏûÑ¡ÖÐÆäÖÐÒ»¸ö»òÁíÒ»¸ö¡£
+å¦‚æžœæ‚¨éœ€è¦æ›´è¯¦ç»†åœ°é…ç½®æ­¤ç³»ç»Ÿï¼Œ
+è¿˜æœ‰ä¸¤ä¸ªé¢å¤–çš„å¤é€‰æ¡†å¯è®©æ‚¨æŒ‡å®šç‰¹å®šçš„ PuTTY æ˜¯å¦å¯ä»¥å……
+å½“ä¸Šæ¸¸æˆ–ä¸‹æ¸¸æˆ–ä¸¤è€…å…¼è€Œæœ‰ä¹‹ã€‚
+ï¼ˆè¿™äº›æ¡†åªæœ‰åœ¨ä¸» \q{å¦‚æžœå¯èƒ½ï¼Œå…±äº«SSHè¿žæŽ¥}æ¡†ä¹Ÿ
+è¢«å‹¾é€‰æ—¶æ‰ä¼šç”Ÿæ•ˆã€‚ï¼‰
+é»˜è®¤æƒ…å†µä¸‹ï¼Œè¿™ä¸¤ä¸ªæ¡†éƒ½è¢«å‹¾é€‰ï¼Œ
+å› æ­¤ä»Žç›¸åŒé…ç½®å¯åŠ¨çš„å¤šä¸ª PuTTY å°†
+æŒ‡å®šå®ƒä»¬è‡ªå·±ä½œä¸ºä¸Šæ¸¸å¹¶å…±äº«å•ä¸€è¿žæŽ¥ï¼›
+ä½†æ˜¯å¦‚æžœç”±äºŽæŸç§åŽŸå› æ‚¨éœ€è¦ç‰¹å®šçš„ PuTTY é…ç½®\e{ä¸}æ˜¯ä¸Šæ¸¸
+ï¼ˆä¾‹å¦‚ï¼Œå› ä¸ºæ‚¨è‚¯å®šéœ€è¦å®ƒç«‹å³å…³é—­ï¼‰æˆ–ä¸æ˜¯
+ä¸‹æ¸¸ï¼ˆä¾‹å¦‚ï¼Œå› ä¸ºå®ƒéœ€è¦ä½¿ç”¨ç‰¹æ®Šçš„ç§é’¥è¿›è¡Œè‡ªå·±çš„èº«ä»½éªŒè¯ï¼‰ï¼Œ
+é‚£ä¹ˆæ‚¨å¯ä»¥å–æ¶ˆé€‰ä¸­å…¶ä¸­ä¸€ä¸ªæˆ–å¦ä¸€ä¸ªã€‚
 
-ÎÒÔÚÉÏÃæµÄÌÖÂÛÖÐÌáµ½ÁË\q{PuTTY}£¬
-µ«ËùÓÐÆäËû½¨Á¢ SSH Á¬½ÓµÄ PuTTY ¹¤¾ßÒ²
-¿ÉÒÔÊ¹ÓÃÕâÖÖ»úÖÆ¡£ÀýÈç£¬Èç¹û PSCP »ò
- PSFTP ¼ÓÔØÆôÓÃ¹²ÏíµÄÅäÖÃ£¬
-ÔòËü¿ÉÒÔ³äµ±ÏÂÓÎ²¢Ê¹ÓÃÓÉ GUI PuTTY ÊµÀýÉèÖÃµÄÏÖÓÐ SSH Á¬½Ó¡£
-Ò»ÖÖÌØÊâÇé¿öÊÇ PSCP ºÍ PSFTP ÓÀÔ¶²»»á³äµ±ÉÏÓÎ¡£
+æˆ‘åœ¨ä¸Šé¢çš„è®¨è®ºä¸­æåˆ°äº†\q{PuTTY}ï¼Œ
+ä½†æ‰€æœ‰å…¶ä»–å»ºç«‹ SSH è¿žæŽ¥çš„ PuTTY å·¥å…·ä¹Ÿ
+å¯ä»¥ä½¿ç”¨è¿™ç§æœºåˆ¶ã€‚ä¾‹å¦‚ï¼Œå¦‚æžœ PSCP æˆ–
+ PSFTP åŠ è½½å¯ç”¨å…±äº«çš„é…ç½®ï¼Œ
+åˆ™å®ƒå¯ä»¥å……å½“ä¸‹æ¸¸å¹¶ä½¿ç”¨ç”± GUI PuTTY å®žä¾‹è®¾ç½®çš„çŽ°æœ‰ SSH è¿žæŽ¥ã€‚
+ä¸€ç§ç‰¹æ®Šæƒ…å†µæ˜¯ PSCP å’Œ PSFTP æ°¸è¿œä¸ä¼šå……å½“ä¸Šæ¸¸ã€‚
 
-¿ÉÒÔÊ¹ÓÃ Plink ÒÔ±à³Ì·½Ê½²âÊÔÊÇ·ñ´æÔÚÊµÊ±ÉÏÓÎ¡£
-Çë²ÎÔÄ  \k{plink-option-shareexists}¡£
+å¯ä»¥ä½¿ç”¨ Plink ä»¥ç¼–ç¨‹æ–¹å¼æµ‹è¯•æ˜¯å¦å­˜åœ¨å®žæ—¶ä¸Šæ¸¸ã€‚
+è¯·å‚é˜…  \k{plink-option-shareexists}ã€‚
 
-\H{config-ssh-kex} ÃÜÔ¿½»»»Ãæ°å
+\H{config-ssh-kex} å¯†é’¥äº¤æ¢é¢æ¿
 
-ÃÜÔ¿Ãæ°å£¨KexÊÇ \q{\i{key exchange}}¡ªÃÜÔ¿½»»»µÄËõÐ´£©
-ÔÊÐíÄúÅäÖÃÓë SSH-2 ÃÜÔ¿½»»»Ïà¹ØµÄÑ¡Ïî¡£
+å¯†é’¥é¢æ¿ï¼ˆKexæ˜¯ \q{\i{key exchange}}â€”å¯†é’¥äº¤æ¢çš„ç¼©å†™ï¼‰
+å…è®¸æ‚¨é…ç½®ä¸Ž SSH-2 å¯†é’¥äº¤æ¢ç›¸å…³çš„é€‰é¡¹ã€‚
 
-ÃÜÔ¿½»»»·¢ÉúÔÚ SSH Á¬½Ó¿ªÊ¼Ê±£¨Å¼¶ûÖ®ºó£©£»
-Ëü½¨Á¢ÁËÒ»¸ö\i{¹²ÏíÃÜÔ¿}£¬
-ÓÃ×÷ËùÓÐ SSH °²È«¹¦ÄÜµÄ»ù´¡¡£
-Òò´Ë£¬ÃÜÔ¿½»»»µÄ°²È«ÐÔ¶ÔÓÚ
-Á¬½ÓµÄ°²È«ÐÔ·Ç³£ÖØÒª¡£
+å¯†é’¥äº¤æ¢å‘ç”Ÿåœ¨ SSH è¿žæŽ¥å¼€å§‹æ—¶ï¼ˆå¶å°”ä¹‹åŽï¼‰ï¼›
+å®ƒå»ºç«‹äº†ä¸€ä¸ª\i{å…±äº«å¯†é’¥}ï¼Œ
+ç”¨ä½œæ‰€æœ‰ SSH å®‰å…¨åŠŸèƒ½çš„åŸºç¡€ã€‚
+å› æ­¤ï¼Œå¯†é’¥äº¤æ¢çš„å®‰å…¨æ€§å¯¹äºŽ
+è¿žæŽ¥çš„å®‰å…¨æ€§éžå¸¸é‡è¦ã€‚
 
-ÃÜÔ¿½»»»ÊÇÒ»¸ö¼ÓÃÜÃÜ¼¯ÐÍ¹ý³Ì£»
-Èç¹û¿Í»§¶Ë»ò·þÎñÆ÷ÊÇÏà¶Ô½ÏÂýµÄ»úÆ÷£¬
-½ÏÂýµÄ·½·¨¿ÉÄÜÐèÒª¼¸Ê®Ãë²ÅÄÜÍê³É¡£
+å¯†é’¥äº¤æ¢æ˜¯ä¸€ä¸ªåŠ å¯†å¯†é›†åž‹è¿‡ç¨‹ï¼›
+å¦‚æžœå®¢æˆ·ç«¯æˆ–æœåŠ¡å™¨æ˜¯ç›¸å¯¹è¾ƒæ…¢çš„æœºå™¨ï¼Œ
+è¾ƒæ…¢çš„æ–¹æ³•å¯èƒ½éœ€è¦å‡ åç§’æ‰èƒ½å®Œæˆã€‚
 
-Èç¹ûÁ¬½ÓÆô¶¯Ì«Âý£¬»òÕßÁ¬½Ó¶¨ÆÚ¹ÒÆð£¬
-Äú¿ÉÄÜÐèÒª³¢ÊÔ¸ü¸ÄÕâÐ©ÉèÖÃ¡£
+å¦‚æžœè¿žæŽ¥å¯åŠ¨å¤ªæ…¢ï¼Œæˆ–è€…è¿žæŽ¥å®šæœŸæŒ‚èµ·ï¼Œ
+æ‚¨å¯èƒ½éœ€è¦å°è¯•æ›´æ”¹è¿™äº›è®¾ç½®ã€‚
 
-Èç¹ûÄú²»Ã÷°×ÆäÖÐµÄÈÎºÎº¬Òå£¬
-¿ÉÒÔ·ÅÐÄµØ±£ÁôÕâÐ©ÉèÖÃ¡£
+å¦‚æžœæ‚¨ä¸æ˜Žç™½å…¶ä¸­çš„ä»»ä½•å«ä¹‰ï¼Œ
+å¯ä»¥æ”¾å¿ƒåœ°ä¿ç•™è¿™äº›è®¾ç½®ã€‚
 
-Õû¸öÃæ°å½öÓë SSH Ð­Òé°æ±¾ 2 Ïà¹Ø£»
-ÕâÐ©ÉèÖÃ¶¼²»»áÓ°Ïì SSH-1¡£
+æ•´ä¸ªé¢æ¿ä»…ä¸Ž SSH åè®®ç‰ˆæœ¬ 2 ç›¸å…³ï¼›
+è¿™äº›è®¾ç½®éƒ½ä¸ä¼šå½±å“ SSH-1ã€‚
 
-\S{config-ssh-kex-order} \ii{ÃÜÔ¿½»»»Ëã·¨}Ñ¡Ôñ
+\S{config-ssh-kex-order} \ii{å¯†é’¥äº¤æ¢ç®—æ³•}é€‰æ‹©
 
-PuTTY Ö§³Ö¶àÖÖ SSH-2 ÃÜÔ¿½»»»·½Ê½£¬
-²¢ÔÊÐíÄúÑ¡ÔñÄúÏ²»¶Ê¹ÓÃµÄÒ»ÖÖ£»
-ÅäÖÃÀàËÆÓÚÃÜÂëÑ¡Ôñ (Çë²ÎÔÄ \k{config-ssh-encryption})¡£
+PuTTY æ”¯æŒå¤šç§ SSH-2 å¯†é’¥äº¤æ¢æ–¹å¼ï¼Œ
+å¹¶å…è®¸æ‚¨é€‰æ‹©æ‚¨å–œæ¬¢ä½¿ç”¨çš„ä¸€ç§ï¼›
+é…ç½®ç±»ä¼¼äºŽå¯†ç é€‰æ‹© (è¯·å‚é˜… \k{config-ssh-encryption})ã€‚
 
-PuTTY Ä¿Ç°Ö§³ÖÒÔÏÂÃÜÔ¿½»»»·½Ê½£º
+PuTTY ç›®å‰æ”¯æŒä»¥ä¸‹å¯†é’¥äº¤æ¢æ–¹å¼ï¼š
 
 \b \q{NTRU Prime / Curve25519 hybrid}: \q{\i{Streamlined NTRU Prime}}
-ÊÇÒ»ÖÖ»ùÓÚÍø¸ñµÄËã·¨£¬Ö¼ÔÚµÖ¿¹\i{Á¿×Ó¹¥»÷}¡£
-ÔÚÕâÖÖÃÜÔ¿½»»»·½·¨ÖÐ£¬ËüÓë´«Í³µÄ
-Curve25519-based·½·¨£¨\q{ECDH}ÖÐ°üº¬µÄ·½·¨Ö®Ò»£©²¢ÁÐÏÔÊ¾£¬
-ËüµÄ°²È«ÐÔ²»Ó¦\e{µÍÓÚ}Í¨³£Ê¹ÓÃµÄ·½·¨£¬
-²¢ÇÒÒ²ÓÐÏ£ÍûµÖ¿¹ÐÂµÄ¹¥»÷Àà±ð¡£¡£
+æ˜¯ä¸€ç§åŸºäºŽç½‘æ ¼çš„ç®—æ³•ï¼Œæ—¨åœ¨æŠµæŠ—\i{é‡å­æ”»å‡»}ã€‚
+åœ¨è¿™ç§å¯†é’¥äº¤æ¢æ–¹æ³•ä¸­ï¼Œå®ƒä¸Žä¼ ç»Ÿçš„
+Curve25519-basedæ–¹æ³•ï¼ˆ\q{ECDH}ä¸­åŒ…å«çš„æ–¹æ³•ä¹‹ä¸€ï¼‰å¹¶åˆ—æ˜¾ç¤ºï¼Œ
+å®ƒçš„å®‰å…¨æ€§ä¸åº”\e{ä½ŽäºŽ}é€šå¸¸ä½¿ç”¨çš„æ–¹æ³•ï¼Œ
+å¹¶ä¸”ä¹Ÿæœ‰å¸Œæœ›æŠµæŠ—æ–°çš„æ”»å‡»ç±»åˆ«ã€‚ã€‚
 
-\b \q{\i{ECDH}}: elliptic curve Diffie-Hellman key exchange£¬
-°üº¬ÓÐ¸÷ÖÖ±ê×¼ÇúÏßºÍ¹þÏ£Ëã·¨¡£
+\b \q{\i{ECDH}}: elliptic curve Diffie-Hellman key exchangeï¼Œ
+åŒ…å«æœ‰å„ç§æ ‡å‡†æ›²çº¿å’Œå“ˆå¸Œç®—æ³•ã€‚
 
-\b The original form of \i{Diffie-Hellman key exchange}£¬°üº¬
-ÓÐ¸÷ÖÖÖªÃûµÄ·Ö×éºÍ¹þÏ££º
+\b The original form of \i{Diffie-Hellman key exchange}ï¼ŒåŒ…å«
+æœ‰å„ç§çŸ¥åçš„åˆ†ç»„å’Œå“ˆå¸Œï¼š
 
 \lcont{
-\b \q{Group 18}£¬8192-bit group£¬
-Óë SHA-512 hash function Ò»ÆðÊ¹ÓÃ¡£
+\b \q{Group 18}ï¼Œ8192-bit groupï¼Œ
+ä¸Ž SHA-512 hash function ä¸€èµ·ä½¿ç”¨ã€‚
 
-\b \q{Group 17}£¬6144-bit group£¬
-Óë SHA-512 hash function Ò»ÆðÊ¹ÓÃ¡£
+\b \q{Group 17}ï¼Œ6144-bit groupï¼Œ
+ä¸Ž SHA-512 hash function ä¸€èµ·ä½¿ç”¨ã€‚
 
-\b \q{Group 16}£¬4096-bit group£¬
-Óë SHA-512 hash function Ò»ÆðÊ¹ÓÃ¡£
+\b \q{Group 16}ï¼Œ4096-bit groupï¼Œ
+ä¸Ž SHA-512 hash function ä¸€èµ·ä½¿ç”¨ã€‚
 
-\b \q{Group 15}£¬3072-bit group£¬
-Óë SHA-512 hash function Ò»ÆðÊ¹ÓÃ¡£
+\b \q{Group 15}ï¼Œ3072-bit groupï¼Œ
+ä¸Ž SHA-512 hash function ä¸€èµ·ä½¿ç”¨ã€‚
 
-\b \q{Group 14}£º2048-bit group£¬Óë SHA-256 hash function Ò»ÆðÊ¹ÓÃ£¬
-Èç¹û·þÎñÆ÷²»Ö§³Ö£¬ÔòÊ¹ÓÃSHA-1¡£
+\b \q{Group 14}ï¼š2048-bit groupï¼Œä¸Ž SHA-256 hash function ä¸€èµ·ä½¿ç”¨ï¼Œ
+å¦‚æžœæœåŠ¡å™¨ä¸æ”¯æŒï¼Œåˆ™ä½¿ç”¨SHA-1ã€‚
 
 \b \q{Group 1}:  1024-bit group,
-Óë SHA-1 hash function Ò»ÆðÊ¹ÓÃ¡£
-ÎÒÃÇºÍµ±Ç°µÄSSH±ê×¼¶¼²»½¨ÒéÊ¹ÓÃ´Ë·½·¨£¬
-²¢ÇÒÄ¬ÈÏÇé¿öÏÂ²»»áÔÚÐÂ°²×°ÖÐÊ¹ÓÃËü;
-µ«ÊÇ£¬Ëü¿ÉÄÜÊÇ·Ç³£¾ÉµÄ·þÎñÆ÷Èí¼þÖ§³ÖµÄÎ¨Ò»·½·¨¡£
+ä¸Ž SHA-1 hash function ä¸€èµ·ä½¿ç”¨ã€‚
+æˆ‘ä»¬å’Œå½“å‰çš„SSHæ ‡å‡†éƒ½ä¸å»ºè®®ä½¿ç”¨æ­¤æ–¹æ³•ï¼Œ
+å¹¶ä¸”é»˜è®¤æƒ…å†µä¸‹ä¸ä¼šåœ¨æ–°å®‰è£…ä¸­ä½¿ç”¨å®ƒ;
+ä½†æ˜¯ï¼Œå®ƒå¯èƒ½æ˜¯éžå¸¸æ—§çš„æœåŠ¡å™¨è½¯ä»¶æ”¯æŒçš„å”¯ä¸€æ–¹æ³•ã€‚
 }
 
-\b \q{Diffie-Hellman \i{group exchange}}: Ê¹ÓÃÕâÖÖ·½·¨£¬
-PuTTYÇëÇó·þÎñÆ÷½¨ÒéÒ»¸ö×éÓÃÓÚºóÐøµÄDiffie-HellmanÃÜÔ¿½»»»£¬
-¶ø²»ÊÇÊ¹ÓÃ¹Ì¶¨×é;·þÎñÆ÷¿ÉÒÔ±ÜÃâÒÑÖª½ÏÈõµÄ×é£¬
-²¢¿ÉÄÜËæ×ÅÊ±¼äµÄÍÆÒÆ·¢Ã÷ÐÂµÄ×é£¬
-¶øÎÞÐè¶ÔPuTTYµÄÅäÖÃ½øÐÐÈÎºÎ¸ü¸Ä¡£
-´ËÃÜÔ¿½»»»·½·¨Ê¹ÓÃ SHA-256 ¹þÏ££¬
-Èç¹û·þÎñÆ÷²»Ö§³Ö£¬ÔòÊ¹ÓÃ SHA-1¡£
+\b \q{Diffie-Hellman \i{group exchange}}: ä½¿ç”¨è¿™ç§æ–¹æ³•ï¼Œ
+PuTTYè¯·æ±‚æœåŠ¡å™¨å»ºè®®ä¸€ä¸ªç»„ç”¨äºŽåŽç»­çš„Diffie-Hellmanå¯†é’¥äº¤æ¢ï¼Œ
+è€Œä¸æ˜¯ä½¿ç”¨å›ºå®šç»„;æœåŠ¡å™¨å¯ä»¥é¿å…å·²çŸ¥è¾ƒå¼±çš„ç»„ï¼Œ
+å¹¶å¯èƒ½éšç€æ—¶é—´çš„æŽ¨ç§»å‘æ˜Žæ–°çš„ç»„ï¼Œ
+è€Œæ— éœ€å¯¹PuTTYçš„é…ç½®è¿›è¡Œä»»ä½•æ›´æ”¹ã€‚
+æ­¤å¯†é’¥äº¤æ¢æ–¹æ³•ä½¿ç”¨ SHA-256 å“ˆå¸Œï¼Œ
+å¦‚æžœæœåŠ¡å™¨ä¸æ”¯æŒï¼Œåˆ™ä½¿ç”¨ SHA-1ã€‚
 
-\b \q{\i{RSA-based key exchange}}: ÓëDiffie-HellmanÃÜÔ¿½»»»Ïà±È£¬
-ÕâÐèÒª¿Í»§¶ËµÄ¼ÆËã¹¤×÷Á¿ÉÙµÃ¶à£¬
-¶ø·þÎñÆ÷·½ÃæµÄ¼ÆËã¹¤×÷Á¿Ò²ÒªÉÙµÃ¶à¡£
+\b \q{\i{RSA-based key exchange}}: ä¸ŽDiffie-Hellmanå¯†é’¥äº¤æ¢ç›¸æ¯”ï¼Œ
+è¿™éœ€è¦å®¢æˆ·ç«¯çš„è®¡ç®—å·¥ä½œé‡å°‘å¾—å¤šï¼Œ
+è€ŒæœåŠ¡å™¨æ–¹é¢çš„è®¡ç®—å·¥ä½œé‡ä¹Ÿè¦å°‘å¾—å¤šã€‚
 
-\b \q{GSSAPI key exchange}£ºÇë²ÎÔÄ \k{config-ssh-gssapi-kex}¡£
+\b \q{GSSAPI key exchange}ï¼šè¯·å‚é˜… \k{config-ssh-gssapi-kex}ã€‚
 
-Èç¹û PuTTY ÕÒµ½µÄµÚÒ»¸öËã·¨µÍÓÚ\q{-- ÒÔÏÂÎª¾¯¸æÑ¡Ïî --}ÐÐ£¬
-Äã»áÔÚ½¨Á¢Á¬½ÓÊ±¿´µ½Ò»¸ö¾¯¸æ¿ò£¬
-ÀàËÆÓÚÃÜÂëÑ¡Ôñ(Çë²ÎÔÄ \k{config-ssh-encryption})¡£
+å¦‚æžœ PuTTY æ‰¾åˆ°çš„ç¬¬ä¸€ä¸ªç®—æ³•ä½ŽäºŽ\q{-- ä»¥ä¸‹ä¸ºè­¦å‘Šé€‰é¡¹ --}è¡Œï¼Œ
+ä½ ä¼šåœ¨å»ºç«‹è¿žæŽ¥æ—¶çœ‹åˆ°ä¸€ä¸ªè­¦å‘Šæ¡†ï¼Œ
+ç±»ä¼¼äºŽå¯†ç é€‰æ‹©(è¯·å‚é˜… \k{config-ssh-encryption})ã€‚
 
-\S2{config-ssh-gssapi-kex} »ùÓÚGSSAPIµÄÃÜÔ¿½»»»
+\S2{config-ssh-gssapi-kex} åŸºäºŽGSSAPIçš„å¯†é’¥äº¤æ¢
 
-PuTTY Ö§³ÖÒ»×éÃÜÔ¿½»»»·½·¨£¬ÕâÐ©·½·¨»¹°üº¬»ù
-ÓÚ GSSAPI µÄÉí·ÝÑéÖ¤¡£
-ËüÃÇÍ¨¹ý\q{³¢ÊÔ GSSAPI ÃÜÔ¿½»»»}¸´Ñ¡
-¿ò£¨Ò²³öÏÖÔÚ\q{GSSAPI}Ãæ°åÉÏ£©ÆôÓÃ¡£
+PuTTY æ”¯æŒä¸€ç»„å¯†é’¥äº¤æ¢æ–¹æ³•ï¼Œè¿™äº›æ–¹æ³•è¿˜åŒ…å«åŸº
+äºŽ GSSAPI çš„èº«ä»½éªŒè¯ã€‚
+å®ƒä»¬é€šè¿‡\q{å°è¯• GSSAPI å¯†é’¥äº¤æ¢}å¤é€‰
+æ¡†ï¼ˆä¹Ÿå‡ºçŽ°åœ¨\q{GSSAPI}é¢æ¿ä¸Šï¼‰å¯ç”¨ã€‚
 
-PuTTY ÔÚÊ¹ÓÃ Kerberos V5 Ê±Ö»ÄÜÖ´ÐÐ GSSAPI ÈÏÖ¤µÄÃÜÔ¿½»»»·½·¨£¬
-¶ø²»ÄÜÖ´ÐÐÆäËû GSSAPI »úÖÆ¡£
-Èç¹ûÔËÐÐ PuTTY µÄÓÃ»§¾ßÓÐµ±Ç°µÄ Kerberos V5 Æ¾¾Ý£¬
-Ôò PuTTY ½«ÓÅÏÈÑ¡Ôñ GSSAPI ÃÜÔ¿½»»»·½·¨£¬
-¶ø²»ÊÇÊ×Ñ¡ÁÐ±íÖÐÅäÖÃµÄÈÎºÎÆÕÍ¨ SSH ÃÜÔ¿½»»»·½·¨¡£
-\k{config-ssh-kex-order}ÕÂ½ÚÖÐÁÐ³öµÄ´ó¶àÊýÆÕÍ¨·½·¨ÓëGSSAPIµÈÐ§;
-·þÎñÆ÷Ö§³Ö¾ö¶¨ÁËÄÄÒ»¸ö½«±»Ê¹ÓÃ¡£
-£¨PuTTY¶ÔGSSAPI Éí·ÝÑéÖ¤µÄÃÜÔ¿½»»»·½·¨
-Ë³ÐòÊÇ¹Ì¶¨µÄ£¬²»ÊÜÊ×Ñ¡ÏîÁÐ±íµÄ¿ØÖÆ¡££©
+PuTTY åœ¨ä½¿ç”¨ Kerberos V5 æ—¶åªèƒ½æ‰§è¡Œ GSSAPI è®¤è¯çš„å¯†é’¥äº¤æ¢æ–¹æ³•ï¼Œ
+è€Œä¸èƒ½æ‰§è¡Œå…¶ä»– GSSAPI æœºåˆ¶ã€‚
+å¦‚æžœè¿è¡Œ PuTTY çš„ç”¨æˆ·å…·æœ‰å½“å‰çš„ Kerberos V5 å‡­æ®ï¼Œ
+åˆ™ PuTTY å°†ä¼˜å…ˆé€‰æ‹© GSSAPI å¯†é’¥äº¤æ¢æ–¹æ³•ï¼Œ
+è€Œä¸æ˜¯é¦–é€‰åˆ—è¡¨ä¸­é…ç½®çš„ä»»ä½•æ™®é€š SSH å¯†é’¥äº¤æ¢æ–¹æ³•ã€‚
+\k{config-ssh-kex-order}ç« èŠ‚ä¸­åˆ—å‡ºçš„å¤§å¤šæ•°æ™®é€šæ–¹æ³•ä¸ŽGSSAPIç­‰æ•ˆ;
+æœåŠ¡å™¨æ”¯æŒå†³å®šäº†å“ªä¸€ä¸ªå°†è¢«ä½¿ç”¨ã€‚
+ï¼ˆPuTTYå¯¹GSSAPI èº«ä»½éªŒè¯çš„å¯†é’¥äº¤æ¢æ–¹æ³•
+é¡ºåºæ˜¯å›ºå®šçš„ï¼Œä¸å—é¦–é€‰é¡¹åˆ—è¡¨çš„æŽ§åˆ¶ã€‚ï¼‰
 
-µ±ÄúÊ¹ÓÃÆ¾Ö¤Î¯ÍÐÊ±£¬
-½« GSSAPI Éí·ÝÑéÖ¤×÷Îª SSH ÃÜÔ¿½»»»
-µÄÒ»²¿·ÖµÄÓÅÊÆÏÔ¶øÒ×¼û (Çë²ÎÔÄ \k{config-ssh-auth-gssapi-delegation})¡£
-SSH ÃÜÔ¿½»»»¿ÉÒÔÔÚ»á»°ÉÔºóÖØ¸´£¬
-ÕâÔÊÐíÄúµÄ Kerberos V5 Æ¾¾Ý£¨Í¨³£ÊÇ¶ÌÔÝµÄ£©ÔÚ¿Í»§¶ËÉÏË¢ÐÂ
-Ê±×Ô¶¯ÖØÐÂÎ¯ÍÐ¸ø·þÎñÆ÷¡£
-£¨´Ë¹¦ÄÜÍ¨³£³ÆÎª\q{\i{¼¶ÁªÆ¾¾Ý}}¡££©
+å½“æ‚¨ä½¿ç”¨å‡­è¯å§”æ‰˜æ—¶ï¼Œ
+å°† GSSAPI èº«ä»½éªŒè¯ä½œä¸º SSH å¯†é’¥äº¤æ¢
+çš„ä¸€éƒ¨åˆ†çš„ä¼˜åŠ¿æ˜¾è€Œæ˜“è§ (è¯·å‚é˜… \k{config-ssh-auth-gssapi-delegation})ã€‚
+SSH å¯†é’¥äº¤æ¢å¯ä»¥åœ¨ä¼šè¯ç¨åŽé‡å¤ï¼Œ
+è¿™å…è®¸æ‚¨çš„ Kerberos V5 å‡­æ®ï¼ˆé€šå¸¸æ˜¯çŸ­æš‚çš„ï¼‰åœ¨å®¢æˆ·ç«¯ä¸Šåˆ·æ–°
+æ—¶è‡ªåŠ¨é‡æ–°å§”æ‰˜ç»™æœåŠ¡å™¨ã€‚
+ï¼ˆæ­¤åŠŸèƒ½é€šå¸¸ç§°ä¸º\q{\i{çº§è”å‡­æ®}}ã€‚ï¼‰
 
-Èç¹ûÄúµÄ·þÎñÆ÷²»Ö§³Ö GSSAPI ÃÜÔ¿½»»»£¬
-ÔòÔÚ SSH ÓÃ»§Éí·ÝÑéÖ¤½×¶ÎËü¿ÉÄÜÈÔÖ§³Ö GSSAPI¡£
-ÕâÈÔÈ»ÔÊÐíÄúÊ¹ÓÃ Kerberos Æ¾¾ÝµÇÂ¼£¬
-µ«Ö»ÔÊÐíÄúÎ¯ÅÉ»á»°¿ªÊ¼Ê±´¦ÓÚ»î¶¯×´Ì¬µÄÆ¾¾Ý;
-ËüÃÇ²»ÄÜÔÚÒÔºó³¤Ê±¼äÔËÐÐµÄ»á»°ÖÐ×Ô¶¯Ë¢ÐÂ¡£
-Çë²ÎÔÄ \k{config-ssh-auth-gssapi} ÁË½â
-ÈçºÎÔÚPuTTY¿ØÖÆ GSSAPI ÓÃ»§Éí·ÝÑéÖ¤¡£
+å¦‚æžœæ‚¨çš„æœåŠ¡å™¨ä¸æ”¯æŒ GSSAPI å¯†é’¥äº¤æ¢ï¼Œ
+åˆ™åœ¨ SSH ç”¨æˆ·èº«ä»½éªŒè¯é˜¶æ®µå®ƒå¯èƒ½ä»æ”¯æŒ GSSAPIã€‚
+è¿™ä»ç„¶å…è®¸æ‚¨ä½¿ç”¨ Kerberos å‡­æ®ç™»å½•ï¼Œ
+ä½†åªå…è®¸æ‚¨å§”æ´¾ä¼šè¯å¼€å§‹æ—¶å¤„äºŽæ´»åŠ¨çŠ¶æ€çš„å‡­æ®;
+å®ƒä»¬ä¸èƒ½åœ¨ä»¥åŽé•¿æ—¶é—´è¿è¡Œçš„ä¼šè¯ä¸­è‡ªåŠ¨åˆ·æ–°ã€‚
+è¯·å‚é˜… \k{config-ssh-auth-gssapi} äº†è§£
+å¦‚ä½•åœ¨PuTTYæŽ§åˆ¶ GSSAPI ç”¨æˆ·èº«ä»½éªŒè¯ã€‚
 
-GSSAPI ÃÜÔ¿½»»»µÄÁíÒ»¸ö×÷ÓÃÊÇËüÈ¡´úÁËÃèÊöµÄÓÀ
-¾ÃÖ÷»úÃÜÔ¿µÄÍ¨³£ SSH »úÖÆ£¬Çë²ÎÔÄ \k{gs-hostkey}¡£
-Òò´Ë£¬Èç¹ûÄúÊ¹ÓÃÕâÖÖ·½·¨£¬ÄÇÃ´Äú½«²»»á±»Ñ¯ÎÊ
-ÈÎºÎÓÐ¹ØÊÇ·ñ½ÓÊÜ·þÎñÆ÷µÄÖ÷»úÃÜÔ¿µÄ½»»¥Ê½ÎÊÌâ¡£
-Ïà·´£¬Kerberos ½»»»½«ÑéÖ¤ÄúÁ¬½Óµ½µÄÖ÷»úµÄÉí·Ý£¬
-Í¬Ê±ÑéÖ¤ÄúµÄÉí·Ý¡£
+GSSAPI å¯†é’¥äº¤æ¢çš„å¦ä¸€ä¸ªä½œç”¨æ˜¯å®ƒå–ä»£äº†æè¿°çš„æ°¸
+ä¹…ä¸»æœºå¯†é’¥çš„é€šå¸¸ SSH æœºåˆ¶ï¼Œè¯·å‚é˜… \k{gs-hostkey}ã€‚
+å› æ­¤ï¼Œå¦‚æžœæ‚¨ä½¿ç”¨è¿™ç§æ–¹æ³•ï¼Œé‚£ä¹ˆæ‚¨å°†ä¸ä¼šè¢«è¯¢é—®
+ä»»ä½•æœ‰å…³æ˜¯å¦æŽ¥å—æœåŠ¡å™¨çš„ä¸»æœºå¯†é’¥çš„äº¤äº’å¼é—®é¢˜ã€‚
+ç›¸åï¼ŒKerberos äº¤æ¢å°†éªŒè¯æ‚¨è¿žæŽ¥åˆ°çš„ä¸»æœºçš„èº«ä»½ï¼Œ
+åŒæ—¶éªŒè¯æ‚¨çš„èº«ä»½ã€‚
 
-\S{config-ssh-kex-rekey} \ii{ÃÜÔ¿ÖØ¸´½»»»}
+\S{config-ssh-kex-rekey} \ii{å¯†é’¥é‡å¤äº¤æ¢}
 
-Èç¹ûÁ¬½ÓÆô¶¯Ê±Ð­ÉÌµÄ»á»°ÃÜÔ¿Ê¹ÓÃ¹ý¶à»òÊ±¼ä¹ý³¤£¬
-Ôò¶Ô SSH Á¬½Ó½øÐÐ¹¥»÷¿ÉÄÜ±äµÃ¿ÉÐÐ¡£
-Òò´Ë£¬SSH-2 Ð­Òé¹æ¶¨Ó¦¸ÃÃ¿
-¸ôÒ»¶ÎÊ±¼ä½øÐÐÒ»´ÎÐÂµÄÃÜÔ¿½»»»£»
-Õâ¿ÉÒÔÓÉ¿Í»§¶Ë»ò·þÎñÆ÷·¢Æð¡£
+å¦‚æžœè¿žæŽ¥å¯åŠ¨æ—¶åå•†çš„ä¼šè¯å¯†é’¥ä½¿ç”¨è¿‡å¤šæˆ–æ—¶é—´è¿‡é•¿ï¼Œ
+åˆ™å¯¹ SSH è¿žæŽ¥è¿›è¡Œæ”»å‡»å¯èƒ½å˜å¾—å¯è¡Œã€‚
+å› æ­¤ï¼ŒSSH-2 åè®®è§„å®šåº”è¯¥æ¯
+éš”ä¸€æ®µæ—¶é—´è¿›è¡Œä¸€æ¬¡æ–°çš„å¯†é’¥äº¤æ¢ï¼›
+è¿™å¯ä»¥ç”±å®¢æˆ·ç«¯æˆ–æœåŠ¡å™¨å‘èµ·ã€‚
 
-ÔÚ½øÐÐÖØÐÂÐ­ÉÌÊ±£¬Ã»ÓÐÊý¾Ý¿ÉÒÔÍ¨¹ý SSH Á¬½Ó£¬
-Òò´ËËü¿ÉÄÜ¿´ÆðÀ´\q{¶³½á}¡£
-£¨ÔÚÊÂ¼þÈÕÖ¾ÖÐ¼ÇÂ¼ÁËÖØ¸´ÃÜÔ¿½»»»µÄ·¢Éú£»
-Çë²ÎÔÄ \k{using-eventlog}¡£)
-Í¨³£ÔÚÁ¬½Ó¿ªÊ¼Ê±Ê¹ÓÃÏàÍ¬µÄËã·¨£¬µ«¿ªÏúÏàËÆ¡£
+åœ¨è¿›è¡Œé‡æ–°åå•†æ—¶ï¼Œæ²¡æœ‰æ•°æ®å¯ä»¥é€šè¿‡ SSH è¿žæŽ¥ï¼Œ
+å› æ­¤å®ƒå¯èƒ½çœ‹èµ·æ¥\q{å†»ç»“}ã€‚
+ï¼ˆåœ¨äº‹ä»¶æ—¥å¿—ä¸­è®°å½•äº†é‡å¤å¯†é’¥äº¤æ¢çš„å‘ç”Ÿï¼›
+è¯·å‚é˜… \k{using-eventlog}ã€‚)
+é€šå¸¸åœ¨è¿žæŽ¥å¼€å§‹æ—¶ä½¿ç”¨ç›¸åŒçš„ç®—æ³•ï¼Œä½†å¼€é”€ç›¸ä¼¼ã€‚
 
-ÕâÐ©Ñ¡Ïî¿ØÖÆ PuTTY Æô¶¯ÖØ¸´ÃÜÔ¿½»»»£¨\q{rekey}£©µÄ
-ÆµÂÊ¡£ Äú»¹¿ÉÒÔËæÊ±´Ó¡°ÌØÊâÃüÁî¡±²Ëµ¥
-Ç¿ÖÆ½»»»ÃÜÔ¿(Çë²ÎÔÄ \k{using-specials})¡£
+è¿™äº›é€‰é¡¹æŽ§åˆ¶ PuTTY å¯åŠ¨é‡å¤å¯†é’¥äº¤æ¢ï¼ˆ\q{rekey}ï¼‰çš„
+é¢‘çŽ‡ã€‚ æ‚¨è¿˜å¯ä»¥éšæ—¶ä»Žâ€œç‰¹æ®Šå‘½ä»¤â€èœå•
+å¼ºåˆ¶äº¤æ¢å¯†é’¥(è¯·å‚é˜… \k{using-specials})ã€‚
 
 \# FIXME: do we have any additions to the SSH-2 specs' advice on
 these values? Do we want to enforce any limits?
 
-\b \q{ÃÜÔ¿ÓÐÐ§ÐÔ·ÖÖÓÊ±³¤} Ö¸¶¨ÔÚ¿ªÊ¼ÖØÐÂ½»»»ÃÜÔ¿Ö®
-Ç°ÔÊÐí¾­¹ýµÄÊ±¼äÁ¿¡£ Èç¹û½«ÆäÉèÖÃÎªÁã£¬
-PuTTY ½«²»»áÒòÎª¾­¹ýÊ±¼ä¶øÖØÐÂÊäÈëÃÜÔ¿¡£
-SSH-2 Ð­Òé¹æ·¶½¨Òé³¬Ê±Ê±¼ä×î¶àÎª 60 ·ÖÖÓ
+\b \q{å¯†é’¥æœ‰æ•ˆæ€§åˆ†é’Ÿæ—¶é•¿} æŒ‡å®šåœ¨å¼€å§‹é‡æ–°äº¤æ¢å¯†é’¥ä¹‹
+å‰å…è®¸ç»è¿‡çš„æ—¶é—´é‡ã€‚ å¦‚æžœå°†å…¶è®¾ç½®ä¸ºé›¶ï¼Œ
+PuTTY å°†ä¸ä¼šå› ä¸ºç»è¿‡æ—¶é—´è€Œé‡æ–°è¾“å…¥å¯†é’¥ã€‚
+SSH-2 åè®®è§„èŒƒå»ºè®®è¶…æ—¶æ—¶é—´æœ€å¤šä¸º 60 åˆ†é’Ÿ
 
-Äú¿ÉÄÜÐèÒªÍêÈ«½ûÓÃ»ùÓÚÊ±¼äµÄÖØÐÂ½»»»ÃÜÔ¿£¬
-\i{keepalives}²¢²»×ÜÊÇ³öÓÚÓÐÓÃµÄÔ­Òò¡£
-Èç¹ûÄúÔ¤¼ÆÔÚ SSHÁ¬½Ó¹ý³ÌÖÐ»á³öÏÖ¼¸¸öÐ¡Ê±µÄÍøÂçÖÐ¶Ï£¬
-µ«Êµ¼ÊÉÏ²¢Ã»ÓÐ¼Æ»®ÔÚÕâÐ©Ê±¼äÄÚÍ¨¹ý¸ÃÁ¬½Ó·¢ËÍÊý¾Ý£¬
-ÄÇÃ´ÔÚÖÐ¶Ï¹ý³ÌÖÐ³¢ÊÔÖØÐÂ½»»»ÃÜ
-Ô¿¿ÉÄÜ»áµ¼ÖÂÁ¬½ÓÖÐ¶Ï¡£
-Èç¹û½ûÓÃÁËÖØÐÂ½»»»ÃÜÔ¿£¨rekeys£©£¬
-ÔòÁ¬½ÓÔ­ÔòÉÏÁ¬½ÓÓ¦¸Ã´æÔÚ£¨ÔÚÃ»ÓÐ¸ÉÈÅ·À»ðÇ½µÄÇé¿öÏÂ£©¡£
-¸ü¶àÐÅÏ¢Çë²ÎÔÄ \k{config-keepalive}¡£
-³öÓÚÕâÐ©Ä¿µÄ£¬rekeys Óë keepalives ¾ßÓÐÐí¶àÏàÍ¬µÄÊôÐÔ¡£
-£¨³ýÁË rekeys±¾Éí¾ßÓÐ¼ÓÃÜ¼ÛÖµ£¬
-Òò´ËÔÚ¾ö¶¨ÊÇ·ñ¹Ø±ÕËüÃÇÊ±Ó¦¸ÃÀÎ¼ÇÕâÒ»µã¡££©
-µ«ÊÇÇë×¢Òâ£¬SSH \e{·þÎñÆ÷}ÈÔÈ»¿ÉÒÔÆô¶¯ rekeys¡£
+æ‚¨å¯èƒ½éœ€è¦å®Œå…¨ç¦ç”¨åŸºäºŽæ—¶é—´çš„é‡æ–°äº¤æ¢å¯†é’¥ï¼Œ
+\i{keepalives}å¹¶ä¸æ€»æ˜¯å‡ºäºŽæœ‰ç”¨çš„åŽŸå› ã€‚
+å¦‚æžœæ‚¨é¢„è®¡åœ¨ SSHè¿žæŽ¥è¿‡ç¨‹ä¸­ä¼šå‡ºçŽ°å‡ ä¸ªå°æ—¶çš„ç½‘ç»œä¸­æ–­ï¼Œ
+ä½†å®žé™…ä¸Šå¹¶æ²¡æœ‰è®¡åˆ’åœ¨è¿™äº›æ—¶é—´å†…é€šè¿‡è¯¥è¿žæŽ¥å‘é€æ•°æ®ï¼Œ
+é‚£ä¹ˆåœ¨ä¸­æ–­è¿‡ç¨‹ä¸­å°è¯•é‡æ–°äº¤æ¢å¯†
+é’¥å¯èƒ½ä¼šå¯¼è‡´è¿žæŽ¥ä¸­æ–­ã€‚
+å¦‚æžœç¦ç”¨äº†é‡æ–°äº¤æ¢å¯†é’¥ï¼ˆrekeysï¼‰ï¼Œ
+åˆ™è¿žæŽ¥åŽŸåˆ™ä¸Šè¿žæŽ¥åº”è¯¥å­˜åœ¨ï¼ˆåœ¨æ²¡æœ‰å¹²æ‰°é˜²ç«å¢™çš„æƒ…å†µä¸‹ï¼‰ã€‚
+æ›´å¤šä¿¡æ¯è¯·å‚é˜… \k{config-keepalive}ã€‚
+å‡ºäºŽè¿™äº›ç›®çš„ï¼Œrekeys ä¸Ž keepalives å…·æœ‰è®¸å¤šç›¸åŒçš„å±žæ€§ã€‚
+ï¼ˆé™¤äº† rekeysæœ¬èº«å…·æœ‰åŠ å¯†ä»·å€¼ï¼Œ
+å› æ­¤åœ¨å†³å®šæ˜¯å¦å…³é—­å®ƒä»¬æ—¶åº”è¯¥ç‰¢è®°è¿™ä¸€ç‚¹ã€‚ï¼‰
+ä½†æ˜¯è¯·æ³¨æ„ï¼ŒSSH \e{æœåŠ¡å™¨}ä»ç„¶å¯ä»¥å¯åŠ¨ rekeysã€‚
 
-\b Èç¹ûÄúÊ¹ÓÃ GSSAPI ÃÜÔ¿½»»»£¬
-Ôò\q{GSSAPI ¼ì²âµÄ¼ä¸ô·ÖÖÓ}Ö¸¶¨¼ì²é GSSAPI Æ¾Ö¤»º´æÒÔ²é¿´ÐÂÆ±Ö¤ÊÇ·ñ¿ÉÓÃ
-ÓÚÎ¯ÅÉ»òµ±Ç°Æ±Ö¤¼´½«µ½ÆÚµÄÆµÂÊ¡£
-Èç¹ûÆôÓÃÁË GSSAPI Æ¾¾ÝµÄ×ª·¢£¬
-PuTTY ½«¸ù¾ÝÐèÒª³¢ÊÔÖØÐÂÉú³ÉÃÜÔ¿£¬
-ÒÔ·ÀÖ¹Î¯ÅÉµÄÆ¾¾Ý¹ýÆÚ¡£ ½¨Òé¾­³£¼ì²é£»
-½öÔÚÐèÒªÊ±²Å½øÐÐÃÜÔ¿¸üÐÂ¡£
+\b å¦‚æžœæ‚¨ä½¿ç”¨ GSSAPI å¯†é’¥äº¤æ¢ï¼Œ
+åˆ™\q{GSSAPI æ£€æµ‹çš„é—´éš”åˆ†é’Ÿ}æŒ‡å®šæ£€æŸ¥ GSSAPI å‡­è¯ç¼“å­˜ä»¥æŸ¥çœ‹æ–°ç¥¨è¯æ˜¯å¦å¯ç”¨
+äºŽå§”æ´¾æˆ–å½“å‰ç¥¨è¯å³å°†åˆ°æœŸçš„é¢‘çŽ‡ã€‚
+å¦‚æžœå¯ç”¨äº† GSSAPI å‡­æ®çš„è½¬å‘ï¼Œ
+PuTTY å°†æ ¹æ®éœ€è¦å°è¯•é‡æ–°ç”Ÿæˆå¯†é’¥ï¼Œ
+ä»¥é˜²æ­¢å§”æ´¾çš„å‡­æ®è¿‡æœŸã€‚ å»ºè®®ç»å¸¸æ£€æŸ¥ï¼›
+ä»…åœ¨éœ€è¦æ—¶æ‰è¿›è¡Œå¯†é’¥æ›´æ–°ã€‚
 
-\b \q{¾­¹ýÃÜÔ¿µÄÊý¾ÝÁ÷Á¿}Ö¸¶¨ÔÚÆô¶¯ÖØ
-ÐÂ¼ÓÃÜÖ®Ç°ÔÊÐíÔÚÈÎÒ»·½ÏòÁ÷
-¶¯µÄÊý¾ÝÁ¿£¨ÒÔ×Ö½ÚÎªµ¥Î»£©¡£
-Èç¹û½«ÆäÉèÖÃÎªÁã£¬PuTTY ½«²»»á
-Òò´«ÊäÊý¾Ý¶øÖØÐÂ¼ÓÃÜ¡£ SSH-2 Ð­Òé¹æ·¶½¨ÒéÏÞÖÆÎª×î¶à 1 GB¡£
+\b \q{ç»è¿‡å¯†é’¥çš„æ•°æ®æµé‡}æŒ‡å®šåœ¨å¯åŠ¨é‡
+æ–°åŠ å¯†ä¹‹å‰å…è®¸åœ¨ä»»ä¸€æ–¹å‘æµ
+åŠ¨çš„æ•°æ®é‡ï¼ˆä»¥å­—èŠ‚ä¸ºå•ä½ï¼‰ã€‚
+å¦‚æžœå°†å…¶è®¾ç½®ä¸ºé›¶ï¼ŒPuTTY å°†ä¸ä¼š
+å› ä¼ è¾“æ•°æ®è€Œé‡æ–°åŠ å¯†ã€‚ SSH-2 åè®®è§„èŒƒå»ºè®®é™åˆ¶ä¸ºæœ€å¤š 1 GBã€‚
 
 \lcont{
 
-³ýÁËÒÔ×Ö½ÚÎªµ¥Î»Ö¸¶¨ÖµÍâ£¬
-»¹¿ÉÒÔÊ¹ÓÃÒÔÏÂËÙ¼Ç£º
+é™¤äº†ä»¥å­—èŠ‚ä¸ºå•ä½æŒ‡å®šå€¼å¤–ï¼Œ
+è¿˜å¯ä»¥ä½¿ç”¨ä»¥ä¸‹é€Ÿè®°ï¼š
 
-\b \cq{1k} Ö¸¶¨ 1 kilobyte (1024 bytes).
+\b \cq{1k} æŒ‡å®š 1 kilobyte (1024 bytes).
 
-\b \cq{1M} Ö¸¶¨ 1 megabyte (1024 kilobytes).
+\b \cq{1M} æŒ‡å®š 1 megabyte (1024 kilobytes).
 
-\b \cq{1G} Ö¸¶¨ 1 gigabyte (1024 megabytes).
+\b \cq{1G} æŒ‡å®š 1 gigabyte (1024 megabytes).
 
 }
 
-ÍêÈ«½ûÓÃ»ùÓÚÊý¾ÝµÄÃÜÔ¿¸üÐÂÊÇÒ»¸ö»µÖ÷Òâ¡£
-SSH-2 Ð­ÒéµÄ\i{ÍêÕûÐÔ}ÒÔ¼°ÔÚ½ÏÐ¡³Ì¶ÈÉÏ
-µÄ\i{»úÃÜÐÔ}²¿·ÖÈ¡¾öÓÚÔÚ 32 Î»Êý¾Ý°ü
-ÐòÁÐºÅÎ§ÈÆÖ®Ç°·¢ÉúµÄÃÜÔ¿¸üÐÂ¡£ Óë»ùÓÚÊ±¼äµÄÃÜÔ¿¸üÐÂ²»Í¬£¬
-»ùÓÚÊý¾ÝµÄÃÜÔ¿¸üÐÂ²»»áÔÚ SSH Á¬½Ó¿ÕÏÐÊ±·¢Éú£¬Òò´ËËüÃÇ²»»á
-µ¼ÖÂÍ¬ÑùµÄÎÊÌâ¡£ Ë³±ãËµÒ»ÏÂ£¬
-SSH-1 Ð­ÒéµÄÍêÕûÐÔ±£»¤ÉõÖÁ±ÈÃ»ÓÐÃÜÔ¿¸üÐÂµÄ SSH-2 ¸üÈõ¡£
+å®Œå…¨ç¦ç”¨åŸºäºŽæ•°æ®çš„å¯†é’¥æ›´æ–°æ˜¯ä¸€ä¸ªåä¸»æ„ã€‚
+SSH-2 åè®®çš„\i{å®Œæ•´æ€§}ä»¥åŠåœ¨è¾ƒå°ç¨‹åº¦ä¸Š
+çš„\i{æœºå¯†æ€§}éƒ¨åˆ†å–å†³äºŽåœ¨ 32 ä½æ•°æ®åŒ…
+åºåˆ—å·å›´ç»•ä¹‹å‰å‘ç”Ÿçš„å¯†é’¥æ›´æ–°ã€‚ ä¸ŽåŸºäºŽæ—¶é—´çš„å¯†é’¥æ›´æ–°ä¸åŒï¼Œ
+åŸºäºŽæ•°æ®çš„å¯†é’¥æ›´æ–°ä¸ä¼šåœ¨ SSH è¿žæŽ¥ç©ºé—²æ—¶å‘ç”Ÿï¼Œå› æ­¤å®ƒä»¬ä¸ä¼š
+å¯¼è‡´åŒæ ·çš„é—®é¢˜ã€‚ é¡ºä¾¿è¯´ä¸€ä¸‹ï¼Œ
+SSH-1 åè®®çš„å®Œæ•´æ€§ä¿æŠ¤ç”šè‡³æ¯”æ²¡æœ‰å¯†é’¥æ›´æ–°çš„ SSH-2 æ›´å¼±ã€‚
 
-\H{config-ssh-hostkey} Ö÷»úÃÜÔ¿Ãæ°å
+\H{config-ssh-hostkey} ä¸»æœºå¯†é’¥é¢æ¿
 
-Ö÷»úÃÜÔ¿Ãæ°åÔÊÐíÄúÅäÖÃ
-Óë\i{Ö÷»úÃÜÔ¿¹ÜÀí}Ïà¹ØµÄÑ¡Ïî¡£
+ä¸»æœºå¯†é’¥é¢æ¿å…è®¸æ‚¨é…ç½®
+ä¸Ž\i{ä¸»æœºå¯†é’¥ç®¡ç†}ç›¸å…³çš„é€‰é¡¹ã€‚
 
-Ö÷»úÃÜÔ¿ÓÃÓÚÖ¤Ã÷·þÎñÆ÷µÄÉí·Ý£¬
-²¢È·±£·þÎñÆ÷Ã»ÓÐ±»ÆÛÆ­£¨Í¨¹ýÖÐ¼äÈË¹¥»÷»ò
-ÔÚÍøÂçÉÏÍêÈ«Ìæ»»Ëü£©¡£
-Çë²ÎÔÄ \k{gs-hostkey} ÓÐ¹ØÖ÷»úÃÜÔ¿µÄ»ù±¾½éÉÜ¡£
+ä¸»æœºå¯†é’¥ç”¨äºŽè¯æ˜ŽæœåŠ¡å™¨çš„èº«ä»½ï¼Œ
+å¹¶ç¡®ä¿æœåŠ¡å™¨æ²¡æœ‰è¢«æ¬ºéª—ï¼ˆé€šè¿‡ä¸­é—´äººæ”»å‡»æˆ–
+åœ¨ç½‘ç»œä¸Šå®Œå…¨æ›¿æ¢å®ƒï¼‰ã€‚
+è¯·å‚é˜… \k{gs-hostkey} æœ‰å…³ä¸»æœºå¯†é’¥çš„åŸºæœ¬ä»‹ç»ã€‚
 
-¸ÃÃæ°åµÄ´ó²¿·ÖÄÚÈÝ½öÓë SSH Ð­Òé°æ±¾ 2 Ïà
-¹Ø£» SSH-1 ½öÖ§³ÖÒ»ÖÖÀàÐÍµÄÖ÷»úÃÜÔ¿¡£
+è¯¥é¢æ¿çš„å¤§éƒ¨åˆ†å†…å®¹ä»…ä¸Ž SSH åè®®ç‰ˆæœ¬ 2 ç›¸
+å…³ï¼› SSH-1 ä»…æ”¯æŒä¸€ç§ç±»åž‹çš„ä¸»æœºå¯†é’¥ã€‚
 
-\S{config-ssh-hostkey-order} \ii{Ö÷»úÃÜÔ¿ÀàÐÍ}ÉèÖÃ
+\S{config-ssh-hostkey-order} \ii{ä¸»æœºå¯†é’¥ç±»åž‹}è®¾ç½®
 
-PuTTY Ö§³Ö¶àÖÖ SSH-2 Ö÷»úÃÜÔ¿ÀàÐÍ£¬
-²¢ÔÊÐíÄúÑ¡ÔñÄúÏ²»¶Ê¹ÓÃÄÄÒ»ÖÖÀ´Ê¶±ð·þÎñÆ÷¡£
-ÅäÖÃÀàËÆÓÚÃÜÂëÑ¡Ôñ
-(Çë²ÎÔÄ \k{config-ssh-encryption})¡£
+PuTTY æ”¯æŒå¤šç§ SSH-2 ä¸»æœºå¯†é’¥ç±»åž‹ï¼Œ
+å¹¶å…è®¸æ‚¨é€‰æ‹©æ‚¨å–œæ¬¢ä½¿ç”¨å“ªä¸€ç§æ¥è¯†åˆ«æœåŠ¡å™¨ã€‚
+é…ç½®ç±»ä¼¼äºŽå¯†ç é€‰æ‹©
+(è¯·å‚é˜… \k{config-ssh-encryption})ã€‚
 
-PuTTY Ä¿Ç°Ö§³ÖÒÔÏÂÖ÷»úÃÜÔ¿ÀàÐÍ£º
+PuTTY ç›®å‰æ”¯æŒä»¥ä¸‹ä¸»æœºå¯†é’¥ç±»åž‹ï¼š
 
 \b \q{\i{Ed25519}}: \I{EdDSA}Edwards-curve DSA using a twisted Edwards
 curve with modulus \cw{2^255-19}.
@@ -2555,247 +2555,247 @@ has a higher security level than Ed25519).
 
 \b \q{RSA}: the ordinary \i{RSA} algorithm.
 
-Èç¹û PuTTY ÒÑ¾­Îª·þÎñÆ÷´æ´¢ÁËÒ»¸ö»ò¶à¸öÖ÷»úÃÜÔ¿£¬
-Ä¬ÈÏÇé¿öÏÂËü»áÓÅÏÈÊ¹ÓÃÆäÖÐÒ»¸ö£¬
-¼´Ê¹·þÎñÆ÷¾ßÓÐÓÅÏÈË³Ðò¸ü¸ßµÄÃÜÔ¿ÀàÐÍ¡£ Äú¿ÉÒÔÊ¹ÓÃ\q{ÌØÊâÃüÁî}
-²Ëµ¥´ÓÏÖÓÐ»á»°ÖÐ½«´ËÀàÃÜÔ¿Ìí¼Ó
-µ½ PuTTY µÄ»º´æÖÐ£»Çë²ÎÔÄ \k{using-specials}¡£
+å¦‚æžœ PuTTY å·²ç»ä¸ºæœåŠ¡å™¨å­˜å‚¨äº†ä¸€ä¸ªæˆ–å¤šä¸ªä¸»æœºå¯†é’¥ï¼Œ
+é»˜è®¤æƒ…å†µä¸‹å®ƒä¼šä¼˜å…ˆä½¿ç”¨å…¶ä¸­ä¸€ä¸ªï¼Œ
+å³ä½¿æœåŠ¡å™¨å…·æœ‰ä¼˜å…ˆé¡ºåºæ›´é«˜çš„å¯†é’¥ç±»åž‹ã€‚ æ‚¨å¯ä»¥ä½¿ç”¨\q{ç‰¹æ®Šå‘½ä»¤}
+èœå•ä»ŽçŽ°æœ‰ä¼šè¯ä¸­å°†æ­¤ç±»å¯†é’¥æ·»åŠ 
+åˆ° PuTTY çš„ç¼“å­˜ä¸­ï¼›è¯·å‚é˜… \k{using-specials}ã€‚
 
-·ñÔò£¬PuTTY ½«ÍêÈ«¸ù¾ÝÄúÔÚÅä
-ÖÃÖÐÖ¸¶¨µÄÊ×Ñ¡ÏîË³ÐòÑ¡ÔñÃÜÔ¿ÀàÐÍ¡£
+å¦åˆ™ï¼ŒPuTTY å°†å®Œå…¨æ ¹æ®æ‚¨åœ¨é…
+ç½®ä¸­æŒ‡å®šçš„é¦–é€‰é¡¹é¡ºåºé€‰æ‹©å¯†é’¥ç±»åž‹ã€‚
 
-Èç¹û PuTTY ÕÒµ½µÄµÚÒ»¸öÃÜÔ¿ÀàÐÍ
-µÍÓÚ\q{-- ÒÔÏÂÎª¾¯¸æÑ¡Ïî --}ÐÐ£¬ÔòÔÚ½¨Á¢Á¬½ÓÊ±»á¿´µ½Ò»¸ö¾¯¸æ¿ò£¬
-ÀàËÆÓÚÃÜÂëÑ¡Ôñ(Çë²ÎÔÄ \k{config-ssh-encryption})¡£
+å¦‚æžœ PuTTY æ‰¾åˆ°çš„ç¬¬ä¸€ä¸ªå¯†é’¥ç±»åž‹
+ä½ŽäºŽ\q{-- ä»¥ä¸‹ä¸ºè­¦å‘Šé€‰é¡¹ --}è¡Œï¼Œåˆ™åœ¨å»ºç«‹è¿žæŽ¥æ—¶ä¼šçœ‹åˆ°ä¸€ä¸ªè­¦å‘Šæ¡†ï¼Œ
+ç±»ä¼¼äºŽå¯†ç é€‰æ‹©(è¯·å‚é˜… \k{config-ssh-encryption})ã€‚
 
-\S{config-ssh-prefer-known-hostkeys} Ê×Ñ¡ÒÑÖªÖ÷»úÃÜÔ¿
+\S{config-ssh-prefer-known-hostkeys} é¦–é€‰å·²çŸ¥ä¸»æœºå¯†é’¥
 
-Ä¬ÈÏÇé¿öÏÂ£¬PuTTY ½«µ÷Õû SSH-2 Ö÷»ú
-ÃÜÔ¿Ëã·¨µÄÓÅÏÈË³Ðò£¬
-ÒÔ±ã½«ËüÒÑÖªµÄÈÎºÎÖ÷»úÃÜÔ¿ÒÆµ½ÁÐ±í¶¥²¿¡£
+é»˜è®¤æƒ…å†µä¸‹ï¼ŒPuTTY å°†è°ƒæ•´ SSH-2 ä¸»æœº
+å¯†é’¥ç®—æ³•çš„ä¼˜å…ˆé¡ºåºï¼Œ
+ä»¥ä¾¿å°†å®ƒå·²çŸ¥çš„ä»»ä½•ä¸»æœºå¯†é’¥ç§»åˆ°åˆ—è¡¨é¡¶éƒ¨ã€‚
 
-Õâ¿ÉÒÔ·ÀÖ¹Äú±ØÐë¼ì²éºÍÈ·ÈÏÄúÒÑ¾­ÓµÓÐµÄ
-·þÎñÆ÷µÄÐÂÖ÷»úÃÜÔ¿£¨ÀýÈç£¬ÒòÎª·þÎñÆ÷
-Éú³ÉÁËÔÚ PuTTY µÄÆ«ºÃË³ÐòÖÐ¸ü¸ßÀàÐÍµÄÌæ´úÃÜÔ¿£¬
-»òÕßÒòÎªÄú¸ü¸ÄÁËÆ«ºÃË³Ðò±¾Éí£©¡£
+è¿™å¯ä»¥é˜²æ­¢æ‚¨å¿…é¡»æ£€æŸ¥å’Œç¡®è®¤æ‚¨å·²ç»æ‹¥æœ‰çš„
+æœåŠ¡å™¨çš„æ–°ä¸»æœºå¯†é’¥ï¼ˆä¾‹å¦‚ï¼Œå› ä¸ºæœåŠ¡å™¨
+ç”Ÿæˆäº†åœ¨ PuTTY çš„åå¥½é¡ºåºä¸­æ›´é«˜ç±»åž‹çš„æ›¿ä»£å¯†é’¥ï¼Œ
+æˆ–è€…å› ä¸ºæ‚¨æ›´æ”¹äº†åå¥½é¡ºåºæœ¬èº«ï¼‰ã€‚
 
-µ«ÊÇ£¬ÁíÒ»·½Ãæ£¬Ëü¿ÉÄÜ»áÏòÍøÂçÖÐµÄ
-ÕìÌýÆ÷Ð¹Â¶ÓÐ¹ØÄú\e{ÊÇ·ñ}ÒÑ¾­ÖªµÀ´Ë
-·þÎñÆ÷µÄÖ÷»úÃÜÔ¿µÄÐÅÏ¢¡£
+ä½†æ˜¯ï¼Œå¦ä¸€æ–¹é¢ï¼Œå®ƒå¯èƒ½ä¼šå‘ç½‘ç»œä¸­çš„
+ä¾¦å¬å™¨æ³„éœ²æœ‰å…³æ‚¨\e{æ˜¯å¦}å·²ç»çŸ¥é“æ­¤
+æœåŠ¡å™¨çš„ä¸»æœºå¯†é’¥çš„ä¿¡æ¯ã€‚
 
-Òò´Ë£¬´Ë²ßÂÔÊÇ¿ÉÅäÖÃµÄ¡£
-Í¨¹ý¹Ø±Õ´Ë¸´Ñ¡¿ò£¬Äú¿ÉÒÔ½« PuTTY ÖØÖÃÎªÊ¼ÖÕÊ¹ÓÃ
-ÔÚÊ×Ñ¡ÏîÁÐ±íÖÐÅäÖÃµÄÖ÷»úÃÜÔ¿Ëã·¨µÄÈ·ÇÐË³Ðò£¬
-²Î¿¼ \k{config-ssh-hostkey-order}£¬
-ÕâÑù¼àÌýµÄÈË¾Í²»»á·¢ÏÖÄú´æ´¢ÁËÄÄÐ©ÃÜÔ¿¡£
+å› æ­¤ï¼Œæ­¤ç­–ç•¥æ˜¯å¯é…ç½®çš„ã€‚
+é€šè¿‡å…³é—­æ­¤å¤é€‰æ¡†ï¼Œæ‚¨å¯ä»¥å°† PuTTY é‡ç½®ä¸ºå§‹ç»ˆä½¿ç”¨
+åœ¨é¦–é€‰é¡¹åˆ—è¡¨ä¸­é…ç½®çš„ä¸»æœºå¯†é’¥ç®—æ³•çš„ç¡®åˆ‡é¡ºåºï¼Œ
+å‚è€ƒ \k{config-ssh-hostkey-order}ï¼Œ
+è¿™æ ·ç›‘å¬çš„äººå°±ä¸ä¼šå‘çŽ°æ‚¨å­˜å‚¨äº†å“ªäº›å¯†é’¥ã€‚
 
-\S{config-ssh-kex-manual-hostkeys} \ii{ÊÖ¶¯ÅäÖÃÖ÷»úÃÜÔ¿}
+\S{config-ssh-kex-manual-hostkeys} \ii{æ‰‹åŠ¨é…ç½®ä¸»æœºå¯†é’¥}
 
-ÔÚÄ³Ð©Çé¿öÏÂ£¬Èç¹û PuTTY µÄ×Ô¶¯Ö÷»úÃÜÔ¿
-¹ÜÀíÎÞ·¨Âú×ãÄúµÄÐèÒª£¬Äú¿ÉÄÜÐèÒªÊÖ¶¯Åä
-ÖÃ PuTTY ÒÔ½ÓÊÜÌØ¶¨Ö÷»úÃÜÔ¿»òÒ»×éÌØ¶¨Ö÷»úÃÜÔ¿ÖÐµÄÒ»¸ö¡£
+åœ¨æŸäº›æƒ…å†µä¸‹ï¼Œå¦‚æžœ PuTTY çš„è‡ªåŠ¨ä¸»æœºå¯†é’¥
+ç®¡ç†æ— æ³•æ»¡è¶³æ‚¨çš„éœ€è¦ï¼Œæ‚¨å¯èƒ½éœ€è¦æ‰‹åŠ¨é…
+ç½® PuTTY ä»¥æŽ¥å—ç‰¹å®šä¸»æœºå¯†é’¥æˆ–ä¸€ç»„ç‰¹å®šä¸»æœºå¯†é’¥ä¸­çš„ä¸€ä¸ªã€‚
 
-Äú¿ÉÄÜÏëÒªÕâÑù×öµÄÒ»¸öÔ­ÒòÊÇÒòÎª PuTTY
-Á¬½Óµ½µÄÖ÷»úÃûÊ¹ÓÃÑ­»· DNS À´·µ»Ø¶à¸öÊµ¼Ê·þÎñ
-Æ÷Ö®Ò»£¬²¢ÇÒËüÃÇ¶¼ÓÐ²»Í¬µÄÖ÷»úÃÜÔ¿¡£
-ÔÚÕâÖÖÇé¿öÏÂ£¬Äú¿ÉÄÜÐèÒª½« PuTTY ÅäÖÃÎª½ÓÊÜ¿É
-ÄÜ·þÎñÆ÷µÄÈÎºÎÖ÷»úÃÜÔ¿ÁÐ±í£¬
-Í¬Ê±ÈÔ¾Ü¾ø²»ÔÚ¸ÃÁÐ±íÖÐµÄÈÎºÎÃÜÔ¿¡£
+æ‚¨å¯èƒ½æƒ³è¦è¿™æ ·åšçš„ä¸€ä¸ªåŽŸå› æ˜¯å› ä¸º PuTTY
+è¿žæŽ¥åˆ°çš„ä¸»æœºåä½¿ç”¨å¾ªçŽ¯ DNS æ¥è¿”å›žå¤šä¸ªå®žé™…æœåŠ¡
+å™¨ä¹‹ä¸€ï¼Œå¹¶ä¸”å®ƒä»¬éƒ½æœ‰ä¸åŒçš„ä¸»æœºå¯†é’¥ã€‚
+åœ¨è¿™ç§æƒ…å†µä¸‹ï¼Œæ‚¨å¯èƒ½éœ€è¦å°† PuTTY é…ç½®ä¸ºæŽ¥å—å¯
+èƒ½æœåŠ¡å™¨çš„ä»»ä½•ä¸»æœºå¯†é’¥åˆ—è¡¨ï¼Œ
+åŒæ—¶ä»æ‹’ç»ä¸åœ¨è¯¥åˆ—è¡¨ä¸­çš„ä»»ä½•å¯†é’¥ã€‚
 
-ÁíÒ»¸öÔ­ÒòÊÇÈç¹û PuTTY µÄ×Ô¶¯Ö÷»úÃÜÔ¿¹ÜÀíÍêÈ«²»¿ÉÓÃ£¬
-ÀýÈç ÒòÎª PuTTY£¨»ò Plink »ò PSFTP µÈ£©
-ÔÚ Windows »·¾³ÖÐÔËÐÐ£¬
-ÎÞ·¨·ÃÎÊ×¢²á±í¡£
-ÔÚÕâÖÖÇé¿öÏÂ£¬Äú¿ÉÄÜÐèÒªÊ¹ÓÃ \cw{-hostkey} ÃüÁîÐÐÑ¡ÏîÀ´ÅäÖÃÔ¤ÆÚµÄÖ÷»úÃÜÔ¿£»
-Çë²ÎÔÄ \k{using-cmdline-hostkey}¡£
+å¦ä¸€ä¸ªåŽŸå› æ˜¯å¦‚æžœ PuTTY çš„è‡ªåŠ¨ä¸»æœºå¯†é’¥ç®¡ç†å®Œå…¨ä¸å¯ç”¨ï¼Œ
+ä¾‹å¦‚ å› ä¸º PuTTYï¼ˆæˆ– Plink æˆ– PSFTP ç­‰ï¼‰
+åœ¨ Windows çŽ¯å¢ƒä¸­è¿è¡Œï¼Œ
+æ— æ³•è®¿é—®æ³¨å†Œè¡¨ã€‚
+åœ¨è¿™ç§æƒ…å†µä¸‹ï¼Œæ‚¨å¯èƒ½éœ€è¦ä½¿ç”¨ \cw{-hostkey} å‘½ä»¤è¡Œé€‰é¡¹æ¥é…ç½®é¢„æœŸçš„ä¸»æœºå¯†é’¥ï¼›
+è¯·å‚é˜… \k{using-cmdline-hostkey}ã€‚
 
-µÄ×Ô¶¯Ö÷»úÃÜÔ¿¹ÜÀíÖ»ÊÇÑ¡Ôñ´íÎóµÄ
-Ö÷»úÃûÀ´´æ´¢ÃÜÔ¿µÄÇé¿ö£¬
-Äú¿ÉÄÜÐèÒª¿¼ÂÇÉèÖÃÒ»¸ö\q{Âß¼­Ö÷»úÃû}£»
-Çë²ÎÔÄ \k{config-loghost}¡£
+çš„è‡ªåŠ¨ä¸»æœºå¯†é’¥ç®¡ç†åªæ˜¯é€‰æ‹©é”™è¯¯çš„
+ä¸»æœºåæ¥å­˜å‚¨å¯†é’¥çš„æƒ…å†µï¼Œ
+æ‚¨å¯èƒ½éœ€è¦è€ƒè™‘è®¾ç½®ä¸€ä¸ª\q{é€»è¾‘ä¸»æœºå}ï¼›
+è¯·å‚é˜… \k{config-loghost}ã€‚
 
-ÒªÍ¨¹ý GUI ÅäÖÃÊÖ¶¯Ö÷»úÃÜÔ¿£¬
-ÇëÔÚ\q{Îª´ËÁ¬½ÓÊÖ¶¯ÅäÖÃÖ÷»úÃÜÔ¿}µÄ±à¼­¿ò
-ÖÐÊäÈëÒ»Ð©ÃèÊöÖ÷»úÃÜÔ¿µÄÎÄ±¾£¬
-È»ºó°´\q{Ìí¼Ó}°´Å¥¡£ ¸ÃÎÄ±¾½«³öÏÖÔÚ\q{Òª½ÓÊÜµÄÖ÷»úÃÜÔ¿»òÖ¸ÎÆ}ÁÐ±í¿òÖÐ¡£
-Äú¿ÉÒÔÊ¹ÓÃ\q{Çå³ý}°´Å¥ÔÙ´ÎÉ¾³ýÃÜÔ¿¡£
+è¦é€šè¿‡ GUI é…ç½®æ‰‹åŠ¨ä¸»æœºå¯†é’¥ï¼Œ
+è¯·åœ¨\q{ä¸ºæ­¤è¿žæŽ¥æ‰‹åŠ¨é…ç½®ä¸»æœºå¯†é’¥}çš„ç¼–è¾‘æ¡†
+ä¸­è¾“å…¥ä¸€äº›æè¿°ä¸»æœºå¯†é’¥çš„æ–‡æœ¬ï¼Œ
+ç„¶åŽæŒ‰\q{æ·»åŠ }æŒ‰é’®ã€‚ è¯¥æ–‡æœ¬å°†å‡ºçŽ°åœ¨\q{è¦æŽ¥å—çš„ä¸»æœºå¯†é’¥æˆ–æŒ‡çº¹}åˆ—è¡¨æ¡†ä¸­ã€‚
+æ‚¨å¯ä»¥ä½¿ç”¨\q{æ¸…é™¤}æŒ‰é’®å†æ¬¡åˆ é™¤å¯†é’¥ã€‚
 
-ÃèÊöÖ÷»úÃÜÔ¿µÄÎÄ±¾¿ÉÒÔÊÇÒÔÏÂ¸ñÊ½Ö®Ò»£º
+æè¿°ä¸»æœºå¯†é’¥çš„æ–‡æœ¬å¯ä»¥æ˜¯ä»¥ä¸‹æ ¼å¼ä¹‹ä¸€ï¼š
 
-\b PuTTY µÄÊÂ¼þÈÕÖ¾ºÍÖ÷»úÃÜÔ¿¶Ô»°¿òÖÐ
-ÏÔÊ¾µÄ±íµ¥µÄ»ùÓÚ \I{SHA256 fingerprint}SHA-256 µÄÖ÷»úÃÜÔ¿Ö¸ÎÆ£¬
-¼´\cq{SHA256:}ºó¸ú 43 ¸öÇø·Ö´óÐ¡Ð´µÄ×Ö·û¡£
+\b PuTTY çš„äº‹ä»¶æ—¥å¿—å’Œä¸»æœºå¯†é’¥å¯¹è¯æ¡†ä¸­
+æ˜¾ç¤ºçš„è¡¨å•çš„åŸºäºŽ \I{SHA256 fingerprint}SHA-256 çš„ä¸»æœºå¯†é’¥æŒ‡çº¹ï¼Œ
+å³\cq{SHA256:}åŽè·Ÿ 43 ä¸ªåŒºåˆ†å¤§å°å†™çš„å­—ç¬¦ã€‚
 
-\b Ò»¸ö»ùÓÚ \I{MD5 fingerprint}MD5 µÄÖ÷»úÃÜÔ¿Ö¸ÎÆ£¬
-¼´ 16 ¸öÓÃÃ°ºÅ·Ö¸ôµÄ 2 Î»Ê®Áù½øÖÆÊý×Ö£¬
-Ç°Ãæ¿ÉÑ¡Ç°×º\cq{MD5:}¡£ £¨×Ö·ûµÄ´óÐ¡Ð´ÎÞ¹Ø½ôÒª¡££©
+\b ä¸€ä¸ªåŸºäºŽ \I{MD5 fingerprint}MD5 çš„ä¸»æœºå¯†é’¥æŒ‡çº¹ï¼Œ
+å³ 16 ä¸ªç”¨å†’å·åˆ†éš”çš„ 2 ä½åå…­è¿›åˆ¶æ•°å­—ï¼Œ
+å‰é¢å¯é€‰å‰ç¼€\cq{MD5:}ã€‚ ï¼ˆå­—ç¬¦çš„å¤§å°å†™æ— å…³ç´§è¦ã€‚ï¼‰
 
-\b Ò»¸ö base64 ±àÂëµÄ blob£¬ÒÔ OpenSSH µÄ
-µ¥ÐÐ¹«Ô¿¸ñÊ½ÃèÊö SSH-2 ¹«Ô¿¡£ ÈçºÎ»ñÈ¡ÕâÖÖ¸ñÊ½µÄ
-¹«Ô¿È¡¾öÓÚ·þÎñÆ÷£» ÔÚ OpenSSH ·þÎñÆ÷ÉÏ£¬
-ËüÍ¨³£¿ÉÒÔÔÚ \c{/etc/ssh/ssh_host_rsa_key.pub} Ö®ÀàµÄÎ»ÖÃÕÒµ½¡£
+\b ä¸€ä¸ª base64 ç¼–ç çš„ blobï¼Œä»¥ OpenSSH çš„
+å•è¡Œå…¬é’¥æ ¼å¼æè¿° SSH-2 å…¬é’¥ã€‚ å¦‚ä½•èŽ·å–è¿™ç§æ ¼å¼çš„
+å…¬é’¥å–å†³äºŽæœåŠ¡å™¨ï¼› åœ¨ OpenSSH æœåŠ¡å™¨ä¸Šï¼Œ
+å®ƒé€šå¸¸å¯ä»¥åœ¨ \c{/etc/ssh/ssh_host_rsa_key.pub} ä¹‹ç±»çš„ä½ç½®æ‰¾åˆ°ã€‚
 
-Èç¹ûÔÚ PuTTY ½¨Á¢ SSH Á¬½ÓÊ±´Ë¿ò°üº¬ÖÁÉÙÒ»¸öÖ÷»úÃÜÔ¿»òÖ¸ÎÆ£¬
-ÔòÍêÈ«ÈÆ¹ý PuTTY µÄ×Ô¶¯Ö÷»úÃÜÔ¿¹ÜÀí£º
-µ±ÇÒ½öµ±·þÎñÆ÷
-Ìá¹©µÄÖ÷»úÃÜÔ¿ÊÇÔÚ´Ë¿òÖÐÁÐ³öµÄÃÜÔ¿Ö®Ò»Ê±£¬
-²ÅÔÊÐíÁ¬½Ó£¬×¢²á±íÖÐµÄ\I{host key cache}Ö÷»úÃÜÔ¿½«²»»á±»¶ÁÈ¡»òÐ´Èë£¬
-³ý·ÇÄúÃ÷È·ÕâÑù×ö¡£
+å¦‚æžœåœ¨ PuTTY å»ºç«‹ SSH è¿žæŽ¥æ—¶æ­¤æ¡†åŒ…å«è‡³å°‘ä¸€ä¸ªä¸»æœºå¯†é’¥æˆ–æŒ‡çº¹ï¼Œ
+åˆ™å®Œå…¨ç»•è¿‡ PuTTY çš„è‡ªåŠ¨ä¸»æœºå¯†é’¥ç®¡ç†ï¼š
+å½“ä¸”ä»…å½“æœåŠ¡å™¨
+æä¾›çš„ä¸»æœºå¯†é’¥æ˜¯åœ¨æ­¤æ¡†ä¸­åˆ—å‡ºçš„å¯†é’¥ä¹‹ä¸€æ—¶ï¼Œ
+æ‰å…è®¸è¿žæŽ¥ï¼Œæ³¨å†Œè¡¨ä¸­çš„\I{host key cache}ä¸»æœºå¯†é’¥å°†ä¸ä¼šè¢«è¯»å–æˆ–å†™å…¥ï¼Œ
+é™¤éžæ‚¨æ˜Žç¡®è¿™æ ·åšã€‚
 
-Èç¹û¸Ã¿òÎª¿Õ£¨Í¨³£ÊÇ£©£¬Ôò PuTTY µÄ
-×Ô¶¯Ö÷»úÃÜÔ¿¹ÜÀí½«Õý³£¹¤×÷¡£
+å¦‚æžœè¯¥æ¡†ä¸ºç©ºï¼ˆé€šå¸¸æ˜¯ï¼‰ï¼Œåˆ™ PuTTY çš„
+è‡ªåŠ¨ä¸»æœºå¯†é’¥ç®¡ç†å°†æ­£å¸¸å·¥ä½œã€‚
 
-\S{config-ssh-kex-cert} ÅäÖÃPuTTYÒÔ½ÓÊÜÖ÷»ú\i{Ö¤Êé}
+\S{config-ssh-kex-cert} é…ç½®PuTTYä»¥æŽ¥å—ä¸»æœº\i{è¯ä¹¦}
 
-ÔÚÄ³Ð©»·¾³ÖÐ£¬Ðí¶à·þÎñÆ÷µÄ SSH Ö÷»úÃÜÔ¿¶¼½«ÒÀ´ÎÓÉÖÐ
-Ñë\q{Ö¤Êé°ä·¢»ú¹¹}£¨¼ò³Æ\q{CA}£©½øÐÐÇ©Ãû¡£
-Õâ¼ò»¯ÁËÓÃ»§µÄÖ÷»úÃÜÔ¿ÅäÖÃ£¬
-ÒòÎªÈç¹ûËûÃÇ½«Æä SSH ¿Í»§¶ËÅäÖÃ
-Îª½ÓÊÜÓÉ¸Ã CA ÈÏÖ¤µÄÖ÷»úÃÜÔ¿£¬
-ÔòËûÃÇ²»ÐèÒªÔÚÊ×´ÎÁ¬½Óµ½¸Ã·þÎñÆ÷Ê±µ¥¶ÀÈ·ÈÏÃ¿¸öÖ÷»úÃÜÔ¿¡£
+åœ¨æŸäº›çŽ¯å¢ƒä¸­ï¼Œè®¸å¤šæœåŠ¡å™¨çš„ SSH ä¸»æœºå¯†é’¥éƒ½å°†ä¾æ¬¡ç”±ä¸­
+å¤®\q{è¯ä¹¦é¢å‘æœºæž„}ï¼ˆç®€ç§°\q{CA}ï¼‰è¿›è¡Œç­¾åã€‚
+è¿™ç®€åŒ–äº†ç”¨æˆ·çš„ä¸»æœºå¯†é’¥é…ç½®ï¼Œ
+å› ä¸ºå¦‚æžœä»–ä»¬å°†å…¶ SSH å®¢æˆ·ç«¯é…ç½®
+ä¸ºæŽ¥å—ç”±è¯¥ CA è®¤è¯çš„ä¸»æœºå¯†é’¥ï¼Œ
+åˆ™ä»–ä»¬ä¸éœ€è¦åœ¨é¦–æ¬¡è¿žæŽ¥åˆ°è¯¥æœåŠ¡å™¨æ—¶å•ç‹¬ç¡®è®¤æ¯ä¸ªä¸»æœºå¯†é’¥ã€‚
 
-Îª´Ë£¬Çë°´\q{Ö÷»úÃÜÔ¿}ÅäÖÃÃæ
-°åÖÐµÄ\q{ÅäÖÃÖ÷»úCAs}°´Å¥¡£
-Õâ½«Æô¶¯Ò»¸ö¸¨ÖúÅäÖÃ¶Ô»°¿ò£¬
-Äú¿ÉÒÔÔÚÆäÖÐÅäÖÃ PuTTY ½«½ÓÊÜÀ´×ÔÄÄÐ© CA µÄÇ©Ãû¡£
+ä¸ºæ­¤ï¼Œè¯·æŒ‰\q{ä¸»æœºå¯†é’¥}é…ç½®é¢
+æ¿ä¸­çš„\q{é…ç½®ä¸»æœºCAs}æŒ‰é’®ã€‚
+è¿™å°†å¯åŠ¨ä¸€ä¸ªè¾…åŠ©é…ç½®å¯¹è¯æ¡†ï¼Œ
+æ‚¨å¯ä»¥åœ¨å…¶ä¸­é…ç½® PuTTY å°†æŽ¥å—æ¥è‡ªå“ªäº› CA çš„ç­¾åã€‚
 
-\s{´ËÅäÖÃÊÊÓÃÓÚËùÓÐÒÑ±£´æµÄ»á»°¡£} Ö÷ÅäÖÃÖÐµÄËùÓÐÄÚÈÝ¶¼
-ÌØ¶¨ÓÚÒ»¸ö±£´æµÄ»á»°£¬
-Äú¿ÉÒÔ×¼±¸Ò»¸öµ¥¶ÀµÄ»á»°£¬
-ËùÓÐÅäÖÃ¶¼²»Í¬¡£
-µ«ÊÇ£¬\s{Ö÷»ú CA ÅäÖÃµÄÓÐÇÒÖ»ÓÐÒ»¸ö¸±±¾£¬
-ËüÊÊÓÃÓÚ PuTTY ÔËÐÐµÄËùÓÐ»á»°£¬ÎÞÂÛÊÇ·ñ±£´æ¡£}
+\s{æ­¤é…ç½®é€‚ç”¨äºŽæ‰€æœ‰å·²ä¿å­˜çš„ä¼šè¯ã€‚} ä¸»é…ç½®ä¸­çš„æ‰€æœ‰å†…å®¹éƒ½
+ç‰¹å®šäºŽä¸€ä¸ªä¿å­˜çš„ä¼šè¯ï¼Œ
+æ‚¨å¯ä»¥å‡†å¤‡ä¸€ä¸ªå•ç‹¬çš„ä¼šè¯ï¼Œ
+æ‰€æœ‰é…ç½®éƒ½ä¸åŒã€‚
+ä½†æ˜¯ï¼Œ\s{ä¸»æœº CA é…ç½®çš„æœ‰ä¸”åªæœ‰ä¸€ä¸ªå‰¯æœ¬ï¼Œ
+å®ƒé€‚ç”¨äºŽ PuTTY è¿è¡Œçš„æ‰€æœ‰ä¼šè¯ï¼Œæ— è®ºæ˜¯å¦ä¿å­˜ã€‚}
 
-£¨·ñÔò£¬Õâ½«ÊÇÎÞÓÃµÄ¡ª¡ªÎªÃ¿¸ö
-Ö÷»úÊÖ¶¯ÅäÖÃÐÂCA²»»á±ÈÎªÃ¿¸öÖ÷»úÉèÖÃ
-ÐÂµÄÖ÷»úÃÜÔ¿²¢°´ÏÂ\q{È·ÈÏ}°´Å¥¸ü·½±ã¡££©
+ï¼ˆå¦åˆ™ï¼Œè¿™å°†æ˜¯æ— ç”¨çš„â€”â€”ä¸ºæ¯ä¸ª
+ä¸»æœºæ‰‹åŠ¨é…ç½®æ–°CAä¸ä¼šæ¯”ä¸ºæ¯ä¸ªä¸»æœºè®¾ç½®
+æ–°çš„ä¸»æœºå¯†é’¥å¹¶æŒ‰ä¸‹\q{ç¡®è®¤}æŒ‰é’®æ›´æ–¹ä¾¿ã€‚ï¼‰
 
-ÒªÊ¹ÓÃ´ËÅäÖÃ¿òÉèÖÃÐÂµÄ CA£¬ÇëÖ´ÐÐÒÔÏÂ²Ù×÷£º
+è¦ä½¿ç”¨æ­¤é…ç½®æ¡†è®¾ç½®æ–°çš„ CAï¼Œè¯·æ‰§è¡Œä»¥ä¸‹æ“ä½œï¼š
 
-Ê×ÏÈ£¬´ÓÎÄ¼þ¼ÓÔØ CA µÄ¹«Ô¿£¬»ò½«ÆäÖ±½ÓÕ³Ìù
-µ½\q{Ö¤Êé°ä·¢»ú¹¹µÄ¹«Ô¿}±à¼­¿òÖÐ¡£
-Èç¹ûÄúµÄ×éÖ¯ÒÔÕâÖÖ·½Ê½¶ÔÆäÖ÷»úÃÜÔ¿½øÐÐÇ©Ãû£¬
-ËûÃÇ½«·¢²¼Æä CA µÄ¹«Ô¿£¬
-ÒÔ±ã SSH ÓÃ»§¿ÉÒÔ½«Æä°üº¬ÔÚÆäÅäÖÃÖÐ¡£
+é¦–å…ˆï¼Œä»Žæ–‡ä»¶åŠ è½½ CA çš„å…¬é’¥ï¼Œæˆ–å°†å…¶ç›´æŽ¥ç²˜è´´
+åˆ°\q{è¯ä¹¦é¢å‘æœºæž„çš„å…¬é’¥}ç¼–è¾‘æ¡†ä¸­ã€‚
+å¦‚æžœæ‚¨çš„ç»„ç»‡ä»¥è¿™ç§æ–¹å¼å¯¹å…¶ä¸»æœºå¯†é’¥è¿›è¡Œç­¾åï¼Œ
+ä»–ä»¬å°†å‘å¸ƒå…¶ CA çš„å…¬é’¥ï¼Œ
+ä»¥ä¾¿ SSH ç”¨æˆ·å¯ä»¥å°†å…¶åŒ…å«åœ¨å…¶é…ç½®ä¸­ã€‚
 
-½ÓÏÂÀ´£¬ÔÚ\q{ÐÅÈÎ´ËÃÜÔ¿½øÐÐÈÏÖ¤µÄÓÐÐ§Ö÷»ú}¿òÖÐ£¬
-ÅäÖÃÖÁÉÙÒ»¸öÖ÷»úÃûÍ¨Åä·û£¬ÒÔËµÃ÷ PuTTY Ó¦ÐÅÈÎ´Ë CA ´ú±íµÄ·þÎñÆ÷¡£
-ÀýÈç£¬¼ÙÉèÄúÎªÊ¾Àý¹«Ë¾£¨\cw{example.com}£©¹¤×÷£¬
-²¢ÇÒÊ¾Àý¹«Ë¾ IT ²¿ÃÅ²¥·¢ÁËÒ»¸ö¶ÔËùÓÐÊ¾ÀýÄÚ
-²¿¼ÆËã»úµÄÖ÷»úÃÜÔ¿½øÐÐÇ©ÃûµÄ CA¡£
-È»ºó£¬Äú¿ÉÄÜÏ£ÍûÐÅÈÎ¸Ã CA ÎªÓòÖÐµÄ¼ÆËã
-»ú \cw{example.com} µÄÖ÷»úÃÜÔ¿Ç©Ãû£¬
-µ«²»ÄÜÎªÆäËûÈÎºÎÄÚÈÝÇ©Ãû¡£
-Òò´Ë£¬Äú¿ÉÒÔÔÚ\q{ÓÐÐ§Ö÷»ú}¿òÖÐÊäÈë\cq{*.example.com}¡£
+æŽ¥ä¸‹æ¥ï¼Œåœ¨\q{ä¿¡ä»»æ­¤å¯†é’¥è¿›è¡Œè®¤è¯çš„æœ‰æ•ˆä¸»æœº}æ¡†ä¸­ï¼Œ
+é…ç½®è‡³å°‘ä¸€ä¸ªä¸»æœºåé€šé…ç¬¦ï¼Œä»¥è¯´æ˜Ž PuTTY åº”ä¿¡ä»»æ­¤ CA ä»£è¡¨çš„æœåŠ¡å™¨ã€‚
+ä¾‹å¦‚ï¼Œå‡è®¾æ‚¨ä¸ºç¤ºä¾‹å…¬å¸ï¼ˆ\cw{example.com}ï¼‰å·¥ä½œï¼Œ
+å¹¶ä¸”ç¤ºä¾‹å…¬å¸ IT éƒ¨é—¨æ’­å‘äº†ä¸€ä¸ªå¯¹æ‰€æœ‰ç¤ºä¾‹å†…
+éƒ¨è®¡ç®—æœºçš„ä¸»æœºå¯†é’¥è¿›è¡Œç­¾åçš„ CAã€‚
+ç„¶åŽï¼Œæ‚¨å¯èƒ½å¸Œæœ›ä¿¡ä»»è¯¥ CA ä¸ºåŸŸä¸­çš„è®¡ç®—
+æœº \cw{example.com} çš„ä¸»æœºå¯†é’¥ç­¾åï¼Œ
+ä½†ä¸èƒ½ä¸ºå…¶ä»–ä»»ä½•å†…å®¹ç­¾åã€‚
+å› æ­¤ï¼Œæ‚¨å¯ä»¥åœ¨\q{æœ‰æ•ˆä¸»æœº}æ¡†ä¸­è¾“å…¥\cq{*.example.com}ã€‚
 
-\s{ÏÞÖÆÔÊÐí CA ÃÜÔ¿Ç©ÃûµÄÄÚÈÝ·Ç³£ÖØÒª¡£} ²»ÒªÖ»
-ÊÇÔÚ¸Ã¿òÖÐÊäÈë\cq{*}£¡Èç¹ûÄúÕâÑù×ö£¬
-Äú¾ÍÊÇËµÊ¾Àý¹«Ë¾IT²¿ÃÅÓÐÈ¨ÎªÄú¿ÉÄÜ
-¾ö¶¨Á¬½ÓµÄ\e{ÈÎºÎÄÚÈÝ}Ç©ÊðÖ÷»úÃÜÔ¿ - ¼´Ê¹Äú
-´Ó¹«Ë¾ÍøÂçÁ¬½Óµ½ÆäËûµØ·½µÄ¼ÆËã»ú£¬
-ÀýÈçÄú×Ô¼ºµÄ¸öÈË·þÎñÆ÷¡£
-Òò´Ë£¬¸ÃÅäÖÃ½«Ê¹Ê¾ÀýIT²¿ÃÅÄÜ¹»³äµ±PuTTY½ø
-³ÌºÍ·þÎñÆ÷Ö®¼äµÄ\q{ÖÐ¼äÈË}£¬
-²¢¼àÌýÄúµÄÍ¨ÐÅ - ÕâÕýÊÇSSHÓ¦¸Ã±ÜÃâµÄÊÂÇé¡£
+\s{é™åˆ¶å…è®¸ CA å¯†é’¥ç­¾åçš„å†…å®¹éžå¸¸é‡è¦ã€‚} ä¸è¦åª
+æ˜¯åœ¨è¯¥æ¡†ä¸­è¾“å…¥\cq{*}ï¼å¦‚æžœæ‚¨è¿™æ ·åšï¼Œ
+æ‚¨å°±æ˜¯è¯´ç¤ºä¾‹å…¬å¸ITéƒ¨é—¨æœ‰æƒä¸ºæ‚¨å¯èƒ½
+å†³å®šè¿žæŽ¥çš„\e{ä»»ä½•å†…å®¹}ç­¾ç½²ä¸»æœºå¯†é’¥ - å³ä½¿æ‚¨
+ä»Žå…¬å¸ç½‘ç»œè¿žæŽ¥åˆ°å…¶ä»–åœ°æ–¹çš„è®¡ç®—æœºï¼Œ
+ä¾‹å¦‚æ‚¨è‡ªå·±çš„ä¸ªäººæœåŠ¡å™¨ã€‚
+å› æ­¤ï¼Œè¯¥é…ç½®å°†ä½¿ç¤ºä¾‹ITéƒ¨é—¨èƒ½å¤Ÿå……å½“PuTTYè¿›
+ç¨‹å’ŒæœåŠ¡å™¨ä¹‹é—´çš„\q{ä¸­é—´äºº}ï¼Œ
+å¹¶ç›‘å¬æ‚¨çš„é€šä¿¡ - è¿™æ­£æ˜¯SSHåº”è¯¥é¿å…çš„äº‹æƒ…ã€‚
 
-Òò´Ë£¬Èç¹û CA ÊÇÓÉ¸ºÔð \cw{example.com}£¨»òÆäËû£©µÄ
-ÏµÍ³¹ÜÀíÔ±Ìá¹©¸øÄúµÄ£¬ÇëÈ·±£ PuTTY \e{½ö}ÐÅ
-ÈÎ \cw{example.com} ÓòÖÐµÄ¼ÆËã»ú¡£
+å› æ­¤ï¼Œå¦‚æžœ CA æ˜¯ç”±è´Ÿè´£ \cw{example.com}ï¼ˆæˆ–å…¶ä»–ï¼‰çš„
+ç³»ç»Ÿç®¡ç†å‘˜æä¾›ç»™æ‚¨çš„ï¼Œè¯·ç¡®ä¿ PuTTY \e{ä»…}ä¿¡
+ä»» \cw{example.com} åŸŸä¸­çš„è®¡ç®—æœºã€‚
 
-ÓÐ¹Ø\q{ÓÐÐ§Ö÷»ú}±í´ïÊ½µÄÍêÕûÓï·¨£¬
-Çë²ÎÔÄ \k{config-ssh-cert-valid-expr}¡£
+æœ‰å…³\q{æœ‰æ•ˆä¸»æœº}è¡¨è¾¾å¼çš„å®Œæ•´è¯­æ³•ï¼Œ
+è¯·å‚é˜… \k{config-ssh-cert-valid-expr}ã€‚
 
-×îºó£¬Îª´Ë CA Ñ¡ÔñÒ»¸ö±êÊ¶Ãû³Æ;
-ÔÚ´°¿Ú¶¥²¿µÄ\q{´Ë CA µÄÃû³Æ}±à¼­¿òÖÐÊäÈë¸ÃÃû³Æ£¬
-È»ºó°´\q{±£´æ}ÒÔÔÚÅäÖÃÖÐ¼ÇÂ¼ CA¡£
-ÄúÑ¡ÔñµÄÃû³Æ½«ÏÔÊ¾ÔÚ\q{±£´æ}°´Å¥
-×ó²àµÄÒÑ±£´æCAÁÐ±íÖÐ¡£
+æœ€åŽï¼Œä¸ºæ­¤ CA é€‰æ‹©ä¸€ä¸ªæ ‡è¯†åç§°;
+åœ¨çª—å£é¡¶éƒ¨çš„\q{æ­¤ CA çš„åç§°}ç¼–è¾‘æ¡†ä¸­è¾“å…¥è¯¥åç§°ï¼Œ
+ç„¶åŽæŒ‰\q{ä¿å­˜}ä»¥åœ¨é…ç½®ä¸­è®°å½• CAã€‚
+æ‚¨é€‰æ‹©çš„åç§°å°†æ˜¾ç¤ºåœ¨\q{ä¿å­˜}æŒ‰é’®
+å·¦ä¾§çš„å·²ä¿å­˜CAåˆ—è¡¨ä¸­ã€‚
 
-±êÊ¶Ãû³Æ¿ÉÒÔÊÇÄúÏ²»¶µÄÈÎºÎÃû³Æ¡£Ëü¾ÍÔÚÄÇÀï£¬
-Òò´Ë£¬Èç¹ûÄú´æ´¢¶à¸öÖ¤Êé£¬Ôò¿ÉÒÔÔÚÒÔºóÒª±à
-¼­»òÉ¾³ýËüÃÇÊ±·Ö±æ³öÄÄ¸öÖ¤ÊéÊÇÄÄ¸öÖ¤Êé¡£
-µ±·þÎñÆ÷Ìá¹©ÓÉ¸Ã CA Ç©ÃûµÄÖ¤ÊéÊ±£¬Ëü»¹»á³öÏÖÔÚ PuTTY ÊÂ¼þÈÕÖ¾ÖÐ¡£
+æ ‡è¯†åç§°å¯ä»¥æ˜¯æ‚¨å–œæ¬¢çš„ä»»ä½•åç§°ã€‚å®ƒå°±åœ¨é‚£é‡Œï¼Œ
+å› æ­¤ï¼Œå¦‚æžœæ‚¨å­˜å‚¨å¤šä¸ªè¯ä¹¦ï¼Œåˆ™å¯ä»¥åœ¨ä»¥åŽè¦ç¼–
+è¾‘æˆ–åˆ é™¤å®ƒä»¬æ—¶åˆ†è¾¨å‡ºå“ªä¸ªè¯ä¹¦æ˜¯å“ªä¸ªè¯ä¹¦ã€‚
+å½“æœåŠ¡å™¨æä¾›ç”±è¯¥ CA ç­¾åçš„è¯ä¹¦æ—¶ï¼Œå®ƒè¿˜ä¼šå‡ºçŽ°åœ¨ PuTTY äº‹ä»¶æ—¥å¿—ä¸­ã€‚
 
-ÒªÖØÐÂ¼ÓÔØÏÖÓÐ CA ÅäÖÃ£¬ÇëÔÚÁÐ±í¿òÖÐÑ¡ÔñËü£¬
-È»ºó°´\q{¼ÓÔØ}¡£È»ºó£¬Äú¿ÉÒÔ½øÐÐ¸ü¸Ä£¬È»ºóÔÙ´Î±£´æ¡£
+è¦é‡æ–°åŠ è½½çŽ°æœ‰ CA é…ç½®ï¼Œè¯·åœ¨åˆ—è¡¨æ¡†ä¸­é€‰æ‹©å®ƒï¼Œ
+ç„¶åŽæŒ‰\q{åŠ è½½}ã€‚ç„¶åŽï¼Œæ‚¨å¯ä»¥è¿›è¡Œæ›´æ”¹ï¼Œç„¶åŽå†æ¬¡ä¿å­˜ã€‚
 
-Òª´ÓÅäÖÃÖÐÍêÈ«É¾³ý CA£¬ÇëÔÚÁÐ±í
-ÖÐÑ¡Ôñ¸Ã CA£¬È»ºó°´\q{É¾³ý}¡£
+è¦ä»Žé…ç½®ä¸­å®Œå…¨åˆ é™¤ CAï¼Œè¯·åœ¨åˆ—è¡¨
+ä¸­é€‰æ‹©è¯¥ CAï¼Œç„¶åŽæŒ‰\q{åˆ é™¤}ã€‚
 
-\S2{config-ssh-cert-valid-expr} Äú¿ÉÒÔÔÚ\q{ÓÐÐ§Ö÷»ú}ÖÐ
-ÊäÈëµÄ±í´ïÊ½
+\S2{config-ssh-cert-valid-expr} æ‚¨å¯ä»¥åœ¨\q{æœ‰æ•ˆä¸»æœº}ä¸­
+è¾“å…¥çš„è¡¨è¾¾å¼
 
-Äú¿ÉÒÔÔÚ\q{ÐÅÈÎ´ËÃÜÔ¿²¢½øÐÐÈÏÖ¤µÄÓÐÐ§Ö÷»ú}
-±à¼­¿òÖÐÊäÈë×î¼òµ¥ÄÚÈÝ£¬½öÊ¹ÓÃÖ÷»úÃûÍ¨Åä·û¡£
-ÀýÈç\cq{*.example.com}£¬Õâ½«Æ¥Åä¸ÃÓòÖÐµÄÈÎºÎÖ÷»ú¡£
-Òò´Ë£¬ÕâÍ¬Ê±Æ¥Åä \cq{ssh.example.com} ºÍ \cq{login.dept.example.com}
-µ«Óë \cq{prod.example.net} ²»Æ¥Åä¡£
+æ‚¨å¯ä»¥åœ¨\q{ä¿¡ä»»æ­¤å¯†é’¥å¹¶è¿›è¡Œè®¤è¯çš„æœ‰æ•ˆä¸»æœº}
+ç¼–è¾‘æ¡†ä¸­è¾“å…¥æœ€ç®€å•å†…å®¹ï¼Œä»…ä½¿ç”¨ä¸»æœºåé€šé…ç¬¦ã€‚
+ä¾‹å¦‚\cq{*.example.com}ï¼Œè¿™å°†åŒ¹é…è¯¥åŸŸä¸­çš„ä»»ä½•ä¸»æœºã€‚
+å› æ­¤ï¼Œè¿™åŒæ—¶åŒ¹é… \cq{ssh.example.com} å’Œ \cq{login.dept.example.com}
+ä½†ä¸Ž \cq{prod.example.net} ä¸åŒ¹é…ã€‚
 
-Í¬Ê±ÄúÒ²¿ÉÒÔÊäÈë¶à¸öÖ÷»úÃûÍ¨Åä·û£¬ÒÔ¼°¶Ë¿ÚºÅ·¶Î§£¬
-²¢Ê¹ÓÃÔËËã·û \cq{&&} ±íÊ¾ \q{and}£¬
-\cq{||} ±íÊ¾ \q{or}£¬\cq{!} ±íÊ¾ \q{not}
-ºÍÀ¨ºÅÀ´´ÓÖÐÉú³É¸´ÔÓµÄ²¼¶û±í´ïÊ½¡£
+åŒæ—¶æ‚¨ä¹Ÿå¯ä»¥è¾“å…¥å¤šä¸ªä¸»æœºåé€šé…ç¬¦ï¼Œä»¥åŠç«¯å£å·èŒƒå›´ï¼Œ
+å¹¶ä½¿ç”¨è¿ç®—ç¬¦ \cq{&&} è¡¨ç¤º \q{and}ï¼Œ
+\cq{||} è¡¨ç¤º \q{or}ï¼Œ\cq{!} è¡¨ç¤º \q{not}
+å’Œæ‹¬å·æ¥ä»Žä¸­ç”Ÿæˆå¤æ‚çš„å¸ƒå°”è¡¨è¾¾å¼ã€‚
 
-ÀýÈç£¬Äú»¹¿ÉÒÔÊäÈëÒ»Ð©ÆäËûÄÚÈÝ¡£
+ä¾‹å¦‚ï¼Œæ‚¨å¯ä»¥è¾“å…¥ä»¥ä¸‹ä¸€äº›å…¶ä»–å†…å®¹ã€‚
 
-\b \cq{*.foo.example.com || *.bar.example.com}¡£ÕâÒâÎ¶×Å£¬
-Èç¹ûÖ÷»úÃûÓë\q{*.foo.example.com}\e{»ò}\q{*.bar.example.com}Æ¥Åä£¬
-Ôò CA ÊÜÐÅÈÎ¶ÔÁ¬½ÓµÄÖ÷»úÃÜÔ¿½øÐÐÇ©Ãû¡£
-»»¾ä»°Ëµ£¬CA¶Ô \cw{example.com} µÄÕâ
-Á½¸öÌØ¶¨×ÓÓò¾ßÓÐÈ¨ÏÞ£¬
-µ«¶ÔÆäËûÈÎºÎ¶«Î÷£¨Èç \cw{www.example.com}¶¼ÎÞÈ¨¡£
+\b \cq{*.foo.example.com || *.bar.example.com}ã€‚è¿™æ„å‘³ç€ï¼Œ
+å¦‚æžœä¸»æœºåä¸Ž\q{*.foo.example.com}\e{æˆ–}\q{*.bar.example.com}åŒ¹é…ï¼Œ
+åˆ™ CA å—ä¿¡ä»»å¯¹è¿žæŽ¥çš„ä¸»æœºå¯†é’¥è¿›è¡Œç­¾åã€‚
+æ¢å¥è¯è¯´ï¼ŒCAå¯¹ \cw{example.com} çš„è¿™
+ä¸¤ä¸ªç‰¹å®šå­åŸŸå…·æœ‰æƒé™ï¼Œ
+ä½†å¯¹å…¶ä»–ä»»ä½•ä¸œè¥¿ï¼ˆå¦‚ \cw{www.example.com}éƒ½æ— æƒã€‚
 
-\b \cq{*.example.com && ! *.extrasecure.example.com}¡£ÕâÒâÎ¶×Å£¬
-Èç¹ûÖ÷»úÃûÓë\q{*.example.com}Æ¥Åä\e{µ«Óë}\q{*.extrasecure.example.com}²»Æ¥Åä£¬
-ÔòÐÅÈÎ CA ¶ÔÁ¬½ÓµÄÖ÷»úÃÜÔ¿½øÐÐÇ©Ãû¡£
-£¨ÏëÏóÒ»ÏÂ£¬Èç¹ûÄúµÄ
-¹«Ë¾ÖÐÓÐÒ»×é¾øÃÜ·þÎñÆ÷£¬
-¶øÖ÷ÒªIT²¿ÃÅÃ»ÓÐ°²È«Ðí¿ÉÀ´¹ÜÀí¡££©
+\b \cq{*.example.com && ! *.extrasecure.example.com}ã€‚è¿™æ„å‘³ç€ï¼Œ
+å¦‚æžœä¸»æœºåä¸Ž\q{*.example.com}åŒ¹é…\e{ä½†ä¸Ž}\q{*.extrasecure.example.com}ä¸åŒ¹é…ï¼Œ
+åˆ™ä¿¡ä»» CA å¯¹è¿žæŽ¥çš„ä¸»æœºå¯†é’¥è¿›è¡Œç­¾åã€‚
+ï¼ˆæƒ³è±¡ä¸€ä¸‹ï¼Œå¦‚æžœæ‚¨çš„
+å…¬å¸ä¸­æœ‰ä¸€ç»„ç»å¯†æœåŠ¡å™¨ï¼Œ
+è€Œä¸»è¦ITéƒ¨é—¨æ²¡æœ‰å®‰å…¨è®¸å¯æ¥ç®¡ç†ã€‚ï¼‰
 
-\b \cq{*.example.com && port:22}¡£ÕâÒâÎ¶×Å£¬
-Èç¹ûÖ÷»úÃûÓë\q{*.example.com}Æ¥Åä\e{ÇÒ}¶Ë¿ÚºÅÎª 22£¬
-ÔòÐÅÈÎ CA ¶ÔÁ¬½ÓµÄÖ÷»úÃÜÔ¿½øÐÐÇ©Ãû¡£
-ÔÚÆäËû¶Ë¿ÚÉÏÔËÐÐµÄ SSH ·þÎñÆ÷½«²»°üÀ¨ÔÚÄÚ¡£
+\b \cq{*.example.com && port:22}ã€‚è¿™æ„å‘³ç€ï¼Œ
+å¦‚æžœä¸»æœºåä¸Ž\q{*.example.com}åŒ¹é…\e{ä¸”}ç«¯å£å·ä¸º 22ï¼Œ
+åˆ™ä¿¡ä»» CA å¯¹è¿žæŽ¥çš„ä¸»æœºå¯†é’¥è¿›è¡Œç­¾åã€‚
+åœ¨å…¶ä»–ç«¯å£ä¸Šè¿è¡Œçš„ SSH æœåŠ¡å™¨å°†ä¸åŒ…æ‹¬åœ¨å†…ã€‚
 
-\b \cq{(*.foo.example.com || *.bar.example.com) && port:0-1023}¡£
-ÕâÓëÒÔÇ°Ò»ÑùÆ¥Åä \cw{example.com} µÄÁ½¸ö×ÓÓò£¬
-µ«\e{Ò²}½«¶Ë¿ÚºÅÏÞÖÆÔÚ 0-1023 ·¶Î§ÄÚ¡£
+\b \cq{(*.foo.example.com || *.bar.example.com) && port:0-1023}ã€‚
+è¿™ä¸Žä»¥å‰ä¸€æ ·åŒ¹é… \cw{example.com} çš„ä¸¤ä¸ªå­åŸŸï¼Œ
+ä½†\e{ä¹Ÿ}å°†ç«¯å£å·é™åˆ¶åœ¨ 0-1023 èŒƒå›´å†…ã€‚
 
-Ö¤ÊéÅäÖÃ±í´ïÊ½ÓÉÒ»¸ö»ò¶à¸öµ¥¶ÀµÄÒªÇó×é³É£¬
-Ã¿¸öÒªÇó¶¼¿ÉÒÔÊÇÖ÷»úÃû
-Í¨Åä·û¡¢µ¥¸ö¶Ë¿ÚºÅ»ò¶Ë¿ÚºÅ·¶Î§£¬
-²¢ÓëÕâÐ©²¼¶ûÔËËã·û×éºÏÔÚÒ»Æð¡£
+è¯ä¹¦é…ç½®è¡¨è¾¾å¼ç”±ä¸€ä¸ªæˆ–å¤šä¸ªå•ç‹¬çš„è¦æ±‚ç»„æˆï¼Œ
+æ¯ä¸ªè¦æ±‚éƒ½å¯ä»¥æ˜¯ä¸»æœºå
+é€šé…ç¬¦ã€å•ä¸ªç«¯å£å·æˆ–ç«¯å£å·èŒƒå›´ï¼Œ
+å¹¶ä¸Žè¿™äº›å¸ƒå°”è¿ç®—ç¬¦ç»„åˆåœ¨ä¸€èµ·ã€‚
 
-ÓëCµÈÆäËûÓïÑÔ²»Í¬£¬
-\cq{&&}ºÍ\cq{||}Ö®¼äÃ»ÓÐÒþº¬µÄÓÅÏÈ¼¶¡£
-Èç¹ûÄãÐ´\cq{A && B || C}£¨ÆäÖÐ\cw{A}£¬\cw{B}ºÍ\cw{C}ÊÇÒ»Ð©ÌØ¶¨µÄÒªÇó£©£¬
-È»ºóPuTTY½«±¨¸æÓï·¨´íÎó£¬
-ÒòÎªÄúÃ»ÓÐËµ³öÄÄ¸ö\cq{&&}ºÍ\cq{||}½ô½ôµØÓÅÏÈ¡£
-Äú±ØÐë±àÐ´\cq{(A && B) || C}£¬\q{ÒâË¼ÊÇ\cw{A}ºÍ\cw{B}£¬
-»òÕßÖ»ÊÇ\cw{C}}£¬»ò\cq{A && (B || C)}£¨\q{ÒâË¼ÊÇ\cw{A}£¬
-ÒÔ¼°\cw{B}ºÍ\cw{C}ÖÐµÄÖÁÉÙÒ»¸ö¡±}£©£¬ÒÔÊ¹ÆäÇåÎú¡£
+ä¸ŽCç­‰å…¶ä»–è¯­è¨€ä¸åŒï¼Œ
+\cq{&&}å’Œ\cq{||}ä¹‹é—´æ²¡æœ‰éšå«çš„ä¼˜å…ˆçº§ã€‚
+å¦‚æžœä½ å†™\cq{A && B || C}ï¼ˆå…¶ä¸­\cw{A}ï¼Œ\cw{B}å’Œ\cw{C}æ˜¯ä¸€äº›ç‰¹å®šçš„è¦æ±‚ï¼‰ï¼Œ
+ç„¶åŽPuTTYå°†æŠ¥å‘Šè¯­æ³•é”™è¯¯ï¼Œ
+å› ä¸ºæ‚¨æ²¡æœ‰è¯´å‡ºå“ªä¸ª\cq{&&}å’Œ\cq{||}ç´§ç´§åœ°ä¼˜å…ˆã€‚
+æ‚¨å¿…é¡»ç¼–å†™\cq{(A && B) || C}ï¼Œ\q{æ„æ€æ˜¯\cw{A}å’Œ\cw{B}ï¼Œ
+æˆ–è€…åªæ˜¯\cw{C}}ï¼Œæˆ–\cq{A && (B || C)}ï¼ˆ\q{æ„æ€æ˜¯\cw{A}ï¼Œ
+ä»¥åŠ\cw{B}å’Œ\cw{C}ä¸­çš„è‡³å°‘ä¸€ä¸ªâ€}ï¼‰ï¼Œä»¥ä½¿å…¶æ¸…æ™°ã€‚
 
-\S2{config-ssh-cert-rsa-hash} Ö¤ÊéÖÐµÄ RSA Ç©ÃûÀàÐÍ
+\S2{config-ssh-cert-rsa-hash} è¯ä¹¦ä¸­çš„ RSA ç­¾åç±»åž‹
 
-RSA ÃÜÔ¿¿ÉÓÃÓÚÉú³É¾ßÓÐ°²È«¹þÏ£º¯ÊýµÄÇ©Ãû¡£
-Í¨³££¬ÈÎºÎ×ã¹»ÐÂ¡¢×ãÒÔÖ§³ÖÖ¤ÊéµÄ OpenSSH °æ±¾Ò²½«×ã¹»ÐÂ£¬
-¿ÉÒÔ±ÜÃâÊ¹ÓÃ SHA-1£¬Òò´Ë½ÓÊÜ¸üÏÖ´úµÄ SHA-256 ºÍ SHA-512
-µÄÄ¬ÈÏÉèÖÃÓ¦¸ÃÊÊÓÃÓÚ¼¸ºõËùÓÐÇé¿ö¡£
-µ«ÊÇ£¬ÎªÁËÍêÕûÆð¼û£¬
-Äú¿ÉÒÔÊ¹ÓÃ RSA ÃÜÔ¿ÅäÖÃ PuTTY Ã÷È·½ÓÊÜ
-À´×Ô CA µÄÖ¤ÊéÖÐµÄÄÄÐ©ÀàÐÍµÄ RSA Ç©Ãû¡£
+RSA å¯†é’¥å¯ç”¨äºŽç”Ÿæˆå…·æœ‰å®‰å…¨å“ˆå¸Œå‡½æ•°çš„ç­¾åã€‚
+é€šå¸¸ï¼Œä»»ä½•è¶³å¤Ÿæ–°ã€è¶³ä»¥æ”¯æŒè¯ä¹¦çš„ OpenSSH ç‰ˆæœ¬ä¹Ÿå°†è¶³å¤Ÿæ–°ï¼Œ
+å¯ä»¥é¿å…ä½¿ç”¨ SHA-1ï¼Œå› æ­¤æŽ¥å—æ›´çŽ°ä»£çš„ SHA-256 å’Œ SHA-512
+çš„é»˜è®¤è®¾ç½®åº”è¯¥é€‚ç”¨äºŽå‡ ä¹Žæ‰€æœ‰æƒ…å†µã€‚
+ä½†æ˜¯ï¼Œä¸ºäº†å®Œæ•´èµ·è§ï¼Œ
+æ‚¨å¯ä»¥ä½¿ç”¨ RSA å¯†é’¥é…ç½® PuTTY æ˜Žç¡®æŽ¥å—
+æ¥è‡ª CA çš„è¯ä¹¦ä¸­çš„å“ªäº›ç±»åž‹çš„ RSA ç­¾åã€‚
 
-\H{config-ssh-encryption} ¼ÓÃÜÃæ°å
+\H{config-ssh-encryption} åŠ å¯†é¢æ¿
 
-PuTTY Ö§³Ö¶àÖÖ²»Í¬µÄ\i{¼ÓÃÜËã·¨}£¬
-²¢ÔÊÐíÄúÑ¡ÔñÄúÏ²»¶Ê¹ÓÃµÄÒ»ÖÖ¡£
-Äú¿ÉÒÔÍ¨¹ýÔÚÁÐ±í¿òÖÐÉÏÏÂÍÏ¶¯Ëã·¨
-£¨»òÊ¹ÓÃÏòÉÏºÍÏòÏÂ°´Å¥ÒÆ¶¯ËüÃÇ£©À´Ö¸¶¨Æ«ºÃË³Ðò¡£
-µ±Äú½¨Á¢ SSH Á¬½ÓÊ±£¬PuTTY ½«´Ó¶¥²¿ÏòÏÂËÑË÷ÁÐ±í£¬
-Ö±µ½ÕÒµ½·þÎñÆ÷Ö§³ÖµÄËã·¨£¬
-È»ºóÊ¹ÓÃ¸ÃËã·¨¡£
+PuTTY æ”¯æŒå¤šç§ä¸åŒçš„\i{åŠ å¯†ç®—æ³•}ï¼Œ
+å¹¶å…è®¸æ‚¨é€‰æ‹©æ‚¨å–œæ¬¢ä½¿ç”¨çš„ä¸€ç§ã€‚
+æ‚¨å¯ä»¥é€šè¿‡åœ¨åˆ—è¡¨æ¡†ä¸­ä¸Šä¸‹æ‹–åŠ¨ç®—æ³•
+ï¼ˆæˆ–ä½¿ç”¨å‘ä¸Šå’Œå‘ä¸‹æŒ‰é’®ç§»åŠ¨å®ƒä»¬ï¼‰æ¥æŒ‡å®šåå¥½é¡ºåºã€‚
+å½“æ‚¨å»ºç«‹ SSH è¿žæŽ¥æ—¶ï¼ŒPuTTY å°†ä»Žé¡¶éƒ¨å‘ä¸‹æœç´¢åˆ—è¡¨ï¼Œ
+ç›´åˆ°æ‰¾åˆ°æœåŠ¡å™¨æ”¯æŒçš„ç®—æ³•ï¼Œ
+ç„¶åŽä½¿ç”¨è¯¥ç®—æ³•ã€‚
 
-PuTTY Ä¿Ç°Ö§³ÖÒÔÏÂËã·¨£º
+PuTTY ç›®å‰æ”¯æŒä»¥ä¸‹ç®—æ³•ï¼š
 
 \b \i{ChaCha20-Poly1305}, a combined cipher and \i{MAC} (SSH-2 only)
 
@@ -2810,1309 +2810,1309 @@ PuTTY Ä¿Ç°Ö§³ÖÒÔÏÂËã·¨£º
 
 \b \ii{Single-DES} - 56-bit CBC (see below for SSH-2)
 
-Èç¹û PuTTY ÕÒµ½µÄËã·¨µÍÓÚ
-\q{-- ÒÔÏÂÎª¾¯¸æÑ¡Ïî --}ÐÐ£¬ÔòÔÚ½¨Á¢Á¬½ÓÊ±»á¿´µ½Ò»¸ö¾¯¸æ¿ò£º
+å¦‚æžœ PuTTY æ‰¾åˆ°çš„ç®—æ³•ä½ŽäºŽ
+\q{-- ä»¥ä¸‹ä¸ºè­¦å‘Šé€‰é¡¹ --}è¡Œï¼Œåˆ™åœ¨å»ºç«‹è¿žæŽ¥æ—¶ä¼šçœ‹åˆ°ä¸€ä¸ªè­¦å‘Šæ¡†ï¼š
 
 \c The first cipher supported by the server
 \c is single-DES, which is below the configured
 \c warning threshold.
 \c Do you want to continue with this connection?
 
-Õâ¾¯¸æÄú£¬µÚÒ»¸ö¿ÉÓÃµÄ¼ÓÃÜ²»ÊÇ·Ç³£°²È«µÄ¡£
-Í¨³££¬Äú»áÔÚÄúÈÏÎª°²È«µÄ¼ÓÃÜºÍÄúÈÏÎª²»ºÏ
-±ê×¼µÄ¼ÓÃÜÖ®¼ä·Å
-ÖÃ\q{-- ÒÔÏÂÎª¾¯¸æÑ¡Ïî --}¡£
-Ä¬ÈÏÇé¿öÏÂ£¬PuTTY Ìá¹©Ò»¸öÆ«ºÃË³Ðò£¬
-Ö¼ÔÚ·´Ó³ÔÚ°²È«ÐÔºÍËÙ¶È·½ÃæµÄºÏÀíÆ«ºÃ¡£
-
-ÔÚ SSH-2 ÖÐ£¬¼ÓÃÜËã·¨ÊÇÕë¶ÔÃ¿¸öÁ¬½Ó
-·½Ïò¶ÀÁ¢Ð­ÉÌµÄ£¬
-¾¡¹Ü PuTTY ²»Ö§³Öµ¥¶ÀÅäÖÃÓÅÏÈË³Ðò¡£
-Òò´Ë£¬Äú¿ÉÄÜ»áÊÕµ½Á½¸öÀàËÆÓÚÉÏÊö¾¯¸æµÄ¾¯¸æ£¬
-¿ÉÄÜÊ¹ÓÃ²»Í¬µÄ¼ÓÃÜ¡£
-
-ÔÚ SSH-2 Ð­Òé±ê×¼ÖÐ²»ÍÆ¼öÊ¹ÓÃ Single-DES£¬
-µ«Ò»Á½¸ö·þÎñÆ÷ÊµÏÖÈ·ÊµÖ§³ÖËü¡£
-Èç¹ûÄúÆôÓÃ\q{ÔÚ SSH-2 ÆôÓÃ´«Í³Ê¹ÓÃSingle-DES}Ñ¡Ïî£¬
-PuTTY ¿ÉÒÔÊ¹ÓÃSingle-DESÓëÕâÐ©·þÎñÆ÷
-½øÐÐ»¥²Ù×÷£» Ä¬ÈÏÇé¿öÏÂ£¬
-ÕâÊÇ½ûÓÃµÄ£¬PuTTY ½«¼á³ÖÊ¹ÓÃÍÆ¼öµÄÃÜÂë¡£
-
-\H{config-ssh-auth} ÈÏÖ¤Ãæ°å
-
-ÈÏÖ¤Ãæ°åÔÊÐíÄúÎª SSH »á»°
-ÅäÖÃ\i{Éí·ÝÑéÖ¤}Ñ¡Ïî¡£
-
-\S{config-ssh-banner} \q{ÏÔÊ¾Ô¤ÉèÈÏÖ¤±êÖ¾}
-
-SSH-2 ·þÎñÆ÷¿ÉÒÔÔÚÓÃ»§µÇÂ¼Ö®Ç°Ïò¿Í»§
-¶ËÌá¹©Ò»ÌõÏûÏ¢ÒÔÏÔÊ¾¸øÇ±ÔÚÓÃ»§£»
-ÕâÓÐÊ±±»³ÆÎªÔ¤Éí·ÝÑéÖ¤\q{\i{ºá·ù}}¡£
-Í¨³££¬ÕâÓÃÓÚÌá¹©ÓÐ¹Ø·þÎñÆ÷µÄÐÅÏ¢ºÍ·¨ÂÉÉùÃ÷¡£
-
-Ä¬ÈÏÇé¿öÏÂ£¬PuTTY ÔÚÌáÊ¾ÊäÈëÃÜÂë»òÀàËÆ
-Æ¾¾ÝÖ®Ç°ÏÔÊ¾´ËÏûÏ¢£¨µ«ÒÅº¶µÄÊÇ£¬ÓÉÓÚÐ­Òé
-Éè¼ÆµÄÐÔÖÊ£¬²»»áÔÚÌáÊ¾ÊäÈëµÇÂ¼ÃûÖ®Ç°ÏÔÊ¾´ËÏûÏ¢£©¡£
-Í¨¹ýÈ¡ÏûÑ¡ÖÐ´ËÑ¡Ïî£¬
-¿ÉÒÔÍêÈ«ÒÖÖÆºá·ùµÄÏÔÊ¾¡£
-
-\S{config-ssh-noauth} \q{ÍêÈ«ÈÆ¹ýÉí·ÝÑéÖ¤}
-
-ÔÚ SSH-2 ÖÐ£¬Ô­ÔòÉÏ¿ÉÒÔÔÚ²»Ê¹ÓÃ SSH µÄ»úÖÆ
-Ïò·þÎñÆ÷Ê¶±ð»òÖ¤Ã÷ÄãÊÇË­µÄÇé¿öÏÂ½¨Á¢Á¬½Ó¡£
-ÀýÈç£¬SSH ·þÎñÆ÷¿ÉÄÜ¸üÏ²
-»¶ÔÚÊý¾ÝÍ¨µÀÖÐ´¦ÀíÉí·ÝÈÏÖ¤£¬
-»òÕß¸ù±¾²»ÐèÒªÈÎºÎÓÃ»§Éí·ÝÈÏÖ¤¡£
-
-Ä¬ÈÏÇé¿öÏÂ£¬PuTTY ¼Ù¶¨·þÎñÆ÷ÐèÒªÉí·ÝÈÏÖ¤
-£¨ÎÒÃÇ´ÓÎ´ÌýËµ¹ý²»ÐèÒªÉí·ÝÈÏÖ¤µÄ£©£¬
-Òò´Ë±ØÐëÊ¹ÓÃÓÃ»§ÃûÆô¶¯´Ë¹ý³Ì¡£ Èç¹ûÄú·¢ÏÖÄúÊÕµ½ÎÞ·¨»Ø´ðµÄÓÃ»§ÃûÌáÊ¾£¬
-Äú¿ÉÒÔ³¢ÊÔÆôÓÃ´ËÑ¡Ïî¡£
-µ«ÊÇ£¬´ó¶àÊý SSH ·þÎñÆ÷»á¾Ü¾ø´Ë²Ù×÷¡£
-
-Èç¹ûÄúÓÐÓÃ»§Ãû²¢ÇÒÖ»ÏëÈÃ PuTTY ¼Ç×¡Ëü£¬
-Õâ²»ÊÇÄúÏëÒªµÄÑ¡Ïî£»Çë²ÎÔÄ \k{config-username}¡£
-Èç¹ûÄú³¢ÊÔÉèÖÃÎÞÃÜÂëµÇÂ¼µ½Ö÷Á÷ SSH ·þÎñÆ÷£¬
-Ò²¿ÉÄÜ²»ÊÇÕâÑù£» ¸ù¾Ý·þÎñÆ÷£¬
-Äú¿ÉÄÜÐèÒª¹«Ô¿Éí·ÝÑéÖ¤(\k{pubkey})
-»òÕß¿ÉÄÜÊÇ GSSAPI Éí·ÝÑéÖ¤(\k{config-ssh-auth-gssapi})¡£
-£¨ÕâÐ©ÈÔÈ»ÊÇÉí·ÝÑéÖ¤ÐÎÊ½£¬
-¼´Ê¹Äú²»±ØÓëËüÃÇ½»»¥¡££©
-
-´ËÑ¡Ïî½öÓ°Ïì SSH-2 Á¬½Ó¡£
-SSH-1 Á¬½ÓÊ¼ÖÕÐèÒªÉí·ÝÑéÖ¤²½Öè¡£
-
-\S{config-ssh-notrivialauth} \q{½öÁ¬½ÓÎÞÃÜÂë»òÕßÃÜÔ¿ÈÏÖ¤,
-Ôò¶Ï¿ªÁ¬½Ó}
-
-Èç¹û·þÎñÆ÷½ÓÊÜÉí·ÝÑéÖ¤¶ø´ÓÎ´ÒªÇó
-ÈÎºÎÀàÐÍµÄÃÜÂë»òÇ©Ãû»òÁîÅÆ£¬
-Ôò´ËÑ¡Ïî»áµ¼ÖÂ PuTTY ·ÅÆú SSH »á»°²¢Óë·þÎñÆ÷¶Ï¿ªÁ¬½Ó¡£
-
-Õâ¿ÉÒÔÓÃ×÷°²È«´ëÊ©¡£
-ÓÐÒ»Ð©Õë¶Ô SSH ¿Í»§¶ËÓÃ»§µÄ¹¥»÷ÐÎÊ½£¬
-ËüÃÇÍ¨¹ýÌáÇ°ÖÕÖ¹ SSH Éí·ÝÑéÖ¤½×¶ÎÀ´¹¤×÷£¬
-È»ºóÔÚ SSH »á»°µÄÖ÷Òª²¿·Ö×öÒ»Ð©ÊÂÇé£¬
-Õâ\e{¿´ÆðÀ´}ÏñÊÇÉí·ÝÑéÖ¤µÄÒ»²¿·Ö£¬µ«Êµ¼ÊÉÏ²¢·ÇÈç´Ë¡£
-
-ÀýÈç£¬²»ÊÇÒªÇóÄúµÄ¹«Ô¿Ç©Ãû
-£¨PuTTY »áÒªÇóÄúÌá¹©ÃÜÔ¿µÄÃÜÂë£©£¬
-ÊÜ¸ÐÈ¾»ò¶ñÒâ·þÎñÆ÷¿ÉÄÜÔÊÐíÄúÔÚÃ»
-ÓÐÇ©Ãû»òÃÜÂëµÄÇé¿öÏÂµÇÂ¼£¬
-È»ºó´òÓ¡Ò»Ìõ\e{Ä£·Â} PuTTY µÄÏûÏ¢ÇëÇóÄúµÄÃÜÂë£¬
-Ï£ÍûÄúÊäÈëËü¡£
-£¨ÊÂÊµÉÏ£¬ÄúµÄ¹«Ô¿µÄÃÜÂë²»Ó¦¸Ã·¢ËÍµ½ÈÎºÎ·þÎñÆ÷¡££©
-
-PuTTY ¶Ô´ËÀà¹¥»÷µÄÖ÷Òª·ÀÓùÊÇ\q{ÐÅÈÎ±ê¼Ç}Ïµ
-Í³£ºPuTTY ´°¿ÚÖÐÕæÕýÓÉ PuTTY ±¾Éí·¢ÆðµÄÏûÏ¢ÏÔ
-Ê¾ÔÚ PuTTY Í¼±êµÄÐ¡¸±±¾ÅÔ±ß£¬
-·þÎñÆ÷ÔÚ³¢ÊÔÄ£·ÂÊ±ÎÞ·¨Î±Ôì
-Ê¹ÓÃÖÕ¶ËÊä³öÏàÍ¬µÄÏûÏ¢¡£
-
-µ«ÊÇ£¬Èç¹ûÄúÈÏÎªÎÞÂÛÈçºÎÄú¶¼¿ÉÄÜÃæÁÙÕâÖÖ·ç
-ÏÕ£¨Èç¹ûÄúÃ»ÓÐÃÜÇÐ×¢ÒâÐÅÈÎ±êÖ¾£¬»òÕßÈç¹û
-ÄúÈÏÎªÄúµÄÄ³¸ö·þÎñÆ÷´æÔÚ¶ñÒâµÄ¶îÍâ·çÏÕ£©£¬
-ÄÇÃ´Äú¿ÉÒÔÆôÓÃ´ËÑ¡Ïî×÷Îª¶îÍâµÄ·ÀÓù¡£
-È»ºó£¬Èç¹û·þÎñÆ÷³¢ÊÔÈÎºÎÉæ¼°ÈÃÄúÍ¨¹ý
-Éí·ÝÑéÖ¤½×¶ÎµÄ¹¥»÷£¬PuTTY ½«ÔÚ·¢ËÍºóÐøÐé¼ÙÌáÊ¾»òÆäËûÀàÐÍµÄ
-¹¥»÷Ö®Ç°¶Ï¿ªÓë·þÎñÆ÷µÄÁ¬½Ó¡£
-
-ÁíÒ»·½Ãæ£¬Ò»Ð©·þÎñÆ÷\e{ºÏ·¨}µØÈÃÄúÇáËÉÍ¨¹ý SSH Éí·ÝÑéÖ¤½×¶Î£¬
-ÒªÃ´ÊÇÒòÎªËüÃÇÊÇÕæÕý¹«¿ªµÄ£¬ÒªÃ´ÊÇÒòÎªÖØÒªµÄÉí
-·ÝÑéÖ¤²½Öè·¢ÉúÔÚÖÕ¶Ë»á»°ÆÚ¼ä¡£
-£¨Ò»¸öÊ¾Àý¿ÉÄÜÊÇ SSH ·þÎñÆ÷£¬
-ËüÖ±½Ó½«ÄúÁ¬½Óµ½¾ÉÊ½´óÐÍ»úµÄÖÕ¶ËµÇ
-Â¼ÌáÊ¾·û¡££©Òò´ËÆôÓÃ´ËÑ¡Ïî¿ÉÄÜ»á
-µ¼ÖÂÄ³Ð©ÀàÐÍµÄ»á»°Í£Ö¹¹¤×÷¡£ÓÉÄã¾ö¶¨¡£
-
-\S{config-ssh-tryagent} \q{³¢ÊÔÊ¹ÓÃ Pageant ½øÐÐÉí·ÝÑéÖ¤}
-
-Èç¹ûÆôÓÃ´ËÑ¡Ïî£¬PuTTY ½«²éÕÒ
-Pageant£¨SSH Ë½Ô¿´æ´¢´úÀí£©²¢³¢ÊÔÊ¹ÓÃ Pageant µ±Ç°³ÖÓÐµÄÈÎºÎºÏ
-ÊÊµÄ¹«Ô¿½øÐÐÉí·ÝÑéÖ¤¡£
-
-ÕâÖÖÐÐÎª¼¸ºõ×ÜÊÇ¿ÉÈ¡µÄ£¬Òò´ËÄ¬ÈÏÆôÓÃ¡£
-ÔÚ¼«ÉÙÊýÇé¿öÏÂ£¬Äú¿ÉÄÜÐèÒª½«Æä¹Ø±ÕÒÔ
-Ç¿ÖÆÍ¨¹ýÄ³Ð©·Ç¹«Ô¿·½
-·¨£¨ÀýÈçÃÜÂë£©½øÐÐÉí·ÝÑéÖ¤¡£
-
-Ò²¿ÉÒÔÊ¹ÓÃ \c{-noagent} ÃüÁîÐÐÑ¡Ïî¿ØÖÆ´ËÑ¡Ïî¡£
-Çë²ÎÔÄ \k{using-cmdline-agentauth}¡£
-
-ÓÐ¸öPageant µÄ¸ü¸ÄÐÅÏ¢£¬Çë²ÎÔÄ \k{pageant} ¡£
-
-\S{config-ssh-tis} \q{³¢ÊÔ \I{TIS authentication}TIS »ò
-\i{CryptoCard ÈÏÖ¤}}
-
-TIS ºÍ CryptoCard Éí·ÝÑéÖ¤ÊÇ£¨¾¡¹ÜÓÐËüÃÇµÄÃû³Æ£©
-\I{challenge/response authentication}¼òµ¥ÖÊÑ¯/ÏìÓ¦Éí·ÝÑéÖ¤µÄÍ¨ÓÃÐÎÊ½£¬
-½öÔÚ SSH Ð­Òé°æ±¾ 1 ÖÐ¿ÉÓÃ¡£
-ÀýÈç£¬Èç¹ûÄúÊ¹ÓÃ \i{S/Key} \i{Ò»´ÎÐÔÃÜÂë}£¬»òÕßÈç¹ûÄúÓÐÒ»¸ö¿É
-ÒÔÉú³É¶ÔÉí·ÝÑéÖ¤ÌôÕ½µÄÏìÓ¦µÄÎïÀí\i{°²È«ÁîÅÆ}£¬
-Ôò¿ÉÒÔÊ¹ÓÃËüÃÇ¡£
-ËüÃÇÉõÖÁ¿ÉÒÔÓÃÀ´ÌáÊ¾ÊäÈë¼òµ¥µÄÃÜÂë¡£
-
-ÆôÓÃ´Ë¿ª¹Øºó£¬
-Èç¹û·þÎñÆ÷Ô¸Òâ³¢ÊÔÕâÐ©ÐÎÊ½µÄÉí·ÝÑéÖ¤£¬
-PuTTY ½«³¢ÊÔËüÃÇ¡£
-Äú½«¿´µ½Ò»¸öÖÊÑ¯×Ö·û´®£¨Ã¿´Î¿ÉÄÜ²»Í¬£©£¬
-²¢ÇÒ±ØÐëÌá¹©ÕýÈ·µÄÏìÓ¦²ÅÄÜµÇÂ¼¡£
-Èç¹ûÄúµÄ·þÎñÆ÷Ö§³ÖÕâÒ»µã£¬
-ÄúÓ¦¸ÃÓëÄúµÄÏµÍ³¹ÜÀíÔ±ÌÖÂÛÕâÐ©ÖÊÑ¯ºÍÏìÓ¦µÄ¾ßÌåÐÎÊ½¡£
-
-\S{config-ssh-ki} \q{³¢ÊÔ\i{¼üÅÌ½»»¥ÈÏÖ¤}}
-
-TIS Éí·ÝÑéÖ¤µÄ SSH-2 µÈÐ§Ïî³ÆÎª\q{¼üÅÌ½»»¥}¡£
- ËüÊÇÒ»ÖÖÁé»îµÄÉí·ÝÑéÖ¤·½·¨£¬
- Ê¹ÓÃÈÎÒâË³ÐòµÄÇëÇóºÍÏìÓ¦£»
- Òò´ËËü²»½ö¶Ô\I{challenge/response authentication}ÌôÕ½/Ïì
- Ó¦»úÖÆ£¨ÀýÈç \i{S/Key}£©ÓÐÓÃ£¬
- ¶øÇÒ»¹¿ÉÒÔÓÃÓÚ£¨ÀýÈç£©ÔÚ\I{password
- expiry}¾ÉÃÜÂë¹ýÆÚÊ±ÏòÓÃ»§Ñ¯ÎÊÐÂÃÜÂë¡£
-
-PuTTY Ä¬ÈÏÆôÓÃ´ËÑ¡Ïî£¬µ«Ìá¹©ÁËÒ»¸ö¿ª¹ØÒÔ½«Æä¹Ø±Õ£¬
-ÒÔ·ÀÄúÓöµ½ÎÊÌâ¡£
-
-\S{config-ssh-agentfwd} \q{ÔÊÐí\i{´úÀí×ª·¢}}
-
-´ËÑ¡ÏîÔÊÐí SSH ·þÎñÆ÷´ò¿ª×ª·¢Á¬½Ó
-»ØÄúµÄ \i{Pageant} ±¾µØ¸±±¾¡£
-Èç¹ûÄúÃ»ÓÐÔËÐÐ Pageant£¬Ôò´ËÑ¡Ïî²»»áÖ´ÐÐÈÎºÎ²Ù×÷¡£
-
-ÓÐ¹Ø Pageant µÄÒ»°ãÐÅÏ¢£¬
-Çë²ÎÔÄ\k{pageant}£¬ÓÐ¹Ø´úÀí×ª·¢µÄÐÅÏ¢£¬
-Çë²ÎÔÄ\k{pageant-forward} ¡£Çë×¢Òâ£¬
-ÆôÓÃ´ËÑ¡Ïî´æÔÚ°²È«·çÏÕ£»Ïê¼û\k{pageant-security} ¡£
-
-\S{config-ssh-changeuser} \q{ÔÊÐíÔÚ SSH-2 ÖÐ³¢ÊÔ\i{¸ü¸ÄÓÃ»§Ãû}}
-
-ÔÚ SSH-1 Ð­ÒéÖÐ£¬ÑéÖ¤Ê§°ÜºóÎÞ·¨¸ü¸ÄÓÃ»§Ãû¡£
-Òò´Ë£¬Èç¹ûÄúÔÚ PuTTY µÄ\q{login as:}ÌáÊ¾·û´¦
-ÊäÈë´íÎóµÄÓÃ»§Ãû£¬Äú½«ÎÞ·¨¸ü¸ÄËü£¬
-³ý·ÇÖØÐÂÆô¶¯ PuTTY¡£
-
-Ô­ÔòÉÏ£¬SSH-2 Ð­Òé\e{È·Êµ}ÔÊÐí¸ü¸ÄÓÃ»§Ãû£¬
-µ«²¢²»Ç¿ÖÆ SSH-2 ·þÎñÆ÷½ÓÊÜËüÃÇ¡£
-ÌØ±ðÊÇ£¬\i{OpenSSH} ²»½ÓÊÜÓÃ»§ÃûµÄ¸ü¸Ä£»
-Ò»µ©Äú·¢ËÍÁËÒ»¸öÓÃ»§Ãû£¬Ëü½«¾Ü¾ø³¢ÊÔÒÔÁí
-Ò»ÓÃ»§Éí·Ý½øÐÐÉí·ÝÑéÖ¤µÄ³¢ÊÔ¡£ £¨È¡¾öÓÚ OpenSSH
-µÄ°æ±¾£¬Ëü¿ÉÄÜ»áÇÄÇÄµØ·µ»ØËùÓÐµÇ
-Â¼³¢ÊÔÊ§°Ü£¬»òÕßËü¿ÉÄÜ»á·¢ËÍ´íÎóÏûÏ¢¡££©
-
-Òò´Ë£¬Èç¹û·þÎñÆ÷±§Ô¹£¬
-PuTTY Ä¬ÈÏ²»»á¶à´ÎÌáÊ¾ÄúÊäÈëÓÃ»§Ãû¡£
-Èç¹ûÄúÖªµÀÄúµÄ·þÎñÆ÷¿ÉÒÔ´¦ÀíËü£¬
-Äú¿ÉÒÔÆôÓÃ\q{ÔÊÐí³¢ÊÔ¸ü¸ÄÓÃ»§Ãû}Ñ¡ÏîÀ´ÐÞ¸Ä PuTTY µÄÐÐÎª¡£
-
-\H{config-ssh-auth-creds} Æ¾Ö¤Ãæ°å
-
-ÈÏÖ¤Ãæ°åµÄ´Ë×Ó´°¸ñ°üº¬ÅäÖÃÑ¡Ïî£¬
-ÕâÐ©Ñ¡ÏîÖ¸¶¨ÒªÌá¹©¸ø·þÎñÆ÷
-µÄÊµ¼Ê\e{Æ¾Ö¤}£ºÃÜÔ¿ÎÄ¼þºÍÖ¤Êé¡£
-
-\S{config-ssh-privkey} \q{ÓÃÓÚÉí·ÝÑéÖ¤µÄ\ii{Ë½Ô¿ÎÄ¼þ}}
-
-Èç¹ûÄúÊ¹ÓÃ\i{¹«Ô¿Éí·ÝÑéÖ¤}£¬
-Äú¿ÉÒÔÔÚ´Ë¿òÖÐÊäÈëË½Ô¿ÎÄ¼þµÄÃû³Æ¡£
-ÓÐ¹Ø SSH ÖÐµÄ¹«Ô¿ÈÏÖ¤µÄÐÅÏ¢£¬Çë²ÎÔÄ \k{pubkey}¡£
-
-´ËÃÜÔ¿±ØÐë²ÉÓÃ PuTTY µÄ±¾»ú¸ñÊ½ (\c{*.\i{PPK}})¡£
-Èç¹ûÄúÓÐÒªÓë PuTTY Ò»ÆðÊ¹ÓÃµÄÁíÒ»ÖÖ¸ñÊ½µÄË½Ô¿£¬
-Çë²ÎÔÄ\k{puttygen-conversions}¡£
-
-Äú¿ÉÒÔÊ¹ÓÃÉí·ÝÑéÖ¤´úÀí \i{Pageant}£¬
-ÕâÑùÄú¾Í²»ÐèÒªÔÚ´Ë´¦ÏÔÊ½ÅäÖÃÃÜÔ¿£»¼û \k{pageant}¡£
-
-Èç¹ûÔÚ Pageant ÔËÐÐÊ±ÔÚ´Ë´¦Ö¸¶¨ÁËË½Ô¿ÎÄ¼þ£¬
-PuTTY ½«Ê×ÏÈ³¢ÊÔÒªÇó Pageant Ê¹ÓÃ¸ÃÃÜÔ¿½øÐÐÉí·ÝÑéÖ¤£¬
-²¢ºöÂÔ Pageant ¿ÉÄÜÓµÓÐµÄÈÎºÎÆäËûÃÜÔ¿¡£
-Èç¹ûÊ§°Ü£¬PuTTY ½«ÕÕ³£ÒªÇóÊäÈëÃÜÂë¡£
-ÔÚÕâÖÖÇé¿öÏÂ£¬Äú»¹¿ÉÒÔÖ¸¶¨Ò»¸ö\e{¹«Ô¿ÎÄ¼þ}£¨²ÉÓÃ RFC 4716 »ò OpenSSH ¸ñÊ½£©£¬
-ÒòÎªÕâ×ãÒÔÊ¶±ð Pageant µÄÃÜÔ¿£¬
-µ«µ±È»£¬Èç¹û Pageant ²»´æÔÚ£¬PuTTY ²»ÄÜ»ØÍËµ½Ê¹ÓÃÕâ¸öÎÄ¼þ±¾Éí¡£
-
-\S{config-ssh-cert} \q{ÒªÓëË½Ô¿Ò»ÆðÊ¹ÓÃµÄ\ii{Ö¤Êé}}
-
-(This is optional. If you don't know you need it, you can leave this
-blank.)
-
-ÔÚÄ³Ð©»·¾³ÖÐ£¬ÓÃ»§Éí·ÝÑéÖ¤ÃÜÔ¿¿ÉÒÔÒÀ´Î
-ÓÉ\q{Ö¤Êé°ä·¢»ú¹¹}£¨¼ò³Æ\q{CA}£©½øÐÐÇ©Ãû£¬²¢ÇÒ SSH ·þÎñ
-Æ÷ÉÏµÄÓÃ»§ÕÊ»§¿ÉÒÔÅäÖÃÎª×Ô¶¯ÐÅ
-ÈÎÓÉÕýÈ·Ç©ÃûÈÏÖ¤µÄÈÎºÎÃÜÔ¿¡£
-
-Èç¹ûÄúÓÐ´óÁ¿·þÎñÆ÷£¬Õâ¿ÉÄÜÊÇÒ»¸ö·½±ãµÄÉèÖÃ¡£
-¸ü¸ÄÃÜÔ¿¶ÔÊ±£¬Äú¿ÉÄÜ±ØÐë·Ö±ð±à¼­Ã¿Ì¨·þÎñÆ÷
-ÉÏµÄ\cw{authorized_keys}ÎÄ¼þ£¬
-ÒÔÊ¹ËüÃÇÈ«²¿½ÓÊÜÐÂÃÜÔ¿¡£
-µ«ÊÇ£¬Èç¹ûÄú½«ËùÓÐÕâÐ©·þÎñÆ÷ÅäÖÃÎª½ÓÊÜÓÉCAÇ©ÃûµÄÃÜÔ¿£¬
-ÄÇÃ´µ±Äú¸ü¸Ä¹«Ô¿Ê±£¬ÄúËùÒª×öµÄ¾ÍÊÇ»ñµÃÓë
-ÒÔÇ°ÏàÍ¬µÄCAÈÏÖ¤µÄÐÂÃÜÔ¿£¬È»ºóËùÓÐ·þÎñÆ÷
-¶¼½«×Ô¶¯½ÓÊÜËü£¬¶øÎÞÐèµ¥¶ÀÖØÐÂÅäÖÃ¡£
-
-Ê¹ÓÃÖ¤ÊéµÄÒ»ÖÖ·½·¨ÊÇ½«ÆäºÏ²¢µ½ÄúµÄË½Ô¿ÎÄ¼þÖÐ¡£
-\K{puttygen-cert} ½âÊÍÁËÈçºÎÊ¹ÓÃÆÕÌæ¸ùÀ´×öµ½ÕâÒ»µã¡£
-µ«ÁíÒ»ÖÖ·½·¨ÊÇ¸æËßPuTTY±¾ÉíÔÚÄÄ
-Àï¿ÉÒÔÕÒµ½¹«¹²Ö¤ÊéÎÄ¼þ£¬È»ºóÔÚÊ¹ÓÃ
-ÏàÓ¦µÄË½Ô¿½øÐÐÉí·ÝÑéÖ¤Ê±×Ô¶¯Ìá¹©¸ÃÖ¤Êé¡£
-
-Îª´Ë£¬ÇëÔÚ\q{ÒªÓëË½Ô¿Ò»ÆðÊ¹ÓÃµÄÖ¤Êé}ÎÄ
-¼þÑ¡ÔñÆ÷ÖÐÊäÈëÖ¤ÊéÎÄ¼þµÄÂ·¾¶Ãû¡£
-
-ÅäÖÃ´ËÉèÖÃºó£¬ÎÞÂÛË½Ô¿ÊÇÔÚÎÄ¼þÖÐÕÒ
-µ½»¹ÊÇ¼ÓÔØµ½PageantÖÐ£¬PuTTY¶¼½«×ñÑ­´ËÉèÖÃ¡£
-
-\S{config-ssh-authplugin} \q{Ìá¹©Éí·ÝÑéÖ¤ÏìÓ¦µÄ\ii{²å¼þ}}
-
-SSH·þÎñÆ÷¿ÉÒÔÊ¹ÓÃ\q{¼üÅÌ½»»¥}Ð­ÒéÀ´
-³ÊÏÖÒ»ÏµÁÐÈÎÒâÎÊÌâºÍ´ð°¸¡£
-ÓÐÊ±ÕâÓÃÓÚÆÕÍ¨ÃÜÂë£¬µ«ÓÐÊ±·þÎñÆ÷½«Ê¹ÓÃ
-ÏàÍ¬µÄ»úÖÆÀ´´¦Àí¸ü¸´ÔÓµÄÄÚÈÝ£¬
-ÀýÈçÒ»´ÎÐÔÃÜÂëÏµÍ³¡£
-
-ÆäÖÐÒ»Ð©ÏµÍ³¿ÉÒÔ×Ô¶¯»¯¡£Îª´Ë£¬PuTTYÔÊÐíÄú
-Ìá¹©Ò»¸öµ¥¶ÀµÄ³ÌÐò×÷Îª\q{²å¼þ}£¬
-¸Ã³ÌÐò½«½Ó¹ÜÉí·ÝÑéÖ¤²¢
-´ú±íÄú·¢ËÍÎÊÌâµÄ´ð°¸¡£
-
-Èç¹ûÄúÒÑ»ñµÃ´ËÀàÐÍµÄ²å¼þ£¬
-Ôò¿ÉÒÔÔÚ´Ë´¦½øÐÐÅäÖÃ£¬
-·½·¨ÊÇÔÚ\q{ÒªÔËÐÐµÄ²å¼þÃüÁî}¿òÖÐÊäÈëÍêÕûµÄÃüÁîÐÐ¡£
-
-£¨Èç¹ûÒª\e{±àÐ´}´ËÀàÐÍµÄ²å¼þ£¬
-Çë²ÎÔÄ \k{authplugin} £¬ÁË½â²å¼þÔ¤ÆÚÐÐÎª·½Ê½µÄÍêÕû¹æ·¶¡££©
-
-\H{config-ssh-auth-gssapi} \i{GSSAPI} Ãæ°å
-
-\q{ÈÏÖ¤}Ãæ°åµÄ\q{GSSAPI}×ÓÃæ°å¿ØÖÆ GSSAPI Éí·ÝÑéÖ¤µÄÊ¹ÓÃ¡£
-ÕâÊÇÒ»ÖÖ½«Éí·ÝÑéÖ¤½»»»Î¯ÍÐ¸ø¿Í»§
-¶Ë¼ÆËã»úÉÏÆäËûµØ·½µÄ¿âµÄ»úÖÆ£¬
-Ô­ÔòÉÏ¿ÉÒÔÒÔ¶àÖÖ²»Í¬µÄ·½Ê½½øÐÐÉí·ÝÑéÖ¤£¬
-µ«Êµ¼ÊÉÏÍ¨³£Óë \i{Kerberos} \i{single
-sign-on}Ð­ÒéÒ»ÆðÊ¹ÓÃÒÔÊµÏÖ\i{ÎÞÃÜÂëµÇÂ¼}¡£
-
-GSSAPI Éí·ÝÑéÖ¤½öÔÚ SSH-2 Ð­ÒéÖÐ¿ÉÓÃ¡£
-
-PuTTY Ö§³ÖÁ½ÖÖÐÎÊ½µÄ»ùÓÚ GSSAPI µÄÉí·ÝÑéÖ¤¡£
-ÆäÖÐÖ®Ò»£¬SSH ÃÜÔ¿½»»»ÒÔÕý³£·½Ê½·¢Éú£¬
-GSSAPI ½ö²ÎÓëÓÃ»§Éí·ÝÑéÖ¤¡£
-±ê¼ÇÎª\q{³¢ÊÔ GSSAPI Éí·ÝÑéÖ¤}µÄ¸´Ñ¡¿ò¿ØÖÆ´Ë±íµ¥¡£
-
-ÔÚÁíÒ»ÖÖ·½·¨ÖÐ£¬»ùÓÚ GSSAPI µÄÉí·ÝÑéÖ¤Óë SSH ÃÜÔ¿½»»»½×¶ÎÏà½áºÏ¡£
-Èç¹ûÕâ³É¹¦ÁË£¬ÄÇÃ´ SSH Éí·ÝÑéÖ¤²½Öè¾ÍÃ»ÓÐÊ²Ã´¿É×öµÄÁË¡£
-ÓÐ¹Ø´Ë·½·¨µÄ¸ü¶àÐÅÏ¢£¬
-Çë²ÎÔÄ \k{config-ssh-gssapi-kex} ¡£
-±ê¼ÇÎª\q{³¢ÊÔ GSSAPI ÃÜÔ¿½»»»}µÄ¸´Ñ¡¿ò¿ØÖÆ´Ë±íµ¥¡£
-£¨ÏàÍ¬µÄ¸´Ñ¡¿ò³öÏÖÔÚ\q{ÃÜÔ¿½»»»}Ãæ°åÉÏ¡££©
-
-Èç¹ûÆôÓÃÁËÕâÐ©¿Ø¼þÖÐµÄÒ»¸ö»òÁ½¸ö£¬
-Ôò½«ÒÔÒ»ÖÖ»òÁíÒ»ÖÖÐÎÊ½³¢ÊÔ GSSAPI Éí·ÝÑéÖ¤£¬
-²¢ÇÒ£¨Í¨³££©Èç¹ûÄúµÄ¿Í»§¶Ë¼ÆËã»ú¼ÓÔØÁËÓÐÐ§µÄ Kerberos Æ¾¾Ý£¬
-ÄÇÃ´ PuTTY Ó¦¸ÃÄÜ¹»×Ô¶¯ÏòÖ§
-³Ö Kerberos µÄ·þÎñÆ÷½øÐÐÉí·ÝÑéÖ¤µÇÂ¼¡£
-
-Èç¹ûÕâÁ½¸ö¸´Ñ¡¿ò¶¼±»½ûÓÃ£¬PuTTY ½«¸ù±¾²»»á
-³¢ÊÔÈÎºÎÐÎÊ½µÄ GSSAPI£¬²¢ÇÒ¸ÃÃæ°åµÄÆäÓà²¿·Ö½«²»»á±»Ê¹ÓÃ¡£
-
-\S{config-ssh-auth-gssapi-delegation} \q{ÔÊÐí GSSAPI
-Æ¾Ö¤Î¯ÍÐ}
-
-\i{GSSAPI Æ¾Ö¤Î¯ÍÐ}ÊÇÒ»ÖÖ½«ÄúµÄ Kerberos£¨»òÆäËû£©
-Éí·Ý´«µÝ¸ø SSH ·þÎñÆ÷ÉÏµÄ»á»°µÄ»úÖÆ¡£
-Èç¹ûÆôÓÃ´ËÑ¡Ïî£¬
-ÄÇÃ´ PuTTY ²»½öÄÜ¹»×Ô¶¯µÇÂ¼
-µ½½ÓÊÜÄúµÄ Kerberos Æ¾¾ÝµÄ·þÎñÆ÷£¬¶øÇÒÄú»¹ÄÜ¹»
-´Ó¸Ã·þÎñÆ÷Á¬½Óµ½ÆäËûÖ§³Ö Kerberos µÄ·þÎñ²¢Ê¹ÓÃ
-ÏàÍ¬µÄÆ¾¾Ý×÷Îª×Ô¶¯¡£
-
-£¨Õâ¸öÑ¡ÏîÊÇ SSH ´úÀí×ª·¢µÄ Kerberos ÀàËÆÎï£»
-ÓÐ¹ØÕâ·½ÃæµÄÒ»Ð©ÐÅÏ¢£¬Çë²Î¼û \k{pageant-forward}¡££©
-
-Çë×¢Òâ£¬Óë SSH ´úÀí×ª·¢Ò»Ñù£¬
-Ê¹ÓÃ´ËÑ¡ÏîÒ²´æÔÚ°²È«Òþ»¼£ºÄúÁ¬½ÓµÄ·þÎñÆ÷µÄ¹ÜÀí
-Ô±»òÆäËûÈÎºÎÆÆ½âÁË¸Ã·þÎñÆ÷¹ÜÀíÔ±ÕÊ»§µÄÈË£¬
-ÔÚ½øÒ»²½Á¬½ÓÊ±¿ÉÄÜ»áÎ±Ôì
-ÄúµÄÉí·ÝKerberos Ö§³Ö·þÎñ¡£
-µ«ÊÇ£¬Kerberos Õ¾µãÍ¨³£ÓÉÖÐÑë»ú¹¹ÔËÐÐ£¬
-Òò´ËÒ»Ì¨·þÎñÆ÷
-µÄ¹ÜÀíÔ±ºÜ¿ÉÄÜÒ²ÒÑ¾­¿ÉÒÔ·ÃÎÊÆäËû·þÎñ£»
-ËùÒÔÕâÍ¨³£±È SSH ´úÀí×ª·¢µÄ·çÏÕÒªÐ¡¡£
-
-Èç¹ûÄúµÄÁ¬½ÓÎ´Ê¹ÓÃ GSSAPI ÃÜÔ¿½»»»£¬
-ÔòÎ¯ÅÉ¿ÉÄÜ»áÔÚÄúµÄ»á»°ÆÚ¼ä¹ýÆÚ¡£
-ÓÐ¹ØÏêÏ¸ÐÅÏ¢£¬Çë²ÎÔÄ section \k{config-ssh-gssapi-kex}¡£
+è¿™è­¦å‘Šæ‚¨ï¼Œç¬¬ä¸€ä¸ªå¯ç”¨çš„åŠ å¯†ä¸æ˜¯éžå¸¸å®‰å…¨çš„ã€‚
+é€šå¸¸ï¼Œæ‚¨ä¼šåœ¨æ‚¨è®¤ä¸ºå®‰å…¨çš„åŠ å¯†å’Œæ‚¨è®¤ä¸ºä¸åˆ
+æ ‡å‡†çš„åŠ å¯†ä¹‹é—´æ”¾
+ç½®\q{-- ä»¥ä¸‹ä¸ºè­¦å‘Šé€‰é¡¹ --}ã€‚
+é»˜è®¤æƒ…å†µä¸‹ï¼ŒPuTTY æä¾›ä¸€ä¸ªåå¥½é¡ºåºï¼Œ
+æ—¨åœ¨åæ˜ åœ¨å®‰å…¨æ€§å’Œé€Ÿåº¦æ–¹é¢çš„åˆç†åå¥½ã€‚
+
+åœ¨ SSH-2 ä¸­ï¼ŒåŠ å¯†ç®—æ³•æ˜¯é’ˆå¯¹æ¯ä¸ªè¿žæŽ¥
+æ–¹å‘ç‹¬ç«‹åå•†çš„ï¼Œ
+å°½ç®¡ PuTTY ä¸æ”¯æŒå•ç‹¬é…ç½®ä¼˜å…ˆé¡ºåºã€‚
+å› æ­¤ï¼Œæ‚¨å¯èƒ½ä¼šæ”¶åˆ°ä¸¤ä¸ªç±»ä¼¼äºŽä¸Šè¿°è­¦å‘Šçš„è­¦å‘Šï¼Œ
+å¯èƒ½ä½¿ç”¨ä¸åŒçš„åŠ å¯†ã€‚
+
+åœ¨ SSH-2 åè®®æ ‡å‡†ä¸­ä¸æŽ¨èä½¿ç”¨ Single-DESï¼Œ
+ä½†ä¸€ä¸¤ä¸ªæœåŠ¡å™¨å®žçŽ°ç¡®å®žæ”¯æŒå®ƒã€‚
+å¦‚æžœæ‚¨å¯ç”¨\q{åœ¨ SSH-2 å¯ç”¨ä¼ ç»Ÿä½¿ç”¨Single-DES}é€‰é¡¹ï¼Œ
+PuTTY å¯ä»¥ä½¿ç”¨Single-DESä¸Žè¿™äº›æœåŠ¡å™¨
+è¿›è¡Œäº’æ“ä½œï¼› é»˜è®¤æƒ…å†µä¸‹ï¼Œ
+è¿™æ˜¯ç¦ç”¨çš„ï¼ŒPuTTY å°†åšæŒä½¿ç”¨æŽ¨èçš„å¯†ç ã€‚
+
+\H{config-ssh-auth} è®¤è¯é¢æ¿
+
+è®¤è¯é¢æ¿å…è®¸æ‚¨ä¸º SSH ä¼šè¯
+é…ç½®\i{èº«ä»½éªŒè¯}é€‰é¡¹ã€‚
+
+\S{config-ssh-banner} \q{æ˜¾ç¤ºé¢„è®¾è®¤è¯æ ‡å¿—}
+
+SSH-2 æœåŠ¡å™¨å¯ä»¥åœ¨ç”¨æˆ·ç™»å½•ä¹‹å‰å‘å®¢æˆ·
+ç«¯æä¾›ä¸€æ¡æ¶ˆæ¯ä»¥æ˜¾ç¤ºç»™æ½œåœ¨ç”¨æˆ·ï¼›
+è¿™æœ‰æ—¶è¢«ç§°ä¸ºé¢„èº«ä»½éªŒè¯\q{\i{æ¨ªå¹…}}ã€‚
+é€šå¸¸ï¼Œè¿™ç”¨äºŽæä¾›æœ‰å…³æœåŠ¡å™¨çš„ä¿¡æ¯å’Œæ³•å¾‹å£°æ˜Žã€‚
+
+é»˜è®¤æƒ…å†µä¸‹ï¼ŒPuTTY åœ¨æç¤ºè¾“å…¥å¯†ç æˆ–ç±»ä¼¼
+å‡­æ®ä¹‹å‰æ˜¾ç¤ºæ­¤æ¶ˆæ¯ï¼ˆä½†é—æ†¾çš„æ˜¯ï¼Œç”±äºŽåè®®
+è®¾è®¡çš„æ€§è´¨ï¼Œä¸ä¼šåœ¨æç¤ºè¾“å…¥ç™»å½•åä¹‹å‰æ˜¾ç¤ºæ­¤æ¶ˆæ¯ï¼‰ã€‚
+é€šè¿‡å–æ¶ˆé€‰ä¸­æ­¤é€‰é¡¹ï¼Œ
+å¯ä»¥å®Œå…¨æŠ‘åˆ¶æ¨ªå¹…çš„æ˜¾ç¤ºã€‚
+
+\S{config-ssh-noauth} \q{å®Œå…¨ç»•è¿‡èº«ä»½éªŒè¯}
+
+åœ¨ SSH-2 ä¸­ï¼ŒåŽŸåˆ™ä¸Šå¯ä»¥åœ¨ä¸ä½¿ç”¨ SSH çš„æœºåˆ¶
+å‘æœåŠ¡å™¨è¯†åˆ«æˆ–è¯æ˜Žä½ æ˜¯è°çš„æƒ…å†µä¸‹å»ºç«‹è¿žæŽ¥ã€‚
+ä¾‹å¦‚ï¼ŒSSH æœåŠ¡å™¨å¯èƒ½æ›´å–œ
+æ¬¢åœ¨æ•°æ®é€šé“ä¸­å¤„ç†èº«ä»½è®¤è¯ï¼Œ
+æˆ–è€…æ ¹æœ¬ä¸éœ€è¦ä»»ä½•ç”¨æˆ·èº«ä»½è®¤è¯ã€‚
+
+é»˜è®¤æƒ…å†µä¸‹ï¼ŒPuTTY å‡å®šæœåŠ¡å™¨éœ€è¦èº«ä»½è®¤è¯
+ï¼ˆæˆ‘ä»¬ä»Žæœªå¬è¯´è¿‡ä¸éœ€è¦èº«ä»½è®¤è¯çš„ï¼‰ï¼Œ
+å› æ­¤å¿…é¡»ä½¿ç”¨ç”¨æˆ·åå¯åŠ¨æ­¤è¿‡ç¨‹ã€‚ å¦‚æžœæ‚¨å‘çŽ°æ‚¨æ”¶åˆ°æ— æ³•å›žç­”çš„ç”¨æˆ·åæç¤ºï¼Œ
+æ‚¨å¯ä»¥å°è¯•å¯ç”¨æ­¤é€‰é¡¹ã€‚
+ä½†æ˜¯ï¼Œå¤§å¤šæ•° SSH æœåŠ¡å™¨ä¼šæ‹’ç»æ­¤æ“ä½œã€‚
+
+å¦‚æžœæ‚¨æœ‰ç”¨æˆ·åå¹¶ä¸”åªæƒ³è®© PuTTY è®°ä½å®ƒï¼Œ
+è¿™ä¸æ˜¯æ‚¨æƒ³è¦çš„é€‰é¡¹ï¼›è¯·å‚é˜… \k{config-username}ã€‚
+å¦‚æžœæ‚¨å°è¯•è®¾ç½®æ— å¯†ç ç™»å½•åˆ°ä¸»æµ SSH æœåŠ¡å™¨ï¼Œ
+ä¹Ÿå¯èƒ½ä¸æ˜¯è¿™æ ·ï¼› æ ¹æ®æœåŠ¡å™¨ï¼Œ
+æ‚¨å¯èƒ½éœ€è¦å…¬é’¥èº«ä»½éªŒè¯(\k{pubkey})
+æˆ–è€…å¯èƒ½æ˜¯ GSSAPI èº«ä»½éªŒè¯(\k{config-ssh-auth-gssapi})ã€‚
+ï¼ˆè¿™äº›ä»ç„¶æ˜¯èº«ä»½éªŒè¯å½¢å¼ï¼Œ
+å³ä½¿æ‚¨ä¸å¿…ä¸Žå®ƒä»¬äº¤äº’ã€‚ï¼‰
+
+æ­¤é€‰é¡¹ä»…å½±å“ SSH-2 è¿žæŽ¥ã€‚
+SSH-1 è¿žæŽ¥å§‹ç»ˆéœ€è¦èº«ä»½éªŒè¯æ­¥éª¤ã€‚
+
+\S{config-ssh-notrivialauth} \q{ä»…è¿žæŽ¥æ— å¯†ç æˆ–è€…å¯†é’¥è®¤è¯,
+åˆ™æ–­å¼€è¿žæŽ¥}
+
+å¦‚æžœæœåŠ¡å™¨æŽ¥å—èº«ä»½éªŒè¯è€Œä»Žæœªè¦æ±‚
+ä»»ä½•ç±»åž‹çš„å¯†ç æˆ–ç­¾åæˆ–ä»¤ç‰Œï¼Œ
+åˆ™æ­¤é€‰é¡¹ä¼šå¯¼è‡´ PuTTY æ”¾å¼ƒ SSH ä¼šè¯å¹¶ä¸ŽæœåŠ¡å™¨æ–­å¼€è¿žæŽ¥ã€‚
+
+è¿™å¯ä»¥ç”¨ä½œå®‰å…¨æŽªæ–½ã€‚
+æœ‰ä¸€äº›é’ˆå¯¹ SSH å®¢æˆ·ç«¯ç”¨æˆ·çš„æ”»å‡»å½¢å¼ï¼Œ
+å®ƒä»¬é€šè¿‡æå‰ç»ˆæ­¢ SSH èº«ä»½éªŒè¯é˜¶æ®µæ¥å·¥ä½œï¼Œ
+ç„¶åŽåœ¨ SSH ä¼šè¯çš„ä¸»è¦éƒ¨åˆ†åšä¸€äº›äº‹æƒ…ï¼Œ
+è¿™\e{çœ‹èµ·æ¥}åƒæ˜¯èº«ä»½éªŒè¯çš„ä¸€éƒ¨åˆ†ï¼Œä½†å®žé™…ä¸Šå¹¶éžå¦‚æ­¤ã€‚
+
+ä¾‹å¦‚ï¼Œä¸æ˜¯è¦æ±‚æ‚¨çš„å…¬é’¥ç­¾å
+ï¼ˆPuTTY ä¼šè¦æ±‚æ‚¨æä¾›å¯†é’¥çš„å¯†ç ï¼‰ï¼Œ
+å—æ„ŸæŸ“æˆ–æ¶æ„æœåŠ¡å™¨å¯èƒ½å…è®¸æ‚¨åœ¨æ²¡
+æœ‰ç­¾åæˆ–å¯†ç çš„æƒ…å†µä¸‹ç™»å½•ï¼Œ
+ç„¶åŽæ‰“å°ä¸€æ¡\e{æ¨¡ä»¿} PuTTY çš„æ¶ˆæ¯è¯·æ±‚æ‚¨çš„å¯†ç ï¼Œ
+å¸Œæœ›æ‚¨è¾“å…¥å®ƒã€‚
+ï¼ˆäº‹å®žä¸Šï¼Œæ‚¨çš„å…¬é’¥çš„å¯†ç ä¸åº”è¯¥å‘é€åˆ°ä»»ä½•æœåŠ¡å™¨ã€‚ï¼‰
+
+PuTTY å¯¹æ­¤ç±»æ”»å‡»çš„ä¸»è¦é˜²å¾¡æ˜¯\q{ä¿¡ä»»æ ‡è®°}ç³»
+ç»Ÿï¼šPuTTY çª—å£ä¸­çœŸæ­£ç”± PuTTY æœ¬èº«å‘èµ·çš„æ¶ˆæ¯æ˜¾
+ç¤ºåœ¨ PuTTY å›¾æ ‡çš„å°å‰¯æœ¬æ—è¾¹ï¼Œ
+æœåŠ¡å™¨åœ¨å°è¯•æ¨¡ä»¿æ—¶æ— æ³•ä¼ªé€ 
+ä½¿ç”¨ç»ˆç«¯è¾“å‡ºç›¸åŒçš„æ¶ˆæ¯ã€‚
+
+ä½†æ˜¯ï¼Œå¦‚æžœæ‚¨è®¤ä¸ºæ— è®ºå¦‚ä½•æ‚¨éƒ½å¯èƒ½é¢ä¸´è¿™ç§é£Ž
+é™©ï¼ˆå¦‚æžœæ‚¨æ²¡æœ‰å¯†åˆ‡æ³¨æ„ä¿¡ä»»æ ‡å¿—ï¼Œæˆ–è€…å¦‚æžœ
+æ‚¨è®¤ä¸ºæ‚¨çš„æŸä¸ªæœåŠ¡å™¨å­˜åœ¨æ¶æ„çš„é¢å¤–é£Žé™©ï¼‰ï¼Œ
+é‚£ä¹ˆæ‚¨å¯ä»¥å¯ç”¨æ­¤é€‰é¡¹ä½œä¸ºé¢å¤–çš„é˜²å¾¡ã€‚
+ç„¶åŽï¼Œå¦‚æžœæœåŠ¡å™¨å°è¯•ä»»ä½•æ¶‰åŠè®©æ‚¨é€šè¿‡
+èº«ä»½éªŒè¯é˜¶æ®µçš„æ”»å‡»ï¼ŒPuTTY å°†åœ¨å‘é€åŽç»­è™šå‡æç¤ºæˆ–å…¶ä»–ç±»åž‹çš„
+æ”»å‡»ä¹‹å‰æ–­å¼€ä¸ŽæœåŠ¡å™¨çš„è¿žæŽ¥ã€‚
+
+å¦ä¸€æ–¹é¢ï¼Œä¸€äº›æœåŠ¡å™¨\e{åˆæ³•}åœ°è®©æ‚¨è½»æ¾é€šè¿‡ SSH èº«ä»½éªŒè¯é˜¶æ®µï¼Œ
+è¦ä¹ˆæ˜¯å› ä¸ºå®ƒä»¬æ˜¯çœŸæ­£å…¬å¼€çš„ï¼Œè¦ä¹ˆæ˜¯å› ä¸ºé‡è¦çš„èº«
+ä»½éªŒè¯æ­¥éª¤å‘ç”Ÿåœ¨ç»ˆç«¯ä¼šè¯æœŸé—´ã€‚
+ï¼ˆä¸€ä¸ªç¤ºä¾‹å¯èƒ½æ˜¯ SSH æœåŠ¡å™¨ï¼Œ
+å®ƒç›´æŽ¥å°†æ‚¨è¿žæŽ¥åˆ°æ—§å¼å¤§åž‹æœºçš„ç»ˆç«¯ç™»
+å½•æç¤ºç¬¦ã€‚ï¼‰å› æ­¤å¯ç”¨æ­¤é€‰é¡¹å¯èƒ½ä¼š
+å¯¼è‡´æŸäº›ç±»åž‹çš„ä¼šè¯åœæ­¢å·¥ä½œã€‚ç”±ä½ å†³å®šã€‚
+
+\S{config-ssh-tryagent} \q{å°è¯•ä½¿ç”¨ Pageant è¿›è¡Œèº«ä»½éªŒè¯}
+
+å¦‚æžœå¯ç”¨æ­¤é€‰é¡¹ï¼ŒPuTTY å°†æŸ¥æ‰¾
+Pageantï¼ˆSSH ç§é’¥å­˜å‚¨ä»£ç†ï¼‰å¹¶å°è¯•ä½¿ç”¨ Pageant å½“å‰æŒæœ‰çš„ä»»ä½•åˆ
+é€‚çš„å…¬é’¥è¿›è¡Œèº«ä»½éªŒè¯ã€‚
+
+è¿™ç§è¡Œä¸ºå‡ ä¹Žæ€»æ˜¯å¯å–çš„ï¼Œå› æ­¤é»˜è®¤å¯ç”¨ã€‚
+åœ¨æžå°‘æ•°æƒ…å†µä¸‹ï¼Œæ‚¨å¯èƒ½éœ€è¦å°†å…¶å…³é—­ä»¥
+å¼ºåˆ¶é€šè¿‡æŸäº›éžå…¬é’¥æ–¹
+æ³•ï¼ˆä¾‹å¦‚å¯†ç ï¼‰è¿›è¡Œèº«ä»½éªŒè¯ã€‚
+
+ä¹Ÿå¯ä»¥ä½¿ç”¨ \c{-noagent} å‘½ä»¤è¡Œé€‰é¡¹æŽ§åˆ¶æ­¤é€‰é¡¹ã€‚
+è¯·å‚é˜… \k{using-cmdline-agentauth}ã€‚
+
+æœ‰ä¸ªPageant çš„æ›´æ”¹ä¿¡æ¯ï¼Œè¯·å‚é˜… \k{pageant} ã€‚
+
+\S{config-ssh-tis} \q{å°è¯• \I{TIS authentication}TIS æˆ–
+\i{CryptoCard è®¤è¯}}
+
+TIS å’Œ CryptoCard èº«ä»½éªŒè¯æ˜¯ï¼ˆå°½ç®¡æœ‰å®ƒä»¬çš„åç§°ï¼‰
+\I{challenge/response authentication}ç®€å•è´¨è¯¢/å“åº”èº«ä»½éªŒè¯çš„é€šç”¨å½¢å¼ï¼Œ
+ä»…åœ¨ SSH åè®®ç‰ˆæœ¬ 1 ä¸­å¯ç”¨ã€‚
+ä¾‹å¦‚ï¼Œå¦‚æžœæ‚¨ä½¿ç”¨ \i{S/Key} \i{ä¸€æ¬¡æ€§å¯†ç }ï¼Œæˆ–è€…å¦‚æžœæ‚¨æœ‰ä¸€ä¸ªå¯
+ä»¥ç”Ÿæˆå¯¹èº«ä»½éªŒè¯æŒ‘æˆ˜çš„å“åº”çš„ç‰©ç†\i{å®‰å…¨ä»¤ç‰Œ}ï¼Œ
+åˆ™å¯ä»¥ä½¿ç”¨å®ƒä»¬ã€‚
+å®ƒä»¬ç”šè‡³å¯ä»¥ç”¨æ¥æç¤ºè¾“å…¥ç®€å•çš„å¯†ç ã€‚
+
+å¯ç”¨æ­¤å¼€å…³åŽï¼Œ
+å¦‚æžœæœåŠ¡å™¨æ„¿æ„å°è¯•è¿™äº›å½¢å¼çš„èº«ä»½éªŒè¯ï¼Œ
+PuTTY å°†å°è¯•å®ƒä»¬ã€‚
+æ‚¨å°†çœ‹åˆ°ä¸€ä¸ªè´¨è¯¢å­—ç¬¦ä¸²ï¼ˆæ¯æ¬¡å¯èƒ½ä¸åŒï¼‰ï¼Œ
+å¹¶ä¸”å¿…é¡»æä¾›æ­£ç¡®çš„å“åº”æ‰èƒ½ç™»å½•ã€‚
+å¦‚æžœæ‚¨çš„æœåŠ¡å™¨æ”¯æŒè¿™ä¸€ç‚¹ï¼Œ
+æ‚¨åº”è¯¥ä¸Žæ‚¨çš„ç³»ç»Ÿç®¡ç†å‘˜è®¨è®ºè¿™äº›è´¨è¯¢å’Œå“åº”çš„å…·ä½“å½¢å¼ã€‚
+
+\S{config-ssh-ki} \q{å°è¯•\i{é”®ç›˜äº¤äº’è®¤è¯}}
+
+TIS èº«ä»½éªŒè¯çš„ SSH-2 ç­‰æ•ˆé¡¹ç§°ä¸º\q{é”®ç›˜äº¤äº’}ã€‚
+ å®ƒæ˜¯ä¸€ç§çµæ´»çš„èº«ä»½éªŒè¯æ–¹æ³•ï¼Œ
+ ä½¿ç”¨ä»»æ„é¡ºåºçš„è¯·æ±‚å’Œå“åº”ï¼›
+ å› æ­¤å®ƒä¸ä»…å¯¹\I{challenge/response authentication}æŒ‘æˆ˜/å“
+ åº”æœºåˆ¶ï¼ˆä¾‹å¦‚ \i{S/Key}ï¼‰æœ‰ç”¨ï¼Œ
+ è€Œä¸”è¿˜å¯ä»¥ç”¨äºŽï¼ˆä¾‹å¦‚ï¼‰åœ¨\I{password
+ expiry}æ—§å¯†ç è¿‡æœŸæ—¶å‘ç”¨æˆ·è¯¢é—®æ–°å¯†ç ã€‚
+
+PuTTY é»˜è®¤å¯ç”¨æ­¤é€‰é¡¹ï¼Œä½†æä¾›äº†ä¸€ä¸ªå¼€å…³ä»¥å°†å…¶å…³é—­ï¼Œ
+ä»¥é˜²æ‚¨é‡åˆ°é—®é¢˜ã€‚
+
+\S{config-ssh-agentfwd} \q{å…è®¸\i{ä»£ç†è½¬å‘}}
+
+æ­¤é€‰é¡¹å…è®¸ SSH æœåŠ¡å™¨æ‰“å¼€è½¬å‘è¿žæŽ¥
+å›žæ‚¨çš„ \i{Pageant} æœ¬åœ°å‰¯æœ¬ã€‚
+å¦‚æžœæ‚¨æ²¡æœ‰è¿è¡Œ Pageantï¼Œåˆ™æ­¤é€‰é¡¹ä¸ä¼šæ‰§è¡Œä»»ä½•æ“ä½œã€‚
+
+æœ‰å…³ Pageant çš„ä¸€èˆ¬ä¿¡æ¯ï¼Œ
+è¯·å‚é˜…\k{pageant}ï¼Œæœ‰å…³ä»£ç†è½¬å‘çš„ä¿¡æ¯ï¼Œ
+è¯·å‚é˜…\k{pageant-forward} ã€‚è¯·æ³¨æ„ï¼Œ
+å¯ç”¨æ­¤é€‰é¡¹å­˜åœ¨å®‰å…¨é£Žé™©ï¼›è¯¦è§\k{pageant-security} ã€‚
+
+\S{config-ssh-changeuser} \q{å…è®¸åœ¨ SSH-2 ä¸­å°è¯•\i{æ›´æ”¹ç”¨æˆ·å}}
+
+åœ¨ SSH-1 åè®®ä¸­ï¼ŒéªŒè¯å¤±è´¥åŽæ— æ³•æ›´æ”¹ç”¨æˆ·åã€‚
+å› æ­¤ï¼Œå¦‚æžœæ‚¨åœ¨ PuTTY çš„\q{login as:}æç¤ºç¬¦å¤„
+è¾“å…¥é”™è¯¯çš„ç”¨æˆ·åï¼Œæ‚¨å°†æ— æ³•æ›´æ”¹å®ƒï¼Œ
+é™¤éžé‡æ–°å¯åŠ¨ PuTTYã€‚
+
+åŽŸåˆ™ä¸Šï¼ŒSSH-2 åè®®\e{ç¡®å®ž}å…è®¸æ›´æ”¹ç”¨æˆ·åï¼Œ
+ä½†å¹¶ä¸å¼ºåˆ¶ SSH-2 æœåŠ¡å™¨æŽ¥å—å®ƒä»¬ã€‚
+ç‰¹åˆ«æ˜¯ï¼Œ\i{OpenSSH} ä¸æŽ¥å—ç”¨æˆ·åçš„æ›´æ”¹ï¼›
+ä¸€æ—¦æ‚¨å‘é€äº†ä¸€ä¸ªç”¨æˆ·åï¼Œå®ƒå°†æ‹’ç»å°è¯•ä»¥å¦
+ä¸€ç”¨æˆ·èº«ä»½è¿›è¡Œèº«ä»½éªŒè¯çš„å°è¯•ã€‚ ï¼ˆå–å†³äºŽ OpenSSH
+çš„ç‰ˆæœ¬ï¼Œå®ƒå¯èƒ½ä¼šæ‚„æ‚„åœ°è¿”å›žæ‰€æœ‰ç™»
+å½•å°è¯•å¤±è´¥ï¼Œæˆ–è€…å®ƒå¯èƒ½ä¼šå‘é€é”™è¯¯æ¶ˆæ¯ã€‚ï¼‰
+
+å› æ­¤ï¼Œå¦‚æžœæœåŠ¡å™¨æŠ±æ€¨ï¼Œ
+PuTTY é»˜è®¤ä¸ä¼šå¤šæ¬¡æç¤ºæ‚¨è¾“å…¥ç”¨æˆ·åã€‚
+å¦‚æžœæ‚¨çŸ¥é“æ‚¨çš„æœåŠ¡å™¨å¯ä»¥å¤„ç†å®ƒï¼Œ
+æ‚¨å¯ä»¥å¯ç”¨\q{å…è®¸å°è¯•æ›´æ”¹ç”¨æˆ·å}é€‰é¡¹æ¥ä¿®æ”¹ PuTTY çš„è¡Œä¸ºã€‚
+
+\H{config-ssh-auth-creds} å‡­è¯é¢æ¿
+
+è®¤è¯é¢æ¿çš„æ­¤å­çª—æ ¼åŒ…å«é…ç½®é€‰é¡¹ï¼Œ
+è¿™äº›é€‰é¡¹æŒ‡å®šè¦æä¾›ç»™æœåŠ¡å™¨
+çš„å®žé™…\e{å‡­è¯}ï¼šå¯†é’¥æ–‡ä»¶å’Œè¯ä¹¦ã€‚
+
+\S{config-ssh-privkey} \q{ç”¨äºŽèº«ä»½éªŒè¯çš„\ii{ç§é’¥æ–‡ä»¶}}
+
+å¦‚æžœæ‚¨ä½¿ç”¨\i{å…¬é’¥èº«ä»½éªŒè¯}ï¼Œ
+æ‚¨å¯ä»¥åœ¨æ­¤æ¡†ä¸­è¾“å…¥ç§é’¥æ–‡ä»¶çš„åç§°ã€‚
+æœ‰å…³ SSH ä¸­çš„å…¬é’¥è®¤è¯çš„ä¿¡æ¯ï¼Œè¯·å‚é˜… \k{pubkey}ã€‚
+
+æ­¤å¯†é’¥å¿…é¡»é‡‡ç”¨ PuTTY çš„æœ¬æœºæ ¼å¼ (\c{*.\i{PPK}})ã€‚
+å¦‚æžœæ‚¨æœ‰è¦ä¸Ž PuTTY ä¸€èµ·ä½¿ç”¨çš„å¦ä¸€ç§æ ¼å¼çš„ç§é’¥ï¼Œ
+è¯·å‚é˜…\k{puttygen-conversions}ã€‚
+
+æ‚¨å¯ä»¥ä½¿ç”¨èº«ä»½éªŒè¯ä»£ç† \i{Pageant}ï¼Œ
+è¿™æ ·æ‚¨å°±ä¸éœ€è¦åœ¨æ­¤å¤„æ˜¾å¼é…ç½®å¯†é’¥ï¼›è§ \k{pageant}ã€‚
+
+å¦‚æžœåœ¨ Pageant è¿è¡Œæ—¶åœ¨æ­¤å¤„æŒ‡å®šäº†ç§é’¥æ–‡ä»¶ï¼Œ
+PuTTY å°†é¦–å…ˆå°è¯•è¦æ±‚ Pageant ä½¿ç”¨è¯¥å¯†é’¥è¿›è¡Œèº«ä»½éªŒè¯ï¼Œ
+å¹¶å¿½ç•¥ Pageant å¯èƒ½æ‹¥æœ‰çš„ä»»ä½•å…¶ä»–å¯†é’¥ã€‚
+å¦‚æžœå¤±è´¥ï¼ŒPuTTY å°†ç…§å¸¸è¦æ±‚è¾“å…¥å¯†ç ã€‚
+åœ¨è¿™ç§æƒ…å†µä¸‹ï¼Œæ‚¨è¿˜å¯ä»¥æŒ‡å®šä¸€ä¸ª\e{å…¬é’¥æ–‡ä»¶}ï¼ˆé‡‡ç”¨ RFC 4716 æˆ– OpenSSH æ ¼å¼ï¼‰ï¼Œ
+å› ä¸ºè¿™è¶³ä»¥è¯†åˆ« Pageant çš„å¯†é’¥ï¼Œ
+ä½†å½“ç„¶ï¼Œå¦‚æžœ Pageant ä¸å­˜åœ¨ï¼ŒPuTTY ä¸èƒ½å›žé€€åˆ°ä½¿ç”¨è¿™ä¸ªæ–‡ä»¶æœ¬èº«ã€‚
+
+\S{config-ssh-cert} \q{è¦ä¸Žç§é’¥ä¸€èµ·ä½¿ç”¨çš„\ii{è¯ä¹¦}}
+
+(è¿™æ˜¯å¯é€‰çš„ã€‚
+å¦‚æžœæ‚¨ä¸çŸ¥é“è‡ªå·±éœ€è¦å®ƒï¼Œå¯ä»¥å°†å…¶ç•™ç©ºã€‚)
+
+åœ¨æŸäº›çŽ¯å¢ƒä¸­ï¼Œç”¨æˆ·èº«ä»½éªŒè¯å¯†é’¥å¯ä»¥ä¾æ¬¡
+ç”±\q{è¯ä¹¦é¢å‘æœºæž„}ï¼ˆç®€ç§°\q{CA}ï¼‰è¿›è¡Œç­¾åï¼Œå¹¶ä¸” SSH æœåŠ¡
+å™¨ä¸Šçš„ç”¨æˆ·å¸æˆ·å¯ä»¥é…ç½®ä¸ºè‡ªåŠ¨ä¿¡
+ä»»ç”±æ­£ç¡®ç­¾åè®¤è¯çš„ä»»ä½•å¯†é’¥ã€‚
+
+å¦‚æžœæ‚¨æœ‰å¤§é‡æœåŠ¡å™¨ï¼Œè¿™å¯èƒ½æ˜¯ä¸€ä¸ªæ–¹ä¾¿çš„è®¾ç½®ã€‚
+æ›´æ”¹å¯†é’¥å¯¹æ—¶ï¼Œæ‚¨å¯èƒ½å¿…é¡»åˆ†åˆ«ç¼–è¾‘æ¯å°æœåŠ¡å™¨
+ä¸Šçš„\cw{authorized_keys}æ–‡ä»¶ï¼Œ
+ä»¥ä½¿å®ƒä»¬å…¨éƒ¨æŽ¥å—æ–°å¯†é’¥ã€‚
+ä½†æ˜¯ï¼Œå¦‚æžœæ‚¨å°†æ‰€æœ‰è¿™äº›æœåŠ¡å™¨é…ç½®ä¸ºæŽ¥å—ç”±CAç­¾åçš„å¯†é’¥ï¼Œ
+é‚£ä¹ˆå½“æ‚¨æ›´æ”¹å…¬é’¥æ—¶ï¼Œæ‚¨æ‰€è¦åšçš„å°±æ˜¯èŽ·å¾—ä¸Ž
+ä»¥å‰ç›¸åŒçš„CAè®¤è¯çš„æ–°å¯†é’¥ï¼Œç„¶åŽæ‰€æœ‰æœåŠ¡å™¨
+éƒ½å°†è‡ªåŠ¨æŽ¥å—å®ƒï¼Œè€Œæ— éœ€å•ç‹¬é‡æ–°é…ç½®ã€‚
+
+ä½¿ç”¨è¯ä¹¦çš„ä¸€ç§æ–¹æ³•æ˜¯å°†å…¶åˆå¹¶åˆ°æ‚¨çš„ç§é’¥æ–‡ä»¶ä¸­ã€‚
+\K{puttygen-cert} è§£é‡Šäº†å¦‚ä½•ä½¿ç”¨æ™®æ›¿æ ¹æ¥åšåˆ°è¿™ä¸€ç‚¹ã€‚
+ä½†å¦ä¸€ç§æ–¹æ³•æ˜¯å‘Šè¯‰PuTTYæœ¬èº«åœ¨å“ª
+é‡Œå¯ä»¥æ‰¾åˆ°å…¬å…±è¯ä¹¦æ–‡ä»¶ï¼Œç„¶åŽåœ¨ä½¿ç”¨
+ç›¸åº”çš„ç§é’¥è¿›è¡Œèº«ä»½éªŒè¯æ—¶è‡ªåŠ¨æä¾›è¯¥è¯ä¹¦ã€‚
+
+ä¸ºæ­¤ï¼Œè¯·åœ¨\q{è¦ä¸Žç§é’¥ä¸€èµ·ä½¿ç”¨çš„è¯ä¹¦}æ–‡
+ä»¶é€‰æ‹©å™¨ä¸­è¾“å…¥è¯ä¹¦æ–‡ä»¶çš„è·¯å¾„åã€‚
+
+é…ç½®æ­¤è®¾ç½®åŽï¼Œæ— è®ºç§é’¥æ˜¯åœ¨æ–‡ä»¶ä¸­æ‰¾
+åˆ°è¿˜æ˜¯åŠ è½½åˆ°Pageantä¸­ï¼ŒPuTTYéƒ½å°†éµå¾ªæ­¤è®¾ç½®ã€‚
+
+\S{config-ssh-authplugin} \q{æä¾›èº«ä»½éªŒè¯å“åº”çš„\ii{æ’ä»¶}}
+
+SSHæœåŠ¡å™¨å¯ä»¥ä½¿ç”¨\q{é”®ç›˜äº¤äº’}åè®®æ¥
+å‘ˆçŽ°ä¸€ç³»åˆ—ä»»æ„é—®é¢˜å’Œç­”æ¡ˆã€‚
+æœ‰æ—¶è¿™ç”¨äºŽæ™®é€šå¯†ç ï¼Œä½†æœ‰æ—¶æœåŠ¡å™¨å°†ä½¿ç”¨
+ç›¸åŒçš„æœºåˆ¶æ¥å¤„ç†æ›´å¤æ‚çš„å†…å®¹ï¼Œ
+ä¾‹å¦‚ä¸€æ¬¡æ€§å¯†ç ç³»ç»Ÿã€‚
+
+å…¶ä¸­ä¸€äº›ç³»ç»Ÿå¯ä»¥è‡ªåŠ¨åŒ–ã€‚ä¸ºæ­¤ï¼ŒPuTTYå…è®¸æ‚¨
+æä¾›ä¸€ä¸ªå•ç‹¬çš„ç¨‹åºä½œä¸º\q{æ’ä»¶}ï¼Œ
+è¯¥ç¨‹åºå°†æŽ¥ç®¡èº«ä»½éªŒè¯å¹¶
+ä»£è¡¨æ‚¨å‘é€é—®é¢˜çš„ç­”æ¡ˆã€‚
+
+å¦‚æžœæ‚¨å·²èŽ·å¾—æ­¤ç±»åž‹çš„æ’ä»¶ï¼Œ
+åˆ™å¯ä»¥åœ¨æ­¤å¤„è¿›è¡Œé…ç½®ï¼Œ
+æ–¹æ³•æ˜¯åœ¨\q{è¦è¿è¡Œçš„æ’ä»¶å‘½ä»¤}æ¡†ä¸­è¾“å…¥å®Œæ•´çš„å‘½ä»¤è¡Œã€‚
+
+ï¼ˆå¦‚æžœè¦\e{ç¼–å†™}æ­¤ç±»åž‹çš„æ’ä»¶ï¼Œ
+è¯·å‚é˜… \k{authplugin} ï¼Œäº†è§£æ’ä»¶é¢„æœŸè¡Œä¸ºæ–¹å¼çš„å®Œæ•´è§„èŒƒã€‚ï¼‰
+
+\H{config-ssh-auth-gssapi} \i{GSSAPI} é¢æ¿
+
+\q{è®¤è¯}é¢æ¿çš„\q{GSSAPI}å­é¢æ¿æŽ§åˆ¶ GSSAPI èº«ä»½éªŒè¯çš„ä½¿ç”¨ã€‚
+è¿™æ˜¯ä¸€ç§å°†èº«ä»½éªŒè¯äº¤æ¢å§”æ‰˜ç»™å®¢æˆ·
+ç«¯è®¡ç®—æœºä¸Šå…¶ä»–åœ°æ–¹çš„åº“çš„æœºåˆ¶ï¼Œ
+åŽŸåˆ™ä¸Šå¯ä»¥ä»¥å¤šç§ä¸åŒçš„æ–¹å¼è¿›è¡Œèº«ä»½éªŒè¯ï¼Œ
+ä½†å®žé™…ä¸Šé€šå¸¸ä¸Ž \i{Kerberos} \i{single
+sign-on}åè®®ä¸€èµ·ä½¿ç”¨ä»¥å®žçŽ°\i{æ— å¯†ç ç™»å½•}ã€‚
+
+GSSAPI èº«ä»½éªŒè¯ä»…åœ¨ SSH-2 åè®®ä¸­å¯ç”¨ã€‚
+
+PuTTY æ”¯æŒä¸¤ç§å½¢å¼çš„åŸºäºŽ GSSAPI çš„èº«ä»½éªŒè¯ã€‚
+å…¶ä¸­ä¹‹ä¸€ï¼ŒSSH å¯†é’¥äº¤æ¢ä»¥æ­£å¸¸æ–¹å¼å‘ç”Ÿï¼Œ
+GSSAPI ä»…å‚ä¸Žç”¨æˆ·èº«ä»½éªŒè¯ã€‚
+æ ‡è®°ä¸º\q{å°è¯• GSSAPI èº«ä»½éªŒè¯}çš„å¤é€‰æ¡†æŽ§åˆ¶æ­¤è¡¨å•ã€‚
+
+åœ¨å¦ä¸€ç§æ–¹æ³•ä¸­ï¼ŒåŸºäºŽ GSSAPI çš„èº«ä»½éªŒè¯ä¸Ž SSH å¯†é’¥äº¤æ¢é˜¶æ®µç›¸ç»“åˆã€‚
+å¦‚æžœè¿™æˆåŠŸäº†ï¼Œé‚£ä¹ˆ SSH èº«ä»½éªŒè¯æ­¥éª¤å°±æ²¡æœ‰ä»€ä¹ˆå¯åšçš„äº†ã€‚
+æœ‰å…³æ­¤æ–¹æ³•çš„æ›´å¤šä¿¡æ¯ï¼Œ
+è¯·å‚é˜… \k{config-ssh-gssapi-kex} ã€‚
+æ ‡è®°ä¸º\q{å°è¯• GSSAPI å¯†é’¥äº¤æ¢}çš„å¤é€‰æ¡†æŽ§åˆ¶æ­¤è¡¨å•ã€‚
+ï¼ˆç›¸åŒçš„å¤é€‰æ¡†å‡ºçŽ°åœ¨\q{å¯†é’¥äº¤æ¢}é¢æ¿ä¸Šã€‚ï¼‰
+
+å¦‚æžœå¯ç”¨äº†è¿™äº›æŽ§ä»¶ä¸­çš„ä¸€ä¸ªæˆ–ä¸¤ä¸ªï¼Œ
+åˆ™å°†ä»¥ä¸€ç§æˆ–å¦ä¸€ç§å½¢å¼å°è¯• GSSAPI èº«ä»½éªŒè¯ï¼Œ
+å¹¶ä¸”ï¼ˆé€šå¸¸ï¼‰å¦‚æžœæ‚¨çš„å®¢æˆ·ç«¯è®¡ç®—æœºåŠ è½½äº†æœ‰æ•ˆçš„ Kerberos å‡­æ®ï¼Œ
+é‚£ä¹ˆ PuTTY åº”è¯¥èƒ½å¤Ÿè‡ªåŠ¨å‘æ”¯
+æŒ Kerberos çš„æœåŠ¡å™¨è¿›è¡Œèº«ä»½éªŒè¯ç™»å½•ã€‚
+
+å¦‚æžœè¿™ä¸¤ä¸ªå¤é€‰æ¡†éƒ½è¢«ç¦ç”¨ï¼ŒPuTTY å°†æ ¹æœ¬ä¸ä¼š
+å°è¯•ä»»ä½•å½¢å¼çš„ GSSAPIï¼Œå¹¶ä¸”è¯¥é¢æ¿çš„å…¶ä½™éƒ¨åˆ†å°†ä¸ä¼šè¢«ä½¿ç”¨ã€‚
+
+\S{config-ssh-auth-gssapi-delegation} \q{å…è®¸ GSSAPI
+å‡­è¯å§”æ‰˜}
+
+\i{GSSAPI å‡­è¯å§”æ‰˜}æ˜¯ä¸€ç§å°†æ‚¨çš„ Kerberosï¼ˆæˆ–å…¶ä»–ï¼‰
+èº«ä»½ä¼ é€’ç»™ SSH æœåŠ¡å™¨ä¸Šçš„ä¼šè¯çš„æœºåˆ¶ã€‚
+å¦‚æžœå¯ç”¨æ­¤é€‰é¡¹ï¼Œ
+é‚£ä¹ˆ PuTTY ä¸ä»…èƒ½å¤Ÿè‡ªåŠ¨ç™»å½•
+åˆ°æŽ¥å—æ‚¨çš„ Kerberos å‡­æ®çš„æœåŠ¡å™¨ï¼Œè€Œä¸”æ‚¨è¿˜èƒ½å¤Ÿ
+ä»Žè¯¥æœåŠ¡å™¨è¿žæŽ¥åˆ°å…¶ä»–æ”¯æŒ Kerberos çš„æœåŠ¡å¹¶ä½¿ç”¨
+ç›¸åŒçš„å‡­æ®ä½œä¸ºè‡ªåŠ¨ã€‚
+
+ï¼ˆè¿™ä¸ªé€‰é¡¹æ˜¯ SSH ä»£ç†è½¬å‘çš„ Kerberos ç±»ä¼¼ç‰©ï¼›
+æœ‰å…³è¿™æ–¹é¢çš„ä¸€äº›ä¿¡æ¯ï¼Œè¯·å‚è§ \k{pageant-forward}ã€‚ï¼‰
+
+è¯·æ³¨æ„ï¼Œä¸Ž SSH ä»£ç†è½¬å‘ä¸€æ ·ï¼Œ
+ä½¿ç”¨æ­¤é€‰é¡¹ä¹Ÿå­˜åœ¨å®‰å…¨éšæ‚£ï¼šæ‚¨è¿žæŽ¥çš„æœåŠ¡å™¨çš„ç®¡ç†
+å‘˜æˆ–å…¶ä»–ä»»ä½•ç ´è§£äº†è¯¥æœåŠ¡å™¨ç®¡ç†å‘˜å¸æˆ·çš„äººï¼Œ
+åœ¨è¿›ä¸€æ­¥è¿žæŽ¥æ—¶å¯èƒ½ä¼šä¼ªé€ 
+æ‚¨çš„èº«ä»½Kerberos æ”¯æŒæœåŠ¡ã€‚
+ä½†æ˜¯ï¼ŒKerberos ç«™ç‚¹é€šå¸¸ç”±ä¸­å¤®æœºæž„è¿è¡Œï¼Œ
+å› æ­¤ä¸€å°æœåŠ¡å™¨
+çš„ç®¡ç†å‘˜å¾ˆå¯èƒ½ä¹Ÿå·²ç»å¯ä»¥è®¿é—®å…¶ä»–æœåŠ¡ï¼›
+æ‰€ä»¥è¿™é€šå¸¸æ¯” SSH ä»£ç†è½¬å‘çš„é£Žé™©è¦å°ã€‚
+
+å¦‚æžœæ‚¨çš„è¿žæŽ¥æœªä½¿ç”¨ GSSAPI å¯†é’¥äº¤æ¢ï¼Œ
+åˆ™å§”æ´¾å¯èƒ½ä¼šåœ¨æ‚¨çš„ä¼šè¯æœŸé—´è¿‡æœŸã€‚
+æœ‰å…³è¯¦ç»†ä¿¡æ¯ï¼Œè¯·å‚é˜… section \k{config-ssh-gssapi-kex}ã€‚
 
 \S{config-ssh-auth-gssapi-libraries} GSSAPI
-¿âµÄÓÅÏÈË³Ðò
+åº“çš„ä¼˜å…ˆé¡ºåº
 
-GSSAPI ÊÇÒ»ÖÖÔÊÐíÍ¨¹ýÍ¬Ò»½Ó¿Ú·Ã
-ÎÊ¶à¸öÉí·ÝÑéÖ¤·½·¨µÄ»úÖÆ¡£
-Òò´Ë£¬ÄúµÄÏµÍ³ÉÏ¿ÉÄÜ´æÔÚ¶à¸ö¿É
-ÒÔÊ¹ÓÃ GSSAPI ·ÃÎÊµÄÉí·ÝÑéÖ¤¿â¡£
+GSSAPI æ˜¯ä¸€ç§å…è®¸é€šè¿‡åŒä¸€æŽ¥å£è®¿
+é—®å¤šä¸ªèº«ä»½éªŒè¯æ–¹æ³•çš„æœºåˆ¶ã€‚
+å› æ­¤ï¼Œæ‚¨çš„ç³»ç»Ÿä¸Šå¯èƒ½å­˜åœ¨å¤šä¸ªå¯
+ä»¥ä½¿ç”¨ GSSAPI è®¿é—®çš„èº«ä»½éªŒè¯åº“ã€‚
 
-PuTTY °üº¬¶ÔÒ»Ð©ÖøÃûµÄ´ËÀà¿â
-£¨°üÀ¨ Windows µÄ \i{SSPI}£©µÄ±¾»úÖ§³Ö£¬
-²¢½«ÔÚÄúµÄÏµÍ³ÉÏ²éÕÒËùÓÐÕâÐ©¿â²¢Ê¹ÓÃËüÕÒµ½µÄÈÎºÎÒ»¸ö¡£
-Èç¹ûÄúµÄÏµÍ³ÉÏ´æÔÚ¶à¸ö²¢ÇÒÄúÐèÒªÊ¹ÓÃÌØ¶¨µÄÒ»¸ö£¬
-Äú¿ÉÒÔÊ¹ÓÃ´ËÊ×Ñ¡ÏîÁÐ±í¿Ø¼þµ÷ÕûËÑË÷Ë³Ðò¡£
+PuTTY åŒ…å«å¯¹ä¸€äº›è‘—åçš„æ­¤ç±»åº“
+ï¼ˆåŒ…æ‹¬ Windows çš„ \i{SSPI}ï¼‰çš„æœ¬æœºæ”¯æŒï¼Œ
+å¹¶å°†åœ¨æ‚¨çš„ç³»ç»Ÿä¸ŠæŸ¥æ‰¾æ‰€æœ‰è¿™äº›åº“å¹¶ä½¿ç”¨å®ƒæ‰¾åˆ°çš„ä»»ä½•ä¸€ä¸ªã€‚
+å¦‚æžœæ‚¨çš„ç³»ç»Ÿä¸Šå­˜åœ¨å¤šä¸ªå¹¶ä¸”æ‚¨éœ€è¦ä½¿ç”¨ç‰¹å®šçš„ä¸€ä¸ªï¼Œ
+æ‚¨å¯ä»¥ä½¿ç”¨æ­¤é¦–é€‰é¡¹åˆ—è¡¨æŽ§ä»¶è°ƒæ•´æœç´¢é¡ºåºã€‚
 
-Ê×Ñ¡ÏîÁÐ±íÖÐµÄÑ¡ÏîÖ®Ò»ÊÇÊ¹ÓÃÓÃ»§Ö¸¶¨µÄ GSSAPI ¿â¡£
-Èç¹û PuTTY µÄÑ¡ÏîÁÐ±íÖÐÎ´°´Ãû³ÆÌá¼°ÄúÒªÊ¹ÓÃµÄ¿â£¬
-Äú¿ÉÒÔÔÚ\q{ÓÃ»§Ìá¹©µÄ GSSAPI ¿âÂ·¾¶}×Ö¶Î
-ÖÐÊäÈëÆäÍêÕûÂ·¾¶Ãû£¬
-²¢ÔÚÊ×Ñ¡ÏîÖÐÒÆ¶¯\q{ÓÃ»§Ìá¹©µÄ GSSAPI ¿â}Ñ¡ÏîÁÐ±í
-ÒÔÈ·±£ÔÚÆäËûÈÎºÎÄÚÈÝÖ®Ç°Ñ¡ÔñËü¡£
+é¦–é€‰é¡¹åˆ—è¡¨ä¸­çš„é€‰é¡¹ä¹‹ä¸€æ˜¯ä½¿ç”¨ç”¨æˆ·æŒ‡å®šçš„ GSSAPI åº“ã€‚
+å¦‚æžœ PuTTY çš„é€‰é¡¹åˆ—è¡¨ä¸­æœªæŒ‰åç§°æåŠæ‚¨è¦ä½¿ç”¨çš„åº“ï¼Œ
+æ‚¨å¯ä»¥åœ¨\q{ç”¨æˆ·æä¾›çš„ GSSAPI åº“è·¯å¾„}å­—æ®µ
+ä¸­è¾“å…¥å…¶å®Œæ•´è·¯å¾„åï¼Œ
+å¹¶åœ¨é¦–é€‰é¡¹ä¸­ç§»åŠ¨\q{ç”¨æˆ·æä¾›çš„ GSSAPI åº“}é€‰é¡¹åˆ—è¡¨
+ä»¥ç¡®ä¿åœ¨å…¶ä»–ä»»ä½•å†…å®¹ä¹‹å‰é€‰æ‹©å®ƒã€‚
 
-ÔÚ Windows ÉÏ£¬´ËÀà¿âÊÇ¾ßÓÐ \I{DLL}\cw{.dll} À©Õ¹ÃûµÄÎÄ¼þ£¬
-²¢ÇÒ±ØÐëÒÔÓëÄúÕýÔÚÔËÐÐµÄ PuTTY ¿ÉÖ´ÐÐÎÄ¼þÏàÍ¬µÄ·½Ê½
-¹¹½¨£»Èç¹ûÄúÓÐ 32 Î» DLL£¬Ôò±ØÐëÔËÐÐ 32
-Î»°æ±¾µÄ PuTTY£¬Óë 64 Î»Ïà
-Í¬(Çë²ÎÔÄ \k{faq-32bit-64bit})¡£
-ÔÚ Unix ÉÏ£¬¹²Ïí¿âÍ¨³£¾ßÓÐ \cw{.so} À©Õ¹Ãû¡£
+åœ¨ Windows ä¸Šï¼Œæ­¤ç±»åº“æ˜¯å…·æœ‰ \I{DLL}\cw{.dll} æ‰©å±•åçš„æ–‡ä»¶ï¼Œ
+å¹¶ä¸”å¿…é¡»ä»¥ä¸Žæ‚¨æ­£åœ¨è¿è¡Œçš„ PuTTY å¯æ‰§è¡Œæ–‡ä»¶ç›¸åŒçš„æ–¹å¼
+æž„å»ºï¼›å¦‚æžœæ‚¨æœ‰ 32 ä½ DLLï¼Œåˆ™å¿…é¡»è¿è¡Œ 32
+ä½ç‰ˆæœ¬çš„ PuTTYï¼Œä¸Ž 64 ä½ç›¸
+åŒ(è¯·å‚é˜… \k{faq-32bit-64bit})ã€‚
+åœ¨ Unix ä¸Šï¼Œå…±äº«åº“é€šå¸¸å…·æœ‰ \cw{.so} æ‰©å±•åã€‚
 
-\H{config-ssh-tty} TTYÃæ°å
+\H{config-ssh-tty} TTYé¢æ¿
 
-TTYÔ¶³ÌÖÕ¶ËÃæ°åÔÊÐíÄúÅäÖÃÔ¶³ÌÎ±ÖÕ¶Ë¡£
+TTYè¿œç¨‹ç»ˆç«¯é¢æ¿å…è®¸æ‚¨é…ç½®è¿œç¨‹ä¼ªç»ˆç«¯ã€‚
 
 \S{config-ssh-pty} \I{pseudo-terminal
-allocation}\q{²»·ÖÅäÎ±ÖÕ¶Ë}
+allocation}\q{ä¸åˆ†é…ä¼ªç»ˆç«¯}
 
-µ±Á¬½Óµ½ \i{Unix} ÏµÍ³Ê±£¬
-´ó¶àÊý\I{interactive connections}½»»¥Ê½ shell »á»°¶¼ÔÚ\e{Î±ÖÕ¶Ë}ÖÐÔËÐÐ£¬
-ÕâÔÊÐí Unix ÏµÍ³¼Ù×°ËüÕýÔÚÓëÕæÊµµÄÎïÀíÖÕ¶ËÉè±¸¶Ô»°£¬
-µ«ÔÊÐí SSH ·þÎñÆ÷²¶»ñÀ´×Ô¸Ã¼ÙÉè±¸µÄËùÓÐÊý¾Ý£¬
-²¢ÇÒ ½«Æä·¢ËÍ»Ø¿Í»§¶Ë¡£
+å½“è¿žæŽ¥åˆ° \i{Unix} ç³»ç»Ÿæ—¶ï¼Œ
+å¤§å¤šæ•°\I{interactive connections}äº¤äº’å¼ shell ä¼šè¯éƒ½åœ¨\e{ä¼ªç»ˆç«¯}ä¸­è¿è¡Œï¼Œ
+è¿™å…è®¸ Unix ç³»ç»Ÿå‡è£…å®ƒæ­£åœ¨ä¸ŽçœŸå®žçš„ç‰©ç†ç»ˆç«¯è®¾å¤‡å¯¹è¯ï¼Œ
+ä½†å…è®¸ SSH æœåŠ¡å™¨æ•èŽ·æ¥è‡ªè¯¥å‡è®¾å¤‡çš„æ‰€æœ‰æ•°æ®ï¼Œ
+å¹¶ä¸” å°†å…¶å‘é€å›žå®¢æˆ·ç«¯ã€‚
 
-ÓÐÊ±Äú¿ÉÄÜ»á·¢ÏÖÄúÐèÒªÔËÐÐ²»ÔÚÎ±ÖÕ¶ËÖÐµÄ»á»°¡£
-ÔÚ PuTTY ÖÐ£¬ÕâÍ¨³£Ö»ÓÃÓÚ·Ç³£×¨ÒµµÄ
-Ä¿µÄ£» ¾¡¹ÜÔÚ Plink£¨²Î¼û\k{plink}£©
-ÖÐÕâÊÇÍ¨³£µÄ¹¤×÷·½Ê½¡£
+æœ‰æ—¶æ‚¨å¯èƒ½ä¼šå‘çŽ°æ‚¨éœ€è¦è¿è¡Œä¸åœ¨ä¼ªç»ˆç«¯ä¸­çš„ä¼šè¯ã€‚
+åœ¨ PuTTY ä¸­ï¼Œè¿™é€šå¸¸åªç”¨äºŽéžå¸¸ä¸“ä¸šçš„
+ç›®çš„ï¼› å°½ç®¡åœ¨ Plinkï¼ˆå‚è§\k{plink}ï¼‰
+ä¸­è¿™æ˜¯é€šå¸¸çš„å·¥ä½œæ–¹å¼ã€‚
 
-\S{config-ttymodes} ·¢ËÍ\i{ÖÕ¶ËÄ£Ê½}
+\S{config-ttymodes} å‘é€\i{ç»ˆç«¯æ¨¡å¼}
 
-SSH Ð­ÒéÔÊÐí¿Í»§¶ËÎªÔ¶³ÌÎ±ÖÕ
-¶Ë·¢ËÍ\q{ÖÕ¶ËÄ£Ê½}¡£ ÕâÐ©Í¨³£¿Ø
-ÖÆ·þÎñÆ÷¶Ô±¾µØÖÕ¶ËÐÐÎªµÄÆÚÍû¡£
+SSH åè®®å…è®¸å®¢æˆ·ç«¯ä¸ºè¿œç¨‹ä¼ªç»ˆ
+ç«¯å‘é€\q{ç»ˆç«¯æ¨¡å¼}ã€‚ è¿™äº›é€šå¸¸æŽ§
+åˆ¶æœåŠ¡å™¨å¯¹æœ¬åœ°ç»ˆç«¯è¡Œä¸ºçš„æœŸæœ›ã€‚
 
-Èç¹ûÄúµÄ·þÎñÆ÷¶ÔÕâÐ©Ä£Ê½Ã»ÓÐºÏÀíµÄÄ¬ÈÏÖµ£¬
-Äú¿ÉÄÜ»á·¢ÏÖÔÚ´Ë´¦¸ü¸ÄËüÃÇ»áÓÐËù°ïÖú£¬
-¾¡¹Ü·þÎñÆ÷¿ÉÒÔËæÒâºöÂÔÄúµÄ¸ü¸Ä¡£ Èç¹ûÄú¶Ô´ËÒ»ÎÞËùÖª£¬
-¿ÉÒÔ·ÅÐÄµØ±£ÁôÕâÐ©ÉèÖÃ¡£
+å¦‚æžœæ‚¨çš„æœåŠ¡å™¨å¯¹è¿™äº›æ¨¡å¼æ²¡æœ‰åˆç†çš„é»˜è®¤å€¼ï¼Œ
+æ‚¨å¯èƒ½ä¼šå‘çŽ°åœ¨æ­¤å¤„æ›´æ”¹å®ƒä»¬ä¼šæœ‰æ‰€å¸®åŠ©ï¼Œ
+å°½ç®¡æœåŠ¡å™¨å¯ä»¥éšæ„å¿½ç•¥æ‚¨çš„æ›´æ”¹ã€‚ å¦‚æžœæ‚¨å¯¹æ­¤ä¸€æ— æ‰€çŸ¥ï¼Œ
+å¯ä»¥æ”¾å¿ƒåœ°ä¿ç•™è¿™äº›è®¾ç½®ã€‚
 
-£¨Èç¹ûÃ»ÓÐÇëÇó»ò·ÖÅäÎ±ÖÕ¶Ë£¬
-ÕâÐ©ÉèÖÃ¶¼²»»á²úÉúÈÎºÎÓ°Ïì¡££©
+ï¼ˆå¦‚æžœæ²¡æœ‰è¯·æ±‚æˆ–åˆ†é…ä¼ªç»ˆç«¯ï¼Œ
+è¿™äº›è®¾ç½®éƒ½ä¸ä¼šäº§ç”Ÿä»»ä½•å½±å“ã€‚ï¼‰
 
-Äú¿ÉÒÔÍ¨¹ýÔÚÁÐ±íÖÐÑ¡ÔñÌØ¶¨Ä£Ê½£¬
-Ñ¡ÔñÆäÖÐÒ»¸öÑ¡Ïî²¢ÔÚ±ØÒªÊ±Ö¸¶¨È·ÇÐÖµ£¬
-È»ºóµã»÷\q{ÉèÖÃ}À´¸ü¸ÄÌØ¶¨Ä£Ê½·¢ÉúµÄÇé¿ö¡£
-Ñ¡ÏîµÄÐ§¹ûÈçÏÂ£º
+æ‚¨å¯ä»¥é€šè¿‡åœ¨åˆ—è¡¨ä¸­é€‰æ‹©ç‰¹å®šæ¨¡å¼ï¼Œ
+é€‰æ‹©å…¶ä¸­ä¸€ä¸ªé€‰é¡¹å¹¶åœ¨å¿…è¦æ—¶æŒ‡å®šç¡®åˆ‡å€¼ï¼Œ
+ç„¶åŽç‚¹å‡»\q{è®¾ç½®}æ¥æ›´æ”¹ç‰¹å®šæ¨¡å¼å‘ç”Ÿçš„æƒ…å†µã€‚
+é€‰é¡¹çš„æ•ˆæžœå¦‚ä¸‹ï¼š
 
-\b Èç¹ûÑ¡ÔñÁË\q{×Ô¶¯}Ñ¡Ïî£¬
-PuTTY ¹¤¾ß½«¾ö¶¨ÊÇ·ñÏò·þÎñÆ÷Ö¸¶¨¸ÃÄ£Ê½£¬
-Èç¹ûÊÇ£¬½«·¢ËÍÒ»¸öºÏÀíµÄÖµ¡£
+\b å¦‚æžœé€‰æ‹©äº†\q{è‡ªåŠ¨}é€‰é¡¹ï¼Œ
+PuTTY å·¥å…·å°†å†³å®šæ˜¯å¦å‘æœåŠ¡å™¨æŒ‡å®šè¯¥æ¨¡å¼ï¼Œ
+å¦‚æžœæ˜¯ï¼Œå°†å‘é€ä¸€ä¸ªåˆç†çš„å€¼ã€‚
 
 \lcont{
 
-PuTTY ÕýÈ·µÄ½«·¢ËÍËüÓÐÒâ¼ûµÄÄ£Ê½£¨
-µ±Ç°Ö»ÓÐÍË¸ñ¼üµÄ´úÂë£¬\cw{ERASE}£¬
-ÒÔ¼°×Ö·û¼¯ÊÇ·ñÎª UTF-8£¬\cw{IUTF8}£©¡£
-Unix ÉÏµÄ Plink ½«´Ó±¾µØÖÕ¶Ë´«²¥ÊÊµ±µÄÄ£Ê½£¬Èç¹ûÓÐµÄ»°¡£
+PuTTY æ­£ç¡®çš„å°†å‘é€å®ƒæœ‰æ„è§çš„æ¨¡å¼ï¼ˆ
+å½“å‰åªæœ‰é€€æ ¼é”®çš„ä»£ç ï¼Œ\cw{ERASE}ï¼Œ
+ä»¥åŠå­—ç¬¦é›†æ˜¯å¦ä¸º UTF-8ï¼Œ\cw{IUTF8}ï¼‰ã€‚
+Unix ä¸Šçš„ Plink å°†ä»Žæœ¬åœ°ç»ˆç«¯ä¼ æ’­é€‚å½“çš„æ¨¡å¼ï¼Œå¦‚æžœæœ‰çš„è¯ã€‚
 
 }
 
-\b Èç¹ûÑ¡Ôñ\q{ÎÞ}£¬ÔòÔÚÈÎºÎÇé¿öÏÂ
-¶¼²»»áÎª·þÎñÆ÷Ö¸¶¨Ä£Ê½Öµ¡£
+\b å¦‚æžœé€‰æ‹©\q{æ— }ï¼Œåˆ™åœ¨ä»»ä½•æƒ…å†µä¸‹
+éƒ½ä¸ä¼šä¸ºæœåŠ¡å™¨æŒ‡å®šæ¨¡å¼å€¼ã€‚
 
-\b Èç¹ûÖ¸¶¨ÄÚÈÝ£¬Ëü½«ÔÚÈÎºÎÇé¿ö
-ÏÂ¶¼±»·¢ËÍµ½·þÎñÆ÷¡£
-ÄÚÈÝ¿òµÄ¾«È·Óï·¨È¡¾öÓÚÄ£Ê½¡£
+\b å¦‚æžœæŒ‡å®šå†…å®¹ï¼Œå®ƒå°†åœ¨ä»»ä½•æƒ…å†µ
+ä¸‹éƒ½è¢«å‘é€åˆ°æœåŠ¡å™¨ã€‚
+å†…å®¹æ¡†çš„ç²¾ç¡®è¯­æ³•å–å†³äºŽæ¨¡å¼ã€‚
 
-Ä¬ÈÏÇé¿öÏÂ£¬ËùÓÐ¿ÉÓÃÄ£Ê½¶¼ÁÐÎª\q{×Ô¶¯}£¬
-ÕâÔÚ´ó¶àÊýÇé¿öÏÂÓ¦¸ÃÊÇÕýÈ·µÄ¡£
+é»˜è®¤æƒ…å†µä¸‹ï¼Œæ‰€æœ‰å¯ç”¨æ¨¡å¼éƒ½åˆ—ä¸º\q{è‡ªåŠ¨}ï¼Œ
+è¿™åœ¨å¤§å¤šæ•°æƒ…å†µä¸‹åº”è¯¥æ˜¯æ­£ç¡®çš„ã€‚
 
-Ã¿¸öÉèÖÃµÄ¾«È·Ð§¹û£¨Èç¹ûÓÐ£©È¡¾öÓÚ·þÎñÆ÷¡£
-ËüÃÇµÄÃû×ÖÀ´×Ô \i{POSIX} ºÍÆäËû Unix
-ÏµÍ³£¬ËüÃÇ×îÓÐ¿ÉÄÜ¶ÔÕâÐ©ÏµÍ³²úÉúÓÐÓÃµÄÓ°Ïì¡£
-£¨ÕâÐ©ÉèÖÃÓëµÇÂ¼µ½´ËÀà·þÎñÆ÷ºóÍ¨³£¿ÉÒÔÊ¹ÓÃ \i\c{stty}
-ÃüÁî¸ü¸ÄµÄÉèÖÃÏàÍ¬¡££©
+æ¯ä¸ªè®¾ç½®çš„ç²¾ç¡®æ•ˆæžœï¼ˆå¦‚æžœæœ‰ï¼‰å–å†³äºŽæœåŠ¡å™¨ã€‚
+å®ƒä»¬çš„åå­—æ¥è‡ª \i{POSIX} å’Œå…¶ä»– Unix
+ç³»ç»Ÿï¼Œå®ƒä»¬æœ€æœ‰å¯èƒ½å¯¹è¿™äº›ç³»ç»Ÿäº§ç”Ÿæœ‰ç”¨çš„å½±å“ã€‚
+ï¼ˆè¿™äº›è®¾ç½®ä¸Žç™»å½•åˆ°æ­¤ç±»æœåŠ¡å™¨åŽé€šå¸¸å¯ä»¥ä½¿ç”¨ \i\c{stty}
+å‘½ä»¤æ›´æ”¹çš„è®¾ç½®ç›¸åŒã€‚ï¼‰
 
-ÏÂÃæÃèÊöÁËÒ»Ð©ÖµµÃ×¢ÒâµÄÄ£Ê½£» ÓÐ
-¹Ø¸üÍêÕûµÄ½âÊÍ£¬Çë²ÎÔÄÄúµÄ·þÎñÆ÷ÎÄµµ¡£
+ä¸‹é¢æè¿°äº†ä¸€äº›å€¼å¾—æ³¨æ„çš„æ¨¡å¼ï¼› æœ‰
+å…³æ›´å®Œæ•´çš„è§£é‡Šï¼Œè¯·å‚é˜…æ‚¨çš„æœåŠ¡å™¨æ–‡æ¡£ã€‚
 
 \b \I{ERASE special character}\cw{ERASE}
-ÊÇÓÃ»§ÊäÈëÊ±½«Ïò×óÉ¾³ýÒ»¸ö¿Õ¸ñµÄ×Ö·û¡£ µ±ÉèÖÃÎª\q{×Ô¶¯}£¨Ä¬ÈÏÉèÖÃ£©Ê±£¬
-Õâ½«×ñÑ­ PuTTY ÖÐ±¾µØÍË¸ñ¼üµÄÉèÖÃ
-(Çë²ÎÔÄ \k{config-backspace})¡£
+æ˜¯ç”¨æˆ·è¾“å…¥æ—¶å°†å‘å·¦åˆ é™¤ä¸€ä¸ªç©ºæ ¼çš„å­—ç¬¦ã€‚ å½“è®¾ç½®ä¸º\q{è‡ªåŠ¨}ï¼ˆé»˜è®¤è®¾ç½®ï¼‰æ—¶ï¼Œ
+è¿™å°†éµå¾ª PuTTY ä¸­æœ¬åœ°é€€æ ¼é”®çš„è®¾ç½®
+(è¯·å‚é˜… \k{config-backspace})ã€‚
 
 \lcont{
-´ËÌØÊâ×Ö·ûºÍÆäËû\i{ÌØÊâ×Ö·û}Ê¹ÓÃ Ctrl-C µÄ \c{^C} ±íÊ¾·¨Ö¸¶¨£¬
-ÒÀ´ËÀàÍÆ¡£ Ê¹ÓÃ \c{^<27>} »ò \c{^<0x1B>} ÒÔ
-Êý×Ö·½Ê½Ö¸¶¨×Ö·û£¬
-Ê¹ÓÃ \c{^~} »ñÈ¡ÎÄ×Ö \c{^}¡£
-ÆäËû\e{·Ç}¿ØÖÆ×Ö·ûÓÉËüÃÇ×Ô¼º±íÊ¾¡£
-½«¸Ã¿òÍêÈ«Áô¿Õ±íÊ¾²»Ó¦½«ÈÎºÎ×Ö·û·ÖÅä¸øÖ¸¶¨µÄ¹¦ÄÜ£¬
-¾¡¹ÜÕâ¿ÉÄÜ²¢·ÇËùÓÐ·þÎñÆ÷¶¼Ö§³Ö¡£
+æ­¤ç‰¹æ®Šå­—ç¬¦å’Œå…¶ä»–\i{ç‰¹æ®Šå­—ç¬¦}ä½¿ç”¨ Ctrl-C çš„ \c{^C} è¡¨ç¤ºæ³•æŒ‡å®šï¼Œ
+ä¾æ­¤ç±»æŽ¨ã€‚ ä½¿ç”¨ \c{^<27>} æˆ– \c{^<0x1B>} ä»¥
+æ•°å­—æ–¹å¼æŒ‡å®šå­—ç¬¦ï¼Œ
+ä½¿ç”¨ \c{^~} èŽ·å–æ–‡å­— \c{^}ã€‚
+å…¶ä»–\e{éž}æŽ§åˆ¶å­—ç¬¦ç”±å®ƒä»¬è‡ªå·±è¡¨ç¤ºã€‚
+å°†è¯¥æ¡†å®Œå…¨ç•™ç©ºè¡¨ç¤ºä¸åº”å°†ä»»ä½•å­—ç¬¦åˆ†é…ç»™æŒ‡å®šçš„åŠŸèƒ½ï¼Œ
+å°½ç®¡è¿™å¯èƒ½å¹¶éžæ‰€æœ‰æœåŠ¡å™¨éƒ½æ”¯æŒã€‚
 }
 
-\b \I{QUIT special character}\cw{QUIT}  ÊÇÒ»¸öÌØÊâ×Ö·û£¬
-Í¨³£Ç¿ÖÆ½áÊø·þÎñÆ÷ÉÏµÄµ±Ç°½ø³Ì£¨\cw{SIGQUIT}£©¡£
-ÔÚÐí¶à·þÎñÆ÷ÉÏ£¬
-ËüµÄÄ¬ÈÏÉèÖÃÊÇ Ctrl-·´Ð±¸Ü (\c{^\\})£¬
-ÕâºÜÈÝÒ×ÔÚÐí¶à¼üÅÌÉÏÒâÍâµ÷ÓÃ¡£ Èç¹ûÕâ·Á°­ÁËÄú£¬
-Äú¿ÉÄÜÏ£Íû½«Æä¸ü¸ÄÎªÁíÒ»¸ö½ÇÉ«»òÍêÈ«¹Ø±ÕËü¡£
-
-\b ÔÚ PuTTY ÖÐ¿ÉÒÔÍ¨¹ý¶àÖÖ·½Ê½Ö¸
-¶¨ \cw{ECHO} ºÍ \cw{ICANON} µÈ²¼¶ûÄ£Ê½£¬
-ÀýÈç\cw{true}/\cw{false}¡¢\cw{yes}/\cw{no}ºÍ \cw{0}/\cw{1}¡£
-£¨Ã÷È·Ö¸¶¨Öµ \cw{no} Óë¸ù±¾²»·¢ËÍÄ£Ê½²»Í¬¡££©
-
-\b ²¼¶ûÄ£Ê½ \I{IUTF8 terminal mode}\cw{IUTF8} Ïò·þÎñÆ÷
-·¢ËÍÖÕ¶Ë×Ö·û¼¯ÊÇ·ñÎª \i{UTF-8} µÄÐÅºÅ£¬
-ÓÃÓÚ»ù±¾ÐÐ±à¼­µÈÄ¿µÄ£» ÀýÈç£¬Èç¹ûÉèÖÃ²»ÕýÈ·£¬
-ÍË¸ñ¼ü¿ÉÄÜ»áÉ¾³ý´íÎóÊýÁ¿µÄÎÄ±¾¡£
-µ«ÊÇ£¬¼òµ¥µØÉèÖÃËüÍ¨³£²»×ãÒÔ
-ÈÃ·þÎñÆ÷Ê¹ÓÃ UTF-8£» POSIX ·þÎñÆ÷Í¨³£»¹ÐèÒªÉèÖÃÇøÓòÉè
-ÖÃ£¨Í¨¹ýÄ³Ð©ÒÀÀµÓÚ·þÎñÆ÷µÄ·½Ê½£©£¬
-¾¡¹ÜÐí¶à½ÏÐÂµÄ°²×°Ä¬ÈÏÎª UTF-8¡£ ´ËÍâ£¬
-ÓÉÓÚÕâÖÖÄ£Ê½±ÈÆäËûÄ£Ê½±»Ìí¼Óµ½ SSH Ð­ÒéÖÐµÄÊ±¼äÒªÍíµÃ¶à£¬
-Òò´ËÐí¶à·þÎñÆ÷£¨ÓÈÆäÊÇ¾É·þÎñÆ÷£©²»Ö§³ÖÍ¨¹ý SSH ·¢ËÍµÄÕâÖÖÄ£Ê½£»
-ÊÂÊµÉÏ£¬Ò»Ð©Ð´µÃ²»ºÃµÄ·þÎñÆ÷·´¶ÔËüµÄ´æÔÚ£¬
-ËùÒÔÄã¿ÉÄÜ»á·¢ÏÖÄãÐèÒª½«ËüÉèÖÃÎª¸ù±¾²»·¢ËÍ¡£
-µ±ÉèÖÃÎª\q{¶¯}Ê±£¬
-Õâ½«×ñÑ­±¾µØÅäÖÃµÄ×Ö·û¼¯£¨²Î¼û\k{config-charset})¡£
-
-\b ÖÕ¶ËËÙ¶ÈÔÚ±ð´¦ÅäÖÃ£»Çë²ÎÔÄ \k{config-termspeed}¡£
-
-\H{config-ssh-x11} X11×ª·¢Ãæ°å
-
-X11 Ãæ°åÔÊÐíÄúÅäÖÃÍ¨¹ýSSHÁ¬
-½ÓµÄ\i{X11×ª·¢}¡£
-
-Èç¹ûÄúµÄ·þÎñÆ÷ÔÊÐíÄúÔË
-ÐÐ X Window System \i{Í¼ÐÎÓ¦ÓÃ³ÌÐò}£¬X11 ×ª·¢ÔÊÐíÄú°²È«µØÈÃÕâÐ©Ó¦ÓÃ
-³ÌÐò·ÃÎÊÄú PC ÉÏµÄ±¾µØ X ÏÔÊ¾Æ÷¡£
-
-ÒªÆôÓÃ X11 ×ª·¢£¬ÇëÑ¡ÖÐ\q{ÆôÓÃ X11 ×ª·¢}¿ò¡£
-Èç¹ûÄúµÄ X ÏÔÊ¾Æ÷ÓÐÒì³££¬ÄúÐèÒªÔÚ\q{X ÏÔÊ¾Î»ÖÃ}
-¿òÖÐÊäÈëÆäÎ»ÖÃ£» Èç¹û½«ÆäÁô¿Õ£¬
-PuTTY ½«³¢ÊÔÔÚ»·¾³ÖÐÕÒµ½ºÏÀíµÄÄ¬ÈÏÖµ£¬
-»òÕßÈç¹ûÊ§°Ü£¬ÔòÊ¹ÓÃÖ÷ÒªµÄ±¾µØÏÔÊ¾ (\c{:0})¡£
-
-ÓÐ¹Ø X11 ×ª·¢µÄ¸ü¶àÐÅÏ¢£¬
-Çë²ÎÔÄ\k{using-x-forwarding} ¡£
-
-\S{config-ssh-x11auth} Ô¶³Ì \i{X11 ÈÏÖ¤Ð­Òé}
-
-Èç¹ûÄúÊ¹ÓÃ X11 ×ª·¢£¬
-ÔÚ SSH ·þÎñÆ÷»úÆ÷ÉÏ´´½¨µÄÐéÄâ X ·þÎñÆ÷½«ÊÜµ½ÊÚÈ¨Êý¾ÝµÄ±£»¤¡£
-ÕâÐ©Êý¾ÝÊÇÓÉ PuTTY ·¢Ã÷ºÍ¼ì²éµÄ¡£
-
-ÓÃÓÚ´ËµÄ³£ÓÃÊÚÈ¨·½·¨³ÆÎª \i\cw{MIT-MAGIC-COOKIE-1}¡£
-ÕâÊÇÒ»¸ö¼òµ¥µÄÃÜÂëÊ½Ð­Òé£ºX ¿Í»§¶ËÏò·þÎñÆ÷·¢
-ËÍÒ»Ð© cookie Êý¾Ý£¬·þÎñÆ÷¼ì²éËüÊÇ·ñÓëÕæ
-ÕýµÄ cookie Æ¥Åä¡£ cookie Êý¾ÝÍ¨¹ý
-Î´¼ÓÃÜµÄ X11 Á¬½Ó·¢ËÍ£»Òò´Ë£¬
-Èç¹ûÄúÔÊÐíµÚÈýÌ¨»úÆ÷ÉÏµÄ¿Í»§¶Ë·Ã
-ÎÊÐéÄâ X ·þÎñÆ÷£¬ÄÇÃ´ cookie ½«ÒÔÃ÷ÎÄÐÎÊ½·¢ËÍ¡£
-
-PuTTY Ìá¹©ÁËÌæ´úÐ­Òé \i\cw{XDM-AUTHORIZATION-1}¡£
-ÕâÊÇÒ»¸öÃÜÂëÈÏÖ¤µÄÐ­Òé£ºX¿Í»§¶ËÃ¿´Î·¢ËÍµÄÊý¾Ý
-¶¼²»Ò»Ñù£¬ËüÈ¡¾öÓÚÁ¬½ÓµÄ¿Í
-»§¶ËµÄIPµØÖ·ºÍ¶Ë¿Ú£¬
-²¢ÇÒ»¹´øÓÐµ±Ç°Ê±¼äµÄ±ê¼Ç¡£Òò´Ë£¬
-²¶»ñ \cw{XDM-AUTHORIZATION-1} ×Ö·û´®µÄ
-ÇÔÌýÕßÎÞ·¨Á¢¼´½«ÆäÖØÐÂÓÃÓÚ×Ô¼ºµÄ X Á¬½Ó¡£
-
-PuTTY ¶Ô \cw{XDM-AUTHORIZATION-1} µÄÖ§³ÖÊÇÒ»¸öÓÐµãÊµÑéÐÔµÄ¹¦ÄÜ£¬
-¿ÉÄÜ»áÓöµ½¼¸¸öÎÊÌâ£º
-
-\b Ò»Ð© X ¿Í»§¶Ë¿ÉÄÜÉõÖÁ²»Ö§³Ö \cw{XDM-AUTHORIZATION-1}£¬
-Òò´ËËûÃÇ²»ÖªµÀÈçºÎ´¦
-Àí PuTTY Ìá¹©µÄÊý¾Ý¡£
-
-\b ´ËÉí·ÝÑéÖ¤»úÖÆ½öÊÊÓÃÓÚ SSH-2¡£
-ÔÚ SSH-1 ÖÐ£¬SSH ·þÎñÆ÷²»»áÒÔ»úÆ÷¿É¶ÁµÄ¸ñÊ½¸æËß
-¿Í»§¶Ë×ª·¢Á¬½ÓµÄÔ´µØÖ·£¬
-Òò´ËÎÞ·¨ÑéÖ¤ \cw{XDM-AUTHORIZATION-1} Êý¾Ý¡£
-
-\b Äú¿ÉÄÜ»á·¢ÏÖ´Ë¹¦ÄÜ»áµ¼ÖÂÄ³Ð© SSH ·þÎñÆ÷³öÏÖÎÊÌâ£¬
-ÕâÐ©·þÎñÆ÷ÔÚ»á»°ºó²»»áÇåÀí \cw{XDM-AUTHORIZATION-1} Êý¾Ý£¬
-Òò´ËÈç¹ûÄúÊ¹ÓÃ½öÖ´ÐÐ \cw{MIT-MAGIC-COOKIE-1} µÄ¿Í
-»§¶ËÁ¬½Óµ½Í¬Ò»·þÎñÆ÷ ²¢·ÖÅäÁË
-ÏàÍ¬µÄÔ¶³ÌÏÔÊ¾±àºÅ£¬
-Äú¿ÉÄÜ»á·¢ÏÖ·þÎñÆ÷ÉÏÈÔÈ»´æÔÚ¹ýÆÚµÄÉí·ÝÑéÖ¤Êý¾Ý£¬
-²¢ÇÒÄúµÄ X Á¬½ÓÊ§°Ü¡£
-
-PuTTY µÄÄ¬ÈÏÖµÎª \cw{MIT-MAGIC-COOKIE-1}¡£ Èç¹ûÄã¸Ä±äËü£¬
-ÄãÓ¦¸ÃÈ·¶¨ÄãÖªµÀÄãÔÚ×öÊ²Ã´¡£
-
-\S{config-ssh-xauthority} ±¾µØÏÔÊ¾µÄXÊÚÈ¨ÎÄ¼þ
-
-Èç¹ûÄúÊ¹ÓÃ X11 ×ª·¢£¬
-ÄúµÄ×ª·¢Á¬½Ó×îÖÕÖ¸ÏòµÄ±¾
-µØ X ·þÎñÆ÷±¾Éí¿ÉÄÜÐèÒªÊÚÈ¨¡£
-
-Ò»Ð© Windows X ·þÎñÆ÷²»ÐèÒªÕâÑù×ö£º
-ËüÃÇÍ¨¹ý¸ü¼òµ¥µÄ·½Ê½½øÐÐÊÚÈ¨£¬
-ÀýÈç½ÓÊÜÀ´×Ô±¾µØ»úÆ÷µÄÈÎºÎÁ¬½Ó£¬
-µ«²»½ÓÊÜÀ´×ÔÆäËûÈÎºÎµØ·½µÄÁ¬½Ó¡£
-µ«ÊÇ£¬Èç¹ûÄúµÄ X ·þÎñÆ÷È·ÊµÐèÒªÊÚÈ¨£¬ÄÇÃ´ PuTTY ÐèÒªÖªµÀÐèÒªÊ²Ã´ÊÚÈ¨¡£
-
-Ê¹ÕâÐ©Êý¾Ý¿ÉÓÃµÄÒ»ÖÖ·½·¨ÊÇÈÃ X ·þÎñÆ÷½«Æä´æ´¢
-ÔÚÓë Unix \c{.Xauthority} ÎÄ¼þ¾ßÓÐÏàÍ¬¸ñ
-Ê½µÄÎÄ¼þÖÐµÄÄ³¸öÎ»ÖÃ¡£ Èç¹ûÕâÊÇÄú
-µÄ Windows X ·þÎñÆ÷µÄ¹¤×÷·½Ê½£¬ÄÇÃ´Äú
-¿ÉÒÔÍ¨¹ýÅäÖÃ´ËÑ¡Ïî¸æËß PuTTY ÔÚÄÄÀï¿ÉÒÔÕÒµ½
-´ËÎÄ¼þ¡£ Ä¬ÈÏÇé¿öÏÂ£¬PuTTY ²»»á³¢ÊÔÎªÄúµÄ±¾µØÏÔÊ¾²éÕÒÈÎºÎÊÚÈ¨¡£
-
-\H{config-ssh-portfwd} \I{port forwarding}ËíµÀÃæ°å
-
-ËíµÀÃæ°åÔÊÐíÄúÍ¨¹ý SSH Á¬½Ó
-ÅäÖÃÈÎÒâÁ¬½ÓÀàÐÍµÄËíµÀ¡£
-
-¶Ë¿Ú×ª·¢ÔÊÐíÄúÔÚ SSH »á»°ÖÐÍ¨
-¹ýËíµÀ´«ÊäÆäËûÀàÐÍµÄÍøÂçÁ¬½Ó¡£ ÓÐ¹Ø¶Ë¿Ú×ª·¢¼°Æä¹¤×÷Ô­ÀíµÄÒ»°ãÐÔÌÖÂÛ£¬
-Çë²Î¼û \k{using-port-forwarding}¡£
-
-ËíµÀÃæ°åÖÐµÄ¶Ë¿Ú×ª·¢²¿·ÖÏÔÊ¾ÁË PuTTY ÔÚÁ¬½Óµ½·þ
-ÎñÆ÷Ê±½«³¢ÊÔÉèÖÃµÄËùÓÐ¶Ë¿Ú×ª·¢µÄÁÐ±í¡£
-Ä¬ÈÏÇé¿öÏÂÃ»ÓÐÉèÖÃ¶Ë¿Ú×ª·¢£¬
-ËùÒÔÕâ¸öÁÐ±íÊÇ¿ÕµÄ¡£
-
-Ìí¼Ó¶Ë¿Ú×ª·¢£º
-
-\b ÉèÖÃ\q{±¾µØ}»ò\q{Ô¶³Ì}µ¥Ñ¡°´Å¥Ö®Ò»£¬
-¾ßÌåÈ¡¾öÓÚÄúÊÇ\I{local port forwarding}½«±¾µØ¶Ë¿Ú
-×ª·¢µ½Ô¶³ÌÄ¿±ê£¨\q{±¾µØ}£©»¹ÊÇ\I{remote port forwarding}½«Ô¶³Ì¶Ë
-¿Ú×ª·¢µ½±¾µØÄ¿±ê£¨\q{Ô¶³Ì}£©¡£
-»òÕß£¬Èç¹ûÄúÏ£Íû PuTTY
-ÔÚ\I{dynamic port forwarding}±¾µØ¶Ë¿ÚÉÏÌá¹©±¾µØ SOCKS 4/4A/5 ´úÀí£¬
-ÇëÑ¡Ôñ\q{¶¯Ì¬}£¨Çë×¢Òâ£¬´Ë´úÀí½öÖ§³Ö
-TCP Á¬½Ó£»SSH Ð­Òé²»Ö§³Ö×ª·¢ \i{UDP}£©¡£
-
-\b ÔÚ\q{Ô´¶Ë¿Ú}¿òÖÐÊäÈëÔ´\i{¶Ë¿ÚºÅ}¡£
-¶ÔÓÚ±¾µØ×ª·¢£¬PuTTY ½«ÕìÌýÄú PC µÄ´Ë¶Ë¿Ú¡£
-¶ÔÓÚÔ¶³Ì×ª·¢£¬ÄúµÄ SSH ·þÎñÆ÷½«ÕìÌýÔ¶³Ì¼ÆËã»úµÄ´Ë¶Ë¿Ú¡£ Çë×¢Òâ£¬
-´ó¶àÊý·þÎñÆ÷²»ÔÊÐíÄú\I{privileged port}ÕìÌý
-Ð¡ÓÚ 1024 µÄ¶Ë¿ÚºÅ¡£
-
-\b Èç¹ûÄúÑ¡ÔñÁË\q{±¾µØ}»ò\q{Ô¶³Ì}£¨\q{¶¯Ì¬}²»ÐèÒª´Ë²½Öè£©£¬
-ÇëÔÚ\q{Ä¿±ê}¿òÖÐÊäÈëÒÔÃ°ºÅ·Ö¸ôµÄÖ÷»úÃûºÍ¶Ë¿ÚºÅ¡£
-ÔÚÔ´¶Ë¿ÚÉÏÊÕµ½µÄÁ¬½Ó½«±»¶¨Ïòµ½´ËÄ¿±ê¡£
-ÀýÈç£¬ÒªÁ¬½Óµ½ POP-3 ·þÎñÆ÷£¬Äú¿ÉÒÔ
-ÊäÈë \c{popserver.example.com:110}¡£
-£¨Èç¹ûÄúÐèÒªÊäÈëÎÄ×Ö \i{IPv6 address}£¬
-Çë½«ÆäÀ¨ÔÚ·½À¨ºÅÖÐ£¬
-ÀýÈç\cq{[::1]:2200}¡££©
-
-\b µ¥»÷\q{Ìí¼Ó}°´Å¥¡£ ÄúµÄ×ª·¢Ïê
-Ï¸ÐÅÏ¢Ó¦ÏÔÊ¾ÔÚÁÐ±í¿òÖÐ¡£
-
-ÒªÉ¾³ý¶Ë¿Ú×ª·¢£¬Ö»ÐèÔÚÁÐ±í¿òÖÐÑ¡
-ÔñÆäÏêÏ¸ÐÅÏ¢£¬È»ºóµ¥»÷\q{É¾³ý}°´Å¥¡£
-
-ÔÚ\q{Ô´¶Ë¿Ú}¿òÖÐ£¬Äú»¹¿ÉÒÔÍ¨¹ýÖ¸
-¶¨£¨ÀýÈç£©\c{127.0.0.5:79} À´Ñ¡Ôñ
-ÊäÈëÒª¼àÌýµÄ\I{listen
-address} IP µØÖ·¡£
-ÓÐ¹ØÆä¹¤×÷Ô­Àí¼°ÆäÏÞÖÆµÄ¸ü¶àÐÅÏ¢£¬Çë²Î¼û \k{using-port-forwarding}¡£
-
-Èç¹û±¾µØÏµÍ³ÖªµÀ\i{·þÎñÃû³Æ}£¬
-Äú¿ÉÒÔÊäÈë·þÎñÃû³ÆÀ´´úÌæ¶Ë¿ÚºÅ¡£
-ÀýÈç£¬ÔÚ\q{Ä¿±ê}¿òÖÐ£¬Äú¿ÉÒÔÊäÈë \c{popserver.example.com:pop3}¡£
-
-Äú¿ÉÒÔÔÚ\I{port forwarding, changing mid-session}»á»°ÖÐÊ¹
-ÓÃ\q{¸ü¸ÄÉèÖÃ}ÐÞ¸Äµ±Ç°»î¶¯µÄ¶Ë¿Ú×ª
-·¢¼¯£¨²Î¼û \k{using-changesettings}£©¡£
-Èç¹ûÄúÔÚ»á»°ÖÐÉ¾³ý±¾µØ»ò¶¯Ì¬¶Ë¿Ú×ª·¢£¬
-PuTTY ½«Í£Ö¹ÕìÌý¸Ã¶Ë¿ÚÉÏµÄÁ¬½Ó£¬
-Òò´ËËü¿ÉÒÔ±»ÁíÒ»¸ö³ÌÐòÖØÐÂÊ¹ÓÃ¡£ Èç¹ûÉ¾³ýÔ¶³Ì¶Ë¿Ú×ª·¢£¬Çë×¢Òâ£º
-
-\b SSH-1 Ð­Òé²»°üº¬ÒªÇó·þÎñÆ÷Í£
-Ö¹ÕìÌýÔ¶³Ì¶Ë¿ÚµÄ»úÖÆ¡£
-
-\b SSH-2 Ð­ÒéÈ·Êµ°üº¬ÕâÑùµÄ»úÖÆ£¬
-µ«²¢²»ÊÇËùÓÐµÄ SSH ·þÎñÆ÷¶¼Ö§³ÖËü¡£
-£¨ÌØ±ðÊÇ£¬\i{OpenSSH} ÔÚ 3.9 Ö®Ç°µÄÈÎºÎ°æ±¾ÖÐ¶¼²»Ö§³ÖËü¡££©
-
-Èç¹ûÄúÒªÇóÉ¾³ýÔ¶³Ì¶Ë¿Ú×ª·¢²¢ÇÒ PuTTY
-ÎÞ·¨Ê¹·þÎñÆ÷Êµ¼ÊÍ£Ö¹ÕìÌý¸Ã¶Ë¿Ú£¬
-Ëü½«¿ªÊ¼¾Ü¾ø¸Ã¶Ë¿ÚÉÏµÄ´«ÈëÁ¬½Ó¡£
-Òò´Ë£¬ËäÈ»¸Ã¶Ë¿Ú²»ÄÜ±»ÆäËû³ÌÐòÖØÓÃ£¬
-µ«ÄúÖÁÉÙ¿ÉÒÔºÏÀíµØÈ·¶¨·þÎñÆ÷¶Ë³ÌÐò
-ÔÚ¶Ë¿Ú×ª·¢½áÊøÊ±ÎÞ·¨ÔÙ·ÃÎÊ¸Ã·þÎñ¡£
-
-Èç¹ûÄúÉ¾³ý×ª·¢£¬ÔòÊ¹ÓÃ¸Ã×ª·¢½¨Á¢µÄÈÎ
-ºÎÏÖÓÐÁ¬½Ó¶¼½«±£³Ö´ò¿ª×´Ì¬¡£ Í¬Ñù£¬¶ÔÈ«¾ÖÉèÖÃ
-µÄ¸ü¸Ä£¨ÀýÈç\q{±¾µØ¶Ë¿Ú½ÓÊÜÀ´×ÔÆäËûÖ÷»úµÄÁ¬½Ó}£©
-Ö»»á¶ÔÐÂµÄ×ª·¢ÉúÐ§¡£
-
-Èç¹ûÄúÍ¨¹ýSSH ×ª·¢µÄÁ¬½Ó±¾ÉíÊÇÁíÒ»¸öPuTTY
-¸±±¾½¨Á¢µÄµÚ¶þ¸öSSH Á¬½Ó£¬Äú¿ÉÄÜ»á
-·¢ÏÖ\q{Âß¼­Ö÷»úÃû}ÅäÖÃÑ¡Ïî¿ÉÓÃÓÚ¾¯
-¸æ PuTTY ËüÓ¦¸ÃÆÚ´ýÄÄ¸öÖ÷»úÃÜÔ¿¡£
-Çë²ÎÔÄ \k{config-loghost} ¡£
-
-\S{config-ssh-portfwd-localhost} ¿ØÖÆ×ª·¢¶Ë¿ÚµÄ
-¿É¼ûÐÔ
-
-×ª·¢Á¬½ÓµÄÔ´¶Ë¿ÚÍ¨³£²»½ÓÊÜÀ´×ÔÈÎºÎ»úÆ÷µÄÁ¬½Ó£¬
-³ýÁË \I{localhost}SSH ¿Í»§¶Ë»ò·þÎñÆ÷»úÆ÷±¾
-Éí£¨·Ö±ðÓÃÓÚ±¾µØºÍÔ¶³Ì×ª·¢£©¡£
- ËíµÀÃæ°åÖÐÓÐÒ»Ð©¿Ø¼þ¿ÉÒÔ¸ü¸Ä´ËÉèÖÃ£º
-
-\b \q{±¾µØ¶Ë¿Ú½ÓÊÜÀ´×ÔÆäËûÖ÷»úµÄÁ¬½Ó}Ñ¡
-ÏîÔÊÐíÄúÉèÖÃ±¾µØµ½Ô¶³Ì¶Ë¿Ú×ª·¢£¬
-ÒÔ±ã¿Í»§¶Ë PC ÒÔÍâµÄ¼ÆËã»ú¿ÉÒÔÁ¬½Ó
-µ½×ª·¢µÄ¶Ë¿Ú¡£ £¨ÕâÒ²ÊÊÓÃÓÚ¶¯Ì¬ SOCKS ×ª·¢¡££©
-
-\b \q{Ô¶³Ì¶Ë¿ÚÒ²ÊÇÈç´Ë} Ñ¡Ïî¶ÔÔ¶³Ìµ½
-±¾µØ¶Ë¿Ú×ª·¢Ö´ÐÐÏàÍ¬µÄ²Ù×÷£¨ÒÔ±ã SSH ·þÎñÆ÷»úÆ÷ÒÔ
-ÍâµÄ»úÆ÷¿ÉÒÔÁ¬½Óµ½×ª·¢µÄ¶Ë¿Ú¡££©Çë×¢Òâ£¬
-´Ë¹¦ÄÜ½öÊÊÓÃÓÚ SSH- 2 Ð­Òé£¬
-²¢²»ÊÇËùÓÐµÄ SSH-2 ·þÎñÆ÷¶¼Ö§³ÖËü£¨ÀýÈç£¬\i{OpenSSH} ²»Ö§³Ö£©¡£
-
-\S{config-ssh-portfwd-address-family} Îª×ª·¢¶Ë¿ÚÑ¡Ôñ
-\i{Internet Ð­Òé°æ±¾}
-
-´Ë¿ª¹ØÔÊÐíÄúÎª×ª·¢¶Ë¿ÚµÄ±¾µØ¶ËÑ¡ÔñÌØ¶¨
-µÄ Internet Ð­Òé£¨\i{IPv4} »ò \i{IPv6}£©¡£
-Ä¬ÈÏÇé¿öÏÂ£¬ËüÉèÖÃÎª\q{×Ô¶¯}£¬ÕâÒâÎ¶×Å£º
-
-\b ¶ÔÓÚ±¾µØµ½Ô¶³Ì¶Ë¿Ú×ª·¢£¬
-PuTTY ½«ÕìÌý IPv4 ºÍ£¨Èç¹û¿ÉÓÃ£©IPv6 ÖÐµÄ´«ÈëÁ¬½Ó
-
-\b ¶ÔÓÚÔ¶³Ìµ½±¾µØµÄ¶Ë¿Ú×ª·¢£¬PuTTY ½«
-Îª´«³öÁ¬½ÓÑ¡ÔñÒ»¸öºÏÀíµÄÐ­Òé¡£
-
-Õâ»á¸²¸ÇÁ¬½ÓÃæ°åÉÏµÄ³£¹æ Internet Ð­Òé°æ±¾Ê×Ñ¡Ïî
-(Çë²Î¿¼ \k{config-address-family})¡£
-
-Çë×¢Òâ£¬¼´Ê¹ÄúÌØ±ðÒªÇó IPv6£¬Ä³Ð©²Ù×÷ÏµÍ³Ò²
-¿ÉÄÜ»áÕìÌý IPv4 ÖÐµÄ´«ÈëÁ¬½Ó£¬
-ÒòÎªËüÃÇµÄ IPv4 ºÍ IPv6 Ð­ÒéÕ»Á´½ÓÔÚÒ»Æð¡£
-ÏÔÈ» \i{Linux} »áÕâÑù×ö£¬¶ø Windows ²»»á¡£
-Òò´Ë£¬Èç¹ûÄúÔÚ Windows ÉÏÔËÐÐ PuTTY ²¢¹´Ñ¡\q{IPv6}ÒÔ½øÐÐ
-±¾µØ»ò¶¯Ì¬¶Ë¿Ú×ª·¢£¬ÔòÖ»ÄÜÊ¹ÓÃ IPv6 Á¬½Óµ½Ëü£»
-¶øÈç¹ûÄãÔÚ Linux ÉÏ×öÍ¬ÑùµÄÊÂÇé£¬
-ÄãÒ²¿ÉÒÔÔÚ IPv4 ÉÏÊ¹ÓÃËü¡£ µ«ÊÇ£¬¹´Ñ¡\q{×Ô¶¯}Ó¦Ê¼ÖÕÎªÄúÌá¹©Ò»¸ö¶Ë¿Ú£¬
-Äú¿ÉÒÔÊ¹ÓÃÈÎÒ»Ð­ÒéÁ¬½Óµ½¸Ã¶Ë¿Ú¡£
-
-\H{config-ssh-bugs} \I{SSH server bugs}¾À´íºÍ¸ü¶à¾À´íÃæ°å
-
-²¢·ÇËùÓÐ SSH ·þÎñÆ÷¶¼ÄÜÕý³£¹¤×÷¡£
-ÏÖÓÐµÄ¸÷ÖÖ·þÎñÆ÷ÖÐ¶¼ÓÐ´íÎó£¬
-Õâ¿ÉÄÜÊ¹¿Í»§¶ËÎÞ·¨ÓëËüÃÇ½»Ì¸£¬³ý·ÇËüÖªµÀ´íÎó²¢½â¾öËü¡£
-
-ÓÉÓÚ´ó¶àÊý·þÎñÆ÷ÔÚ SSH Á¬½Ó¿ªÊ¼Ê±»á¹«²¼ÆäÈí¼þ°æ±¾ºÅ£¬
-Òò´Ë PuTTY ½«³¢ÊÔ¼ì²âËü¿ÉÒÔÔÚ·þÎñÆ÷ÖÐ¿´µ½µÄ´íÎó²¢
-×Ô¶¯ÆôÓÃ½â¾ö·½·¨¡£
-µ«ÊÇ£¬ÓÐÊ±Ëü»á³ö´í£»
-Èç¹û·þÎñÆ÷±»¹ÊÒâÅäÖÃÎªÒþ²ØÆä°æ±¾ºÅ£¬
-»òÕßÈç¹û·þÎñÆ÷ÊÇ PuTTY µÄ´íÎóÊý¾Ý¿â²»ÖªµÀµÄ°æ±¾£¬
-ÄÇÃ´ PuTTY ½«²»ÖªµÀ»á³öÏÖÊ²Ã´´íÎó¡£
-
-Bugs ºÍ More Bugs Ãæ°å£¨ÓÐÁ½¸ö£¬
-ÒòÎªÎÒÃÇÓÐºÜ¶à´íÎó¼æÈÝÄ£Ê½£©
-ÔÊÐíÄúÊÖ¶¯ÅäÖÃ PuTTY ÆÚÍûÔÚ·þÎñÆ÷ÖÐ¿´µ½µÄ´íÎó¡£
-Ã¿¸ö´íÎó¶¼¿ÉÒÔÅäÖÃÎªÈýÖÖ×´Ì¬£º
-
-\b \q{¹Ø±Õ}: PuTTY ½«¼Ù¶¨·þÎñÆ÷Ã»ÓÐ´íÎó¡£
-
-\b \q{¿ªÆô}: PuTTY ½«¼Ù¶¨·þÎñÆ÷È·Êµ´æÔÚ´íÎó¡£
-
-\b \q{×Ô¶¯}: PuTTY »áÊ¹ÓÃ·þÎñÆ÷µÄ°æ±¾ºÅ¹«
-¸æÀ´³¢ÊÔ²Â²â·þÎñÆ÷ÊÇ·ñÓÐ bug¡£
-£¨´ËÑ¡Ïî²»ÊÊÓÃÓÚ\e{ÎÞ·¨}´Ó·þÎñÆ÷°æ±¾¼ì²âµ½µÄ´íÎó£¬
-ÀýÈç£¬ÒòÎª±ØÐëÔÚÖªµÀ·þÎñ
-Æ÷°æ±¾Ö®Ç°¶ÔÆä½øÐÐ²Ù×÷¡££©
-
-(PuTTYÏîÄ¿ÓÐÒ»¸öÃ÷È·µÄÕþ²ß£¬¹ØÓÚÎÒÃÇºÎÊ±×¼±¸
-Îª´íÎó½â¾ö·½·¨Ìí¼Ó×Ô¶¯¼ì²â¡£Çë²ÎÔÄ\k{feedback-workarounds}.)
-
-\S{config-ssh-bug-ignore2} \q{×èÈûSSH-2µÄ\i{ºöÂÔÏûÏ¢}}
-
-ºöÂÔÏûÏ¢ (SSH_MSG_IGNORE) ÊÇ SSH Ð­ÒéÖÐµÄÏûÏ¢£¬
-¿ÉÒÔËæÊ±´Ó¿Í»§¶Ë·¢ËÍµ½·þÎñÆ÷£¬
-»ò´Ó·þÎñÆ÷·¢ËÍµ½¿Í»§¶Ë¡£
-ÈÎºÎÒ»·½¶¼±ØÐëÔÚÊÕµ½ÏûÏ¢Ê±ºöÂÔ¸ÃÏûÏ¢¡£
-PuTTY Ê¹ÓÃ SSH-2 ÖÐµÄºöÂÔÏûÏ¢À´»ìÏý¼ÓÃÜ
-Êý¾ÝÁ÷²¢Ê¹Æä¸üÄÑ½øÐÐÃÜÂë·ÖÎö¡£
-Ëü»¹Ê¹ÓÃºöÂÔÏûÏ¢½øÐÐÁ¬½Ó±£³Ö\i{keepalives}»î¶¯ (²Î¿¼ \k{config-keepalive})¡£
-
-Èç¹ûËüÈÏÎª·þÎñÆ÷ÓÐÕâ¸ö´íÎó£¬PuTTY ½«Í£Ö¹Ê¹ÓÃºöÂÔÏûÏ¢¡£
- Èç¹ûÔÚÓëÕýÈ·µÄ·þÎñÆ÷Í¨ÐÅÊ±ÆôÓÃÁË´Ë´íÎó£¬
- Ôò»á»°½«³É¹¦£¬µ« keepalives ½«²»Æð×÷ÓÃ£¬
- ²¢ÇÒ»á»°µÄÃÜÂë°²È«ÐÔ¿ÉÄÜµÍÓÚÆäÓ¦ÓÐµÄ°²È«ÐÔ¡£
-
-\S{config-ssh-bug-rekey} \q{´íÎóµÄ´¦ÀíSSH-2ÃÜÔ¿ÖØ¸´½»»»}
-
-Ò»Ð© SSH ·þÎñÆ÷¸ù±¾ÎÞ·¨´¦Àí\i{ÖØ¸´ÃÜÔ¿½»»»}£¬
-²¢ÇÒ»áºöÂÔ¿Í»§¶ËÆô¶¯ÃÜÔ¿µÄ³¢ÊÔ¡£
-ÓÉÓÚ PuTTY ÔÚÖ´ÐÐÖØ¸´ÃÜÔ¿½»»»Ê±»áÔÝÍ£»á»°£¬
-Òò´ËÕâÑù×ö»áµ¼ÖÂ»á»°ÔÚÒ»Ð¡Ê±ºó¹ÒÆð£¨
-³ý·ÇÄú½«ÖØÐÂÃÜÔ¿³¬Ê±ÉèÖÃÎª²»Í¬£»
-Çë²ÎÔÄ \k{config-ssh-kex-rekey} )¡£
-ÆäËû·Ç³£¹ÅÀÏµÄ SSH ·þÎñÆ÷¶ÔÖØ¸´ÃÜÔ¿½»»»µÄ´¦Àí¸ü¼ÓÔã¸â£¬
-²¢ÇÒÔÚÊÕµ½ÖØ¸´ÃÜÔ¿½»»»ÇëÇóÊ±»á¶Ï¿ªÁ¬½Ó¡£
-
-Èç¹û¼ì²âµ½´Ë´íÎó£¬PuTTY ½«ÓÀÔ¶²»»áÆô¶¯ÖØ¸´ÃÜÔ¿½»»»¡£
-Èç¹ûÔÚÓëÕýÈ·µÄ·þÎñÆ÷Í¨ÐÅÊ±ÆôÓÃÁË´Ë´íÎó£¬
-Ôò»á»°Ó¦¸ÃÈÔÈ»ÓÐÐ§£¬
-µ«¿ÉÄÜ²»ÈçÄúÔ¤ÆÚµÄ°²È«¡£
-
-ÕâÊÇÒ»¸öÌØ¶¨ÓÚ SSH-2 µÄ´íÎó¡£
-
-\S{config-ssh-bug-winadj} \q{PuTTYµÄ SSH-2 \cq{winadj} ÇëÇó×èÈû}
-
-PuTTY ÓÐÊ±»áÔÚÍ¨µÀÊý¾ÝÖÐ¼äÏò SSH ·þÎñÆ÷·¢ËÍÒ»¸öÌØÊâÇëÇó£¬
-Ãû³ÆÎª \cw{winadj@putty.projects.tartarus.org}
-£¨²Î¼û \k{sshnames-channel}£©¡£´ËÇëÇóµÄÄ¿µÄÊÇ
-²âÁ¿µ½·þÎñÆ÷µÄÍù·µÊ±¼ä£¬
-PuTTY Ê¹ÓÃ¸ÃÊ±¼äÀ´µ÷ÕûÆäÁ÷Á¿¿ØÖÆ¡£
-·þÎñÆ÷Êµ¼ÊÉÏ²»±Ø\e{Àí½â}ÏûÏ¢£»Ô¤¼Æ»á·¢»Ø \cw{SSH_MSG_CHANNEL_FAILURE} ÏûÏ¢£¬
-±íÃ÷Ëü²»Àí½âËü¡£
-£¨PuTTY µÄÊ±¼ä¼ÆËãËùÐèÒªµÄÖ»ÊÇ\e{Ä³ÖÖ}ÏìÓ¦¡££©
-
-ÖÚËùÖÜÖª£¬Ä³Ð© SSH ·þÎñÆ÷»áÒÔÄ³ÖÖ·½Ê½±»´Ë
-ÏûÏ¢ÅªºýÍ¿¡ª¡ªÒòÎªËüµÄÃû³ÆºÜ³¤£¬»òÕßÒòÎªËü
-ÃÇÎÞ·¨´¦ÀíÎÞ·¨Ê¶±ðµÄÇëÇóÃû³Æ£¬¼´Ê¹·¢»ØÕýÈ·µÄÊ§
-°ÜÏìÓ¦Ò²ÊÇÈç´Ë£¬»òÕßÒòÎªËûÃÇÃ÷ÖÇµØ´¦ÀíÁËËü£¬
-µ«ÊÇÓÃºÁÎÞÒâÒåµÄÀ¬»øÓÊ¼þ»òÆäËû¶«Î÷Ìî³äÁË·þÎñÆ÷µÄÈÕÖ¾ÎÄ¼þ¡£
-Òò´Ë£¬PuTTY Ö§³ÖÕâ¸ö bug-compatibility ±êÖ¾£º
-Èç¹ûËüÈÏÎª·þÎñÆ÷ÓÐÕâ¸ö bug£¬ËüÓÀÔ¶²»»á·¢ËÍËü
-µÄ\cq{winadj@putty.projects.tartarus.org}ÇëÇó£¬
-²¢ÇÒ»áÔÚÃ»ÓÐËüµÄ¼ÆÊ±Êý¾ÝµÄÇé¿öÏÂ½â¾öÎÊÌâ¡£
-
-\S{config-ssh-bug-chanreq} \q{»Ø¸´ÒÑ¹Ø±ÕÍ¨µÀµÄÇëÇó}
-
-RFC 4254 ÖÐ·¢²¼µÄ SSH Ð­Òé´æÔÚÆçÒå£¬
-Èç¹ûÁ¬½ÓµÄÒ»²à³¢ÊÔ¹Ø±ÕÍ¨µÀ£¬
-¶øÁíÒ»²àÍ¬Ê±ÔÚÍ¨µÀÄÚ·¢ËÍÇëÇó²¢ÒªÇó»Ø¸´£¬
-Ôò»á³öÏÖÆçÒå¡£ RFC 4254 ²»Çå³þ¹Ø±Õ·½ÊÇ·ñÓ¦
-ÔÚÐû²¼Æä¹Ø±ÕÍ¨µÀ
-µÄÒâÍ¼ºó»Ø¸´Í¨µÀÇëÇó¡£
-
-2014 Äê 4 ÔÂ¶Ô \cw{ietf-ssh} ÓÊ¼þÁÐ±íµÄÌÖÂÛ
-ÐÎ³ÉÁËÃ÷È·µÄ¹²Ê¶£¬
-ÕýÈ·´ð°¸ÊÇ·ñ¶¨µÄ¡£
-µ«ÊÇ£¬ÓÉÓÚ¹æ·¶ÖÐµÄÄ£ºýÐÔ£¬
-Ò»Ð© SSH ·þÎñÆ÷ÒÑ¾­ÊµÏÖÁËÆäËû²ßÂÔ£»
-ÀýÈç£¬\W{https://bugzilla.mindrot.org/show_bug.cgi?id=1818}{OpenSSH} ÔÚÐÞ¸´Ö®Ç°Ò»Ö±ÊÇÕâÑù¡£
-
-ÒòÎª PuTTY ÔÚÍ¨µÀµÄÕû¸öÉúÃüÖÜÆÚÄÚ·¢ËÍ´ø
-ÓÐ\q{want reply}±êÖ¾µÄÍ¨µÀÇëÇó
-£¨²Î¼û \k{config-ssh-bug-winadj}£©£¬ËùÒÔµ±Á¬
-½Óµ½ÕâÑùµÄ·þÎñÆ÷Ê±£¬Ëü¿ÉÄÜ»áÔÚÈÏ
-ÎªÍ¨µÀÒÑÍêÈ«¹Ø±ÕºóÊÕµ½¶ÔÇëÇóµÄ»Ø¸´£¬²¢ÒÔ´íÎó¡°\q{ÊÕµ½²»´æÔÚµÄÍ¨µÀ 256 µÄ
-\cw{SSH2_MSG_CHANNEL_FAILURE}}ÐÐ½áÊø¡£
-
-\S{config-ssh-bug-maxpkt2} \q{ºöÂÔ SSH-2 \i{×î´óÊý¾Ý°ü´óÐ¡}}
-
-µ±½¨Á¢ SSH-2 Í¨µÀÊ±£¬Ã¿Ò»¶Ë¶¼»áÐû²¼Ëü
-Ô¸ÒâÎª¸ÃÍ¨µÀ½ÓÊÕµÄ×î´óÊý¾Ý°ü´óÐ¡¡£
-Ò»Ð©·þÎñÆ÷ºöÂÔ PuTTY µÄÉùÃ÷²¢·¢
-ËÍ´óÓÚ PuTTY Ô¸Òâ½ÓÊÜµÄÊý¾Ý°ü£¬
-µ¼ÖÂËü±¨¸æ\q{´«ÈëÊý¾Ý°üÔÚ½âÃÜÊ±³öÏÖÂÒÂë}¡£
-
-Èç¹û¼ì²âµ½´Ë´íÎó£¬PuTTY ¾ø²»ÔÊÐíÍ¨µÀ
-µÄ\i{Á÷Á¿¿ØÖÆ´°¿Ú} Ôö³¤µ½×ã¹»´óÒÔÔÊ
-Ðí·þÎñÆ÷·¢ËÍ³¬´óÊý¾Ý°ü¡£ Èç¹ûÔÚÓëÕýÈ·µÄ·þÎñÆ÷Í¨ÐÅÊ±ÆôÓÃÁË
-´Ë´íÎó£¬Ôò»á»°½«Õý³£¹¤×÷£¬
-µ«ÏÂÔØÐÔÄÜ½«µÍÓÚÓ¦ÓÐµÄË®Æ½¡£
-
-\S{config-ssh-bug-dropstart} \q{¶ªÆúÔÚÆäÎÊºòÖ®Ç°·¢ËÍµÄÊý¾Ý}
-
-Ö»ÊÇÅ¼¶û£¬¿ÉÒÔÍ¨¹ýÄ³¸ö
-Í¨µÀ½¨Á¢ SSH Á¬½Ó£¬Õâ»áÔÚ
-Á¬½ÓµÄÔçÆÚÒâÍâ¶ªÆú´«³öÊý¾Ý¡£
-
-ÕâÍ¨³£²»»á±»ÊÓÎªÊµ¼Ê SSH ·þÎñÆ÷ÖÐµÄ´íÎó£¬
-µ«ÓÐÊ±»áÔÚÉæ¼°¸´ÔÓ´ú
-Àí½ø³ÌµÄÇé¿öÏÂ·¢Éú¡£Ò»¸öÀý×Ó
-ÊÇ \W{https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=991958}{Debian
-bug #991958}£¬
-ÆäÖÐÍ¨¹ýÓÃ»§Ä£Ê½ Linux ÄÚºË¿ØÖÆÌ¨µÄÁ¬½Ó¿ÉÄÜ
-»áÔÚÄÚºËÍêÈ«Æô¶¯Ö®Ç°¶ªÊ§´«³öÊý¾Ý¡£
-
-Äú¿ÉÒÔÍ¨¹ýÊÖ¶¯ÆôÓÃ´Ë´íÎó±êÖ¾À´½â¾ö´ËÎÊÌâ£¬
-Õâ½«µ¼ÖÂ PuTTY µÈ´ý·¢ËÍÆä³õÊ¼ SSH ÎÊºò£¬
-Ö±µ½Ëü¿´µ½À´×Ô·þÎñÆ÷µÄÎÊºò¡£
-
-Çë×¢Òâ£¬ÓÀÔ¶ÎÞ·¨×Ô¶¯¼ì²âµ½´Ë´íÎó±êÖ¾£¬
-ÒòÎª×Ô¶¯¼ì²âÒÀÀµÓÚ·þÎñÆ÷ÎÊºòÓïÖÐµÄ°æ±¾×Ö·û´®£¬
-²¢ÇÒ PuTTY ±ØÐëÔÚ¿´µ½·þÎñÆ÷µÄÎÊºòÓï
-\e{Ö®Ç°}¾ö¶¨ÊÇ·ñÔ¤ÆÚ´Ë´íÎó¡£ ËùÒÔÕâÖ»ÊÇÒ»¸öÊÖ¶¯½â¾ö·½·¨¡£
-
-\S{config-ssh-bug-filter-kexinit} \q{×èÈûPuTTYÉÏµÄËùÓÐ\cw{KEXINIT}}
-
-ÔÚ SSH Á¬½Ó¿ªÊ¼Ê±£¬¿Í»§¶ËºÍ·þÎñÆ÷
-½»»» \cw{SSH_MSG_KEXINIT} ÀàÐÍµÄ³¤ÏûÏ¢£¬
-ÆäÖÐ°üº¬ËüÃÇ×¼±¸Ê¹ÓÃµÄËùÓÐ¼ÓÃÜËã·¨µÄÁÐ±í¡£
-ÕâÓÃÓÚÐ­ÉÌÒ»×éÁ½¶Ë¶¼¿ÉÒÔ¶Ô»°µÄËã·¨¡£
-
-ÓÐÊ±£¬±àÐ´µÃ²»ºÃµÄ·þÎñÆ÷¿ÉÄÜ»á
-ÔÚ×¼±¸½ÓÊÕµÄÁÐ±íÉÏÓÐ³¤¶ÈÏÞÖÆ£¬
-²¢ÇÒ½ö½öÒòÎªPuTTY¸øÁËËüÌ«¶àµÄÑ¡Ôñ¶ø¾Ü¾ø½¨Á¢Á¬½Ó¡£
-
-½â¾ö·½·¨ÊÇÆôÓÃ´Ë±êÖ¾£¬Õâ½«Ê¹ PuTTY µÈ´ý·¢ËÍ \cw{KEXINIT}£¬
-Ö±µ½Ëü´Ó·þÎñÆ÷ÊÕµ½¸Ã±êÖ¾£¬
-È»ºó¹ýÂË×Ô¼ºµÄ \cw{KEXINIT} ÒÔÊ¡ÂÔ·þÎñÆ÷
-²»Ðû²¼Ö§³ÖµÄÈÎºÎËã·¨¡£
-ÕâÍ¨³£»áÊ¹ PuTTY µÄ \cw{KEXINIT}
-×î¶à´ïµ½·þÎñÆ÷µÄ´óÐ¡£¬·ñÔò¶ÔËã·¨Ð­ÉÌÃ»ÓÐÈÎºÎÓ°Ïì¡£
-
-´Ë±êÖ¾ÇáÎ¢Î¥·´ÁËSSHÐ­Òé£¬
-ÒòÎªË«·½¶¼Ó¦¸ÃÖ÷¶¯·¢ËÍ\cw{KEXINIT}¡£
-Èç¹ûÒ»·½ÔÚ²»µÈ´ýµÄÇé¿öÏÂ·¢ËÍÆä\cw{KEXINIT}£¬
-ËüÈÔÈ»ÓÐÐ§£¬µ«ÊÇÈç¹û¿Í»§¶ËºÍ·þÎñÆ÷¶¼µÈ´ýÁíÒ»·½ÏÈËµ»°£¬
-ÔòÁ¬½Ó½«ËÀËø¡£ÎÒÃÇ²»ÖªµÀÓÐÈÎºÎ·þÎñÆ÷ÕâÑù×ö£¬
-µ«Èç¹ûÓÐµÄ»°£¬ÄÇÃ´Õâ¸ö±êÖ¾½«
-Ê¹PuTTY¸ù±¾ÎÞ·¨ÓëËûÃÇÍ¨Ñ¶¡£
-
-\S{config-ssh-bug-rsa-sha2-cert-userauth} \q{¾ÉµÄ RSA/SHA2 Ö¤Êé
-Ëã·¨ÃüÃû}
-
-Èç¹û PuTTY ³¢ÊÔÊ¹ÓÃ RSA ÃÜÔ¿Ö´ÐÐ SSH-2 ÓÃ»§Éí·ÝÑéÖ¤£¬
-²¢ÇÒ·þÎñÆ÷ÕýÔÚÊ¹ÓÃ»ùÓÚ SHA-2 µÄ½ÏÐÂ°æ±¾Ö®Ò»
-SSH RSAÐ­Òé£¬²¢ÇÒÓÃ»§µÄÃÜÔ¿Ò²ÊÇÖ¤Êé£¬ÄÇÃ´
-OpenSSHµÄÔçÆÚ°æ±¾£¨×î¸ß°æ±¾Îª7.7£©Óë¸ü¸ß°æ±¾²»Ò»ÖÂ
-¹ØÓÚÒª·¢ËÍµÄÕýÈ·¼üËã·¨×Ö·û´®
-\cw{SSH2_MSG_USERAUTH_REQUEST} Êý¾Ý°ü¡£ÏÖ´ú°æ±¾·¢ËÍ×Ö·û´®
-Ö¸Ê¾ SHA-2 ÐÔÖÊºÍÖ¤ÊéÐÔÖÊ
-¼ü£¬ÀýÈç \cq{rsa-sha2-512-cert-v01@openssh.com}¡£ÔçÆÚ°æ±¾
-»á¾Ü¾øÕâÒ»µã£¬²¢¼á³ÖÒª¿´µ½
-\cq{ssh-rsa-cert-v01@openssh.com}ºó¸ú»ùÓÚ SHA-2 µÄÇ©Ãû¡£
-
-PuTTYÓ¦¸Ã×Ô¶¯¼ì²âÔçÆÚOpenSSHÖÐÊÇ·ñ´æÔÚ´Ë´íÎó
-²¢µ÷ÕûÒÔ·¢ËÍÕýÈ·µÄ×Ö·û´®¡£
-
-\S{config-ssh-bug-sig} \q{ÐèÒª¶Ô SSH-2 \i{RSA} \i{Ç©Ãû}½øÐÐÌî³ä}
-
-\i{OpenSSH} 3.3 ÒÔÏÂµÄ°æ±¾ÒªÇó SSH-2 RSA Ç©Ãû
-ÓÃÁã×Ö½ÚÌî³äµ½Óë RSA ÃÜÔ¿Ä£ÊýÏàÍ¬µÄ³¤¶È¡£
-SSH-2 ¹æ·¶Ëµ±ØÐë½ÓÊÜÎ´Ìî³äµÄÇ©Ãû£¬
-ËùÒÔÕâÊÇÒ»¸ö´íÎó¡£ Õâ¸öÎÊÌâµÄÒ»¸öµäÐÍÖ¢×´ÊÇ£¬
-PuTTY Ã¿¸ô¼¸°Ù´Î³¢ÊÔ¾Í»áÉñÃØµØÊ§°Ü RSA Éí·ÝÑéÖ¤£¬
-È»ºó»ØÍËµ½ÃÜÂë¡£
-
-Èç¹û¼ì²âµ½´Ë´íÎó£¬PuTTY ½«ÒÔ OpenSSH Ô¤ÆÚµÄ·½Ê½Ìî³äÆäÇ©Ãû¡£
-Èç¹ûÔÚÓëÕýÈ·µÄ·þÎñÆ÷Í¨ÐÅÊ±ÆôÓÃÁË´Ë´íÎó£¬
-ÔòºÜ¿ÉÄÜ²»»áÔì³ÉÈÎºÎËðº¦£¬
-ÒòÎªÕýÈ·µÄ·þÎñÆ÷Í¨³£ÈÔ½ÓÊÜÌî³äÇ©Ãû£¬
-ÒòÎªËüÃÇÏ°¹ßÓÚÓë OpenSSH Í¨ÐÅ¡£
-
-ÕâÊÇÒ»¸öÌØ¶¨ÓÚ SSH-2 µÄ´íÎó¡£
-
-\S{config-ssh-bug-oldgex2} \q{½öÖ§³Ö pre-RFC4419 SSH-2 DH GEX}
-
-Ê¹ÓÃ Diffie-Hellman group exchange µÄ SSH ÃÜÔ¿½»»»·½
-·¨ÔÚÆäÔ­Ê¼°æ±¾Ö®ºó½øÐÐÁËÖØÐÂÉè¼Æ£¬
-ÒÔÊ¹ÓÃÉÔÎ¢¸´ÔÓµÄÉèÖÃÏûÏ¢¡£
-¼¸ºõËùÓÐµÄ SSH ÊµÏÖ¶¼ÇÐ»»µ½ÁËÐÂ°æ±¾¡£ £¨PuTTY ÊÇ×îºóÒ»¸ö¡££©
-Ò»Ð©¾É·þÎñÆ÷ÈÔÈ»Ö»Ö§³Ö¾É·þÎñÆ÷¡£
-
-Èç¹û¼ì²âµ½´Ë´íÎó£¬²¢ÇÒ¿Í»§¶ËºÍ·þÎñÆ÷Ð­ÉÌ Diffie-Hellman ×é½»»»£¬
-ÄÇÃ´ PuTTY ½«·¢ËÍÏÖÔÚ³Æ
-Îª \cw{SSH2_MSG_KEX_DH_GEX_REQUEST_OLD} µÄ¾É
-ÏûÏ¢À´´úÌæÐÂµÄ \cw{SSH2_MSG_KEX_DH_GEX_REQUEST}¡£
-
-ÕâÊÇÒ»¸öÌØ¶¨ÓÚ SSH-2 µÄ´íÎó¡£
-
-\S{config-ssh-bug-hmac2} \q{´íÎó¼ÆËã SSH-2 HMAC ÃÜÔ¿}
-
-\q{ÔÚÊý¾Ý°üÖÐÊÕµ½´íÎóµÄ MAC}.
-À´×Ô \cw{ssh.com} µÄ SSH ·þÎñÆ÷Èí
-¼þ 2.3.0 ¼°ÒÔÏÂ°æ±¾´íÎóµØ¼ÆËãÁËÆä \i{HMAC} \i{ÏûÏ¢Éí·ÝÑéÖ¤´úÂë}µÄÃÜÔ¿¡£
-´ËÎÊÌâµÄµäÐÍÖ¢×´ÊÇ PuTTY ÔÚ»á»°¿ªÊ¼Ê±ÒâÍâËÀÍö£¬
-²¢ÏÔÊ¾\q{ÔÚÊý¾Ý°üÖÐÊÕµ½´íÎóµÄ MAC}¡£
-
-Èç¹û¼ì²âµ½´Ë´íÎó£¬PuTTY ½«°´ÕÕÓë´í
-Îó·þÎñÆ÷ÏàÍ¬µÄ·½Ê½¼ÆËãÆä HMAC ÃÜÔ¿£¬
-Òò´ËÈÔÈ»¿ÉÒÔ½øÐÐÍ¨ÐÅ¡£
-Èç¹ûÔÚÓëÕýÈ·µÄ·þÎñÆ÷Í¨ÐÅÊ±ÆôÓÃÁË´Ë´íÎó£¬ÔòÍ¨ÐÅ½«Ê§°Ü¡£
-
-ÕâÊÇÒ»¸öÌØ¶¨ÓÚ SSH-2 µÄ´íÎó¡£
-
-\S{config-ssh-bug-pksessid2} \q{ÀÄÓÃSSH-2 PK Éí·ÝÑéÖ¤ÖÐµÄ\i{»á»° ID}}
-
-\i{OpenSSH} 2.3 ÒÔÏÂµÄ°æ±¾ÒªÇó SSH-2 \i{¹«Ô¿ÈÏÖ¤}µÄ·½Ê½ÂÔÓÐ²»Í¬£º
-¿Í»§¶ËÒªÇ©ÃûµÄÊý¾Ý°üº¬ÒÔ
-²»Í¬·½Ê½¸ñÊ½»¯µÄ»á»° ID¡£
-Èç¹û¹«Ô¿Éí·ÝÑéÖ¤ÉñÃØµØ²»Æð×÷ÓÃ£¬
-µ«ÊÂ¼þÈÕÖ¾£¨Çë²ÎÔÄ \k{using-eventlog}£©ÈÏÎªËüÒÑ³É¹¦·¢ËÍÇ©Ãû£¬
-Ôò¿ÉÄÜÖµµÃÆôÓÃ´Ë´íÎóµÄ½â
-¾ö·½·¨ÒÔ²é¿´ËüÊÇ·ñÓÐ°ïÖú¡£
-
-Èç¹û¼ì²âµ½´Ë´íÎó£¬PuTTY ½«ÒÔ OpenSSH Ô¤ÆÚµÄ·½Ê½¶ÔÊý¾Ý½øÐÐÇ©Ãû¡£
-Èç¹ûÔÚÓëÕýÈ·µÄ·þÎñÆ÷Í¨ÐÅÊ±ÆôÓÃÁË´Ë´íÎó£¬
-Ôò SSH-2 ¹«Ô¿Éí·ÝÑéÖ¤½«Ê§°Ü¡£
-
-ÕâÊÇÒ»¸öÌØ¶¨ÓÚ SSH-2 µÄ´íÎó¡£
-
-\S{config-ssh-bug-derivekey2} \q{´íÎó¼ÆËã SSH-2 \i{¼ÓÃÜ}ÃÜÔ¿}
-
-À´×Ô \i\cw{ssh.com} µÄ SSH ·þÎñÆ÷Èí¼þ 2.0.11
-ÒÔÏÂµÄ°æ±¾¼ÆËã»á»°¼ÓÃÜµÄÃÜÔ¿²»ÕýÈ·¡£
-´ËÎÊÌâ¿ÉÄÜ»áµ¼ÖÂ¸÷ÖÖ´íÎóÏûÏ¢£¬
-ÀýÈç\q{´«ÈëµÄÊý¾Ý°üÔÚ½âÃÜÊ±³öÏÖÂÒÂë}£¬ÉõÖÁ¿ÉÄÜÊÇ\q{ÄÚ´æ²»×ã}¡£
-
-Èç¹û¼ì²âµ½´Ë´íÎó£¬PuTTY ½«°´ÕÕÓë´íÎó·þÎñ
-Æ÷ÏàÍ¬µÄ·½Ê½¼ÆËãÆä¼ÓÃÜÃÜÔ¿£¬
-Òò´ËÈÔÈ»¿ÉÒÔ½øÐÐÍ¨ÐÅ¡£ Èç¹ûÔÚÓëÕýÈ·µÄ·þÎñÆ÷Í¨ÐÅÊ±ÆôÓÃÁË´Ë´íÎó£¬
-ÔòÍ¨ÐÅ½«Ê§°Ü¡£
-
-ÕâÊÇÒ»¸öÌØ¶¨ÓÚ SSH-2 µÄ´íÎó¡£
-
-\S{config-ssh-bug-ignore1} \q{×èÈûSSH-1µÄ\i{ºöÂÔÏûÏ¢}}
-
-ºöÂÔÏûÏ¢ (SSH_MSG_IGNORE) ÊÇ SSH Ð­ÒéÖÐµÄÏûÏ¢£¬
-¿ÉÒÔËæÊ±´Ó¿Í»§¶Ë·¢ËÍµ½·þÎñÆ÷£¬
-»ò´Ó·þÎñÆ÷·¢ËÍµ½¿Í»§¶Ë¡£
-ÈÎºÎÒ»·½¶¼±ØÐëÔÚÊÕµ½ÏûÏ¢Ê±ºöÂÔ¸ÃÏûÏ¢¡£
-PuTTY Ê¹ÓÃºöÂÔÏûÏ¢½«\I{password camouflage}ÃÜÂë°üÒþ²ØÔÚ SSH-1 ÖÐ£¬
-Ê¹¼àÌýÆ÷ÎÞ·¨µÃÖªÓÃ»§ÃÜÂëµÄ³¤¶È£»
-Ëü»¹¶ÔÁ¬½Ó±£³Ö\i{keepalives}»î
-¶¯Ê¹ÓÃºöÂÔÏûÏ¢£¨²Î¼û \k{config-keepalive}£©¡£
-
-Èç¹û¼ì²âµ½´Ë´íÎó£¬PuTTY ½«Í£Ö¹Ê¹ÓÃºöÂÔÏûÏ¢¡£
-ÕâÒâÎ¶×Å keepalives ½«Í£Ö¹¹¤×÷£¬PuTTY ½«²»µÃ²»ÍË»Øµ½Õë¶Ô SSH-1
-ÃÜÂë³¤¶ÈÇÔÌýµÄ¶þ¼¶·ÀÓù¡£
-Çë²Î¼û \k{config-ssh-bug-plainpw1}¡£
-Èç¹ûÔÚÓëÕýÈ·µÄ·þÎñÆ÷Í¨ÐÅÊ±ÆôÓÃÁË´Ë´íÎó£¬
-Ôò»á»°½«³É¹¦£¬µ« keepalives ½«²»Æð×÷ÓÃ£¬
-²¢ÇÒ»á»°¿ÉÄÜ¸üÈÝÒ×ÊÜµ½ÇÔÌýÕßµÄ¹¥»÷¡£
-
-\S{config-ssh-bug-plainpw1} \q{¾Ü¾øËùÓÐ SSH-1\i{ÃÜÂëÎ±×°}}
-
-µ±ÓëÎÞ·¨´¦ÀíºöÂÔÏûÏ¢µÄ SSH-1 ·þÎñÆ÷Í¨ÐÅ
-Ê±£¨²Î¼û \k{config-ssh-bug-ignore1}£©£¬
-PuTTY½«³¢ÊÔÍ¨¹ýÔÚÃÜÂë°üÖÐ·¢ËÍ¶îÍâµÄÌî³äÀ´Î±×°ÓÃ»§ÃÜÂëµÄ³¤¶È¡£
-Õâ\e{ÔÚ}¼¼ÊõÉÏÎ¥·´ÁË SSH-1 ¹æ·¶£¬Òò´Ë PuTTY
-Ö»»áÔÚËü²»ÄÜÊ¹ÓÃ·ûºÏ±ê×¼µÄºöÂÔÏûÏ¢×÷ÎªÎ±×°Ê±²Å»áÕâÑù×ö¡£
-´ÓÕâ¸öÒâÒåÉÏËµ£¬
-·þÎñÆ÷¾Ü¾ø½ÓÊÜÌî³äÃÜÂë°ü²¢²»ÊÇÒ»¸öÕæÕýµÄ´íÎó£¬
-µ«Èç¹û·þÎñÆ÷Ò²²»ÄÜ´¦ÀíºöÂÔÏûÏ¢£¬
-ËüÈ·Êµ»á¸øÉú»î´øÀ´²»±ã¡£
-
-Èç¹û¼ì²âµ½Õâ¸ö\q{´íÎó}£¬
-PuTTY ½«¼Ù¶¨ºöÂÔÏûÏ¢ºÍÌî³ä¶¼ÊÇ²»¿É½ÓÊÜµÄ£¬
-Òò´ËËü±ðÎÞÑ¡Ôñ£¬
-Ö»ÄÜ·¢ËÍ²»¼ÓÑÚÊÎµÄÓÃ»§ÃÜÂë£¬
-ÒÔ±ãÇÔÌýÓÃ»§ºÜÈÝÒ×ÕÒµ½³öÃÜÂëµÄÈ·ÇÐ³¤¶È¡£
-Èç¹ûÔÚÓëÕýÈ·µÄ·þÎñÆ÷Í¨ÐÅÊ±ÆôÓÃÁË´Ë´íÎó£¬
-Ôò»á»°½«³É¹¦£¬µ«¸üÈÝÒ×ÊÜµ½ÇÔÌýÕßµÄ¹¥»÷¡£
-
-ÕâÊÇÒ»¸öÌØ¶¨ÓÚ SSH-1 µÄ´íÎó¡£
-SSH-2 ¶ÔÕâÖÖÀàÐÍµÄ¹¥»÷ÊÇ°²È«µÄ
-
-\S{config-ssh-bug-rsa1} \q{×èÈûSSH-1 \i{RSA}ÈÏÖ¤}
-
-Ò»Ð© SSH-1 ·þÎñÆ÷¸ù±¾ÎÞ·¨´¦Àí RSA Éí·ÝÑéÖ¤ÏûÏ¢¡£
-Èç¹û \i{Pageant}  ÕýÔÚÔËÐÐ²¢ÇÒ°üº¬ÈÎºÎ SSH-1 ÃÜÔ¿£¬
-PuTTY Í¨³£»áÔÚ»ØÍËµ½ÃÜÂëÖ®Ç°×Ô¶¯³¢ÊÔ RSA Éí·ÝÑéÖ¤£¬
-Òò´ËÕâÐ©·þÎñÆ÷ÔÚ¿´µ½ RSA ³¢ÊÔÊ±»á±ÀÀ£¡£
-
-Èç¹û¼ì²âµ½´Ë´íÎó£¬
-PuTTY ½«Ö±½Ó½øÐÐÃÜÂëÑéÖ¤¡£
-Èç¹ûÔÚÓëÕýÈ·µÄ·þÎñÆ÷Í¨ÐÅÊ±ÆôÓÃ´Ë´íÎó£¬
-»á»°½«³É¹¦£¬µ«µ±È» RSA Éí·ÝÑéÖ¤½«ÊÇ²»¿ÉÄÜµÄ¡£
-
-ÕâÊÇÒ»¸öÌØ¶¨ÓÚ SSH-1 µÄ´íÎó¡£
-
-\H{config-psusan} \q{Bare \cw{\i{ssh-connection}}} Ð­Òé
-
-³ýÁË SSH ±¾Éí£¬PuTTY »¹Ö§
-³Ö´Ó SSH ÅÉÉúµÄµÚ¶þÖÖÐ­Òé¡£
-ËüÔÚ PuTTY GUI ÖÐÒÔ\q{Bare \cw{ssh-connection}}µÄÃû³ÆÁÐ³ö¡£
-
-¸ÃÐ­Òé½öÓÉ SSH-2 µÄÈý²ãÖÐµÄ×îÀïÃæ×é³É£º
-ËüÊ¡ÂÔÁËÌá¹©ÍøÂç°²È«µÄ¼ÓÃÜ²ã£¬
-²¢ÇÒÊ¡ÂÔÁËÄúÌá¹©ÓÃ»§Ãû²¢Ö¤Ã÷Äú¿É
-ÒÔÒÔ¸ÃÓÃ»§Éí·ÝµÇÂ¼µÄÉí·ÝÑéÖ¤²ã¡£
-
-Òò´Ë£¬\s{ËüÍêÈ«²»ÊÊºÏÈÎºÎÍøÂçÁ¬½Ó}¡£
-²»ÒªÊÔÍ¼Í¨¹ýÍøÂçÊ¹ÓÃËü£¡
-
-¸ÃÐ­ÒéµÄÄ¿µÄÊÇÕë¶Ô¸÷ÖÖÌØÊâÇé¿ö£¬
-ÆäÖÐ\q{Á¬½Ó} ²»ÊÇÍ¨¹ýÕæÊµÍøÂç£¬
-¶øÊÇÔÚÍ¬Ò»Ì¨¼ÆËã»úÉÏÔËÐÐµÄ²»Í¬½ø
-³ÌÖ®¼äµÄ¹ÜµÀ»ò IPC Í¨µÀ¡£
-ÔÚÕâÐ©Çé¿öÏÂ£¬²Ù×÷ÏµÍ³ÒÑ¾­±£Ö¤Á½¸öÍ¨ÐÅ½ø³ÌÖÐ
-µÄÃ¿Ò»¸ö¶¼ÓÉÔ¤ÆÚÓÃ»§ÓµÓÐ£¨Òò´Ë²»ÐèÒªÉí·ÝÑéÖ¤£©£¬
-²¢ÇÒÍ¨ÐÅÍ¨µÀ²»ÄÜ±»Í¬Ò»Ì¨»úÆ÷ÉÏ
-µÄµÐ¶ÔÓÃ»§ÇÔÌý£¨Òò´ËÒ²²»ÐèÒª¼ÓÃÜ£©¡£
-¿ÉÄÜÊ¹ÓÃµÄÊ¾ÀýÉæ¼°Óë¸ß¶È
-·ÖÀëµÄÉÏÏÂÎÄ½øÐÐÍ¨ÐÅ£¬
-ÀýÈçÈÝÆ÷ÄÚ²¿¡¢VM »ò²»Í¬µÄÍøÂçÃüÃû¿Õ¼ä¡£
-
-PuTTY 0.75 ÖÐÐÂÔöÁË¶Ô¸ÃÐ­ÒéµÄÏÔÊ½Ö§³Ö¡£
-½ØÖÁ 2021 Äê 4 ÔÂ£¬Î¨Ò»ÒÑÖª
-µÄ\cw{ssh-connection}Ð­Òé·þÎñÆ÷
-ÊÇ Unix ³ÌÐò\cq{\i{psusan}}£¬ËüÒ²ÊÇ PuTTY ¹¤¾ßÌ×¼þµÄÒ»²¿·Ö¡£
-
-£¨²»¹ý£¬Õâ¸öÐ­ÒéÒ²ÊÇ PuTTY ÊµÀýÖ®¼äÓÃÀ´ÊµÏÖÁ¬½Ó¹²Ïí
-µÄÐ­Òé£ºÇë²ÎÔÄ \k{config-ssh-sharing}¡£
-ÊÂÊµÉÏ£¬ÔÚ Unix °æ±¾µÄ PuTTY ÖÐ£¬
-µ±¹²ÏíÉÏÓÎÔÚÊÂ¼þÈÕÖ¾ÖÐ¼ÇÂ¼\q{ÔÚ [pathname] ¹²Ïí´ËÁ¬½Ó} Ê±£¬
-¿ÉÒÔÍ¨¹ýÔÚÖ÷»úÖÐÊäÈëÆäÂ·¾¶Ãû½«ÁíÒ»¸ö
-PuTTY ÊµÀýÖ±½ÓÁ¬½Óµ½¸Ã Unix Ì×½Ó×Ö
-Ãû³Æ¿ò²¢Ñ¡Ôñ\q{Bare \cw{ssh-connection}} ×÷ÎªÐ­Òé£¡£©
-
-SSH Ãæ°åÏÂµÄÐí¶àÑ¡ÏîÒ²»áÓ°Ïì´ËÐ­Òé£¬
-¾¡¹Ü³öÓÚÏÔ¶øÒ×¼ûµÄÔ­Òò£¬
-Óë¼ÓÃÜºÍÉí·ÝÑéÖ¤ÓÐ¹ØµÄÑ¡Ïî²»»á¡£
-
-ÎÒÔÙËµÒ»±é£¬\s{²»Òª³¢ÊÔ½«´ËÐ­ÒéÓÃÓÚÍøÂçÁ¬½Ó£¡} Õâ²»ÊÇËüµÄÓÃÍ¾£¬
-¶øÇÒÕâÑù×öÒ»µãÒ²²»°²È«¡£
-
-\H{config-serial} ´®¿ÚÃæ°å
-
-\i{´®¿Ú}Ãæ°åÔÊÐíÄúÅäÖÃ½öÔÚ
-PuTTY Á¬½Óµ½±¾µØ\I{serial port}\i{´®ÐÐÏß}Â·Ê±ÊÊÓÃµÄÑ¡Ïî¡£
-
-\S{config-serial-line} Ñ¡ÔñÒªÁ¬½ÓµÄ´®¿Ú
-
-Èç¹ûÄúµÄ¼ÆËã»úÓÐ¶à¸ö´®ÐÐ¶Ë¿Ú£¬
-\q{ÒªÁ¬½ÓµÄ´®ÐÐÏß}¿òÔÊÐíÄúÑ¡
-ÔñÏ£Íû PuTTY ÓëÖ®Í¨ÐÅµÄ´®ÐÐÏß¡£
-
-ÔÚ Windows ÉÏ£¬µÚÒ»Ìõ´®ÐÐÏß³ÆÎª \i\cw{COM1}£¬
-Èç¹ûÓÐµÚ¶þÌõ£¬Ôò³ÆÎª \cw{COM2}£¬ÒÀ´ËÀàÍÆ¡£
-
-´ËÅäÖÃÉèÖÃÔÚ»á»°Ãæ°åÉÏÒ²¿É¼û£¬
-Èç¹ûÁ¬½ÓÀàÐÍÉèÖÃÎª\q{´®¿Ú}£¬
-Ëü½«Ìæ»»\q{Ö÷»úÃû}¿ò£¨Çë²ÎÔÄ \k{config-hostname}£©¡£
-
-\S{config-serial-speed} Ñ¡Ôñ´®¿ÚµÄËÙ¶È
-
-\q{ËÙ¶È}¿òÔÊÐíÄúÑ¡ÔñÓë´®ÐÐÏßÂ·Í¨
-ÐÅµÄËÙ¶È£¨»ò\q{²¨ÌØÂÊ}£©¡£
-µäÐÍÖµ¿ÉÄÜÊÇ 9600¡¢19200¡¢38400 »ò 57600¡£
-ÄúÐèÒªÄÄÒ»¸öÈ¡¾öÓÚ´®ÐÐµçÀÂÁíÒ»¶ËµÄÉè±¸£» Èç¹ûÄúÓÐÒÉÎÊ£¬
-Çë²éÔÄ¸ÃÉè±¸µÄÊÖ²á¡£
-
-´ËÅäÖÃÉèÖÃÔÚ»á»°Ãæ°åÉÏÒ²¿É¼û£¬
-Èç¹ûÁ¬½ÓÀàÐÍÉèÖÃÎª\q{´®¿Ú}£¬
-Ëü½«Ìæ»»\q{¶Ë¿Ú}¿ò£¨Çë²ÎÔÄ \k{config-hostname}£©¡£
-
-\S{config-serial-databits} Ñ¡ÔñÊý¾ÝÎ»Êý
-
-\q{Êý¾ÝÎ»} ¿òÔÊÐíÄúÑ¡ÔñÔÚÍ¨¹ý´®ÐÐÏß
-·¢ËÍ»ò½ÓÊÕµÄÃ¿¸ö×Ö½ÚÖÐ´«Êä¶àÉÙÊý¾ÝÎ»¡£
-µäÐÍÖµÎª 7 »ò 8¡£
-
-\S{config-serial-stopbits} Ñ¡ÔñÍ£Ö¹Î»Êý
-
-\q{Í£Ö¹Î»} ¿òÔÊÐíÄúÑ¡ÔñÔÚ´®ÐÐÏß
-Â·Ð­ÒéÖÐÊ¹ÓÃ¶àÉÙÍ£Ö¹Î»¡£ µäÐÍÖµÎª 1¡¢1.5 »ò 2¡£
-
-\S{config-serial-parity} Ñ¡Ôñ´®¿ÚÆæÅ¼Ð£Ñé·½°¸
-
-\q{ÆæÅ¼Ð£Ñé}¿òÔÊÐíÄúÑ¡Ôñ´®ÐÐÏßÂ·ÉÏÊ¹ÓÃµÄÆæÅ¼Ð£ÑéÀàÐÍ¡£
-ÉèÖÃÈçÏÂ£º
-
-\b \q{ÔÝÎÞ}: ¸ù±¾Ã»ÓÐ·¢ËÍÆæÅ¼Ð£ÑéÎ»¡£
-
-\b \q{Odd}: Ò»¸ö¶îÍâµÄÆæÅ¼Ð£ÑéÎ»ÓëÃ¿¸ö×Ö½ÚÒ»Æð·¢ËÍ£¬
-²¢°²ÅÅÎªÊ¹ 1 Î»µÄ×ÜÊýÎªÆæÊý¡£
-
-\b \q{Even}: Ò»¸ö¶îÍâµÄÆæÅ¼Ð£ÑéÎ»ÓëÃ¿¸ö×Ö½ÚÒ»Æð·¢ËÍ£¬
-²¢°²ÅÅÎªÊ¹ 1 Î»µÄ×ÜÊýÎªÅ¼Êý¡£
-
-\b \q{Mark}: Ò»¸ö¶îÍâµÄÆæÅ¼Ð£ÑéÎ»ÓëÃ¿¸ö×Ö½ÚÒ»Æð·¢ËÍ£¬
-²¢ÇÒÊ¼ÖÕÉèÖÃÎª 1¡£
-
-\b \q{Space}: Ò»¸ö¶îÍâµÄÆæÅ¼Ð£ÑéÎ»ÓëÃ¿¸ö×Ö½ÚÒ»Æð·¢ËÍ£¬
-²¢ÇÒÊ¼ÖÕÉèÖÃÎª 0¡£
-
-\S{config-serial-flow} Ñ¡Ôñ´®¿ÚÁ÷¿Ø·½°¸
-
-\q{Á÷¿ØÖÆ}¿òÔÊÐíÄúÑ¡ÔñÔÚ´®ÐÐÏßÂ·ÉÏÊ¹ÓÃÄÄÖÖÀàÐÍµÄÁ÷¿ØÖÆ¼ì²é¡£
-ÉèÖÃÈçÏÂ£º
-
-\b \q{ÔÝÎÞ}: Ã»ÓÐ½øÐÐÁ÷Á¿¿ØÖÆ¡£ Èç¹ûÈÎºÎÒ»·½³¢ÊÔ·¢ËÍµÄËÙ¶È³¬¹ý´®ÐÐÏßÂ·ÔÊÐíµÄËÙ¶È£¬
-ÔòÊý¾Ý¿ÉÄÜ»á¶ªÊ§¡£
-
-\b \q{XON/XOFF}: Á÷Á¿¿ØÖÆÊÇÍ¨¹ýÔÚÊý¾ÝÁ÷ÖÐ
-·¢ËÍ XON ºÍ XOFF ×Ö·ûÀ´Íê³ÉµÄ¡£
-
-\b \q{RTS/CTS}: Á÷Á¿¿ØÖÆÊÇÊ¹ÓÃ´®ÐÐÏßÂ·
-ÉÏµÄ RTS ºÍ CTS ÏßÍê³ÉµÄ¡£
-
-\b \q{DSR/DTR}: Á÷Á¿¿ØÖÆÊÇÊ¹ÓÃ´®ÐÐÏßÂ·
-ÉÏµÄ DSR ºÍ DTR ÏßÍê³ÉµÄ¡£
-
-\H{config-telnet} \i{Telnet} Ãæ°å
-
-Telnet Ãæ°åÔÊÐíÄúÅäÖÃ½öÊÊ
-ÓÃÓÚ Telnet »á»°µÄÑ¡Ïî¡£
-
-\S{config-oldenviron} \q{´¦Àí OLD_ENVIRON ÆçÒå}
-
-ÓÃÓÚ´«µÝ\i{»·¾³±äÁ¿}µÄÔ­Ê¼ Telnet »úÖÆ±»´íÎóµØÖ¸¶¨¡£
-ÔÚ±àÐ´±ê×¼ (RFC 1408) Ê±£¬
-BSD telnet ÊµÏÖÒÑ¾­Ö§³Ö¸Ã¹¦ÄÜ£¬
-¸Ã±ê×¼µÄÄ¿µÄÊÇÃè
-Êö BSD ÊµÏÖÒÑ¾­Ê¹ÓÃµÄÐÐÎª¡£
-
-ÒÅº¶µÄÊÇ£¬¸Ã±ê×¼ÔÚ·¢²¼Ê±³öÏÖÁË´ò×Ö´íÎó£¬
-²¢ÇÒÁ½¸öÖØÒªµÄ¹¦ÄÜ´úÂë±»´íÎóµØÖ¸¶¨ÁË¡£
-BSD ÊµÏÖÃ»ÓÐ¸Ä±ä£¬±ê×¼Ò²Ã»ÓÐ¸üÕý¡£
-Òò´Ë£¬Äú¿ÉÄÜ»áÔÚÄÇÀïÕÒµ½·û
-ºÏ \i{BSD} »ò \i{RFC} µÄÊµÏÖ¡£
-´Ë¿ª¹ØÔÊÐíÄúÑ¡ÔñÄÄ¸ö PuTTY Éù³ÆÊÇ¡£
-
-Í¨¹ý·¢²¼µÚ¶þ¸ö±ê×¼½â¾öÁËÕâ¸öÎÊÌâ£¬
-¶¨ÒåÁËÒ»¸öÃûÎª \i\cw{NEW_ENVIRON} µÄÐÂ Telnet »úÖÆ£¬
-ÆäÐÐÎªÓëÔ­Ê¼ \i\cw{OLD_ENVIRON} ÍêÈ«ÏàÍ¬£¬µ«²»ÊÜÏÖÓÐÊµÏÖµÄ×è°­¡£
-´ó¶àÊý Telnet ·þÎñÆ÷ÏÖÔÚ¶¼Ö§³ÖÕâÒ»µã£¬
-¶øÇÒËüÊÇÃ÷È·µÄ¡£½öµ±ÄúÎÞ·¨½«»·¾³±äÁ¿´«
-µÝ¸øÏàµ±¾ÉµÄ·þÎñÆ÷Ê±²ÅÐèÒª´Ë¹¦ÄÜ¡£
-
-\S{config-ptelnet} ±»¶¯ºÍÖ÷¶¯ \i{Telnet Ð­ÉÌ}Ä£Ê½
-
-ÔÚ Telnet Á¬½ÓÖÐ£¬¿Í»§¶ËºÍ·þÎñÆ÷Ö®¼ä´«µÝÁËÁ½ÖÖÀà
-ÐÍµÄÊý¾Ý£ºÊµ¼ÊÎÄ±¾£¬ÒÔ¼°¹ØÓÚÊ¹ÓÃ
-ÄÄÐ© Telnet ¶îÍâ¹¦ÄÜµÄ\e{Ð­ÉÌ}¡£
-
-PuTTY ¿ÉÒÔÊ¹ÓÃÁ½ÖÖ²»Í¬µÄÐ­ÉÌ²ßÂÔ£º
-
-\b \I{active Telnet negotiation}ÔÚ\e{Ö÷¶¯}Ä£Ê½ÏÂ£¬
-PuTTY »áÔÚÁ¬½Ó´ò¿ªºóÁ¢¼´¿ªÊ¼·¢ËÍÐ­ÉÌ¡£
-
-\b \I{passive Telnet negotiation}ÔÚ\e{±»¶¯}Ä£Ê½ÏÂ£¬
-PuTTY ½«µÈ´ýÐ­ÉÌ£¬Ö±µ½Ëü¿´µ½À´×Ô·þÎñÆ÷µÄÐ­ÉÌ
-
-±»¶¯Ä£Ê½µÄÃ÷ÏÔÈ±µãÊÇ£¬Èç¹û·þÎñÆ÷Ò²ÔÚ±»¶¯Ä£Ê½ÏÂÔËÐÐ£¬
-ÄÇÃ´Ð­ÉÌ½«ÓÀÔ¶²»»á¿ªÊ¼¡£
-Òò´Ë£¬PuTTY Ä¬ÈÏÎª»î¶¯Ä£Ê½¡£
-
-µ«ÊÇ£¬ÓÐÊ±ÐèÒª±»¶¯Ä£Ê½²ÅÄÜ³É¹¦Í¨¹ýÄ³Ð©Àà
-ÐÍµÄ\i{·À»ðÇ½}ºÍ\i{Telnet proxy}·þÎñÆ÷¡£
-Èç¹ûÄú¶Ô·À»ðÇ½¸Ðµ½À§»ó£¬
-Äú¿ÉÒÔ³¢ÊÔÆôÓÃ±»¶¯Ä£Ê½ÒÔ²é¿´ËüÊÇ·ñÓÐ°ïÖú¡£
-
-\S{config-telnetkey} \q{¼üÅÌ·¢ËÍ \i{Telnet ÌØÊâÃüÁî}}
-
-Èç¹ûÑ¡ÖÐ´Ë¿ò£¬Ôò»áÐÞ¸Ä¼¸
-¸ö¼üÐòÁÐµÄÕý³£²Ù×÷£º
-
-\b ¼üÅÌÉÏµÄBackspaceÍË¸ñ¼ü½«\I{Erase Character,
-Telnet special command}·¢ËÍ Telnet ÌØÊâÍË¸ñÂë£»
-
-\b Control-C ½«\I{Interrupt Process, Telnet
-special command}·¢ËÍ Telnet ÌØÊâÖÐ¶Ï½ø³Ì´úÂë£»
-
-\b Control-Z ½«\I{Suspend Process, Telnet
-special command}·¢ËÍ Telnet ÌØÊâµÄÔÝÍ£½ø³Ì´úÂë¡£
-
-³ý·ÇÄúÖªµÀ×Ô¼ºÔÚ×öÊ²Ã´£¬
-·ñÔòÄú¿ÉÄÜ²»Ó¦¸ÃÆôÓÃ´Ë¹¦ÄÜ¡£
-
-\S{config-telnetnl} \q{Return(»Ø³µ)¼ü·¢ËÍ\i{Telnet ÐÂÐÐ}´úÂë¶ø²»ÊÇ ^M¡¯}
-
-Óë´ó¶àÊýÆäËûÔ¶³ÌµÇÂ¼Ð­Òé²»Í¬£¬Telnet Ð­ÒéÓÐÒ»¸öÌØÊâµÄ\q{\i{»»ÐÐ}}´úÂë£¬
-ÓëÍ¨³£µÄ Control-M »ò Control-J ÐÐ½áÎ²²»Í¬¡£
-Ä¬ÈÏÇé¿öÏÂ£¬µ±Äú°´ Return Ê±£¬
-PuTTY »á·¢ËÍ Telnet ÐÂÐÐ´úÂë£¬
-¶ø²»ÊÇÏñÔÚ´ó¶àÊýÆäËûÐ­ÒéÖÐÄÇÑù·¢ËÍ Control-M¡£
-
-´ó¶àÊý Unix ·ç¸ñµÄ Telnet ·þÎñÆ÷²»½éÒâ½Ó
-ÊÕ Telnet New Line »¹ÊÇ Control-M¡£
-ÓÐÐ©·þÎñÆ÷È·ÊµÆÚ´ýÐÂÏß£¬ÓÐÐ©·þÎñÆ÷¸üÏ²»¶¿´µ½^M¡£
-Èç¹ûÄúÔÚ Telnet »á»°ÖÐ°´ Return Ê±¿´µ½ÁîÈË¾ªÑÈµÄÐÐÎª£¬
-Äú¿ÉÒÔ³¢ÊÔ¹Ø±Õ´ËÑ¡ÏîÒÔ²é¿´ÊÇ·ñÓÐ°ïÖú¡£
-
-\H{config-rlogin} Rlogin Ãæ°å
-
-\i{Rlogin} Ãæ°åÔÊÐíÄúÅäÖÃ½öÊÊÓÃ
-ÓÚ Rlogin »á»°µÄÑ¡Ïî¡£
-
-\S{config-rlogin-localuser} \I{local username in Rlogin}\q{±¾µØÓÃ»§Ãû}
-
-Rlogin ÔÊÐíÍ¨¹ý·þÎñÆ÷ÉÏÃûÎª \i\c{.rhosts} µÄÎÄ¼þ½øÐÐ×Ô¶¯£¨ÎÞÃÜÂë£©µÇÂ¼ÐÎÊ½¡£
-ÄãÔÚÄãµÄ \c{.rhosts} ÎÄ¼þÖÐÐ´ÏÂ
-ÀàËÆ \c{jbloggs@pc1.example.com} µÄÒ»ÐÐ£¬
-È»ºóµ±Äã½¨Á¢Ò»¸ö Rlogin Á¬½ÓÊ±£¬
-¿Í»§¶Ë»á´«ÊäÔËÐÐ Rlogin ¿Í»§¶ËµÄÓÃ»§µÄÓÃ»§Ãû¡£
-·þÎñÆ÷¸ù¾Ý \c{.rhosts} ¼ì²éÓÃ»§ÃûºÍÖ÷»úÃû£¬
-Èç¹ûËüÃÇÆ¥Åä£¬Ëü²»»áÒªÇó\I{passwordless login}ÊäÈëÃÜÂë¡£
-
-ÕâÖ»ÊÊÓÃÓÚ Unix ÏµÍ³°üº¬×èÖ¹ÓÃ»§ÔÚ Rlogin Á¬½ÓÖÐÎ±×°³ÉÁíÒ»¸öÓÃ»§µÄ±£»¤´ëÊ©¡£
-Rlogin Á¬½Ó±ØÐëÀ´×Ô
-µÍÓÚ 1024 µÄ\I{privileged port}¶Ë¿ÚºÅ£¬
-Unix ÏµÍ³½ûÖ¹·ÇÌØÈ¨½ø³ÌÕâÑù×ö£»Òò´Ë£¬
-µ±·þÎñÆ÷¿´µ½À´×ÔµÍ±àºÅ¶Ë¿ÚµÄÁ¬½ÓÊ±£¬
-Ëü¼Ù¶¨Á¬½ÓµÄ¿Í»§¶ËÓÉÌØÈ¨£¨Òò´ËÊÜÐÅÈÎ£©½ø³Ì³ÖÓÐ£¬
-Òò´ËËüÏàÐÅÓÃ»§ÊÇË­µÄÉùÃ÷¡£
-
-Ã»ÓÐ´ËÏÞÖÆ£ºÈÎºÎÓÃ»§¶¼¿ÉÒÔ´ÓµÍ±àºÅ¶Ë¿Ú·¢Æð´«³öÁ¬½Ó¡£
-Òò´Ë£¬Rlogin \c{.rhosts} »úÖÆ¶ÔÓÚ°²È«Çø·Ö Windows
-»úÆ÷ÉÏµÄ¼¸¸ö²»Í¬ÓÃ»§ÊÇÍêÈ«Ã»ÓÐÓÃµÄ¡£
-Èç¹ûÄúÓÐÒ»¸öÖ¸Ïò Windows PC µÄ \c{.rhosts} ÌõÄ¿£¬
-ÄúÓ¦¸Ã¼ÙÉèÊ¹ÓÃ¸Ã PC µÄ\e{ÈÎºÎÈË}¶¼¿ÉÒÔÔÚ Rlogin
-Á¬½ÓÖÐ\i{ÆÛÆ­}ÄúµÄÓÃ»§Ãû²¢·Ã
-ÎÊÄúÔÚ·þÎñÆ÷ÉÏµÄÕÊ»§¡£
-
-\q{±¾µØÓÃ»§Ãû}¿Ø¼þÔÊÐíÄúÖ¸¶¨ PuTTY Ó¦¸Ã
-Éù³ÆÄúÓµÓÐµÄÓÃ»§Ãû£¬
-ÒÔ·ÀËüÓëÄúµÄ \i{Windows ÓÃ»§Ãû}²»Æ¥
-Åä£¨»òÕßÈç¹ûÄúÃ»ÓÐ·ÑÐÄÉèÖÃ Windows ÓÃ»§Ãû£©¡£
-
-\H{config-supdup} \i{SUPDUP} Ãæ°å
-
-SUPDUP Ãæ°åÔÊÐíÄúÅäÖÃ½öÊÊÓÃÓÚ SUPDUP »á»°µÄÑ¡Ïî¡£
- ÓÐ¹Ø SUPDUP Ð­ÒéµÄ¸ü¶àÐÅÏ¢£¬
- Çë²Î¼û \k{using-supdup}¡£
-
-\S{supdup-location} \q{Î»ÖÃ×Ö·û´®}
-
-ÔÚ SUPDUP ÖÐ£¬¿Í»§¶Ë½«ÆäÑ¡ÔñµÄÒ»¶ÎÎÄ±¾·¢ËÍµ½·þÎñÆ÷£¬
-ÒÔÌá¹©ÓÃ»§µÄÎ»ÖÃ¡£
-ÕâÍ¨³£ÏÔÊ¾ÔÚµÇÂ¼ÓÃ»§ÁÐ±íÖÐ¡£
-
-Ä¬ÈÏÇé¿öÏÂ£¬PuTTY Ö»ÊÇ½«ÆäÄ¬ÈÏÎª¡°The Internet¡±¡£
-Èç¹ûÄúÏ£ÍûÄúµÄÎ»ÖÃÏÔÊ¾Îª¸ü¾ßÌåµÄÄÚÈÝ£¬
-Äú¿ÉÒÔÔÚ´Ë´¦½øÐÐÅäÖÃ¡£
-
-\S{supdup-ascii} \q{À©Õ¹ ASCII ×Ö·û¼¯}
-
-ÕâÉùÃ÷ÁËÄúµÄÖÕ¶ËÖ§³ÖÄÄÖÖ×Ö·û¼¯À©Õ¹¡£
-Èç¹û·þÎñÆ÷Ö§³ÖËü£¬
-Ëü½«Ê¹ÓÃ¸Ã×Ö·û¼¯·¢ËÍÎÄ±¾¡£ \q{ÎÞ}±íÊ¾±ê×¼µÄ 95 ¸ö
-¿É´òÓ¡ ASCII ×Ö·û¡£ \q{ITS} ±íÊ¾ÔÚ¿ØÖÆ×Ö·û·¶Î§ÄÚ
-Ê¹ÓÃ¿É´òÓ¡×Ö·ûÀ©Õ¹µÄ ASCII¡£
-´Ë×Ö·û¼¯¼ÇÂ¼ÔÚ SUPDUP Ð­Òé¶¨ÒåÖÐ¡£
-\q{WAITS}ÀàËÆÓÚ\q{ITS}£¬µ«ÔÚÀ©Õ¹¼¯ÖÐÊ¹ÓÃÁËÒ»Ð©Ìæ´ú×Ö
-·û£º×îÍ»³öµÄÊÇ£¬Ëü½«ÏÔÊ¾¼ýÍ·¶ø²»ÊÇ\c{^}ºÍ\c{_}£¬ÒÔ
-¼°\c{\}}¶ø²»ÊÇ\c{~}¡£ ITS ºÍ Lisp »úÆ÷Ê¹ÓÃ\q{ITS}À©Õ¹
-ASCII£¬¶ø\q{WAITS}½öÓÃÓÚË¹Ì¹¸£ AI ÊµÑé
-µÄ WAITS ²Ù×÷ÏµÍ³¡£
-
-\S{supdup-more} \q{**MORE** ´¦Àí}
-
-ÆôÓÃ **MORE** ´¦ÀíÊ±£¬»áµ¼ÖÂ·þÎñÆ÷Êä³öÔÚÆÁÄ»µ×²¿ÔÝÍ££¬
-Ö±µ½ÊäÈë¿Õ¸ñ¡£
-
-\S{supdup-scroll} \q{ÖÕ¶Ë¹ö¶¯}
-
-Õâ¿ØÖÆÖÕ¶ËÊÇ·ñ½«Ö´ÐÐ¹ö
-¶¯È»ºó¹â±êÒÆµ½×îºóÒ»ÐÐÒÔÏÂ£¬
-»òÕß¹â±êÊÇ·ñ½«·µ»Øµ½µÚÒ»ÐÐ¡£
-
-\H{config-file} \ii{½«ÅäÖÃ´æ´¢ÔÚÎÄ¼þÖÐ}
-
-PuTTY Ä¿Ç°²»Ö§³Ö½«ÆäÅäÖÃ´æ´¢
-ÔÚÎÄ¼þ¶ø²»ÊÇ\i{×¢²á±í}ÖÐ¡£ µ«ÊÇ£¬
-Äú¿ÉÒÔÊ¹ÓÃ¼¸¸ö\i{Åú´¦ÀíÎÄ¼þ}À´½â¾ö´ËÎÊÌâ¡£.
-
-Äú½«ÐèÒªÒ»¸öÃûÎª£¨±ÈÈçËµ£©\c{PUTTY.BAT} µÄÎÄ¼þ£¬
-Ëü½«ÎÄ¼þµÄÄÚÈÝµ¼Èë×¢²á±í£¬È»ºóÔËÐÐ PuTTY£¬
-½«×¢²á±íµÄÄÚÈÝµ¼³ö»ØÎÄ¼þ£¬
-²¢É¾³ý×¢²á±íÌõÄ¿¡£ ÕâÒ»ÇÐ¶¼¿ÉÒÔÊ¹ÓÃ Regedit ÃüÁîÐÐÑ¡ÏîÀ´Íê³É£¬
-Òò´Ë¶¼ÊÇ×Ô¶¯µÄ¡£
-ÕâÊÇÄúÔÚ \c{PUTTY.BAT} ÖÐÐèÒªµÄÄÚÈÝ£º
+\b \I{QUIT special character}\cw{QUIT}  æ˜¯ä¸€ä¸ªç‰¹æ®Šå­—ç¬¦ï¼Œ
+é€šå¸¸å¼ºåˆ¶ç»“æŸæœåŠ¡å™¨ä¸Šçš„å½“å‰è¿›ç¨‹ï¼ˆ\cw{SIGQUIT}ï¼‰ã€‚
+åœ¨è®¸å¤šæœåŠ¡å™¨ä¸Šï¼Œ
+å®ƒçš„é»˜è®¤è®¾ç½®æ˜¯ Ctrl-åæ–œæ  (\c{^\\})ï¼Œ
+è¿™å¾ˆå®¹æ˜“åœ¨è®¸å¤šé”®ç›˜ä¸Šæ„å¤–è°ƒç”¨ã€‚ å¦‚æžœè¿™å¦¨ç¢äº†æ‚¨ï¼Œ
+æ‚¨å¯èƒ½å¸Œæœ›å°†å…¶æ›´æ”¹ä¸ºå¦ä¸€ä¸ªè§’è‰²æˆ–å®Œå…¨å…³é—­å®ƒã€‚
+
+\b åœ¨ PuTTY ä¸­å¯ä»¥é€šè¿‡å¤šç§æ–¹å¼æŒ‡
+å®š \cw{ECHO} å’Œ \cw{ICANON} ç­‰å¸ƒå°”æ¨¡å¼ï¼Œ
+ä¾‹å¦‚\cw{true}/\cw{false}ã€\cw{yes}/\cw{no}å’Œ \cw{0}/\cw{1}ã€‚
+ï¼ˆæ˜Žç¡®æŒ‡å®šå€¼ \cw{no} ä¸Žæ ¹æœ¬ä¸å‘é€æ¨¡å¼ä¸åŒã€‚ï¼‰
+
+\b å¸ƒå°”æ¨¡å¼ \I{IUTF8 terminal mode}\cw{IUTF8} å‘æœåŠ¡å™¨
+å‘é€ç»ˆç«¯å­—ç¬¦é›†æ˜¯å¦ä¸º \i{UTF-8} çš„ä¿¡å·ï¼Œ
+ç”¨äºŽåŸºæœ¬è¡Œç¼–è¾‘ç­‰ç›®çš„ï¼› ä¾‹å¦‚ï¼Œå¦‚æžœè®¾ç½®ä¸æ­£ç¡®ï¼Œ
+é€€æ ¼é”®å¯èƒ½ä¼šåˆ é™¤é”™è¯¯æ•°é‡çš„æ–‡æœ¬ã€‚
+ä½†æ˜¯ï¼Œç®€å•åœ°è®¾ç½®å®ƒé€šå¸¸ä¸è¶³ä»¥
+è®©æœåŠ¡å™¨ä½¿ç”¨ UTF-8ï¼› POSIX æœåŠ¡å™¨é€šå¸¸è¿˜éœ€è¦è®¾ç½®åŒºåŸŸè®¾
+ç½®ï¼ˆé€šè¿‡æŸäº›ä¾èµ–äºŽæœåŠ¡å™¨çš„æ–¹å¼ï¼‰ï¼Œ
+å°½ç®¡è®¸å¤šè¾ƒæ–°çš„å®‰è£…é»˜è®¤ä¸º UTF-8ã€‚ æ­¤å¤–ï¼Œ
+ç”±äºŽè¿™ç§æ¨¡å¼æ¯”å…¶ä»–æ¨¡å¼è¢«æ·»åŠ åˆ° SSH åè®®ä¸­çš„æ—¶é—´è¦æ™šå¾—å¤šï¼Œ
+å› æ­¤è®¸å¤šæœåŠ¡å™¨ï¼ˆå°¤å…¶æ˜¯æ—§æœåŠ¡å™¨ï¼‰ä¸æ”¯æŒé€šè¿‡ SSH å‘é€çš„è¿™ç§æ¨¡å¼ï¼›
+äº‹å®žä¸Šï¼Œä¸€äº›å†™å¾—ä¸å¥½çš„æœåŠ¡å™¨åå¯¹å®ƒçš„å­˜åœ¨ï¼Œ
+æ‰€ä»¥ä½ å¯èƒ½ä¼šå‘çŽ°ä½ éœ€è¦å°†å®ƒè®¾ç½®ä¸ºæ ¹æœ¬ä¸å‘é€ã€‚
+å½“è®¾ç½®ä¸º\q{åŠ¨}æ—¶ï¼Œ
+è¿™å°†éµå¾ªæœ¬åœ°é…ç½®çš„å­—ç¬¦é›†ï¼ˆå‚è§\k{config-charset})ã€‚
+
+\b ç»ˆç«¯é€Ÿåº¦åœ¨åˆ«å¤„é…ç½®ï¼›è¯·å‚é˜… \k{config-termspeed}ã€‚
+
+\H{config-ssh-x11} X11è½¬å‘é¢æ¿
+
+X11 é¢æ¿å…è®¸æ‚¨é…ç½®é€šè¿‡SSHè¿ž
+æŽ¥çš„\i{X11è½¬å‘}ã€‚
+
+å¦‚æžœæ‚¨çš„æœåŠ¡å™¨å…è®¸æ‚¨è¿
+è¡Œ X Window System \i{å›¾å½¢åº”ç”¨ç¨‹åº}ï¼ŒX11 è½¬å‘å…è®¸æ‚¨å®‰å…¨åœ°è®©è¿™äº›åº”ç”¨
+ç¨‹åºè®¿é—®æ‚¨ PC ä¸Šçš„æœ¬åœ° X æ˜¾ç¤ºå™¨ã€‚
+
+è¦å¯ç”¨ X11 è½¬å‘ï¼Œè¯·é€‰ä¸­\q{å¯ç”¨ X11 è½¬å‘}æ¡†ã€‚
+å¦‚æžœæ‚¨çš„ X æ˜¾ç¤ºå™¨æœ‰å¼‚å¸¸ï¼Œæ‚¨éœ€è¦åœ¨\q{X æ˜¾ç¤ºä½ç½®}
+æ¡†ä¸­è¾“å…¥å…¶ä½ç½®ï¼› å¦‚æžœå°†å…¶ç•™ç©ºï¼Œ
+PuTTY å°†å°è¯•åœ¨çŽ¯å¢ƒä¸­æ‰¾åˆ°åˆç†çš„é»˜è®¤å€¼ï¼Œ
+æˆ–è€…å¦‚æžœå¤±è´¥ï¼Œåˆ™ä½¿ç”¨ä¸»è¦çš„æœ¬åœ°æ˜¾ç¤º (\c{:0})ã€‚
+
+æœ‰å…³ X11 è½¬å‘çš„æ›´å¤šä¿¡æ¯ï¼Œ
+è¯·å‚é˜…\k{using-x-forwarding} ã€‚
+
+\S{config-ssh-x11auth} è¿œç¨‹ \i{X11 è®¤è¯åè®®}
+
+å¦‚æžœæ‚¨ä½¿ç”¨ X11 è½¬å‘ï¼Œ
+åœ¨ SSH æœåŠ¡å™¨æœºå™¨ä¸Šåˆ›å»ºçš„è™šæ‹Ÿ X æœåŠ¡å™¨å°†å—åˆ°æŽˆæƒæ•°æ®çš„ä¿æŠ¤ã€‚
+è¿™äº›æ•°æ®æ˜¯ç”± PuTTY å‘æ˜Žå’Œæ£€æŸ¥çš„ã€‚
+
+ç”¨äºŽæ­¤çš„å¸¸ç”¨æŽˆæƒæ–¹æ³•ç§°ä¸º \i\cw{MIT-MAGIC-COOKIE-1}ã€‚
+è¿™æ˜¯ä¸€ä¸ªç®€å•çš„å¯†ç å¼åè®®ï¼šX å®¢æˆ·ç«¯å‘æœåŠ¡å™¨å‘
+é€ä¸€äº› cookie æ•°æ®ï¼ŒæœåŠ¡å™¨æ£€æŸ¥å®ƒæ˜¯å¦ä¸ŽçœŸ
+æ­£çš„ cookie åŒ¹é…ã€‚ cookie æ•°æ®é€šè¿‡
+æœªåŠ å¯†çš„ X11 è¿žæŽ¥å‘é€ï¼›å› æ­¤ï¼Œ
+å¦‚æžœæ‚¨å…è®¸ç¬¬ä¸‰å°æœºå™¨ä¸Šçš„å®¢æˆ·ç«¯è®¿
+é—®è™šæ‹Ÿ X æœåŠ¡å™¨ï¼Œé‚£ä¹ˆ cookie å°†ä»¥æ˜Žæ–‡å½¢å¼å‘é€ã€‚
+
+PuTTY æä¾›äº†æ›¿ä»£åè®® \i\cw{XDM-AUTHORIZATION-1}ã€‚
+è¿™æ˜¯ä¸€ä¸ªå¯†ç è®¤è¯çš„åè®®ï¼šXå®¢æˆ·ç«¯æ¯æ¬¡å‘é€çš„æ•°æ®
+éƒ½ä¸ä¸€æ ·ï¼Œå®ƒå–å†³äºŽè¿žæŽ¥çš„å®¢
+æˆ·ç«¯çš„IPåœ°å€å’Œç«¯å£ï¼Œ
+å¹¶ä¸”è¿˜å¸¦æœ‰å½“å‰æ—¶é—´çš„æ ‡è®°ã€‚å› æ­¤ï¼Œ
+æ•èŽ· \cw{XDM-AUTHORIZATION-1} å­—ç¬¦ä¸²çš„
+çªƒå¬è€…æ— æ³•ç«‹å³å°†å…¶é‡æ–°ç”¨äºŽè‡ªå·±çš„ X è¿žæŽ¥ã€‚
+
+PuTTY å¯¹ \cw{XDM-AUTHORIZATION-1} çš„æ”¯æŒæ˜¯ä¸€ä¸ªæœ‰ç‚¹å®žéªŒæ€§çš„åŠŸèƒ½ï¼Œ
+å¯èƒ½ä¼šé‡åˆ°å‡ ä¸ªé—®é¢˜ï¼š
+
+\b ä¸€äº› X å®¢æˆ·ç«¯å¯èƒ½ç”šè‡³ä¸æ”¯æŒ \cw{XDM-AUTHORIZATION-1}ï¼Œ
+å› æ­¤ä»–ä»¬ä¸çŸ¥é“å¦‚ä½•å¤„
+ç† PuTTY æä¾›çš„æ•°æ®ã€‚
+
+\b æ­¤èº«ä»½éªŒè¯æœºåˆ¶ä»…é€‚ç”¨äºŽ SSH-2ã€‚
+åœ¨ SSH-1 ä¸­ï¼ŒSSH æœåŠ¡å™¨ä¸ä¼šä»¥æœºå™¨å¯è¯»çš„æ ¼å¼å‘Šè¯‰
+å®¢æˆ·ç«¯è½¬å‘è¿žæŽ¥çš„æºåœ°å€ï¼Œ
+å› æ­¤æ— æ³•éªŒè¯ \cw{XDM-AUTHORIZATION-1} æ•°æ®ã€‚
+
+\b æ‚¨å¯èƒ½ä¼šå‘çŽ°æ­¤åŠŸèƒ½ä¼šå¯¼è‡´æŸäº› SSH æœåŠ¡å™¨å‡ºçŽ°é—®é¢˜ï¼Œ
+è¿™äº›æœåŠ¡å™¨åœ¨ä¼šè¯åŽä¸ä¼šæ¸…ç† \cw{XDM-AUTHORIZATION-1} æ•°æ®ï¼Œ
+å› æ­¤å¦‚æžœæ‚¨ä½¿ç”¨ä»…æ‰§è¡Œ \cw{MIT-MAGIC-COOKIE-1} çš„å®¢
+æˆ·ç«¯è¿žæŽ¥åˆ°åŒä¸€æœåŠ¡å™¨ å¹¶åˆ†é…äº†
+ç›¸åŒçš„è¿œç¨‹æ˜¾ç¤ºç¼–å·ï¼Œ
+æ‚¨å¯èƒ½ä¼šå‘çŽ°æœåŠ¡å™¨ä¸Šä»ç„¶å­˜åœ¨è¿‡æœŸçš„èº«ä»½éªŒè¯æ•°æ®ï¼Œ
+å¹¶ä¸”æ‚¨çš„ X è¿žæŽ¥å¤±è´¥ã€‚
+
+PuTTY çš„é»˜è®¤å€¼ä¸º \cw{MIT-MAGIC-COOKIE-1}ã€‚ å¦‚æžœä½ æ”¹å˜å®ƒï¼Œ
+ä½ åº”è¯¥ç¡®å®šä½ çŸ¥é“ä½ åœ¨åšä»€ä¹ˆã€‚
+
+\S{config-ssh-xauthority} æœ¬åœ°æ˜¾ç¤ºçš„XæŽˆæƒæ–‡ä»¶
+
+å¦‚æžœæ‚¨ä½¿ç”¨ X11 è½¬å‘ï¼Œ
+æ‚¨çš„è½¬å‘è¿žæŽ¥æœ€ç»ˆæŒ‡å‘çš„æœ¬
+åœ° X æœåŠ¡å™¨æœ¬èº«å¯èƒ½éœ€è¦æŽˆæƒã€‚
+
+ä¸€äº› Windows X æœåŠ¡å™¨ä¸éœ€è¦è¿™æ ·åšï¼š
+å®ƒä»¬é€šè¿‡æ›´ç®€å•çš„æ–¹å¼è¿›è¡ŒæŽˆæƒï¼Œ
+ä¾‹å¦‚æŽ¥å—æ¥è‡ªæœ¬åœ°æœºå™¨çš„ä»»ä½•è¿žæŽ¥ï¼Œ
+ä½†ä¸æŽ¥å—æ¥è‡ªå…¶ä»–ä»»ä½•åœ°æ–¹çš„è¿žæŽ¥ã€‚
+ä½†æ˜¯ï¼Œå¦‚æžœæ‚¨çš„ X æœåŠ¡å™¨ç¡®å®žéœ€è¦æŽˆæƒï¼Œé‚£ä¹ˆ PuTTY éœ€è¦çŸ¥é“éœ€è¦ä»€ä¹ˆæŽˆæƒã€‚
+
+ä½¿è¿™äº›æ•°æ®å¯ç”¨çš„ä¸€ç§æ–¹æ³•æ˜¯è®© X æœåŠ¡å™¨å°†å…¶å­˜å‚¨
+åœ¨ä¸Ž Unix \c{.Xauthority} æ–‡ä»¶å…·æœ‰ç›¸åŒæ ¼
+å¼çš„æ–‡ä»¶ä¸­çš„æŸä¸ªä½ç½®ã€‚ å¦‚æžœè¿™æ˜¯æ‚¨
+çš„ Windows X æœåŠ¡å™¨çš„å·¥ä½œæ–¹å¼ï¼Œé‚£ä¹ˆæ‚¨
+å¯ä»¥é€šè¿‡é…ç½®æ­¤é€‰é¡¹å‘Šè¯‰ PuTTY åœ¨å“ªé‡Œå¯ä»¥æ‰¾åˆ°
+æ­¤æ–‡ä»¶ã€‚ é»˜è®¤æƒ…å†µä¸‹ï¼ŒPuTTY ä¸ä¼šå°è¯•ä¸ºæ‚¨çš„æœ¬åœ°æ˜¾ç¤ºæŸ¥æ‰¾ä»»ä½•æŽˆæƒã€‚
+
+\H{config-ssh-portfwd} \I{port forwarding}éš§é“é¢æ¿
+
+éš§é“é¢æ¿å…è®¸æ‚¨é€šè¿‡ SSH è¿žæŽ¥
+é…ç½®ä»»æ„è¿žæŽ¥ç±»åž‹çš„éš§é“ã€‚
+
+ç«¯å£è½¬å‘å…è®¸æ‚¨åœ¨ SSH ä¼šè¯ä¸­é€š
+è¿‡éš§é“ä¼ è¾“å…¶ä»–ç±»åž‹çš„ç½‘ç»œè¿žæŽ¥ã€‚ æœ‰å…³ç«¯å£è½¬å‘åŠå…¶å·¥ä½œåŽŸç†çš„ä¸€èˆ¬æ€§è®¨è®ºï¼Œ
+è¯·å‚è§ \k{using-port-forwarding}ã€‚
+
+éš§é“é¢æ¿ä¸­çš„ç«¯å£è½¬å‘éƒ¨åˆ†æ˜¾ç¤ºäº† PuTTY åœ¨è¿žæŽ¥åˆ°æœ
+åŠ¡å™¨æ—¶å°†å°è¯•è®¾ç½®çš„æ‰€æœ‰ç«¯å£è½¬å‘çš„åˆ—è¡¨ã€‚
+é»˜è®¤æƒ…å†µä¸‹æ²¡æœ‰è®¾ç½®ç«¯å£è½¬å‘ï¼Œ
+æ‰€ä»¥è¿™ä¸ªåˆ—è¡¨æ˜¯ç©ºçš„ã€‚
+
+æ·»åŠ ç«¯å£è½¬å‘ï¼š
+
+\b è®¾ç½®\q{æœ¬åœ°}æˆ–\q{è¿œç¨‹}å•é€‰æŒ‰é’®ä¹‹ä¸€ï¼Œ
+å…·ä½“å–å†³äºŽæ‚¨æ˜¯\I{local port forwarding}å°†æœ¬åœ°ç«¯å£
+è½¬å‘åˆ°è¿œç¨‹ç›®æ ‡ï¼ˆ\q{æœ¬åœ°}ï¼‰è¿˜æ˜¯\I{remote port forwarding}å°†è¿œç¨‹ç«¯
+å£è½¬å‘åˆ°æœ¬åœ°ç›®æ ‡ï¼ˆ\q{è¿œç¨‹}ï¼‰ã€‚
+æˆ–è€…ï¼Œå¦‚æžœæ‚¨å¸Œæœ› PuTTY
+åœ¨\I{dynamic port forwarding}æœ¬åœ°ç«¯å£ä¸Šæä¾›æœ¬åœ° SOCKS 4/4A/5 ä»£ç†ï¼Œ
+è¯·é€‰æ‹©\q{åŠ¨æ€}ï¼ˆè¯·æ³¨æ„ï¼Œæ­¤ä»£ç†ä»…æ”¯æŒ
+TCP è¿žæŽ¥ï¼›SSH åè®®ä¸æ”¯æŒè½¬å‘ \i{UDP}ï¼‰ã€‚
+
+\b åœ¨\q{æºç«¯å£}æ¡†ä¸­è¾“å…¥æº\i{ç«¯å£å·}ã€‚
+å¯¹äºŽæœ¬åœ°è½¬å‘ï¼ŒPuTTY å°†ä¾¦å¬æ‚¨ PC çš„æ­¤ç«¯å£ã€‚
+å¯¹äºŽè¿œç¨‹è½¬å‘ï¼Œæ‚¨çš„ SSH æœåŠ¡å™¨å°†ä¾¦å¬è¿œç¨‹è®¡ç®—æœºçš„æ­¤ç«¯å£ã€‚ è¯·æ³¨æ„ï¼Œ
+å¤§å¤šæ•°æœåŠ¡å™¨ä¸å…è®¸æ‚¨\I{privileged port}ä¾¦å¬
+å°äºŽ 1024 çš„ç«¯å£å·ã€‚
+
+\b å¦‚æžœæ‚¨é€‰æ‹©äº†\q{æœ¬åœ°}æˆ–\q{è¿œç¨‹}ï¼ˆ\q{åŠ¨æ€}ä¸éœ€è¦æ­¤æ­¥éª¤ï¼‰ï¼Œ
+è¯·åœ¨\q{ç›®æ ‡}æ¡†ä¸­è¾“å…¥ä»¥å†’å·åˆ†éš”çš„ä¸»æœºåå’Œç«¯å£å·ã€‚
+åœ¨æºç«¯å£ä¸Šæ”¶åˆ°çš„è¿žæŽ¥å°†è¢«å®šå‘åˆ°æ­¤ç›®æ ‡ã€‚
+ä¾‹å¦‚ï¼Œè¦è¿žæŽ¥åˆ° POP-3 æœåŠ¡å™¨ï¼Œæ‚¨å¯ä»¥
+è¾“å…¥ \c{popserver.example.com:110}ã€‚
+ï¼ˆå¦‚æžœæ‚¨éœ€è¦è¾“å…¥æ–‡å­— \i{IPv6 address}ï¼Œ
+è¯·å°†å…¶æ‹¬åœ¨æ–¹æ‹¬å·ä¸­ï¼Œ
+ä¾‹å¦‚\cq{[::1]:2200}ã€‚ï¼‰
+
+\b å•å‡»\q{æ·»åŠ }æŒ‰é’®ã€‚ æ‚¨çš„è½¬å‘è¯¦
+ç»†ä¿¡æ¯åº”æ˜¾ç¤ºåœ¨åˆ—è¡¨æ¡†ä¸­ã€‚
+
+è¦åˆ é™¤ç«¯å£è½¬å‘ï¼Œåªéœ€åœ¨åˆ—è¡¨æ¡†ä¸­é€‰
+æ‹©å…¶è¯¦ç»†ä¿¡æ¯ï¼Œç„¶åŽå•å‡»\q{åˆ é™¤}æŒ‰é’®ã€‚
+
+åœ¨\q{æºç«¯å£}æ¡†ä¸­ï¼Œæ‚¨è¿˜å¯ä»¥é€šè¿‡æŒ‡
+å®šï¼ˆä¾‹å¦‚ï¼‰\c{127.0.0.5:79} æ¥é€‰æ‹©
+è¾“å…¥è¦ç›‘å¬çš„\I{listen
+address} IP åœ°å€ã€‚
+æœ‰å…³å…¶å·¥ä½œåŽŸç†åŠå…¶é™åˆ¶çš„æ›´å¤šä¿¡æ¯ï¼Œè¯·å‚è§ \k{using-port-forwarding}ã€‚
+
+å¦‚æžœæœ¬åœ°ç³»ç»ŸçŸ¥é“\i{æœåŠ¡åç§°}ï¼Œ
+æ‚¨å¯ä»¥è¾“å…¥æœåŠ¡åç§°æ¥ä»£æ›¿ç«¯å£å·ã€‚
+ä¾‹å¦‚ï¼Œåœ¨\q{ç›®æ ‡}æ¡†ä¸­ï¼Œæ‚¨å¯ä»¥è¾“å…¥ \c{popserver.example.com:pop3}ã€‚
+
+æ‚¨å¯ä»¥åœ¨\I{port forwarding, changing mid-session}ä¼šè¯ä¸­ä½¿
+ç”¨\q{æ›´æ”¹è®¾ç½®}ä¿®æ”¹å½“å‰æ´»åŠ¨çš„ç«¯å£è½¬
+å‘é›†ï¼ˆå‚è§ \k{using-changesettings}ï¼‰ã€‚
+å¦‚æžœæ‚¨åœ¨ä¼šè¯ä¸­åˆ é™¤æœ¬åœ°æˆ–åŠ¨æ€ç«¯å£è½¬å‘ï¼Œ
+PuTTY å°†åœæ­¢ä¾¦å¬è¯¥ç«¯å£ä¸Šçš„è¿žæŽ¥ï¼Œ
+å› æ­¤å®ƒå¯ä»¥è¢«å¦ä¸€ä¸ªç¨‹åºé‡æ–°ä½¿ç”¨ã€‚ å¦‚æžœåˆ é™¤è¿œç¨‹ç«¯å£è½¬å‘ï¼Œè¯·æ³¨æ„ï¼š
+
+\b SSH-1 åè®®ä¸åŒ…å«è¦æ±‚æœåŠ¡å™¨åœ
+æ­¢ä¾¦å¬è¿œç¨‹ç«¯å£çš„æœºåˆ¶ã€‚
+
+\b SSH-2 åè®®ç¡®å®žåŒ…å«è¿™æ ·çš„æœºåˆ¶ï¼Œ
+ä½†å¹¶ä¸æ˜¯æ‰€æœ‰çš„ SSH æœåŠ¡å™¨éƒ½æ”¯æŒå®ƒã€‚
+ï¼ˆç‰¹åˆ«æ˜¯ï¼Œ\i{OpenSSH} åœ¨ 3.9 ä¹‹å‰çš„ä»»ä½•ç‰ˆæœ¬ä¸­éƒ½ä¸æ”¯æŒå®ƒã€‚ï¼‰
+
+å¦‚æžœæ‚¨è¦æ±‚åˆ é™¤è¿œç¨‹ç«¯å£è½¬å‘å¹¶ä¸” PuTTY
+æ— æ³•ä½¿æœåŠ¡å™¨å®žé™…åœæ­¢ä¾¦å¬è¯¥ç«¯å£ï¼Œ
+å®ƒå°†å¼€å§‹æ‹’ç»è¯¥ç«¯å£ä¸Šçš„ä¼ å…¥è¿žæŽ¥ã€‚
+å› æ­¤ï¼Œè™½ç„¶è¯¥ç«¯å£ä¸èƒ½è¢«å…¶ä»–ç¨‹åºé‡ç”¨ï¼Œ
+ä½†æ‚¨è‡³å°‘å¯ä»¥åˆç†åœ°ç¡®å®šæœåŠ¡å™¨ç«¯ç¨‹åº
+åœ¨ç«¯å£è½¬å‘ç»“æŸæ—¶æ— æ³•å†è®¿é—®è¯¥æœåŠ¡ã€‚
+
+å¦‚æžœæ‚¨åˆ é™¤è½¬å‘ï¼Œåˆ™ä½¿ç”¨è¯¥è½¬å‘å»ºç«‹çš„ä»»
+ä½•çŽ°æœ‰è¿žæŽ¥éƒ½å°†ä¿æŒæ‰“å¼€çŠ¶æ€ã€‚ åŒæ ·ï¼Œå¯¹å…¨å±€è®¾ç½®
+çš„æ›´æ”¹ï¼ˆä¾‹å¦‚\q{æœ¬åœ°ç«¯å£æŽ¥å—æ¥è‡ªå…¶ä»–ä¸»æœºçš„è¿žæŽ¥}ï¼‰
+åªä¼šå¯¹æ–°çš„è½¬å‘ç”Ÿæ•ˆã€‚
+
+å¦‚æžœæ‚¨é€šè¿‡SSH è½¬å‘çš„è¿žæŽ¥æœ¬èº«æ˜¯å¦ä¸€ä¸ªPuTTY
+å‰¯æœ¬å»ºç«‹çš„ç¬¬äºŒä¸ªSSH è¿žæŽ¥ï¼Œæ‚¨å¯èƒ½ä¼š
+å‘çŽ°\q{é€»è¾‘ä¸»æœºå}é…ç½®é€‰é¡¹å¯ç”¨äºŽè­¦
+å‘Š PuTTY å®ƒåº”è¯¥æœŸå¾…å“ªä¸ªä¸»æœºå¯†é’¥ã€‚
+è¯·å‚é˜… \k{config-loghost} ã€‚
+
+\S{config-ssh-portfwd-localhost} æŽ§åˆ¶è½¬å‘ç«¯å£çš„
+å¯è§æ€§
+
+è½¬å‘è¿žæŽ¥çš„æºç«¯å£é€šå¸¸ä¸æŽ¥å—æ¥è‡ªä»»ä½•æœºå™¨çš„è¿žæŽ¥ï¼Œ
+é™¤äº† \I{localhost}SSH å®¢æˆ·ç«¯æˆ–æœåŠ¡å™¨æœºå™¨æœ¬
+èº«ï¼ˆåˆ†åˆ«ç”¨äºŽæœ¬åœ°å’Œè¿œç¨‹è½¬å‘ï¼‰ã€‚
+ éš§é“é¢æ¿ä¸­æœ‰ä¸€äº›æŽ§ä»¶å¯ä»¥æ›´æ”¹æ­¤è®¾ç½®ï¼š
+
+\b \q{æœ¬åœ°ç«¯å£æŽ¥å—æ¥è‡ªå…¶ä»–ä¸»æœºçš„è¿žæŽ¥}é€‰
+é¡¹å…è®¸æ‚¨è®¾ç½®æœ¬åœ°åˆ°è¿œç¨‹ç«¯å£è½¬å‘ï¼Œ
+ä»¥ä¾¿å®¢æˆ·ç«¯ PC ä»¥å¤–çš„è®¡ç®—æœºå¯ä»¥è¿žæŽ¥
+åˆ°è½¬å‘çš„ç«¯å£ã€‚ ï¼ˆè¿™ä¹Ÿé€‚ç”¨äºŽåŠ¨æ€ SOCKS è½¬å‘ã€‚ï¼‰
+
+\b \q{è¿œç¨‹ç«¯å£ä¹Ÿæ˜¯å¦‚æ­¤} é€‰é¡¹å¯¹è¿œç¨‹åˆ°
+æœ¬åœ°ç«¯å£è½¬å‘æ‰§è¡Œç›¸åŒçš„æ“ä½œï¼ˆä»¥ä¾¿ SSH æœåŠ¡å™¨æœºå™¨ä»¥
+å¤–çš„æœºå™¨å¯ä»¥è¿žæŽ¥åˆ°è½¬å‘çš„ç«¯å£ã€‚ï¼‰è¯·æ³¨æ„ï¼Œ
+æ­¤åŠŸèƒ½ä»…é€‚ç”¨äºŽ SSH- 2 åè®®ï¼Œ
+å¹¶ä¸æ˜¯æ‰€æœ‰çš„ SSH-2 æœåŠ¡å™¨éƒ½æ”¯æŒå®ƒï¼ˆä¾‹å¦‚ï¼Œ\i{OpenSSH} ä¸æ”¯æŒï¼‰ã€‚
+
+\S{config-ssh-portfwd-address-family} ä¸ºè½¬å‘ç«¯å£é€‰æ‹©
+\i{Internet åè®®ç‰ˆæœ¬}
+
+æ­¤å¼€å…³å…è®¸æ‚¨ä¸ºè½¬å‘ç«¯å£çš„æœ¬åœ°ç«¯é€‰æ‹©ç‰¹å®š
+çš„ Internet åè®®ï¼ˆ\i{IPv4} æˆ– \i{IPv6}ï¼‰ã€‚
+é»˜è®¤æƒ…å†µä¸‹ï¼Œå®ƒè®¾ç½®ä¸º\q{è‡ªåŠ¨}ï¼Œè¿™æ„å‘³ç€ï¼š
+
+\b å¯¹äºŽæœ¬åœ°åˆ°è¿œç¨‹ç«¯å£è½¬å‘ï¼Œ
+PuTTY å°†ä¾¦å¬ IPv4 å’Œï¼ˆå¦‚æžœå¯ç”¨ï¼‰IPv6 ä¸­çš„ä¼ å…¥è¿žæŽ¥
+
+\b å¯¹äºŽè¿œç¨‹åˆ°æœ¬åœ°çš„ç«¯å£è½¬å‘ï¼ŒPuTTY å°†
+ä¸ºä¼ å‡ºè¿žæŽ¥é€‰æ‹©ä¸€ä¸ªåˆç†çš„åè®®ã€‚
+
+è¿™ä¼šè¦†ç›–è¿žæŽ¥é¢æ¿ä¸Šçš„å¸¸è§„ Internet åè®®ç‰ˆæœ¬é¦–é€‰é¡¹
+(è¯·å‚è€ƒ \k{config-address-family})ã€‚
+
+è¯·æ³¨æ„ï¼Œå³ä½¿æ‚¨ç‰¹åˆ«è¦æ±‚ IPv6ï¼ŒæŸäº›æ“ä½œç³»ç»Ÿä¹Ÿ
+å¯èƒ½ä¼šä¾¦å¬ IPv4 ä¸­çš„ä¼ å…¥è¿žæŽ¥ï¼Œ
+å› ä¸ºå®ƒä»¬çš„ IPv4 å’Œ IPv6 åè®®æ ˆé“¾æŽ¥åœ¨ä¸€èµ·ã€‚
+æ˜¾ç„¶ \i{Linux} ä¼šè¿™æ ·åšï¼Œè€Œ Windows ä¸ä¼šã€‚
+å› æ­¤ï¼Œå¦‚æžœæ‚¨åœ¨ Windows ä¸Šè¿è¡Œ PuTTY å¹¶å‹¾é€‰\q{IPv6}ä»¥è¿›è¡Œ
+æœ¬åœ°æˆ–åŠ¨æ€ç«¯å£è½¬å‘ï¼Œåˆ™åªèƒ½ä½¿ç”¨ IPv6 è¿žæŽ¥åˆ°å®ƒï¼›
+è€Œå¦‚æžœä½ åœ¨ Linux ä¸ŠåšåŒæ ·çš„äº‹æƒ…ï¼Œ
+ä½ ä¹Ÿå¯ä»¥åœ¨ IPv4 ä¸Šä½¿ç”¨å®ƒã€‚ ä½†æ˜¯ï¼Œå‹¾é€‰\q{è‡ªåŠ¨}åº”å§‹ç»ˆä¸ºæ‚¨æä¾›ä¸€ä¸ªç«¯å£ï¼Œ
+æ‚¨å¯ä»¥ä½¿ç”¨ä»»ä¸€åè®®è¿žæŽ¥åˆ°è¯¥ç«¯å£ã€‚
+
+\H{config-ssh-bugs} \I{SSH server bugs}çº é”™å’Œæ›´å¤šçº é”™é¢æ¿
+
+å¹¶éžæ‰€æœ‰ SSH æœåŠ¡å™¨éƒ½èƒ½æ­£å¸¸å·¥ä½œã€‚
+çŽ°æœ‰çš„å„ç§æœåŠ¡å™¨ä¸­éƒ½æœ‰é”™è¯¯ï¼Œ
+è¿™å¯èƒ½ä½¿å®¢æˆ·ç«¯æ— æ³•ä¸Žå®ƒä»¬äº¤è°ˆï¼Œé™¤éžå®ƒçŸ¥é“é”™è¯¯å¹¶è§£å†³å®ƒã€‚
+
+ç”±äºŽå¤§å¤šæ•°æœåŠ¡å™¨åœ¨ SSH è¿žæŽ¥å¼€å§‹æ—¶ä¼šå…¬å¸ƒå…¶è½¯ä»¶ç‰ˆæœ¬å·ï¼Œ
+å› æ­¤ PuTTY å°†å°è¯•æ£€æµ‹å®ƒå¯ä»¥åœ¨æœåŠ¡å™¨ä¸­çœ‹åˆ°çš„é”™è¯¯å¹¶
+è‡ªåŠ¨å¯ç”¨è§£å†³æ–¹æ³•ã€‚
+ä½†æ˜¯ï¼Œæœ‰æ—¶å®ƒä¼šå‡ºé”™ï¼›
+å¦‚æžœæœåŠ¡å™¨è¢«æ•…æ„é…ç½®ä¸ºéšè—å…¶ç‰ˆæœ¬å·ï¼Œ
+æˆ–è€…å¦‚æžœæœåŠ¡å™¨æ˜¯ PuTTY çš„é”™è¯¯æ•°æ®åº“ä¸çŸ¥é“çš„ç‰ˆæœ¬ï¼Œ
+é‚£ä¹ˆ PuTTY å°†ä¸çŸ¥é“ä¼šå‡ºçŽ°ä»€ä¹ˆé”™è¯¯ã€‚
+
+Bugs å’Œ More Bugs é¢æ¿ï¼ˆæœ‰ä¸¤ä¸ªï¼Œ
+å› ä¸ºæˆ‘ä»¬æœ‰å¾ˆå¤šé”™è¯¯å…¼å®¹æ¨¡å¼ï¼‰
+å…è®¸æ‚¨æ‰‹åŠ¨é…ç½® PuTTY æœŸæœ›åœ¨æœåŠ¡å™¨ä¸­çœ‹åˆ°çš„é”™è¯¯ã€‚
+æ¯ä¸ªé”™è¯¯éƒ½å¯ä»¥é…ç½®ä¸ºä¸‰ç§çŠ¶æ€ï¼š
+
+\b \q{å…³é—­}: PuTTY å°†å‡å®šæœåŠ¡å™¨æ²¡æœ‰é”™è¯¯ã€‚
+
+\b \q{å¼€å¯}: PuTTY å°†å‡å®šæœåŠ¡å™¨ç¡®å®žå­˜åœ¨é”™è¯¯ã€‚
+
+\b \q{è‡ªåŠ¨}: PuTTY ä¼šä½¿ç”¨æœåŠ¡å™¨çš„ç‰ˆæœ¬å·å…¬
+å‘Šæ¥å°è¯•çŒœæµ‹æœåŠ¡å™¨æ˜¯å¦æœ‰ bugã€‚
+ï¼ˆæ­¤é€‰é¡¹ä¸é€‚ç”¨äºŽ\e{æ— æ³•}ä»ŽæœåŠ¡å™¨ç‰ˆæœ¬æ£€æµ‹åˆ°çš„é”™è¯¯ï¼Œ
+ä¾‹å¦‚ï¼Œå› ä¸ºå¿…é¡»åœ¨çŸ¥é“æœåŠ¡
+å™¨ç‰ˆæœ¬ä¹‹å‰å¯¹å…¶è¿›è¡Œæ“ä½œã€‚ï¼‰
+
+(PuTTYé¡¹ç›®æœ‰ä¸€ä¸ªæ˜Žç¡®çš„æ”¿ç­–ï¼Œå…³äºŽæˆ‘ä»¬ä½•æ—¶å‡†å¤‡
+ä¸ºé”™è¯¯è§£å†³æ–¹æ³•æ·»åŠ è‡ªåŠ¨æ£€æµ‹ã€‚è¯·å‚é˜…\k{feedback-workarounds}.)
+
+\S{config-ssh-bug-ignore2} \q{é˜»å¡žSSH-2çš„\i{å¿½ç•¥æ¶ˆæ¯}}
+
+å¿½ç•¥æ¶ˆæ¯ (SSH_MSG_IGNORE) æ˜¯ SSH åè®®ä¸­çš„æ¶ˆæ¯ï¼Œ
+å¯ä»¥éšæ—¶ä»Žå®¢æˆ·ç«¯å‘é€åˆ°æœåŠ¡å™¨ï¼Œ
+æˆ–ä»ŽæœåŠ¡å™¨å‘é€åˆ°å®¢æˆ·ç«¯ã€‚
+ä»»ä½•ä¸€æ–¹éƒ½å¿…é¡»åœ¨æ”¶åˆ°æ¶ˆæ¯æ—¶å¿½ç•¥è¯¥æ¶ˆæ¯ã€‚
+PuTTY ä½¿ç”¨ SSH-2 ä¸­çš„å¿½ç•¥æ¶ˆæ¯æ¥æ··æ·†åŠ å¯†
+æ•°æ®æµå¹¶ä½¿å…¶æ›´éš¾è¿›è¡Œå¯†ç åˆ†æžã€‚
+å®ƒè¿˜ä½¿ç”¨å¿½ç•¥æ¶ˆæ¯è¿›è¡Œè¿žæŽ¥ä¿æŒ\i{keepalives}æ´»åŠ¨ (å‚è€ƒ \k{config-keepalive})ã€‚
+
+å¦‚æžœå®ƒè®¤ä¸ºæœåŠ¡å™¨æœ‰è¿™ä¸ªé”™è¯¯ï¼ŒPuTTY å°†åœæ­¢ä½¿ç”¨å¿½ç•¥æ¶ˆæ¯ã€‚
+ å¦‚æžœåœ¨ä¸Žæ­£ç¡®çš„æœåŠ¡å™¨é€šä¿¡æ—¶å¯ç”¨äº†æ­¤é”™è¯¯ï¼Œ
+ åˆ™ä¼šè¯å°†æˆåŠŸï¼Œä½† keepalives å°†ä¸èµ·ä½œç”¨ï¼Œ
+ å¹¶ä¸”ä¼šè¯çš„å¯†ç å®‰å…¨æ€§å¯èƒ½ä½ŽäºŽå…¶åº”æœ‰çš„å®‰å…¨æ€§ã€‚
+
+\S{config-ssh-bug-rekey} \q{é”™è¯¯çš„å¤„ç†SSH-2å¯†é’¥é‡å¤äº¤æ¢}
+
+ä¸€äº› SSH æœåŠ¡å™¨æ ¹æœ¬æ— æ³•å¤„ç†\i{é‡å¤å¯†é’¥äº¤æ¢}ï¼Œ
+å¹¶ä¸”ä¼šå¿½ç•¥å®¢æˆ·ç«¯å¯åŠ¨å¯†é’¥çš„å°è¯•ã€‚
+ç”±äºŽ PuTTY åœ¨æ‰§è¡Œé‡å¤å¯†é’¥äº¤æ¢æ—¶ä¼šæš‚åœä¼šè¯ï¼Œ
+å› æ­¤è¿™æ ·åšä¼šå¯¼è‡´ä¼šè¯åœ¨ä¸€å°æ—¶åŽæŒ‚èµ·ï¼ˆ
+é™¤éžæ‚¨å°†é‡æ–°å¯†é’¥è¶…æ—¶è®¾ç½®ä¸ºä¸åŒï¼›
+è¯·å‚é˜… \k{config-ssh-kex-rekey} )ã€‚
+å…¶ä»–éžå¸¸å¤è€çš„ SSH æœåŠ¡å™¨å¯¹é‡å¤å¯†é’¥äº¤æ¢çš„å¤„ç†æ›´åŠ ç³Ÿç³•ï¼Œ
+å¹¶ä¸”åœ¨æ”¶åˆ°é‡å¤å¯†é’¥äº¤æ¢è¯·æ±‚æ—¶ä¼šæ–­å¼€è¿žæŽ¥ã€‚
+
+å¦‚æžœæ£€æµ‹åˆ°æ­¤é”™è¯¯ï¼ŒPuTTY å°†æ°¸è¿œä¸ä¼šå¯åŠ¨é‡å¤å¯†é’¥äº¤æ¢ã€‚
+å¦‚æžœåœ¨ä¸Žæ­£ç¡®çš„æœåŠ¡å™¨é€šä¿¡æ—¶å¯ç”¨äº†æ­¤é”™è¯¯ï¼Œ
+åˆ™ä¼šè¯åº”è¯¥ä»ç„¶æœ‰æ•ˆï¼Œ
+ä½†å¯èƒ½ä¸å¦‚æ‚¨é¢„æœŸçš„å®‰å…¨ã€‚
+
+è¿™æ˜¯ä¸€ä¸ªç‰¹å®šäºŽ SSH-2 çš„é”™è¯¯ã€‚
+
+\S{config-ssh-bug-winadj} \q{PuTTYçš„ SSH-2 \cq{winadj} è¯·æ±‚é˜»å¡ž}
+
+PuTTY æœ‰æ—¶ä¼šåœ¨é€šé“æ•°æ®ä¸­é—´å‘ SSH æœåŠ¡å™¨å‘é€ä¸€ä¸ªç‰¹æ®Šè¯·æ±‚ï¼Œ
+åç§°ä¸º \cw{winadj@putty.projects.tartarus.org}
+ï¼ˆå‚è§ \k{sshnames-channel}ï¼‰ã€‚æ­¤è¯·æ±‚çš„ç›®çš„æ˜¯
+æµ‹é‡åˆ°æœåŠ¡å™¨çš„å¾€è¿”æ—¶é—´ï¼Œ
+PuTTY ä½¿ç”¨è¯¥æ—¶é—´æ¥è°ƒæ•´å…¶æµé‡æŽ§åˆ¶ã€‚
+æœåŠ¡å™¨å®žé™…ä¸Šä¸å¿…\e{ç†è§£}æ¶ˆæ¯ï¼›é¢„è®¡ä¼šå‘å›ž \cw{SSH_MSG_CHANNEL_FAILURE} æ¶ˆæ¯ï¼Œ
+è¡¨æ˜Žå®ƒä¸ç†è§£å®ƒã€‚
+ï¼ˆPuTTY çš„æ—¶é—´è®¡ç®—æ‰€éœ€è¦çš„åªæ˜¯\e{æŸç§}å“åº”ã€‚ï¼‰
+
+ä¼—æ‰€å‘¨çŸ¥ï¼ŒæŸäº› SSH æœåŠ¡å™¨ä¼šä»¥æŸç§æ–¹å¼è¢«æ­¤
+æ¶ˆæ¯å¼„ç³Šæ¶‚â€”â€”å› ä¸ºå®ƒçš„åç§°å¾ˆé•¿ï¼Œæˆ–è€…å› ä¸ºå®ƒ
+ä»¬æ— æ³•å¤„ç†æ— æ³•è¯†åˆ«çš„è¯·æ±‚åç§°ï¼Œå³ä½¿å‘å›žæ­£ç¡®çš„å¤±
+è´¥å“åº”ä¹Ÿæ˜¯å¦‚æ­¤ï¼Œæˆ–è€…å› ä¸ºä»–ä»¬æ˜Žæ™ºåœ°å¤„ç†äº†å®ƒï¼Œ
+ä½†æ˜¯ç”¨æ¯«æ— æ„ä¹‰çš„åžƒåœ¾é‚®ä»¶æˆ–å…¶ä»–ä¸œè¥¿å¡«å……äº†æœåŠ¡å™¨çš„æ—¥å¿—æ–‡ä»¶ã€‚
+å› æ­¤ï¼ŒPuTTY æ”¯æŒè¿™ä¸ª bug-compatibility æ ‡å¿—ï¼š
+å¦‚æžœå®ƒè®¤ä¸ºæœåŠ¡å™¨æœ‰è¿™ä¸ª bugï¼Œå®ƒæ°¸è¿œä¸ä¼šå‘é€å®ƒ
+çš„\cq{winadj@putty.projects.tartarus.org}è¯·æ±‚ï¼Œ
+å¹¶ä¸”ä¼šåœ¨æ²¡æœ‰å®ƒçš„è®¡æ—¶æ•°æ®çš„æƒ…å†µä¸‹è§£å†³é—®é¢˜ã€‚
+
+\S{config-ssh-bug-chanreq} \q{å›žå¤å·²å…³é—­é€šé“çš„è¯·æ±‚}
+
+RFC 4254 ä¸­å‘å¸ƒçš„ SSH åè®®å­˜åœ¨æ­§ä¹‰ï¼Œ
+å¦‚æžœè¿žæŽ¥çš„ä¸€ä¾§å°è¯•å…³é—­é€šé“ï¼Œ
+è€Œå¦ä¸€ä¾§åŒæ—¶åœ¨é€šé“å†…å‘é€è¯·æ±‚å¹¶è¦æ±‚å›žå¤ï¼Œ
+åˆ™ä¼šå‡ºçŽ°æ­§ä¹‰ã€‚ RFC 4254 ä¸æ¸…æ¥šå…³é—­æ–¹æ˜¯å¦åº”
+åœ¨å®£å¸ƒå…¶å…³é—­é€šé“
+çš„æ„å›¾åŽå›žå¤é€šé“è¯·æ±‚ã€‚
+
+2014 å¹´ 4 æœˆå¯¹ \cw{ietf-ssh} é‚®ä»¶åˆ—è¡¨çš„è®¨è®º
+å½¢æˆäº†æ˜Žç¡®çš„å…±è¯†ï¼Œ
+æ­£ç¡®ç­”æ¡ˆæ˜¯å¦å®šçš„ã€‚
+ä½†æ˜¯ï¼Œç”±äºŽè§„èŒƒä¸­çš„æ¨¡ç³Šæ€§ï¼Œ
+ä¸€äº› SSH æœåŠ¡å™¨å·²ç»å®žçŽ°äº†å…¶ä»–ç­–ç•¥ï¼›
+ä¾‹å¦‚ï¼Œ\W{https://bugzilla.mindrot.org/show_bug.cgi?id=1818}{OpenSSH} åœ¨ä¿®å¤ä¹‹å‰ä¸€ç›´æ˜¯è¿™æ ·ã€‚
+
+å› ä¸º PuTTY åœ¨é€šé“çš„æ•´ä¸ªç”Ÿå‘½å‘¨æœŸå†…å‘é€å¸¦
+æœ‰\q{want reply}æ ‡å¿—çš„é€šé“è¯·æ±‚
+ï¼ˆå‚è§ \k{config-ssh-bug-winadj}ï¼‰ï¼Œæ‰€ä»¥å½“è¿ž
+æŽ¥åˆ°è¿™æ ·çš„æœåŠ¡å™¨æ—¶ï¼Œå®ƒå¯èƒ½ä¼šåœ¨è®¤
+ä¸ºé€šé“å·²å®Œå…¨å…³é—­åŽæ”¶åˆ°å¯¹è¯·æ±‚çš„å›žå¤ï¼Œå¹¶ä»¥é”™è¯¯â€œ\q{æ”¶åˆ°ä¸å­˜åœ¨çš„é€šé“ 256 çš„
+\cw{SSH2_MSG_CHANNEL_FAILURE}}è¡Œç»“æŸã€‚
+
+\S{config-ssh-bug-maxpkt2} \q{å¿½ç•¥ SSH-2 \i{æœ€å¤§æ•°æ®åŒ…å¤§å°}}
+
+å½“å»ºç«‹ SSH-2 é€šé“æ—¶ï¼Œæ¯ä¸€ç«¯éƒ½ä¼šå®£å¸ƒå®ƒ
+æ„¿æ„ä¸ºè¯¥é€šé“æŽ¥æ”¶çš„æœ€å¤§æ•°æ®åŒ…å¤§å°ã€‚
+ä¸€äº›æœåŠ¡å™¨å¿½ç•¥ PuTTY çš„å£°æ˜Žå¹¶å‘
+é€å¤§äºŽ PuTTY æ„¿æ„æŽ¥å—çš„æ•°æ®åŒ…ï¼Œ
+å¯¼è‡´å®ƒæŠ¥å‘Š\q{ä¼ å…¥æ•°æ®åŒ…åœ¨è§£å¯†æ—¶å‡ºçŽ°ä¹±ç }ã€‚
+
+å¦‚æžœæ£€æµ‹åˆ°æ­¤é”™è¯¯ï¼ŒPuTTY ç»ä¸å…è®¸é€šé“
+çš„\i{æµé‡æŽ§åˆ¶çª—å£} å¢žé•¿åˆ°è¶³å¤Ÿå¤§ä»¥å…
+è®¸æœåŠ¡å™¨å‘é€è¶…å¤§æ•°æ®åŒ…ã€‚ å¦‚æžœåœ¨ä¸Žæ­£ç¡®çš„æœåŠ¡å™¨é€šä¿¡æ—¶å¯ç”¨äº†
+æ­¤é”™è¯¯ï¼Œåˆ™ä¼šè¯å°†æ­£å¸¸å·¥ä½œï¼Œ
+ä½†ä¸‹è½½æ€§èƒ½å°†ä½ŽäºŽåº”æœ‰çš„æ°´å¹³ã€‚
+
+\S{config-ssh-bug-dropstart} \q{ä¸¢å¼ƒåœ¨å…¶é—®å€™ä¹‹å‰å‘é€çš„æ•°æ®}
+
+åªæ˜¯å¶å°”ï¼Œå¯ä»¥é€šè¿‡æŸä¸ª
+é€šé“å»ºç«‹ SSH è¿žæŽ¥ï¼Œè¿™ä¼šåœ¨
+è¿žæŽ¥çš„æ—©æœŸæ„å¤–ä¸¢å¼ƒä¼ å‡ºæ•°æ®ã€‚
+
+è¿™é€šå¸¸ä¸ä¼šè¢«è§†ä¸ºå®žé™… SSH æœåŠ¡å™¨ä¸­çš„é”™è¯¯ï¼Œ
+ä½†æœ‰æ—¶ä¼šåœ¨æ¶‰åŠå¤æ‚ä»£
+ç†è¿›ç¨‹çš„æƒ…å†µä¸‹å‘ç”Ÿã€‚ä¸€ä¸ªä¾‹å­
+æ˜¯ \W{https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=991958}{Debian
+bug #991958}ï¼Œ
+å…¶ä¸­é€šè¿‡ç”¨æˆ·æ¨¡å¼ Linux å†…æ ¸æŽ§åˆ¶å°çš„è¿žæŽ¥å¯èƒ½
+ä¼šåœ¨å†…æ ¸å®Œå…¨å¯åŠ¨ä¹‹å‰ä¸¢å¤±ä¼ å‡ºæ•°æ®ã€‚
+
+æ‚¨å¯ä»¥é€šè¿‡æ‰‹åŠ¨å¯ç”¨æ­¤é”™è¯¯æ ‡å¿—æ¥è§£å†³æ­¤é—®é¢˜ï¼Œ
+è¿™å°†å¯¼è‡´ PuTTY ç­‰å¾…å‘é€å…¶åˆå§‹ SSH é—®å€™ï¼Œ
+ç›´åˆ°å®ƒçœ‹åˆ°æ¥è‡ªæœåŠ¡å™¨çš„é—®å€™ã€‚
+
+è¯·æ³¨æ„ï¼Œæ°¸è¿œæ— æ³•è‡ªåŠ¨æ£€æµ‹åˆ°æ­¤é”™è¯¯æ ‡å¿—ï¼Œ
+å› ä¸ºè‡ªåŠ¨æ£€æµ‹ä¾èµ–äºŽæœåŠ¡å™¨é—®å€™è¯­ä¸­çš„ç‰ˆæœ¬å­—ç¬¦ä¸²ï¼Œ
+å¹¶ä¸” PuTTY å¿…é¡»åœ¨çœ‹åˆ°æœåŠ¡å™¨çš„é—®å€™è¯­
+\e{ä¹‹å‰}å†³å®šæ˜¯å¦é¢„æœŸæ­¤é”™è¯¯ã€‚ æ‰€ä»¥è¿™åªæ˜¯ä¸€ä¸ªæ‰‹åŠ¨è§£å†³æ–¹æ³•ã€‚
+
+\S{config-ssh-bug-filter-kexinit} \q{é˜»å¡žPuTTYä¸Šçš„æ‰€æœ‰\cw{KEXINIT}}
+
+åœ¨ SSH è¿žæŽ¥å¼€å§‹æ—¶ï¼Œå®¢æˆ·ç«¯å’ŒæœåŠ¡å™¨
+äº¤æ¢ \cw{SSH_MSG_KEXINIT} ç±»åž‹çš„é•¿æ¶ˆæ¯ï¼Œ
+å…¶ä¸­åŒ…å«å®ƒä»¬å‡†å¤‡ä½¿ç”¨çš„æ‰€æœ‰åŠ å¯†ç®—æ³•çš„åˆ—è¡¨ã€‚
+è¿™ç”¨äºŽåå•†ä¸€ç»„ä¸¤ç«¯éƒ½å¯ä»¥å¯¹è¯çš„ç®—æ³•ã€‚
+
+æœ‰æ—¶ï¼Œç¼–å†™å¾—ä¸å¥½çš„æœåŠ¡å™¨å¯èƒ½ä¼š
+åœ¨å‡†å¤‡æŽ¥æ”¶çš„åˆ—è¡¨ä¸Šæœ‰é•¿åº¦é™åˆ¶ï¼Œ
+å¹¶ä¸”ä»…ä»…å› ä¸ºPuTTYç»™äº†å®ƒå¤ªå¤šçš„é€‰æ‹©è€Œæ‹’ç»å»ºç«‹è¿žæŽ¥ã€‚
+
+è§£å†³æ–¹æ³•æ˜¯å¯ç”¨æ­¤æ ‡å¿—ï¼Œè¿™å°†ä½¿ PuTTY ç­‰å¾…å‘é€ \cw{KEXINIT}ï¼Œ
+ç›´åˆ°å®ƒä»ŽæœåŠ¡å™¨æ”¶åˆ°è¯¥æ ‡å¿—ï¼Œ
+ç„¶åŽè¿‡æ»¤è‡ªå·±çš„ \cw{KEXINIT} ä»¥çœç•¥æœåŠ¡å™¨
+ä¸å®£å¸ƒæ”¯æŒçš„ä»»ä½•ç®—æ³•ã€‚
+è¿™é€šå¸¸ä¼šä½¿ PuTTY çš„ \cw{KEXINIT}
+æœ€å¤šè¾¾åˆ°æœåŠ¡å™¨çš„å¤§å°ï¼Œå¦åˆ™å¯¹ç®—æ³•åå•†æ²¡æœ‰ä»»ä½•å½±å“ã€‚
+
+æ­¤æ ‡å¿—è½»å¾®è¿åäº†SSHåè®®ï¼Œ
+å› ä¸ºåŒæ–¹éƒ½åº”è¯¥ä¸»åŠ¨å‘é€\cw{KEXINIT}ã€‚
+å¦‚æžœä¸€æ–¹åœ¨ä¸ç­‰å¾…çš„æƒ…å†µä¸‹å‘é€å…¶\cw{KEXINIT}ï¼Œ
+å®ƒä»ç„¶æœ‰æ•ˆï¼Œä½†æ˜¯å¦‚æžœå®¢æˆ·ç«¯å’ŒæœåŠ¡å™¨éƒ½ç­‰å¾…å¦ä¸€æ–¹å…ˆè¯´è¯ï¼Œ
+åˆ™è¿žæŽ¥å°†æ­»é”ã€‚æˆ‘ä»¬ä¸çŸ¥é“æœ‰ä»»ä½•æœåŠ¡å™¨è¿™æ ·åšï¼Œ
+ä½†å¦‚æžœæœ‰çš„è¯ï¼Œé‚£ä¹ˆè¿™ä¸ªæ ‡å¿—å°†
+ä½¿PuTTYæ ¹æœ¬æ— æ³•ä¸Žä»–ä»¬é€šè®¯ã€‚
+
+\S{config-ssh-bug-rsa-sha2-cert-userauth} \q{æ—§çš„ RSA/SHA2 è¯ä¹¦
+ç®—æ³•å‘½å}
+
+å¦‚æžœ PuTTY å°è¯•ä½¿ç”¨ RSA å¯†é’¥æ‰§è¡Œ SSH-2 ç”¨æˆ·èº«ä»½éªŒè¯ï¼Œ
+å¹¶ä¸”æœåŠ¡å™¨æ­£åœ¨ä½¿ç”¨åŸºäºŽ SHA-2 çš„è¾ƒæ–°ç‰ˆæœ¬ä¹‹ä¸€
+SSH RSAåè®®ï¼Œå¹¶ä¸”ç”¨æˆ·çš„å¯†é’¥ä¹Ÿæ˜¯è¯ä¹¦ï¼Œé‚£ä¹ˆ
+æ—©æœŸç‰ˆæœ¬çš„ OpenSSHï¼ˆæœ€é«˜ 7.7ï¼‰ä¸Žæ›´é«˜ç‰ˆæœ¬ä¸ä¸€è‡´
+å…³äºŽè¦å‘é€çš„æ­£ç¡®å¯†é’¥ç®—æ³•å­—ç¬¦ä¸²
+\cw{SSH2_MSG_USERAUTH_REQUEST} æ•°æ®åŒ…ã€‚çŽ°ä»£ç‰ˆæœ¬å‘é€å­—ç¬¦ä¸²
+è¿™è¡¨ç¤º SHA-2 æ€§è´¨å’Œ SHA-2 çš„è¯ä¹¦æ€§è´¨
+é”®ï¼Œä¾‹å¦‚ \cq{rsa-sha2-512-cert-v01@openssh.com}ã€‚æ—©æœŸç‰ˆæœ¬
+ä¼šæ‹’ç»è¿™ä¸€ç‚¹ï¼Œå¹¶åšæŒè¦çœ‹
+\cq{ssh-rsa-cert-v01@openssh.com} åŽè·ŸåŸºäºŽ SHA-2 çš„ç­¾åã€‚
+
+PuTTY åº”è¯¥è‡ªåŠ¨æ£€æµ‹æ—©æœŸ OpenSSH ä¸­æ˜¯å¦å­˜åœ¨æ­¤é”™è¯¯
+å¹¶è°ƒæ•´ä»¥å‘é€æ­£ç¡®çš„å­—ç¬¦ä¸²ã€‚
+
+\S{config-ssh-bug-sig} \q{éœ€è¦å¯¹ SSH-2 \i{RSA} \i{ç­¾å}è¿›è¡Œå¡«å……}
+
+\i{OpenSSH} 3.3 ä»¥ä¸‹çš„ç‰ˆæœ¬è¦æ±‚ SSH-2 RSA ç­¾å
+ç”¨é›¶å­—èŠ‚å¡«å……åˆ°ä¸Ž RSA å¯†é’¥æ¨¡æ•°ç›¸åŒçš„é•¿åº¦ã€‚
+SSH-2 è§„èŒƒè¯´å¿…é¡»æŽ¥å—æœªå¡«å……çš„ç­¾åï¼Œ
+æ‰€ä»¥è¿™æ˜¯ä¸€ä¸ªé”™è¯¯ã€‚ è¿™ä¸ªé—®é¢˜çš„ä¸€ä¸ªå…¸åž‹ç—‡çŠ¶æ˜¯ï¼Œ
+PuTTY æ¯éš”å‡ ç™¾æ¬¡å°è¯•å°±ä¼šç¥žç§˜åœ°å¤±è´¥ RSA èº«ä»½éªŒè¯ï¼Œ
+ç„¶åŽå›žé€€åˆ°å¯†ç ã€‚
+
+å¦‚æžœæ£€æµ‹åˆ°æ­¤é”™è¯¯ï¼ŒPuTTY å°†ä»¥ OpenSSH é¢„æœŸçš„æ–¹å¼å¡«å……å…¶ç­¾åã€‚
+å¦‚æžœåœ¨ä¸Žæ­£ç¡®çš„æœåŠ¡å™¨é€šä¿¡æ—¶å¯ç”¨äº†æ­¤é”™è¯¯ï¼Œ
+åˆ™å¾ˆå¯èƒ½ä¸ä¼šé€ æˆä»»ä½•æŸå®³ï¼Œ
+å› ä¸ºæ­£ç¡®çš„æœåŠ¡å™¨é€šå¸¸ä»æŽ¥å—å¡«å……ç­¾åï¼Œ
+å› ä¸ºå®ƒä»¬ä¹ æƒ¯äºŽä¸Ž OpenSSH é€šä¿¡ã€‚
+
+è¿™æ˜¯ä¸€ä¸ªç‰¹å®šäºŽ SSH-2 çš„é”™è¯¯ã€‚
+
+\S{config-ssh-bug-oldgex2} \q{ä»…æ”¯æŒ pre-RFC4419 SSH-2 DH GEX}
+
+ä½¿ç”¨ Diffie-Hellman group exchange çš„ SSH å¯†é’¥äº¤æ¢æ–¹
+æ³•åœ¨å…¶åŽŸå§‹ç‰ˆæœ¬ä¹‹åŽè¿›è¡Œäº†é‡æ–°è®¾è®¡ï¼Œ
+ä»¥ä½¿ç”¨ç¨å¾®å¤æ‚çš„è®¾ç½®æ¶ˆæ¯ã€‚
+å‡ ä¹Žæ‰€æœ‰çš„ SSH å®žçŽ°éƒ½åˆ‡æ¢åˆ°äº†æ–°ç‰ˆæœ¬ã€‚ ï¼ˆPuTTY æ˜¯æœ€åŽä¸€ä¸ªã€‚ï¼‰
+ä¸€äº›æ—§æœåŠ¡å™¨ä»ç„¶åªæ”¯æŒæ—§æœåŠ¡å™¨ã€‚
+
+å¦‚æžœæ£€æµ‹åˆ°æ­¤é”™è¯¯ï¼Œå¹¶ä¸”å®¢æˆ·ç«¯å’ŒæœåŠ¡å™¨åå•† Diffie-Hellman ç»„äº¤æ¢ï¼Œ
+é‚£ä¹ˆ PuTTY å°†å‘é€çŽ°åœ¨ç§°
+ä¸º \cw{SSH2_MSG_KEX_DH_GEX_REQUEST_OLD} çš„æ—§
+æ¶ˆæ¯æ¥ä»£æ›¿æ–°çš„ \cw{SSH2_MSG_KEX_DH_GEX_REQUEST}ã€‚
+
+è¿™æ˜¯ä¸€ä¸ªç‰¹å®šäºŽ SSH-2 çš„é”™è¯¯ã€‚
+
+\S{config-ssh-bug-hmac2} \q{é”™è¯¯è®¡ç®— SSH-2 HMAC å¯†é’¥}
+
+\q{åœ¨æ•°æ®åŒ…ä¸­æ”¶åˆ°é”™è¯¯çš„ MAC}.
+æ¥è‡ª \cw{ssh.com} çš„ SSH æœåŠ¡å™¨è½¯
+ä»¶ 2.3.0 åŠä»¥ä¸‹ç‰ˆæœ¬é”™è¯¯åœ°è®¡ç®—äº†å…¶ \i{HMAC} \i{æ¶ˆæ¯èº«ä»½éªŒè¯ä»£ç }çš„å¯†é’¥ã€‚
+æ­¤é—®é¢˜çš„å…¸åž‹ç—‡çŠ¶æ˜¯ PuTTY åœ¨ä¼šè¯å¼€å§‹æ—¶æ„å¤–æ­»äº¡ï¼Œ
+å¹¶æ˜¾ç¤º\q{åœ¨æ•°æ®åŒ…ä¸­æ”¶åˆ°é”™è¯¯çš„ MAC}ã€‚
+
+å¦‚æžœæ£€æµ‹åˆ°æ­¤é”™è¯¯ï¼ŒPuTTY å°†æŒ‰ç…§ä¸Žé”™
+è¯¯æœåŠ¡å™¨ç›¸åŒçš„æ–¹å¼è®¡ç®—å…¶ HMAC å¯†é’¥ï¼Œ
+å› æ­¤ä»ç„¶å¯ä»¥è¿›è¡Œé€šä¿¡ã€‚
+å¦‚æžœåœ¨ä¸Žæ­£ç¡®çš„æœåŠ¡å™¨é€šä¿¡æ—¶å¯ç”¨äº†æ­¤é”™è¯¯ï¼Œåˆ™é€šä¿¡å°†å¤±è´¥ã€‚
+
+è¿™æ˜¯ä¸€ä¸ªç‰¹å®šäºŽ SSH-2 çš„é”™è¯¯ã€‚
+
+\S{config-ssh-bug-pksessid2} \q{æ»¥ç”¨SSH-2 PK èº«ä»½éªŒè¯ä¸­çš„\i{ä¼šè¯ ID}}
+
+\i{OpenSSH} 2.3 ä»¥ä¸‹çš„ç‰ˆæœ¬è¦æ±‚ SSH-2 \i{å…¬é’¥è®¤è¯}çš„æ–¹å¼ç•¥æœ‰ä¸åŒï¼š
+å®¢æˆ·ç«¯è¦ç­¾åçš„æ•°æ®åŒ…å«ä»¥
+ä¸åŒæ–¹å¼æ ¼å¼åŒ–çš„ä¼šè¯ IDã€‚
+å¦‚æžœå…¬é’¥èº«ä»½éªŒè¯ç¥žç§˜åœ°ä¸èµ·ä½œç”¨ï¼Œ
+ä½†äº‹ä»¶æ—¥å¿—ï¼ˆè¯·å‚é˜… \k{using-eventlog}ï¼‰è®¤ä¸ºå®ƒå·²æˆåŠŸå‘é€ç­¾åï¼Œ
+åˆ™å¯èƒ½å€¼å¾—å¯ç”¨æ­¤é”™è¯¯çš„è§£
+å†³æ–¹æ³•ä»¥æŸ¥çœ‹å®ƒæ˜¯å¦æœ‰å¸®åŠ©ã€‚
+
+å¦‚æžœæ£€æµ‹åˆ°æ­¤é”™è¯¯ï¼ŒPuTTY å°†ä»¥ OpenSSH é¢„æœŸçš„æ–¹å¼å¯¹æ•°æ®è¿›è¡Œç­¾åã€‚
+å¦‚æžœåœ¨ä¸Žæ­£ç¡®çš„æœåŠ¡å™¨é€šä¿¡æ—¶å¯ç”¨äº†æ­¤é”™è¯¯ï¼Œ
+åˆ™ SSH-2 å…¬é’¥èº«ä»½éªŒè¯å°†å¤±è´¥ã€‚
+
+è¿™æ˜¯ä¸€ä¸ªç‰¹å®šäºŽ SSH-2 çš„é”™è¯¯ã€‚
+
+\S{config-ssh-bug-derivekey2} \q{é”™è¯¯è®¡ç®— SSH-2 \i{åŠ å¯†}å¯†é’¥}
+
+æ¥è‡ª \i\cw{ssh.com} çš„ SSH æœåŠ¡å™¨è½¯ä»¶ 2.0.11
+ä»¥ä¸‹çš„ç‰ˆæœ¬è®¡ç®—ä¼šè¯åŠ å¯†çš„å¯†é’¥ä¸æ­£ç¡®ã€‚
+æ­¤é—®é¢˜å¯èƒ½ä¼šå¯¼è‡´å„ç§é”™è¯¯æ¶ˆæ¯ï¼Œ
+ä¾‹å¦‚\q{ä¼ å…¥çš„æ•°æ®åŒ…åœ¨è§£å¯†æ—¶å‡ºçŽ°ä¹±ç }ï¼Œç”šè‡³å¯èƒ½æ˜¯\q{å†…å­˜ä¸è¶³}ã€‚
+
+å¦‚æžœæ£€æµ‹åˆ°æ­¤é”™è¯¯ï¼ŒPuTTY å°†æŒ‰ç…§ä¸Žé”™è¯¯æœåŠ¡
+å™¨ç›¸åŒçš„æ–¹å¼è®¡ç®—å…¶åŠ å¯†å¯†é’¥ï¼Œ
+å› æ­¤ä»ç„¶å¯ä»¥è¿›è¡Œé€šä¿¡ã€‚ å¦‚æžœåœ¨ä¸Žæ­£ç¡®çš„æœåŠ¡å™¨é€šä¿¡æ—¶å¯ç”¨äº†æ­¤é”™è¯¯ï¼Œ
+åˆ™é€šä¿¡å°†å¤±è´¥ã€‚
+
+è¿™æ˜¯ä¸€ä¸ªç‰¹å®šäºŽ SSH-2 çš„é”™è¯¯ã€‚
+
+\S{config-ssh-bug-ignore1} \q{é˜»å¡žSSH-1çš„\i{å¿½ç•¥æ¶ˆæ¯}}
+
+å¿½ç•¥æ¶ˆæ¯ (SSH_MSG_IGNORE) æ˜¯ SSH åè®®ä¸­çš„æ¶ˆæ¯ï¼Œ
+å¯ä»¥éšæ—¶ä»Žå®¢æˆ·ç«¯å‘é€åˆ°æœåŠ¡å™¨ï¼Œ
+æˆ–ä»ŽæœåŠ¡å™¨å‘é€åˆ°å®¢æˆ·ç«¯ã€‚
+ä»»ä½•ä¸€æ–¹éƒ½å¿…é¡»åœ¨æ”¶åˆ°æ¶ˆæ¯æ—¶å¿½ç•¥è¯¥æ¶ˆæ¯ã€‚
+PuTTY ä½¿ç”¨å¿½ç•¥æ¶ˆæ¯å°†\I{password camouflage}å¯†ç åŒ…éšè—åœ¨ SSH-1 ä¸­ï¼Œ
+ä½¿ç›‘å¬å™¨æ— æ³•å¾—çŸ¥ç”¨æˆ·å¯†ç çš„é•¿åº¦ï¼›
+å®ƒè¿˜å¯¹è¿žæŽ¥ä¿æŒ\i{keepalives}æ´»
+åŠ¨ä½¿ç”¨å¿½ç•¥æ¶ˆæ¯ï¼ˆå‚è§ \k{config-keepalive}ï¼‰ã€‚
+
+å¦‚æžœæ£€æµ‹åˆ°æ­¤é”™è¯¯ï¼ŒPuTTY å°†åœæ­¢ä½¿ç”¨å¿½ç•¥æ¶ˆæ¯ã€‚
+è¿™æ„å‘³ç€ keepalives å°†åœæ­¢å·¥ä½œï¼ŒPuTTY å°†ä¸å¾—ä¸é€€å›žåˆ°é’ˆå¯¹ SSH-1
+å¯†ç é•¿åº¦çªƒå¬çš„äºŒçº§é˜²å¾¡ã€‚
+è¯·å‚è§ \k{config-ssh-bug-plainpw1}ã€‚
+å¦‚æžœåœ¨ä¸Žæ­£ç¡®çš„æœåŠ¡å™¨é€šä¿¡æ—¶å¯ç”¨äº†æ­¤é”™è¯¯ï¼Œ
+åˆ™ä¼šè¯å°†æˆåŠŸï¼Œä½† keepalives å°†ä¸èµ·ä½œç”¨ï¼Œ
+å¹¶ä¸”ä¼šè¯å¯èƒ½æ›´å®¹æ˜“å—åˆ°çªƒå¬è€…çš„æ”»å‡»ã€‚
+
+\S{config-ssh-bug-plainpw1} \q{æ‹’ç»æ‰€æœ‰ SSH-1\i{å¯†ç ä¼ªè£…}}
+
+å½“ä¸Žæ— æ³•å¤„ç†å¿½ç•¥æ¶ˆæ¯çš„ SSH-1 æœåŠ¡å™¨é€šä¿¡
+æ—¶ï¼ˆå‚è§ \k{config-ssh-bug-ignore1}ï¼‰ï¼Œ
+PuTTYå°†å°è¯•é€šè¿‡åœ¨å¯†ç åŒ…ä¸­å‘é€é¢å¤–çš„å¡«å……æ¥ä¼ªè£…ç”¨æˆ·å¯†ç çš„é•¿åº¦ã€‚
+è¿™\e{åœ¨}æŠ€æœ¯ä¸Šè¿åäº† SSH-1 è§„èŒƒï¼Œå› æ­¤ PuTTY
+åªä¼šåœ¨å®ƒä¸èƒ½ä½¿ç”¨ç¬¦åˆæ ‡å‡†çš„å¿½ç•¥æ¶ˆæ¯ä½œä¸ºä¼ªè£…æ—¶æ‰ä¼šè¿™æ ·åšã€‚
+ä»Žè¿™ä¸ªæ„ä¹‰ä¸Šè¯´ï¼Œ
+æœåŠ¡å™¨æ‹’ç»æŽ¥å—å¡«å……å¯†ç åŒ…å¹¶ä¸æ˜¯ä¸€ä¸ªçœŸæ­£çš„é”™è¯¯ï¼Œ
+ä½†å¦‚æžœæœåŠ¡å™¨ä¹Ÿä¸èƒ½å¤„ç†å¿½ç•¥æ¶ˆæ¯ï¼Œ
+å®ƒç¡®å®žä¼šç»™ç”Ÿæ´»å¸¦æ¥ä¸ä¾¿ã€‚
+
+å¦‚æžœæ£€æµ‹åˆ°è¿™ä¸ª\q{é”™è¯¯}ï¼Œ
+PuTTY å°†å‡å®šå¿½ç•¥æ¶ˆæ¯å’Œå¡«å……éƒ½æ˜¯ä¸å¯æŽ¥å—çš„ï¼Œ
+å› æ­¤å®ƒåˆ«æ— é€‰æ‹©ï¼Œ
+åªèƒ½å‘é€ä¸åŠ æŽ©é¥°çš„ç”¨æˆ·å¯†ç ï¼Œ
+ä»¥ä¾¿çªƒå¬ç”¨æˆ·å¾ˆå®¹æ˜“æ‰¾åˆ°å‡ºå¯†ç çš„ç¡®åˆ‡é•¿åº¦ã€‚
+å¦‚æžœåœ¨ä¸Žæ­£ç¡®çš„æœåŠ¡å™¨é€šä¿¡æ—¶å¯ç”¨äº†æ­¤é”™è¯¯ï¼Œ
+åˆ™ä¼šè¯å°†æˆåŠŸï¼Œä½†æ›´å®¹æ˜“å—åˆ°çªƒå¬è€…çš„æ”»å‡»ã€‚
+
+è¿™æ˜¯ä¸€ä¸ªç‰¹å®šäºŽ SSH-1 çš„é”™è¯¯ã€‚
+SSH-2 å¯¹è¿™ç§ç±»åž‹çš„æ”»å‡»æ˜¯å®‰å…¨çš„
+
+\S{config-ssh-bug-rsa1} \q{é˜»å¡žSSH-1 \i{RSA}è®¤è¯}
+
+ä¸€äº› SSH-1 æœåŠ¡å™¨æ ¹æœ¬æ— æ³•å¤„ç† RSA èº«ä»½éªŒè¯æ¶ˆæ¯ã€‚
+å¦‚æžœ \i{Pageant}  æ­£åœ¨è¿è¡Œå¹¶ä¸”åŒ…å«ä»»ä½• SSH-1 å¯†é’¥ï¼Œ
+PuTTY é€šå¸¸ä¼šåœ¨å›žé€€åˆ°å¯†ç ä¹‹å‰è‡ªåŠ¨å°è¯• RSA èº«ä»½éªŒè¯ï¼Œ
+å› æ­¤è¿™äº›æœåŠ¡å™¨åœ¨çœ‹åˆ° RSA å°è¯•æ—¶ä¼šå´©æºƒã€‚
+
+å¦‚æžœæ£€æµ‹åˆ°æ­¤é”™è¯¯ï¼Œ
+PuTTY å°†ç›´æŽ¥è¿›è¡Œå¯†ç éªŒè¯ã€‚
+å¦‚æžœåœ¨ä¸Žæ­£ç¡®çš„æœåŠ¡å™¨é€šä¿¡æ—¶å¯ç”¨æ­¤é”™è¯¯ï¼Œ
+ä¼šè¯å°†æˆåŠŸï¼Œä½†å½“ç„¶ RSA èº«ä»½éªŒè¯å°†æ˜¯ä¸å¯èƒ½çš„ã€‚
+
+è¿™æ˜¯ä¸€ä¸ªç‰¹å®šäºŽ SSH-1 çš„é”™è¯¯ã€‚
+
+\H{config-psusan} \q{Bare \cw{\i{ssh-connection}}} åè®®
+
+é™¤äº† SSH æœ¬èº«ï¼ŒPuTTY è¿˜æ”¯
+æŒä»Ž SSH æ´¾ç”Ÿçš„ç¬¬äºŒç§åè®®ã€‚
+å®ƒåœ¨ PuTTY GUI ä¸­ä»¥\q{Bare \cw{ssh-connection}}çš„åç§°åˆ—å‡ºã€‚
+
+è¯¥åè®®ä»…ç”± SSH-2 çš„ä¸‰å±‚ä¸­çš„æœ€é‡Œé¢ç»„æˆï¼š
+å®ƒçœç•¥äº†æä¾›ç½‘ç»œå®‰å…¨çš„åŠ å¯†å±‚ï¼Œ
+å¹¶ä¸”çœç•¥äº†æ‚¨æä¾›ç”¨æˆ·åå¹¶è¯æ˜Žæ‚¨å¯
+ä»¥ä»¥è¯¥ç”¨æˆ·èº«ä»½ç™»å½•çš„èº«ä»½éªŒè¯å±‚ã€‚
+
+å› æ­¤ï¼Œ\s{å®ƒå®Œå…¨ä¸é€‚åˆä»»ä½•ç½‘ç»œè¿žæŽ¥}ã€‚
+ä¸è¦è¯•å›¾é€šè¿‡ç½‘ç»œä½¿ç”¨å®ƒï¼
+
+è¯¥åè®®çš„ç›®çš„æ˜¯é’ˆå¯¹å„ç§ç‰¹æ®Šæƒ…å†µï¼Œ
+å…¶ä¸­\q{è¿žæŽ¥} ä¸æ˜¯é€šè¿‡çœŸå®žç½‘ç»œï¼Œ
+è€Œæ˜¯åœ¨åŒä¸€å°è®¡ç®—æœºä¸Šè¿è¡Œçš„ä¸åŒè¿›
+ç¨‹ä¹‹é—´çš„ç®¡é“æˆ– IPC é€šé“ã€‚
+åœ¨è¿™äº›æƒ…å†µä¸‹ï¼Œæ“ä½œç³»ç»Ÿå·²ç»ä¿è¯ä¸¤ä¸ªé€šä¿¡è¿›ç¨‹ä¸­
+çš„æ¯ä¸€ä¸ªéƒ½ç”±é¢„æœŸç”¨æˆ·æ‹¥æœ‰ï¼ˆå› æ­¤ä¸éœ€è¦èº«ä»½éªŒè¯ï¼‰ï¼Œ
+å¹¶ä¸”é€šä¿¡é€šé“ä¸èƒ½è¢«åŒä¸€å°æœºå™¨ä¸Š
+çš„æ•Œå¯¹ç”¨æˆ·çªƒå¬ï¼ˆå› æ­¤ä¹Ÿä¸éœ€è¦åŠ å¯†ï¼‰ã€‚
+å¯èƒ½ä½¿ç”¨çš„ç¤ºä¾‹æ¶‰åŠä¸Žé«˜åº¦
+åˆ†ç¦»çš„ä¸Šä¸‹æ–‡è¿›è¡Œé€šä¿¡ï¼Œ
+ä¾‹å¦‚å®¹å™¨å†…éƒ¨ã€VM æˆ–ä¸åŒçš„ç½‘ç»œå‘½åç©ºé—´ã€‚
+
+PuTTY 0.75 ä¸­æ–°å¢žäº†å¯¹è¯¥åè®®çš„æ˜¾å¼æ”¯æŒã€‚
+æˆªè‡³ 2021 å¹´ 4 æœˆï¼Œå”¯ä¸€å·²çŸ¥
+çš„\cw{ssh-connection}åè®®æœåŠ¡å™¨
+æ˜¯ Unix ç¨‹åº\cq{\i{psusan}}ï¼Œå®ƒä¹Ÿæ˜¯ PuTTY å·¥å…·å¥—ä»¶çš„ä¸€éƒ¨åˆ†ã€‚
+
+ï¼ˆä¸è¿‡ï¼Œè¿™ä¸ªåè®®ä¹Ÿæ˜¯ PuTTY å®žä¾‹ä¹‹é—´ç”¨æ¥å®žçŽ°è¿žæŽ¥å…±äº«
+çš„åè®®ï¼šè¯·å‚é˜… \k{config-ssh-sharing}ã€‚
+äº‹å®žä¸Šï¼Œåœ¨ Unix ç‰ˆæœ¬çš„ PuTTY ä¸­ï¼Œ
+å½“å…±äº«ä¸Šæ¸¸åœ¨äº‹ä»¶æ—¥å¿—ä¸­è®°å½•\q{åœ¨ [pathname] å…±äº«æ­¤è¿žæŽ¥} æ—¶ï¼Œ
+å¯ä»¥é€šè¿‡åœ¨ä¸»æœºä¸­è¾“å…¥å…¶è·¯å¾„åå°†å¦ä¸€ä¸ª
+PuTTY å®žä¾‹ç›´æŽ¥è¿žæŽ¥åˆ°è¯¥ Unix å¥—æŽ¥å­—
+åç§°æ¡†å¹¶é€‰æ‹©\q{Bare \cw{ssh-connection}} ä½œä¸ºåè®®ï¼ï¼‰
+
+SSH é¢æ¿ä¸‹çš„è®¸å¤šé€‰é¡¹ä¹Ÿä¼šå½±å“æ­¤åè®®ï¼Œ
+å°½ç®¡å‡ºäºŽæ˜¾è€Œæ˜“è§çš„åŽŸå› ï¼Œ
+ä¸ŽåŠ å¯†å’Œèº«ä»½éªŒè¯æœ‰å…³çš„é€‰é¡¹ä¸ä¼šã€‚
+
+æˆ‘å†è¯´ä¸€éï¼Œ\s{ä¸è¦å°è¯•å°†æ­¤åè®®ç”¨äºŽç½‘ç»œè¿žæŽ¥ï¼} è¿™ä¸æ˜¯å®ƒçš„ç”¨é€”ï¼Œ
+è€Œä¸”è¿™æ ·åšä¸€ç‚¹ä¹Ÿä¸å®‰å…¨ã€‚
+
+\H{config-serial} ä¸²å£é¢æ¿
+
+\i{ä¸²å£}é¢æ¿å…è®¸æ‚¨é…ç½®ä»…åœ¨
+PuTTY è¿žæŽ¥åˆ°æœ¬åœ°\I{serial port}\i{ä¸²è¡Œçº¿}è·¯æ—¶é€‚ç”¨çš„é€‰é¡¹ã€‚
+
+\S{config-serial-line} é€‰æ‹©è¦è¿žæŽ¥çš„ä¸²å£
+
+å¦‚æžœæ‚¨çš„è®¡ç®—æœºæœ‰å¤šä¸ªä¸²è¡Œç«¯å£ï¼Œ
+\q{è¦è¿žæŽ¥çš„ä¸²è¡Œçº¿}æ¡†å…è®¸æ‚¨é€‰
+æ‹©å¸Œæœ› PuTTY ä¸Žä¹‹é€šä¿¡çš„ä¸²è¡Œçº¿ã€‚
+
+åœ¨ Windows ä¸Šï¼Œç¬¬ä¸€æ¡ä¸²è¡Œçº¿ç§°ä¸º \i\cw{COM1}ï¼Œ
+å¦‚æžœæœ‰ç¬¬äºŒæ¡ï¼Œåˆ™ç§°ä¸º \cw{COM2}ï¼Œä¾æ­¤ç±»æŽ¨ã€‚
+
+æ­¤é…ç½®è®¾ç½®åœ¨ä¼šè¯é¢æ¿ä¸Šä¹Ÿå¯è§ï¼Œ
+å¦‚æžœè¿žæŽ¥ç±»åž‹è®¾ç½®ä¸º\q{ä¸²å£}ï¼Œ
+å®ƒå°†æ›¿æ¢\q{ä¸»æœºå}æ¡†ï¼ˆè¯·å‚é˜… \k{config-hostname}ï¼‰ã€‚
+
+\S{config-serial-speed} é€‰æ‹©ä¸²å£çš„é€Ÿåº¦
+
+\q{é€Ÿåº¦}æ¡†å…è®¸æ‚¨é€‰æ‹©ä¸Žä¸²è¡Œçº¿è·¯é€š
+ä¿¡çš„é€Ÿåº¦ï¼ˆæˆ–\q{æ³¢ç‰¹çŽ‡}ï¼‰ã€‚
+å…¸åž‹å€¼å¯èƒ½æ˜¯ 9600ã€19200ã€38400 æˆ– 57600ã€‚
+æ‚¨éœ€è¦å“ªä¸€ä¸ªå–å†³äºŽä¸²è¡Œç”µç¼†å¦ä¸€ç«¯çš„è®¾å¤‡ï¼› å¦‚æžœæ‚¨æœ‰ç–‘é—®ï¼Œ
+è¯·æŸ¥é˜…è¯¥è®¾å¤‡çš„æ‰‹å†Œã€‚
+
+æ­¤é…ç½®è®¾ç½®åœ¨ä¼šè¯é¢æ¿ä¸Šä¹Ÿå¯è§ï¼Œ
+å¦‚æžœè¿žæŽ¥ç±»åž‹è®¾ç½®ä¸º\q{ä¸²å£}ï¼Œ
+å®ƒå°†æ›¿æ¢\q{ç«¯å£}æ¡†ï¼ˆè¯·å‚é˜… \k{config-hostname}ï¼‰ã€‚
+
+\S{config-serial-databits} é€‰æ‹©æ•°æ®ä½æ•°
+
+\q{æ•°æ®ä½} æ¡†å…è®¸æ‚¨é€‰æ‹©åœ¨é€šè¿‡ä¸²è¡Œçº¿
+å‘é€æˆ–æŽ¥æ”¶çš„æ¯ä¸ªå­—èŠ‚ä¸­ä¼ è¾“å¤šå°‘æ•°æ®ä½ã€‚
+å…¸åž‹å€¼ä¸º 7 æˆ– 8ã€‚
+
+\S{config-serial-stopbits} é€‰æ‹©åœæ­¢ä½æ•°
+
+\q{åœæ­¢ä½} æ¡†å…è®¸æ‚¨é€‰æ‹©åœ¨ä¸²è¡Œçº¿
+è·¯åè®®ä¸­ä½¿ç”¨å¤šå°‘åœæ­¢ä½ã€‚ å…¸åž‹å€¼ä¸º 1ã€1.5 æˆ– 2ã€‚
+
+\S{config-serial-parity} é€‰æ‹©ä¸²å£å¥‡å¶æ ¡éªŒæ–¹æ¡ˆ
+
+\q{å¥‡å¶æ ¡éªŒ}æ¡†å…è®¸æ‚¨é€‰æ‹©ä¸²è¡Œçº¿è·¯ä¸Šä½¿ç”¨çš„å¥‡å¶æ ¡éªŒç±»åž‹ã€‚
+è®¾ç½®å¦‚ä¸‹ï¼š
+
+\b \q{æš‚æ— }: æ ¹æœ¬æ²¡æœ‰å‘é€å¥‡å¶æ ¡éªŒä½ã€‚
+
+\b \q{Odd}: ä¸€ä¸ªé¢å¤–çš„å¥‡å¶æ ¡éªŒä½ä¸Žæ¯ä¸ªå­—èŠ‚ä¸€èµ·å‘é€ï¼Œ
+å¹¶å®‰æŽ’ä¸ºä½¿ 1 ä½çš„æ€»æ•°ä¸ºå¥‡æ•°ã€‚
+
+\b \q{Even}: ä¸€ä¸ªé¢å¤–çš„å¥‡å¶æ ¡éªŒä½ä¸Žæ¯ä¸ªå­—èŠ‚ä¸€èµ·å‘é€ï¼Œ
+å¹¶å®‰æŽ’ä¸ºä½¿ 1 ä½çš„æ€»æ•°ä¸ºå¶æ•°ã€‚
+
+\b \q{Mark}: ä¸€ä¸ªé¢å¤–çš„å¥‡å¶æ ¡éªŒä½ä¸Žæ¯ä¸ªå­—èŠ‚ä¸€èµ·å‘é€ï¼Œ
+å¹¶ä¸”å§‹ç»ˆè®¾ç½®ä¸º 1ã€‚
+
+\b \q{Space}: ä¸€ä¸ªé¢å¤–çš„å¥‡å¶æ ¡éªŒä½ä¸Žæ¯ä¸ªå­—èŠ‚ä¸€èµ·å‘é€ï¼Œ
+å¹¶ä¸”å§‹ç»ˆè®¾ç½®ä¸º 0ã€‚
+
+\S{config-serial-flow} é€‰æ‹©ä¸²å£æµæŽ§æ–¹æ¡ˆ
+
+\q{æµæŽ§åˆ¶}æ¡†å…è®¸æ‚¨é€‰æ‹©åœ¨ä¸²è¡Œçº¿è·¯ä¸Šä½¿ç”¨å“ªç§ç±»åž‹çš„æµæŽ§åˆ¶æ£€æŸ¥ã€‚
+è®¾ç½®å¦‚ä¸‹ï¼š
+
+\b \q{æš‚æ— }: æ²¡æœ‰è¿›è¡Œæµé‡æŽ§åˆ¶ã€‚ å¦‚æžœä»»ä½•ä¸€æ–¹å°è¯•å‘é€çš„é€Ÿåº¦è¶…è¿‡ä¸²è¡Œçº¿è·¯å…è®¸çš„é€Ÿåº¦ï¼Œ
+åˆ™æ•°æ®å¯èƒ½ä¼šä¸¢å¤±ã€‚
+
+\b \q{XON/XOFF}: æµé‡æŽ§åˆ¶æ˜¯é€šè¿‡åœ¨æ•°æ®æµä¸­
+å‘é€ XON å’Œ XOFF å­—ç¬¦æ¥å®Œæˆçš„ã€‚
+
+\b \q{RTS/CTS}: æµé‡æŽ§åˆ¶æ˜¯ä½¿ç”¨ä¸²è¡Œçº¿è·¯
+ä¸Šçš„ RTS å’Œ CTS çº¿å®Œæˆçš„ã€‚
+
+\b \q{DSR/DTR}: æµé‡æŽ§åˆ¶æ˜¯ä½¿ç”¨ä¸²è¡Œçº¿è·¯
+ä¸Šçš„ DSR å’Œ DTR çº¿å®Œæˆçš„ã€‚
+
+\H{config-telnet} \i{Telnet} é¢æ¿
+
+Telnet é¢æ¿å…è®¸æ‚¨é…ç½®ä»…é€‚
+ç”¨äºŽ Telnet ä¼šè¯çš„é€‰é¡¹ã€‚
+
+\S{config-oldenviron} \q{å¤„ç† OLD_ENVIRON æ­§ä¹‰}
+
+ç”¨äºŽä¼ é€’\i{çŽ¯å¢ƒå˜é‡}çš„åŽŸå§‹ Telnet æœºåˆ¶è¢«é”™è¯¯åœ°æŒ‡å®šã€‚
+åœ¨ç¼–å†™æ ‡å‡† (RFC 1408) æ—¶ï¼Œ
+BSD telnet å®žçŽ°å·²ç»æ”¯æŒè¯¥åŠŸèƒ½ï¼Œ
+è¯¥æ ‡å‡†çš„ç›®çš„æ˜¯æ
+è¿° BSD å®žçŽ°å·²ç»ä½¿ç”¨çš„è¡Œä¸ºã€‚
+
+é—æ†¾çš„æ˜¯ï¼Œè¯¥æ ‡å‡†åœ¨å‘å¸ƒæ—¶å‡ºçŽ°äº†æ‰“å­—é”™è¯¯ï¼Œ
+å¹¶ä¸”ä¸¤ä¸ªé‡è¦çš„åŠŸèƒ½ä»£ç è¢«é”™è¯¯åœ°æŒ‡å®šäº†ã€‚
+BSD å®žçŽ°æ²¡æœ‰æ”¹å˜ï¼Œæ ‡å‡†ä¹Ÿæ²¡æœ‰æ›´æ­£ã€‚
+å› æ­¤ï¼Œæ‚¨å¯èƒ½ä¼šåœ¨é‚£é‡Œæ‰¾åˆ°ç¬¦
+åˆ \i{BSD} æˆ– \i{RFC} çš„å®žçŽ°ã€‚
+æ­¤å¼€å…³å…è®¸æ‚¨é€‰æ‹©å“ªä¸ª PuTTY å£°ç§°æ˜¯ã€‚
+
+é€šè¿‡å‘å¸ƒç¬¬äºŒä¸ªæ ‡å‡†è§£å†³äº†è¿™ä¸ªé—®é¢˜ï¼Œ
+å®šä¹‰äº†ä¸€ä¸ªåä¸º \i\cw{NEW_ENVIRON} çš„æ–° Telnet æœºåˆ¶ï¼Œ
+å…¶è¡Œä¸ºä¸ŽåŽŸå§‹ \i\cw{OLD_ENVIRON} å®Œå…¨ç›¸åŒï¼Œä½†ä¸å—çŽ°æœ‰å®žçŽ°çš„é˜»ç¢ã€‚
+å¤§å¤šæ•° Telnet æœåŠ¡å™¨çŽ°åœ¨éƒ½æ”¯æŒè¿™ä¸€ç‚¹ï¼Œ
+è€Œä¸”å®ƒæ˜¯æ˜Žç¡®çš„ã€‚ä»…å½“æ‚¨æ— æ³•å°†çŽ¯å¢ƒå˜é‡ä¼ 
+é€’ç»™ç›¸å½“æ—§çš„æœåŠ¡å™¨æ—¶æ‰éœ€è¦æ­¤åŠŸèƒ½ã€‚
+
+\S{config-ptelnet} è¢«åŠ¨å’Œä¸»åŠ¨ \i{Telnet åå•†}æ¨¡å¼
+
+åœ¨ Telnet è¿žæŽ¥ä¸­ï¼Œå®¢æˆ·ç«¯å’ŒæœåŠ¡å™¨ä¹‹é—´ä¼ é€’äº†ä¸¤ç§ç±»
+åž‹çš„æ•°æ®ï¼šå®žé™…æ–‡æœ¬ï¼Œä»¥åŠå…³äºŽä½¿ç”¨
+å“ªäº› Telnet é¢å¤–åŠŸèƒ½çš„\e{åå•†}ã€‚
+
+PuTTY å¯ä»¥ä½¿ç”¨ä¸¤ç§ä¸åŒçš„åå•†ç­–ç•¥ï¼š
+
+\b \I{active Telnet negotiation}åœ¨\e{ä¸»åŠ¨}æ¨¡å¼ä¸‹ï¼Œ
+PuTTY ä¼šåœ¨è¿žæŽ¥æ‰“å¼€åŽç«‹å³å¼€å§‹å‘é€åå•†ã€‚
+
+\b \I{passive Telnet negotiation}åœ¨\e{è¢«åŠ¨}æ¨¡å¼ä¸‹ï¼Œ
+PuTTY å°†ç­‰å¾…åå•†ï¼Œç›´åˆ°å®ƒçœ‹åˆ°æ¥è‡ªæœåŠ¡å™¨çš„åå•†
+
+è¢«åŠ¨æ¨¡å¼çš„æ˜Žæ˜¾ç¼ºç‚¹æ˜¯ï¼Œå¦‚æžœæœåŠ¡å™¨ä¹Ÿåœ¨è¢«åŠ¨æ¨¡å¼ä¸‹è¿è¡Œï¼Œ
+é‚£ä¹ˆåå•†å°†æ°¸è¿œä¸ä¼šå¼€å§‹ã€‚
+å› æ­¤ï¼ŒPuTTY é»˜è®¤ä¸ºæ´»åŠ¨æ¨¡å¼ã€‚
+
+ä½†æ˜¯ï¼Œæœ‰æ—¶éœ€è¦è¢«åŠ¨æ¨¡å¼æ‰èƒ½æˆåŠŸé€šè¿‡æŸäº›ç±»
+åž‹çš„\i{é˜²ç«å¢™}å’Œ\i{Telnet proxy}æœåŠ¡å™¨ã€‚
+å¦‚æžœæ‚¨å¯¹é˜²ç«å¢™æ„Ÿåˆ°å›°æƒ‘ï¼Œ
+æ‚¨å¯ä»¥å°è¯•å¯ç”¨è¢«åŠ¨æ¨¡å¼ä»¥æŸ¥çœ‹å®ƒæ˜¯å¦æœ‰å¸®åŠ©ã€‚
+
+\S{config-telnetkey} \q{é”®ç›˜å‘é€ \i{Telnet ç‰¹æ®Šå‘½ä»¤}}
+
+å¦‚æžœé€‰ä¸­æ­¤æ¡†ï¼Œåˆ™ä¼šä¿®æ”¹å‡ 
+ä¸ªé”®åºåˆ—çš„æ­£å¸¸æ“ä½œï¼š
+
+\b é”®ç›˜ä¸Šçš„Backspaceé€€æ ¼é”®å°†\I{Erase Character,
+Telnet special command}å‘é€ Telnet ç‰¹æ®Šé€€æ ¼ç ï¼›
+
+\b Control-C å°†\I{Interrupt Process, Telnet
+special command}å‘é€ Telnet ç‰¹æ®Šä¸­æ–­è¿›ç¨‹ä»£ç ï¼›
+
+\b Control-Z å°†\I{Suspend Process, Telnet
+special command}å‘é€ Telnet ç‰¹æ®Šçš„æš‚åœè¿›ç¨‹ä»£ç ã€‚
+
+é™¤éžæ‚¨çŸ¥é“è‡ªå·±åœ¨åšä»€ä¹ˆï¼Œ
+å¦åˆ™æ‚¨å¯èƒ½ä¸åº”è¯¥å¯ç”¨æ­¤åŠŸèƒ½ã€‚
+
+\S{config-telnetnl} \q{Return(å›žè½¦)é”®å‘é€\i{Telnet æ–°è¡Œ}ä»£ç è€Œä¸æ˜¯ ^Mâ€™}
+
+ä¸Žå¤§å¤šæ•°å…¶ä»–è¿œç¨‹ç™»å½•åè®®ä¸åŒï¼ŒTelnet åè®®æœ‰ä¸€ä¸ªç‰¹æ®Šçš„\q{\i{æ¢è¡Œ}}ä»£ç ï¼Œ
+ä¸Žé€šå¸¸çš„ Control-M æˆ– Control-J è¡Œç»“å°¾ä¸åŒã€‚
+é»˜è®¤æƒ…å†µä¸‹ï¼Œå½“æ‚¨æŒ‰ Return æ—¶ï¼Œ
+PuTTY ä¼šå‘é€ Telnet æ–°è¡Œä»£ç ï¼Œ
+è€Œä¸æ˜¯åƒåœ¨å¤§å¤šæ•°å…¶ä»–åè®®ä¸­é‚£æ ·å‘é€ Control-Mã€‚
+
+å¤§å¤šæ•° Unix é£Žæ ¼çš„ Telnet æœåŠ¡å™¨ä¸ä»‹æ„æŽ¥
+æ”¶ Telnet New Line è¿˜æ˜¯ Control-Mã€‚
+æœ‰äº›æœåŠ¡å™¨ç¡®å®žæœŸå¾…æ–°çº¿ï¼Œæœ‰äº›æœåŠ¡å™¨æ›´å–œæ¬¢çœ‹åˆ°^Mã€‚
+å¦‚æžœæ‚¨åœ¨ Telnet ä¼šè¯ä¸­æŒ‰ Return æ—¶çœ‹åˆ°ä»¤äººæƒŠè®¶çš„è¡Œä¸ºï¼Œ
+æ‚¨å¯ä»¥å°è¯•å…³é—­æ­¤é€‰é¡¹ä»¥æŸ¥çœ‹æ˜¯å¦æœ‰å¸®åŠ©ã€‚
+
+\H{config-rlogin} Rlogin é¢æ¿
+
+\i{Rlogin} é¢æ¿å…è®¸æ‚¨é…ç½®ä»…é€‚ç”¨
+äºŽ Rlogin ä¼šè¯çš„é€‰é¡¹ã€‚
+
+\S{config-rlogin-localuser} \I{local username in Rlogin}\q{æœ¬åœ°ç”¨æˆ·å}
+
+Rlogin å…è®¸é€šè¿‡æœåŠ¡å™¨ä¸Šåä¸º \i\c{.rhosts} çš„æ–‡ä»¶è¿›è¡Œè‡ªåŠ¨ï¼ˆæ— å¯†ç ï¼‰ç™»å½•å½¢å¼ã€‚
+ä½ åœ¨ä½ çš„ \c{.rhosts} æ–‡ä»¶ä¸­å†™ä¸‹
+ç±»ä¼¼ \c{jbloggs@pc1.example.com} çš„ä¸€è¡Œï¼Œ
+ç„¶åŽå½“ä½ å»ºç«‹ä¸€ä¸ª Rlogin è¿žæŽ¥æ—¶ï¼Œ
+å®¢æˆ·ç«¯ä¼šä¼ è¾“è¿è¡Œ Rlogin å®¢æˆ·ç«¯çš„ç”¨æˆ·çš„ç”¨æˆ·åã€‚
+æœåŠ¡å™¨æ ¹æ® \c{.rhosts} æ£€æŸ¥ç”¨æˆ·åå’Œä¸»æœºåï¼Œ
+å¦‚æžœå®ƒä»¬åŒ¹é…ï¼Œå®ƒä¸ä¼šè¦æ±‚\I{passwordless login}è¾“å…¥å¯†ç ã€‚
+
+è¿™åªé€‚ç”¨äºŽ Unix ç³»ç»ŸåŒ…å«é˜»æ­¢ç”¨æˆ·åœ¨ Rlogin è¿žæŽ¥ä¸­ä¼ªè£…æˆå¦ä¸€ä¸ªç”¨æˆ·çš„ä¿æŠ¤æŽªæ–½ã€‚
+Rlogin è¿žæŽ¥å¿…é¡»æ¥è‡ª
+ä½ŽäºŽ 1024 çš„\I{privileged port}ç«¯å£å·ï¼Œ
+Unix ç³»ç»Ÿç¦æ­¢éžç‰¹æƒè¿›ç¨‹è¿™æ ·åšï¼›å› æ­¤ï¼Œ
+å½“æœåŠ¡å™¨çœ‹åˆ°æ¥è‡ªä½Žç¼–å·ç«¯å£çš„è¿žæŽ¥æ—¶ï¼Œ
+å®ƒå‡å®šè¿žæŽ¥çš„å®¢æˆ·ç«¯ç”±ç‰¹æƒï¼ˆå› æ­¤å—ä¿¡ä»»ï¼‰è¿›ç¨‹æŒæœ‰ï¼Œ
+å› æ­¤å®ƒç›¸ä¿¡ç”¨æˆ·æ˜¯è°çš„å£°æ˜Žã€‚
+
+æ²¡æœ‰æ­¤é™åˆ¶ï¼šä»»ä½•ç”¨æˆ·éƒ½å¯ä»¥ä»Žä½Žç¼–å·ç«¯å£å‘èµ·ä¼ å‡ºè¿žæŽ¥ã€‚
+å› æ­¤ï¼ŒRlogin \c{.rhosts} æœºåˆ¶å¯¹äºŽå®‰å…¨åŒºåˆ† Windows
+æœºå™¨ä¸Šçš„å‡ ä¸ªä¸åŒç”¨æˆ·æ˜¯å®Œå…¨æ²¡æœ‰ç”¨çš„ã€‚
+å¦‚æžœæ‚¨æœ‰ä¸€ä¸ªæŒ‡å‘ Windows PC çš„ \c{.rhosts} æ¡ç›®ï¼Œ
+æ‚¨åº”è¯¥å‡è®¾ä½¿ç”¨è¯¥ PC çš„\e{ä»»ä½•äºº}éƒ½å¯ä»¥åœ¨ Rlogin
+è¿žæŽ¥ä¸­\i{æ¬ºéª—}æ‚¨çš„ç”¨æˆ·åå¹¶è®¿
+é—®æ‚¨åœ¨æœåŠ¡å™¨ä¸Šçš„å¸æˆ·ã€‚
+
+\q{æœ¬åœ°ç”¨æˆ·å}æŽ§ä»¶å…è®¸æ‚¨æŒ‡å®š PuTTY åº”è¯¥
+å£°ç§°æ‚¨æ‹¥æœ‰çš„ç”¨æˆ·åï¼Œ
+ä»¥é˜²å®ƒä¸Žæ‚¨çš„ \i{Windows ç”¨æˆ·å}ä¸åŒ¹
+é…ï¼ˆæˆ–è€…å¦‚æžœæ‚¨æ²¡æœ‰è´¹å¿ƒè®¾ç½® Windows ç”¨æˆ·åï¼‰ã€‚
+
+\H{config-supdup} \i{SUPDUP} é¢æ¿
+
+SUPDUP é¢æ¿å…è®¸æ‚¨é…ç½®ä»…é€‚ç”¨äºŽ SUPDUP ä¼šè¯çš„é€‰é¡¹ã€‚
+ æœ‰å…³ SUPDUP åè®®çš„æ›´å¤šä¿¡æ¯ï¼Œ
+ è¯·å‚è§ \k{using-supdup}ã€‚
+
+\S{supdup-location} \q{ä½ç½®å­—ç¬¦ä¸²}
+
+åœ¨ SUPDUP ä¸­ï¼Œå®¢æˆ·ç«¯å°†å…¶é€‰æ‹©çš„ä¸€æ®µæ–‡æœ¬å‘é€åˆ°æœåŠ¡å™¨ï¼Œ
+ä»¥æä¾›ç”¨æˆ·çš„ä½ç½®ã€‚
+è¿™é€šå¸¸æ˜¾ç¤ºåœ¨ç™»å½•ç”¨æˆ·åˆ—è¡¨ä¸­ã€‚
+
+é»˜è®¤æƒ…å†µä¸‹ï¼ŒPuTTY åªæ˜¯å°†å…¶é»˜è®¤ä¸ºâ€œThe Internetâ€ã€‚
+å¦‚æžœæ‚¨å¸Œæœ›æ‚¨çš„ä½ç½®æ˜¾ç¤ºä¸ºæ›´å…·ä½“çš„å†…å®¹ï¼Œ
+æ‚¨å¯ä»¥åœ¨æ­¤å¤„è¿›è¡Œé…ç½®ã€‚
+
+\S{supdup-ascii} \q{æ‰©å±• ASCII å­—ç¬¦é›†}
+
+è¿™å£°æ˜Žäº†æ‚¨çš„ç»ˆç«¯æ”¯æŒå“ªç§å­—ç¬¦é›†æ‰©å±•ã€‚
+å¦‚æžœæœåŠ¡å™¨æ”¯æŒå®ƒï¼Œ
+å®ƒå°†ä½¿ç”¨è¯¥å­—ç¬¦é›†å‘é€æ–‡æœ¬ã€‚ \q{æ— }è¡¨ç¤ºæ ‡å‡†çš„ 95 ä¸ª
+å¯æ‰“å° ASCII å­—ç¬¦ã€‚ \q{ITS} è¡¨ç¤ºåœ¨æŽ§åˆ¶å­—ç¬¦èŒƒå›´å†…
+ä½¿ç”¨å¯æ‰“å°å­—ç¬¦æ‰©å±•çš„ ASCIIã€‚
+æ­¤å­—ç¬¦é›†è®°å½•åœ¨ SUPDUP åè®®å®šä¹‰ä¸­ã€‚
+\q{WAITS}ç±»ä¼¼äºŽ\q{ITS}ï¼Œä½†åœ¨æ‰©å±•é›†ä¸­ä½¿ç”¨äº†ä¸€äº›æ›¿ä»£å­—
+ç¬¦ï¼šæœ€çªå‡ºçš„æ˜¯ï¼Œå®ƒå°†æ˜¾ç¤ºç®­å¤´è€Œä¸æ˜¯\c{^}å’Œ\c{_}ï¼Œä»¥
+åŠ\c{\}}è€Œä¸æ˜¯\c{~}ã€‚ ITS å’Œ Lisp æœºå™¨ä½¿ç”¨\q{ITS}æ‰©å±•
+ASCIIï¼Œè€Œ\q{WAITS}ä»…ç”¨äºŽæ–¯å¦ç¦ AI å®žéªŒ
+çš„ WAITS æ“ä½œç³»ç»Ÿã€‚
+
+\S{supdup-more} \q{**MORE** å¤„ç†}
+
+å¯ç”¨ **MORE** å¤„ç†æ—¶ï¼Œä¼šå¯¼è‡´æœåŠ¡å™¨è¾“å‡ºåœ¨å±å¹•åº•éƒ¨æš‚åœï¼Œ
+ç›´åˆ°è¾“å…¥ç©ºæ ¼ã€‚
+
+\S{supdup-scroll} \q{ç»ˆç«¯æ»šåŠ¨}
+
+è¿™æŽ§åˆ¶ç»ˆç«¯æ˜¯å¦å°†æ‰§è¡Œæ»š
+åŠ¨ç„¶åŽå…‰æ ‡ç§»åˆ°æœ€åŽä¸€è¡Œä»¥ä¸‹ï¼Œ
+æˆ–è€…å…‰æ ‡æ˜¯å¦å°†è¿”å›žåˆ°ç¬¬ä¸€è¡Œã€‚
+
+\H{config-file} \ii{å°†é…ç½®å­˜å‚¨åœ¨æ–‡ä»¶ä¸­}
+
+PuTTY ç›®å‰ä¸æ”¯æŒå°†å…¶é…ç½®å­˜å‚¨
+åœ¨æ–‡ä»¶è€Œä¸æ˜¯\i{æ³¨å†Œè¡¨}ä¸­ã€‚ ä½†æ˜¯ï¼Œ
+æ‚¨å¯ä»¥ä½¿ç”¨å‡ ä¸ª\i{æ‰¹å¤„ç†æ–‡ä»¶}æ¥è§£å†³æ­¤é—®é¢˜ã€‚.
+
+æ‚¨å°†éœ€è¦ä¸€ä¸ªåä¸ºï¼ˆæ¯”å¦‚è¯´ï¼‰\c{PUTTY.BAT} çš„æ–‡ä»¶ï¼Œ
+å®ƒå°†æ–‡ä»¶çš„å†…å®¹å¯¼å…¥æ³¨å†Œè¡¨ï¼Œç„¶åŽè¿è¡Œ PuTTYï¼Œ
+å°†æ³¨å†Œè¡¨çš„å†…å®¹å¯¼å‡ºå›žæ–‡ä»¶ï¼Œ
+å¹¶åˆ é™¤æ³¨å†Œè¡¨æ¡ç›®ã€‚ è¿™ä¸€åˆ‡éƒ½å¯ä»¥ä½¿ç”¨ Regedit å‘½ä»¤è¡Œé€‰é¡¹æ¥å®Œæˆï¼Œ
+å› æ­¤éƒ½æ˜¯è‡ªåŠ¨çš„ã€‚
+è¿™æ˜¯æ‚¨åœ¨ \c{PUTTY.BAT} ä¸­éœ€è¦çš„å†…å®¹ï¼š
 
 \c @ECHO OFF
 \c regedit /s putty.reg
@@ -4123,25 +4123,25 @@ PuTTY Ä¿Ç°²»Ö§³Ö½«ÆäÅäÖÃ´æ´¢
 \c del new.reg
 \c regedit /s puttydel.reg
 
-´ËÅú´¦ÀíÎÄ¼þÐèÒªÁ½¸ö¸¨ÖúÎÄ¼þ£º\c{PUTTYRND.REG} Îª \c{PUTTY.RND}
-Ëæ»úÖÖ×ÓÎÄ¼þÉèÖÃ³õÊ¼°²È«Î»ÖÃ£¬
-ÒÔ¼° \c{PUTTYDEL.REG} ÔÚ³É¹¦±£´æ»Ø
-ÎÄ¼þºóÏú»Ù×¢²á±íÖÐµÄËùÓÐÄÚÈÝ¡£
+æ­¤æ‰¹å¤„ç†æ–‡ä»¶éœ€è¦ä¸¤ä¸ªè¾…åŠ©æ–‡ä»¶ï¼š\c{PUTTYRND.REG} ä¸º \c{PUTTY.RND}
+éšæœºç§å­æ–‡ä»¶è®¾ç½®åˆå§‹å®‰å…¨ä½ç½®ï¼Œ
+ä»¥åŠ \c{PUTTYDEL.REG} åœ¨æˆåŠŸä¿å­˜å›ž
+æ–‡ä»¶åŽé”€æ¯æ³¨å†Œè¡¨ä¸­çš„æ‰€æœ‰å†…å®¹ã€‚
 
-ÕâÀïÊÇ\c{PUTTYDEL.REG}£º
+è¿™é‡Œæ˜¯\c{PUTTYDEL.REG}ï¼š
 
 \c REGEDIT4
 \c
 \c [-HKEY_CURRENT_USER\Software\SimonTatham\PuTTY]
 
-ÏÂÃæÊÇÒ»¸ö\c{PUTTYRND.REG}ÎÄ¼þÀý×Ó£º
+ä¸‹é¢æ˜¯ä¸€ä¸ª\c{PUTTYRND.REG}æ–‡ä»¶ä¾‹å­ï¼š
 
 \c REGEDIT4
 \c
 \c [HKEY_CURRENT_USER\Software\SimonTatham\PuTTY]
 \c "RandSeedFile"="a:\\putty.rnd"
 
-ÄúÓ¦¸Ã½« \c{a:\\putty.rnd} Ìæ»»ÎªÄúÏëÒª
-´æ´¢Ëæ»úÊýÊý¾ÝµÄÎ»ÖÃ¡£
-Èç¹ûÄ¿±êÊÇÔÚÒ»¸ö U ÅÌÉÏÐ¯´ø PuTTY ¼°ÆäÉèÖÃ£¬
-Äú¿ÉÄÜÏ£Íû½«Æä´æ´¢ÔÚ U ÅÌÉÏ¡£
+æ‚¨åº”è¯¥å°† \c{a:\\putty.rnd} æ›¿æ¢ä¸ºæ‚¨æƒ³è¦
+å­˜å‚¨éšæœºæ•°æ•°æ®çš„ä½ç½®ã€‚
+å¦‚æžœç›®æ ‡æ˜¯åœ¨ä¸€ä¸ª U ç›˜ä¸Šæºå¸¦ PuTTY åŠå…¶è®¾ç½®ï¼Œ
+æ‚¨å¯èƒ½å¸Œæœ›å°†å…¶å­˜å‚¨åœ¨ U ç›˜ä¸Šã€‚
