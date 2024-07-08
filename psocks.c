@@ -72,7 +72,7 @@ struct psocks_connection {
 
 static SshChannel *psocks_lportfwd_open(
     ConnectionLayer *cl, const char *hostname, int port,
-    const char *description, const SocketPeerInfo *pi, Channel *chan);
+    const char *description, const SocketEndpointInfo *pi, Channel *chan);
 
 static const ConnectionLayerVtable psocks_clvt = {
     .lportfwd_open = psocks_lportfwd_open,
@@ -93,8 +93,9 @@ static const SshChannelVtable psocks_scvt = {
     /* all the rest are NULL */
 };
 
-static void psocks_plug_log(Plug *p, PlugLogType type, SockAddr *addr,
-                            int port, const char *error_msg, int error_code);
+static void psocks_plug_log(Plug *p, Socket *s, PlugLogType type,
+                            SockAddr *addr, int port,
+                            const char *error_msg, int error_code);
 static void psocks_plug_closing(Plug *p, PlugCloseType, const char *error_msg);
 static void psocks_plug_receive(Plug *p, int urgent,
                                 const char *data, size_t len);
@@ -154,7 +155,7 @@ static void psocks_connection_establish(void *vctx);
 
 static SshChannel *psocks_lportfwd_open(
     ConnectionLayer *cl, const char *hostname, int port,
-    const char *description, const SocketPeerInfo *pi, Channel *chan)
+    const char *description, const SocketEndpointInfo *pi, Channel *chan)
 {
     psocks_state *ps = container_of(cl, psocks_state, cl);
     psocks_connection *conn = snew(psocks_connection);
@@ -320,8 +321,9 @@ static void psocks_sc_unthrottle(SshChannel *sc, size_t bufsize)
 	sk_set_frozen(conn->socket, false);
 }
 
-static void psocks_plug_log(Plug *plug, PlugLogType type, SockAddr *addr,
-                            int port, const char *error_msg, int error_code)
+static void psocks_plug_log(Plug *plug, Socket *s, PlugLogType type,
+                            SockAddr *addr, int port,
+                            const char *error_msg, int error_code)
 {
     psocks_connection *conn = container_of(plug, psocks_connection, plug);
     char addrbuf[256];
