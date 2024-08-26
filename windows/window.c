@@ -700,10 +700,12 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
 
         wgs->popup_menus[SYSMENU].menu = GetSystemMenu(wgs->term_hwnd, false);
         wgs->popup_menus[CTXMENU].menu = CreatePopupMenu();
-        AppendMenu(wgs->popup_menus[CTXMENU].menu, MF_ENABLED,
-                   IDM_COPY, "复制(&C)");
-        AppendMenu(wgs->popup_menus[CTXMENU].menu, MF_ENABLED,
-                   IDM_PASTE, "粘贴(&P)");
+
+        for (j = 0; j < lenof(wgs->popup_menus); j++) {
+            m = wgs->popup_menus[j].menu;
+            AppendMenu(m, MF_ENABLED, IDM_COPY, "复制(&C)");
+            AppendMenu(m, MF_ENABLED, IDM_PASTE, "粘贴(&P)");
+        }
 
         wgs->savedsess_menu = CreateMenu();
         get_sesslist(&sesslist, true);

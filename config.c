@@ -2190,6 +2190,9 @@ void setup_config_box(struct controlbox *b, bool midsession,
     ctrl_checkbox(s, "禁用双向文本显示",
                   'd', HELPCTX(features_bidi), conf_checkbox_handler,
                   I(CONF_no_bidi));
+    ctrl_checkbox(s, "禁用括号内粘贴模式",
+                  'p', HELPCTX(features_bracketed_paste), conf_checkbox_handler,
+                  I(CONF_no_bracketed_paste));
 
     /*
      * The Window panel.
