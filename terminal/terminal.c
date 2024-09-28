@@ -3456,7 +3456,7 @@ static void term_display_graphic_char(Terminal *term, unsigned long c)
 }
 
 static strbuf *term_input_data_from_unicode(
-    Terminal *term, const wchar_t *widebuf, int len)
+    Terminal *term, const wchar_t *widebuf, size_t len)
 {
     strbuf *buf = strbuf_new();
 
@@ -3465,7 +3465,7 @@ static strbuf *term_input_data_from_unicode(
          * Translate input wide characters into UTF-8 to go in the
          * terminal's input data queue.
          */
-        for (int i = 0; i < len; i++) {
+        for (size_t i = 0; i < len; i++) {
             unsigned long ch = widebuf[i];
 
             if (IS_SURROGATE(ch)) {
@@ -3497,31 +3497,21 @@ static strbuf *term_input_data_from_unicode(
          * (But also we must allow space for the trailing NUL that
          * wc_to_mb will write.)
          */
-        char *bufptr = strbuf_append(buf, len + 1);
-        int rv;
-        rv = wc_to_mb(term->ucsdata->line_codepage, 0, widebuf, len,
-                      bufptr, len + 1, NULL);
-        strbuf_shrink_to(buf, rv < 0 ? 0 : rv);
+        put_wc_to_mb(buf, term->ucsdata->line_codepage, widebuf, len, "");
     }
 
     return buf;
 }
 
 static strbuf *term_input_data_from_charset(
-    Terminal *term, int codepage, const char *str, int len)
+    Terminal *term, int codepage, const char *str, size_t len)
 {
-    strbuf *buf;
+    strbuf *buf = strbuf_new();
 
-    if (codepage < 0) {
-        buf = strbuf_new();
+    if (codepage < 0)
         put_data(buf, str, len);
-    } else {
-        int widesize = len * 2;        /* allow for UTF-16 surrogates */
-        wchar_t *widebuf = snewn(widesize, wchar_t);
-        int widelen = mb_to_wc(codepage, 0, str, len, widebuf, widesize);
-        buf = term_input_data_from_unicode(term, widebuf, widelen);
-        sfree(widebuf);
-    }
+    else
+        put_mb_to_wc(buf, codepage, str, len);
 
     return buf;
 }
@@ -6683,10 +6673,6 @@ static void clipme(Terminal *term, pos top, pos bottom, bool rect, bool desel,
         }
 
         while (poslt(top, bottom) && poslt(top, nlpos)) {
-#if 0
-            char cbuf[16], *p;
-            sprintf(cbuf, "<U+%04x>", (ldata[top.x] & 0xFFFF));
-#else
             wchar_t cbuf[16], *p;
             int c;
             int x = top.x;
@@ -6738,26 +6724,26 @@ static void clipme(Terminal *term, pos top, pos bottom, bool rect, bool desel,
 
                 if (DIRECT_FONT(uc)) {
                     if (c >= ' ' && c != 0x7F) {
-                        char buf[4];
-                        WCHAR wbuf[4];
-                        int rv;
+                        char buf[2];
+                        buffer_sink bs[1];
+                        buffer_sink_init(bs, cbuf,
+                                         sizeof(cbuf) - sizeof(wchar_t));
                         if (is_dbcs_leadbyte(term->ucsdata->font_codepage, (BYTE) c)) {
                             buf[0] = c;
                             buf[1] = (char) (0xFF & ldata->chars[top.x + 1].chr);
-                            rv = mb_to_wc(term->ucsdata->font_codepage, 0, buf, 2, wbuf, 4);
+                            put_mb_to_wc(bs, term->ucsdata->font_codepage,
+                                         buf, 2);
                             top.x++;
                         } else {
                             buf[0] = c;
-                            rv = mb_to_wc(term->ucsdata->font_codepage, 0, buf, 1, wbuf, 4);
+                            put_mb_to_wc(bs, term->ucsdata->font_codepage,
+                                         buf, 1);
                         }
 
-                        if (rv > 0) {
-                            memcpy(cbuf, wbuf, rv * sizeof(wchar_t));
-                            cbuf[rv] = 0;
-                        }
+                        assert(!bs->overflowed);
+                        *(wchar_t *)bs->out = L'\0';
                     }
                 }
-#endif
 
                 for (p = cbuf; *p; p++)
                     clip_addchar(&buf, *p, attr, tc);
@@ -7077,7 +7063,7 @@ static void term_paste_callback(void *vterm)
         return;
 
     while (term->paste_pos < term->paste_len) {
-        int n = 0;
+        size_t n = 0;
         while (n + term->paste_pos < term->paste_len) {
             if (term->paste_buffer[term->paste_pos + n++] == '\015')
                 break;
@@ -7112,7 +7098,7 @@ static bool wstartswith(const wchar_t *a, size_t alen,
     return alen >= blen && !wcsncmp(a, b, blen);
 }
 
-void term_do_paste(Terminal *term, const wchar_t *data, int len)
+void term_do_paste(Terminal *term, const wchar_t *data, size_t len)
 {
     const wchar_t *p;
     bool paste_controls = conf_get_bool(term->conf, CONF_paste_controls);
@@ -7186,6 +7172,7 @@ void term_do_paste(Terminal *term, const wchar_t *data, int len)
         if (term->ldisc) {
             strbuf *buf = term_input_data_from_unicode(
                 term, term->paste_buffer, term->paste_len);
+            assert(buf->len <= INT_MAX); /* because paste_len was also small */
             term_keyinput_internal(term, buf->s, buf->len, false);
             strbuf_free(buf);
         }

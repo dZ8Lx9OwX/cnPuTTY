@@ -198,26 +198,26 @@ static void usage(void)
     printf("  -T           在控制TTY的生命周期内运行\n");
     printf("  --permanent  永久运行\n");
     printf("  --debug      在调试模式下运行，不分支\n");
-    printf("  --exec <command>   使用该命令的生存期运行\n");
+    printf("  --foreground 永久运行，不分支\n");
+    printf("  --exec <command>   在该命令的生存期内运行\n");
     printf("客户端选项，用于与现有代理进行通信：\n");
     printf("  -a           将密钥添加到现有代理\n");
     printf("  -l           列出当前加载的密钥指纹和注释\n");
     printf("  --public     以RFC 4716格式打印公钥\n");
     printf("  --public-openssh, -L   以OpenSSH格式打印公钥\n");
     printf("  -d           从代理中删除密钥\n");
-    printf("  -D           从代理中删除所有密钥\n");
+    printf("  -D           从代理中删除所有密钥\\n");
     printf("  -r           重新加密代理中的密钥(对已解密的密钥)\n");
     printf("  -R           重新加密代理中所有可能的密钥\n");
     printf("其他选项：\n");
     printf("  -v           详细模式(在代理模式)\n");
     printf("  -s -c        强制POSIX C shell语法(在代理模式)\n");
     printf("  --symlink path   创建指向套接字的符号链接(在代理模式)\n");
-    printf("  --encrypted  添加密钥时，请勿解密\n");
+    printf("  --encrypted  添加密钥时，忽略解密\n");
     printf("  -E alg, --fptype alg   指纹类型 -l (sha256, md5)\n");
     printf("  --tty-prompt 强制基于TTY的密码提示\n");
     printf("  --gui-prompt 强制基于GUI的密码提示\n");
     printf("  --askpass <prompt>   表现的像一个独立的问答程序\n");
-    exit(1);
 }
 
 static void version(void)
@@ -425,7 +425,7 @@ bool have_controlling_tty(void)
 
 static char **exec_args = NULL;
 static enum {
-    LIFE_UNSPEC, LIFE_X11, LIFE_TTY, LIFE_DEBUG, LIFE_PERM, LIFE_EXEC
+    LIFE_UNSPEC, LIFE_X11, LIFE_TTY, LIFE_DEBUG, LIFE_PERM, LIFE_EXEC, LIFE_FOREGROUND
 } life = LIFE_UNSPEC;
 static const char *display = NULL;
 static enum {
@@ -1222,7 +1222,17 @@ void run_agent(FILE *logfp, const char *symlink_path)
         pageant_fork_and_print_env(true);
     } else if (life == LIFE_PERM) {
         pageant_fork_and_print_env(false);
+    } else if (life == LIFE_FOREGROUND) {
+        pageant_print_env(getpid());
+        /* Close stdout, so that a parent process at the other end of a pipe
+         * can do the simple thing of reading up to EOF */
+        fclose(stdout);
     } else if (life == LIFE_DEBUG) {
+        /* Force stdout to be line-buffered in preference to unbuffered, so
+         * that if diagnostic output is being piped somewhere, it will arrive
+         * promptly at the other end of the pipe */
+        setvbuf(stdout, NULL, _IOLBF, 0);
+
         pageant_print_env(getpid());
         upc->logfp = stdout;
 
@@ -1361,6 +1371,8 @@ int main(int argc, char **argv)
                 }
             } else if (!strcmp(p, "--debug")) {
                 life = LIFE_DEBUG;
+            } else if (!strcmp(p, "--foreground")) {
+                life = LIFE_FOREGROUND;
             } else if (!strcmp(p, "--test-sign")) {
                 curr_keyact = KEYACT_CLIENT_SIGN;
                 sign_flags = 0;

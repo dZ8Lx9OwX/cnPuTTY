@@ -82,8 +82,8 @@ static SeatPromptResult plink_get_userpass_input(Seat *seat, prompts_t *p)
 
 static bool plink_seat_interactive(Seat *seat)
 {
-    return (!*conf_get_str(conf, CONF_remote_cmd) &&
-            !*conf_get_str(conf, CONF_remote_cmd2) &&
+    return (!*conf_get_str_ambi(conf, CONF_remote_cmd, NULL) &&
+            !*conf_get_str_ambi(conf, CONF_remote_cmd2, NULL) &&
             !*conf_get_str(conf, CONF_ssh_nc_host));
 }
 
@@ -187,7 +187,6 @@ static void usage(void)
     printf("                 日志文件已存在时是覆盖还是追加到日志\n");
     printf("  -shareexists\n");
     printf("                 测试是否存在连接共享上游\n");
-    exit(1);
 }
 
 static void version(void)
@@ -326,16 +325,19 @@ int main(int argc, char **argv)
             }
         }
     }
-    while (--argc) {
-        char *p = *++argv;
-        int ret = cmdline_process_param(p, (argc > 1 ? argv[1] : NULL),
-                                        1, conf);
+    CmdlineArgList *arglist = cmdline_arg_list_from_GetCommandLineW();
+    size_t arglistpos = 0;
+    while (arglist->args[arglistpos]) {
+        CmdlineArg *arg = arglist->args[arglistpos++];
+        CmdlineArg *nextarg = arglist->args[arglistpos];
+        const char *p = cmdline_arg_to_str(arg);
+        int ret = cmdline_process_param(arg, nextarg, 1, conf);
         if (ret == -2) {
             fprintf(stderr,
                     "plink:选项 \"%s\" 需要一个参数!!!\n", p);
             errors = true;
         } else if (ret == 2) {
-            --argc, ++argv;
+            arglistpos++;
         } else if (ret == 1) {
             continue;
         } else if (!strcmp(p, "-s")) {
@@ -345,9 +347,10 @@ int main(int argc, char **argv)
             version();
         } else if (!strcmp(p, "--help")) {
             usage();
+            exit(0);
         } else if (!strcmp(p, "-pgpfp")) {
             pgp_fingerprints();
-            exit(1);
+            exit(0);
         } else if (!strcmp(p, "-shareexists")) {
             just_test_share_exists = true;
         } else if (!strcmp(p, "-sanitise-stdout") ||
@@ -367,12 +370,11 @@ int main(int argc, char **argv)
         } else if (*p != '-') {
             strbuf *cmdbuf = strbuf_new();
 
-            while (argc > 0) {
+            while (arg) {
                 if (cmdbuf->len > 0)
                     put_byte(cmdbuf, ' '); /* add space separator */
-                put_dataz(cmdbuf, p);
-                if (--argc > 0)
-                    p = *++argv;
+                put_dataz(cmdbuf, cmdline_arg_to_str(arg));
+                arg = arglist->args[arglistpos++];
             }
 
             conf_set_str(conf, CONF_remote_cmd, cmdbuf->s);
@@ -391,7 +393,10 @@ int main(int argc, char **argv)
         return 1;
 
     if (!cmdline_host_ok(conf)) {
-        usage();
+        fprintf(stderr, "plink: no valid host name provided\n"
+                "try \"plink --help\" for help\n");
+        cmdline_arg_list_free(arglist);
+        return 1;
     }
 
     prepare_session(conf);
