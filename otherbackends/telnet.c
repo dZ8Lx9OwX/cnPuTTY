@@ -615,6 +615,9 @@ static void telnet_log(Plug *plug, Socket *s, PlugLogType type, SockAddr *addr,
         telnet->socket_connected = true;
         if (telnet->ldisc)
             ldisc_check_sendok(telnet->ldisc);
+
+        /* No local authentication phase in this protocol */
+        seat_set_trust_status(telnet->seat, false);
     }
 }
 
@@ -764,9 +767,6 @@ static char *telnet_init(const BackendVtable *vt, Seat *seat,
                                &telnet->interactor);
     if ((err = sk_socket_error(telnet->s)) != NULL)
         return dupstr(err);
-
-    /* No local authentication phase in this protocol */
-    seat_set_trust_status(telnet->seat, false);
 
     telnet->pinger = pinger_new(telnet->conf, &telnet->backend);
 
