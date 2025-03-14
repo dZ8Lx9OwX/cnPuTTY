@@ -7,13 +7,14 @@ MODE = # override to -it on command line for opaque testing
 
 PAMS = $(foreach I,$(ICONS),$(foreach S,$(SIZES),$(I)-$(S).pam))
 MONOPAMS = $(foreach I,$(ICONS),$(foreach S,$(SIZES),$(I)-$(S)-mono.pam))
-TRUEPAMS = $(foreach I,$(ICONS),$(foreach S,$(SIZES),$(I)-$(S)-true.pam))
+TRUEPAMS = $(foreach I,puttyins,$(foreach S,$(SIZES),$(I)-$(S)-true.pam))
 
 PNGS = $(patsubst %.pam,%.png,$(PAMS))
 MONOPNGS = $(patsubst %.pam,%.png,$(MONOPAMS))
 TRUEPNGS = $(patsubst %.pam,%.png,$(TRUEPAMS))
 
 SVGS = $(patsubst %,%.svg,$(ICONS))
+MONOSVGS = $(patsubst %,%-mono.svg,$(ICONS))
 
 ICOS = putty.ico puttygen.ico pscp.ico pageant.ico pageants.ico puttycfg.ico \
        puttyins.ico pterm.ico ptermcfg.ico
@@ -22,12 +23,13 @@ CICONS = xpmputty.c xpmpucfg.c xpmpterm.c xpmptcfg.c
 
 base: icos cicons
 
-all: pngs monopngs base icns svgs # truepngs currently disabled by default
+all: pngs monopngs base icns svgs monosvgs truepngs
 
 pngs: $(PNGS)
 monopngs: $(MONOPNGS)
 truepngs: $(TRUEPNGS)
 svgs: $(SVGS)
+monosvgs: $(MONOSVGS)
 
 icos: $(ICOS)
 icns: $(ICNS)
@@ -51,6 +53,9 @@ $(TRUEPAMS): %.pam: mkicon.py
 
 $(SVGS): %.svg: mksvg.py
 	./mksvg.py $(patsubst %.svg,%_icon,$@) -o $@
+
+$(MONOSVGS): %.svg: mksvg.py
+	./mksvg.py --mode=bw $(patsubst %-mono.svg,%_icon,$@) -o $@
 
 putty.ico: putty-16.png putty-32.png putty-48.png \
            putty-16-mono.png putty-32-mono.png putty-48-mono.png
