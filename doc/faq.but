@@ -171,6 +171,11 @@ we have a script called
 to convert them to a Windows .REG file, which can be installed ahead of
 time by double-clicking or using \c{REGEDIT}.
 
+If you just manage and connect to a lot of servers with different host
+keys, you could consider using a \q{certification authority}, so that
+you only have to configure PuTTY once on each client machine to accept
+host keys from any of your servers in future. See \k{config-ssh-kex-cert}.
+
 \S{faq-server}{Question} Will you write an SSH server for the PuTTY
 suite, to go with the client?
 
