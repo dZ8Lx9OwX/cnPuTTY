@@ -2518,6 +2518,12 @@ void destroy(GtkWidget *widget, gpointer data)
 gint focus_event(GtkWidget *widget, GdkEventFocus *event, gpointer data)
 {
     GtkFrontend *inst = (GtkFrontend *)data;
+#if GTK_CHECK_VERSION(2,0,0)
+    if (event->in)
+        gtk_im_context_focus_in(inst->imc);
+    else
+        gtk_im_context_focus_out(inst->imc);
+#endif
     term_set_focus(inst->term, event->in);
     term_update(inst->term);
     show_mouseptr(inst, true);

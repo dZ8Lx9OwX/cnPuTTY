@@ -77,8 +77,9 @@ typedef enum {
     OSCLIKE_OSC,
     OSCLIKE_OSC_W,
     OSCLIKE_APC,
-    OSCLIKE_SOS,
+    OSCLIKE_DCS,
     OSCLIKE_PM,
+    OSCLIKE_SOS,
 } OscType;
 
 struct terminal_tag {
