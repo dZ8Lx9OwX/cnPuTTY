@@ -6026,7 +6026,7 @@ static void do_paint_draw(Terminal *term, termline *ldata, int x, int y,
 }
 
 /*
- * Given a context, update the window.
+ * Update the window.
  */
 static void do_paint(Terminal *term)
 {

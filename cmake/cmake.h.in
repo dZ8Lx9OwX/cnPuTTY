@@ -5,6 +5,8 @@
 
 #cmakedefine NO_MULTIMON
 
+#cmakedefine01 HAVE_COUNTOF
+
 #cmakedefine01 HAVE_WINRESRC_H
 #cmakedefine01 HAVE_WINRES_H
 #cmakedefine01 HAVE_WIN_H

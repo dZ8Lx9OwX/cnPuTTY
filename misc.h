@@ -353,7 +353,11 @@ const char *conf_id(int key);
 #endif
 
 #ifndef lenof
+#if HAVE_COUNTOF
+#define lenof(x) _Countof(x)
+#else
 #define lenof(x) ( (sizeof((x))) / (sizeof(*(x))))
+#endif
 #endif
 
 #ifndef min
