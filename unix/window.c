@@ -3886,7 +3886,7 @@ static void do_text_internal(
 
     nfg = ((monochrome ? ATTR_DEFFG : (attr & ATTR_FGMASK)) >> ATTR_FGSHIFT);
     nbg = ((monochrome ? ATTR_DEFBG : (attr & ATTR_BGMASK)) >> ATTR_BGSHIFT);
-    if (!!(attr & ATTR_REVERSE) ^ (monochrome && (attr & TATTR_ACTCURS))) {
+    if (!!(attr & ATTR_REVERSE) ^ (monochrome && (attr & ATTR_ACTCURS))) {
         struct optionalrgb trgb;
 
         t = nfg;
@@ -3905,7 +3905,7 @@ static void do_text_internal(
         if (nbg < 16) nbg |= 8;
         else if (nbg >= 256) nbg |= 1;
     }
-    if ((attr & TATTR_ACTCURS) && !monochrome) {
+    if ((attr & ATTR_ACTCURS) && !monochrome) {
         truecolour.fg = truecolour.bg = optionalrgb_none;
         nfg = 260;
         nbg = 261;
@@ -4071,13 +4071,13 @@ static void gtkwin_draw_cursor(
     bool active, passive;
     int widefactor;
 
-    if (attr & TATTR_PASCURS) {
-        attr &= ~TATTR_PASCURS;
+    if (attr & ATTR_PASCURS) {
+        attr &= ~ATTR_PASCURS;
         passive = true;
     } else
         passive = false;
-    if ((attr & TATTR_ACTCURS) && inst->cursor_type != CURSOR_BLOCK) {
-        attr &= ~TATTR_ACTCURS;
+    if ((attr & ATTR_ACTCURS) && inst->cursor_type != CURSOR_BLOCK) {
+        attr &= ~ATTR_ACTCURS;
         active = true;
     } else
         active = false;
@@ -4138,7 +4138,7 @@ static void gtkwin_draw_cursor(
             length = len * widefactor * char_width;
         } else /* inst->cursor_type == CURSOR_VERTICAL_LINE */ {
             int xadjust = 0;
-            if (attr & TATTR_RIGHTCURS)
+            if (attr & ATTR_RIGHTCURS)
                 xadjust = char_width - 1;
             startx = x * inst->font_width + inst->window_border + xadjust;
             starty = y * inst->font_height + inst->window_border;

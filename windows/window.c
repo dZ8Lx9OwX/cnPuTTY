@@ -3571,7 +3571,7 @@ static void do_text_internal(
     x += wgs->offset_width;
     y += wgs->offset_height;
 
-    if ((attr & TATTR_ACTCURS) &&
+    if ((attr & ATTR_ACTCURS) &&
         (wgs->cursor_type == CURSOR_BLOCK || wgs->term->big_cursor)) {
         truecolour.fg = truecolour.bg = optionalrgb_none;
         attr &= ~(ATTR_REVERSE|ATTR_BLINK|ATTR_COLOURS|ATTR_DIM);
@@ -3967,14 +3967,14 @@ static void wintw_draw_cursor(
 
     lattr &= LATTR_MODE;
 
-    if ((attr & TATTR_ACTCURS) &&
+    if ((attr & ATTR_ACTCURS) &&
         (ctype == CURSOR_BLOCK || wgs->term->big_cursor)) {
         if (*text != UCSWIDE) {
             win_draw_text(tw, x, y, text, len, attr, lattr, truecolour);
             return;
         }
         ctype = CURSOR_VERTICAL_LINE;
-        attr |= TATTR_RIGHTCURS;
+        attr |= ATTR_RIGHTCURS;
     }
 
     fnt_width = char_width = wgs->font_width * (1 + (lattr != LATTR_NORM));
@@ -3985,7 +3985,7 @@ static void wintw_draw_cursor(
     x += wgs->offset_width;
     y += wgs->offset_height;
 
-    if ((attr & TATTR_PASCURS) &&
+    if ((attr & ATTR_PASCURS) &&
         (ctype == CURSOR_BLOCK || wgs->term->big_cursor)) {
         POINT pts[5];
         HPEN oldpen;
@@ -3998,7 +3998,7 @@ static void wintw_draw_cursor(
         Polyline(wgs->wintw_hdc, pts, 5);
         oldpen = SelectObject(wgs->wintw_hdc, oldpen);
         DeleteObject(oldpen);
-    } else if ((attr & (TATTR_ACTCURS | TATTR_PASCURS)) &&
+    } else if ((attr & (ATTR_ACTCURS | ATTR_PASCURS)) &&
                ctype != CURSOR_BLOCK) {
         int startx, starty, dx, dy, length, i;
         if (ctype == CURSOR_UNDERLINE) {
@@ -4009,7 +4009,7 @@ static void wintw_draw_cursor(
             length = char_width;
         } else /* ctype == CURSOR_VERTICAL_LINE */ {
             int xadjust = 0;
-            if (attr & TATTR_RIGHTCURS)
+            if (attr & ATTR_RIGHTCURS)
                 xadjust = char_width - 1;
             startx = x + xadjust;
             starty = y;
@@ -4017,7 +4017,7 @@ static void wintw_draw_cursor(
             dy = 1;
             length = wgs->font_height;
         }
-        if (attr & TATTR_ACTCURS) {
+        if (attr & ATTR_ACTCURS) {
             HPEN oldpen;
             oldpen =
                 SelectObject(wgs->wintw_hdc,

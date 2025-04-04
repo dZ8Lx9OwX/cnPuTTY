@@ -208,14 +208,11 @@ extern const int colour_indices_oscp_to_osc4[OSCP_NCOLOURS];
  * ATTR_INVALID is an illegal colour combination.
  */
 
-#define TATTR_ACTCURS       0x40000000UL      /* active cursor (block) */
-#define TATTR_PASCURS       0x20000000UL      /* passive cursor (box) */
-#define TATTR_RIGHTCURS     0x10000000UL      /* cursor-on-RHS */
 #define TATTR_COMBINING     0x80000000UL      /* combining characters */
 
 #define DATTR_STARTRUN      0x80000000UL   /* start of redraw run */
 
-#define TDATTR_MASK         0xF0000000UL
+#define TDATTR_MASK         0x80000000UL
 #define TATTR_MASK (TDATTR_MASK)
 #define DATTR_MASK (TDATTR_MASK)
 
@@ -256,17 +253,20 @@ extern const int colour_indices_oscp_to_osc4[OSCP_NCOLOURS];
  */
 #define UCSWIDE      0xDFFF
 
-#define ATTR_NARROW  0x0800000U
-#define ATTR_WIDE    0x0400000U
-#define ATTR_BOLD    0x0040000U
-#define ATTR_UNDER   0x0080000U
-#define ATTR_REVERSE 0x0100000U
-#define ATTR_BLINK   0x0200000U
-#define ATTR_FGMASK  0x00001FFU /* stores a colour in OSC 4 indexing */
-#define ATTR_BGMASK  0x003FE00U /* stores a colour in OSC 4 indexing */
-#define ATTR_COLOURS 0x003FFFFU
-#define ATTR_DIM     0x1000000U
-#define ATTR_STRIKE  0x2000000U
+#define ATTR_NARROW  0x00800000U
+#define ATTR_WIDE    0x00400000U
+#define ATTR_BOLD    0x00040000U
+#define ATTR_UNDER   0x00080000U
+#define ATTR_REVERSE 0x00100000U
+#define ATTR_BLINK   0x00200000U
+#define ATTR_FGMASK  0x000001FFU /* stores a colour in OSC 4 indexing */
+#define ATTR_BGMASK  0x0003FE00U /* stores a colour in OSC 4 indexing */
+#define ATTR_COLOURS 0x0003FFFFU
+#define ATTR_DIM     0x01000000U
+#define ATTR_STRIKE  0x02000000U
+#define ATTR_ACTCURS 0x40000000UL      /* active cursor (block) */
+#define ATTR_PASCURS 0x20000000UL      /* passive cursor (box) */
+#define ATTR_RIGHTCURS 0x10000000UL    /* cursor-on-RHS */
 #define ATTR_FGSHIFT 0
 #define ATTR_BGSHIFT 9
 

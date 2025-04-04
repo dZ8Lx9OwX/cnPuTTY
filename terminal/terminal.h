@@ -95,8 +95,6 @@ struct terminal_tag {
                                           ("temporary scrollback") */
 
     termline **disptext;               /* buffer of text on real screen */
-    int dispcursx, dispcursy;          /* location of cursor on real screen */
-    int curstype;                      /* type of cursor on real screen */
 
 #define VBELL_TIMEOUT (TICKSPERSEC/10) /* visual bell lasts 1/10 sec */
 
