@@ -2044,6 +2044,7 @@ void term_notify_palette_changed(Terminal *term);
 void term_notify_window_pos(Terminal *term, int x, int y);
 void term_notify_window_size_pixels(Terminal *term, int x, int y);
 void term_palette_override(Terminal *term, unsigned osc4_index, rgb rgb);
+void term_set_preedit_text(Terminal *term, char *preedit_text);
 
 typedef enum SmallKeypadKey {
     SKK_HOME, SKK_END, SKK_INSERT, SKK_DELETE, SKK_PGUP, SKK_PGDN,

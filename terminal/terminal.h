@@ -442,6 +442,9 @@ struct terminal_tag {
      */
     struct term_userpass_state *userpass_state;
     bool userpass_utf8_override;
+
+    /* Input method state. */
+    termline *preedit_termline;
 };
 
 static inline bool in_utf(Terminal *term)

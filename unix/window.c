@@ -2117,6 +2117,52 @@ void input_method_commit_event(GtkIMContext *imc, gchar *str, gpointer data)
     show_mouseptr(inst, false);
     key_pressed(inst);
 }
+
+void input_method_preedit_start_event(GtkIMContext *imc, gpointer data)
+{
+    GtkFrontend *inst = (GtkFrontend *)data;
+
+#ifdef KEY_EVENT_DIAGNOSTICS
+    debug(" - IM preedit-start event\n");
+#endif
+}
+
+void input_method_preedit_changed_event(GtkIMContext *imc, gpointer data)
+{
+    GtkFrontend *inst = (GtkFrontend *)data;
+    gint cursor_pos;
+    gchar *preedit_string;
+#ifdef KEY_EVENT_DIAGNOSTICS
+    char *string_string = dupstr("");
+    int i;
+#endif
+
+    gtk_im_context_get_preedit_string(imc, &preedit_string, NULL, &cursor_pos);
+#ifdef KEY_EVENT_DIAGNOSTICS
+    for (i = 0; preedit_string[i]; i++) {
+        char *old = string_string;
+        string_string = dupprintf("%s%s%02x", string_string,
+                                  string_string[0] ? " " : "",
+                                  (unsigned)preedit_string[i] & 0xFF);
+        sfree(old);
+    }
+    debug(" - IM preedit-changed event in UTF-8 = [%s] cursor_pos=%d\n",
+          string_string, (int)cursor_pos);
+    sfree(string_string);
+#endif
+    term_set_preedit_text(inst->term, preedit_string);
+    g_free(preedit_string);
+}
+
+void input_method_preedit_end_event(GtkIMContext *imc, gpointer data)
+{
+    GtkFrontend *inst = (GtkFrontend *)data;
+
+#ifdef KEY_EVENT_DIAGNOSTICS
+    debug(" - IM preedit-end event\n");
+#endif
+    term_set_preedit_text(inst->term, NULL);
+}
 #endif
 
 #define SCROLL_INCREMENT_LINES 5
@@ -5570,6 +5616,12 @@ void new_session_window(Conf *conf, const char *geometry_string)
 #if GTK_CHECK_VERSION(2,0,0)
     g_signal_connect(G_OBJECT(inst->imc), "commit",
                      G_CALLBACK(input_method_commit_event), inst);
+    g_signal_connect(G_OBJECT(inst->imc), "preedit-start",
+                     G_CALLBACK(input_method_preedit_start_event), inst);
+    g_signal_connect(G_OBJECT(inst->imc), "preedit-changed",
+                     G_CALLBACK(input_method_preedit_changed_event), inst);
+    g_signal_connect(G_OBJECT(inst->imc), "preedit-end",
+                     G_CALLBACK(input_method_preedit_end_event), inst);
 #endif
     if (conf_get_bool(inst->conf, CONF_scrollbar))
         g_signal_connect(G_OBJECT(inst->sbar_adjust), "value_changed",

@@ -2160,6 +2160,8 @@ void term_free(Terminal *term)
     if (term->userpass_state)
         term_userpass_state_free(term->userpass_state);
 
+    freetermline(term->preedit_termline);
+
     sfree(term);
 }
 
@@ -6104,6 +6106,7 @@ static void do_paint(Terminal *term)
         bool dirtyrect;
         int *backward;
         truecolour tc;
+        int preedit_start = 0, preedit_end = 0;
 
         scrpos.y = i + term->disptop;
         ldata = lineptr(scrpos.y);
@@ -6117,6 +6120,21 @@ static void do_paint(Terminal *term)
             backward = NULL;
         }
 
+        /* Work out if and where to display pre-edit text. */
+        if (i == our_curs_y && term->preedit_termline != NULL) {
+            preedit_start = our_curs_x;
+            preedit_end = preedit_start + term->preedit_termline->cols;
+            if (preedit_end > term->cols) {
+                preedit_end = term->cols;
+                preedit_start = preedit_end - term->preedit_termline->cols;
+            }
+            if (term->preedit_termline->chars[term->preedit_termline->cols - 1]
+                .chr == UCSWIDE)
+                our_curs_x = preedit_end - 2;
+            else
+                our_curs_x = preedit_end - 1;
+        }
+
         /*
          * First loop: work along the line deciding what we want
          * each character cell to look like.
@@ -6124,7 +6142,11 @@ static void do_paint(Terminal *term)
         for (j = 0; j < term->cols; j++) {
             unsigned long tattr, tchar;
             termchar *d = lchars + j;
+            bool in_preedit = j >= preedit_start && j < preedit_end;
             scrpos.x = backward ? backward[j] : j;
+
+            if (in_preedit)
+                d = term->preedit_termline->chars + j - preedit_start;
 
             tchar = d->chr;
             tattr = d->attr;
@@ -6160,7 +6182,8 @@ static void do_paint(Terminal *term)
                 tchar = term->ucsdata->unitab_scoacs[tchar&0xFF];
                 break;
             }
-            if (j < term->cols-1 && d[1].chr == UCSWIDE)
+            if (j < (in_preedit ? preedit_end : term->cols) - 1
+                && d[1].chr == UCSWIDE)
                 tattr |= ATTR_WIDE;
 
             /* Video reversing things */
@@ -6259,6 +6282,10 @@ static void do_paint(Terminal *term)
             unsigned long tattr, tchar;
             bool break_run, do_copy, next_run_dirty = false;
             termchar *d = lchars + j;
+            bool in_preedit = j >= preedit_start && j < preedit_end;
+
+            if (in_preedit)
+                d = term->preedit_termline->chars + j - preedit_start;
 
             tattr = newline[j].attr;
             tchar = newline[j].chr;
@@ -8105,4 +8132,52 @@ void term_notify_window_size_pixels(Terminal *term, int x, int y)
 {
     term->winpixsize_x = x;
     term->winpixsize_y = y;
+}
+
+/*
+ * Set the pre-edit text as required by an input method.  preedit_text
+ * is expected to be in UTF-8.  It's NULL if no pre-edit text is
+ * required.  It's owned by the caller and must not be freed here.
+ */
+void term_set_preedit_text(Terminal *term, char *preedit_text)
+{
+    freetermline(term->preedit_termline);
+    term->preedit_termline = NULL;
+    if (preedit_text != NULL) {
+        BinarySource src[1];
+        int width = 0, i;
+
+        term->preedit_termline = newtermline(term, 0, false);
+        BinarySource_BARE_INIT(src, preedit_text, strlen(preedit_text));
+        while (get_avail(src)) {
+            unsigned int c = decode_utf8(src, NULL);
+            switch (term_char_width(term, c)) {
+              case -1:
+                /* Ignore control characters. */
+                break;
+              case 0:
+                if (width == 0) {
+                    width = 1;
+                    resizeline(term, term->preedit_termline, width);
+                }
+                if (term->preedit_termline->chars[width - 1].chr == UCSWIDE)
+                    add_cc(term->preedit_termline, width - 2, c);
+                else
+                    add_cc(term->preedit_termline, width - 1, c);
+                break;
+              case 1:
+                width += 1;
+                resizeline(term, term->preedit_termline, width);
+                term->preedit_termline->chars[width - 1].chr = c;
+                break;
+              case 2:
+                width += 2;
+                resizeline(term, term->preedit_termline, width);
+                term->preedit_termline->chars[width - 2].chr = c;
+                term->preedit_termline->chars[width - 1].chr = UCSWIDE;
+                break;
+            }
+        }
+    }
+    seen_disp_event(term);
 }
