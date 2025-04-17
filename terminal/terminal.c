@@ -6128,11 +6128,13 @@ static void do_paint(Terminal *term)
                 preedit_end = term->cols;
                 preedit_start = preedit_end - term->preedit_termline->cols;
             }
+            /* Show the cursor at the right end of the pre-edit text. */
             if (term->preedit_termline->chars[term->preedit_termline->cols - 1]
                 .chr == UCSWIDE)
                 our_curs_x = preedit_end - 2;
             else
                 our_curs_x = preedit_end - 1;
+            cursor |= ATTR_RIGHTCURS;
         }
 
         /*
@@ -8145,7 +8147,7 @@ void term_set_preedit_text(Terminal *term, char *preedit_text)
     term->preedit_termline = NULL;
     if (preedit_text != NULL) {
         BinarySource src[1];
-        int width = 0, i;
+        int width = 0;
 
         term->preedit_termline = newtermline(term, 0, false);
         BinarySource_BARE_INIT(src, preedit_text, strlen(preedit_text));

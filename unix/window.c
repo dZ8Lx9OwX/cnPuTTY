@@ -2120,8 +2120,6 @@ void input_method_commit_event(GtkIMContext *imc, gchar *str, gpointer data)
 
 void input_method_preedit_start_event(GtkIMContext *imc, gpointer data)
 {
-    GtkFrontend *inst = (GtkFrontend *)data;
-
 #ifdef KEY_EVENT_DIAGNOSTICS
     debug(" - IM preedit-start event\n");
 #endif
