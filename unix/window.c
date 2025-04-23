@@ -923,10 +923,12 @@ static void cairo_setup_draw_ctx(GtkFrontend *inst)
     cairo_set_line_width(inst->uctx.u.cairo.cr, 1.0);
     cairo_set_line_cap(inst->uctx.u.cairo.cr, CAIRO_LINE_CAP_SQUARE);
     cairo_set_line_join(inst->uctx.u.cairo.cr, CAIRO_LINE_JOIN_MITER);
-    /* This antialiasing setting appears to be ignored for Pango
-     * font rendering but honoured for stroking and filling paths;
-     * I don't quite understand the logic of that, but I won't
-     * complain since it's exactly what I happen to want */
+    /*
+     * This antialiasing setting doesn't affect Pango font rendering
+     * but does affect stroking and filling paths; I don't quite
+     * understand the logic of that, but I won't complain since it's
+     * exactly what I happen to want.
+     */
     cairo_set_antialias(inst->uctx.u.cairo.cr, CAIRO_ANTIALIAS_NONE);
 }
 #endif

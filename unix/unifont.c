@@ -27,6 +27,9 @@
 #include "tree234.h"
 
 #ifndef NOT_X_WINDOWS
+#ifdef DRAW_TEXT_CAIRO
+#include <cairo-xlib.h>
+#endif
 #include <gdk/gdkx.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
@@ -131,7 +134,6 @@ static char *x11font_size_increment(unifont *font, int increment);
 #ifdef DRAW_TEXT_CAIRO
 struct cairo_cached_glyph {
     cairo_surface_t *surface;
-    unsigned char *bitmap;
 };
 #endif
 
@@ -165,13 +167,9 @@ typedef struct x11font_individual {
      * X server paraphernalia for actually downloading the glyphs.
      */
     Pixmap pixmap;
+    cairo_surface_t *pixmap_surface; /* Cairo version of pixmap. */
     GC gc;
     int pixwidth, pixheight, pixoriginx, pixoriginy;
-
-    /*
-     * Paraphernalia for loading the resulting bitmaps into Cairo.
-     */
-    int rowsize, allsize, indexflip;
 #endif
 
 } x11font_individual;
@@ -535,6 +533,7 @@ static unifont *x11font_create(GtkWidget *widget, const char *name,
         xfont->fonts[i].glyphcache = NULL;
         xfont->fonts[i].nglyphs = 0;
         xfont->fonts[i].pixmap = None;
+        xfont->fonts[i].pixmap_surface = NULL;
         xfont->fonts[i].gc = None;
 #endif
     }
@@ -556,13 +555,14 @@ static void x11font_destroy(unifont *font)
 #ifdef DRAW_TEXT_CAIRO
         if (xfont->fonts[i].gc != None)
             XFreeGC(disp, xfont->fonts[i].gc);
+        if (xfont->fonts[i].pixmap_surface != NULL)
+            cairo_surface_destroy(xfont->fonts[i].pixmap_surface);
         if (xfont->fonts[i].pixmap != None)
             XFreePixmap(disp, xfont->fonts[i].pixmap);
         if (xfont->fonts[i].glyphcache) {
             int j;
             for (j = 0; j < xfont->fonts[i].nglyphs; j++) {
                 cairo_surface_destroy(xfont->fonts[i].glyphcache[j].surface);
-                sfree(xfont->fonts[i].glyphcache[j].bitmap);
             }
             sfree(xfont->fonts[i].glyphcache);
         }
@@ -671,29 +671,12 @@ static void x11font_cairo_setup(
         xfi->pixoriginx = -xfi->xfs->min_bounds.lbearing;
         xfi->pixoriginy = xfi->xfs->max_bounds.ascent;
 
-        xfi->rowsize = cairo_format_stride_for_width(CAIRO_FORMAT_A1,
-                                                     xfi->pixwidth);
-        xfi->allsize = xfi->rowsize * xfi->pixheight;
-
-        {
-            /*
-             * Test host endianness and use it to set xfi->indexflip,
-             * which is XORed into our left-shift counts in order to
-             * implement the CAIRO_FORMAT_A1 specification, in which
-             * each bitmap byte is oriented LSB-first on little-endian
-             * platforms and MSB-first on big-endian ones.
-             *
-             * This is the same technique Cairo itself uses to test
-             * endianness, so hopefully it'll work in any situation
-             * where Cairo is usable at all.
-             */
-            static const int endianness_test = 1;
-            xfi->indexflip = (*((char *) &endianness_test) == 1) ? 0 : 7;
-        }
-
         xfi->pixmap = XCreatePixmap(
             disp, GDK_DRAWABLE_XID(gtk_widget_get_window(ctx->u.cairo.widget)),
             xfi->pixwidth, xfi->pixheight, 1);
+        xfi->pixmap_surface = cairo_xlib_surface_create_for_bitmap(
+            disp, xfi->pixmap, ScreenOfDisplay(disp, widgetscr),
+            xfi->pixwidth, xfi->pixheight);
         gcvals.foreground = WhitePixel(disp, widgetscr);
         gcvals.background = BlackPixel(disp, widgetscr);
         gcvals.font = xfi->xfs->fid;
@@ -705,31 +688,6 @@ static void x11font_cairo_setup(
 static void x11font_cairo_cache_glyph(
     Display *disp, x11font_individual *xfi, int glyphindex)
 {
-    XImage *image;
-    int x, y;
-    unsigned char *bitmap;
-    const XCharStruct *xcs = x11_char_struct(xfi->xfs, glyphindex >> 8,
-                                             glyphindex & 0xFF);
-
-    bitmap = snewn(xfi->allsize, unsigned char);
-    memset(bitmap, 0, xfi->allsize);
-
-    image = XGetImage(disp, xfi->pixmap, 0, 0,
-                      xfi->pixwidth, xfi->pixheight, AllPlanes, XYPixmap);
-    for (y = xfi->pixoriginy - xcs->ascent;
-         y < xfi->pixoriginy + xcs->descent; y++) {
-        for (x = xfi->pixoriginx + xcs->lbearing;
-             x < xfi->pixoriginx + xcs->rbearing; x++) {
-            unsigned long pixel = XGetPixel(image, x, y);
-            if (pixel) {
-                int byteindex = y * xfi->rowsize + x/8;
-                int bitindex = (x & 7) ^ xfi->indexflip;
-                bitmap[byteindex] |= 1U << bitindex;
-            }
-        }
-    }
-    XDestroyImage(image);
-
     if (xfi->nglyphs <= glyphindex) {
         /* Round up to the next multiple of 256 on the general
          * principle that Unicode characters come in contiguous blocks
@@ -741,13 +699,16 @@ static void x11font_cairo_cache_glyph(
 
         while (old_nglyphs < xfi->nglyphs) {
             xfi->glyphcache[old_nglyphs].surface = NULL;
-            xfi->glyphcache[old_nglyphs].bitmap = NULL;
             old_nglyphs++;
         }
     }
-    xfi->glyphcache[glyphindex].bitmap = bitmap;
-    xfi->glyphcache[glyphindex].surface = cairo_image_surface_create_for_data(
-        bitmap, CAIRO_FORMAT_A1, xfi->pixwidth, xfi->pixheight, xfi->rowsize);
+    cairo_surface_mark_dirty(xfi->pixmap_surface);
+    xfi->glyphcache[glyphindex].surface = cairo_image_surface_create(
+        CAIRO_FORMAT_A1, xfi->pixwidth, xfi->pixheight);
+    cairo_t *cr = cairo_create(xfi->glyphcache[glyphindex].surface);
+    cairo_set_source_surface(cr, xfi->pixmap_surface, 0, 0);
+    cairo_paint(cr);
+    cairo_destroy(cr);
 }
 
 static void x11font_cairo_draw_glyph(unifont_drawctx *ctx,
@@ -1295,7 +1256,7 @@ static char *x11font_size_increment(unifont *font, int increment)
 #if GTK_CHECK_VERSION(2,0,0)
 
 /* ----------------------------------------------------------------------
- * Pango font implementation (for GTK 2 only).
+ * Pango font implementation (for GTK 2+ only).
  */
 
 #if defined PANGO_PRE_1POINT4 && !defined PANGO_PRE_1POINT6
@@ -2325,7 +2286,7 @@ static char *multifont_size_increment(unifont *font, int increment)
 #if GTK_CHECK_VERSION(2,0,0)
 
 /* ----------------------------------------------------------------------
- * Implementation of a unified font selector. Used on GTK 2 only;
+ * Implementation of a unified font selector. Used on GTK 2+ only;
  * for GTK 1 we still use the standard font selector.
  */
 
