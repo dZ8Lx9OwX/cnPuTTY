@@ -716,9 +716,16 @@ static void x11font_cairo_draw_glyph(unifont_drawctx *ctx,
                                      int glyphindex)
 {
     if (xfi->glyphcache[glyphindex].surface) {
-        cairo_mask_surface(ctx->u.cairo.cr,
-                           xfi->glyphcache[glyphindex].surface,
-                           x - xfi->pixoriginx, y - xfi->pixoriginy);
+        cairo_pattern_t *glyph_pattern = cairo_pattern_create_for_surface(
+                xfi->glyphcache[glyphindex].surface);
+        cairo_matrix_t xfrm;
+        /* We really don't want bilinear interpolation of bitmap fonts. */
+        cairo_pattern_set_filter(glyph_pattern, CAIRO_FILTER_NEAREST);
+        cairo_matrix_init_translate(&xfrm, -(x - xfi->pixoriginx),
+                                    -(y - xfi->pixoriginy));
+        cairo_pattern_set_matrix(glyph_pattern, &xfrm);
+        cairo_mask(ctx->u.cairo.cr, glyph_pattern);
+        cairo_pattern_destroy(glyph_pattern);
     }
 }
 

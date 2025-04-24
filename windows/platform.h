@@ -203,8 +203,10 @@ void centre_window(HWND hwnd);
 
 #define PUTTY_CHM_FILE "putty.chm"
 
+int get_caret_blink_time(void);
+
 #define GETTICKCOUNT GetTickCount
-#define CURSORBLINK GetCaretBlinkTime()
+#define CURSORBLINK get_caret_blink_time()
 #define TICKSPERSEC 1000               /* GetTickCount returns milliseconds */
 
 #define DEFAULT_CODEPAGE CP_ACP

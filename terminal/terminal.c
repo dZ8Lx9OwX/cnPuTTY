@@ -1381,9 +1381,10 @@ static void term_schedule_tblink(Terminal *term)
  */
 static void term_schedule_cblink(Terminal *term)
 {
-    if (term->blink_cur && term->has_focus) {
+    int delay = CBLINK_DELAY;
+    if (term->blink_cur && term->has_focus && delay > 0) {
         if (!term->cblink_pending)
-            term->next_cblink = schedule_timer(CBLINK_DELAY, term_timer, term);
+            term->next_cblink = schedule_timer(delay, term_timer, term);
         term->cblink_pending = true;
     } else {
         term->cblinker = true;         /* reset when not in use */
