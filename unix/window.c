@@ -108,21 +108,11 @@ struct GtkFrontend {
      * re-blit an appropriate rectangle from this pixmap.
      */
     GdkPixmap *pixmap;
-#endif
-#ifdef DRAW_TEXT_CAIRO
+#else
     /*
-     * If we're drawing using Cairo, we cache the same image on the
-     * client side in a Cairo surface.
-     *
-     * In GTK2+Cairo, this happens _as well_ as having the server-side
-     * pixmap cache above; in GTK3+Cairo, server-side pixmaps are
-     * deprecated, so we _just_ have this client-side cache. In the
-     * latter case that means we have to transmit a big wodge of
-     * bitmap data over the X connection on every expose event; but
-     * GTK3 apparently deliberately provides no way to avoid that
-     * inefficiency, and at least this way we don't _also_ have to
-     * redo any font rendering just because the window was temporarily
-     * covered.
+     * If we're avoiding GdkPixmaps, we cache the same image in a
+     * Cairo surface.  Under X11, that surface will probably be a
+     * server-side pixmap.
      */
     cairo_surface_t *surface;
 #endif
@@ -766,10 +756,11 @@ static void drawing_area_setup(GtkFrontend *inst, int width, int height)
     new_scale = 1;
 #endif
 
-    int new_backing_w = width * new_scale;
-    int new_backing_h = height * new_scale;
+    int new_backing_w = width;
+    int new_backing_h = height;
 
-    if (inst->backing_w != new_backing_w || inst->backing_h != new_backing_h)
+    if (inst->backing_w != new_backing_w || inst->backing_h != new_backing_h
+        || inst->scale != new_scale)
         inst->drawing_area_setup_needed = true;
 
     /*
@@ -811,16 +802,23 @@ static void drawing_area_setup(GtkFrontend *inst, int width, int height)
 
     inst->pixmap = gdk_pixmap_new(gtk_widget_get_window(inst->area),
                                   inst->backing_w, inst->backing_h, -1);
-#endif
-
-#ifdef DRAW_TEXT_CAIRO
+#else
     if (inst->surface) {
         cairo_surface_destroy(inst->surface);
         inst->surface = NULL;
     }
 
-    inst->surface = cairo_image_surface_create(
-        CAIRO_FORMAT_ARGB32, inst->backing_w, inst->backing_h);
+#if GTK_CHECK_VERSION(2,22,0)
+    inst->surface = gdk_window_create_similar_surface(
+        gtk_widget_get_window(inst->area),
+        CAIRO_CONTENT_COLOR, inst->backing_w, inst->backing_h);
+#else
+    cairo_t *tmp_cr = gdk_cairo_create(gtk_widget_get_window(inst->area));
+    inst->surface = cairo_surface_create_similar(
+        cairo_get_target(tmp_cr),
+        CAIRO_CONTENT_COLOR, inst->backing_w, inst->backing_h);
+    cairo_destroy(tmp_cr);
+#endif
 #endif
 
     draw_backing_rect(inst);
@@ -918,8 +916,6 @@ static gboolean area_configured(
 #ifdef DRAW_TEXT_CAIRO
 static void cairo_setup_draw_ctx(GtkFrontend *inst)
 {
-    cairo_get_matrix(inst->uctx.u.cairo.cr,
-                     &inst->uctx.u.cairo.origmatrix);
     cairo_set_line_width(inst->uctx.u.cairo.cr, 1.0);
     cairo_set_line_cap(inst->uctx.u.cairo.cr, CAIRO_LINE_CAP_SQUARE);
     cairo_set_line_join(inst->uctx.u.cairo.cr, CAIRO_LINE_JOIN_MITER);
@@ -955,43 +951,9 @@ static gint draw_area(GtkWidget *widget, cairo_t *cr, gpointer data)
      * inst->surface to the window.
      */
     if (inst->surface) {
-        GdkRectangle dirtyrect;
-        cairo_surface_t *target_surface;
-        double orig_sx, orig_sy;
-        cairo_matrix_t m;
-
-        /*
-         * Furtle around in the Cairo setup to force the device scale
-         * back to 1, so that when we blit a collection of pixels from
-         * our backing surface into the window, they really are
-         * _pixels_ and not some confusing antialiased slightly-offset
-         * 2x2 rectangle of pixeloids.
-         *
-         * I have no idea whether GTK expects me not to mess with the
-         * device scale in the cairo_surface_t backing its window, so
-         * I carefully put it back when I've finished.
-         *
-         * In some GTK setups, the Cairo context we're given may not
-         * have a zero translation offset in its matrix, in which case
-         * we have to adjust that to compensate for the change of
-         * scale, or else the old translation offset (designed for the
-         * old scale) will be multiplied by the new scale instead and
-         * put everything in the wrong place.
-         */
-        target_surface = cairo_get_target(cr);
-        cairo_get_matrix(cr, &m);
-        cairo_surface_get_device_scale(target_surface, &orig_sx, &orig_sy);
-        cairo_surface_set_device_scale(target_surface, 1.0, 1.0);
-        cairo_translate(cr, m.x0 * (orig_sx - 1.0), m.y0 * (orig_sy - 1.0));
-
-        gdk_cairo_get_clip_rectangle(cr, &dirtyrect);
-
         cairo_set_source_surface(cr, inst->surface, 0, 0);
-        cairo_rectangle(cr, dirtyrect.x, dirtyrect.y,
-                        dirtyrect.width, dirtyrect.height);
-        cairo_fill(cr);
-
-        cairo_surface_set_device_scale(target_surface, orig_sx, orig_sy);
+        cairo_paint(cr);
+        cairo_surface_flush(cairo_get_target(cr));
     }
 
     return true;
@@ -1017,7 +979,7 @@ gint expose_area(GtkWidget *widget, GdkEventExpose *event, gpointer data)
     }
 #else
     /*
-     * Failing that, draw from the client-side Cairo surface. (We
+     * Failing that, draw from the backing Cairo surface. (We
      * should never be compiled in a context where we have _neither_
      * inst->surface nor inst->pixmap.)
      */
@@ -3593,11 +3555,15 @@ static bool gtkwin_setup_draw_ctx(TermWin *tw)
 #ifdef DRAW_TEXT_CAIRO
     if (inst->uctx.type == DRAWTYPE_CAIRO) {
         inst->uctx.u.cairo.widget = GTK_WIDGET(inst->area);
-        /* If we're doing Cairo drawing, we expect inst->surface to
-         * exist, and we draw to that first, regardless of whether we
-         * subsequently copy the results to inst->pixmap. */
+        /*
+         * If we're doing Cairo drawing, we draw to the target pixmap
+         * if there is one, and otherwise to the backing surface.
+         */
+#ifdef NO_BACKING_PIXMAPS
         inst->uctx.u.cairo.cr = cairo_create(inst->surface);
-        cairo_scale(inst->uctx.u.cairo.cr, inst->scale, inst->scale);
+#else
+        inst->uctx.u.cairo.cr = gdk_cairo_create(inst->pixmap);
+#endif
         cairo_setup_draw_ctx(inst);
     }
 #endif
@@ -3622,20 +3588,6 @@ static void gtkwin_free_draw_ctx(TermWin *tw)
 
 static void draw_update(GtkFrontend *inst, int x, int y, int w, int h)
 {
-#if defined DRAW_TEXT_CAIRO && !defined NO_BACKING_PIXMAPS
-    if (inst->uctx.type == DRAWTYPE_CAIRO) {
-        /*
-         * If inst->surface and inst->pixmap both exist, then we've
-         * just drawn new content to the former which we must copy to
-         * the latter.
-         */
-        cairo_t *cr = gdk_cairo_create(inst->pixmap);
-        cairo_set_source_surface(cr, inst->surface, 0, 0);
-        cairo_rectangle(cr, x, y, w, h);
-        cairo_fill(cr);
-        cairo_destroy(cr);
-    }
-#endif
 
     /*
      * Now we just queue a window redraw, which will cause
@@ -3808,31 +3760,10 @@ static void draw_stretch_before(GtkFrontend *inst, int x, int y,
 {
 #ifdef DRAW_TEXT_CAIRO
     if (inst->uctx.type == DRAWTYPE_CAIRO) {
-        cairo_matrix_t matrix;
-
-        matrix.xy = 0;
-        matrix.yx = 0;
-
-        if (wdouble) {
-            matrix.xx = 2;
-            matrix.x0 = -x;
-        } else {
-            matrix.xx = 1;
-            matrix.x0 = 0;
-        }
-
-        if (hdouble) {
-            matrix.yy = 2;
-            if (hbothalf) {
-                matrix.y0 = -(y+h);
-            } else {
-                matrix.y0 = -y;
-            }
-        } else {
-            matrix.yy = 1;
-            matrix.y0 = 0;
-        }
-        cairo_transform(inst->uctx.u.cairo.cr, &matrix);
+        cairo_save(inst->uctx.u.cairo.cr);
+        cairo_translate(inst->uctx.u.cairo.cr,
+                        -x * wdouble, -y * hdouble - h * hbothalf);
+        cairo_scale(inst->uctx.u.cairo.cr, 1 + wdouble, 1 + hdouble);
     }
 #endif
 }
@@ -3887,10 +3818,8 @@ static void draw_stretch_after(GtkFrontend *inst, int x, int y,
 #endif
 #endif /* DRAW_TEXT_GDK */
 #ifdef DRAW_TEXT_CAIRO
-    if (inst->uctx.type == DRAWTYPE_CAIRO) {
-        cairo_set_matrix(inst->uctx.u.cairo.cr,
-                         &inst->uctx.u.cairo.origmatrix);
-    }
+    if (inst->uctx.type == DRAWTYPE_CAIRO)
+        cairo_restore(inst->uctx.u.cairo.cr);
 #endif
 }
 
@@ -5401,6 +5330,15 @@ void new_session_window(Conf *conf, const char *geometry_string)
 
     inst->area = gtk_drawing_area_new();
     gtk_widget_set_name(GTK_WIDGET(inst->area), "drawing-area");
+#if GTK_CHECK_VERSION(2,0,0) && !GTK_CHECK_VERSION(3,0,0)
+    /*
+     * PuTTY does its own double-buffering, so we don't really need
+     * GTK to do it as well.  GTK documentation says this is probably
+     * a bad idea from GTK 3.10 onwards, and it's officially
+     * deprecated from 3.14.  But it definitely helps in GTK 2.
+     */
+    gtk_widget_set_double_buffered(GTK_WIDGET(inst->area), false);
+#endif
 
     /*
      * Try to create the fonts for use in the window. If this fails,
