@@ -153,7 +153,7 @@ if(GTK_FOUND)
   be_list(pterm pterm)
   target_link_libraries(pterm
     guiterminal eventloop settings utils ptermxpms
-    ${GTK_LIBRARIES} ${X11_LIBRARIES})
+    ${GTK_LIBRARIES} ${X11_LIBRARIES} ${X11_Xrender_LIB})
   installed_program(pterm)
 
   if(GTK_VERSION GREATER_EQUAL 3)
@@ -170,7 +170,7 @@ if(GTK_FOUND)
     be_list(ptermapp pterm)
     target_link_libraries(ptermapp
       guiterminal eventloop settings utils ptermxpms
-      ${GTK_LIBRARIES} ${X11_LIBRARIES})
+      ${GTK_LIBRARIES} ${X11_LIBRARIES} ${X11_Xrender_LIB})
   endif()
 
   add_executable(putty
@@ -181,7 +181,7 @@ if(GTK_FOUND)
   target_link_libraries(putty
     guiterminal eventloop sshclient otherbackends settings
     network crypto utils puttyxpms
-    ${GTK_LIBRARIES} ${X11_LIBRARIES})
+    ${GTK_LIBRARIES} ${X11_LIBRARIES} ${X11_Xrender_LIB})
   set_target_properties(putty
     PROPERTIES LINK_INTERFACE_MULTIPLICITY 2)
   installed_program(putty)
@@ -196,7 +196,7 @@ if(GTK_FOUND)
     target_link_libraries(puttyapp
       guiterminal eventloop sshclient otherbackends settings
       network crypto utils puttyxpms
-      ${GTK_LIBRARIES} ${X11_LIBRARIES})
+      ${GTK_LIBRARIES} ${X11_LIBRARIES} ${X11_Xrender_LIB})
   endif()
 
   add_executable(puttytel
@@ -213,7 +213,7 @@ if(GTK_FOUND)
   target_link_libraries(puttytel
     guiterminal eventloop otherbackends settings network utils
     puttyxpms
-    ${GTK_LIBRARIES} ${X11_LIBRARIES})
+    ${GTK_LIBRARIES} ${X11_LIBRARIES} ${X11_Xrender_LIB})
 
   add_executable(test_lineedit
     ${CMAKE_SOURCE_DIR}/test/test_lineedit.c
