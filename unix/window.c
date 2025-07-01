@@ -402,7 +402,7 @@ static void gtk_seat_notify_remote_exit(Seat *seat);
 static void gtk_seat_update_specials_menu(Seat *seat);
 static void gtk_seat_set_busy_status(Seat *seat, BusyStatus status);
 #ifndef NOT_X_WINDOWS
-static const char *gtk_seat_get_x_display(Seat *seat);
+static const char *gtk_seat_get_display(Seat *seat, SeatDisplayType dtype);
 static bool gtk_seat_get_windowid(Seat *seat, long *id);
 #endif
 static void gtk_seat_set_trust_status(Seat *seat, bool trusted);
@@ -430,10 +430,10 @@ static const SeatVtable gtk_seat_vt = {
     .is_utf8 = gtk_seat_is_utf8,
     .echoedit_update = nullseat_echoedit_update,
 #ifdef NOT_X_WINDOWS
-    .get_x_display = nullseat_get_x_display,
+    .get_display = nullseat_get_display,
     .get_windowid = nullseat_get_windowid,
 #else
-    .get_x_display = gtk_seat_get_x_display,
+    .get_display = gtk_seat_get_display,
     .get_windowid = gtk_seat_get_windowid,
 #endif
     .get_window_pixel_size = gtk_seat_get_window_pixel_size,
@@ -4331,11 +4331,11 @@ void modalfatalbox(const char *p, ...)
 }
 
 #ifndef NOT_X_WINDOWS
-static const char *gtk_seat_get_x_display(Seat *seat)
+static const char *gtk_seat_get_display(Seat *seat, SeatDisplayType dtype)
 {
-    if (GDK_IS_X11_DISPLAY(gdk_display_get_default()))
-        return gdk_get_display();
-    return NULL;
+    if (dtype == SDISP_X11 && !GDK_IS_X11_DISPLAY(gdk_display_get_default()))
+        return NULL;
+    return gdk_get_display();
 }
 
 static bool gtk_seat_get_windowid(Seat *seat, long *id)

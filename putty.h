@@ -1070,6 +1070,11 @@ void seat_dialog_text_free(SeatDialogText *sdt);
 PRINTF_LIKE(3, 4) void seat_dialog_text_append(
     SeatDialogText *sdt, SeatDialogTextType type, const char *fmt, ...);
 
+/* Parameter to seat_get_display */
+typedef enum SeatDisplayType {
+    SDISP_X11, SDISP_ANY
+} SeatDisplayType;
+
 /*
  * Data type 'Seat', which is an API intended to contain essentially
  * everything that a back end might need to talk to its client for:
@@ -1299,10 +1304,13 @@ struct SeatVtable {
     void (*echoedit_update)(Seat *seat, bool echoing, bool editing);
 
     /*
-     * Return the local X display string relevant to a seat, or NULL
-     * if there isn't one or if the concept is meaningless.
+     * Return a string describing the GUI display (e.g. X11 or
+     * Wayland) relevant to a seat, or NULL if there isn't one or if
+     * the concept is meaningless. If dtype is not SDISP_ANY then only
+     * a display string of the requested type will be returned, or
+     * NULL if the available display is of a different type.
      */
-    const char *(*get_x_display)(Seat *seat);
+    const char *(*get_display)(Seat *seat, SeatDisplayType dtype);
 
     /*
      * Return the X11 id of the X terminal window relevant to a seat,
@@ -1426,8 +1434,8 @@ static inline bool seat_is_utf8(Seat *seat)
 { return seat->vt->is_utf8(seat); }
 static inline void seat_echoedit_update(Seat *seat, bool ec, bool ed)
 { seat->vt->echoedit_update(seat, ec, ed); }
-static inline const char *seat_get_x_display(Seat *seat)
-{ return seat->vt->get_x_display(seat); }
+static inline const char *seat_get_display(Seat *seat, SeatDisplayType dtype)
+{ return seat->vt->get_display(seat, dtype); }
 static inline bool seat_get_windowid(Seat *seat, long *id_out)
 { return seat->vt->get_windowid(seat, id_out); }
 static inline bool seat_get_window_pixel_size(Seat *seat, int *w, int *h)
@@ -1515,7 +1523,7 @@ const SeatDialogPromptDescriptions *nullseat_prompt_descriptions(Seat *seat);
 bool nullseat_is_never_utf8(Seat *seat);
 bool nullseat_is_always_utf8(Seat *seat);
 void nullseat_echoedit_update(Seat *seat, bool echoing, bool editing);
-const char *nullseat_get_x_display(Seat *seat);
+const char *nullseat_get_display(Seat *seat, SeatDisplayType dtype);
 bool nullseat_get_windowid(Seat *seat, long *id_out);
 bool nullseat_get_window_pixel_size(Seat *seat, int *width, int *height);
 StripCtrlChars *nullseat_stripctrl_new(

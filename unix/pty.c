@@ -958,7 +958,10 @@ Backend *pty_backend_create(
                 close(pty_utmp_helper_pipe);
                 pty_utmp_helper_pipe = -1;
             } else {
-                const char *location = seat_get_x_display(pty->seat);
+                const char *location = seat_get_display(pty->seat, SDISP_ANY);
+                if (!location)
+                    location = "";
+
                 int len = strlen(location)+1, pos = 0; /* +1 to include NUL */
                 while (pos < len) {
                     int ret = write(pty_utmp_helper_pipe,
@@ -1133,7 +1136,7 @@ Backend *pty_backend_create(
              * terminal to match the display the terminal itself is
              * on.
              */
-            const char *x_display = seat_get_x_display(pty->seat);
+            const char *x_display = seat_get_display(pty->seat, SDISP_X11);
             if (x_display) {
                 char *x_display_env_var = dupprintf("DISPLAY=%s", x_display);
                 putenv(x_display_env_var);
