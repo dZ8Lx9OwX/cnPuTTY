@@ -2882,7 +2882,8 @@ static LRESULT CALLBACK WndProc(HWND hwnd, UINT message,
         return 0;
       }
       case WM_NETEVENT:
-        winselgui_response(wParam, lParam);
+      case WM_DONE_WITH_SOCKET:
+        winselgui_response(message, wParam, lParam);
         return 0;
       case WM_SETFOCUS:
         term_set_focus(wgs->term, true);

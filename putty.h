@@ -2703,6 +2703,9 @@ unsigned long timing_last_clock(void);
 void queue_toplevel_callback(toplevel_callback_fn_t fn, void *ctx);
 bool run_toplevel_callbacks(void);
 bool toplevel_callback_pending(void);
+void delete_callbacks(
+    bool (*delete_this_one)(void *predicate_ctx, toplevel_callback_fn_t fn,
+                            void *callback_ctx), void *predicate_ctx);
 void delete_callbacks_for_context(void *ctx);
 
 /*

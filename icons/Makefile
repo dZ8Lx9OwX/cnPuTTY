@@ -100,9 +100,16 @@ puttyins.ico: puttyins-16.png puttyins-32.png puttyins-48.png \
                   -4 $(filter-out %-true.png, $(filter-out %-mono.png, $^)) \
                   -1 $(filter %-mono.png, $^) > $@
 
-# Icon for the website. (This isn't linked into "make all".)
-website.ico: putty-16.png
+# Assorted icons for the website. (This isn't linked into "make all".)
+web: website.ico web180.png web192.png web512.png
+website.ico: putty-16.png putty-32.png putty-48.png
 	./icon.pl -4 $^ >$@
+web180.png: putty.svg
+	rsvg-convert -f png -b white -w 180 -h 180 -o $@ $<
+web192.png: putty.svg
+	rsvg-convert -f png -w 192 -h 192 -o $@ $<
+web512.png: putty.svg
+	rsvg-convert -f png -w 512 -h 512 -o $@ $<
 
 xpmputty.c: putty-16.png putty-32.png putty-48.png
 	./cicon.pl main_icon $^ > $@

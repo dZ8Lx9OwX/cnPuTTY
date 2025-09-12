@@ -4063,7 +4063,7 @@ static void eventlog_list_handler(dlgcontrol *ctrl, dlgparam *dp,
         }
 
         if (gtk_selection_owner_set(es->window, GDK_SELECTION_PRIMARY,
-                                    GDK_CURRENT_TIME)) {
+                                    gtk_get_current_event_time())) {
             gtk_selection_add_target(es->window, GDK_SELECTION_PRIMARY,
                                      GDK_SELECTION_TYPE_STRING, 1);
             gtk_selection_add_target(es->window, GDK_SELECTION_PRIMARY,

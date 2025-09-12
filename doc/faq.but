@@ -1195,13 +1195,62 @@ time after its initial release on our website).
 
 \S{faq-putty-org}{Question} Is \cw{putty.org} your website?
 
-No, it isn't. \cw{putty.org} is run by an opportunist who uses it to
-advertise their own commercial SSH implementation to people looking
-for our free one. We don't own that site, we can't control it, and we
-don't advise anyone to use it in preference to our own site.
+No, it isn't, and it never has been. We don't own it; we can't control
+it; we have no responsibility for anything it does.
 
-The real PuTTY web site, run by the PuTTY team, has always been at
+\cw{putty.org} was set up by an opportunist selling a competing SSH
+client for money, who initially used it to interpose adverts for their
+own commercial SSH implementation in the course of providing a link to
+our free one. Then in July 2025 it changed its content to host
+anti-vaccine propaganda. We have no idea what it might do next.
+
+Since the start of PuTTY, the real PuTTY web site, run by the PuTTY
+team, has always been at
 \W{https://www.chiark.greenend.org.uk/~sgtatham/putty/}\cw{https://www.chiark.greenend.org.uk/~sgtatham/putty/}.
+
+We don't recommend that anyone use \cw{putty.org} as a convenient
+redirector, or indeed any \e{other} convenient landing page that is
+not ours. There are a few others, some set up in entirely good faith,
+but you never know.
+
+As of August 2025, we have registered
+\W{https://putty.software/}\cw{putty.software} and made that into an
+\e{official} landing page. If you'd like a short easy URL, that's the
+one to use, especially if we move the main website there in future.
+
+\S{faq-putty-org-pivot}{Question} When \cw{putty.org} replaced its
+content with anti-vaccine propaganda in July 2025, was that because
+you were hacked or vandalised or taken over?
+
+No, because \cw{putty.org} was never ours in the first place (see
+\k{faq-putty-org}). It wasn't stolen from us, or bought from us. The
+same person who owned it all along decided to change its content.
+
+\S{faq-real-website}{Question} With all these landing pages and
+imitators, how can I be sure where the \e{real} PuTTY website is?
+
+Every release of PuTTY embeds a URL to the web site, via the \q{Visit
+web site} button in the About box.
+
+The real website is where \e{PuTTY itself} says it is.
+
+If you download a cryptographically signed version of PuTTY \dash
+either a Windows binary signed with Simon Tatham's Authenticode key,
+or anything signed with the PuTTY team's GPG key \dash then you can
+confirm that the URL embedded in that copy is the one that the
+developers themselves endorse as the true web site.
+
+As of August 2025, \W{https://putty.software/}\cw{putty.software} is a
+second web location owned by us, the PuTTY developers. That too is
+endorsed by signed copies of PuTTY, via being mentioned in this FAQ
+section of the help file.
+
+If we move the web site later \dash as of August 2025, our plan is to
+move it from the chiark domain name to once the latter is generally
+recognised as legitimate \dash then we will keep a redirection of some
+kind at the old location, so that it continues to work. Both URLs will
+continue to be legitimate places to find PuTTY, whichever is currently
+preferred.
 
 \S{faq-the}{Question} Why do the download links point to
 \cw{the.earth.li} and not chiark? Has your website been hacked?
@@ -1217,19 +1266,20 @@ grateful to them!
 \S{faq-domain}{Question} Would you like me to register you a nicer
 domain name?
 
-No, thank you. Even if you can find one (most of them seem to have
-been registered already, by people who didn't ask whether we
-actually wanted it before they applied), we're happy with the PuTTY
-web site being exactly where it is. It's not hard to find (just type
-\q{putty} into \W{http://www.google.com/}{google.com} and we're the
-first link returned), and we don't believe the administrative hassle
-of moving the site would be worth the benefit.
+No, thank you. We've got one: \W{https://putty.software/}\cw{putty.software}.
 
-In addition, if we \e{did} want a custom domain name, we would want
-to run it ourselves, so we knew for certain that it would continue
-to point where we wanted it, and wouldn't suddenly change or do
-strange things. Having it registered for us by a third party who we
-don't even know is not the best way to achieve this.
+For a long time, this FAQ entry said that we were happy with the site
+where it is. However, in 2025, as a result of some media attention to
+\cw{putty.org}, it became clear that search engines these days seem to
+prefer short whole domain names over user subdirectories on a larger
+server.
+
+So we registered a domain name ourselves. As of August 2025,
+\W{https://putty.software/}\cw{putty.software} is a small landing
+page, similar to third-party redirectors except not run by a third
+party. After we've got the word out and built some trust, the plan is
+to move the whole PuTTY site there and turn the old chiark site into a
+redirection.
 
 \S{faq-webhosting}{Question} Would you like free web hosting for the
 PuTTY web site?
@@ -1244,28 +1294,10 @@ to PuTTY users. If your content is unrelated, or only tangentially
 related, to PuTTY, then the link would simply be advertising for
 you.
 
-One very nice effect of the Google ranking mechanism is that by and
-large, the most popular web sites get the highest rankings. This
-means that when an ordinary person does a search, the top item in
-the search is very likely to be a high-quality site or the site they
-actually wanted, rather than the site which paid the most money for
-its ranking.
-
-The PuTTY web site is held in high esteem by Google, for precisely
-this reason: lots of people have linked to it simply because they
-like PuTTY, without us ever having to ask anyone to link to us. We
-feel that it would be an abuse of this esteem to use it to boost the
-ranking of random advertisers' web sites. If you want your web site
-to have a high Google ranking, we'd prefer that you achieve this the
-way we did - by being good enough at what you do that people will
-link to you simply because they like you.
-
-In particular, we aren't interested in trading links for money (see
-above), and we \e{certainly} aren't interested in trading links for
-other links (since we have no advertising on our web site, our
-Google ranking is not even directly worth anything to us). If we
-don't want to link to you for free, then we probably won't want to
-link to you at all.
+This is still true even if you offer to pay us. We aren't interested
+in trading links for money, and we \e{certainly} aren't interested in
+trading links for other links. If we don't want to link to you for
+free, then we probably won't want to link to you at all.
 
 If you have software based on PuTTY, or specifically designed to
 interoperate with PuTTY, or in some other way of genuine interest to
@@ -1274,24 +1306,35 @@ our Links page. And if you're running a particularly valuable mirror
 of the PuTTY web site, we might be interested in linking to you from
 our Mirrors page.
 
-\S{faq-sourceforge}{Question} Why don't you move PuTTY to
-SourceForge?
+\S{faq-forge}{Question} Why don't you move PuTTY to Github (or some
+other well known forge site)?
 
-Partly, because we don't want to move the web site location (see
-\k{faq-domain}).
-
-Also, security reasons. PuTTY is a security product, and as such it
-is particularly important to guard the code and the web site against
+Primarily, trust. PuTTY is a security product, and as such it is
+particularly important to guard the code and the web site against
 unauthorised modifications which might introduce subtle security
-flaws. Therefore, we prefer that the Git repository, web site and
-FTP site remain where they are, under the direct control of system
-administrators we know and trust personally, rather than being run
-by a large organisation full of people we've never met and which is
-known to have had breakins in the past.
+flaws. Therefore, we prefer that the Git repository, web site and FTP
+site remain where they are, under the direct control of system
+administrators we know and trust personally.
 
-No offence to SourceForge; I think they do a wonderful job. But
-they're not ideal for everyone, and in particular they're not ideal
-for us.
+Large organisations seem less trustworthy to us because they have a
+lot of employees, any of whom could attempt an insider attack; because
+management can change or companies can be bought out, and a benign
+company today could become a malicious one tomorrow.
+
+Github in particular already seems like a dangerously large single
+point of failure. I'd rather contribute to the Internet being
+distributed than contribute to it being centralised. In addition, the
+Github software isn't itself free, so although you can export the
+actual source repository itself at any time (every \cq{git clone} does
+that), you're locked in once all your other metadata (issues, pull
+requests etc) is stored in Github's format on Github's systems.
+
+I know that if you have a Github presence already, it would be most
+convenient \e{for you} if everyone else was on Github too so that you
+could interact with them all in the same easy way. Sorry about that.
+But that seductive ease of use is how large companies attract a large
+user base to monetise or exploit later, and we don't want to
+participate in that any more than we have to.
 
 \S{faq-mailinglist1}{Question} Why can't I subscribe to the
 putty-bugs mailing list?

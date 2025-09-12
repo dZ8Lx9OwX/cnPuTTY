@@ -271,7 +271,8 @@ const SeatDialogPromptDescriptions *win_seat_prompt_descriptions(Seat *seat);
  */
 void write_aclip(HWND hwnd, int clipboard, char *, int);
 
-#define WM_NETEVENT  (WM_APP + 5)
+#define WM_NETEVENT          (WM_APP + 5)
+#define WM_DONE_WITH_SOCKET  (WM_APP + 8)
 
 /*
  * On Windows, we send MA_2CLK as the only event marking the second
@@ -347,6 +348,7 @@ DECL_WINDOWS_FUNCTION(extern, int, select,
  * called by network.c to turn on or off WSA*Select for a given socket.
  */
 const char *do_select(SOCKET skt, bool enable);
+void done_with_socket(SOCKET skt);
 
 /*
  * Exports from select-{gui,cli}.c, each of which provides an
@@ -354,7 +356,7 @@ const char *do_select(SOCKET skt, bool enable);
  */
 void winselgui_set_hwnd(HWND hwnd);
 void winselgui_clear_hwnd(void);
-void winselgui_response(WPARAM wParam, LPARAM lParam);
+void winselgui_response(UINT message, WPARAM wParam, LPARAM lParam);
 
 void winselcli_setup(void);
 SOCKET winselcli_unique_socket(void);
