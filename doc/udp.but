@@ -507,9 +507,9 @@ file that defined the \cw{MyAbstraction} structure types, like this:
 \c { return vt->new(vt); }
 \c static inline void myabs_free(MyAbstraction *myabs)
 \c { myabs->vt->free(myabs); }
-\c static inline void myimpl_modify(MyAbstraction *myabs, unsigned param)
+\c static inline void myabs_modify(MyAbstraction *myabs, unsigned param)
 \c { myabs->vt->modify(myabs, param); }
-\c static inline unsigned myimpl_query(MyAbstraction *myabs, unsigned param)
+\c static inline unsigned myabs_query(MyAbstraction *myabs, unsigned param)
 \c { return myabs->vt->query(myabs, param); }
 
 And now call sites can use those reasonably clean-looking wrapper

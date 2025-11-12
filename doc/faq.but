@@ -160,10 +160,11 @@ you want an automated batch job to make use of PSCP or Plink, and the
 interactive host key prompt is hanging the batch process - then the
 right way to fix it is to add the correct host key to the Registry in
 advance, or if the Registry is not available, to use the \cw{\-hostkey}
-command-line option. That way, you retain the \e{important} feature of
-host key checking: the right key will be accepted and the wrong ones
-will not. Adding an option to turn host key checking off completely is
-the wrong solution and we will not do it.
+command-line option (see \k{using-cmdline-hostkey}). That way, you
+retain the \e{important} feature of host key checking: the right key
+will be accepted and the wrong ones will not. Adding an option to turn
+host key checking off completely is the wrong solution and we will not
+do it.
 
 If you have host keys available in the common \i\c{known_hosts} format,
 we have a script called
@@ -1673,6 +1674,31 @@ No, it isn't. PuTTY is almost completely composed of code written
 from scratch for PuTTY. The only code we share with OpenSSH is the
 detector for SSH-1 CRC compensation attacks, written by CORE SDI
 S.A; we share no code at all with OpenSSL.
+
+\S{faq-ai}{Question} Does PuTTY contain or use any artificial
+intelligence (AI) or large language model (LLM)?
+
+No, it does not. PuTTY does not use any AI or LLM during its
+operation. No AI or LLM code is included in PuTTY itself, and also, no
+AI or LLM system elsewhere on the Internet is consulted by PuTTY when
+it runs.
+
+PuTTY aims to be reliable, predictable and efficient in its operation.
+The 2020s style of AI is bad at all of these things, \e{especially}
+\q{efficient}.
+
+PuTTY does not collect any data from its users to communicate to any
+host run by the PuTTY developers, for LLM training or for any other
+purpose. (See \k{privacy} for more detailed information about what
+information PuTTY \e{does} store and transmit, but the short answer
+is, it only stores information necessary to do its job, and only
+talks over the network to the servers you told it to connect to.)
+
+Of course, after you use PuTTY to connect to a server, \e{that server}
+may choose to do AI-related operations, or to collect the data from
+your session. PuTTY can do nothing about that (or even detect it
+happening), and if you're concerned about it, you'll have to consult
+whoever runs your server.
 
 \S{faq-sillyputty}{Question} Where can I buy silly putty?
 

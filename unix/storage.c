@@ -962,7 +962,7 @@ void write_random_seed(void *data, int len)
             break;
         }
         len -= ret;
-        data = (char *)data + len;
+        data = (char *)data + ret;
     }
 
     close(fd);
