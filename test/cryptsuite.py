@@ -786,6 +786,13 @@ class ecc(MyTestBase):
         bogus = ecc_weierstrass_point_new(wc, int(rP.x), int(rP.y * 3))
         self.assertFalse(ecc_weierstrass_point_valid(bogus))
 
+        # Make sure add_general still correctly doubles a point if we
+        # add two _different_ representations of the same point to
+        # each other.
+        wP2 = ecc_weierstrass_point_change_denominator(wP, 2)
+        self.assertTrue(ecc_weierstrass_point_valid(wP2))
+        check_point(ecc_weierstrass_add_general(wP, wP2), rP + rP)
+
         # Re-instantiate the curve with the ability to take square
         # roots, and check that we can reconstruct P and Q from their
         # x coordinate and y parity only.
@@ -3148,7 +3155,6 @@ LzN/Ly+uECsga2hoc+P/ZHMULMZkCfrOyWdeXz7BR/acLZJoT579
                     principals = [b"doesn't matter"],
                     valid_after = 1000,
                     valid_before = 2000), ca_key, signflags=ca_signflags)
-            import base64
             self_signed_ca_key = ssh_key_new_pub(
                 alg + '-cert', ca_self_certificate)
             cert_pub = sign_cert_via_testcrypt(

@@ -3202,8 +3202,7 @@ PuTTY 包含对一些著名的此类库
 在 Windows 上，此类库是具有 \I{DLL}\cw{.dll} 扩展名的文件，
 并且必须以与您正在运行的 PuTTY 可执行文件相同的方式
 构建；如果您有 32 位 DLL，则必须运行 32
-位版本的 PuTTY，与 64 位相
-同(请参阅 \k{faq-32bit-64bit})。
+位版本的 PuTTY，与 64 位相同
 在 Unix 上，共享库通常具有 \cw{.so} 扩展名。
 
 \H{config-ssh-tty} TTY面板
