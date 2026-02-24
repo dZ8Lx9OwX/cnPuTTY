@@ -1137,6 +1137,13 @@ described there are understood in the argument string, literal
 backslashes must be doubled (if you want \c{\\} in your command, you
 must put \c{\\\\} on the command line).
 
+\S2{using-cmdline-preconnectcommand} \i\c{\-preconnectcommand}:
+run a command before making a network connection
+
+This option specifies an external command to run just before opening
+the main network connection. See \k{config-preconn-hook} for more
+details.
+
 \S2{using-cmdline-share-noshare} \i\c{\-share}, \i\c{\-noshare}:
 enable/disable connection sharing
 

@@ -8,6 +8,7 @@ add_sources_from_current_dir(utils
   utils/blink_time.c
   utils/centre_window.c
   utils/cmdline_arg.c
+  utils/command_hook.c
   utils/cryptoapi.c
   utils/defaults.c
   utils/dll_hijacking_protection.c

@@ -2555,12 +2555,14 @@ static void usage(void)
     printf("  -hostkey 密钥ID\n");
     printf("                 手动指定主机密钥(可重复)\n");
     printf("  -batch         禁用所有交互式提示\n");
-    printf("  -no-sanitise-stderr  不要从标准输出/错误中去除"
+    printf("  -no-sanitise-stderr  不要从标准错误输出中删除"
            "控制字符\n");
     printf("  -proxycmd 命令\n");
     printf("                 使用'命令'作为本地代理\n");
-    printf("  -sshlog 文件\n");
-    printf("  -sshrawlog 文件\n");
+    printf("  -preconnectcommand 命令\n");
+    printf("                 在建立网络连接之前运行'命令'\n");
+    printf("  -sshlog file\n");
+    printf("  -sshrawlog file\n");
     printf("                 将协议详细信息记录到文件\n");
     printf("  -logoverwrite\n");
     printf("  -logappend\n");

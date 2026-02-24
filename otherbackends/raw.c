@@ -205,6 +205,11 @@ static char *raw_init(const BackendVtable *vt, Seat *seat,
     if (port < 0)
         port = 23;                     /* default telnet port */
 
+    /* Execute pre-connection command hook */
+    execute_command_hook(raw->logctx,
+                         conf_get_str(raw->conf, CONF_pre_connect_command),
+                         addr, port, raw->conf);
+
     /*
      * Open socket.
      */

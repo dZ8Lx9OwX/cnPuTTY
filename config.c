@@ -2512,6 +2512,12 @@ void setup_config_box(struct controlbox *b, bool midsession,
                              HELPCTX(connection_loghost),
                              conf_editbox_handler, I(CONF_loghost), ED_STR);
             }
+
+            s = ctrl_getset(b, "连接", "hooks",
+                            "发生连接事件时运行的命令：");
+            ctrl_editbox(s, "连接前运行的命令：", 'b', 100,
+                         HELPCTX(connection_pre_hook),
+                         conf_editbox_handler, I(CONF_pre_connect_command), ED_STR);
         }
 
         /*

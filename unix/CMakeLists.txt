@@ -5,6 +5,7 @@ add_sources_from_current_dir(utils
   utils/block_signal.c
   utils/cloexec.c
   utils/cmdline_arg.c
+  utils/command_hook.c
   utils/dputs.c
   utils/filename.c
   utils/fontspec.c

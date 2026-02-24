@@ -759,6 +759,11 @@ static char *telnet_init(const BackendVtable *vt, Seat *seat,
     if (port < 0)
         port = 23;                     /* default telnet port */
 
+    /* Execute pre-connection command hook */
+    execute_command_hook(telnet->logctx,
+                         conf_get_str(telnet->conf, CONF_pre_connect_command),
+                         addr, port, telnet->conf);
+
     /*
      * Open socket.
      */

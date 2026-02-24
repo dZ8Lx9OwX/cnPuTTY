@@ -5252,7 +5252,6 @@ static void term_out(Terminal *term, bool called_from_term_data)
                     }
                 break;
               case SEEN_OSC:
-                term->osc_type = OSCLIKE_OSC;
                 switch (c) {
                   case 'P':            /* Linux palette sequence */
                     term->termstate = SEEN_OSC_P;
