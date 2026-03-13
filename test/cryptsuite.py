@@ -93,6 +93,9 @@ def le_integer(x, nbits):
 def be_integer(x, nbits):
     return bytes(reversed(le_integer(x, nbits)))
 
+def decode_le_integer(s):
+    return sum(byte << (8*i) for i,byte in enumerate(s))
+
 @contextlib.contextmanager
 def queued_random_data(nbytes, seed):
     hashsize = 512 // 8
@@ -3517,6 +3520,21 @@ LzN/Ly+uECsga2hoc+P/ZHMULMZkCfrOyWdeXz7BR/acLZJoT579
                 dk_bytes[ekstart] ^= 1
                 self.assertEqual(
                     mlkem_decaps(params, bytes(dk_bytes), c), fail)
+
+    def testEd25519Overflow(self):
+        test_key = ssh_key_new_priv('ed25519', b64('AAAAC3NzaC1lZDI1NTE5AAAAIMt0/CMBL+64GQ/r/JyGxo6oHs86i9bOHhMJYbDbxEJf'), b64('AAAAIB38jy02ZWYb4EXrJG9RIljEhqidrG5DdhZvMvoeOTZs'))
+        test_string = b'hello, world'
+        good_sig = test_key.sign(test_string, 0)
+        self.assertTrue(test_key.verify(good_sig, test_string))
+        prefixlen = 4 + len('ssh-ed25519') + 4
+        self.assertEqual(len(good_sig), prefixlen + 64)
+        good_sstr = good_sig[prefixlen+32:]
+        good_s = decode_le_integer(good_sstr)
+        bad_s = good_s + ed25519.G_order
+        bad_sstr = le_integer(bad_s, 256)
+        bad_sig = good_sig[:prefixlen+32] + bad_sstr
+        self.assertEqual(len(bad_sig), len(good_sig))
+        self.assertFalse(test_key.verify(bad_sig, test_string))
 
 class standard_test_vectors(MyTestBase):
     def testAES(self):
