@@ -5,7 +5,6 @@ add_sources_from_current_dir(utils
   utils/block_signal.c
   utils/cloexec.c
   utils/cmdline_arg.c
-  utils/command_hook.c
   utils/dputs.c
   utils/filename.c
   utils/fontspec.c
@@ -20,6 +19,7 @@ add_sources_from_current_dir(utils
   utils/pgp_fingerprints.c
   utils/pollwrap.c
   utils/signal.c
+  utils/subprocess_waiter.c
   utils/x11_ignore_error.c
   # We want the ISO C implementation of ltime(), because we don't have
   # a local better alternative
@@ -27,10 +27,14 @@ add_sources_from_current_dir(utils
 # Compiled icon pixmap files
 add_library(puttyxpms STATIC
   putty-xpm.c
-  putty-config-xpm.c)
+  putty-rgb.c
+  putty-config-xpm.c
+  putty-config-rgb.c)
 add_library(ptermxpms STATIC
   pterm-xpm.c
-  pterm-config-xpm.c)
+  pterm-rgb.c
+  pterm-config-xpm.c
+  pterm-config-rgb.c)
 add_sources_from_current_dir(eventloop
   cliloop.c uxsel.c)
 add_sources_from_current_dir(console

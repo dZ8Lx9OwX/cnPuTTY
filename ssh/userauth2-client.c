@@ -665,7 +665,7 @@ static void ssh2_userauth_process_queue(PacketProtocolLayer *ppl)
     if (*s->authplugin_cmd) {
         s->authplugin_plug.vt = &authplugin_plugvt;
         s->authplugin = platform_start_subprocess(
-            s->authplugin_cmd, &s->authplugin_plug, "plugin");
+            s->authplugin_cmd, &s->authplugin_plug, "plugin", NULL);
         ppl_logevent("已启动身份验证插件：%s", s->authplugin_cmd);
     }
 

@@ -3289,7 +3289,7 @@ GtkWidget *create_config_box(const char *title, Conf *conf,
     dp->retval = -1;
     dp->window = window;
 
-    set_window_icon(window, cfg_icon, n_cfg_icon);
+    set_window_cfg_icon(window);
 
 #if !GTK_CHECK_VERSION(2,0,0)
     gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(treescroll),

@@ -753,17 +753,12 @@ static char *supdup_init(const BackendVtable *x, Seat *seat,
     if (port < 0)
         port = 0137;            /* default supdup port */
 
-    /* Execute pre-connection command hook */
-    execute_command_hook(supdup->logctx,
-                         conf_get_str(supdup->conf, CONF_pre_connect_command),
-                         addr, port, supdup->conf);
-
     /*
      * Open socket.
      */
-    supdup->s = new_connection(addr, *realhost, port, false, true,
-                               nodelay, keepalive, &supdup->plug, supdup->conf,
-                               &supdup->interactor);
+    supdup->s = new_main_connection(
+        addr, *realhost, port, false, true, nodelay, keepalive, &supdup->plug,
+        supdup->conf, &supdup->interactor, supdup->logctx);
     if ((err = sk_socket_error(supdup->s)) != NULL)
         return dupstr(err);
 

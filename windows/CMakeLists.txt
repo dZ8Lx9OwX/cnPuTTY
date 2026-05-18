@@ -8,7 +8,6 @@ add_sources_from_current_dir(utils
   utils/blink_time.c
   utils/centre_window.c
   utils/cmdline_arg.c
-  utils/command_hook.c
   utils/cryptoapi.c
   utils/defaults.c
   utils/dll_hijacking_protection.c
@@ -38,6 +37,7 @@ add_sources_from_current_dir(utils
   utils/shinydialogbox.c
   utils/split_into_argv.c
   utils/split_into_argv_w.c
+  utils/subprocess_waiter.c
   utils/version.c
   utils/win_strerror.c
   unicode.c)

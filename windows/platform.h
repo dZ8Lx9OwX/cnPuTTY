@@ -864,4 +864,7 @@ char *cmdline_arg_remainder_acp(CmdlineArg *);
 char *cmdline_arg_remainder_utf8(CmdlineArg *);
 CmdlineArg *cmdline_arg_from_utf8(CmdlineArgList *list, const char *string);
 
+/* Windows-specific API for making a SubprocessWaiter */
+SubprocessWaiter *subproc_waiter_from_hprocess(HANDLE hprocess);
+
 #endif /* PUTTY_WINDOWS_PLATFORM_H */

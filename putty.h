@@ -2732,11 +2732,31 @@ void request_callback_notifications(toplevel_callback_notify_fn_t notify,
  * Facility provided by the platform to spawn a parallel subprocess
  * and present its stdio via a Socket.
  *
- * 'prefix' indicates the prefix that should appear on messages passed
- * to plug_log to provide stderr output from the process.
+ * 'pfx' indicates the prefix that should appear on messages passed to
+ * plug_log to provide stderr output from the process.
+ *
+ * SubprocessWaiter is an opaque type that can be made to notify you
+ * with the exit status of the subprocess, once it has one. If you set
+ * 'waiter' to be non-NULL, one for this subprocess will be returned
+ * to you.
  */
-Socket *platform_start_subprocess(const char *cmd, Plug *plug,
-                                  const char *prefix);
+Socket *platform_start_subprocess(
+    const char *cmd, Plug *plug, const char *pfx, SubprocessWaiter **waiter);
+
+/* API for SubprocessWaiter. On Windows, everything is
+ * EXITTYPE_NORMAL, because exits and signal terminations aren't
+ * distinguished in the API. So don't depend on this enumeration for
+ * anything semantic: only use it to write sensible (ish) user-facing
+ * messages.
+ *
+ * EXITTYPE_WEIRD is never returned from this callback, but is
+ * available for callers to use as an extra value of their own. */
+enum { EXITTYPE_NORMAL, EXITTYPE_SIGNAL, EXITTYPE_WEIRD };
+typedef void (*SubprocessWaiterCallback)(
+    void *ctx, int exittype, uint32_t exitdata);
+void subproc_waiter_set_callback(
+    SubprocessWaiter *waiter, SubprocessWaiterCallback cb, void *cbctx);
+void subproc_waiter_free(SubprocessWaiter *waiter);
 
 /*
  * Define no-op macros for the jump list functions, on platforms that

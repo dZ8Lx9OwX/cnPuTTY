@@ -290,17 +290,12 @@ static char *rlogin_init(const BackendVtable *vt, Seat *seat,
     if (port < 0)
         port = 513;                    /* default rlogin port */
 
-    /* Execute pre-connection command hook */
-    execute_command_hook(rlogin->logctx,
-                         conf_get_str(rlogin->conf, CONF_pre_connect_command),
-                         addr, port, rlogin->conf);
-
     /*
      * Open socket.
      */
-    rlogin->s = new_connection(addr, *realhost, port, true, false,
-                               nodelay, keepalive, &rlogin->plug, conf,
-                               &rlogin->interactor);
+    rlogin->s = new_main_connection(
+        addr, *realhost, port, true, false, nodelay, keepalive, &rlogin->plug,
+        conf, &rlogin->interactor, rlogin->logctx);
     if ((err = sk_socket_error(rlogin->s)) != NULL)
         return dupstr(err);
 

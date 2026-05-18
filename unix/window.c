@@ -4154,12 +4154,60 @@ static void gtkwin_draw_cursor(
 #endif
 }
 
-#if !GTK_CHECK_VERSION(2,0,0)
 /*
- * For GTK 1, manual code to scale an in-memory XPM, producing a new
- * one as output. It will be ugly, but good enough to use as a trust
- * sigil.
+ * Handle icons embedded in the binary
  */
+#if GTK_CHECK_VERSION(2,0,0)
+/*
+ * For any GTK 2 and above, we use the raw RGB24 version of the icon
+ * data, and pass it to gdk_pixbuf_new_from_data(). The XPM-consuming
+ * function gdk_pixbuf_new_from_xpm_data() is deprecated as of
+ * gdk-pixbuf 2.44; new_from_data has existed since the earliest GTK
+ * 2, and seems better anyway because it avoids depending on _any_
+ * separate .so loader module and also is apparently able to use the
+ * bitmap data by reference rather than allocating a separate copy.
+ */
+
+typedef const struct RgbIconImage *const *IconCollection;
+
+#define N_ICONS(basename) (n_ ## basename ## _rgb)
+#define ALL_ICONS(basename) (basename ## _rgb)
+
+#define GET_ICON_SIZE(basename, n, w, h) do { \
+        w = (basename ## _rgb[n]->width);     \
+        h = (basename ## _rgb[n]->height);    \
+    } while (0)
+
+#define ICON_PIXBUF(rgb) gdk_pixbuf_new_from_data(      \
+        (rgb)->data,                                    \
+        GDK_COLORSPACE_RGB,                             \
+        true /* alpha channel */,                       \
+        8 /* bits per sample */,                        \
+        (rgb)->width,                                   \
+        (rgb)->height,                                  \
+        4 * (rgb)->width /* row stride */,              \
+        NULL /* destroy */, NULL /* destroy context */)
+
+#else // !GTK_CHECK_VERSION(2,0,0)
+/*
+ * For GTK 1, we use XPM, and we must provide our own code to scale an
+ * XPM to a different size. It will be ugly, but good enough to use as
+ * a trust sigil.
+ */
+
+typedef const char *const *const *IconCollection;
+
+#define N_ICONS(basename) (n_ ## basename)
+#define ALL_ICONS(basename) (basename)
+
+static inline void get_icon_size(const char *const *xpm, int *w, int *h)
+{
+    int nfound = sscanf(xpm[0], "%d %d", w, h);
+    assert(nfound == 2 && "Bad compiled-in xpm data");
+}
+
+#define GET_ICON_SIZE(basename, n, w, h) get_icon_size(basename[n], &w, &h)
+
 struct XpmHolder {
     char **strings;
     size_t nstrings;
@@ -4206,7 +4254,7 @@ static XpmHolder *xpm_scale(const char *const *xpm, int wo, int ho)
 
     return xh;
 }
-#endif /* !GTK_CHECK_VERSION(2,0,0) */
+#endif // GTK_CHECK_VERSION(2,0,0)
 
 static void gtkwin_draw_trust_sigil(TermWin *tw, int cx, int cy)
 {
@@ -4234,22 +4282,20 @@ static void gtkwin_draw_trust_sigil(TermWin *tw, int cx, int cy)
 
         int best_icon_index = 0;
         unsigned score = UINT_MAX;
-        for (int i = 0; i < n_main_icon; i++) {
+        for (int i = 0; i < N_ICONS(main_icon); i++) {
             int iw, ih;
-            if (sscanf(main_icon[i][0], "%d %d", &iw, &ih) == 2) {
-                int this_excess = (iw + ih) - (w + h);
-                unsigned this_score = (abs(this_excess) |
-                                       (this_excess > 0 ? 0 : 0x80000000U));
-                if (this_score < score) {
-                    best_icon_index = i;
-                    score = this_score;
-                }
+            GET_ICON_SIZE(main_icon, i, iw, ih);
+            int this_excess = (iw + ih) - (w + h);
+            unsigned this_score = (abs(this_excess) |
+                                   (this_excess > 0 ? 0 : 0x80000000U));
+            if (this_score < score) {
+                best_icon_index = i;
+                score = this_score;
             }
         }
 
 #if GTK_CHECK_VERSION(2,0,0)
-        GdkPixbuf *icon_unscaled = gdk_pixbuf_new_from_xpm_data(
-            (const gchar **)main_icon[best_icon_index]);
+        GdkPixbuf *icon_unscaled = ICON_PIXBUF(main_icon_rgb[best_icon_index]);
         inst->trust_sigil_pb = gdk_pixbuf_scale_simple(
             icon_unscaled, w, h, GDK_INTERP_BILINEAR);
         g_object_unref(G_OBJECT(icon_unscaled));
@@ -5068,8 +5114,7 @@ static void update_savedsess_menu(GtkMenuItem *menuitem, gpointer data)
     get_sesslist(&sesslist, false); /* free up */
 }
 
-void set_window_icon(GtkWidget *window, const char *const *const *icon,
-                     int n_icon)
+static void set_window_icon(GtkWidget *window, IconCollection icon, int n_icon)
 {
 #if GTK_CHECK_VERSION(2,0,0)
     GList *iconlist;
@@ -5084,8 +5129,7 @@ void set_window_icon(GtkWidget *window, const char *const *const *icon,
 
     gtk_widget_realize(window);
 #if GTK_CHECK_VERSION(2,0,0)
-    gtk_window_set_icon(GTK_WINDOW(window),
-                        gdk_pixbuf_new_from_xpm_data((const gchar **)icon[0]));
+    gtk_window_set_icon(GTK_WINDOW(window), ICON_PIXBUF(icon[0]));
 #else
     iconpm = gdk_pixmap_create_from_xpm_d(gtk_widget_get_window(window),
                                           &iconmask, NULL, (gchar **)icon[0]);
@@ -5095,13 +5139,15 @@ void set_window_icon(GtkWidget *window, const char *const *const *icon,
 #if GTK_CHECK_VERSION(2,0,0)
     iconlist = NULL;
     for (n = 0; n < n_icon; n++) {
-        iconlist =
-            g_list_append(iconlist,
-                          gdk_pixbuf_new_from_xpm_data((const gchar **)
-                                                       icon[n]));
+        iconlist = g_list_append(iconlist, ICON_PIXBUF(icon[n]));
     }
     gtk_window_set_icon_list(GTK_WINDOW(window), iconlist);
 #endif
+}
+
+void set_window_cfg_icon(GtkWidget *window)
+{
+    set_window_icon(window, ALL_ICONS(cfg_icon), N_ICONS(cfg_icon));
 }
 
 static void free_special_cmd(gpointer data) { sfree(data); }
@@ -5573,7 +5619,7 @@ void new_session_window(Conf *conf, const char *geometry_string)
 #endif
         );
 
-    set_window_icon(inst->window, main_icon, n_main_icon);
+    set_window_icon(inst->window, ALL_ICONS(main_icon), N_ICONS(main_icon));
 
     gtk_widget_show(inst->window);
 

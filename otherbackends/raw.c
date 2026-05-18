@@ -205,16 +205,12 @@ static char *raw_init(const BackendVtable *vt, Seat *seat,
     if (port < 0)
         port = 23;                     /* default telnet port */
 
-    /* Execute pre-connection command hook */
-    execute_command_hook(raw->logctx,
-                         conf_get_str(raw->conf, CONF_pre_connect_command),
-                         addr, port, raw->conf);
-
     /*
      * Open socket.
      */
-    raw->s = new_connection(addr, *realhost, port, false, true, nodelay,
-                            keepalive, &raw->plug, conf, &raw->interactor);
+    raw->s = new_main_connection(
+        addr, *realhost, port, false, true, nodelay, keepalive, &raw->plug,
+        conf, &raw->interactor, raw->logctx);
     if ((err = sk_socket_error(raw->s)) != NULL)
         return dupstr(err);
 

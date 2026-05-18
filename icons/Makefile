@@ -21,7 +21,8 @@ MONOSVGS = $(patsubst %,%-mono.svg,$(ICONS))
 ICOS = putty.ico puttygen.ico pscp.ico pageant.ico pageants.ico puttycfg.ico \
        puttyins.ico pterm.ico ptermcfg.ico
 ICNS = PuTTY.icns Pterm.icns
-CICONS = xpmputty.c xpmpucfg.c xpmpterm.c xpmptcfg.c
+CICONS = putty-xpm.c putty-config-xpm.c pterm-xpm.c pterm-config-xpm.c \
+         putty-rgb.c putty-config-rgb.c pterm-rgb.c pterm-config-rgb.c
 
 base: icos cicons
 
@@ -103,17 +104,25 @@ web192.png: putty.svg
 web512.png: putty.svg
 	rsvg-convert -f png -w 512 -h 512 -o $@ $<
 
-xpmputty.c: putty-16.png putty-32.png putty-48.png
+putty-xpm.c: putty-16.png putty-32.png putty-48.png
 	./cicon.pl main_icon $^ > $@
+putty-rgb.c: putty-16.png putty-32.png putty-48.png
+	./cicon.pl --rgb main_icon $^ > $@
 
-xpmpucfg.c: puttycfg-16.png puttycfg-32.png puttycfg-48.png
+putty-config-xpm.c: puttycfg-16.png puttycfg-32.png puttycfg-48.png
 	./cicon.pl cfg_icon $^ > $@
+putty-config-rgb.c: puttycfg-16.png puttycfg-32.png puttycfg-48.png
+	./cicon.pl --rgb cfg_icon $^ > $@
 
-xpmpterm.c: pterm-16.png pterm-32.png pterm-48.png
+pterm-xpm.c: pterm-16.png pterm-32.png pterm-48.png
 	./cicon.pl main_icon $^ > $@
+pterm-rgb.c: pterm-16.png pterm-32.png pterm-48.png
+	./cicon.pl --rgb main_icon $^ > $@
 
-xpmptcfg.c: ptermcfg-16.png ptermcfg-32.png ptermcfg-48.png
+pterm-config-xpm.c: ptermcfg-16.png ptermcfg-32.png ptermcfg-48.png
 	./cicon.pl cfg_icon $^ > $@
+pterm-config-rgb.c: ptermcfg-16.png ptermcfg-32.png ptermcfg-48.png
+	./cicon.pl --rgb cfg_icon $^ > $@
 
 PuTTY.icns: putty-16-mono.pam putty-16.pam \
 	    putty-32-mono.pam putty-32.pam \
