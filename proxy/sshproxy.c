@@ -396,7 +396,7 @@ static void sshproxy_connection_fatal(Seat *seat, const char *message)
     SshProxy *sp = container_of(seat, SshProxy, seat);
     if (!sp->errmsg) {
         sp->errmsg = dupprintf(
-            "代理SSH连接中的致命错误：%s", message);
+            "SSH连接到代理的致命错误：%s", message);
         queue_toplevel_callback(sshproxy_connection_fatal_callback, sp);
     }
 }

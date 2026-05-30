@@ -387,7 +387,7 @@ static bool proxy_for_destination(SockAddr *addr, const char *hostname,
 static char *dns_log_msg(const char *host, int addressfamily,
                          const char *reason)
 {
-    return dupprintf("查找主机 \"%s\"%s 来自 %s", host,
+    return dupprintf("查找主机 \"%s\"%s 用于%s", host,
                      (addressfamily == ADDRTYPE_IPV4 ? " (IPv4)" :
                       addressfamily == ADDRTYPE_IPV6 ? " (IPv6)" :
                       ""), reason);
@@ -402,8 +402,8 @@ SockAddr *name_lookup(const char *host, int port, char **canonicalname,
         proxy_for_destination(NULL, host, port, conf)) {
 
         if (logctx)
-            logeventf(logctx, "将主机查找留给代理 \"%s\""
-                      " (对于 %s)", host, reason);
+            logeventf(logctx, "将主机 \"%s\" 查找留给代理"
+                      "(用于%s)", host, reason);
 
         *canonicalname = dupstr(host);
         return sk_nonamelookup(host);
@@ -593,7 +593,7 @@ Socket *new_connection(SockAddr *addr, const char *hostname,
         bufchain_sink_init(ps->pn->output, &ps->output_from_negotiator);
 
         {
-            char *logmsg = dupprintf("将使用 %s 代理在 %s:%d 进行连接"
+            char *logmsg = dupprintf("将使用 %s代理,在 %s:%d 上连接"
                                      "到 %s:%d", vt->type,
                                      conf_get_str(conf, CONF_proxy_host),
                                      conf_get_int(conf, CONF_proxy_port),
@@ -605,7 +605,7 @@ Socket *new_connection(SockAddr *addr, const char *hostname,
         {
             char *logmsg = dns_log_msg(conf_get_str(conf, CONF_proxy_host),
                                        conf_get_int(conf, CONF_addressfamily),
-                                       "proxy");
+                                       "代理");
             plug_log(plug, &ps->sock, PLUGLOG_PROXY_MSG, NULL, 0, logmsg, 0);
             sfree(logmsg);
         }
@@ -624,7 +624,7 @@ Socket *new_connection(SockAddr *addr, const char *hostname,
         {
             char addrbuf[256], *logmsg;
             sk_getaddr(proxy_addr, addrbuf, lenof(addrbuf));
-            logmsg = dupprintf("正在连接到 %s 通过代理在 %s 端口 %d",
+            logmsg = dupprintf("正在通过 %s代理连接到 %s 端口 %d",
                                vt->type, addrbuf,
                                conf_get_int(conf, CONF_proxy_port));
             plug_log(plug, &ps->sock, PLUGLOG_PROXY_MSG, NULL, 0, logmsg, 0);

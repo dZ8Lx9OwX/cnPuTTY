@@ -169,7 +169,7 @@ static void proxy_telnet_process_queue(ProxyNegotiator *pn)
             pn->ps->remote_addr, pn->ps->remote_port, s->conf, NULL);
 
         strbuf *logmsg = strbuf_new();
-        put_datapl(logmsg, PTRLEN_LITERAL("Sending Telnet proxy command: "));
+        put_datapl(logmsg, PTRLEN_LITERAL("发送Telnet代理命令: "));
         put_c_string_literal(logmsg, ptrlen_from_asciz(censored_cmd));
 
         plug_log(pn->ps->plug, &pn->ps->sock, PLUGLOG_PROXY_MSG, NULL, 0,

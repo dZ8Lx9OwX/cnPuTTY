@@ -1749,12 +1749,12 @@ void proxy_type_handler(dlgcontrol *ctrl, dlgparam *dlg,
         ADD(PROXY_SOCKS4, "SOCKS 4");
         ADD(PROXY_HTTP, "HTTP连接");
         if (ssh_proxy_supported) {
-            ADD(PROXY_SSH_TCPIP, "SSH代理 + 端口转发");
-            ADD(PROXY_SSH_EXEC, "SSH代理 + 执行命令");
-            ADD(PROXY_SSH_SUBSYSTEM, "SSH代理 + 调用子系统");
+            ADD(PROXY_SSH_TCPIP, "SSH连接到代理并使用端口转发");
+            ADD(PROXY_SSH_EXEC, "SSH连接到代理并执行命令");
+            ADD(PROXY_SSH_SUBSYSTEM, "SSH连接到代理并调用子系统");
         }
         if (ctrl->context.i & PROXY_UI_FLAG_LOCAL) {
-            ADD(PROXY_CMD, "本地 (运行子程序进行连接)");
+            ADD(PROXY_CMD, "本地 (运行子命令进行连接)");
         }
         ADD(PROXY_TELNET, "Telnet (临时发送命令)");
 
@@ -2515,7 +2515,7 @@ void setup_config_box(struct controlbox *b, bool midsession,
 
             s = ctrl_getset(b, "连接", "hooks",
                             "发生连接事件时运行的命令：");
-            ctrl_editbox(s, "连接前运行的命令：", 'b', 100,
+            ctrl_editbox(s, "预连接命令(连接前运行的命令)", 'b', 100,
                          HELPCTX(connection_pre_hook),
                          conf_editbox_handler, I(CONF_pre_connect_command), ED_STR);
         }

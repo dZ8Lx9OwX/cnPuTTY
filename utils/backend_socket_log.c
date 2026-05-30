@@ -22,7 +22,7 @@ void backend_socket_log(Seat *seat, LogContext *logctx, Socket *sock,
         break;
       case PLUGLOG_CONNECT_FAILED:
         sk_getaddr(addr, addrbuf, lenof(addrbuf));
-        msg = dupprintf("连接失败 %s: %s", addrbuf, error_msg);
+        msg = dupprintf("连接 %s 失败: %s", addrbuf, error_msg);
         break;
       case PLUGLOG_CONNECT_SUCCESS:
         if (addr)

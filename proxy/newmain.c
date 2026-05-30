@@ -108,8 +108,8 @@ static void preconn_cmdplug_closing(
       case PLUGCLOSE_ERROR:
       case PLUGCLOSE_BROKEN_PIPE:
         /* But if it terminates _confusedly_, at least log that. */
-        logeventf(wr->logctx, "Error reading output from "
-                  "pre-connect command: %s", error_msg);
+        logeventf(wr->logctx, "预连接命令 "
+                  "读取输出时出错: %s", error_msg);
         break;
 
       case PLUGCLOSE_USER_ABORT:
@@ -127,11 +127,11 @@ static void preconn_subproc_terminated(
     PreConnWrapper *wr = (PreConnWrapper *)vctx;
     switch (exittype) {
       case EXITTYPE_NORMAL:
-        logeventf(wr->logctx, "Pre-connect command exited with status %"PRIu32,
+        logeventf(wr->logctx, "预连接命令 已退出,状态为 %"PRIu32,
                   exitdata);
         break;
       case EXITTYPE_SIGNAL:
-        logeventf(wr->logctx, "Pre-connect command killed by signal %"PRIu32,
+        logeventf(wr->logctx, "预连接命令 已终止,信号为 %"PRIu32,
                   exitdata);
         break;
     }
@@ -182,7 +182,7 @@ static void preconn_mainplug_sent(Plug *p, size_t bufsize)
 static int preconn_never_accepting(Plug *p, accept_fn_t constructor,
                                    accept_ctx_t ctx)
 {
-    unreachable("new_main_connection never creates a listening Socket");
+    unreachable("new_main_connection 从不创建监听套接字");
 }
 
 static const PlugVtable preconn_cmd_plugvt = {
@@ -320,8 +320,8 @@ Socket *new_main_connection(
             template, addr, port, tmpconf, &flags);
         if (flags & (TELNET_CMD_MISSING_USERNAME |
                      TELNET_CMD_MISSING_PASSWORD)) {
-            logeventf(logctx, "Pre-connect command: references to %%user or "
-                      "%%pass not supported");
+            logeventf(logctx, "预连接命令 不支持引用 %%user 或者 "
+                      "%%pass ");
             sfree(command);
             command = NULL;
         }
@@ -348,7 +348,7 @@ Socket *new_main_connection(
     wr->itr = itr;
     wr->logctx = logctx;
     psb_init(&wr->psb);
-    psb_set_prefix(&wr->psb, "pre-connect command stdout");
+    psb_set_prefix(&wr->psb, "预连接命令 输出");
     bufchain_init(&wr->writebuf);
     bufchain_init(&wr->oobbuf);
 
@@ -356,9 +356,9 @@ Socket *new_main_connection(
     wr->mainplugimpl.vt = &preconn_main_plugvt;
     wr->sockimpl.vt = &preconn_sockvt;
 
-    logeventf(logctx, "Running pre-connect command: %s", command);
+    logeventf(logctx, "运行预连接命令: %s", command);
     wr->preconn = platform_start_subprocess(
-        command, &wr->cmdplugimpl, "pre-connect command stderr", &wr->waiter);
+        command, &wr->cmdplugimpl, "预连接命令 报错", &wr->waiter);
     subproc_waiter_set_callback(wr->waiter, preconn_subproc_terminated, wr);
     sk_write_eof(wr->preconn);
 

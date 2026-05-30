@@ -206,7 +206,7 @@ static void local_proxy_opener_coroutine(void *vctx)
             lp->addr, lp->port, lp->conf, NULL);
 
         strbuf *logmsg = strbuf_new();
-        put_datapl(logmsg, PTRLEN_LITERAL("Starting local proxy command: "));
+        put_datapl(logmsg, PTRLEN_LITERAL("启动本地代理命令: "));
         put_c_string_literal(logmsg, ptrlen_from_asciz(censored_cmd));
 
         plug_log(lp->plug, lp->socket, PLUGLOG_PROXY_MSG, NULL, 0,
