@@ -116,14 +116,6 @@ unsigned long schedule_timer(int ticks, timer_fn_t fn, void *ctx)
     now = GETTICKCOUNT();
     when = ticks + now;
 
-    /*
-     * Just in case our various defences against timing skew fail
-     * us: if we try to schedule a timer that's already in the
-     * past, we instead schedule it for the immediate future.
-     */
-    if (when - now <= 0)
-        when = now + 1;
-
     t = snew(struct timer);
     t->fn = fn;
     t->ctx = ctx;

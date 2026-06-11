@@ -19,7 +19,7 @@ enddelegate
 # Scan the Windows build, by means of building with Winelib (since as
 # of 2013-07-22, the Coverity Scan website doesn't offer a 32-bit
 # Windows scanner for download).
-delegate covscan32wine
+delegate covscan64
   in putty do tar xzvf cov-int.tar.gz
   in putty do mkdir winbuild
   in putty/winbuild do cmake .. -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchain-winegcc.cmake

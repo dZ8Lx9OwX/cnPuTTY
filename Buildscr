@@ -143,6 +143,7 @@ in putty do python3 test/cryptsuite.py
 in putty do ./test_lineedit
 in putty do ./test_terminal
 in putty do ./test_conf
+in putty do echo 'smoke test to catch easy crashes' | ./fuzzterm > /dev/null
 enddelegate
 
 delegate -
