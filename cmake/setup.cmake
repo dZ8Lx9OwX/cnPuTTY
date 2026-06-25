@@ -122,6 +122,32 @@ int main(int argc, char **argv) {
     return _Countof(a);
 }" HAVE_COUNTOF)
 
+# Try to normalise source file pathnames as seen in __FILE__ (e.g.
+# assertion failure messages). Partly to avoid bloating the binaries
+# with file prefixes like /home/simon/stuff/things/tmp-7x6c5d54/, but
+# also to make the builds more deterministic - building from the same
+# source should give the same binary even if you do it in a
+# differently named temp directory.
+function(map_pathname src dst)
+  if(CMAKE_C_COMPILER_ID MATCHES "Clang" AND
+     CMAKE_C_COMPILER_FRONTEND_VARIANT MATCHES "MSVC")
+    # -fmacro-prefix-map isn't available as a clang-cl option, so we
+    # prefix it with -Xclang to pass it straight through to the
+    # underlying clang -cc1 invocation, which spells the option the
+    # same way.
+    set(CMAKE_C_FLAGS
+      "${CMAKE_C_FLAGS} -Xclang -fmacro-prefix-map=${src}=${dst}"
+      PARENT_SCOPE)
+  elseif(CMAKE_C_COMPILER_ID MATCHES "GNU" OR
+      CMAKE_C_COMPILER_ID MATCHES "Clang")
+    set(CMAKE_C_FLAGS
+      "${CMAKE_C_FLAGS} -fmacro-prefix-map=${src}=${dst}"
+      PARENT_SCOPE)
+  endif()
+endfunction()
+map_pathname(${CMAKE_SOURCE_DIR} /putty)
+map_pathname(${CMAKE_BINARY_DIR} /build)
+
 if(PUTTY_DEBUG)
   add_compile_definitions(DEBUG)
 endif()

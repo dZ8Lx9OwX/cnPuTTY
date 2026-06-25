@@ -68,24 +68,24 @@ struct ssh_gss_liblist *ssh_gss_setup(Conf *conf)
     /* Heimdal's GSSAPI Library */
     if ((gsslib = dlopen("libgssapi.so.2", RTLD_LAZY)) != NULL)
         gss_init(&list->libraries[list->nlibraries++], gsslib,
-                 0, "Using GSSAPI from libgssapi.so.2");
+                 0, "使用 GSSAPI 来自 libgssapi.so.2");
 
     /* MIT Kerberos's GSSAPI Library */
     if ((gsslib = dlopen("libgssapi_krb5.so.2", RTLD_LAZY)) != NULL)
         gss_init(&list->libraries[list->nlibraries++], gsslib,
-                 1, "Using GSSAPI from libgssapi_krb5.so.2");
+                 1, "使用 GSSAPI 来自 libgssapi_krb5.so.2");
 
     /* Sun's GSSAPI Library */
     if ((gsslib = dlopen("libgss.so.1", RTLD_LAZY)) != NULL)
         gss_init(&list->libraries[list->nlibraries++], gsslib,
-                 2, "Using GSSAPI from libgss.so.1");
+                 2, "使用 GSSAPI 来自 libgss.so.1");
 
     /* User-specified GSSAPI library */
     gsspath = conf_get_filename(conf, CONF_ssh_gss_custom)->path;
     if (*gsspath && (gsslib = dlopen(gsspath, RTLD_LAZY)) != NULL)
         gss_init(&list->libraries[list->nlibraries++], gsslib,
-                 3, dupprintf("Using GSSAPI from user-specified"
-                              " library '%s'", gsspath));
+                 3, dupprintf("使用 GSSAPI 来自用户指定的"
+                              "库文件 '%s'", gsspath));
 
     return list;
 }
@@ -141,7 +141,7 @@ struct ssh_gss_liblist *ssh_gss_setup(Conf *conf)
     list->nlibraries = 1;
 
     list->libraries[0].id = 0;
-    list->libraries[0].gsslogmsg = "Using statically linked GSSAPI";
+    list->libraries[0].gsslogmsg = "使用 GSSAPI 来自静态链接库";
 
 #define BIND_GSS_FN(name) \
     list->libraries[0].u.gssapi.name = (t_gss_##name) gss_##name
